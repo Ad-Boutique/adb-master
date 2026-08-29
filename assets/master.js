@@ -150,6 +150,10 @@
   var drifts = Array.prototype.slice.call(document.querySelectorAll("[data-drift]")).map(function (el) {
     return { el: el, s: parseFloat(el.getAttribute("data-drift")) || 0.1 };
   });
+  /* Scrollbasierter Spalten-Parallax (0 am Seitenanfang, Vorlage Work-Grid) */
+  var driftsSc = Array.prototype.slice.call(document.querySelectorAll("[data-driftsc]")).map(function (el) {
+    return { el: el, s: parseFloat(el.getAttribute("data-driftsc")) || 0.05 };
+  });
 
   /* ---------- Scroll-Loop ---------- */
   var vh = window.innerHeight;
@@ -181,6 +185,9 @@
       var r3 = d.el.getBoundingClientRect();
       var delta = (r3.top + r3.height / 2) - vh / 2;
       d.el.style.transform = "translateY(" + (delta * d.s * -1) + "px)";
+    });
+    driftsSc.forEach(function (d) {
+      d.el.style.transform = "translateY(" + (window.scrollY * d.s) + "px)";
     });
     ticking = false;
   }
@@ -217,7 +224,7 @@
   /* ---------- Work-Filter (FLIP) ---------- */
   var chips = document.querySelectorAll(".fchip");
   if (chips.length) {
-    var allTiles = Array.prototype.slice.call(document.querySelectorAll(".wgrid .tile, .wgridw .tile"));
+    var allTiles = Array.prototype.slice.call(document.querySelectorAll(".wgrid .tile, .wgridw .wt"));
     chips.forEach(function (chip) {
       chip.addEventListener("click", function () {
         chips.forEach(function (c) { c.classList.remove("on"); });
