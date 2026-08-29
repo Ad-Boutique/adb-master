@@ -54,7 +54,7 @@ a { color: inherit; text-decoration: none; }
 /* ---------- Typo-Rollen ---------- */
 .disp {
   font-family: var(--f-disp);
-  font-weight: 900;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: -0.015em;
   line-height: 0.94;
@@ -79,7 +79,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ---------- Sektionen ---------- */
-.sec { position: relative; padding: clamp(90px, 12vw, 170px) 0; }
+.sec { position: relative; padding: clamp(110px, 14vw, 210px) 0; }
 .wrap { width: min(1560px, calc(100% - clamp(40px, 6vw, 128px))); margin: 0 auto; }
 
 /* Vordergrund-Modi je Sektion */
@@ -101,7 +101,7 @@ a { color: inherit; text-decoration: none; }
 }
 .chrome a { pointer-events: auto; }
 .logo {
-  font-family: var(--f-ui); font-weight: 800; font-size: 19px;
+  font-family: var(--f-ui); font-weight: 740; font-size: 19px;
   letter-spacing: -0.01em; color: #fff;
 }
 .logo i { font-style: normal; color: #fff; opacity: 0.55; }
@@ -492,10 +492,10 @@ footer { background: #070708; color: var(--paper); padding: clamp(70px, 8vw, 120
   border-top: 1px solid var(--line-d);
   font-size: 12.5px; color: var(--grey);
 }
-.fword { overflow: hidden; padding: 10px 0 26px; margin-top: 34px; }
+.fword { overflow: hidden; padding: clamp(30px, 5vw, 80px) 0 clamp(30px, 4vw, 60px); margin-top: clamp(40px, 6vw, 90px); }
 .fword div {
-  font-family: var(--f-disp); font-weight: 900; letter-spacing: -0.04em;
-  font-size: clamp(64px, 14.5vw, 232px); line-height: 0.95; text-align: center;
+  font-family: var(--f-disp); font-weight: 780; letter-spacing: -0.04em;
+  font-size: clamp(76px, 17.5vw, 300px); line-height: 0.95; text-align: center;
   color: var(--paper); white-space: nowrap;
 }
 .fword i { font-style: normal; color: var(--champ); }
@@ -559,7 +559,7 @@ footer { background: #070708; color: var(--paper); padding: clamp(70px, 8vw, 120
   background: linear-gradient(to bottom, rgba(8,8,9,0.42), rgba(8,8,9,0));
   pointer-events: none;
 }
-.wt .wkpi .kv { display: block; font-family: var(--f-disp); font-weight: 800; font-size: clamp(22px, 1.9vw, 30px); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+.wt .wkpi .kv { display: block; font-family: var(--f-disp); font-weight: 680; font-size: clamp(22px, 1.9vw, 30px); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
 .wt .wkpi .kl { display: block; font-size: 9.5px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; opacity: 0.85; }
 .wt.has-media::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 38%;
@@ -574,7 +574,7 @@ footer { background: #070708; color: var(--paper); padding: clamp(70px, 8vw, 120
 }
 .wt .wclr::after { content: ""; display: block; }
 .wt .wclr .big {
-  font-family: var(--f-disp); font-weight: 800; letter-spacing: -0.02em;
+  font-family: var(--f-disp); font-weight: 680; letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums; font-size: clamp(34px, 3vw, 52px);
 }
 .wt.fout { display: none; }
@@ -658,7 +658,7 @@ body.loaded .chero img { transform: scale(1); }
 .cstate .label { display: block; margin-bottom: 26px; color: var(--champ); }
 
 /* Fünf Perspektiven */
-.lens .lrow { display: grid; grid-template-columns: 0.35fr 1fr; gap: clamp(20px, 3vw, 60px); padding: clamp(22px, 2.6vw, 38px) 0; border-top: 1px solid var(--line-l); }
+.lens .lrow { display: grid; grid-template-columns: 0.35fr 1fr; gap: clamp(20px, 3vw, 60px); padding: clamp(28px, 3.4vw, 50px) 0; border-top: 1px solid var(--line-l); }
 .lens .lrow:last-child { border-bottom: 1px solid var(--line-l); }
 .lens .ll { font-family: var(--f-disp); font-weight: 800; text-transform: uppercase; font-size: 15px; letter-spacing: 0.04em; padding-top: 3px; }
 .lens .lt { font-family: var(--f-serif); font-size: 17.5px; line-height: 1.65; color: var(--grey-dark); max-width: 62ch; }
@@ -815,7 +815,7 @@ body.loaded .chero img { transform: scale(1); }
 .pcard.r { grid-column: 3; justify-self: start; }
 .pcard.l { grid-column: 1; justify-self: end; }
 .pcard .pk { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--champ-deep); }
-.pcard .pt2 { font-family: var(--f-disp); font-weight: 800; font-size: clamp(20px, 1.9vw, 27px); margin-top: 8px; text-transform: none; letter-spacing: -0.01em; }
+.pcard .pt2 { font-family: var(--f-disp); font-weight: 680; font-size: clamp(20px, 1.9vw, 27px); margin-top: 8px; text-transform: none; letter-spacing: -0.01em; }
 .pcard p { font-family: var(--f-serif); font-size: 16.5px; line-height: 1.65; color: var(--grey-dark); margin-top: 10px; }
 .pcard .pimg { margin-top: 18px; border-radius: 4px; overflow: hidden; }
 @media (max-width: 900px) {
@@ -929,7 +929,7 @@ body.loaded .chero img { transform: scale(1); }
 .oplist .op:last-child { border-bottom: 1px solid var(--line-l); }
 .oplist .onum { font-size: 12px; font-weight: 700; color: var(--grey-dark); font-variant-numeric: tabular-nums; }
 .oplist .otitle {
-  font-family: var(--f-disp); font-weight: 800; text-transform: uppercase;
+  font-family: var(--f-disp); font-weight: 680; text-transform: uppercase;
   font-size: clamp(20px, 2.4vw, 38px); letter-spacing: -0.01em; line-height: 1.1;
   background-image: linear-gradient(currentColor, currentColor);
   background-repeat: no-repeat; background-position: left 96%; background-size: 0% 2px;
@@ -946,7 +946,7 @@ body.loaded .chero img { transform: scale(1); }
 
 .chapter { color: var(--paper); }
 .chapter .chgrid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(40px, 6vw, 110px); align-items: start; }
-.chapter .chlab { font-family: var(--f-disp); font-weight: 800; text-transform: uppercase; font-size: clamp(20px, 2vw, 30px); letter-spacing: 0.01em; }
+.chapter .chlab { font-family: var(--f-disp); font-weight: 700; text-transform: uppercase; font-size: clamp(20px, 2vw, 30px); letter-spacing: 0.01em; }
 .chapter .chtxt { font-family: var(--f-serif); font-size: 16.5px; line-height: 1.7; color: rgba(243,237,225,0.78); max-width: 56ch; margin-top: 20px; }
 .chapter .chpanel { border-radius: 3px; overflow: hidden; }
 @media (max-width: 900px) { .chapter .chgrid { grid-template-columns: 1fr; } }
@@ -955,7 +955,7 @@ body.loaded .chero img { transform: scale(1); }
 .nextproj .npbar { display: flex; justify-content: space-between; padding: 18px 0 clamp(40px, 5vw, 80px); font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--grey); }
 .nextproj .npgrid { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(30px, 5vw, 90px); align-items: center; padding-bottom: clamp(60px, 8vw, 120px); }
 .nextproj .npim { border-radius: 3px; overflow: hidden; }
-.nextproj .nptitle { font-family: var(--f-disp); font-weight: 900; text-transform: uppercase; font-size: clamp(40px, 5.6vw, 100px); line-height: 0.95; letter-spacing: -0.02em; color: var(--paper); }
+.nextproj .nptitle { font-family: var(--f-disp); font-weight: 700; text-transform: uppercase; font-size: clamp(40px, 5.6vw, 100px); line-height: 0.95; letter-spacing: -0.02em; color: var(--paper); }
 .nextproj .npsub { font-size: 14px; color: var(--grey); margin-top: 16px; }
 .nextproj a:hover .nptitle { color: var(--champ); }
 @media (max-width: 900px) { .nextproj .npgrid { grid-template-columns: 1fr; } }
@@ -979,7 +979,7 @@ body.loaded .chero img { transform: scale(1); }
    ============================================================ */
 .ohero { position: relative; padding: clamp(120px, 14vw, 190px) 0 clamp(60px, 7vw, 100px); }
 .ohero .otit {
-  font-family: var(--f-disp); font-weight: 900; text-transform: uppercase;
+  font-family: var(--f-disp); font-weight: 700; text-transform: uppercase;
   font-size: clamp(64px, 11.5vw, 172px); line-height: 0.92; letter-spacing: -0.025em;
   position: relative; z-index: 2;
 }
@@ -1022,7 +1022,7 @@ body.loaded .chero img { transform: scale(1); }
    Editorial-Block: Caps-Headline links + Subtext rechts (Outpost)
    ============================================================ */
 .lchap { display: grid; grid-template-columns: 0.72fr 1.28fr; gap: clamp(36px, 6vw, 110px); align-items: start; }
-.lchap .lh { font-family: var(--f-disp); font-weight: 800; text-transform: uppercase; font-size: clamp(20px, 2vw, 30px); letter-spacing: 0.01em; line-height: 1.2; }
+.lchap .lh { font-family: var(--f-disp); font-weight: 700; text-transform: uppercase; font-size: clamp(20px, 2vw, 30px); letter-spacing: 0.01em; line-height: 1.2; }
 .lchap .lt3 { font-size: 15px; line-height: 1.75; color: var(--grey-dark); max-width: 58ch; }
 .lchap .lt3 + .lt3 { margin-top: 18px; }
 .lchap .lt3 b { color: var(--ink); font-weight: 600; }
@@ -1079,7 +1079,7 @@ body.loaded .chero img { transform: scale(1); }
 }
 .hproc .hcard.on .hnode { background: var(--champ); color: var(--ink); box-shadow: 0 0 0 9px rgba(233,216,188,0.3); }
 .hproc .hk { font-size: 10.5px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--champ-deep); }
-.hproc .ht { font-family: var(--f-disp); font-weight: 800; font-size: clamp(19px, 1.8vw, 25px); margin-top: 6px; }
+.hproc .ht { font-family: var(--f-disp); font-weight: 680; font-size: clamp(19px, 1.8vw, 25px); margin-top: 6px; }
 .hproc .hcard p { font-family: var(--f-serif); font-size: 15.5px; line-height: 1.65; color: var(--grey-dark); margin-top: 10px; }
 .hproc .hcard .pimg2 { margin-top: 16px; border-radius: 4px; overflow: hidden; }
 @media (max-width: 900px) {
@@ -1094,3 +1094,47 @@ body.loaded .chero img { transform: scale(1); }
 .logowall { display: flex; flex-wrap: wrap; gap: clamp(24px, 3.4vw, 60px) clamp(30px, 4vw, 70px); align-items: center; }
 .logowall img { height: 26px; width: auto; opacity: 0.8; filter: grayscale(1) invert(1) brightness(0.25); }
 .fg-dark .logowall img { filter: grayscale(1) brightness(2); opacity: 0.65; }
+
+
+/* ============================================================
+   Differenzierung als BiA-Split: links sticky Bild + Index, rechts Text
+   ============================================================ */
+.diffsec .dgrid { display: grid; grid-template-columns: 0.92fr 1.08fr; gap: clamp(50px, 8vw, 150px); align-items: start; }
+.diffsec .dleft { position: sticky; top: clamp(90px, 12vh, 140px); }
+.diffsec .dnum {
+  font-family: var(--f-serif); font-size: clamp(70px, 7.5vw, 130px); line-height: 1;
+  font-variant-numeric: tabular-nums; color: var(--champ-deep);
+}
+.diffsec .dimg { position: relative; aspect-ratio: 4 / 3; margin-top: clamp(22px, 3vw, 40px); border-radius: 3px; overflow: hidden; }
+.diffsec .dimg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.8s ease; }
+.diffsec .dimg img.on { opacity: 1; }
+.diffsec .dblock { padding: clamp(44px, 6vw, 90px) 0; border-top: 1px solid var(--line-l); }
+.diffsec .dblock:first-child { border-top: 0; padding-top: 0; }
+.diffsec .dblock .pk2 { font-size: 10.5px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--champ-deep); }
+.diffsec .dblock .ht2 { font-family: var(--f-disp); font-weight: 680; font-size: clamp(24px, 2.3vw, 34px); letter-spacing: -0.01em; margin-top: 12px; }
+.diffsec .dblock p { font-family: var(--f-serif); font-size: clamp(16.5px, 1.3vw, 19px); line-height: 1.75; color: var(--grey-dark); margin-top: 16px; max-width: 52ch; }
+@media (max-width: 900px) {
+  .diffsec .dgrid { grid-template-columns: 1fr; }
+  .diffsec .dleft { position: static; display: flex; gap: 20px; align-items: center; }
+  .diffsec .dimg { flex: 1; margin-top: 0; }
+}
+
+/* ============================================================
+   Naechster Case, hell und ruhig
+   ============================================================ */
+.npro-sec { border-top: 1px solid var(--line-l); }
+.npbar2 { display: flex; justify-content: space-between; padding: 22px 0 clamp(44px, 6vw, 90px); font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--grey-dark); }
+.npro { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(40px, 6vw, 110px); align-items: center; padding-bottom: clamp(70px, 9vw, 140px); }
+.npro .nptit {
+  font-family: var(--f-serif); font-size: clamp(40px, 5vw, 88px); line-height: 1.05; letter-spacing: -0.01em;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat; background-position: left 99%; background-size: 0% 2px;
+  transition: background-size 0.7s var(--e-out); display: inline;
+}
+.npro:hover .nptit { background-size: 100% 2px; }
+.npro .npsub2 { font-size: 14.5px; color: var(--grey-dark); margin-top: 18px; }
+.npro .npgo { display: inline-block; margin-top: 26px; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; border-bottom: 1px solid var(--ink); padding-bottom: 4px; }
+.npro .npim2 { border-radius: 3px; overflow: hidden; }
+.npro .npim2 img { transition: transform 1s var(--e-out); }
+.npro:hover .npim2 img { transform: scale(1.045); }
+@media (max-width: 900px) { .npro { grid-template-columns: 1fr; } }

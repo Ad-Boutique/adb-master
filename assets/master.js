@@ -311,6 +311,25 @@
     });
   }
 
+
+  /* ---------- Differenzierungs-Split (BiA-Muster) ---------- */
+  var dsec = document.querySelector(".diffsec");
+  if (dsec) {
+    var dnum = dsec.querySelector(".dnum");
+    var dimgs = dsec.querySelectorAll(".dimg img");
+    var dblocks = dsec.querySelectorAll(".dblock");
+    var dio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var idx = Array.prototype.indexOf.call(dblocks, en.target);
+        if (idx < 0) return;
+        if (dnum) dnum.textContent = "0" + (idx + 1);
+        dimgs.forEach(function (im, i) { im.classList.toggle("on", i === idx); });
+      });
+    }, { rootMargin: "-42% 0px -42% 0px" });
+    dblocks.forEach(function (b) { dio.observe(b); });
+  }
+
   /* ---------- Scroll-Loop ---------- */
   var vh = window.innerHeight;
   window.addEventListener("resize", function () { vh = window.innerHeight; });
@@ -417,9 +436,6 @@
       if (reduced) { location.href = href; return; }
       var img = a.querySelector("img");
       var r = (img || a).getBoundingClientRect();
-      var bg = document.createElement("div");
-      bg.className = "flipbg";
-      document.body.appendChild(bg);
       var x = document.createElement("div");
       x.className = "flipx";
       x.style.backgroundImage = "url('" + (img ? img.currentSrc || img.src : "") + "')";
@@ -428,14 +444,13 @@
       document.body.appendChild(x);
       requestAnimationFrame(function () {
         requestAnimationFrame(function () {
-          bg.classList.add("on");
-          /* Bild zentriert sich auf dunklem Grund (Outpost) */
-          x.style.top = "19vh"; x.style.left = "27vw";
-          x.style.width = "46vw"; x.style.height = "62vh";
+          x.style.top = "0px"; x.style.left = "0px";
+          x.style.width = "100vw"; x.style.height = "100vh";
+          x.style.borderRadius = "0";
           setTimeout(function () {
             sessionStorage.setItem("adbflip", "1");
             location.href = href;
-          }, 760);
+          }, 700);
         });
       });
     });

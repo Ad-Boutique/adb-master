@@ -225,16 +225,14 @@ def render_service(s):
           </div></div>
         </div>''' % (t, p, li))
     acc = "\n        ".join(acc_items)
-    cards = []
-    for i, (k, t, p, img) in enumerate(s["diff"]):
-        cards.append('''<div class="hcard">
-          <div class="hnode">0%d</div>
-          <div class="hk">%s</div>
-          <div class="ht">%s</div>
-          <p>%s</p>
-          <div class="pimg2"><img loading="lazy" decoding="async" src="%s" alt="%s"></div>
-        </div>''' % (i + 1, k, t, p, img, t))
-    hcards = "\n        ".join(cards)
+    dimgs = "\n            ".join(
+        '<img loading="lazy" decoding="async" src="%s" alt="" class="%s">' % (img, "on" if i == 0 else "")
+        for i, (k, t, p, img) in enumerate(s["diff"]))
+    dblocks = "\n          ".join('''<div class="dblock" data-fade>
+            <div class="pk2">%s · 0%d</div>
+            <div class="ht2">%s</div>
+            <p>%s</p>
+          </div>''' % (k, i + 1, t, p) for i, (k, t, p, img) in enumerate(s["diff"]))
     z = s["zoom"]
     aside_pos = "left:clamp(24px,6vw,110px)" if z["side"] == "right" else "right:clamp(24px,6vw,110px)"
     nums = "\n        ".join('''<div class="n" data-fade><div class="v num serif">%s</div><div class="l">%s</div></div>''' % (v, l) for v, l in s["proof_nums"])
@@ -326,17 +324,6 @@ def render_service(s):
     </div>
   </section>
 
-  <!-- 02 · PROBLEM + KONSEQUENZ -->
-  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:clamp(40px,5vw,80px)">
-    <div class="wrap lchap">
-      <div class="lh" data-lines><span class="rl"><span>''' + s["problem_h"][0] + '''</span></span></div>
-      <div data-stagger>
-        <p class="lt3" data-fade>''' + s["problem"][0] + '''</p>
-        <p class="lt3" data-fade>''' + s["problem"][1] + '''</p>
-      </div>
-    </div>
-  </section>
-
   <!-- 03 · LÖSUNG: INTRO + AKKORDEON -->
   <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:clamp(30px,4vw,60px)">
     <div class="wrap svc-split">
@@ -350,16 +337,20 @@ def render_service(s):
     </div>
   </section>
 
-  <!-- 04 · WAS WIR ANDERS MACHEN (horizontal) -->
-  <section class="hproc fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark" style="background:var(--cream)">
-    <div class="hsticky">
-      <div class="wrap" style="margin-bottom:clamp(26px,3vw,44px)">
-        <span class="label" style="color:var(--grey-dark)">Was wir anders machen</span>
-      </div>
-      <div class="htrack">
-        <div class="hline"></div>
-        <div class="hlinefill"></div>
-        ''' + hcards + '''
+  <!-- 04 · WAS WIR ANDERS MACHEN (BiA-Split: links sticky, rechts Text) -->
+  <section class="sec diffsec fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark">
+    <div class="wrap">
+      <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:clamp(40px,5vw,70px)">Was wir anders machen</span>
+      <div class="dgrid">
+        <div class="dleft">
+          <div class="dnum">01</div>
+          <div class="dimg">
+            ''' + dimgs + '''
+          </div>
+        </div>
+        <div class="dright">
+          ''' + dblocks + '''
+        </div>
       </div>
     </div>
   </section>

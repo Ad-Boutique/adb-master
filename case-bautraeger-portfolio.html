@@ -9,10 +9,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="assets/master.css?v=7">
-<script src="assets/master.js?v=7" defer></script>
+<link rel="stylesheet" href="assets/master.css?v=8">
+<script src="assets/master.js?v=8" defer></script>
 </head>
-<body style="background-color:#F3EDE1" class="on-light">
+<body style="background-color:#22382C" class="on-light">
 
 <div class="pt"><div class="ptw">ad<i>.</i>boutique</div></div>
 
@@ -90,24 +90,21 @@
 
 <main>
 
-  <!-- HERO im Outpost-Stil -->
-  <section class="ohero fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">
-    <div class="wrap">
-      <h1 class="otit" data-lines>
-        <span class="rl"><span>Bauträger-</span></span>
-        <span class="rl"><span>Portfolio, Wien.</span></span>
-      </h1>
-      <p class="osub" data-fade>€ 4,72 pro Lead. Der effizienteste im ganzen Portfolio.</p>
+  <!-- HERO: Vollbild in der Case-Farbwelt -->
+  <section class="chero" data-bg="#22382C" data-fg="light">
+    <img src="assets/img/a_otta1.jpg" alt="Bauträger-Portfolio, Wien">
+    <div class="hcap">
+      <div class="cl" style="font-size:15px">Bauträger-Portfolio, Wien <span>· Real Estate</span></div>
+      <div class="serif" style="font-size:clamp(34px,4.4vw,72px);margin-top:10px;text-shadow:0 2px 24px rgba(0,0,0,0.4)">€ 4,72 pro Lead. Der effizienteste im ganzen Portfolio.</div>
     </div>
-<div class="ohim" data-scale data-fade><img src="assets/img/a_otta1.jpg" alt="Bauträger-Portfolio, Wien"></div>
-    <span class="odown">↓</span>
+    <div class="hkpi"><div class="kv">€ 4,72</div><div class="kl">(Cost per Lead)</div></div>
+    <div class="scrollhint">Scrollen</div>
   </section>
 
   <!-- META -->
   <section class="fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding: clamp(30px,4vw,60px) 0 clamp(80px,10vw,140px)">
     <div class="wrap ometa" data-stagger>
       <div class="mc" data-fade><div class="h">Disziplinen</div><div class="v"><a href="service-performance-marketing.html">Performance Marketing</a><br><a href="service-content-creation.html">Content Creation</a></div></div>
-      <div class="mc" data-fade><div class="h">Ergebnis</div><div class="v"><em>109</em> Leads aus € 515 Spend<br><em>€ 4,72</em> Cost per Lead<br><em>2,24 %</em> CTR</div></div>
       <div class="mc" data-fade><div class="h">Rahmen</div><div class="v">Real Estate · Wohnbau<br>Laufend, mehrere Projekte<br>Meta Instant Forms</div></div>
     </div>
   </section>
@@ -119,12 +116,13 @@
       <div class="obody" data-fade>
         <p>Wir haben ein wiederholbares Lead-System über alle Projekte ausgerollt: gleiche Test-Mechanik, lagespezifische Lifestyle-Botschaften, konsequente Creative-Selektion nach CPL. Im Projekt im 7. Bezirk: 109 Leads aus € 515 Spend zu € 4,72, der niedrigste CPL im gesamten Wohnbau-Portfolio.</p>
         <a class="opill" href="mailto:hello@ad.boutique?subject=Projekt wie Bauträger-Portfolio, Wien">Ähnliches Projekt anfragen ↗</a>
+        <p style="margin-top:22px;font-size:13px"><a class="see" href= + svc_h + >Leistung: Performance Marketing →</a></p>
       </div>
     </div>
   </section>
 
   <!-- STATEMENT in der Farbwelt -->
-  <section class="cstate fg-dark" data-bg="#22382C" data-fg="light" style="--case-clr:#22382C">
+  <section class="cstate fg-dark" data-bg= + world +  data-fg="light" style="--case-clr:#22382C">
     <div class="inner">
       <span class="label" style="color:var(--champ)">So denken wir</span>
       <h2 class="serif" data-lines>
@@ -164,7 +162,7 @@
   </section>
 
   <!-- LEARNINGS -->
-  <section class="sec fg-dark" data-bg="#22382C" data-fg="light" style="background:#22382C">
+  <section class="sec fg-dark" data-bg= + world +  data-fg="light" style="background:#22382C">
     <div class="wrap" style="max-width:900px">
       <span class="label" style="color:var(--champ);display:block;margin-bottom:26px">Learnings</span>
       <div data-stagger>
@@ -176,15 +174,16 @@
   </section>
 
   <!-- NEXT CASE -->
-  <section class="nextproj" data-bg="#070708" data-fg="light" style="background:#070708">
+  <section class="sec npro-sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-bottom:0">
     <div class="wrap">
-      <div class="npbar"><span>Cases</span><a href="work.html" style="color:var(--paper)">Alle ansehen</a></div>
-      <a class="npgrid" href="case-health-brand.html">
-        <span class="npim" data-scale><img loading="lazy" decoding="async" src="assets/img/funkhaus.jpg" alt="Nächster Case"></span>
+      <div class="npbar2"><span>Nächster Case</span><a href="work.html">Alle ansehen</a></div>
+      <a class="npro" href= + nxt_href + >
         <span>
-          <span class="nptitle" data-lines><span class="rl"><span>Nächster</span></span><span class="rl"><span>Case</span></span></span>
-          <span class="npsub">Dental-/Health-Marke</span>
+          <span class="nptit">Dental-/ Health-Marke.</span>
+          <span class="npsub2" style="display:block">1.385 Verkäufe in 7 Monaten. Und der ehrliche Blick darauf.</span>
+          <span class="npgo">Case ansehen</span>
         </span>
+        <span class="npim2" data-scale><span style="display:flex;align-items:flex-end;aspect-ratio:4/3;background:#1F3833;color:#EAF1EE;padding:24px;border-radius:3px"><span style="font-family:var(--f-disp);font-weight:800;font-size:clamp(40px,4vw,64px);font-variant-numeric:tabular-nums">1.385</span></span></span>
       </a>
     </div>
   </section>

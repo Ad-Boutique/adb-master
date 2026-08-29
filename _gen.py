@@ -13,8 +13,8 @@ HEAD = '''<!doctype html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="assets/master.css?v=7">
-<script src="assets/master.js?v=7" defer></script>
+<link rel="stylesheet" href="assets/master.css?v=8">
+<script src="assets/master.js?v=8" defer></script>
 </head>
 <body style="background-color:{bodybg}" class="on-light">
 
@@ -187,7 +187,7 @@ CASES = [
          "Ehrlicher CPL entsteht durch Testing."]),
  dict(slug="case-consumer-brand", nav_title="Premium-Consumer-Brand",
   title=["Premium-", "Consumer-Brand."], sub="Black-Friday-ROAS 4,02. 75 % über dem eigenen Benchmark.",
-  img="assets/img/isi.jpg",
+  img="assets/img/isi.jpg", big="4,02", biglabel="BFCM-ROAS",
   disz=[("E-Commerce Growth", "service-ecommerce.html"), ("Performance Marketing", "service-performance-marketing.html"), ("Content Creation", "service-content-creation.html")],
   erg=["<em>4,02</em> BFCM-ROAS, Benchmark 2,3", "<em>€ 0,99</em> Awareness-CPM, −72 %", "<em>7,26 Mio.</em> Impressions"],
   rahmen="Consumer · Beverage-Lifestyle<br>Saison-Peaks<br>Meta",
@@ -206,7 +206,7 @@ CASES = [
          "Benchmark schlagen heißt: den eigenen Account kennen."]),
  dict(slug="case-bautraeger-portfolio", nav_title="Bauträger-Portfolio, Wien",
   title=["Bauträger-", "Portfolio, Wien."], sub="€ 4,72 pro Lead. Der effizienteste im ganzen Portfolio.",
-  img="assets/img/a_otta1.jpg",
+  img="assets/img/a_otta1.jpg", big="€ 4,72", biglabel="Cost per Lead",
   disz=[("Performance Marketing", "service-performance-marketing.html"), ("Content Creation", "service-content-creation.html")],
   erg=["<em>109</em> Leads aus € 515 Spend", "<em>€ 4,72</em> Cost per Lead", "<em>2,24 %</em> CTR"],
   rahmen="Real Estate · Wohnbau<br>Laufend, mehrere Projekte<br>Meta Instant Forms",
@@ -264,62 +264,77 @@ CASES = [
 ]
 
 def case_page(c, nxt):
-    hero_media = ('<div class="ohim" data-scale data-fade><img src="%s" alt="%s"></div>' % (c["img"], c["nav_title"])) if c.get("img") else (
-        '''<div class="ohim" data-fade><span style="display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:4/4.6;background:%s;color:%s;padding:26px;border-radius:2px">
-      <span style="font-family:var(--f-disp);font-weight:800;font-size:clamp(44px,4.4vw,72px);letter-spacing:-0.02em;font-variant-numeric:tabular-nums">%s</span>
-      <span style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;opacity:.75;margin-top:6px">%s</span>
-    </span></div>''' % (c["clr"], c["fg"], c["big"], c["biglabel"]))
     world = c.get("clr", "#22382C")
     wfg = c.get("fg", "#EDF2EC")
-    disz = "<br>".join('<a href="%s">%s</a>' % (h, t) for t, h in c["disz"])
-    lens_rows = "\n".join('''        <div class="lrow" data-fade><div class="ll">%s</div><div class="lt">%s</div></div>''' % (l, t) for l, t in c["lens"])
-    nums = "\n".join('''        <div class="n" data-fade><div class="l">%s</div><div class="v num serif">%s</div></div>''' % (l, v) for l, v in c["nums"])
-    learn = "\n".join('''        <p class="serif" data-fade style="font-size:clamp(20px,1.9vw,28px);padding:18px 0;border-top:1px solid var(--line-d)%s">%s</p>''' % (
-        (";border-bottom:1px solid var(--line-d)" if i == len(c["learn"]) - 1 else ""), t) for i, t in enumerate(c["learn"]))
-    stmt = "\n".join('        <span class="rl"><span>%s</span></span>' % s for s in c["statement"])
-    tit = "\n".join('        <span class="rl"><span>%s</span></span>' % s for s in c["title"])
-    nxt_img = nxt.get("img", "assets/img/funkhaus.jpg") if not nxt.get("handmade") else "assets/img/funkhaus.jpg"
-    nxt_href = nxt["slug"] + ".html"
-    page = HEAD.format(title="Case · " + c["nav_title"], bodybg="#F3EDE1") + menu("work.html") + '''<main>
-
-  <!-- HERO im Outpost-Stil -->
-  <section class="ohero fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">
-    <div class="wrap">
-      <h1 class="otit" data-lines>
-''' + tit + '''
-      </h1>
-      <p class="osub" data-fade>''' + c["sub"] + '''</p>
+    if c.get("img"):
+        hero = """<section class="chero" data-bg="%s" data-fg="light">
+    <img src="%s" alt="%s">
+    <div class="hcap">
+      <div class="cl" style="font-size:15px">%s <span>· %s</span></div>
+      <div class="serif" style="font-size:clamp(34px,4.4vw,72px);margin-top:10px;text-shadow:0 2px 24px rgba(0,0,0,0.4)">%s</div>
     </div>
-''' + hero_media + '''
-    <span class="odown">↓</span>
-  </section>
+    <div class="hkpi"><div class="kv">%s</div><div class="kl">(%s)</div></div>
+    <div class="scrollhint">Scrollen</div>
+  </section>""" % (world, c["img"], c["nav_title"], c["nav_title"], c["rahmen"].split("<br>")[0].split("·")[0].strip(), c["sub"], c["big"], c["biglabel"])
+    else:
+        hero = """<section class="chero" data-bg="%s" data-fg="light" style="background:%s;color:%s">
+    <div class="hcap">
+      <div class="cl" style="font-size:15px">%s <span style="opacity:.65">· %s</span></div>
+      <div class="serif" style="font-size:clamp(34px,4.4vw,72px);margin-top:10px">%s</div>
+    </div>
+    <div class="hkpi"><div class="kv" style="font-size:clamp(60px,7vw,120px)">%s</div><div class="kl">(%s)</div></div>
+    <div class="scrollhint">Scrollen</div>
+  </section>""" % (world, world, wfg, c["nav_title"], c["rahmen"].split("<br>")[0].split("·")[0].strip(), c["sub"], c["big"], c["biglabel"])
+    disz = "<br>".join('<a href="%s">%s</a>' % (h, t) for t, h in c["disz"])
+    lens_rows = "\n".join('        <div class="lrow" data-fade><div class="ll">%s</div><div class="lt">%s</div></div>' % (l, t) for l, t in c["lens"])
+    nums = "\n".join('        <div class="n" data-fade><div class="l">%s</div><div class="v num serif">%s</div></div>' % (l, v) for l, v in c["nums"])
+    learn = "\n".join('        <p class="serif" data-fade style="font-size:clamp(20px,1.9vw,28px);padding:18px 0;border-top:1px solid var(--line-d)%s">%s</p>' % (
+        (";border-bottom:1px solid var(--line-d)" if i == len(c["learn"]) - 1 else ""), t) for i, t in enumerate(c["learn"]))
+    stmt = "\n".join('        <span class="rl"><span>%s</span></span>' % x for x in c["statement"])
+    svc_t, svc_h = c["disz"][0]
+    if nxt.get("handmade"):
+        nxt_media = '<img loading="lazy" decoding="async" src="assets/img/funkhaus.jpg" alt="">'
+        nxt_sub = "489 Leads zu € 11,77. Ein Motiv trug 54 %."
+        nxt_name = "Premium-Neubau, Wien."
+    else:
+        nxt_name = " ".join(nxt["title"])
+        nxt_sub = nxt["sub"]
+        if nxt.get("img"):
+            nxt_media = '<img loading="lazy" decoding="async" src="%s" alt="">' % nxt["img"]
+        else:
+            nxt_media = '<span style="display:flex;align-items:flex-end;aspect-ratio:4/3;background:%s;color:%s;padding:24px;border-radius:3px"><span style="font-family:var(--f-disp);font-weight:800;font-size:clamp(40px,4vw,64px);font-variant-numeric:tabular-nums">%s</span></span>' % (nxt.get("clr", "#22382C"), nxt.get("fg", "#EDF2EC"), nxt.get("big", ""))
+    nxt_href = nxt["slug"] + ".html"
+    page = HEAD.format(title="Case · " + c["nav_title"], bodybg=world) + menu("work.html") + """<main>
+
+  <!-- HERO: Vollbild in der Case-Farbwelt -->
+  """ + hero + """
 
   <!-- META -->
   <section class="fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding: clamp(30px,4vw,60px) 0 clamp(80px,10vw,140px)">
     <div class="wrap ometa" data-stagger>
-      <div class="mc" data-fade><div class="h">Disziplinen</div><div class="v">''' + disz + '''</div></div>
-      <div class="mc" data-fade><div class="h">Ergebnis</div><div class="v">''' + "<br>".join(c["erg"]) + '''</div></div>
-      <div class="mc" data-fade><div class="h">Rahmen</div><div class="v">''' + c["rahmen"] + '''</div></div>
+      <div class="mc" data-fade><div class="h">Disziplinen</div><div class="v">""" + disz + """</div></div>
+      <div class="mc" data-fade><div class="h">Rahmen</div><div class="v">""" + c["rahmen"] + """</div></div>
     </div>
   </section>
 
   <!-- SERIF-PASSAGE -->
   <section class="sec fg-light bg-paper ointro" data-bg="#F3EDE1" data-fg="dark" style="padding-top:0">
     <div class="wrap">
-      <p class="big" data-scrub>''' + c["big_scrub"] + '''</p>
+      <p class="big" data-scrub>""" + c["big_scrub"] + """</p>
       <div class="obody" data-fade>
-        <p>''' + c["body"] + '''</p>
-        <a class="opill" href="mailto:hello@ad.boutique?subject=Projekt wie ''' + c["nav_title"] + '''">Ähnliches Projekt anfragen ↗</a>
+        <p>""" + c["body"] + """</p>
+        <a class="opill" href="mailto:hello@ad.boutique?subject=Projekt wie """ + c["nav_title"] + """">Ähnliches Projekt anfragen ↗</a>
+        <p style="margin-top:22px;font-size:13px"><a class="see" href="""" + svc_h + """">Leistung: """ + svc_t + """ →</a></p>
       </div>
     </div>
   </section>
 
   <!-- STATEMENT in der Farbwelt -->
-  <section class="cstate fg-dark" data-bg="''' + world + '''" data-fg="light" style="--case-clr:''' + world + '''">
+  <section class="cstate fg-dark" data-bg="""" + world + """" data-fg="light" style="--case-clr:""" + world + """">
     <div class="inner">
       <span class="label" style="color:var(--champ)">So denken wir</span>
       <h2 class="serif" data-lines>
-''' + stmt + '''
+""" + stmt + """
       </h2>
     </div>
   </section>
@@ -329,7 +344,7 @@ def case_page(c, nxt):
     <div class="wrap">
       <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:clamp(30px,4vw,50px)">Fünf Perspektiven</span>
       <div class="lens" data-stagger>
-''' + lens_rows + '''
+""" + lens_rows + """
       </div>
     </div>
   </section>
@@ -339,37 +354,38 @@ def case_page(c, nxt):
     <div class="wrap">
       <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:clamp(30px,4vw,50px)">Ergebnis</span>
       <div class="cnums" data-stagger>
-''' + nums + '''
+""" + nums + """
       </div>
-      <p class="cfoot-note" data-fade>''' + c["note"] + '''</p>
+      <p class="cfoot-note" data-fade>""" + c["note"] + """</p>
     </div>
   </section>
 
   <!-- LEARNINGS -->
-  <section class="sec fg-dark" data-bg="''' + world + '''" data-fg="light" style="background:''' + world + '''">
+  <section class="sec fg-dark" data-bg="""" + world + """" data-fg="light" style="background:""" + world + """">
     <div class="wrap" style="max-width:900px">
       <span class="label" style="color:var(--champ);display:block;margin-bottom:26px">Learnings</span>
       <div data-stagger>
-''' + learn + '''
+""" + learn + """
       </div>
     </div>
   </section>
 
   <!-- NEXT CASE -->
-  <section class="nextproj" data-bg="#070708" data-fg="light" style="background:#070708">
+  <section class="sec npro-sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-bottom:0">
     <div class="wrap">
-      <div class="npbar"><span>Cases</span><a href="work.html" style="color:var(--paper)">Alle ansehen</a></div>
-      <a class="npgrid" href="''' + nxt_href + '''">
-        <span class="npim" data-scale><img loading="lazy" decoding="async" src="''' + nxt_img + '''" alt="Nächster Case"></span>
+      <div class="npbar2"><span>Nächster Case</span><a href="work.html">Alle ansehen</a></div>
+      <a class="npro" href="""" + nxt_href + """">
         <span>
-          <span class="nptitle" data-lines><span class="rl"><span>Nächster</span></span><span class="rl"><span>Case</span></span></span>
-          <span class="npsub">''' + nxt["nav_title"] + '''</span>
+          <span class="nptit">""" + nxt_name + """</span>
+          <span class="npsub2" style="display:block">""" + nxt_sub + """</span>
+          <span class="npgo">Case ansehen</span>
         </span>
+        <span class="npim2" data-scale>""" + nxt_media + """</span>
       </a>
     </div>
   </section>
 
-''' + FOOTER
+""" + FOOTER
     return page
 
 for i, c in enumerate(CASES):
