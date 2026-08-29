@@ -30,7 +30,7 @@
   --olive: #3A3A2E;
   --e-snap: cubic-bezier(0.76, 0, 0.24, 1);
   --e-out: cubic-bezier(0.19, 1, 0.22, 1);
-  --f-disp: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-disp: "Satoshi", "Archivo", "Helvetica Neue", Arial, sans-serif;
   --f-serif: "Newsreader", Georgia, "Times New Roman", serif;
   --f-ui: "Satoshi", "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
 }
@@ -559,8 +559,8 @@ footer { background: #070708; color: var(--paper); padding: clamp(70px, 8vw, 120
   background: linear-gradient(to bottom, rgba(8,8,9,0.42), rgba(8,8,9,0));
   pointer-events: none;
 }
-.wt .wkpi .kv { font-family: var(--f-disp); font-weight: 800; font-size: clamp(22px, 1.9vw, 30px); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
-.wt .wkpi .kl { font-size: 9.5px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; opacity: 0.85; }
+.wt .wkpi .kv { display: block; font-family: var(--f-disp); font-weight: 800; font-size: clamp(22px, 1.9vw, 30px); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+.wt .wkpi .kl { display: block; font-size: 9.5px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; opacity: 0.85; }
 .wt.has-media::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 38%;
   background: linear-gradient(to top, rgba(8,8,9,0.55), rgba(8,8,9,0));
@@ -938,8 +938,8 @@ body.loaded .chero img { transform: scale(1); }
 }
 .oplist .op:hover .otitle { background-size: 100% 2px; }
 .oplist .okpi { text-align: right; white-space: nowrap; }
-.oplist .okpi .v { font-family: var(--f-serif); font-size: clamp(20px, 2vw, 32px); font-variant-numeric: tabular-nums; }
-.oplist .okpi .l { font-size: 10.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--grey-dark); margin-top: 2px; }
+.oplist .okpi .v { display: block; font-family: var(--f-serif); font-size: clamp(20px, 2vw, 32px); font-variant-numeric: tabular-nums; }
+.oplist .okpi .l { display: block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--grey-dark); margin-top: 4px; }
 
 .stage { background: #E6E0D1; border-radius: 4px; padding: clamp(26px, 5vw, 84px); }
 .stage img { width: 100%; border-radius: 3px; box-shadow: 0 30px 80px rgba(10,10,10,0.18); }
@@ -994,7 +994,8 @@ body.loaded .chero img { transform: scale(1); }
 }
 
 /* Outpost-Meta: zwei Micro-Caps-Spalten */
-.ometa { display: flex; gap: clamp(50px, 8vw, 140px); flex-wrap: wrap; }
+.ometa { display: flex; gap: clamp(36px, 5vw, 90px); flex-wrap: wrap; max-width: min(660px, 50vw); }
+@media (max-width: 900px) { .ometa { max-width: none; } }
 .ometa .mc .h { font-size: 9.5px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 12px; }
 .ometa .mc .v { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; line-height: 1.55; color: var(--grey-dark); }
 .ometa .mc .v em { font-style: normal; color: var(--champ-deep); }
@@ -1015,3 +1016,81 @@ body.loaded .chero img { transform: scale(1); }
   opacity: 0; transition: opacity 0.55s ease; pointer-events: none;
 }
 .flipbg.on { opacity: 1; }
+
+
+/* ============================================================
+   Editorial-Block: Caps-Headline links + Subtext rechts (Outpost)
+   ============================================================ */
+.lchap { display: grid; grid-template-columns: 0.72fr 1.28fr; gap: clamp(36px, 6vw, 110px); align-items: start; }
+.lchap .lh { font-family: var(--f-disp); font-weight: 800; text-transform: uppercase; font-size: clamp(20px, 2vw, 30px); letter-spacing: 0.01em; line-height: 1.2; }
+.lchap .lt3 { font-size: 15px; line-height: 1.75; color: var(--grey-dark); max-width: 58ch; }
+.lchap .lt3 + .lt3 { margin-top: 18px; }
+.lchap .lt3 b { color: var(--ink); font-weight: 600; }
+.fg-dark .lchap .lt3 { color: var(--grey); }
+.fg-dark .lchap .lt3 b { color: var(--paper); }
+@media (max-width: 900px) { .lchap { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   Dunkle Sektion: Text links, Website-Panels scrollen rechts vorbei
+   ============================================================ */
+.panelscroll { position: relative; overflow: hidden; background: #0A0A0A; color: var(--paper); }
+.panelscroll .pswrap { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(40px, 6vw, 110px); align-items: center; min-height: 120vh; }
+.panelscroll .pstxt { position: sticky; top: 0; align-self: start; padding-top: 34vh; padding-bottom: 20vh; }
+.panelscroll .pscols { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 30px); align-items: start; }
+.panelscroll .pscol { display: flex; flex-direction: column; gap: clamp(16px, 2vw, 30px); will-change: transform; }
+.panelscroll .pscol img { border-radius: 3px; box-shadow: 0 24px 70px rgba(0,0,0,0.5); }
+.panelscroll .pscol:nth-child(2) { margin-top: clamp(60px, 8vw, 130px); }
+@media (max-width: 900px) { .panelscroll .pswrap { grid-template-columns: 1fr; } .panelscroll .pstxt { position: static; padding: 0; } }
+
+/* ============================================================
+   Helle Sektion: Text links, iPhone-Frames mit scrollendem Inhalt
+   ============================================================ */
+.phonesec .phwrap { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(40px, 6vw, 110px); align-items: center; }
+.phones { display: flex; gap: clamp(20px, 3vw, 44px); justify-content: center; }
+.phframe {
+  width: clamp(180px, 16vw, 250px); aspect-ratio: 9 / 19;
+  border: 9px solid #131315; border-radius: 40px; overflow: hidden;
+  background: #131315; box-shadow: 0 26px 70px rgba(10,10,10,0.22);
+  position: relative; flex: 0 0 auto;
+}
+.phframe:nth-child(2) { margin-top: clamp(40px, 5vw, 80px); }
+.phframe .phinner { will-change: transform; display: flex; flex-direction: column; gap: 8px; }
+.phframe .phinner img { width: 100%; border-radius: 0; }
+@media (max-width: 900px) { .phonesec .phwrap { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   Horizontaler Prozess (kompakt, sticky, Punktlinie fuellt sich)
+   ============================================================ */
+.hproc { position: relative; height: 240vh; }
+.hproc .hsticky { position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; }
+.hproc .htrack { display: flex; gap: clamp(30px, 4vw, 60px); will-change: transform; padding: 0 clamp(24px, 6vw, 110px); align-items: stretch; position: relative; }
+.hproc .hline { position: absolute; left: 0; right: -40vw; top: 50%; height: 2px; z-index: 0;
+  background-image: repeating-linear-gradient(to right, rgba(10,10,10,0.3) 0 2px, transparent 2px 11px); }
+.hproc .hlinefill { position: absolute; left: 0; top: 50%; height: 2.5px; background: var(--champ-deep); z-index: 0; width: 0; }
+.hproc .hcard {
+  position: relative; z-index: 1; flex: 0 0 clamp(320px, 30vw, 460px);
+  background: #FBF7EE; border: 1px solid rgba(10,10,10,0.08); border-radius: 6px;
+  padding: 26px; box-shadow: 0 14px 44px rgba(10,10,10,0.06);
+}
+.hproc .hnode {
+  width: 46px; height: 46px; border-radius: 50%; background: var(--ink); color: var(--paper);
+  display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px;
+  margin-bottom: 18px; transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+}
+.hproc .hcard.on .hnode { background: var(--champ); color: var(--ink); box-shadow: 0 0 0 9px rgba(233,216,188,0.3); }
+.hproc .hk { font-size: 10.5px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--champ-deep); }
+.hproc .ht { font-family: var(--f-disp); font-weight: 800; font-size: clamp(19px, 1.8vw, 25px); margin-top: 6px; }
+.hproc .hcard p { font-family: var(--f-serif); font-size: 15.5px; line-height: 1.65; color: var(--grey-dark); margin-top: 10px; }
+.hproc .hcard .pimg2 { margin-top: 16px; border-radius: 4px; overflow: hidden; }
+@media (max-width: 900px) {
+  .hproc { height: auto; }
+  .hproc .hsticky { position: static; height: auto; }
+  .hproc .htrack { flex-direction: column; transform: none !important; padding: 0; }
+  .hproc .hline, .hproc .hlinefill { display: none; }
+  .hproc .hcard { flex: none; }
+}
+
+/* Logo-Wand (Convincer) */
+.logowall { display: flex; flex-wrap: wrap; gap: clamp(24px, 3.4vw, 60px) clamp(30px, 4vw, 70px); align-items: center; }
+.logowall img { height: 26px; width: auto; opacity: 0.8; filter: grayscale(1) invert(1) brightness(0.25); }
+.fg-dark .logowall img { filter: grayscale(1) brightness(2); opacity: 0.65; }

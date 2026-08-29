@@ -292,6 +292,25 @@
     });
   }
 
+
+  /* ---------- Horizontaler Prozess ---------- */
+  var hproc = document.querySelector(".hproc");
+  var htrack = hproc ? hproc.querySelector(".htrack") : null;
+  var hfill = hproc ? hproc.querySelector(".hlinefill") : null;
+  function hprocTick() {
+    if (!hproc || !htrack || window.innerWidth <= 900) return;
+    var r = hproc.getBoundingClientRect();
+    var span = r.height - vh;
+    var p = Math.max(0, Math.min(1, -r.top / span));
+    var over = htrack.scrollWidth - window.innerWidth;
+    htrack.style.transform = "translateX(" + (-p * Math.max(0, over)) + "px)";
+    if (hfill) hfill.style.width = (p * 115) + "%";
+    var cards = htrack.querySelectorAll(".hcard");
+    cards.forEach(function (cd, i) {
+      cd.classList.toggle("on", p >= (i + 0.35) / cards.length);
+    });
+  }
+
   /* ---------- Scroll-Loop ---------- */
   var vh = window.innerHeight;
   window.addEventListener("resize", function () { vh = window.innerHeight; });
@@ -325,6 +344,7 @@
     });
     zoomTick();
     procTick();
+    hprocTick();
     ticking = false;
   }
   var ticking = false;
