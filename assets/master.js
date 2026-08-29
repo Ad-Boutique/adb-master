@@ -155,11 +155,13 @@
     return { el: el, s: parseFloat(el.getAttribute("data-driftsc")) || 0.05, cur: 0 };
   });
   /* traege Nachlauf-Bewegung: Spalten gleiten langsam in ihre Ziellage (Vorlage) */
-  if (driftsSc.length && !reduced) (function glide() {
+  if (driftsSc.length && !reduced) (function glide(t) {
     var y = window.scrollY;
-    driftsSc.forEach(function (d) {
-      d.cur += (y * d.s - d.cur) * 0.055;
-      d.el.style.transform = "translateY(" + d.cur.toFixed(2) + "px)";
+    driftsSc.forEach(function (d, i) {
+      d.cur += (y * d.s - d.cur) * 0.05;
+      /* dauerhafte, kaum merkliche Eigenbewegung je Spalte */
+      var idle = Math.sin((t || 0) * 0.00028 + i * 2.3) * 10;
+      d.el.style.transform = "translateY(" + (d.cur + idle).toFixed(2) + "px)";
     });
     requestAnimationFrame(glide);
   })();
@@ -207,7 +209,7 @@
     var d = "M " + pts[0].x + " 0 L " + pts[0].x + " " + pts[0].y;
     for (var i = 1; i < pts.length; i++) {
       var a = pts[i - 1], b = pts[i];
-      var midY = (a.y + b.y) / 2, bend = (i % 2 ? -1 : 1) * Math.min(70, gr.width * 0.04);
+      var midY = (a.y + b.y) / 2, bend = (i % 2 ? -1 : 1) * Math.min(150, gr.width * 0.10);
       d += " C " + a.x + " " + midY + ", " + (b.x + bend) + " " + midY + ", " + b.x + " " + b.y;
     }
     d += " L " + pts[pts.length - 1].x + " " + gr.height;
