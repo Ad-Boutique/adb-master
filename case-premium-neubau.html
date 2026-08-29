@@ -9,10 +9,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="assets/master.css?v=5">
-<script src="assets/master.js?v=5" defer></script>
+<link rel="stylesheet" href="assets/master.css?v=6">
+<script src="assets/master.js?v=6" defer></script>
 </head>
-<body style="background-color:#22382C">
+<body style="background-color:#F3EDE1" class="on-light">
 
 <div class="pt"><div class="ptw">ad<i>.</i>boutique</div></div>
 
@@ -90,39 +90,45 @@
 
 <main>
 
-  <!-- HERO: Vollbild in der Case-Farbwelt -->
-  <section class="chero" data-bg="#22382C" data-fg="light">
-    <img src="assets/img/funkhaus.jpg" alt="Premium-Neubau, Wien">
-    <div class="hcap">
-      <div class="cl" style="font-size:15px">Premium-Neubau, Wien <span>· Real Estate</span></div>
-      <div class="serif" style="font-size:clamp(34px,4.4vw,72px);margin-top:10px;text-shadow:0 2px 24px rgba(0,0,0,0.4)">489 Leads zu € 11,77.</div>
+  <!-- HERO im Outpost-Stil: Riesen-Titel + Bild rechts -->
+  <section class="ohero fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">
+    <div class="wrap">
+      <h1 class="otit" data-lines>
+        <span class="rl"><span>Premium-</span></span>
+        <span class="rl"><span>Neubau,</span></span>
+        <span class="rl"><span>Wien.</span></span>
+      </h1>
+      <p class="osub" data-fade>489 Leads zu € 11,77: Ein Motiv trug die Hälfte.</p>
     </div>
-    <div class="hkpi"><div class="kv">54 %</div><div class="kl">(Anteil bestes Motiv)</div></div>
-    <div class="scrollhint">Scrollen</div>
+    <div class="ohim" data-scale data-fade><img src="assets/img/funkhaus.jpg" alt="Premium-Neubau, Wien"></div>
+    <span class="odown">↓</span>
   </section>
 
-  <!-- INTRO auf Papier -->
-  <section class="sec fg-light cintro bg-paper" data-bg="#F3EDE1" data-fg="dark">
-    <div class="wrap grid">
-      <div>
-        <span class="label" style="color:var(--grey-dark)">Real Estate · Wohnbau · Jan bis Mai 2026</span>
-        <p class="serif" data-fade style="margin-top:22px">Premium-Eigentumswohnungen mit klarer Zielgruppe, aber ohne systematisches Creative-Testing: Viel Budget floss in Motive, die niemand maß.</p>
-        <p class="body" data-fade style="--i:1">Wir haben viele Creative-Varianten gegeneinander laufen lassen, das Budget konsequent auf das stärkste Lead-Motiv verschoben, die Reichweite über die Stadt gestreut und sauber gemessen. Das Ergebnis: 489 qualifizierte Kaufinteressenten aus € 5.755 Spend, ein gewichteter CPL von € 11,77 und ein einzelnes Interior-Motiv, das 54 Prozent aller Leads trug.</p>
-        <div data-fade style="--i:2;margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">
-          <a class="btn btn-i" href="mailto:hello@ad.boutique?subject=Neubau-Projekt">Ähnliches Projekt anfragen</a>
-          <a class="btn btn-o" href="work.html">Alle Cases</a>
-        </div>
+  <!-- META: Disziplinen / Ergebnis (Outpost) -->
+  <section class="fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding: clamp(30px,4vw,60px) 0 clamp(80px,10vw,140px)">
+    <div class="wrap ometa" data-stagger>
+      <div class="mc" data-fade>
+        <div class="h">Disziplinen</div>
+        <div class="v"><a href="service-ecommerce.html">Performance Marketing</a><br><a href="service-ecommerce.html">Content Creation</a><br><a href="service-ecommerce.html">Landingpage</a></div>
       </div>
-      <div class="cmeta" data-stagger>
-        <div class="m" data-fade><div class="ml">Branche</div><div class="mv2">Real Estate · Wien</div></div>
-        <div class="m" data-fade><div class="ml">Zeitraum</div><div class="mv2">Jänner bis Mai 2026</div></div>
-        <div class="m" data-fade><div class="ml">Kanäle</div><div class="mv2">Meta · Instant Forms</div></div>
-        <div class="m" data-fade><div class="ml">Ziel</div><div class="mv2">Qualifizierte Kaufinteressenten</div></div>
-        <div class="m" data-fade><div class="ml">Leistungen</div><div class="mv2">
-          <a href="service-ecommerce.html">Performance Marketing</a>
-          <a href="service-ecommerce.html">Content Creation</a>
-          <a href="service-ecommerce.html">Landingpages</a>
-        </div></div>
+      <div class="mc" data-fade>
+        <div class="h">Ergebnis</div>
+        <div class="v"><em>489</em> Leads<br><em>€ 11,77</em> Ø Cost per Lead<br><em>2,26 %</em> Click-Through-Rate</div>
+      </div>
+      <div class="mc" data-fade>
+        <div class="h">Rahmen</div>
+        <div class="v">Real Estate · Wien<br>Jänner bis Mai 2026<br>Meta · Instant Forms</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERIF-PASSAGE + BODY (Outpost-Intro) -->
+  <section class="sec fg-light bg-paper ointro" data-bg="#F3EDE1" data-fg="dark" style="padding-top:0">
+    <div class="wrap">
+      <p class="big" data-scrub>Premium-Eigentumswohnungen zwischen <b>Geschichte und Neubau</b>, mit klarer Zielgruppe, aber ohne systematisches <b>Creative-Testing</b>: Viel Budget floss in Motive, die niemand maß.</p>
+      <div class="obody" data-fade>
+        <p>Wir haben viele Creative-Varianten gegeneinander laufen lassen, das Budget konsequent auf das stärkste Lead-Motiv verschoben, die Reichweite über die Stadt gestreut und sauber gemessen. Das Ergebnis: 489 qualifizierte Kaufinteressenten aus € 5.755 Spend, ein gewichteter CPL von € 11,77, und ein einzelnes Interior-Motiv, das 54 Prozent aller Leads trug.</p>
+        <a class="opill" href="mailto:hello@ad.boutique?subject=Neubau-Projekt">Ähnliches Projekt anfragen ↗</a>
       </div>
     </div>
   </section>

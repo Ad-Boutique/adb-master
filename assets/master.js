@@ -397,6 +397,9 @@
       if (reduced) { location.href = href; return; }
       var img = a.querySelector("img");
       var r = (img || a).getBoundingClientRect();
+      var bg = document.createElement("div");
+      bg.className = "flipbg";
+      document.body.appendChild(bg);
       var x = document.createElement("div");
       x.className = "flipx";
       x.style.backgroundImage = "url('" + (img ? img.currentSrc || img.src : "") + "')";
@@ -405,13 +408,14 @@
       document.body.appendChild(x);
       requestAnimationFrame(function () {
         requestAnimationFrame(function () {
-          x.style.top = "0px"; x.style.left = "0px";
-          x.style.width = "100vw"; x.style.height = "100vh";
-          x.style.borderRadius = "0";
+          bg.classList.add("on");
+          /* Bild zentriert sich auf dunklem Grund (Outpost) */
+          x.style.top = "19vh"; x.style.left = "27vw";
+          x.style.width = "46vw"; x.style.height = "62vh";
           setTimeout(function () {
             sessionStorage.setItem("adbflip", "1");
             location.href = href;
-          }, 700);
+          }, 760);
         });
       });
     });
