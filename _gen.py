@@ -104,11 +104,28 @@ FOOTER = '''  <footer data-bg="#070708" data-fg="light" style="padding-top:20px"
 LOGO = lambda names: "\n      ".join(
     '<img loading="lazy" decoding="async" src="assets/logos/%s.png" alt="%s">' % (n, n) for n in names)
 
+
+BRANCH_LOGOS = {
+    "Finance": ["ifa", "conda", "raiffeisen"],
+    "Real Estate": ["winegg", "funkhaus", "seeresidenz", "soravia", "rhomberg", "vonpoll"],
+    "D2C / Retail": ["looops", "isi", "nordicspirit", "ilbosso", "kaisers", "jti"],
+    "Consumer": ["isi", "looops", "nordicspirit", "jti", "ilbosso", "kaisers"],
+    "E-Commerce": ["looops", "isi", "nordicspirit", "ilbosso", "kaisers", "jti"],
+    "Energie": ["hagent", "robin", "fabrik1230"],
+}
+def logocycle(names, slots=3):
+    names = list(names)
+    per = max(1, (len(names) + slots - 1) // slots)
+    out = []
+    for i in range(0, len(names), per):
+        out.append('<span class="lslot" data-set="%s"></span>' % ",".join(names[i:i+per]))
+    return "\n        ".join(out)
+
 # ============================================================
 # CASES (Reihenfolge = Staerke laut Briefing; Kette fuer "Naechster Case")
 # ============================================================
 CASES = [
- dict(slug="case-immobilien-investment", nav_title="Immobilien-Investment",
+ dict(slug="case-immobilien-investment", ziel="Zurechenbares Kapital", nav_title="Immobilien-Investment",
   title=["Immobilien-", "Investment."], sub="€ 36k Budget. € 4,65 Mio. Kapital. Zurechenbar.",
   clr="#2E3A2F", fg="#EDF2EC", big="129×", biglabel="zurechenbares Kapital",
   disz=[("Strategie & Funnel", "service-strategie.html"), ("Performance Marketing", "service-performance-marketing.html"), ("Websites & Landingpages", "service-websites.html")],
@@ -127,7 +144,7 @@ CASES = [
   learn=["Im Finance zählt der Cost per zugerechnetem Kapital, nicht der CPL.",
          "Ehrlich, auch unbequem: Ein € 278k-Test brachte 0 Zeichnungen und wurde gestoppt.",
          "Sauberes Tracking ist die Voraussetzung für jede ehrliche Aussage."]),
- dict(slug="case-d2c-lifestyle", nav_title="D2C-Lifestyle-Marke",
+ dict(slug="case-d2c-lifestyle", ziel="Profitables Wachstum", nav_title="D2C-Lifestyle-Marke",
   title=["D2C-Lifestyle-", "Marke."], sub="€ 520k → € 817k Umsatz. Das beste Jahr der Firmengeschichte.",
   clr="#4A3328", fg="#F4EEE8", big="+57 %", biglabel="Jahresumsatz",
   disz=[("E-Commerce Growth", "service-ecommerce.html"), ("Performance Marketing", "service-performance-marketing.html"), ("Content Creation", "service-content-creation.html")],
@@ -147,7 +164,7 @@ CASES = [
          "UGC hat den größten Conversion-Hebel.",
          "Profitabilität schlägt Reichweite, jede Woche aufs Neue."]),
  dict(slug="case-premium-neubau", nav_title="Premium-Neubau, Wien", handmade=True),
- dict(slug="case-crowdinvesting", nav_title="Crowdinvesting-Plattform",
+ dict(slug="case-crowdinvesting", ziel="Kapital je Projekt, planbar", nav_title="Crowdinvesting-Plattform",
   title=["Crowdinvesting-", "Plattform."], sub="Gleiches Budget. 4× mehr Kapital.",
   clr="#1C2530", fg="#E8EDF2", big="8,75", biglabel="ROAS, vorher 2,14",
   disz=[("Strategie & Funnel", "service-strategie.html"), ("Performance Marketing", "service-performance-marketing.html")],
@@ -166,7 +183,7 @@ CASES = [
   learn=["Struktur schlägt Einzelkampagne.",
          "Die KPI-Definition vorab ist die halbe Miete.",
          "Gleicher Spend, anderes Ergebnis: Der Beweis liegt im Vorher-Nachher."]),
- dict(slug="case-wohnbau-floridsdorf", nav_title="Wohnbau, Floridsdorf",
+ dict(slug="case-wohnbau-floridsdorf", ziel="Qualifizierte Kaufinteressenten", nav_title="Wohnbau, Floridsdorf",
   title=["Wohnbau,", "Floridsdorf."], sub="460 Kaufinteressenten zu € 12,77 pro Lead.",
   clr="#33383E", fg="#EFF1F3", big="460", biglabel="Leads · € 12,77 CPL",
   disz=[("Performance Marketing", "service-performance-marketing.html"), ("Content Creation", "service-content-creation.html"), ("Websites & Landingpages", "service-websites.html")],
@@ -185,7 +202,7 @@ CASES = [
   learn=["Eigennutzer und Anleger sind zwei Märkte, kein gemeinsamer.",
          "Anleger wollen Rendite-Sicherheit, keine Zertifikate.",
          "Ehrlicher CPL entsteht durch Testing."]),
- dict(slug="case-consumer-brand", nav_title="Premium-Consumer-Brand",
+ dict(slug="case-consumer-brand", ziel="Profitabler Saison-Peak", nav_title="Premium-Consumer-Brand",
   title=["Premium-", "Consumer-Brand."], sub="Black-Friday-ROAS 4,02. 75 % über dem eigenen Benchmark.",
   img="assets/img/isi.jpg", big="4,02", biglabel="BFCM-ROAS",
   disz=[("E-Commerce Growth", "service-ecommerce.html"), ("Performance Marketing", "service-performance-marketing.html"), ("Content Creation", "service-content-creation.html")],
@@ -204,7 +221,7 @@ CASES = [
   learn=["Saison ist Architektur, kein Zufall.",
          "Günstige Awareness im Vorlauf macht den Peak profitabel.",
          "Benchmark schlagen heißt: den eigenen Account kennen."]),
- dict(slug="case-bautraeger-portfolio", nav_title="Bauträger-Portfolio, Wien",
+ dict(slug="case-bautraeger-portfolio", ziel="Planbare Leads im Portfolio", nav_title="Bauträger-Portfolio, Wien",
   title=["Bauträger-", "Portfolio, Wien."], sub="€ 4,72 pro Lead. Der effizienteste im ganzen Portfolio.",
   img="assets/img/a_otta1.jpg", big="€ 4,72", biglabel="Cost per Lead",
   disz=[("Performance Marketing", "service-performance-marketing.html"), ("Content Creation", "service-content-creation.html")],
@@ -223,7 +240,7 @@ CASES = [
   learn=["Ein gutes System ist wiederholbar, über Projekte hinweg.",
          "Lage plus Lebensgefühl schlagen Floskeln.",
          "Niedrige CPL kommt aus Disziplin, nicht aus Glück."]),
- dict(slug="case-health-brand", nav_title="Dental-/Health-Marke",
+ dict(slug="case-health-brand", ziel="Profitable Skalierung", nav_title="Dental-/Health-Marke",
   title=["Dental-/", "Health-Marke."], sub="1.385 Verkäufe in 7 Monaten. Und der ehrliche Blick darauf.",
   clr="#1F3833", fg="#EAF1EE", big="1.385", biglabel="Verkäufe in 7 Monaten",
   disz=[("E-Commerce Growth", "service-ecommerce.html"), ("Content Creation", "service-content-creation.html")],
@@ -242,7 +259,7 @@ CASES = [
   learn=["Ehrlichkeit schlägt Schönfärben: Ein Ziel-Gap gehört offen ins Reporting.",
          "Der größte Hebel war das Creative, nicht das Budget.",
          "Retargeting ist der effizienteste Euro."]),
- dict(slug="case-photovoltaik", nav_title="Photovoltaik-Anbieter",
+ dict(slug="case-photovoltaik", ziel="Qualifizierte Anfragen", nav_title="Photovoltaik-Anbieter",
   title=["Photovoltaik-", "Anbieter."], sub="406 Leads. Und +487 % mehr Website-Besucher.",
   clr="#3A3A2E", fg="#F0F0E6", big="+487 %", biglabel="Website-Besucher",
   disz=[("Websites & Landingpages", "service-websites.html"), ("Performance Marketing", "service-performance-marketing.html")],
@@ -285,13 +302,20 @@ def case_page(c, nxt):
     <div class="hkpi"><div class="kv" style="font-size:clamp(60px,7vw,120px)">%s</div><div class="kl">(%s)</div></div>
     <div class="scrollhint">Scrollen</div>
   </section>""" % (world, world, wfg, c["nav_title"], c["rahmen"].split("<br>")[0].split("·")[0].strip(), c["sub"], c["big"], c["biglabel"])
-    disz = "<br>".join('<a href="%s">%s</a>' % (h, t) for t, h in c["disz"])
+    disz_links = "\n          ".join('<a href="%s">%s</a>' % (h, t) for t, h in c["disz"])
     lens_rows = "\n".join('        <div class="lrow" data-fade><div class="ll">%s</div><div class="lt">%s</div></div>' % (l, t) for l, t in c["lens"])
     nums = "\n".join('        <div class="n" data-fade><div class="l">%s</div><div class="v num serif">%s</div></div>' % (l, v) for l, v in c["nums"])
     learn = "\n".join('        <p class="serif" data-fade style="font-size:clamp(20px,1.9vw,28px);padding:18px 0;border-top:1px solid var(--line-d)%s">%s</p>' % (
         (";border-bottom:1px solid var(--line-d)" if i == len(c["learn"]) - 1 else ""), t) for i, t in enumerate(c["learn"]))
     stmt = "\n".join('        <span class="rl"><span>%s</span></span>' % x for x in c["statement"])
     svc_t, svc_h = c["disz"][0]
+    branch_key = c["rahmen"].split("<br>")[0].split("·")[0].strip()
+    case_logos = None
+    for k, v in BRANCH_LOGOS.items():
+        if k.lower() in c["rahmen"].split("<br>")[0].lower():
+            case_logos = v; break
+    if not case_logos:
+        case_logos = ["looops", "ifa", "winegg", "isi", "conda", "funkhaus"]
     if nxt.get("handmade"):
         nxt_media = '<img loading="lazy" decoding="async" src="assets/img/funkhaus.jpg" alt="">'
         nxt_sub = "489 Leads zu € 11,77. Ein Motiv trug 54 %."
@@ -309,22 +333,26 @@ def case_page(c, nxt):
   <!-- HERO: Vollbild in der Case-Farbwelt -->
   """ + hero + """
 
-  <!-- META -->
-  <section class="fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding: clamp(30px,4vw,60px) 0 clamp(80px,10vw,140px)">
-    <div class="wrap ometa" data-stagger>
-      <div class="mc" data-fade><div class="h">Disziplinen</div><div class="v">""" + disz + """</div></div>
-      <div class="mc" data-fade><div class="h">Rahmen</div><div class="v">""" + c["rahmen"] + """</div></div>
-    </div>
-  </section>
-
-  <!-- SERIF-PASSAGE -->
-  <section class="sec fg-light bg-paper ointro" data-bg="#F3EDE1" data-fg="dark" style="padding-top:0">
-    <div class="wrap">
-      <p class="big" data-scrub>""" + c["big_scrub"] + """</p>
-      <div class="obody" data-fade>
-        <p>""" + c["body"] + """</p>
-        <a class="opill" href="mailto:hello@ad.boutique?subject=Projekt wie """ + c["nav_title"] + """">Ähnliches Projekt anfragen ↗</a>
-        <p style="margin-top:22px;font-size:13px"><a class="see" href="""" + svc_h + """">Leistung: """ + svc_t + """ →</a></p>
+  <!-- INTRO auf Papier: Story links, Key Facts rechts -->
+  <section class="sec fg-light cintro bg-paper" data-bg="#F3EDE1" data-fg="dark">
+    <div class="wrap grid">
+      <div>
+        <span class="label" style="color:var(--grey-dark)">""" + c["rahmen"].replace("<br>", " · ") + """</span>
+        <p class="serif" data-scrub style="margin-top:22px">""" + c["big_scrub"] + """</p>
+        <p class="body" data-fade style="--i:1">""" + c["body"] + """</p>
+        <div data-fade style="--i:2;margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-i" href="mailto:hello@ad.boutique?subject=Projekt wie """ + c["nav_title"] + """">Ähnliches Projekt anfragen</a>
+          <a class="btn btn-o" href="work.html">Alle Cases</a>
+        </div>
+      </div>
+      <div class="cmeta" data-stagger>
+        <div class="m" data-fade><div class="ml">Branche</div><div class="mv2">""" + c["rahmen"].split("<br>")[0] + """</div></div>
+        <div class="m" data-fade><div class="ml">Zeitraum</div><div class="mv2">""" + c["rahmen"].split("<br>")[1] + """</div></div>
+        <div class="m" data-fade><div class="ml">Kanäle</div><div class="mv2">""" + c["rahmen"].split("<br>")[2] + """</div></div>
+        <div class="m" data-fade><div class="ml">Ziel</div><div class="mv2">""" + c.get("ziel", "") + """</div></div>
+        <div class="m" data-fade><div class="ml">Leistungen</div><div class="mv2">
+          """ + disz_links + """
+        </div></div>
       </div>
     </div>
   </section>
@@ -345,6 +373,16 @@ def case_page(c, nxt):
       <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:clamp(30px,4vw,50px)">Fünf Perspektiven</span>
       <div class="lens" data-stagger>
 """ + lens_rows + """
+      </div>
+    </div>
+  </section>
+
+  <!-- MARKEN -->
+  <section class="fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding: 0 0 clamp(70px,9vw,120px)">
+    <div class="wrap" style="display:flex;align-items:center;gap:clamp(28px,4vw,64px);flex-wrap:wrap;border-top:1px solid var(--line-l);padding-top:30px">
+      <span class="label" style="color:var(--grey-dark)">Marken, mit denen wir arbeiten</span>
+      <div class="logocycle" style="flex:1">
+        """ + logocycle(case_logos) + """
       </div>
     </div>
   </section>

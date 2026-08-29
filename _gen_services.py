@@ -1,7 +1,7 @@
 # Service-LP-Generator: Schema Problem → Konsequenz → Lösung → Differenzierung →
 # Proof ×3 → Logos → Case-Liste → FAQ → No-Brainer + Risikoumkehr → CTA
 # -*- coding: utf-8 -*-
-from _gen import HEAD, FOOTER, menu
+from _gen import HEAD, FOOTER, menu, logocycle
 
 def logos_row(names, label):
     imgs = "\n      ".join('<img loading="lazy" decoding="async" src="assets/logos/%s.png" alt="%s">' % (n, n) for n in names)
@@ -303,7 +303,7 @@ def render_service(s):
           <div class="a">%s</div>
         </div>''' % (q, a) for q, a in s["faq"])
     chips_sel = "\n        ".join('<button class="nopt" data-v="%s" style="--i:%d">%s <span class="plus">+</span></button>' % (cv, 7 - i, cv) for i, cv in enumerate(s["chips"]))
-    logos = "\n      ".join('<img loading="lazy" decoding="async" src="assets/logos/%s.png" alt="%s">' % (n, n) for n in s["logos"])
+    logos = logocycle(s["logos"])
 
     page = HEAD.format(title=s["nav"], bodybg="#F3EDE1") + menu("index.html#leistungen") + '''<main>
 
@@ -389,7 +389,7 @@ def render_service(s):
   <section class="fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding: clamp(40px,5vw,64px) 0">
     <div class="wrap" style="display:flex;align-items:center;gap:clamp(28px,4vw,64px);flex-wrap:wrap;border-top:1px solid var(--line-l);border-bottom:1px solid var(--line-l);padding-top:34px;padding-bottom:34px">
       <span class="label" style="color:var(--grey-dark)">Marken, die bleiben</span>
-      <div class="logowall" style="flex:1">
+      <div class="logocycle" style="flex:1">
       ''' + logos + '''
       </div>
     </div>

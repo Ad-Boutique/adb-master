@@ -330,6 +330,46 @@
     dblocks.forEach(function (b) { dio.observe(b); });
   }
 
+
+  /* ---------- Logo-Zyklus ---------- */
+  document.querySelectorAll(".logocycle").forEach(function (wall) {
+    var slots = Array.prototype.slice.call(wall.querySelectorAll(".lslot"));
+    slots.forEach(function (slot) {
+      var names = (slot.getAttribute("data-set") || "").split(",").filter(Boolean);
+      names.forEach(function (n, i) {
+        var im = document.createElement("img");
+        im.src = "assets/logos/" + n + ".png"; im.alt = n; im.loading = "lazy";
+        if (i === 0) im.classList.add("on");
+        slot.appendChild(im);
+      });
+      slot._idx = 0;
+    });
+    if (reduced) return;
+    var turn = 0;
+    setInterval(function () {
+      var slot = slots[turn % slots.length];
+      turn++;
+      var imgs = slot.querySelectorAll("img");
+      if (imgs.length < 2) return;
+      imgs[slot._idx].classList.remove("on");
+      slot._idx = (slot._idx + 1) % imgs.length;
+      imgs[slot._idx].classList.add("on");
+    }, 2200);
+  });
+
+  /* ---------- generisches Drag-Scrollen (Service-Zeile) ---------- */
+  document.querySelectorAll(".svcrow").forEach(function (row) {
+    var down = false, sx = 0, sl = 0, mv = 0;
+    row.addEventListener("pointerdown", function (e) { down = true; mv = 0; sx = e.clientX; sl = row.scrollLeft; });
+    window.addEventListener("pointermove", function (e) {
+      if (!down) return;
+      var dx = e.clientX - sx; mv = Math.max(mv, Math.abs(dx));
+      row.scrollLeft = sl - dx;
+    });
+    window.addEventListener("pointerup", function () { down = false; });
+    row.addEventListener("click", function (e) { if (mv > 6) { e.preventDefault(); e.stopPropagation(); } }, true);
+  });
+
   /* ---------- Scroll-Loop ---------- */
   var vh = window.innerHeight;
   window.addEventListener("resize", function () { vh = window.innerHeight; });

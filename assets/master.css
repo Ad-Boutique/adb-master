@@ -1138,3 +1138,38 @@ body.loaded .chero img { transform: scale(1); }
 .npro .npim2 img { transition: transform 1s var(--e-out); }
 .npro:hover .npim2 img { transform: scale(1.045); }
 @media (max-width: 900px) { .npro { grid-template-columns: 1fr; } }
+
+
+/* Logo-Zyklus: Slots blenden ruhig durch */
+.logocycle { display: flex; gap: clamp(30px, 4vw, 70px); align-items: center; flex-wrap: wrap; }
+.logocycle .lslot { position: relative; height: 26px; min-width: 96px; flex: 1 1 auto; max-width: 150px; }
+.logocycle .lslot img {
+  position: absolute; left: 0; top: 0; height: 26px; width: auto; max-width: 100%; object-fit: contain;
+  opacity: 0; transition: opacity 0.9s ease;
+  filter: grayscale(1) invert(1) brightness(0.25);
+}
+.fg-dark .logocycle .lslot img { filter: grayscale(1) brightness(2); }
+.logocycle .lslot img.on { opacity: 0.8; }
+
+/* Services als horizontale Drag-Zeile (BiA-Menue-Mechanik) */
+.svcrow-wrap { overflow: hidden; }
+.svcrow {
+  display: flex; gap: clamp(18px, 2.2vw, 36px);
+  overflow-x: auto; scrollbar-width: none; cursor: grab;
+  padding: 4px clamp(24px, 3.5vw, 56px) 24px;
+}
+.svcrow::-webkit-scrollbar { display: none; }
+.svcard {
+  flex: 0 0 clamp(300px, 27vw, 420px);
+  border: 1px solid var(--line-l); border-radius: 4px;
+  padding: clamp(24px, 2.4vw, 38px);
+  display: flex; flex-direction: column; min-height: clamp(300px, 25vw, 380px);
+  transition: background-color 0.4s ease, border-color 0.4s ease, transform 0.5s var(--e-out);
+  background: transparent;
+}
+.svcard:hover { background: rgba(10,10,10,0.035); transform: translateY(-4px); }
+.svcard .sn { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; color: var(--champ-deep); }
+.svcard .st { font-family: var(--f-serif); font-size: clamp(24px, 2.2vw, 34px); line-height: 1.15; margin-top: 14px; }
+.svcard ul { list-style: none; margin-top: 18px; display: flex; flex-direction: column; gap: 7px; }
+.svcard li { font-size: 13.5px; color: var(--grey-dark); }
+.svcard .see { margin-top: auto; padding-top: 22px; }

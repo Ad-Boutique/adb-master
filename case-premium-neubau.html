@@ -9,8 +9,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="assets/master.css?v=8">
-<script src="assets/master.js?v=8" defer></script>
+<link rel="stylesheet" href="assets/master.css?v=9">
+<script src="assets/master.js?v=9" defer></script>
 </head>
 <body style="background-color:#22382C">
 
@@ -102,21 +102,28 @@
     <div class="scrollhint">Scrollen</div>
   </section>
 
-  <!-- META -->
-  <section class="fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding: clamp(80px,10vw,140px) 0 clamp(60px,8vw,110px)">
-    <div class="wrap ometa" data-stagger>
-      <div class="mc" data-fade><div class="h">Disziplinen</div><div class="v"><a href="service-performance-marketing.html">Performance Marketing</a><br><a href="service-content-creation.html">Content Creation</a><br><a href="service-websites.html">Landingpage</a></div></div>
-      <div class="mc" data-fade><div class="h">Rahmen</div><div class="v">Real Estate · Wien<br>Jänner bis Mai 2026<br>Meta · Instant Forms</div></div>
-    </div>
-  </section>
-
-  <!-- SERIF-PASSAGE + BODY (Outpost-Intro) -->
-  <section class="sec fg-light bg-paper ointro" data-bg="#F3EDE1" data-fg="dark" style="padding-top:0">
-    <div class="wrap">
-      <p class="big" data-scrub>Premium-Eigentumswohnungen zwischen <b>Geschichte und Neubau</b>, mit klarer Zielgruppe, aber ohne systematisches <b>Creative-Testing</b>: Viel Budget floss in Motive, die niemand maß.</p>
-      <div class="obody" data-fade>
-        <p>Wir haben viele Creative-Varianten gegeneinander laufen lassen, das Budget konsequent auf das stärkste Lead-Motiv verschoben, die Reichweite über die Stadt gestreut und sauber gemessen. Das Ergebnis: 489 qualifizierte Kaufinteressenten aus € 5.755 Spend, ein gewichteter CPL von € 11,77, und ein einzelnes Interior-Motiv, das 54 Prozent aller Leads trug.</p>
-        <a class="opill" href="mailto:hello@ad.boutique?subject=Neubau-Projekt">Ähnliches Projekt anfragen ↗</a>
+  <!-- INTRO auf Papier: Story links, Key Facts rechts -->
+  <section class="sec fg-light cintro bg-paper" data-bg="#F3EDE1" data-fg="dark">
+    <div class="wrap grid">
+      <div>
+        <span class="label" style="color:var(--grey-dark)">Real Estate · Wohnbau · Jänner bis Mai 2026</span>
+        <p class="serif" data-scrub style="margin-top:22px">Premium-Eigentumswohnungen zwischen <b>Geschichte und Neubau</b>, mit klarer Zielgruppe, aber ohne systematisches <b>Creative-Testing</b>: Viel Budget floss in Motive, die niemand maß.</p>
+        <p class="body" data-fade style="--i:1">Wir haben viele Creative-Varianten gegeneinander laufen lassen, das Budget konsequent auf das stärkste Lead-Motiv verschoben, die Reichweite über die Stadt gestreut und sauber gemessen. Das Ergebnis: 489 qualifizierte Kaufinteressenten aus € 5.755 Spend, ein gewichteter CPL von € 11,77, und ein einzelnes Interior-Motiv, das 54 Prozent aller Leads trug.</p>
+        <div data-fade style="--i:2;margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-i" href="mailto:hello@ad.boutique?subject=Neubau-Projekt">Ähnliches Projekt anfragen</a>
+          <a class="btn btn-o" href="work.html">Alle Cases</a>
+        </div>
+      </div>
+      <div class="cmeta" data-stagger>
+        <div class="m" data-fade><div class="ml">Branche</div><div class="mv2">Real Estate · Wien</div></div>
+        <div class="m" data-fade><div class="ml">Zeitraum</div><div class="mv2">Jänner bis Mai 2026</div></div>
+        <div class="m" data-fade><div class="ml">Kanäle</div><div class="mv2">Meta · Instant Forms</div></div>
+        <div class="m" data-fade><div class="ml">Ziel</div><div class="mv2">Qualifizierte Kaufinteressenten</div></div>
+        <div class="m" data-fade><div class="ml">Leistungen</div><div class="mv2">
+          <a href="service-performance-marketing.html">Performance Marketing</a>
+          <a href="service-content-creation.html">Content Creation</a>
+          <a href="service-websites.html">Landingpages</a>
+        </div></div>
       </div>
     </div>
   </section>
@@ -182,6 +189,18 @@
     </div>
   </section>
 
+  <!-- MARKEN -->
+  <section class="fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding: 0 0 clamp(70px,9vw,120px)">
+    <div class="wrap" style="display:flex;align-items:center;gap:clamp(28px,4vw,64px);flex-wrap:wrap;border-top:1px solid var(--line-l);padding-top:30px">
+      <span class="label" style="color:var(--grey-dark)">Marken, mit denen wir arbeiten</span>
+      <div class="logocycle" style="flex:1">
+        <span class="lslot" data-set="winegg,funkhaus"></span>
+        <span class="lslot" data-set="seeresidenz,soravia"></span>
+        <span class="lslot" data-set="rhomberg,vonpoll"></span>
+      </div>
+    </div>
+  </section>
+
   <!-- ERGEBNIS -->
   <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">
     <div class="wrap">
@@ -210,7 +229,7 @@
   </section>
 
   <!-- GALERIE -->
-  <section class="sec" data-bg="#22382C" data-fg="light" style="padding-top:clamp(70px,8vw,120px);padding-bottom:clamp(160px,20vw,280px)">
+  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:clamp(70px,8vw,120px);padding-bottom:clamp(160px,20vw,280px)">
     <div class="wrap cgal">
       <div data-drift="0.05"><span data-scale class="inviewready" style="display:block;overflow:hidden;border-radius:3px"><img loading="lazy" decoding="async" src="assets/img/fx-66.jpg" alt="Projektfoto"></span></div>
       <div data-drift="0.11" style="margin-top:60px"><span data-scale style="display:block;overflow:hidden;border-radius:3px"><img loading="lazy" decoding="async" src="assets/img/fx-74.jpg" alt="Projektfoto"></span></div>

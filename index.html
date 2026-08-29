@@ -9,8 +9,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="assets/master.css?v=8">
-<script src="assets/master.js?v=8" defer></script>
+<link rel="stylesheet" href="assets/master.css?v=9">
+<script src="assets/master.js?v=9" defer></script>
 </head>
 <body style="background-color:#0A0A0A">
 
@@ -189,41 +189,54 @@
   <section class="fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding: clamp(30px,4vw,54px) 0 clamp(80px,10vw,140px)">
     <div class="wrap" style="border-top:1px solid var(--line-l);padding-top:38px">
       <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:28px">Marken, die wiederkommen</span>
-      <div class="logowall" data-fade><img loading="lazy" decoding="async" src="assets/logos/looops.png" alt="looops"> <img loading="lazy" decoding="async" src="assets/logos/isi.png" alt="isi"> <img loading="lazy" decoding="async" src="assets/logos/ifa.png" alt="ifa"> <img loading="lazy" decoding="async" src="assets/logos/winegg.png" alt="winegg"> <img loading="lazy" decoding="async" src="assets/logos/conda.png" alt="conda"> <img loading="lazy" decoding="async" src="assets/logos/soravia.png" alt="soravia"> <img loading="lazy" decoding="async" src="assets/logos/raiffeisen.png" alt="raiffeisen"> <img loading="lazy" decoding="async" src="assets/logos/jti.png" alt="jti"> <img loading="lazy" decoding="async" src="assets/logos/nordicspirit.png" alt="nordicspirit"> <img loading="lazy" decoding="async" src="assets/logos/rhomberg.png" alt="rhomberg"> <img loading="lazy" decoding="async" src="assets/logos/vonpoll.png" alt="vonpoll"> <img loading="lazy" decoding="async" src="assets/logos/kaisers.png" alt="kaisers"></div>
+      <div class="logocycle" data-fade>
+        <span class="lslot" data-set="looops,isi,nordicspirit"></span>
+        <span class="lslot" data-set="ifa,conda,raiffeisen"></span>
+        <span class="lslot" data-set="winegg,funkhaus,seeresidenz"></span>
+        <span class="lslot" data-set="soravia,rhomberg,vonpoll"></span>
+        <span class="lslot" data-set="jti,kaisers,ilbosso"></span>
+        <span class="lslot" data-set="juwel,hagent,fabrik1230"></span>
+      </div>
     </div>
   </section>
 
   <!-- 05 · LEISTUNGEN -->
-  <section id="leistungen" class="sec fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark">
-    <div class="wrap caps">
-      <div><span class="label" style="color:var(--grey-dark)">Leistungen</span></div>
-      <div class="col" data-fade>
-        <div class="cl">Strategie</div>
-        <div class="it">Digitale Strategie</div>
-        <div class="it">Markt- & Zielgruppenanalyse</div>
-        <div class="it">Funnel-Architektur</div>
-        <div class="it">KPI-Logik & Attribution</div>
-        <div class="it">Positionierung</div>
-        <a class="see" href="service-strategie.html">Strategie & Funnel →</a>
-      </div>
-      <div class="col" data-fade style="--i:1">
-        <div class="cl">Kreation</div>
-        <div class="it">Content Creation</div>
-        <div class="it">UGC- & Studio-Produktion</div>
-        <div class="it">Websites & Shops</div>
-        <div class="it">Landingpages</div>
-        <div class="it">Design-Systeme</div>
-        <a class="see" href="service-content-creation.html">Content Creation →</a><br><a class="see" href="service-websites.html">Websites & Landingpages →</a>
-      </div>
-      <div class="col" data-fade style="--i:2">
-        <div class="cl">Performance</div>
-        <div class="it">Meta · Google · TikTok · Pinterest</div>
-        <div class="it">E-Commerce Growth</div>
-        <div class="it">Lead-Generierung</div>
-        <div class="it">Server-side Tracking</div>
-        <div class="it">Conversion-Optimierung</div>
-        <a class="see" href="service-performance-marketing.html">Performance Marketing →</a><br><a class="see" href="service-ecommerce.html">E-Commerce Growth →</a>
-      </div>
+  <section id="leistungen" class="sec fg-light bg-cream svcrow-wrap" data-bg="#EFE7D6" data-fg="dark">
+    <div class="wrap" style="margin-bottom:clamp(30px,4vw,50px);display:flex;justify-content:space-between;align-items:baseline">
+      <span class="label" style="color:var(--grey-dark)">Was wir können</span>
+      <span class="label" style="color:var(--grey-dark);opacity:.6">Ziehen oder scrollen →</span>
+    </div>
+    <div class="svcrow" data-fade>
+      <a class="svcard" href="service-strategie.html">
+        <span class="sn">01</span>
+        <span class="st">Strategie & Funnel</span>
+        <ul><li>Funnel-Architektur</li><li>KPI-Logik & Attribution</li><li>Positionierung</li></ul>
+        <span class="see">Mehr dazu →</span>
+      </a>
+      <a class="svcard" href="service-performance-marketing.html">
+        <span class="sn">02</span>
+        <span class="st">Performance Marketing</span>
+        <ul><li>Meta · Google · TikTok</li><li>Lead-Generierung</li><li>Creative-Testing</li></ul>
+        <span class="see">Mehr dazu →</span>
+      </a>
+      <a class="svcard" href="service-ecommerce.html">
+        <span class="sn">03</span>
+        <span class="st">E-Commerce Growth</span>
+        <ul><li>Shop & Conversion</li><li>Server-side Tracking</li><li>Skalierung am Umsatz</li></ul>
+        <span class="see">Mehr dazu →</span>
+      </a>
+      <a class="svcard" href="service-content-creation.html">
+        <span class="sn">04</span>
+        <span class="st">Content Creation</span>
+        <ul><li>UGC & Studio</li><li>Foto & Film</li><li>Creative-System</li></ul>
+        <span class="see">Mehr dazu →</span>
+      </a>
+      <a class="svcard" href="service-websites.html">
+        <span class="sn">05</span>
+        <span class="st">Websites & Landingpages</span>
+        <ul><li>Landingpages je Kampagne</li><li>Konfiguratoren</li><li>CRO & A/B-Tests</li></ul>
+        <span class="see">Mehr dazu →</span>
+      </a>
     </div>
   </section>
 

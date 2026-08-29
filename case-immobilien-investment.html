@@ -9,8 +9,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="assets/master.css?v=8">
-<script src="assets/master.js?v=8" defer></script>
+<link rel="stylesheet" href="assets/master.css?v=9">
+<script src="assets/master.js?v=9" defer></script>
 </head>
 <body style="background-color:#2E3A2F" class="on-light">
 
@@ -100,22 +100,28 @@
     <div class="scrollhint">Scrollen</div>
   </section>
 
-  <!-- META -->
-  <section class="fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding: clamp(30px,4vw,60px) 0 clamp(80px,10vw,140px)">
-    <div class="wrap ometa" data-stagger>
-      <div class="mc" data-fade><div class="h">Disziplinen</div><div class="v"><a href="service-strategie.html">Strategie & Funnel</a><br><a href="service-performance-marketing.html">Performance Marketing</a><br><a href="service-websites.html">Websites & Landingpages</a></div></div>
-      <div class="mc" data-fade><div class="h">Rahmen</div><div class="v">Finance · Immobilien-Investment<br>3 Quartale<br>Google · Funnel · CRM</div></div>
-    </div>
-  </section>
-
-  <!-- SERIF-PASSAGE -->
-  <section class="sec fg-light bg-paper ointro" data-bg="#F3EDE1" data-fg="dark" style="padding-top:0">
-    <div class="wrap">
-      <p class="big" data-scrub>Ein hochwertiges Investment-Angebot ohne planbaren Zufluss <b>qualifizierter Investoren</b>: Vertrauen, Regulatorik und ein komplexer Entscheidungsweg machten reine <b>Reichweiten-Logik</b> wirkungslos.</p>
-      <div class="obody" data-fade>
-        <p>Wir haben einen Investoren-Funnel gebaut, der Vertrauen Schritt für Schritt aufbaut, von der Aufklärung bis zur Zeichnung. Sauberes Tracking machte jeden Euro zurechenbar: € 4,65 Mio. Kapital aus € 36.043 Google-Budget, ein 129-facher Return. Über den gesamten Funnel wurden aus € 320k Spend € 12,8 Mio. Kapital, 446 Leads und 43 Zeichnungen.</p>
-        <a class="opill" href="mailto:hello@ad.boutique?subject=Projekt wie Immobilien-Investment">Ähnliches Projekt anfragen ↗</a>
-        <p style="margin-top:22px;font-size:13px"><a class="see" href= + svc_h + >Leistung: Strategie & Funnel →</a></p>
+  <!-- INTRO auf Papier: Story links, Key Facts rechts -->
+  <section class="sec fg-light cintro bg-paper" data-bg="#F3EDE1" data-fg="dark">
+    <div class="wrap grid">
+      <div>
+        <span class="label" style="color:var(--grey-dark)">Finance · Immobilien-Investment · 3 Quartale · Google · Funnel · CRM</span>
+        <p class="serif" data-scrub style="margin-top:22px">Ein hochwertiges Investment-Angebot ohne planbaren Zufluss <b>qualifizierter Investoren</b>: Vertrauen, Regulatorik und ein komplexer Entscheidungsweg machten reine <b>Reichweiten-Logik</b> wirkungslos.</p>
+        <p class="body" data-fade style="--i:1">Wir haben einen Investoren-Funnel gebaut, der Vertrauen Schritt für Schritt aufbaut, von der Aufklärung bis zur Zeichnung. Sauberes Tracking machte jeden Euro zurechenbar: € 4,65 Mio. Kapital aus € 36.043 Google-Budget, ein 129-facher Return. Über den gesamten Funnel wurden aus € 320k Spend € 12,8 Mio. Kapital, 446 Leads und 43 Zeichnungen.</p>
+        <div data-fade style="--i:2;margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-i" href="mailto:hello@ad.boutique?subject=Projekt wie Immobilien-Investment">Ähnliches Projekt anfragen</a>
+          <a class="btn btn-o" href="work.html">Alle Cases</a>
+        </div>
+      </div>
+      <div class="cmeta" data-stagger>
+        <div class="m" data-fade><div class="ml">Branche</div><div class="mv2">Finance · Immobilien-Investment</div></div>
+        <div class="m" data-fade><div class="ml">Zeitraum</div><div class="mv2">3 Quartale</div></div>
+        <div class="m" data-fade><div class="ml">Kanäle</div><div class="mv2">Google · Funnel · CRM</div></div>
+        <div class="m" data-fade><div class="ml">Ziel</div><div class="mv2">Zurechenbares Kapital</div></div>
+        <div class="m" data-fade><div class="ml">Leistungen</div><div class="mv2">
+          <a href="service-strategie.html">Strategie & Funnel</a>
+          <a href="service-performance-marketing.html">Performance Marketing</a>
+          <a href="service-websites.html">Websites & Landingpages</a>
+        </div></div>
       </div>
     </div>
   </section>
@@ -142,6 +148,18 @@
         <div class="lrow" data-fade><div class="ll">Message</div><div class="lt">Investieren mit stabiler Planrendite: Aufklärung baut Vertrauen auf, Vertrauen führt zur Handlung.</div></div>
         <div class="lrow" data-fade><div class="ll">Creative</div><div class="lt">Bewegtbild für Vertrauen, Daten-Visuals für die Entscheidung.</div></div>
         <div class="lrow" data-fade><div class="ll">Kanal</div><div class="lt">Google sauber zurechenbar, CRM-Nurture für die Reife langer Entscheidungswege.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARKEN -->
+  <section class="fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding: 0 0 clamp(70px,9vw,120px)">
+    <div class="wrap" style="display:flex;align-items:center;gap:clamp(28px,4vw,64px);flex-wrap:wrap;border-top:1px solid var(--line-l);padding-top:30px">
+      <span class="label" style="color:var(--grey-dark)">Marken, mit denen wir arbeiten</span>
+      <div class="logocycle" style="flex:1">
+        <span class="lslot" data-set="ifa"></span>
+        <span class="lslot" data-set="conda"></span>
+        <span class="lslot" data-set="raiffeisen"></span>
       </div>
     </div>
   </section>
