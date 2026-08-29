@@ -68,9 +68,26 @@
   var mdim = document.querySelector(".mdim");
   function toggleMenu() { document.body.classList.toggle("menuopen"); }
   function closeMenu() { document.body.classList.remove("menuopen"); }
-  if (mbtn) mbtn.addEventListener("click", toggleMenu);
+  if (mbtn) mbtn.addEventListener("click", function () {
+    document.body.classList.remove("filteropen");
+    toggleMenu();
+  });
   if (mdim) mdim.addEventListener("click", closeMenu);
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeMenu(); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { closeMenu(); document.body.classList.remove("filteropen"); }
+  });
+
+  /* Filter-Kreis (Work) */
+  var fbtn = document.querySelector(".fbtn");
+  if (fbtn) {
+    fbtn.addEventListener("click", function () {
+      closeMenu();
+      document.body.classList.toggle("filteropen");
+    });
+    document.addEventListener("click", function (e) {
+      if (!e.target.closest(".fbtn, .fpop")) document.body.classList.remove("filteropen");
+    });
+  }
 
   /* Drag-Scroll fuer die Vorschau-Zeile */
   var mrow = document.querySelector(".mrow");
@@ -200,7 +217,7 @@
   /* ---------- Work-Filter (FLIP) ---------- */
   var chips = document.querySelectorAll(".fchip");
   if (chips.length) {
-    var allTiles = Array.prototype.slice.call(document.querySelectorAll(".wgrid .tile, .wmasonry .tile"));
+    var allTiles = Array.prototype.slice.call(document.querySelectorAll(".wgrid .tile, .wgridw .tile"));
     chips.forEach(function (chip) {
       chip.addEventListener("click", function () {
         chips.forEach(function (c) { c.classList.remove("on"); });

@@ -8,8 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="assets/master.css?v=1">
-<script src="assets/master.js?v=1" defer></script>
+<link rel="stylesheet" href="assets/master.css?v=2">
+<script src="assets/master.js?v=2" defer></script>
 </head>
 <body style="background-color:#0A0A0A">
 
@@ -21,7 +21,11 @@
 </header>
 
 <button class="mbtn" aria-label="Menü öffnen"></button>
-<span class="mlbl"><b>Menü</b><b>Schließen</b></span>
+<svg class="morbit" viewBox="0 0 124 124" aria-hidden="true">
+  <defs><path id="mpath" d="M62,62 m-48,0 a48,48 0 1,1 96,0 a48,48 0 1,1 -96,0"/></defs>
+  <text class="t-open"><textPath href="#mpath" startOffset="2%">Menü</textPath></text>
+  <text class="t-close"><textPath href="#mpath" startOffset="2%">Schließen</textPath></text>
+</svg>
 <div class="mdim"></div>
 <nav class="msheet" aria-label="Hauptmenü">
   <div class="mrow">
@@ -56,6 +60,15 @@
       <span class="mthumb"><span class="mv" style="background:#F3EDE1">
         <span class="bars" style="left:8%;top:22%;width:40%"><i style="width:95%;height:9px"></i><i style="width:70%;height:9px"></i><i style="width:50%;margin-top:6px"></i><i style="width:26%;height:10px;margin-top:8px"></i></span>
         <img src="assets/img/isi.jpg" alt="" style="position:absolute;right:6%;top:18%;width:36%;height:64%;border-radius:2px">
+      </span></span>
+    </a>
+    <a class="mitem" href="agentur.html">
+      <span class="mt">Agentur</span>
+      <span class="mthumb"><span class="mv">
+        <span class="grid4" style="grid-template-columns:1fr 1fr">
+          <span><img src="assets/img/retreat-08.jpg" alt=""></span>
+          <span><img src="assets/img/retreat-01.jpg" alt=""></span>
+        </span>
       </span></span>
     </a>
     <a class="mitem" href="index.html#kontakt">
@@ -246,6 +259,7 @@
           <a href="index.html">Start</a>
           <a href="work.html">Work</a>
           <a href="service-ecommerce.html">Leistungen</a>
+          <a href="agentur.html">Agentur</a>
           <a href="index.html#kontakt">Kontakt</a>
         </div>
         <div>

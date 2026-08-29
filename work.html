@@ -8,8 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="assets/master.css?v=1">
-<script src="assets/master.js?v=1" defer></script>
+<link rel="stylesheet" href="assets/master.css?v=2">
+<script src="assets/master.js?v=2" defer></script>
 </head>
 <body style="background-color:#F3EDE1" class="on-light">
 
@@ -21,7 +21,11 @@
 </header>
 
 <button class="mbtn" aria-label="Menü öffnen"></button>
-<span class="mlbl"><b>Menü</b><b>Schließen</b></span>
+<svg class="morbit" viewBox="0 0 124 124" aria-hidden="true">
+  <defs><path id="mpath" d="M62,62 m-48,0 a48,48 0 1,1 96,0 a48,48 0 1,1 -96,0"/></defs>
+  <text class="t-open"><textPath href="#mpath" startOffset="2%">Menü</textPath></text>
+  <text class="t-close"><textPath href="#mpath" startOffset="2%">Schließen</textPath></text>
+</svg>
 <div class="mdim"></div>
 <nav class="msheet" aria-label="Hauptmenü">
   <div class="mrow">
@@ -58,6 +62,15 @@
         <img src="assets/img/isi.jpg" alt="" style="position:absolute;right:6%;top:18%;width:36%;height:64%;border-radius:2px">
       </span></span>
     </a>
+    <a class="mitem" href="agentur.html">
+      <span class="mt">Agentur</span>
+      <span class="mthumb"><span class="mv">
+        <span class="grid4" style="grid-template-columns:1fr 1fr">
+          <span><img src="assets/img/retreat-08.jpg" alt=""></span>
+          <span><img src="assets/img/retreat-01.jpg" alt=""></span>
+        </span>
+      </span></span>
+    </a>
     <a class="mitem" href="index.html#kontakt">
       <span class="mt">Kontakt</span>
       <span class="mthumb"><span class="mv" style="background:#EFE7D6">
@@ -76,6 +89,19 @@
 
 <span class="filterlab">Filter Work</span>
 
+<button class="fbtn" aria-label="Filter öffnen"></button>
+<svg class="forbit" viewBox="0 0 100 100" aria-hidden="true">
+  <defs><path id="fpath" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs>
+  <text><textPath href="#fpath" startOffset="2%">Filter</textPath></text>
+</svg>
+<div class="fpop" aria-label="Work filtern">
+  <button class="fchip on" data-cat="alle" style="--i:4">Alle</button>
+  <button class="fchip" data-cat="commerce" style="--i:3">Commerce</button>
+  <button class="fchip" data-cat="finance" style="--i:2">Finance</button>
+  <button class="fchip" data-cat="realestate" style="--i:1">Real Estate</button>
+  <button class="fchip" data-cat="leadgen" style="--i:0">Lead-Gen</button>
+</div>
+
 <main>
   <section class="sec fg-light wtop bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:clamp(140px,16vw,220px)">
     <div class="wrap">
@@ -87,17 +113,9 @@
         <div class="n" data-fade><div class="v num serif">9</div><div class="l">Cases, gleich tief dokumentiert</div></div>
       </div>
 
-      <div class="filters">
-        <button class="fchip on" data-cat="alle">Alle</button>
-        <button class="fchip" data-cat="commerce">Commerce</button>
-        <button class="fchip" data-cat="finance">Finance</button>
-        <button class="fchip" data-cat="realestate">Real Estate</button>
-        <button class="fchip" data-cat="leadgen">Lead-Gen</button>
-      </div>
-
-      <div class="wmasonry">
-
-        <div class="tile" data-cat="finance">
+      <div class="wgridw" style="margin-top:clamp(50px,6vw,90px)">
+        <div class="wcolw" data-drift="0.028">
+          <div class="tile" data-cat="finance" data-fade>
           <span class="tmed" style="--ar:112%">
             <span class="tclr" style="background:#2E3A2F;color:#EDF2EC">
               <span class="label" style="opacity:.65">Finance · Investment</span>
@@ -107,36 +125,20 @@
             <span class="badge">Google · Funnel</span>
           </span>
           <span class="tlab"><b>Immobilien-Investment</b><span>Ehrlich gemessen: ein Paid-Test über € 278k brachte 0 Zeichnungen und wurde gestoppt.</span></span>
-          <span class="soonlab">Dossier folgt</span>
+          <span class="soonlab">Dossier folgt</span></div>
+          <div class="tile" data-cat="commerce" data-fade>
+          <span class="tmed" style="--ar:126%" data-scale><img src="assets/img/isi.jpg" alt="Premium-Consumer-Brand"></span>
+          <span class="kpi"><span class="kv">4,02</span><span class="kl">(BFCM-ROAS · +75 %)</span></span>
+          <span class="tlab"><b>Premium-Consumer-Brand</b><span>Awareness zu € 0,99 CPM macht den Peak profitabel.</span></span>
+          <span class="soonlab">Dossier folgt</span></div>
         </div>
-
-        <a class="tile" href="case-premium-neubau.html" data-flip data-cat="realestate">
+        <div class="wcolw" data-drift="0.075">
+          <a class="tile" href="case-premium-neubau.html" data-flip data-cat="realestate" data-fade>
           <span class="tmed" style="--ar:126%" data-scale><img src="assets/img/funkhaus.jpg" alt="Premium-Neubau, Wien"></span>
           <span class="kpi"><span class="kv">489</span><span class="kl">(Leads · € 11,77 CPL)</span></span>
           <span class="tlab"><b>Premium-Neubau, Wien</b><span>Ein Motiv trug 54 % aller Leads. Case ansehen →</span></span>
         </a>
-
-        <div class="tile" data-cat="commerce">
-          <span class="tmed" style="--ar:120%">
-            <span class="tclr" style="background:#4A3328;color:#F4EEE8">
-              <span class="label" style="opacity:.65">Commerce · D2C</span>
-              <span class="big num" style="font-size:clamp(40px,3.4vw,58px)">+57 %</span>
-              <span style="font-size:13px;opacity:.8;margin-top:4px">€ 520k → € 817k Jahresumsatz · Blended ROAS 5,57</span>
-            </span>
-            <span class="badge">Rekordjahr</span>
-          </span>
-          <span class="tlab"><b>D2C-Lifestyle-Marke</b><span>Das beste Jahr der Firmengeschichte, aus demselben Traffic.</span></span>
-          <span class="soonlab">Dossier folgt</span>
-        </div>
-
-        <div class="tile" data-cat="commerce">
-          <span class="tmed" style="--ar:126%" data-scale><img src="assets/img/isi.jpg" alt="Premium-Consumer-Brand"></span>
-          <span class="kpi"><span class="kv">4,02</span><span class="kl">(BFCM-ROAS · +75 %)</span></span>
-          <span class="tlab"><b>Premium-Consumer-Brand</b><span>Awareness zu € 0,99 CPM macht den Peak profitabel.</span></span>
-          <span class="soonlab">Dossier folgt</span>
-        </div>
-
-        <div class="tile" data-cat="finance">
+          <div class="tile" data-cat="finance" data-fade>
           <span class="tmed" style="--ar:104%">
             <span class="tclr" style="background:#1C2530;color:#E8EDF2">
               <span class="label" style="opacity:.65">Finance · Crowdinvesting</span>
@@ -146,17 +148,28 @@
             <span class="badge">POC-Phase</span>
           </span>
           <span class="tlab"><b>Crowdinvesting-Plattform</b><span>Gleiches Budget, 4× mehr Kapital durch Plattform-Logik.</span></span>
-          <span class="soonlab">Dossier folgt</span>
+          <span class="soonlab">Dossier folgt</span></div>
         </div>
-
-        <div class="tile" data-cat="realestate">
+        <div class="wcolw" data-drift="0.045">
+          <div class="tile" data-cat="commerce" data-fade>
+          <span class="tmed" style="--ar:120%">
+            <span class="tclr" style="background:#4A3328;color:#F4EEE8">
+              <span class="label" style="opacity:.65">Commerce · D2C</span>
+              <span class="big num" style="font-size:clamp(40px,3.4vw,58px)">+57 %</span>
+              <span style="font-size:13px;opacity:.8;margin-top:4px">€ 520k → € 817k Jahresumsatz · Blended ROAS 5,57</span>
+            </span>
+            <span class="badge">Rekordjahr</span>
+          </span>
+          <span class="tlab"><b>D2C-Lifestyle-Marke</b><span>Das beste Jahr der Firmengeschichte, aus demselben Traffic.</span></span>
+          <span class="soonlab">Dossier folgt</span></div>
+          <div class="tile" data-cat="realestate" data-fade>
           <span class="tmed" style="--ar:126%" data-scale><img src="assets/img/a_otta1.jpg" alt="Bauträger-Portfolio Wien"></span>
           <span class="kpi"><span class="kv">€ 4,72</span><span class="kl">(Cost per Lead)</span></span>
           <span class="tlab"><b>Bauträger-Portfolio, Wien</b><span>Der niedrigste CPL im gesamten Wohnbau-Portfolio.</span></span>
-          <span class="soonlab">Dossier folgt</span>
+          <span class="soonlab">Dossier folgt</span></div>
         </div>
-
-        <div class="tile" data-cat="realestate">
+        <div class="wcolw" data-drift="0.095">
+          <div class="tile" data-cat="realestate" data-fade>
           <span class="tmed" style="--ar:110%">
             <span class="tclr" style="background:#33383E;color:#EFF1F3">
               <span class="label" style="opacity:.65">Real Estate · Wohnbau</span>
@@ -166,10 +179,8 @@
             <span class="badge">Instant Forms</span>
           </span>
           <span class="tlab"><b>Wohnbau, Floridsdorf</b><span>Eigennutzer und Anleger als zwei Märkte behandelt.</span></span>
-          <span class="soonlab">Dossier folgt</span>
-        </div>
-
-        <div class="tile" data-cat="commerce">
+          <span class="soonlab">Dossier folgt</span></div>
+          <div class="tile" data-cat="commerce" data-fade>
           <span class="tmed" style="--ar:108%">
             <span class="tclr" style="background:#1F3833;color:#EAF1EE">
               <span class="label" style="opacity:.65">Commerce · Health</span>
@@ -179,10 +190,8 @@
             <span class="badge">Ehrlicher Case</span>
           </span>
           <span class="tlab"><b>Dental-/Health-Marke</b><span>Skalierung mit offen reportetem Ziel-Gap.</span></span>
-          <span class="soonlab">Dossier folgt</span>
-        </div>
-
-        <div class="tile" data-cat="leadgen">
+          <span class="soonlab">Dossier folgt</span></div>
+          <div class="tile" data-cat="leadgen" data-fade>
           <span class="tmed" style="--ar:116%">
             <span class="tclr" style="background:#3A3A2E;color:#F0F0E6">
               <span class="label" style="opacity:.65">Lead-Gen · Energie</span>
@@ -192,9 +201,8 @@
             <span class="badge">Google Search</span>
           </span>
           <span class="tlab"><b>Photovoltaik-Anbieter</b><span>Der Konfigurator selbst ist das beste Creative.</span></span>
-          <span class="soonlab">Dossier folgt</span>
+          <span class="soonlab">Dossier folgt</span></div>
         </div>
-
       </div>
 
       <p data-fade style="margin-top:clamp(40px,5vw,70px);font-size:13px;color:var(--grey-dark);max-width:70ch">Alle Kennzahlen stammen aus echten Projekt-Reports und sind öffentlich anonymisiert. Auf Wunsch zeigen wir Ihnen im Gespräch die Dashboards dahinter.</p>
