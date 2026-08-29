@@ -9,6 +9,13 @@
 
   /* ---------- Page-Transition ---------- */
   var pt = document.querySelector(".pt");
+  /* Kam die Navigation aus der Tile-Expansion, sofort ohne schwarze Blende starten */
+  if (pt && sessionStorage.getItem("adbflip")) {
+    sessionStorage.removeItem("adbflip");
+    pt.style.transition = "none";
+    pt.classList.add("gone");
+    requestAnimationFrame(function () { pt.style.transition = ""; });
+  }
   function enterPage() {
     document.body.classList.add("loaded");
     if (!pt) return;
@@ -158,7 +165,7 @@
   if (driftsSc.length && !reduced) (function glide(t) {
     var y = window.scrollY;
     driftsSc.forEach(function (d, i) {
-      d.cur += (y * d.s - d.cur) * 0.05;
+      d.cur += (Math.min(y * d.s, 170) - d.cur) * 0.05;
       /* dauerhafte, kaum merkliche Eigenbewegung je Spalte */
       var idle = Math.sin((t || 0) * 0.00028 + i * 2.3) * 10;
       d.el.style.transform = "translateY(" + (d.cur + idle).toFixed(2) + "px)";
@@ -401,7 +408,10 @@
           x.style.top = "0px"; x.style.left = "0px";
           x.style.width = "100vw"; x.style.height = "100vh";
           x.style.borderRadius = "0";
-          setTimeout(function () { location.href = href; }, 700);
+          setTimeout(function () {
+            sessionStorage.setItem("adbflip", "1");
+            location.href = href;
+          }, 700);
         });
       });
     });
