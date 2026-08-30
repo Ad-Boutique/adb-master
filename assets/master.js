@@ -81,18 +81,30 @@
   });
   if (mdim) mdim.addEventListener("click", closeMenu);
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") { closeMenu(); document.body.classList.remove("filteropen"); }
+    if (e.key === "Escape") { closeMenu(); document.body.classList.remove("filteropen"); document.body.classList.remove("branchopen"); }
   });
 
-  /* Filter-Kreis (Work) */
+  /* Filter-Kreise (Work): links Leistung, rechts Branche */
   var fbtn = document.querySelector(".fbtn");
   if (fbtn) {
     fbtn.addEventListener("click", function () {
       closeMenu();
+      document.body.classList.remove("branchopen");
       document.body.classList.toggle("filteropen");
     });
     document.addEventListener("click", function (e) {
       if (!e.target.closest(".fbtn, .fpop")) document.body.classList.remove("filteropen");
+    });
+  }
+  var bbtn = document.querySelector(".bbtn");
+  if (bbtn) {
+    bbtn.addEventListener("click", function () {
+      closeMenu();
+      document.body.classList.remove("filteropen");
+      document.body.classList.toggle("branchopen");
+    });
+    document.addEventListener("click", function (e) {
+      if (!e.target.closest(".bbtn, .bpop")) document.body.classList.remove("branchopen");
     });
   }
 
@@ -440,30 +452,45 @@
   var chips = document.querySelectorAll(".fchip");
   if (chips.length) {
     var allTiles = Array.prototype.slice.call(document.querySelectorAll(".wgrid .tile, .wgridw .wt"));
+    var sel = { cat: "alle", branche: "alle" };
+    function tileMatches(t) {
+      var cats = (t.getAttribute("data-cat") || "").split(" ");
+      var brs = (t.getAttribute("data-branche") || "").split(" ");
+      return (sel.cat === "alle" || cats.indexOf(sel.cat) >= 0) &&
+             (sel.branche === "alle" || brs.indexOf(sel.branche) >= 0);
+    }
+    function applyFilter() {
+      var first = new Map();
+      allTiles.forEach(function (t) {
+        if (!t.classList.contains("fout")) first.set(t, t.getBoundingClientRect());
+      });
+      allTiles.forEach(function (t) { t.classList.toggle("fout", !tileMatches(t)); });
+      allTiles.forEach(function (t) {
+        if (t.classList.contains("fout")) return;
+        var f = first.get(t), l = t.getBoundingClientRect();
+        if (!f) {
+          t.animate([{ opacity: 0, transform: "translateY(20px)" }, { opacity: 1, transform: "none" }],
+            { duration: 500, easing: "cubic-bezier(0.19,1,0.22,1)" });
+          return;
+        }
+        var dx = f.left - l.left, dy = f.top - l.top;
+        if (dx || dy) t.animate(
+          [{ transform: "translate(" + dx + "px," + dy + "px)" }, { transform: "none" }],
+          { duration: 600, easing: "cubic-bezier(0.76,0,0.24,1)" }
+        );
+      });
+    }
     chips.forEach(function (chip) {
       chip.addEventListener("click", function () {
-        chips.forEach(function (c) { c.classList.remove("on"); });
+        var inBranch = !!chip.closest(".bpop");
+        var scope = inBranch ? chip.closest(".bpop") : chip.closest(".fpop");
+        if (scope) {
+          scope.querySelectorAll(".fchip").forEach(function (c) { c.classList.remove("on"); });
+        }
         chip.classList.add("on");
-        var cat = chip.getAttribute("data-cat");
-        /* FLIP: vorher messen */
-        var first = new Map();
-        allTiles.forEach(function (t) {
-          if (!t.classList.contains("fout")) first.set(t, t.getBoundingClientRect());
-        });
-        allTiles.forEach(function (t) {
-          var show2 = cat === "alle" || (t.getAttribute("data-cat") || "").split(" ").indexOf(cat) >= 0;
-          t.classList.toggle("fout", !show2);
-        });
-        allTiles.forEach(function (t) {
-          if (t.classList.contains("fout")) return;
-          var f = first.get(t), l = t.getBoundingClientRect();
-          if (!f) { t.animate([{ opacity: 0, transform: "translateY(20px)" }, { opacity: 1, transform: "none" }], { duration: 500, easing: "cubic-bezier(0.19,1,0.22,1)" }); return; }
-          var dx = f.left - l.left, dy = f.top - l.top;
-          if (dx || dy) t.animate(
-            [{ transform: "translate(" + dx + "px," + dy + "px)" }, { transform: "none" }],
-            { duration: 600, easing: "cubic-bezier(0.76,0,0.24,1)" }
-          );
-        });
+        if (inBranch) sel.branche = chip.getAttribute("data-branche");
+        else sel.cat = chip.getAttribute("data-cat");
+        applyFilter();
       });
     });
   }

@@ -9,8 +9,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="assets/master.css?v=11">
-<script src="assets/master.js?v=11" defer></script>
+<link rel="stylesheet" href="assets/master.css?v=12">
+<script src="assets/master.js?v=12" defer></script>
 </head>
 <body style="background-color:#F3EDE1" class="on-light">
 
@@ -103,6 +103,20 @@
   <button class="fchip" data-cat="web" style="--i:0">Websites</button>
 </div>
 
+<button class="bbtn" aria-label="Branche filtern"></button>
+<svg class="borbit" viewBox="0 0 100 100" aria-hidden="true">
+  <defs><path id="bpath" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs>
+  <text><textPath href="#bpath" startOffset="2%">Branche</textPath></text>
+</svg>
+<div class="bpop" aria-label="Nach Branche filtern">
+  <button class="fchip on" data-branche="alle" style="--i:4">Alle Branchen</button>
+  <button class="fchip" data-branche="realestate" style="--i:3">Real Estate</button>
+  <button class="fchip" data-branche="finance" style="--i:2">Finance</button>
+  <button class="fchip" data-branche="commerce" style="--i:1">Commerce</button>
+  <button class="fchip" data-branche="health" style="--i:0.5">Health & Pharma</button>
+  <button class="fchip" data-branche="tech" style="--i:0">Tech & Energie</button>
+</div>
+
 <main>
   <h1 class="sr-only">Work: die Beweise von ad.boutique</h1>
 
@@ -111,68 +125,68 @@
       <div class="wgridw">
 
         <div class="wcolw" data-driftsc="0.030">
-          <a class="wt tile" href="case-immobilien-investment.html" data-cat="performance" data-fade style="--i:0">
+          <a class="wt tile" href="case-immobilien-investment.html" data-branche="finance realestate" data-cat="performance" data-fade style="--i:0">
             <span class="wclr" style="aspect-ratio:4/4.6;background:#2E3A2F;color:#EDF2EC">
               <span class="big">129×</span>
               <span style="font-size:12.5px;opacity:.85;margin-top:6px"><b style="letter-spacing:0.05em;text-transform:uppercase;font-size:12px">Immobilien-Investment</b> · € 4,65 Mio. Kapital aus € 36k Google-Budget</span>
             </span>
             <span class="wpill">Google · Funnel</span>
           </a>
-          <a class="wt tile has-media" href="case-web-noma.html" data-flip data-cat="web performance" data-fade style="--i:4">
+          <a class="wt tile has-media" href="case-web-noma.html" data-flip data-branche="realestate" data-cat="web performance" data-fade style="--i:4">
             <img loading="lazy" decoding="async" src="assets/img/web_noma_m.jpg" alt="Noma Wien">
             <span class="wlab"><b>Noma Wien</b> · Projekt-Website und Wohnungsfinder</span>
           </a>
-          <div class="wt tile" data-cat="performance" data-fade style="--i:8">
+          <div class="wt tile" data-branche="realestate" data-cat="performance" data-fade style="--i:8">
             <span class="wclr" style="aspect-ratio:4/3.2;background:#33383E;color:#EFF1F3">
               <span style="font-family:var(--f-disp);font-weight:680;font-size:clamp(22px,2vw,32px);letter-spacing:-0.01em">Hero Group</span>
               <span style="font-size:12.5px;opacity:.85;margin-top:6px">Immobilien-Performance und Creatives</span>
             </span>
           </div>
-          <a class="wt tile has-media" href="case-web-pharmacom.html" data-flip data-cat="web" data-fade style="--i:12">
+          <a class="wt tile has-media" href="case-web-pharmacom.html" data-flip data-branche="health" data-cat="web" data-fade style="--i:12">
             <img loading="lazy" decoding="async" src="assets/img/web_pharmacom_d.jpg" alt="Pharmacom">
             <span class="wlab"><b>Pharmacom</b> · Corporate Website</span>
           </a>
-          <a class="wt tile" href="case-wohnbau-floridsdorf.html" data-cat="performance" data-fade style="--i:16">
+          <a class="wt tile" href="case-wohnbau-floridsdorf.html" data-branche="realestate" data-cat="performance" data-fade style="--i:16">
             <span class="wclr" style="aspect-ratio:4/3.6;background:#202A36;color:#E8EDF2">
               <span class="big">460</span>
               <span style="font-size:12.5px;opacity:.85;margin-top:6px"><b style="letter-spacing:0.05em;text-transform:uppercase;font-size:12px">Wohnbau, Floridsdorf</b> · Kaufinteressenten zu € 12,77 pro Lead</span>
             </span>
             <span class="wpill">Instant Forms</span>
           </a>
-          <a class="wt tile has-media" href="case-web-havenstone.html" data-flip data-cat="web" data-fade style="--i:20">
+          <a class="wt tile has-media" href="case-web-havenstone.html" data-flip data-branche="realestate" data-cat="web" data-fade style="--i:20">
             <img loading="lazy" decoding="async" src="assets/img/web_havenstone_m.jpg" alt="Havenstone">
             <span class="wlab"><b>Havenstone</b> · Website für den Projektentwickler</span>
           </a>
         </div>
 
         <div class="wcolw" data-driftsc="0.110">
-          <a class="wt tile has-media" href="case-premium-neubau.html" data-flip data-cat="performance content" data-fade style="--i:1">
+          <a class="wt tile has-media" href="case-premium-neubau.html" data-flip data-branche="realestate" data-cat="performance content" data-fade style="--i:1">
             <img loading="lazy" decoding="async" src="assets/img/funkhaus.jpg" alt="Premium-Neubau, Wien">
             <span class="wkpi"><span class="kv">489</span><span class="kl">(Leads · € 11,77)</span></span>
             <span class="wlab"><b>Premium-Neubau, Wien</b> · Ein Motiv trug 54 % aller Leads. Case ansehen →</span>
           </a>
-          <a class="wt tile" href="case-d2c-lifestyle.html" data-cat="performance" data-fade style="--i:5">
+          <a class="wt tile" href="case-d2c-lifestyle.html" data-branche="commerce" data-cat="performance" data-fade style="--i:5">
             <span class="wclr" style="aspect-ratio:4/4.2;background:#4A3328;color:#F4EEE8">
               <span class="big">+57 %</span>
               <span style="font-size:12.5px;opacity:.85;margin-top:6px"><b style="letter-spacing:0.05em;text-transform:uppercase;font-size:12px">D2C-Lifestyle-Marke</b> · € 520k → € 817k im Rekordjahr, ROAS 5,57</span>
             </span>
             <span class="wpill">Rekordjahr</span>
           </a>
-          <a class="wt tile has-media" href="case-web-unio.html" data-flip data-cat="web" data-fade style="--i:9">
+          <a class="wt tile has-media" href="case-web-unio.html" data-flip data-branche="realestate tech" data-cat="web" data-fade style="--i:9">
             <img loading="lazy" decoding="async" src="assets/img/web_unio_m.jpg" alt="UNIO">
             <span class="wlab"><b>UNIO</b> · Venture: Marke, Website und Produkt</span>
           </a>
-          <div class="wt tile" data-cat="performance" data-fade style="--i:13">
+          <div class="wt tile" data-branche="commerce" data-cat="performance" data-fade style="--i:13">
             <span class="wclr" style="aspect-ratio:4/3.4;background:#131315;color:#F3EDE1">
               <span style="font-family:var(--f-disp);font-weight:680;font-size:clamp(22px,2vw,32px);letter-spacing:-0.01em">Nordic Spirit · JTI</span>
               <span style="font-size:12.5px;opacity:.85;margin-top:6px">Performance und Kampagnen</span>
             </span>
           </div>
-          <a class="wt tile has-media" href="case-web-funkhausliving.html" data-flip data-cat="web" data-fade style="--i:17">
+          <a class="wt tile has-media" href="case-web-funkhausliving.html" data-flip data-branche="realestate" data-cat="web" data-fade style="--i:17">
             <img loading="lazy" decoding="async" src="assets/img/web_funkhausliving_d.jpg" alt="funkhaus.living">
             <span class="wlab"><b>funkhaus.living</b> · Projekt-Website: Living, Culture, History</span>
           </a>
-          <a class="wt tile" href="case-health-brand.html" data-cat="performance content" data-fade style="--i:21">
+          <a class="wt tile" href="case-health-brand.html" data-branche="health commerce" data-cat="performance content" data-fade style="--i:21">
             <span class="wclr" style="aspect-ratio:4/3.8;background:#1F3833;color:#EAF1EE">
               <span class="big">1.385</span>
               <span style="font-size:12.5px;opacity:.85;margin-top:6px"><b style="letter-spacing:0.05em;text-transform:uppercase;font-size:12px">Dental-/Health-Marke</b> · Verkäufe in 7 Monaten, ehrlich reportet</span>
@@ -182,31 +196,31 @@
         </div>
 
         <div class="wcolw" data-driftsc="0.060">
-          <a class="wt tile has-media" href="case-consumer-brand.html" data-flip data-cat="performance content" data-fade style="--i:2">
+          <a class="wt tile has-media" href="case-consumer-brand.html" data-flip data-branche="commerce" data-cat="performance content" data-fade style="--i:2">
             <img loading="lazy" decoding="async" src="assets/img/isi.jpg" alt="Premium-Consumer-Brand">
             <span class="wkpi"><span class="kv">4,02</span><span class="kl">(BFCM-ROAS)</span></span>
             <span class="wlab"><b>Premium-Consumer-Brand</b> · Black-Friday-ROAS 75 % über Benchmark</span>
           </a>
-          <a class="wt tile has-media" href="case-web-trattner.html" data-flip data-cat="web" data-fade style="--i:6">
+          <a class="wt tile has-media" href="case-web-trattner.html" data-flip data-branche="realestate" data-cat="web" data-fade style="--i:6">
             <img loading="lazy" decoding="async" src="assets/img/web_trattner_d.jpg" alt="Trattner & Söhne">
             <span class="wlab"><b>Trattner & Söhne</b> · Website für den Immobilien-Traditionsbetrieb</span>
           </a>
-          <a class="wt tile" href="case-crowdinvesting.html" data-cat="performance content" data-fade style="--i:10">
+          <a class="wt tile" href="case-crowdinvesting.html" data-branche="finance" data-cat="performance content" data-fade style="--i:10">
             <span class="wclr" style="aspect-ratio:4/4.8;background:#1C2530;color:#E8EDF2">
               <span class="big">8,75</span>
               <span style="font-size:12.5px;opacity:.85;margin-top:6px"><b style="letter-spacing:0.05em;text-transform:uppercase;font-size:12px">Crowdinvesting-Plattform</b> · ROAS vorher 2,14: gleiches Budget, 4× mehr Kapital</span>
             </span>
             <span class="wpill">POC-Phase</span>
           </a>
-          <div class="wt tile has-media" data-cat="performance content" data-fade style="--i:14">
+          <div class="wt tile has-media" data-branche="commerce" data-cat="performance content" data-fade style="--i:14">
             <img loading="lazy" decoding="async" src="assets/img/a_silv1.jpg" alt="Juwel Wien">
             <span class="wlab"><b>Juwel Wien</b> · Social Media und Kampagnen für die Rooftop-Location</span>
           </div>
-          <a class="wt tile has-media" href="case-web-northpoint.html" data-flip data-cat="web" data-fade style="--i:18">
+          <a class="wt tile has-media" href="case-web-northpoint.html" data-flip data-branche="finance realestate" data-cat="web" data-fade style="--i:18">
             <img loading="lazy" decoding="async" src="assets/img/web_northpoint_m.jpg" alt="Northpoint Advisors">
             <span class="wlab"><b>Northpoint Advisors</b> · Website für die Beratungsboutique</span>
           </a>
-          <div class="wt tile" data-cat="performance" data-fade style="--i:22">
+          <div class="wt tile" data-branche="realestate" data-cat="performance" data-fade style="--i:22">
             <span class="wclr" style="aspect-ratio:4/3.2;background:#2B2B28;color:#EDEBE4">
               <span style="font-family:var(--f-disp);font-weight:680;font-size:clamp(22px,2vw,32px);letter-spacing:-0.01em">Soravia</span>
               <span style="font-size:12.5px;opacity:.85;margin-top:6px">Performance Marketing · Real Estate</span>
@@ -215,43 +229,43 @@
         </div>
 
         <div class="wcolw" data-driftsc="0.135">
-          <div class="wt tile" data-cat="performance content" data-fade style="--i:3">
+          <div class="wt tile" data-branche="finance" data-cat="performance content" data-fade style="--i:3">
             <span class="wclr" style="aspect-ratio:4/4.2;background:#E9D8BC;color:#0A0A0A">
               <span style="font-family:var(--f-disp);font-weight:680;font-size:clamp(22px,2vw,32px);letter-spacing:-0.01em">Kommunalkredit</span>
               <span style="font-size:12.5px;opacity:.85;margin-top:6px">Social-Media-Content und Kampagnen-Sujets</span>
             </span>
           </div>
-          <a class="wt tile has-media" href="case-web-ib7.html" data-flip data-cat="web performance content" data-fade style="--i:7">
+          <a class="wt tile has-media" href="case-web-ib7.html" data-flip data-branche="commerce health" data-cat="web performance content" data-fade style="--i:7">
             <img loading="lazy" decoding="async" src="assets/img/web_ib7_d.jpg" alt="IB-7">
             <span class="wlab"><b>IB-7</b> · Website, Performance und Content</span>
           </a>
-          <a class="wt tile has-media" href="case-bautraeger-portfolio.html" data-flip data-cat="performance" data-fade style="--i:11">
+          <a class="wt tile has-media" href="case-bautraeger-portfolio.html" data-flip data-branche="realestate" data-cat="performance" data-fade style="--i:11">
             <img loading="lazy" decoding="async" src="assets/img/a_otta1.jpg" alt="Bauträger-Portfolio, Wien">
             <span class="wkpi"><span class="kv">€ 4,72</span><span class="kl">(Cost per Lead)</span></span>
             <span class="wlab"><b>Bauträger-Portfolio, Wien</b> · Der niedrigste CPL im gesamten Wohnbau-Portfolio</span>
           </a>
-          <a class="wt tile has-media" href="case-web-daphi.html" data-flip data-cat="web" data-fade style="--i:15">
+          <a class="wt tile has-media" href="case-web-daphi.html" data-flip data-branche="tech" data-cat="web" data-fade style="--i:15">
             <img loading="lazy" decoding="async" src="assets/img/web_daphi_d.jpg" alt="DaPhi">
             <span class="wlab"><b>DaPhi</b> · Website für den IT-Dienstleister</span>
           </a>
-          <a class="wt tile" href="case-photovoltaik.html" data-cat="performance" data-fade style="--i:19">
+          <a class="wt tile" href="case-photovoltaik.html" data-branche="tech" data-cat="performance" data-fade style="--i:19">
             <span class="wclr" style="aspect-ratio:4/3.4;background:#3A3A2E;color:#F0F0E6">
               <span class="big">+487 %</span>
               <span style="font-size:12.5px;opacity:.85;margin-top:6px"><b style="letter-spacing:0.05em;text-transform:uppercase;font-size:12px">Photovoltaik</b> · 406 Leads über den Konfigurator</span>
             </span>
             <span class="wpill">Google Search</span>
           </a>
-          <a class="wt tile has-media" href="case-web-twistnsparkle.html" data-flip data-cat="web" data-fade style="--i:23">
+          <a class="wt tile has-media" href="case-web-twistnsparkle.html" data-flip data-branche="commerce" data-cat="web" data-fade style="--i:23">
             <img loading="lazy" decoding="async" src="assets/img/web_twistnsparkle_d.jpg" alt="Twist'n Sparkle · isi">
             <span class="wlab"><b>Twist'n Sparkle · isi</b> · Produkt-Kampagnen-Site</span>
           </a>
-          <div class="wt tile" data-cat="performance" data-fade style="--i:24">
+          <div class="wt tile" data-branche="realestate" data-cat="performance" data-fade style="--i:24">
             <span class="wclr" style="aspect-ratio:4/3;background:#FBF8F2;color:#0A0A0A">
               <span style="font-family:var(--f-disp);font-weight:680;font-size:clamp(22px,2vw,32px);letter-spacing:-0.01em">Rhomberg</span>
               <span style="font-size:12.5px;opacity:.85;margin-top:6px">Performance Marketing · Real Estate</span>
             </span>
           </div>
-          <div class="wt tile" data-cat="performance" data-fade style="--i:25">
+          <div class="wt tile" data-branche="finance" data-cat="performance" data-fade style="--i:25">
             <span class="wclr" style="aspect-ratio:4/3.2;background:#22382C;color:#E4D2AC">
               <span style="font-family:var(--f-disp);font-weight:680;font-size:clamp(22px,2vw,32px);letter-spacing:-0.01em">IFA Invest</span>
               <span style="font-size:12.5px;opacity:.85;margin-top:6px">Performance · Finance</span>
