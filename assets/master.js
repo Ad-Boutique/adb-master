@@ -382,6 +382,24 @@
     row.addEventListener("click", function (e) { if (mv > 6) { e.preventDefault(); e.stopPropagation(); } }, true);
   });
 
+
+  /* ---------- Footer-Wortmarke exakt einpassen ---------- */
+  var fwordEl = document.querySelector(".fword div");
+  if (fwordEl) {
+    var fitWord = function () {
+      var box = fwordEl.parentElement.getBoundingClientRect();
+      fwordEl.style.fontSize = "";
+      var base = parseFloat(getComputedStyle(fwordEl).fontSize);
+      var w = fwordEl.scrollWidth;
+      var avail = box.width - 8;
+      if (w > avail) fwordEl.style.fontSize = Math.floor(base * (avail / w)) + "px";
+    };
+    fitWord();
+    window.addEventListener("resize", fitWord);
+    window.addEventListener("load", fitWord);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitWord);
+  }
+
   /* ---------- Scroll-Loop ---------- */
   var vh = window.innerHeight;
   window.addEventListener("resize", function () { vh = window.innerHeight; });
