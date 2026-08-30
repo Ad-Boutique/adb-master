@@ -221,7 +221,7 @@ CASES = [
          "Ehrlicher CPL entsteht durch Testing."]),
  dict(slug="case-consumer-brand",
   phones=dict(h="Gebaut für den Daumen.", t="Die Saison lebt mobil: Kampagnen-Site und Sujets, dort wo der Kauf beginnt.",
-              imgs=[["assets/img/web_twistnsparkle_m.jpg"], ["assets/img/isi.jpg", "assets/img/web_twistnsparkle_m.jpg"]]),
+              imgs=["assets/img/web_twistnsparkle_m0.jpg", "assets/img/web_twistnsparkle_m1.jpg", "assets/img/web_twistnsparkle_m2.jpg", "assets/img/web_twistnsparkle_ms0.jpg"]),
   ziel="Profitabler Saison-Peak", nav_title="Premium-Consumer-Brand",
   title=["Premium-", "Consumer-Brand."], sub="Black-Friday-ROAS 4,02. 75 % über dem eigenen Benchmark.",
   img="assets/img/isi.jpg", big="4,02", biglabel="BFCM-ROAS",
@@ -243,7 +243,7 @@ CASES = [
          "Benchmark schlagen heißt: den eigenen Account kennen."]),
  dict(slug="case-bautraeger-portfolio",
   phones=dict(h="Sujets, die im Feed bestehen.", t="Lage plus Lebensgefühl statt Floskeln: die Motive aus dem laufenden Portfolio.",
-              imgs=[["assets/img/a_otta1.jpg", "assets/img/a_otta2.jpg"], ["assets/img/a_otta2.jpg", "assets/img/a_otta1.jpg"]]),
+              imgs=["assets/img/a_otta1.jpg", "assets/img/a_otta2.jpg", "assets/img/a_otta3.jpg"]),
   ziel="Planbare Leads im Portfolio", nav_title="Bauträger-Portfolio, Wien",
   title=["Bauträger-", "Portfolio, Wien."], sub="€ 4,72 pro Lead. Der effizienteste im ganzen Portfolio.",
   img="assets/img/a_otta1.jpg", big="€ 4,72", biglabel="Cost per Lead",
@@ -335,27 +335,34 @@ def case_page(c, nxt):
     phones_sec = ""
     if c.get("phones"):
         ph = c["phones"]
-        frames = []
-        for pi, imgs in enumerate(ph["imgs"]):
-            inner = "\n            ".join('<img loading="lazy" decoding="async" src="%s" alt="">' % i for i in imgs)
-            frames.append('<div class="phframe"><div class="phinner" data-drift="0.%d">\n            %s\n          </div></div>' % (10 + pi * 8, inner))
-        phones_sec = """  <!-- MOBILE -->
+        screens = ph["imgs"]
+        if screens and isinstance(screens[0], list):
+            screens = [x for grp in screens for x in grp]
+        seen = set(); flat = []
+        for x in screens:
+            if x not in seen:
+                seen.add(x); flat.append(x)
+        colA = flat[0::2]; colB = flat[1::2]
+        def _col(items, speed):
+            fr = "\n          ".join('<div class="phframe"><img loading="lazy" decoding="async" src="%s" alt=""></div>' % i for i in items)
+            return '<div class="phcol" data-drift="%s">\n          %s\n        </div>' % (speed, fr)
+        phones_sec = """  <!-- MOBILE: Screens ziehen vorbei -->
   <section class="sec fg-light bg-paper phonesec" data-bg="#F3EDE1" data-fg="dark">
     <div class="wrap phwrap">
-      <div>
+      <div class="phtxt">
         <div class="lchap" style="grid-template-columns:1fr;gap:18px">
           <div class="lh" data-lines><span class="rl"><span>""" + ph["h"] + """</span></span></div>
           <p class="lt3" data-fade>""" + ph["t"] + """</p>
         </div>
       </div>
-      <div class="phones">
-        """ + "\n        ".join(frames) + """
+      <div class="phcols">
+        """ + _col(colA, "0.14") + """
+        """ + _col(colB, "0.24") + """
       </div>
     </div>
   </section>
 
 """
-
     if nxt.get("handmade"):
         nxt_media = '<img loading="lazy" decoding="async" src="assets/img/funkhaus.jpg" alt="">'
         nxt_sub = "489 Leads zu € 11,77. Ein Motiv trug 54 %."
@@ -366,7 +373,7 @@ def case_page(c, nxt):
         if nxt.get("img"):
             nxt_media = '<img loading="lazy" decoding="async" src="%s" alt="">' % nxt["img"]
         else:
-            nxt_media = '<span style="display:flex;align-items:flex-end;aspect-ratio:4/3;background:%s;color:%s;padding:24px;border-radius:3px"><span style="font-family:var(--f-disp);font-weight:800;font-size:clamp(40px,4vw,64px);font-variant-numeric:tabular-nums">%s</span></span>' % (nxt.get("clr", "#22382C"), nxt.get("fg", "#EDF2EC"), nxt.get("big", ""))
+            nxt_media = '<span style="display:flex;align-items:flex-end;aspect-ratio:4/3;background:%s;color:%s;padding:24px;border-radius:3px"><span style="font-family:var(--f-disp);font-weight:680;font-size:clamp(40px,4vw,64px);font-variant-numeric:tabular-nums">%s</span></span>' % (nxt.get("clr", "#22382C"), nxt.get("fg", "#EDF2EC"), nxt.get("big", ""))
     nxt_href = nxt["slug"] + ".html"
     page = HEAD.format(title="Case · " + c["nav_title"], bodybg=world) + menu("work.html") + """<main>
 

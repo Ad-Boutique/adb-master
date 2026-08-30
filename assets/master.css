@@ -1043,20 +1043,20 @@ body.loaded .chero img { transform: scale(1); }
 @media (max-width: 900px) { .panelscroll .pswrap { grid-template-columns: 1fr; } .panelscroll .pstxt { position: static; padding: 0; } }
 
 /* ============================================================
-   Helle Sektion: Text links, iPhone-Frames mit scrollendem Inhalt
+   Helle Sektion: Text links sticky, iPhones ziehen vorbei (Outpost)
    ============================================================ */
-.phonesec .phwrap { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(40px, 6vw, 110px); align-items: center; }
-.phones { display: flex; gap: clamp(20px, 3vw, 44px); justify-content: center; }
+.phonesec .phwrap { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(40px, 6vw, 110px); align-items: start; }
+.phonesec .phtxt { position: sticky; top: clamp(120px, 26vh, 260px); }
+.phcols { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(22px, 3vw, 44px); align-items: start; overflow: visible; }
+.phcol { display: flex; flex-direction: column; gap: clamp(26px, 3.4vw, 52px); will-change: transform; }
+.phcol:nth-child(2) { margin-top: clamp(90px, 12vw, 200px); }
 .phframe {
-  width: clamp(180px, 16vw, 250px); aspect-ratio: 9 / 19;
+  width: 100%; aspect-ratio: 9 / 19;
   border: 9px solid #131315; border-radius: 40px; overflow: hidden;
   background: #131315; box-shadow: 0 26px 70px rgba(10,10,10,0.22);
-  position: relative; flex: 0 0 auto;
 }
-.phframe:nth-child(2) { margin-top: clamp(40px, 5vw, 80px); }
-.phframe .phinner { will-change: transform; display: flex; flex-direction: column; gap: 8px; }
-.phframe .phinner img { width: 100%; border-radius: 0; }
-@media (max-width: 900px) { .phonesec .phwrap { grid-template-columns: 1fr; } }
+.phframe img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+@media (max-width: 900px) { .phonesec .phwrap { grid-template-columns: 1fr; } .phonesec .phtxt { position: static; } }
 
 /* ============================================================
    Horizontaler Prozess (kompakt, sticky, Punktlinie fuellt sich)

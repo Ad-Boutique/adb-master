@@ -81,7 +81,7 @@ SERVICES = [
   proof_nums=[("5,87×", "Ø ROAS über alle Accounts"), ("€ 4,72", "CPL, Bauträger-Portfolio Wien"), ("489", "Leads, Premium-Neubau Wien")],
   proof_quote="Konstanz über Regionen und Projekte zeigt: Das Motiv trägt, nicht der Zufall. Niedrige CPL kommt aus Disziplin, nicht aus Glück.",
   visual=("phones", dict(h="Creatives, die im Feed bestehen.", t="Gebaut für den Daumen: Sujets aus laufenden Kampagnen, getestet gegen echte Benchmarks, nicht gegen Geschmack.",
-                          phones=[["assets/img/a_funk2.jpg", "assets/img/a_otta1.jpg"], ["assets/img/a_gmund1.jpg", "assets/img/a_funk3.jpg"]])),
+                          phones=["assets/img/a_funk2.jpg", "assets/img/a_otta1.jpg", "assets/img/a_gmund1.jpg", "assets/img/a_funk3.jpg", "assets/img/a_otta2.jpg", "assets/img/a_silv1.jpg"])),
   logos=["winegg", "funkhaus", "ifa", "conda", "soravia", "rhomberg", "vonpoll", "seeresidenz"],
   oplist=[("case-premium-neubau.html", "Premium-Neubau, Wien", "489", "Leads · € 11,77 CPL"),
           ("case-bautraeger-portfolio.html", "Bauträger-Portfolio, Wien", "€ 4,72", "CPL · der effizienteste im Portfolio"),
@@ -119,7 +119,7 @@ SERVICES = [
   proof_nums=[("54 %", "aller Leads aus einem Interior-Motiv"), ("−58 %", "CPA durch UGC statt Studio-Video"), ("€ 0,99", "Awareness-CPM, 72 % unter Benchmark")],
   proof_quote="Der größte Hebel war das Creative, nicht das Budget. Das gilt in Commerce, Real Estate und Health gleichermaßen.",
   visual=("phones", dict(h="Gebaut für den Daumen.", t="Sujets aus laufenden Mandaten: Gastro, Event, Immobilie, Produkt. Immer mit Hook, immer messbar.",
-                          phones=[["assets/img/c_champ.jpg", "assets/img/c_club.jpg"], ["assets/img/a_silv1.jpg", "assets/img/c_car.jpg"]])),
+                          phones=["assets/img/a_silv1.jpg", "assets/img/a_funk1.jpg", "assets/img/a_gmund2.jpg", "assets/img/a_ksg1.jpg", "assets/img/a_funk4.jpg", "assets/img/a_silv2.jpg"])),
   logos=["isi", "looops", "juwel", "nordicspirit", "jti", "ilbosso", "kaisers", "funkhaus"],
   oplist=[("case-health-brand.html", "Dental-/Health-Marke", "−58 %", "CPA durch UGC"),
           ("case-premium-neubau.html", "Premium-Neubau, Wien", "54 %", "aller Leads aus einem Motiv"),
@@ -157,7 +157,7 @@ SERVICES = [
   proof_nums=[("406", "Leads über den PV-Konfigurator"), ("+487 %", "Website-Besucher"), ("€ 6,97", "CPL Instant Form im ehrlichen Vergleich")],
   proof_quote="Sichtbarkeit und Conversion-Mechanik gehören zusammen: Search erntet Nachfrage, die schon da ist, die Seite macht sie zur Anfrage.",
   visual=("phones", dict(h="Mobil zuerst gebaut.", t="Die Auftritte aus laufenden Mandaten, dort wo sie besucht werden: am Telefon.",
-                          phones=[["assets/img/web_noma_m.jpg", "assets/img/web_funkhausliving_m.jpg"], ["assets/img/web_trattner_m.jpg", "assets/img/web_unio_m.jpg"]])),
+                          phones=["assets/img/web_noma_m.jpg", "assets/img/web_funkhausliving_m.jpg", "assets/img/web_trattner_m.jpg", "assets/img/web_unio_m.jpg", "assets/img/web_ib7_m.jpg", "assets/img/web_havenstone_m.jpg"])),
   logos=["funkhaus", "winegg", "seeresidenz", "vonpoll", "rhomberg", "soravia", "isi", "hagent"],
   oplist=[("case-photovoltaik.html", "Photovoltaik-Anbieter", "+487 %", "Besucher · 406 Leads"),
           ("case-premium-neubau.html", "Premium-Neubau, Wien", "€ 6,97", "CPL Instant Form vs. € 15,66 Website"),
@@ -261,28 +261,30 @@ def render_service(s):
 
 ''' % (vd["h"], vd["t"], col1, col2)
     elif vkind == "phones":
-        phs = []
-        for pi, imgs in enumerate(vd["phones"]):
-            inner = "\n            ".join('<img loading="lazy" decoding="async" src="%s" alt="">' % i for i in imgs)
-            phs.append('''<div class="phframe"><div class="phinner" data-drift="0.%d">
-            %s
-          </div></div>''' % (10 + pi * 8, inner))
-        visual = '''  <!-- PROOF · PHONES (hell, Inhalte scrollen im Frame) -->
+        screens = vd["phones"]
+        if screens and isinstance(screens[0], list):
+            screens = [x for grp in screens for x in grp]
+        colA = screens[0::2]; colB = screens[1::2]
+        def _pc(items, speed):
+            fr = "\n          ".join('<div class="phframe"><img loading="lazy" decoding="async" src="%s" alt=""></div>' % i for i in items)
+            return '<div class="phcol" data-drift="%s">\n          %s\n        </div>' % (speed, fr)
+        visual = '''  <!-- PROOF · PHONES (Screens ziehen vorbei) -->
   <section class="sec fg-light bg-paper phonesec" data-bg="#F3EDE1" data-fg="dark">
     <div class="wrap phwrap">
-      <div>
+      <div class="phtxt">
         <div class="lchap" style="grid-template-columns:1fr;gap:18px">
           <div class="lh" data-lines><span class="rl"><span>%s</span></span></div>
           <p class="lt3" data-fade>%s</p>
         </div>
       </div>
-      <div class="phones">
+      <div class="phcols">
+        %s
         %s
       </div>
     </div>
   </section>
 
-''' % (vd["h"], vd["t"], "\n        ".join(phs))
+''' % (vd["h"], vd["t"], _pc(colA, "0.14"), _pc(colB, "0.24"))
     else:
         visual = '''  <!-- PROOF · STAGE -->
   <section class="fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding: 0 0 clamp(110px,14vw,200px)">
