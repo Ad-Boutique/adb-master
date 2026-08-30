@@ -113,6 +113,23 @@ BRANCH_LOGOS = {
     "E-Commerce": ["looops", "isi", "nordicspirit", "ilbosso", "kaisers", "jti"],
     "Energie": ["hagent", "robin", "fabrik1230"],
 }
+LOGO_TILE_BGS = [
+    ("#FBF8F2", "lt"), ("#0E0E10", "dk"), ("#EFE7D6", "lt"), ("#22382C", "dk"),
+    ("#E9D8BC", "lt"), ("#1C2530", "dk"), ("#FFFFFF", "lt"), ("#4A3328", "dk"),
+]
+def logogrid(names):
+    names = list(names)
+    slots = 8
+    per = max(1, (len(names) + slots - 1) // slots)
+    while len(names) < slots * per:
+        names += names[: slots * per - len(names)]
+    out = []
+    for i in range(slots):
+        bg, tone = LOGO_TILE_BGS[i]
+        chunk = names[i * per:(i + 1) * per]
+        out.append('<span class="lslot %s" style="background:%s" data-set="%s"></span>' % (tone, bg, ",".join(chunk)))
+    return "\n        ".join(out)
+
 def logocycle(names, slots=3):
     names = list(names)
     per = max(1, (len(names) + slots - 1) // slots)
@@ -202,7 +219,10 @@ CASES = [
   learn=["Eigennutzer und Anleger sind zwei Märkte, kein gemeinsamer.",
          "Anleger wollen Rendite-Sicherheit, keine Zertifikate.",
          "Ehrlicher CPL entsteht durch Testing."]),
- dict(slug="case-consumer-brand", ziel="Profitabler Saison-Peak", nav_title="Premium-Consumer-Brand",
+ dict(slug="case-consumer-brand",
+  phones=dict(h="Gebaut für den Daumen.", t="Die Saison lebt mobil: Kampagnen-Site und Sujets, dort wo der Kauf beginnt.",
+              imgs=[["assets/img/web_twistnsparkle_m.jpg"], ["assets/img/isi.jpg", "assets/img/web_twistnsparkle_m.jpg"]]),
+  ziel="Profitabler Saison-Peak", nav_title="Premium-Consumer-Brand",
   title=["Premium-", "Consumer-Brand."], sub="Black-Friday-ROAS 4,02. 75 % über dem eigenen Benchmark.",
   img="assets/img/isi.jpg", big="4,02", biglabel="BFCM-ROAS",
   disz=[("E-Commerce Growth", "service-ecommerce.html"), ("Performance Marketing", "service-performance-marketing.html"), ("Content Creation", "service-content-creation.html")],
@@ -221,7 +241,10 @@ CASES = [
   learn=["Saison ist Architektur, kein Zufall.",
          "Günstige Awareness im Vorlauf macht den Peak profitabel.",
          "Benchmark schlagen heißt: den eigenen Account kennen."]),
- dict(slug="case-bautraeger-portfolio", ziel="Planbare Leads im Portfolio", nav_title="Bauträger-Portfolio, Wien",
+ dict(slug="case-bautraeger-portfolio",
+  phones=dict(h="Sujets, die im Feed bestehen.", t="Lage plus Lebensgefühl statt Floskeln: die Motive aus dem laufenden Portfolio.",
+              imgs=[["assets/img/a_otta1.jpg", "assets/img/a_otta2.jpg"], ["assets/img/a_otta2.jpg", "assets/img/a_otta1.jpg"]]),
+  ziel="Planbare Leads im Portfolio", nav_title="Bauträger-Portfolio, Wien",
   title=["Bauträger-", "Portfolio, Wien."], sub="€ 4,72 pro Lead. Der effizienteste im ganzen Portfolio.",
   img="assets/img/a_otta1.jpg", big="€ 4,72", biglabel="Cost per Lead",
   disz=[("Performance Marketing", "service-performance-marketing.html"), ("Content Creation", "service-content-creation.html")],
@@ -309,13 +332,30 @@ def case_page(c, nxt):
         (";border-bottom:1px solid var(--line-d)" if i == len(c["learn"]) - 1 else ""), t) for i, t in enumerate(c["learn"]))
     stmt = "\n".join('        <span class="rl"><span>%s</span></span>' % x for x in c["statement"])
     svc_t, svc_h = c["disz"][0]
-    branch_key = c["rahmen"].split("<br>")[0].split("·")[0].strip()
-    case_logos = None
-    for k, v in BRANCH_LOGOS.items():
-        if k.lower() in c["rahmen"].split("<br>")[0].lower():
-            case_logos = v; break
-    if not case_logos:
-        case_logos = ["looops", "ifa", "winegg", "isi", "conda", "funkhaus"]
+    phones_sec = ""
+    if c.get("phones"):
+        ph = c["phones"]
+        frames = []
+        for pi, imgs in enumerate(ph["imgs"]):
+            inner = "\n            ".join('<img loading="lazy" decoding="async" src="%s" alt="">' % i for i in imgs)
+            frames.append('<div class="phframe"><div class="phinner" data-drift="0.%d">\n            %s\n          </div></div>' % (10 + pi * 8, inner))
+        phones_sec = """  <!-- MOBILE -->
+  <section class="sec fg-light bg-paper phonesec" data-bg="#F3EDE1" data-fg="dark">
+    <div class="wrap phwrap">
+      <div>
+        <div class="lchap" style="grid-template-columns:1fr;gap:18px">
+          <div class="lh" data-lines><span class="rl"><span>""" + ph["h"] + """</span></span></div>
+          <p class="lt3" data-fade>""" + ph["t"] + """</p>
+        </div>
+      </div>
+      <div class="phones">
+        """ + "\n        ".join(frames) + """
+      </div>
+    </div>
+  </section>
+
+"""
+
     if nxt.get("handmade"):
         nxt_media = '<img loading="lazy" decoding="async" src="assets/img/funkhaus.jpg" alt="">'
         nxt_sub = "489 Leads zu € 11,77. Ein Motiv trug 54 %."
@@ -377,16 +417,6 @@ def case_page(c, nxt):
     </div>
   </section>
 
-  <!-- MARKEN -->
-  <section class="fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding: 0 0 clamp(70px,9vw,120px)">
-    <div class="wrap" style="display:flex;align-items:center;gap:clamp(28px,4vw,64px);flex-wrap:wrap;border-top:1px solid var(--line-l);padding-top:30px">
-      <span class="label" style="color:var(--grey-dark)">Marken, mit denen wir arbeiten</span>
-      <div class="logocycle" style="flex:1">
-        """ + logocycle(case_logos) + """
-      </div>
-    </div>
-  </section>
-
   <!-- ERGEBNIS -->
   <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:0">
     <div class="wrap">
@@ -398,7 +428,7 @@ def case_page(c, nxt):
     </div>
   </section>
 
-  <!-- LEARNINGS -->
+""" + phones_sec + """  <!-- LEARNINGS -->
   <section class="sec fg-dark" data-bg="""" + world + """" data-fg="light" style="background:""" + world + """">
     <div class="wrap" style="max-width:900px">
       <span class="label" style="color:var(--champ);display:block;margin-bottom:26px">Learnings</span>

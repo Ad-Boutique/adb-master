@@ -451,7 +451,7 @@
           if (!t.classList.contains("fout")) first.set(t, t.getBoundingClientRect());
         });
         allTiles.forEach(function (t) {
-          var show2 = cat === "alle" || t.getAttribute("data-cat") === cat;
+          var show2 = cat === "alle" || (t.getAttribute("data-cat") || "").split(" ").indexOf(cat) >= 0;
           t.classList.toggle("fout", !show2);
         });
         allTiles.forEach(function (t) {

@@ -1,7 +1,7 @@
 # Service-LP-Generator: Schema Problem → Konsequenz → Lösung → Differenzierung →
 # Proof ×3 → Logos → Case-Liste → FAQ → No-Brainer + Risikoumkehr → CTA
 # -*- coding: utf-8 -*-
-from _gen import HEAD, FOOTER, menu, logocycle
+from _gen import HEAD, FOOTER, menu, logocycle, logogrid
 
 def logos_row(names, label):
     imgs = "\n      ".join('<img loading="lazy" decoding="async" src="assets/logos/%s.png" alt="%s">' % (n, n) for n in names)
@@ -43,8 +43,8 @@ SERVICES = [
   proof_nums=[("5,57", "Blended ROAS, Ziel war 3,5"), ("€ 312k", "Umsatz aus € 56k Mediabudget"), ("+56 %", "Bestellungen im Rekordjahr")],
   proof_quote="„Pinterest führte mit ROAS 6,99, Google folgte mit 5,98. Inklusive Agentur-Fee blieb der Blend bei 4,17.“ Solche Sätze stehen bei uns im Reporting, nicht im Kleingedruckten.",
   visual=("panels", dict(h="Der Auftritt, der verkauft.", t="Shop, Markenwelt und Kampagne aus einem Guss: Auftritte aus laufenden Commerce-Mandaten.",
-                          imgs=["assets/img/d_isi.jpg", "assets/img/d_noma.jpg", "assets/img/d_ib7.jpg", "assets/img/d_funkhaus.jpg"])),
-  logos=["looops", "isi", "nordicspirit", "ilbosso", "kaisers", "jti"],
+                          imgs=["assets/img/web_twistnsparkle_d.jpg", "assets/img/web_ib7_d.jpg", "assets/img/d_isi.jpg", "assets/img/web_daphi_d.jpg"])),
+  logos=["looops", "isi", "nordicspirit", "ilbosso", "kaisers", "jti", "juwel", "bojito"],
   oplist=[("case-consumer-brand.html", "Premium-Consumer-Brand", "4,02", "BFCM-ROAS · +75 %"),
           ("case-d2c-lifestyle.html", "D2C-Lifestyle-Marke", "+57 %", "Jahresumsatz · ROAS 5,57"),
           ("case-health-brand.html", "Dental-/Health-Marke", "1.385", "Verkäufe · ehrlich reportet")],
@@ -82,7 +82,7 @@ SERVICES = [
   proof_quote="Konstanz über Regionen und Projekte zeigt: Das Motiv trägt, nicht der Zufall. Niedrige CPL kommt aus Disziplin, nicht aus Glück.",
   visual=("phones", dict(h="Creatives, die im Feed bestehen.", t="Gebaut für den Daumen: Sujets aus laufenden Kampagnen, getestet gegen echte Benchmarks, nicht gegen Geschmack.",
                           phones=[["assets/img/a_funk2.jpg", "assets/img/a_otta1.jpg"], ["assets/img/a_gmund1.jpg", "assets/img/a_funk3.jpg"]])),
-  logos=["winegg", "funkhaus", "ifa", "conda", "soravia", "rhomberg"],
+  logos=["winegg", "funkhaus", "ifa", "conda", "soravia", "rhomberg", "vonpoll", "seeresidenz"],
   oplist=[("case-premium-neubau.html", "Premium-Neubau, Wien", "489", "Leads · € 11,77 CPL"),
           ("case-bautraeger-portfolio.html", "Bauträger-Portfolio, Wien", "€ 4,72", "CPL · der effizienteste im Portfolio"),
           ("case-wohnbau-floridsdorf.html", "Wohnbau, Floridsdorf", "460", "Leads · € 12,77 CPL")],
@@ -120,7 +120,7 @@ SERVICES = [
   proof_quote="Der größte Hebel war das Creative, nicht das Budget. Das gilt in Commerce, Real Estate und Health gleichermaßen.",
   visual=("phones", dict(h="Gebaut für den Daumen.", t="Sujets aus laufenden Mandaten: Gastro, Event, Immobilie, Produkt. Immer mit Hook, immer messbar.",
                           phones=[["assets/img/c_champ.jpg", "assets/img/c_club.jpg"], ["assets/img/a_silv1.jpg", "assets/img/c_car.jpg"]])),
-  logos=["isi", "looops", "juwel", "nordicspirit", "jti", "ilbosso"],
+  logos=["isi", "looops", "juwel", "nordicspirit", "jti", "ilbosso", "kaisers", "funkhaus"],
   oplist=[("case-health-brand.html", "Dental-/Health-Marke", "−58 %", "CPA durch UGC"),
           ("case-premium-neubau.html", "Premium-Neubau, Wien", "54 %", "aller Leads aus einem Motiv"),
           ("case-d2c-lifestyle.html", "D2C-Lifestyle-Marke", "+57 %", "Jahresumsatz · UGC schlug Studio")],
@@ -156,9 +156,9 @@ SERVICES = [
   proof_h=["+487 % Besucher.", "406 Leads."],
   proof_nums=[("406", "Leads über den PV-Konfigurator"), ("+487 %", "Website-Besucher"), ("€ 6,97", "CPL Instant Form im ehrlichen Vergleich")],
   proof_quote="Sichtbarkeit und Conversion-Mechanik gehören zusammen: Search erntet Nachfrage, die schon da ist, die Seite macht sie zur Anfrage.",
-  visual=("panels", dict(h="Auftritte aus laufenden Mandaten.", t="Markenwelt, Projekt-Landingpage, Shop: gebaut auf Conversion, gepflegt im Mandat.",
-                          imgs=["assets/img/d_funkhaus.jpg", "assets/img/d_isi.jpg", "assets/img/d_noma.jpg", "assets/img/d_ib7.jpg"])),
-  logos=["funkhaus", "winegg", "seeresidenz", "vonpoll", "rhomberg", "soravia"],
+  visual=("phones", dict(h="Mobil zuerst gebaut.", t="Die Auftritte aus laufenden Mandaten, dort wo sie besucht werden: am Telefon.",
+                          phones=[["assets/img/web_noma_m.jpg", "assets/img/web_funkhausliving_m.jpg"], ["assets/img/web_trattner_m.jpg", "assets/img/web_unio_m.jpg"]])),
+  logos=["funkhaus", "winegg", "seeresidenz", "vonpoll", "rhomberg", "soravia", "isi", "hagent"],
   oplist=[("case-photovoltaik.html", "Photovoltaik-Anbieter", "+487 %", "Besucher · 406 Leads"),
           ("case-premium-neubau.html", "Premium-Neubau, Wien", "€ 6,97", "CPL Instant Form vs. € 15,66 Website"),
           ("case-immobilien-investment.html", "Immobilien-Investment", "129×", "Funnel bis zur Zeichnung")],
@@ -195,7 +195,7 @@ SERVICES = [
   proof_nums=[("129×", "Return, sauber zugerechnet"), ("8,75", "ROAS, vorher 2,14"), ("−69 %", "Kosten je Investor")],
   proof_quote="Gleicher Spend, anderes Ergebnis: Der Beweis liegt im Vorher-Nachher. Struktur schlägt Einzelkampagne.",
   visual=("stage", dict(img="assets/img/d_noma.jpg", cap="Aus dem Mandat · Auftritt mit Funnel-Logik")),
-  logos=["ifa", "conda", "raiffeisen", "soravia", "fabrik1230", "hagent"],
+  logos=["ifa", "conda", "raiffeisen", "soravia", "fabrik1230", "hagent", "winegg", "buxbaum"],
   oplist=[("case-immobilien-investment.html", "Immobilien-Investment", "129×", "€ 36k → € 4,65 Mio. Kapital"),
           ("case-crowdinvesting.html", "Crowdinvesting-Plattform", "8,75", "ROAS, vorher 2,14"),
           ("case-consumer-brand.html", "Premium-Consumer-Brand", "4,02", "Saison als Architektur")],
@@ -303,7 +303,7 @@ def render_service(s):
           <div class="a">%s</div>
         </div>''' % (q, a) for q, a in s["faq"])
     chips_sel = "\n        ".join('<button class="nopt" data-v="%s" style="--i:%d">%s <span class="plus">+</span></button>' % (cv, 7 - i, cv) for i, cv in enumerate(s["chips"]))
-    logos = logocycle(s["logos"])
+    logos = logogrid(s["logos"])
 
     page = HEAD.format(title=s["nav"], bodybg="#F3EDE1") + menu("index.html#leistungen") + '''<main>
 
@@ -385,12 +385,12 @@ def render_service(s):
     </div>
   </section>
 
-''' + visual + '''  <!-- LOGOS -->
-  <section class="fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding: clamp(40px,5vw,64px) 0">
-    <div class="wrap" style="display:flex;align-items:center;gap:clamp(28px,4vw,64px);flex-wrap:wrap;border-top:1px solid var(--line-l);border-bottom:1px solid var(--line-l);padding-top:34px;padding-bottom:34px">
-      <span class="label" style="color:var(--grey-dark)">Marken, die bleiben</span>
-      <div class="logocycle" style="flex:1">
-      ''' + logos + '''
+''' + visual + '''  <!-- LOGOS: zentriert, 2x4, flaechig -->
+  <section class="fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding: clamp(70px,9vw,130px) 0">
+    <div class="wrap">
+      <span class="label" style="color:var(--grey-dark);display:block;text-align:center;margin-bottom:clamp(30px,4vw,50px)">Marken, mit denen wir in diesem Feld arbeiten</span>
+      <div class="logocycle logogrid" data-fade>
+        ''' + logos + '''
       </div>
     </div>
   </section>

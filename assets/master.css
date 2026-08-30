@@ -1173,3 +1173,20 @@ body.loaded .chero img { transform: scale(1); }
 .svcard ul { list-style: none; margin-top: 18px; display: flex; flex-direction: column; gap: 7px; }
 .svcard li { font-size: 13.5px; color: var(--grey-dark); }
 .svcard .see { margin-top: auto; padding-top: 22px; }
+
+
+/* Logo-Block: zentriert, 2x4, flaechige Kacheln, Logos blenden durch */
+.logogrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(14px, 1.6vw, 24px); max-width: 1120px; margin: 0 auto; }
+.logogrid .lslot { position: relative; aspect-ratio: 16 / 9; border-radius: 4px; min-width: 0; max-width: none; height: auto; flex: none; }
+.logogrid .lslot img {
+  position: absolute; inset: 0; margin: auto; left: 0; top: 0; right: 0; bottom: 0;
+  height: clamp(20px, 2vw, 30px); width: auto; max-width: 58%; object-fit: contain;
+}
+.logogrid .lslot.dk img { filter: grayscale(1) brightness(2.2); }
+.logogrid .lslot.lt img { filter: grayscale(1) invert(1) brightness(0.22); }
+@media (max-width: 900px) { .logogrid { grid-template-columns: 1fr 1fr; } }
+
+/* Pardo-Ruhe: Cases atmen mehr */
+.cintro.sec { padding: clamp(140px, 17vw, 260px) 0; }
+.cstate { min-height: 100vh; }
+.cnums { row-gap: clamp(40px, 5vw, 80px); }
