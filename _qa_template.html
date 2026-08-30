@@ -1,0 +1,108 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>ADB QA</title>
+<style>body{font:13px/1.5 monospace;padding:20px;background:#111;color:#eee}iframe{width:1440px;height:900px;border:0;position:fixed;left:-4000px;top:0}pre{white-space:pre-wrap}</style>
+<pre id="out">läuft…</pre>
+<iframe id="fr"></iframe>
+<script>
+const PAGES = window.__PAGES__ || [];
+const out = document.getElementById('out');
+const fr = document.getElementById('fr');
+const results = [];
+
+function wait(ms){ return new Promise(r => setTimeout(r, ms)); }
+
+async function checkPage(url) {
+  const issues = [];
+  await new Promise(res => {
+    fr.onload = res;
+    fr.src = url + '?qa=' + Date.now();
+  });
+  await wait(2600);
+  const w = fr.contentWindow, d = fr.contentDocument;
+
+  // 1) kaputte Bilder
+  const broken = [...d.images].filter(i => i.complete && i.naturalWidth === 0).map(i => i.getAttribute('src'));
+  if (broken.length) issues.push('BROKEN-IMG: ' + broken.join(', '));
+
+  // 2) Bilder ohne Höhe (kollabiert)
+  const collapsed = [...d.images].filter(i => i.naturalWidth > 0 && i.getBoundingClientRect().height < 4)
+    .map(i => (i.getAttribute('src') || '').split('/').pop());
+  if (collapsed.length) issues.push('COLLAPSED-IMG: ' + [...new Set(collapsed)].slice(0,5).join(', '));
+
+  // 3) alte Komponenten-Klassen
+  ['phinner','hcard','procgrid','wmasonry','nextcase'].forEach(cl => {
+    if (d.querySelector('.' + cl)) issues.push('STALE-CLASS: .' + cl);
+  });
+
+  // 4) Phone-Sektion plausibel?
+  d.querySelectorAll('.phonesec').forEach((sec, si) => {
+    const frames = sec.querySelectorAll('.phframe');
+    if (!frames.length) issues.push('PHONESEC-EMPTY #' + si);
+    else {
+      const bad = [...frames].filter(f => f.getBoundingClientRect().width < 60);
+      if (bad.length) issues.push('PHFRAME-TOO-SMALL: ' + bad.length + '/' + frames.length);
+      const noimg = [...frames].filter(f => !f.querySelector('img'));
+      if (noimg.length) issues.push('PHFRAME-NO-IMG: ' + noimg.length);
+    }
+    if (!sec.querySelector('.phtxt')) issues.push('PHONESEC-NO-STICKY-TEXT');
+  });
+
+  // 5) leere Sektionen (hoch, aber ohne Inhalt)
+  [...d.querySelectorAll('section')].forEach((s, i) => {
+    const r = s.getBoundingClientRect();
+    if (r.height > 300 && s.innerText.trim().length === 0 && !s.querySelector('img,svg,video,canvas')) {
+      issues.push('EMPTY-SECTION #' + i + ' h=' + Math.round(r.height));
+    }
+  });
+
+  // 6) horizontaler Overflow
+  if (d.documentElement.scrollWidth > w.innerWidth + 2) {
+    issues.push('H-OVERFLOW: ' + d.documentElement.scrollWidth + ' > ' + w.innerWidth);
+  }
+
+  // 7) tote interne Links
+  const hrefs = [...d.querySelectorAll('a[href$=".html"]')].map(a => a.getAttribute('href'));
+  const uniq = [...new Set(hrefs)];
+  for (const h of uniq) {
+    try {
+      const r = await fetch(h, {method:'HEAD'});
+      if (!r.ok) issues.push('DEAD-LINK: ' + h);
+    } catch(e) { issues.push('DEAD-LINK: ' + h); }
+  }
+
+  // 8) Scroll-Durchlauf: JS-Fehler + Reveals
+  let jsErr = null;
+  w.onerror = (m) => { jsErr = m; };
+  const H = d.body.scrollHeight;
+  for (let y = 0; y < H; y += 700) { w.scrollTo(0, y); await wait(45); }
+  w.scrollTo(0, H); await wait(400);
+  if (jsErr) issues.push('JS-ERROR: ' + jsErr);
+
+  // 9) unsichtbare Reveals nach dem Scrollen
+  const stuck = [...d.querySelectorAll('[data-fade],[data-lines],[data-scale]')]
+    .filter(e => !e.classList.contains('inview'))
+    .filter(e => { const r = e.getBoundingClientRect(); return r.height > 0; });
+  if (stuck.length > 3) issues.push('STUCK-REVEALS: ' + stuck.length);
+
+  // 10) Footer-Wordmark abgeschnitten?
+  const fw = d.querySelector('.fword div');
+  if (fw) {
+    const fwr = fw.getBoundingClientRect(), wrap = fw.parentElement.getBoundingClientRect();
+    if (fwr.bottom > wrap.bottom + 6 || fwr.top < wrap.top - 6) issues.push('FOOTER-CLIP');
+  }
+  return issues;
+}
+
+(async () => {
+  for (const p of PAGES) {
+    let iss;
+    try { iss = await checkPage(p); }
+    catch (e) { iss = ['CHECK-CRASH: ' + e.message]; }
+    results.push([p, iss]);
+    out.textContent = results.map(([u, i]) => (i.length ? '✗ ' + u + '\n    ' + i.join('\n    ') : '✓ ' + u)).join('\n');
+  }
+  window.__QA_DONE__ = true;
+  window.__QA_RESULT__ = results;
+})();
+</script>
