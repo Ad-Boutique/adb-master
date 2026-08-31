@@ -10,11 +10,10 @@ HEAD = '''<!doctype html>
 <meta name="robots" content="noindex, nofollow">
 <title>{title} · ad.boutique Master</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="assets/master.css?v=30">
-<script src="assets/master.js?v=30" defer></script>
+
+
+<link rel="stylesheet" href="assets/master.css?v=36">
+<script src="assets/master.js?v=36" defer></script>
 </head>
 <body style="background-color:{bodybg}" class="on-light">
 
@@ -22,7 +21,7 @@ HEAD = '''<!doctype html>
 
 <header class="chrome">
   <a href="index.html" class="logo">ad<i>.</i>boutique</a>
-  <a href="index.html#kontakt" class="ctc">Kontakt</a>
+  <a href="kontakt.html" class="ctc">Kontakt</a>
 </header>
 
 '''
@@ -55,7 +54,7 @@ MENU_ITEMS = [
           <span><img loading="lazy" decoding="async" src="assets/img/retreat-01.jpg" alt=""></span>
         </span>
       </span>'''),
-    ("index.html#kontakt", "Kontakt", '''<span class="mv" style="background:#EFE7D6">
+    ("kontakt.html", "Kontakt", '''<span class="mv" style="background:#EFE7D6">
         <span class="bars" style="left:8%;top:24%;width:84%"><i style="width:70%;height:9px"></i><i style="width:100%;height:1px;opacity:.3;margin:7px 0"></i><i style="width:52%;height:9px"></i><i style="width:100%;height:1px;opacity:.3;margin:7px 0"></i><i style="width:44%;height:9px"></i></span>
       </span>'''),
 ]

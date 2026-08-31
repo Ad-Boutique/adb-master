@@ -81,8 +81,13 @@ SERVICES = [
              a="Head of E-Commerce · D2C-Lifestyle",
              img="assets/img/ag_meeting.jpg",
              note="Solche Sätze stehen bei uns im Reporting, nicht im Kleingedruckten. Einmal im Monat gehen wir sie gemeinsam durch, inklusive der Kanäle, die wir gestoppt haben."),
-  fit=dict(h="Passt das zu Ihrem Shop?",
-           intro="Wir sagen vorher, wo wir wirken und wo nicht. Das erspart beiden Seiten ein Quartal.",
+  fit=dict(label="Bevor wir starten",
+           h=["Der Fit entscheidet.", "Nicht die Shopgröße."],
+           yes_h="Wir passen zusammen, wenn",
+           no_h="Wir sind die Falschen, wenn",
+           cap_v="6",
+           cap_t="Mandate betreuen wir gleichzeitig. Wir arbeiten als verlängerte Marketingabteilung, und das geht nur mit wenigen Marken.",
+           intro="Wir sind keine Agentur, die Accounts sammelt. Wir sitzen in Ihren Meetings, kennen Ihre Marge und streiten mit Ihnen über Motive. Das funktioniert nur, wenn die Zusammenarbeit auf beiden Seiten passt, deshalb prüfen wir das vorher, offen und in beide Richtungen.",
            yes=["Sie haben Produkt-Markt-Fit und wollen skalieren, nicht testen",
                 "Mediabudget ab etwa € 5k im Monat",
                 "Der Shop darf angefasst werden: Produktseite, Checkout, Angebotslogik",
@@ -151,8 +156,13 @@ SERVICES = [
   quote=("Endlich jemand, der nicht Reichweite feiert, sondern zeigt, wo der Euro wirklich landet.",
          "Head of Marketing · Commerce"),
   fit=dict(
-    h="Wir übernehmen wenige Accounts. Die dafür ganz.",
-    intro="Nicht aus Arroganz, sondern aus Respekt vor Ihrem Budget: Wir starten nur, wo wir einen echten Hebel sehen. Sehen wir keinen, sagen wir das.",
+    label="Bevor wir starten",
+    h=["Der Fit entscheidet.", "Nicht das Budget."],
+    yes_h="Wir passen zusammen, wenn",
+    no_h="Wir sind die Falschen, wenn",
+    cap_v="6",
+    cap_t="Mandate betreuen wir gleichzeitig. Mehr geht nicht, wenn dieselben Leute im Call sitzen, die auch die Kampagne bauen.",
+    intro="Wir übernehmen wenige Accounts, die dafür ganz. Wir verstehen uns als verlängerte Marketingabteilung: Wir sitzen in Ihren Runden, kennen Ihre Zahlen und widersprechen, wenn es nötig ist. Das trägt nur, wenn es auf beiden Seiten passt, deshalb prüfen wir den Fit vorher, offen und in beide Richtungen.",
     yes=["Sie geben bereits Mediabudget aus und wollen wissen, was es wirklich bringt",
          "Produkt oder Projekt trägt eine Marge, die Wachstum erlaubt",
          "Creatives dürfen angefasst werden, nicht nur das Werbekonto",
@@ -281,8 +291,13 @@ SERVICES = [
              a="Marketingleitung · Dental-/Health-Marke",
              img="assets/img/c_champ.jpg",
              note="Wir liefern keine Mediathek zum Archivieren. Jedes Sujet läuft in einer Kampagne und wird daran gemessen, wie es dort abschneidet."),
-  fit=dict(h="Passt das zu Ihrer Marke?",
-           intro="Content lohnt nur, wenn er laufen darf. Deshalb sagen wir vorher, wann er sich nicht lohnt.",
+  fit=dict(label="Bevor wir starten",
+           h=["Der Fit entscheidet.", "Nicht das Briefing."],
+           yes_h="Wir passen zusammen, wenn",
+           no_h="Wir sind die Falschen, wenn",
+           cap_v="6",
+           cap_t="Mandate betreuen wir gleichzeitig. Wer bei uns dreht, kennt Ihre Marke, und das braucht Zeit statt Skalierung.",
+           intro="Wir arbeiten als verlängerte Marketingabteilung, nicht als Produktionsdienstleister. Wir müssen Ihre Marke verstehen, bevor wir die Kamera aufstellen, und Sie müssen uns zutrauen, dass wir Motive verwerfen. Deshalb prüfen wir den Fit vorher, in beide Richtungen.",
            yes=["Es gibt Kampagnen, in denen das Material laufen soll",
                 "Hochformat ist erlaubt, auch wenn es weniger nach Katalog aussieht",
                 "Laufende Produktion statt einmaliges Shooting",
@@ -375,8 +390,13 @@ SERVICES = [
              a="Geschäftsführung · Photovoltaik-Anbieter",
              img="assets/case/case-web-northpoint/d0.jpg",
              note="Wir bauen keine Seite, die danach niemand anfassen darf. Änderungen an Struktur und Strecken gehören zum laufenden Betrieb."),
-  fit=dict(h="Passt das zu Ihrem Vorhaben?",
-           intro="Ein Auftritt lohnt nur, wenn er arbeiten darf. Deshalb sagen wir vorher, wann er sich nicht lohnt.",
+  fit=dict(label="Bevor wir starten",
+           h=["Der Fit entscheidet.", "Nicht der Umfang."],
+           yes_h="Wir passen zusammen, wenn",
+           no_h="Wir sind die Falschen, wenn",
+           cap_v="6",
+           cap_t="Mandate betreuen wir gleichzeitig. Eine Seite, die arbeiten soll, braucht jemanden, der sie danach weiter kennt.",
+           intro="Wir bauen keine Seite und verschwinden. Wir arbeiten als verlängerte Marketingabteilung weiter daran, wenn die Zahlen etwas anderes sagen als der Entwurf. Das setzt Vertrauen in beide Richtungen voraus, deshalb prüfen wir den Fit vorher.",
            yes=["Die Seite soll Anfragen bringen, nicht nur repräsentieren",
                 "Mobil zuerst ist in Ordnung, auch wenn Desktop später kommt",
                 "Struktur darf sich ändern, wenn die Zahlen es sagen",
@@ -475,8 +495,13 @@ SERVICES = [
              a="Geschäftsführung · Crowdinvesting-Plattform",
              img="assets/img/ag_board1.jpg",
              note="Wir liefern keine Strategie-Folien zum Abheften. Wir legen die Reihenfolge fest, setzen sie um und rechnen sie nach."),
-  fit=dict(h="Passt das zu Ihrem Vorhaben?",
-           intro="Strategie lohnt nur, wenn sie umgesetzt wird. Deshalb sagen wir vorher, wann sie sich nicht lohnt.",
+  fit=dict(label="Bevor wir starten",
+           h=["Der Fit entscheidet.", "Nicht die Vorlage."],
+           yes_h="Wir passen zusammen, wenn",
+           no_h="Wir sind die Falschen, wenn",
+           cap_v="6",
+           cap_t="Mandate betreuen wir gleichzeitig. Strategie, die wir auch umsetzen, lässt sich nicht beliebig oft vergeben.",
+           intro="Wir liefern keine Strategie zum Abheften. Wir setzen sie um und verantworten die Zahl am Ende, als verlängerte Marketingabteilung. Das geht nur mit Mandaten, bei denen die Zusammenarbeit trägt, deshalb prüfen wir den Fit vorher, in beide Richtungen.",
            yes=["Es gibt ein Ziel in Zahlen: Kapital, Einheiten, Anfragen",
                 "Sie wollen die Umsetzung mit derselben Hand, nicht nur das Konzept",
                 "Mehrere Zielgruppen mit unterschiedlichen Botschaften",
@@ -638,35 +663,48 @@ def _fit(s):
         return ""
     yes = "\n            ".join("<li>%s</li>" % x for x in f["yes"])
     no = "\n            ".join("<li>%s</li>" % x for x in f["no"])
-    return ('  <!-- PASST DAS -->\n'
+    head = "".join('<span class="rl"><span>%s</span></span>' % x
+                   for x in (f["h"] if isinstance(f["h"], list) else [f["h"]]))
+    cap = ('      <div class="fitcap" data-fade>\n'
+           '        <span class="fcnum">%s</span>\n'
+           '        <span class="fctxt">%s</span>\n'
+           '      </div>\n') % (f.get("cap_v", "6"), f.get("cap_t", "Mandate betreuen wir gleichzeitig. Mehr geht nicht, wenn dieselben Leute im Call sitzen, die auch bauen.")) if f.get("cap_t") or f.get("cap_v") else ""
+    return ('  <!-- GEGENSEITIGE PRUEFUNG -->\n'
             '  <section class="sec fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark" style="padding:clamp(90px,11vw,150px) 0">\n'
             '    <div class="wrap">\n'
-            '      <div class="lchap" style="margin-bottom:clamp(36px,4.4vw,60px)">\n'
-            '        <div class="lh" data-lines><span class="rl"><span>%s</span></span></div>\n'
-            '        <p class="lt3" data-fade>%s</p>\n'
+            '      <div class="fithead">\n'
+            '        <div>\n'
+            '          <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:clamp(16px,1.8vw,24px)">%s</span>\n'
+            '          <h2 class="dispn fitH" data-lines>' + head + '</h2>\n'
+            '        </div>\n'
+            '        <p class="fitlead" data-fade>%s</p>\n'
             '      </div>\n'
+            + cap +
             '      <div class="fit" data-stagger>\n'
-            '        <div class="fcol yes" data-fade><div class="fh">Passt gut</div>\n          <ul>\n            %s\n          </ul>\n        </div>\n'
-            '        <div class="fcol no" data-fade><div class="fh">Passt nicht</div>\n          <ul>\n            %s\n          </ul>\n        </div>\n'
+            '        <div class="fcol yes" data-fade><div class="fh">%s</div>\n          <ul>\n            %s\n          </ul>\n        </div>\n'
+            '        <div class="fcol no" data-fade><div class="fh">%s</div>\n          <ul>\n            %s\n          </ul>\n        </div>\n'
             '      </div>\n'
-            '    </div>\n  </section>\n\n') % (f["h"], f["intro"], yes, no)
+            '    </div>\n  </section>\n\n') % (f.get("label", "Bevor wir starten"), f["intro"],
+       f.get("yes_h", "Wir passen zusammen, wenn"), yes,
+       f.get("no_h", "Wir sind die Falschen, wenn"), no)
 
 def _next(s):
     n = s.get("steps_next")
     if not n:
         return ""
     rows = "\n        ".join(
-        '<div class="op" data-fade>\n          <span class="onum">%s</span>\n'
-        '          <span><span class="otitle" style="font-size:clamp(18px,1.7vw,26px)">%s</span>\n'
-        '            <span style="display:block;font-family:var(--f-serif);font-size:15.5px;line-height:1.65;color:var(--grey-dark);margin-top:8px;max-width:52ch">%s</span>\n'
-        '          </span>\n          <span class="okpi"></span>\n        </div>' % (w, t, d)
+        '<div class="op" data-fade>\n'
+        '          <span class="owhen">%s</span>\n'
+        '          <span class="otitle">%s</span>\n'
+        '          <span class="odesc">%s</span>\n'
+        '        </div>' % (w, t, d)
         for w, t, d in n["rows"])
     return ('  <!-- WAS ALS NAECHSTES PASSIERT -->\n'
             '  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">\n'
             '    <div class="wrap">\n'
             '      <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:clamp(24px,3vw,40px)">Was als Nächstes passiert</span>\n'
             '      <h2 class="dispn" data-lines style="font-size:clamp(32px,3.8vw,62px);margin-bottom:clamp(36px,4.4vw,60px)"><span class="rl"><span>%s</span></span></h2>\n'
-            '      <div class="oplist" data-stagger>\n        %s\n      </div>\n'
+            '      <div class="oplist oplist--steps" data-stagger>\n        %s\n      </div>\n'
             '    </div>\n  </section>\n\n') % (n["h"], rows)
 
 def _deliver(s):

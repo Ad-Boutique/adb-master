@@ -54,12 +54,16 @@
     var cur = document.createElement("div");
     cur.className = "cur";
     document.body.appendChild(cur);
-    var cx = -100, cy = -100, tx = -100, ty = -100;
-    document.addEventListener("mousemove", function (e) { tx = e.clientX; ty = e.clientY; });
+    var cx = -100, cy = -100, tx = -100, ty = -100, seen = false;
+    document.addEventListener("mousemove", function (e) {
+      tx = e.clientX; ty = e.clientY;
+      if (!seen) { seen = true; cx = tx; cy = ty; }   /* erster Frame ohne Nachlauf */
+    }, { passive: true });
+    /* Position ueber die eigene translate-Eigenschaft: die Skalierung darf
+       eine Transition haben, die Bewegung nicht, sonst daempft sie doppelt. */
     (function curLoop() {
-      cx += (tx - cx) * 0.22; cy += (ty - cy) * 0.22;
-      cur.style.transform = "translate(" + cx + "px," + cy + "px)" +
-        (document.body.classList.contains("cur-hov") ? " scale(1.9)" : "");
+      cx += (tx - cx) * 0.55; cy += (ty - cy) * 0.55;
+      cur.style.translate = cx.toFixed(1) + "px " + cy.toFixed(1) + "px";
       requestAnimationFrame(curLoop);
     })();
     document.addEventListener("mouseover", function (e) {
@@ -295,12 +299,13 @@
         syncNeed();
       });
     });
+    /* Auswahl und Herkunft wandern in den Anfrage-Funnel auf kontakt.html */
     ngo.addEventListener("click", function () {
       var picked = syncNeed();
       if (!picked.length) return;
-      var subject = encodeURIComponent("Anfrage: " + picked.join(", "));
-      var body = encodeURIComponent("Hallo ad.boutique,\n\nwir brauchen Unterstützung bei: " + picked.join(", ") + ".\n\nUnser Shop/Projekt: \nMonatsumsatz (ca.): \nZiel: ");
-      location.href = "mailto:hello@ad.boutique?subject=" + subject + "&body=" + body;
+      var slug = (location.pathname.split("/").pop() || "index.html").replace(/\.html$/, "");
+      location.href = "kontakt.html?w=" + encodeURIComponent(picked.join(",")) +
+                      "&from=" + encodeURIComponent(slug);
     });
   }
 
@@ -639,4 +644,135 @@
       });
     });
   });
+})();
+
+/* ============================================================
+   Anfrage-Funnel auf kontakt.html
+   Die Vorauswahl kommt per URL von der Leistungsseite mit.
+   ============================================================ */
+(function () {
+  var root = document.querySelector(".ksec");
+  if (!root) return;
+
+  var steps = Array.prototype.slice.call(root.querySelectorAll(".kstep"));
+  var progs = Array.prototype.slice.call(root.querySelectorAll(".kprog .kp"));
+  var bar = root.querySelector(".kprog .kbar i");
+  var chips = Array.prototype.slice.call(root.querySelectorAll(".kchip"));
+  var opts = Array.prototype.slice.call(root.querySelectorAll(".kopt"));
+  var free = root.querySelector("#kfree");
+  var sumBody = root.querySelector(".ksumbody");
+  var sendBtn = root.querySelector(".ksend");
+  var nextBtns = Array.prototype.slice.call(root.querySelectorAll(".knext"));
+
+  var SEITEN = {
+    "service-performance-marketing": "Performance Marketing",
+    "service-ecommerce": "E-Commerce Growth",
+    "service-content-creation": "Content Creation",
+    "service-websites": "Websites & Landingpages",
+    "service-strategie": "Strategie & Funnel",
+    "work": "Work",
+    "index": "Startseite"
+  };
+
+  /* ---- Vorauswahl aus der URL ---- */
+  var q = new URLSearchParams(location.search);
+  var pre = (q.get("w") || "").split(",").map(function (x) { return x.trim(); }).filter(Boolean);
+  pre.forEach(function (v) {
+    var hit = chips.filter(function (c) { return c.getAttribute("data-v").toLowerCase() === v.toLowerCase(); })[0];
+    if (hit) { hit.classList.add("sel"); return; }
+    /* unbekannter Wunsch: als eigener Chip anhaengen, damit nichts verloren geht */
+    var box = root.querySelector(".kchips");
+    if (!box) return;
+    var b = document.createElement("button");
+    b.className = "kchip sel"; b.type = "button"; b.setAttribute("data-v", v);
+    b.innerHTML = v + ' <span class="kx">+</span>';
+    box.appendChild(b); chips.push(b);
+    b.addEventListener("click", onChip);
+  });
+  var from = q.get("from");
+  if (from && SEITEN[from]) {
+    var fb = root.querySelector(".kfrom");
+    if (fb) { fb.querySelector(".kfromname").textContent = SEITEN[from]; fb.hidden = false; }
+  }
+
+  /* ---- Auswahl ---- */
+  function onChip() { this.classList.toggle("sel"); sync(); }
+  chips.forEach(function (c) { c.addEventListener("click", onChip); });
+  opts.forEach(function (o) {
+    o.addEventListener("click", function () {
+      var grp = o.getAttribute("data-g");
+      root.querySelectorAll('.kopt[data-g="' + grp + '"]').forEach(function (x) {
+        if (x !== o) x.classList.remove("sel");
+      });
+      o.classList.toggle("sel");
+      sync();
+    });
+  });
+  if (free) free.addEventListener("input", sync);
+
+  function picked() { return chips.filter(function (c) { return c.classList.contains("sel"); })
+                                  .map(function (c) { return c.getAttribute("data-v"); }); }
+  function val(id) { var e = root.querySelector(id); return e ? e.value.trim() : ""; }
+  function opt(g) { var e = root.querySelector('.kopt[data-g="' + g + '"].sel'); return e ? e.getAttribute("data-v") : ""; }
+
+  function sync() {
+    var ok = picked().length > 0 || val("#kfree").length > 2;
+    nextBtns.forEach(function (b) { if (b.getAttribute("data-to") === "2") b.disabled = !ok; });
+    if (sendBtn) sendBtn.disabled = !/.+@.+\..+/.test(val("#kmail"));
+    if (!sumBody) return;
+    var w = picked(); var extra = val("#kfree");
+    var lines = [];
+    lines.push("<b>Womit:</b> " + (w.length ? w.join(", ") : '<span class="kempty">noch offen</span>') +
+               (extra ? " · " + extra : ""));
+    var firm = val("#kfirm"), goal = val("#kgoal"), b = opt("budget"), wn = opt("when");
+    if (firm) lines.push("<b>Projekt:</b> " + firm);
+    if (goal) lines.push("<b>Ziel:</b> " + goal);
+    if (b) lines.push("<b>Mediabudget:</b> " + b);
+    if (wn) lines.push("<b>Zeitpunkt:</b> " + wn);
+    var nm = val("#kname"), ml = val("#kmail"), ph = val("#kphone");
+    if (nm || ml || ph) lines.push("<b>Kontakt:</b> " + [nm, ml, ph].filter(Boolean).join(" · "));
+    sumBody.innerHTML = lines.join("<br>");
+  }
+  root.querySelectorAll(".kinput").forEach(function (i) { i.addEventListener("input", sync); });
+
+  /* ---- Schrittwechsel ---- */
+  function go(n, quiet) {
+    steps.forEach(function (s) { s.classList.toggle("on", s.getAttribute("data-s") === String(n)); });
+    progs.forEach(function (p) {
+      var v = parseInt(p.getAttribute("data-s"), 10);
+      p.classList.toggle("on", v === n);
+      p.classList.toggle("done", v < n);
+    });
+    if (bar) bar.style.width = Math.min(100, n * 33.4) + "%";
+    if (quiet) return;                       /* beim Start nicht scrollen */
+    var anchor = root.querySelector(".kprog");
+    var top = (anchor || root).getBoundingClientRect().top + window.scrollY - 110;
+    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+  }
+  root.querySelectorAll(".knext, .kback").forEach(function (b) {
+    b.addEventListener("click", function () { go(parseInt(b.getAttribute("data-to"), 10)); });
+  });
+
+  /* ---- Absenden ---- */
+  if (sendBtn) sendBtn.addEventListener("click", function () {
+    var w = picked(); var extra = val("#kfree");
+    var subject = "Anfrage: " + (w.length ? w.join(", ") : (extra || "Projekt"));
+    var t = [];
+    t.push("Hallo ad.boutique,");
+    t.push("");
+    t.push("wir brauchen Unterstuetzung bei: " + (w.length ? w.join(", ") : "") + (extra ? (w.length ? ", " : "") + extra : ""));
+    if (val("#kfirm")) t.push("Unternehmen/Projekt: " + val("#kfirm"));
+    if (val("#kgoal")) t.push("Was sich aendern soll: " + val("#kgoal"));
+    if (opt("budget")) t.push("Monatliches Mediabudget: " + opt("budget"));
+    if (opt("when")) t.push("Zeitpunkt: " + opt("when"));
+    if (from && SEITEN[from]) t.push("Gekommen ueber: " + SEITEN[from]);
+    t.push("");
+    t.push([val("#kname"), val("#kmail"), val("#kphone")].filter(Boolean).join(" · "));
+    location.href = "mailto:hello@ad.boutique?subject=" + encodeURIComponent(subject) +
+                    "&body=" + encodeURIComponent(t.join("\n"));
+    setTimeout(function () { go(4); }, 400);
+  });
+
+  sync();
+  go(1, true);
 })();
