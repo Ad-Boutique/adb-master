@@ -17,6 +17,8 @@ def logos_row(names, label):
 
 ''' % (label, imgs)
 
+SVC_CONTENT = {'service-ecommerce': ['assets/case/case-consumer-brand/g0.jpg', 'assets/case/case-web-ib7/g0.jpg', 'assets/case/case-web-ib7/g1.jpg', 'assets/case/case-consumer-brand/v0.mp4', 'assets/case/case-health-brand/g0.jpg', 'assets/case/case-web-ib7/g2.jpg'], 'service-performance-marketing': ['assets/case/case-premium-neubau/g0.jpg', 'assets/case/grandgarden/g0.jpg', 'assets/case/case-wohnbau-floridsdorf/g0.jpg', 'assets/case/case-premium-neubau/v2.mp4', 'assets/case/medcenter/g0.jpg', 'assets/case/case-immobilien-investment/g1.jpg'], 'service-content-creation': ['assets/case/juwel/g1.jpg', 'assets/case/kommunalkredit/g0.jpg', 'assets/case/juwel/g2.jpg', 'assets/case/kommunalkredit/v2.mp4', 'assets/case/juwel/g3.jpg', 'assets/case/kommunalkredit/g1.jpg'], 'service-websites': ['assets/case/case-web-noma/d0.jpg', 'assets/case/case-web-northpoint/d0.jpg', 'assets/case/case-web-pharmacom/d0.jpg', 'assets/case/case-web-trattner/d0.jpg', 'assets/case/case-web-ib7/d2.jpg', 'assets/case/case-web-noma/d1.jpg'], 'service-strategie': ['assets/case/case-crowdinvesting/g0.jpg', 'assets/case/case-immobilien-investment/g0.jpg', 'assets/case/case-crowdinvesting/g2.jpg', 'assets/case/case-crowdinvesting/v1.mp4', 'assets/case/case-crowdinvesting/g3.jpg', 'assets/case/grandgarden/g1.jpg']}
+
 SERVICES = [
  dict(slug="service-ecommerce", nav="E-Commerce Growth", label="Leistung · E-Commerce Growth",
   h1=["Ihr Shop wächst.", "Planbar."], ital=1,
@@ -43,7 +45,7 @@ SERVICES = [
   proof_nums=[("5,57", "Blended ROAS, Ziel war 3,5"), ("€ 312k", "Umsatz aus € 56k Mediabudget"), ("+56 %", "Bestellungen im Rekordjahr")],
   proof_quote="„Pinterest führte mit ROAS 6,99, Google folgte mit 5,98. Inklusive Agentur-Fee blieb der Blend bei 4,17.“ Solche Sätze stehen bei uns im Reporting, nicht im Kleingedruckten.",
   visual=("panels", dict(h="Der Auftritt, der verkauft.", t="Shop, Markenwelt und Kampagne aus einem Guss: Auftritte aus laufenden Commerce-Mandaten.",
-                          imgs=["assets/img/web_twistnsparkle_d.jpg", "assets/img/web_ib7_d.jpg", "assets/img/d_isi.jpg", "assets/img/web_daphi_d.jpg"])),
+                          imgs=["assets/case/case-consumer-brand/d0.jpg", "assets/case/case-web-ib7/d0.jpg", "assets/img/web_twistnsparkle_d.jpg", "assets/case/case-web-ib7/d1.jpg"])),
   logos=["looops", "isi", "nordicspirit", "ilbosso", "kaisers", "jti", "juwel", "bojito"],
   oplist=[("case-consumer-brand.html", "Premium-Consumer-Brand", "4,02", "BFCM-ROAS · +75 %"),
           ("case-d2c-lifestyle.html", "D2C-Lifestyle-Marke", "+57 %", "Jahresumsatz · ROAS 5,57"),
@@ -81,7 +83,7 @@ SERVICES = [
   proof_nums=[("5,87×", "Ø ROAS über alle Accounts"), ("€ 4,72", "CPL, Bauträger-Portfolio Wien"), ("489", "Leads, Premium-Neubau Wien")],
   proof_quote="Konstanz über Regionen und Projekte zeigt: Das Motiv trägt, nicht der Zufall. Niedrige CPL kommt aus Disziplin, nicht aus Glück.",
   visual=("phones", dict(h="Creatives, die im Feed bestehen.", t="Gebaut für den Daumen: Sujets aus laufenden Kampagnen, getestet gegen echte Benchmarks, nicht gegen Geschmack.",
-                          phones=["assets/img/a_funk2.jpg", "assets/img/a_otta1.jpg", "assets/img/a_gmund1.jpg", "assets/img/a_funk3.jpg", "assets/img/a_otta2.jpg", "assets/img/a_silv1.jpg"])),
+                          phones=["assets/case/case-premium-neubau/v0.mp4", "assets/case/case-crowdinvesting/v0.mp4", "assets/case/grandgarden/v0.mp4", "assets/case/case-premium-neubau/v1.mp4", "assets/case/herogroup/v0.mp4", "assets/case/case-immobilien-investment/v0.mp4"])),
   logos=["winegg", "funkhaus", "ifa", "conda", "soravia", "rhomberg", "vonpoll", "seeresidenz"],
   oplist=[("case-premium-neubau.html", "Premium-Neubau, Wien", "489", "Leads · € 11,77 CPL"),
           ("case-bautraeger-portfolio.html", "Bauträger-Portfolio, Wien", "€ 4,72", "CPL · der effizienteste im Portfolio"),
@@ -113,13 +115,13 @@ SERVICES = [
   diff=[("Anders als üblich", "Gemessen statt gemeint", "Interior-Motive trugen bei einem Neubauprojekt 54 Prozent aller Leads. Solche Antworten liefert Testing, kein Bauchgefühl.", "assets/img/a_funk1.jpg"),
         ("Anders als üblich", "Content + Performance, ein Team", "Die Produktion kennt die Zahlen von gestern, die Kampagne bekommt Nachschub, bevor das Motiv müde wird.", "assets/img/ag_cam1.jpg"),
         ("Anders als üblich", "UGC ernst genommen", "UGC ist bei uns keine Billig-Alternative, sondern der oft effizienteste Hebel: minus 58 Prozent CPA gegen Studio-Video.", "assets/img/ag_shoot1.jpg")],
-  zoom=dict(img="assets/img/c_food1.jpg", side="left", aside="Produziert für den Feed: Content, der gemessen wird, nicht nur gefällt.",
+  zoom=dict(img="assets/case/juwel/g0.jpg", side="left", aside="Produziert für den Feed: Content, der gemessen wird, nicht nur gefällt.",
             zl="Content-Produktion · Food", zt="Jedes Motiv tritt gegen Benchmarks an."),
   proof_h=["Ein Motiv trug", "54 % aller Leads."],
   proof_nums=[("54 %", "aller Leads aus einem Interior-Motiv"), ("−58 %", "CPA durch UGC statt Studio-Video"), ("€ 0,99", "Awareness-CPM, 72 % unter Benchmark")],
   proof_quote="Der größte Hebel war das Creative, nicht das Budget. Das gilt in Commerce, Real Estate und Health gleichermaßen.",
   visual=("phones", dict(h="Gebaut für den Daumen.", t="Sujets aus laufenden Mandaten: Gastro, Event, Immobilie, Produkt. Immer mit Hook, immer messbar.",
-                          phones=["assets/img/a_silv1.jpg", "assets/img/a_funk1.jpg", "assets/img/a_gmund2.jpg", "assets/img/a_ksg1.jpg", "assets/img/a_funk4.jpg", "assets/img/a_silv2.jpg"])),
+                          phones=["assets/case/kommunalkredit/v0.mp4", "assets/case/juwel/v0.mp4", "assets/case/case-health-brand/v1.mp4", "assets/case/kommunalkredit/v1.mp4", "assets/case/juwel/v1.mp4", "assets/case/case-health-brand/v2.mp4"])),
   logos=["isi", "looops", "juwel", "nordicspirit", "jti", "ilbosso", "kaisers", "funkhaus"],
   oplist=[("case-health-brand.html", "Dental-/Health-Marke", "−58 %", "CPA durch UGC"),
           ("case-premium-neubau.html", "Premium-Neubau, Wien", "54 %", "aller Leads aus einem Motiv"),
@@ -157,7 +159,7 @@ SERVICES = [
   proof_nums=[("406", "Leads über den PV-Konfigurator"), ("+487 %", "Website-Besucher"), ("€ 6,97", "CPL Instant Form im ehrlichen Vergleich")],
   proof_quote="Sichtbarkeit und Conversion-Mechanik gehören zusammen: Search erntet Nachfrage, die schon da ist, die Seite macht sie zur Anfrage.",
   visual=("phones", dict(h="Mobil zuerst gebaut.", t="Die Auftritte aus laufenden Mandaten, dort wo sie besucht werden: am Telefon.",
-                          phones=["assets/img/web_noma_m.jpg", "assets/img/web_funkhausliving_m.jpg", "assets/img/web_trattner_m.jpg", "assets/img/web_unio_m.jpg", "assets/img/web_ib7_m.jpg", "assets/img/web_havenstone_m.jpg"])),
+                          phones=["assets/img/web_noma_m.jpg", "assets/img/web_funkhausliving_m.jpg", "assets/img/web_trattner_m.jpg", "assets/img/web_unio_m.jpg", "assets/case/case-web-ib7/m0.jpg", "assets/img/web_pharmacom_m.jpg"])),
   logos=["funkhaus", "winegg", "seeresidenz", "vonpoll", "rhomberg", "soravia", "isi", "hagent"],
   oplist=[("case-photovoltaik.html", "Photovoltaik-Anbieter", "+487 %", "Besucher · 406 Leads"),
           ("case-premium-neubau.html", "Premium-Neubau, Wien", "€ 6,97", "CPL Instant Form vs. € 15,66 Website"),
@@ -189,12 +191,12 @@ SERVICES = [
   diff=[("Anders als üblich", "KPI-Definition vorab", "Bevor der erste Euro läuft, steht fest, woran der Erfolg gemessen wird. Das verhindert schöngerechnete Kampagnen.", "assets/img/ag_strategy.jpg"),
         ("Anders als üblich", "Vertrauen als Funnel-Stufe", "Im Finance zählt der Cost per zugerechnetem Kapital, nicht der CPL: Aufklärung, Vertrauen, Handlung.", "assets/img/retreat-06.jpg"),
         ("Anders als üblich", "Ehrliches Stoppen", "Ein Paid-Test über € 278.727 brachte null Zeichnungen: Er wurde gestoppt, das Budget umgeschichtet. Genau dafür ist Struktur da.", "assets/img/ag_board1.jpg")],
-  zoom=dict(img="assets/img/ag_strategy.jpg", side="left", aside="Erst die Struktur, dann das Budget: Strategie-Session in Wien.",
+  zoom=dict(img="assets/case/case-crowdinvesting/g1.jpg", side="left", aside="Erst die Struktur, dann das Budget: Strategie-Session in Wien.",
             zl="Strategie & Funnel", zt="€ 36k Budget wurden € 4,65 Mio. Kapital."),
   proof_h=["Aus € 36k wurden", "€ 4,65 Mio. Kapital."],
   proof_nums=[("129×", "Return, sauber zugerechnet"), ("8,75", "ROAS, vorher 2,14"), ("−69 %", "Kosten je Investor")],
   proof_quote="Gleicher Spend, anderes Ergebnis: Der Beweis liegt im Vorher-Nachher. Struktur schlägt Einzelkampagne.",
-  visual=("stage", dict(img="assets/img/d_noma.jpg", cap="Aus dem Mandat · Auftritt mit Funnel-Logik")),
+  visual=("stage", dict(img="assets/case/case-immobilien-investment/g0.jpg", cap="Aus dem Mandat · Investoren-Kommunikation")),
   logos=["ifa", "conda", "raiffeisen", "soravia", "fabrik1230", "hagent", "winegg", "buxbaum"],
   oplist=[("case-immobilien-investment.html", "Immobilien-Investment", "129×", "€ 36k → € 4,65 Mio. Kapital"),
           ("case-crowdinvesting.html", "Crowdinvesting-Plattform", "8,75", "ROAS, vorher 2,14"),
@@ -207,6 +209,38 @@ SERVICES = [
          "<b>Risikoumkehr:</b> Geht die Strategie in ein Umsetzungs-Mandat über, koppeln wir die Vergütung an messbare Ergebnisse. Wir gewinnen nur, wenn Sie gewinnen."],
   chips=["Strategie-Session", "Funnel-Architektur", "KPI-Logik", "Attribution-Setup", "Positionierung", "Portfolio-Struktur", "Zweitmeinung", "Umsetzungs-Mandat"]),
 ]
+
+
+import json as _json
+_MF = _json.load(open("assets/content.json", encoding="utf-8"))
+_ORIENT = {}
+for _slug, _e in _MF.items():
+    for _im in _e.get("imgs", []):
+        _ORIENT[_im["src"]] = _im["portrait"]
+    for _v in _e.get("vids", []):
+        _ORIENT[_v["src"]] = True
+
+def _content_section(slug):
+    items = SVC_CONTENT.get(slug, [])
+    if not items:
+        return ""
+    cells = []
+    for p in items:
+        port = _ORIENT.get(p, p.endswith(".mp4"))
+        cls = "port" if port else "land"
+        if p.endswith(".mp4"):
+            inner = '<video data-auto muted loop playsinline preload="none" src="%s"></video>' % p
+        else:
+            inner = '<img loading="lazy" decoding="async" src="%s" alt="">' % p
+        cells.append('<div class="%s" data-fade><figure>%s</figure></div>' % (cls, inner))
+    head = '  <!-- CONTENT AUS DEM MANDAT -->\n'
+    head += '  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:clamp(60px,7vw,100px)">\n'
+    head += '    <div class="wrap">\n'
+    head += '      <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:clamp(28px,3.4vw,48px)">Aus laufenden Mandaten</span>\n'
+    head += '      <div class="cmix" data-stagger>\n        '
+    head += "\n        ".join(cells)
+    head += '\n      </div>\n    </div>\n  </section>\n\n'
+    return head
 
 def render_service(s):
     tags = "\n        ".join("<span>%s</span>" % t for t in s["tags"])
@@ -266,7 +300,11 @@ def render_service(s):
             screens = [x for grp in screens for x in grp]
         colA = screens[0::2]; colB = screens[1::2]
         def _pc(items, speed):
-            fr = "\n          ".join('<div class="phframe"><img loading="lazy" decoding="async" src="%s" alt=""></div>' % i for i in items)
+            def _pf(src):
+                if src.endswith(".mp4"):
+                    return '<div class="phframe"><video data-auto muted loop playsinline preload="none" src="%s"></video></div>' % src
+                return '<div class="phframe"><img loading="lazy" decoding="async" src="%s" alt=""></div>' % src
+            fr = "\n          ".join(_pf(i) for i in items)
             return '<div class="phcol" data-drift="%s">\n          %s\n        </div>' % (speed, fr)
         visual = '''  <!-- PROOF · PHONES (Screens ziehen vorbei) -->
   <section class="sec fg-light bg-paper phonesec" data-bg="#F3EDE1" data-fg="dark">
@@ -306,6 +344,7 @@ def render_service(s):
         </div>''' % (q, a) for q, a in s["faq"])
     chips_sel = "\n        ".join('<button class="nopt" data-v="%s" style="--i:%d">%s <span class="plus">+</span></button>' % (cv, 7 - i, cv) for i, cv in enumerate(s["chips"]))
     logos = logogrid(s["logos"])
+    content_sec = _content_section(s["slug"])
 
     page = HEAD.format(title=s["nav"], bodybg="#F3EDE1") + menu("index.html#leistungen") + '''<main>
 
@@ -397,7 +436,7 @@ def render_service(s):
     </div>
   </section>
 
-  <!-- 07 · CASES -->
+''' + content_sec + '''  <!-- 07 · CASES -->
   <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:clamp(60px,7vw,100px)">
     <div class="wrap">
       <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:clamp(28px,3.4vw,48px)">Ausgewählte Ergebnisse</span>

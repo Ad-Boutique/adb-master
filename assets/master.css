@@ -1052,7 +1052,7 @@ body.loaded .chero img { transform: scale(1); }
    ============================================================ */
 .phonesec .phwrap { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(40px, 6vw, 110px); align-items: start; }
 .phonesec .phtxt { position: sticky; top: clamp(120px, 26vh, 260px); }
-.phcols { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(22px, 3vw, 44px); align-items: start; overflow: visible; }
+.phcols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(22px, 3vw, 44px); align-items: start; overflow: visible; }
 .phcol { display: flex; flex-direction: column; gap: clamp(26px, 3.4vw, 52px); will-change: transform; }
 .phcol:nth-child(2) { margin-top: clamp(90px, 12vw, 200px); }
 .phframe {
@@ -1060,7 +1060,7 @@ body.loaded .chero img { transform: scale(1); }
   border: 9px solid #131315; border-radius: 40px; overflow: hidden;
   background: #131315; box-shadow: 0 26px 70px rgba(10,10,10,0.22);
 }
-.phframe img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.phframe img, .phframe video { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
 @media (max-width: 900px) { .phonesec .phwrap { grid-template-columns: 1fr; } .phonesec .phtxt { position: static; } }
 
 /* ============================================================
@@ -1184,12 +1184,14 @@ body.loaded .chero img { transform: scale(1); }
 .logogrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(14px, 1.6vw, 24px); max-width: 1120px; margin: 0 auto; }
 .logogrid .lslot { position: relative; aspect-ratio: 16 / 9; background: transparent !important; border-radius: 0; min-width: 0; max-width: none; height: auto; flex: none; }
 .logogrid .lslot img {
-  position: absolute; inset: 0; margin: auto; left: 0; top: 0; right: 0; bottom: 0;
-  height: clamp(20px, 2vw, 30px); width: auto; max-width: 58%; object-fit: contain;
+  position: absolute; inset: 0; margin: auto;
+  height: clamp(22px, 2.2vw, 34px); width: auto; max-width: 66%; object-fit: contain;
+  opacity: 0; transition: opacity 0.9s ease;
+  filter: grayscale(1) invert(1) brightness(0.2);
 }
-.logogrid .lslot img { filter: grayscale(1) invert(1) brightness(0.2); opacity: 0.72; }
-.fg-dark .logogrid .lslot img { filter: grayscale(1) brightness(2.4); opacity: 0.62; }
-.logogrid .lslot img { height: clamp(22px, 2.2vw, 34px); max-width: 66%; }
+.logogrid .lslot img.on { opacity: 0.75; }
+.fg-dark .logogrid .lslot img { filter: grayscale(1) brightness(2.4); }
+.fg-dark .logogrid .lslot img.on { opacity: 0.65; }
 @media (max-width: 900px) { .logogrid { grid-template-columns: 1fr 1fr; } }
 
 /* Pardo-Ruhe: Cases atmen mehr */
