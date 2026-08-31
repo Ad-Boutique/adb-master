@@ -329,6 +329,11 @@ body.cur-hov .cur { transform: scale(1.9); }
   padding: 0.2em 0 0.22em;
   margin: -0.2em 0 -0.22em;
 }
+/* nur senkrecht maskieren: sonst schneidet die Maske lange Woerter seitlich ab.
+   overflow-x visible ist nur zusammen mit clip erlaubt, nicht mit hidden. */
+@supports (overflow-y: clip) {
+  .rl { overflow-x: visible; overflow-y: clip; }
+}
 .rl > span {
   display: block; transform: translateY(152%);
   transition: transform 1.05s var(--e-out);
@@ -839,7 +844,7 @@ body.loaded .chero img { transform: scale(1); }
 .zoomsec .zcap .zt { font-family: var(--f-serif); font-size: clamp(26px, 3vw, 46px); margin-top: 8px; }
 .zoomsec .zaside {
   position: absolute; top: 50%; transform: translateY(-50%);
-  max-width: 22ch; transition: opacity 0.4s ease;
+  width: min(48ch, 43vw); transition: opacity 0.4s ease;
 }
 .zoomsec .zaside .label { display: block; margin-bottom: clamp(16px, 1.8vw, 26px); }
 .zoomsec .zaside .zah {
@@ -1625,7 +1630,7 @@ body.branchopen .bbtn::after { background: var(--ink); }
 .cwall .cwtxt {
   position: absolute; z-index: 2; pointer-events: auto;
   left: clamp(24px, 5.4vw, 104px); bottom: clamp(74px, 8vh, 112px);
-  max-width: min(38ch, 46vw);
+  max-width: min(46ch, 54vw);
 }
 .cwall .cwtxt .cwh {
   font-family: var(--f-disp); font-weight: 745;
