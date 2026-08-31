@@ -129,14 +129,14 @@ def page(c, nxt):
 
     nxt_href = nxt["slug"] + ".html"
     nxt_img = "%s/web_%s_d.jpg" % (IMG, nxt["key"])
-    body = HEAD.format(title="Case · " + c["name"], bodybg="#0E0E10") + menu("work.html") + """<main>
+    body = HEAD.format(title="Case · " + c["name"], bodybg="#0E0E10") + menu("work.html", back=True) + """<main>
 
   <!-- HERO: Vollbild-Screenshot -->
   <section class="chero" data-bg="#0E0E10" data-fg="light">
     <img src=\"""" + hero_img + """\" alt=\"""" + c["name"] + """\" style="object-position: top">
     <div class="hcap">
       <div class="cl" style="font-size:15px">""" + c["name"] + """ <span>· """ + c["branche"] + """</span></div>
-      <div class="serif" style="font-size:clamp(30px,3.8vw,60px);margin-top:10px;text-shadow:0 2px 24px rgba(0,0,0,0.45)">""" + c["line"] + """</div>
+      <div class="dispn" style="font-size:clamp(30px,4vw,62px);margin-top:10px;text-shadow:0 2px 24px rgba(0,0,0,0.45)">""" + c["line"] + """</div>
     </div>
     <div class="scrollhint">Scrollen</div>
   </section>

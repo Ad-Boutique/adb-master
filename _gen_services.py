@@ -17,7 +17,9 @@ def logos_row(names, label):
 
 ''' % (label, imgs)
 
-SVC_CONTENT = {'service-ecommerce': ['assets/case/case-consumer-brand/g0.jpg', 'assets/case/case-web-ib7/g0.jpg', 'assets/case/case-web-ib7/g1.jpg', 'assets/case/case-consumer-brand/v0.mp4', 'assets/case/case-health-brand/g0.jpg', 'assets/case/case-web-ib7/g2.jpg'], 'service-performance-marketing': ['assets/case/case-premium-neubau/g0.jpg', 'assets/case/grandgarden/g0.jpg', 'assets/case/case-wohnbau-floridsdorf/g0.jpg', 'assets/case/case-premium-neubau/v2.mp4', 'assets/case/medcenter/g0.jpg', 'assets/case/case-immobilien-investment/g1.jpg'], 'service-content-creation': ['assets/case/juwel/g1.jpg', 'assets/case/kommunalkredit/g0.jpg', 'assets/case/juwel/g2.jpg', 'assets/case/kommunalkredit/v2.mp4', 'assets/case/juwel/g3.jpg', 'assets/case/kommunalkredit/g1.jpg'], 'service-websites': ['assets/case/case-web-noma/d0.jpg', 'assets/case/case-web-northpoint/d0.jpg', 'assets/case/case-web-pharmacom/d0.jpg', 'assets/case/case-web-trattner/d0.jpg', 'assets/case/case-web-ib7/d2.jpg', 'assets/case/case-web-noma/d1.jpg'], 'service-strategie': ['assets/case/case-crowdinvesting/g0.jpg', 'assets/case/case-immobilien-investment/g0.jpg', 'assets/case/case-crowdinvesting/g2.jpg', 'assets/case/case-crowdinvesting/v1.mp4', 'assets/case/case-crowdinvesting/g3.jpg', 'assets/case/grandgarden/g1.jpg']}
+SVC_COLS = {"service-ecommerce": [["assets/case/case-health-brand/g2.jpg","assets/case/case-health-brand/g1.jpg","assets/case/case-web-ib7/g5.jpg"],["assets/case/case-consumer-brand/v0.mp4","assets/case/case-web-ib7/g4.jpg","assets/case/case-web-ib7/g1.jpg"],["assets/case/case-web-ib7/g2.jpg","assets/case/case-consumer-brand/g0.jpg","assets/case/case-health-brand/g3.jpg"],["assets/case/case-web-ib7/g3.jpg","assets/case/case-health-brand/g0.jpg","assets/case/case-web-ib7/g0.jpg"]],"service-performance-marketing": [["assets/case/case-premium-neubau/g0.jpg","assets/case/case-premium-neubau/g1.jpg","assets/case/case-premium-neubau/g4.jpg"],["assets/case/grandgarden/g0.jpg","assets/case/case-premium-neubau/g2.jpg","assets/case/case-premium-neubau/g5.jpg"],["assets/case/case-wohnbau-floridsdorf/g0.jpg","assets/case/case-premium-neubau/g3.jpg","assets/case/case-immobilien-investment/g1.jpg"],["assets/case/medcenter/g0.jpg","assets/case/case-premium-neubau/v2.mp4","assets/case/case-premium-neubau/v0.mp4"]],"service-content-creation": [["assets/case/juwel/g1.jpg","assets/case/juwel/g4.jpg","assets/case/juwel/g5.jpg"],["assets/case/juwel/g2.jpg","assets/case/kommunalkredit/v2.mp4","assets/case/kommunalkredit/g0.jpg"],["assets/case/juwel/g3.jpg","assets/case/juwel/v0.mp4","assets/case/kommunalkredit/g1.jpg"],["assets/case/juwel/g0.jpg","assets/case/juwel/v1.mp4","assets/case/kommunalkredit/g2.jpg"]],"service-websites": [["assets/case/case-web-noma/g0.jpg","assets/case/case-web-noma/g5.jpg"],["assets/case/case-web-noma/g1.jpg","assets/case/case-web-noma/d0.jpg","assets/case/case-web-ib7/d2.jpg"],["assets/case/case-web-trattner/d0.jpg","assets/case/case-web-noma/g4.jpg","assets/case/case-web-pharmacom/d0.jpg","assets/case/case-web-northpoint/d0.jpg"],["assets/case/case-web-noma/g2.jpg","assets/case/case-web-noma/g3.jpg","assets/case/case-web-noma/d1.jpg"]],"service-strategie": [["assets/case/case-crowdinvesting/g1.jpg","assets/case/case-crowdinvesting/g2.jpg","assets/case/case-crowdinvesting/g5.jpg"],["assets/case/case-crowdinvesting/g4.jpg","assets/case/case-crowdinvesting/g3.jpg","assets/case/case-immobilien-investment/g1.jpg"],["assets/case/case-crowdinvesting/v1.mp4","assets/case/case-immobilien-investment/v0.mp4","assets/case/case-immobilien-investment/g0.jpg"],["assets/case/case-crowdinvesting/v0.mp4","assets/case/case-crowdinvesting/g0.jpg","assets/case/grandgarden/g1.jpg"]]}
+
+SVC_WALL = {"service-content-creation": [["assets/case/juwel/g0.jpg", "assets/case/herogroup/g0.jpg", "assets/case/medcenter/g1.jpg", "assets/case/grandgarden/g2.jpg"], ["assets/case/kommunalkredit/g0.jpg", "assets/case/juwel/g1.jpg", "assets/case/herogroup/v0.mp4", "assets/case/medcenter/g2.jpg"], ["assets/case/case-health-brand/g0.jpg", "assets/case/kommunalkredit/g1.jpg", "assets/case/juwel/g2.jpg", "assets/case/herogroup/v1.mp4"], ["assets/case/grandgarden/g0.jpg", "assets/case/case-health-brand/g1.jpg", "assets/case/kommunalkredit/g2.jpg", "assets/case/juwel/g3.jpg"], ["assets/case/medcenter/g0.jpg", "assets/case/grandgarden/g1.jpg", "assets/case/case-health-brand/g2.jpg", "assets/case/kommunalkredit/g3.jpg"]]}
 
 SERVICES = [
  dict(slug="service-ecommerce", nav="E-Commerce Growth", label="Leistung · E-Commerce Growth",
@@ -39,7 +41,9 @@ SERVICES = [
   diff=[("Anders als üblich", "System statt Einzelmaßnahme", "Creatives, Landingpages, Angebot und Tracking greifen ineinander, mit klaren Zielwerten je Kanal. Eine schöne Kampagne auf einem undichten Shop ist verbranntes Budget.", "assets/img/ag_strategy.jpg"),
         ("Anders als üblich", "Ehrlichkeit im Reporting", "Blended-Sicht statt Kanal-Ego: Was nicht funktioniert, steht im Report und wird gestoppt, bevor es teuer wird.", "assets/img/retreat-04.jpg"),
         ("Anders als üblich", "Skin in the Game", "Unsere Vergütung ist an den messbaren Umsatz gekoppelt. Wir gewinnen nur, wenn Sie gewinnen.", "assets/img/ag_meeting.jpg")],
-  zoom=dict(img="assets/img/c_candle.jpg", side="right", aside="Erst messen, dann skalieren: Der Hebel lag im Checkout und im Creative, nicht im Budget.",
+  zoom=dict(img="assets/img/c_candle.jpg", side="right", al="Ein Fall",
+            ah=["Erst messen.", "Dann skalieren."],
+            alink=("case-d2c-lifestyle.html", "Den Fall im Detail"), aside="Erst messen, dann skalieren: Der Hebel lag im Checkout und im Creative, nicht im Budget.",
             zl="D2C-Lifestyle-Marke · Meta, Google, Pinterest", zt="+57 % Jahresumsatz. Blended ROAS 5,57."),
   proof_h=["+57 % Jahresumsatz.", "Aus demselben Traffic."],
   proof_nums=[("5,57", "Blended ROAS, Ziel war 3,5"), ("€ 312k", "Umsatz aus € 56k Mediabudget"), ("+56 %", "Bestellungen im Rekordjahr")],
@@ -63,7 +67,6 @@ SERVICES = [
   chips=["Shop-Audit", "Ads-Setup", "UGC & Creatives", "Landingpage", "Tracking-Setup", "Conversion-Optimierung", "Zweitmeinung", "Growth-Partnerschaft"]),
 
  dict(slug="service-performance-marketing", nav="Performance Marketing", label="Leistung · Performance Marketing",
-  heronum=("5,87×", "Ø ROAS über alle aktiven Accounts"),
   tell=dict(
     h="Ein Projekt, vier Zahlen.",
     t="Wie aus einem überschaubaren Budget 489 qualifizierte Kaufinteressenten wurden, Station für Station.",
@@ -79,6 +82,7 @@ SERVICES = [
     ]),
   bars=dict(
     label="Return on Ad Spend · Crowdinvesting-Plattform",
+    link=("case-crowdinvesting.html", "Crowdinvesting-Plattform im Detail"),
     rows=[("Vorher", 24, "2,14"), ("Mit uns", 100, "8,75")],
     note="Nahezu gleiches Budget, andere Struktur: aus 16 Investments wurden 50, die Kosten je Investor fielen um 69 Prozent."),
   channels=dict(
@@ -127,13 +131,28 @@ SERVICES = [
   diff=[("Anders als üblich", "Das Creative ist der Hebel", "Nicht das größte Budget gewinnt, sondern das stärkste Motiv. Wir verschieben Budget konsequent auf die Gewinner.", "assets/img/ag_strategy.jpg"),
         ("Anders als üblich", "Ehrlich, auch wenn es wehtut", "In einem Finance-Mandat brachte ein Paid-Test über € 278.727 null zurechenbare Zeichnungen. Wir haben ihn gestoppt und umgeschichtet.", "assets/img/ag_board1.jpg"),
         ("Anders als üblich", "Ein Kanal sauber statt fünf halb", "Lieber einen Kanal ausreizen und beweisen, als Budget über fünf Kanäle verdampfen lassen.", "assets/img/ag_talk.jpg")],
-  zoom=dict(img="assets/img/funkhaus.jpg", side="right", aside="Das stärkste Creative ist der größte Hebel, nicht das größte Budget.",
+  zoom=dict(img="assets/img/funkhaus.jpg", side="right", al="Ein Fall",
+            ah=["Das Creative", "ist der Hebel."],
+            alink=("case-premium-neubau.html", "Den Fall im Detail"), aside="Das stärkste Creative ist der größte Hebel, nicht das größte Budget.",
             zl="Premium-Neubau, Wien · Instant Forms", zt="489 Leads zu € 11,77. Ein Motiv trug 54 %."),
-  proof_h=["€ 4,72 pro Lead.", "Der effizienteste im Portfolio."],
-  proof_nums=[("5,87×", "Ø ROAS über alle Accounts"), ("€ 4,72", "CPL, Bauträger-Portfolio Wien"), ("489", "Leads, Premium-Neubau Wien")],
+  proof_h=["Ein Projekt.", "Vollständig nachgerechnet."],
+  proof_lead="Statt Bestwerte aus fünf Mandaten nebeneinanderzustellen, nehmen wir ein Projekt und zeigen jede Stufe: das Budget, die Motive, den Preis pro Anfrage, die Erkenntnis.",
+  proof_nums=[],
   proof_quote="Konstanz über Regionen und Projekte zeigt: Das Motiv trägt, nicht der Zufall. Niedrige CPL kommt aus Disziplin, nicht aus Glück.",
-  visual=("phones", dict(h="Creatives, die im Feed bestehen.", t="Gebaut für den Daumen: Sujets aus laufenden Kampagnen, getestet gegen echte Benchmarks, nicht gegen Geschmack.",
+  visual=("phones", dict(h=["Creatives,", "die im Feed bestehen."], t="Gebaut für den Daumen: Sujets aus laufenden Kampagnen, getestet gegen echte Benchmarks, nicht gegen Geschmack.",
                           phones=["assets/case/case-premium-neubau/v0.mp4", "assets/case/case-crowdinvesting/v0.mp4", "assets/case/grandgarden/v0.mp4", "assets/case/case-premium-neubau/v1.mp4", "assets/case/herogroup/v0.mp4", "assets/case/case-immobilien-investment/v0.mp4"])),
+  crew=dict(label="Wer daran arbeitet",
+            h=["Vier Rollen,", "die am Ergebnis hängen."],
+            t="Kein Ticketsystem, kein Junior am Konto. Wer Ihre Kampagne baut, sitzt auch im Call, in dem sie erklärt wird.",
+            people=[("Steve", "Performance Manager", "Baut die Kontostruktur und schichtet Budget um, sobald ein Motiv kippt.", "assets/img/ag_strategy.jpg"),
+                    ("Constantin", "Design", "Entwirft die Sujets, die gegeneinander antreten, jede Woche neue Varianten.", "assets/img/ag_board1.jpg"),
+                    ("Leny", "Film und Foto", "Produziert das Material im Hochformat, gedreht für den Feed statt für den Katalog.", "assets/img/retreat-04.jpg"),
+                    ("Daniel", "Founder", "Sitzt im Reporting-Call und verantwortet die Zahl, die dort steht.", "assets/img/founder.jpg")]),
+  voice=dict(label="Was Kunden sagen",
+             q="Endlich jemand, der nicht Reichweite feiert, sondern zeigt, wo der Euro wirklich landet.",
+             a="Head of Marketing · Commerce",
+             img="assets/img/ag_meeting.jpg",
+             note="Wir schicken kein Dashboard, das niemand liest. Wir gehen einmal im Monat gemeinsam durch die Zahlen und sagen auch, was nicht funktioniert hat."),
   logos=["winegg", "funkhaus", "ifa", "conda", "soravia", "rhomberg", "vonpoll", "seeresidenz"],
   oplist=[("case-premium-neubau.html", "Premium-Neubau, Wien", "489", "Leads · € 11,77 CPL"),
           ("case-bautraeger-portfolio.html", "Bauträger-Portfolio, Wien", "€ 4,72", "CPL · der effizienteste im Portfolio"),
@@ -165,12 +184,18 @@ SERVICES = [
   diff=[("Anders als üblich", "Gemessen statt gemeint", "Interior-Motive trugen bei einem Neubauprojekt 54 Prozent aller Leads. Solche Antworten liefert Testing, kein Bauchgefühl.", "assets/img/ag_cam2.jpg"),
         ("Anders als üblich", "Content + Performance, ein Team", "Die Produktion kennt die Zahlen von gestern, die Kampagne bekommt Nachschub, bevor das Motiv müde wird.", "assets/img/ag_cam1.jpg"),
         ("Anders als üblich", "UGC ernst genommen", "UGC ist bei uns keine Billig-Alternative, sondern der oft effizienteste Hebel: minus 58 Prozent CPA gegen Studio-Video.", "assets/img/ag_shoot1.jpg")],
-  zoom=dict(img="assets/img/c_champ.jpg", side="left", aside="Produziert für den Feed: Content, der gemessen wird, nicht nur gefällt.",
+  wall=dict(label="Aus laufenden Mandaten",
+            h=["Wir produzieren nicht", "für die Mappe."],
+            t="Jede Woche entstehen neue Sujets für laufende Kampagnen: Gastro, Event, Immobilie, Produkt. Hochformat, weil dort geschaut wird.",
+            link=("work.html", "Alle Cases ansehen")),
+  zoom=dict(img="assets/img/c_champ.jpg", side="left", al="Ein Fall",
+            ah=["Produziert", "für den Feed."],
+            alink=("case-premium-neubau.html", "Den Fall im Detail"), aside="Produziert für den Feed: Content, der gemessen wird, nicht nur gefällt.",
             zl="Content-Produktion · Food", zt="Jedes Motiv tritt gegen Benchmarks an."),
   proof_h=["Ein Motiv trug", "54 % aller Leads."],
   proof_nums=[("54 %", "aller Leads aus einem Interior-Motiv"), ("−58 %", "CPA durch UGC statt Studio-Video"), ("€ 0,99", "Awareness-CPM, 72 % unter Benchmark")],
   proof_quote="Der größte Hebel war das Creative, nicht das Budget. Das gilt in Commerce, Real Estate und Health gleichermaßen.",
-  visual=("phones", dict(h="Gebaut für den Daumen.", t="Sujets aus laufenden Mandaten: Gastro, Event, Immobilie, Produkt. Immer mit Hook, immer messbar.",
+  visual=("phones", dict(h=["Gebaut", "für den Daumen."], t="Sujets aus laufenden Mandaten: Gastro, Event, Immobilie, Produkt. Immer mit Hook, immer messbar.",
                           phones=["assets/case/kommunalkredit/v0.mp4", "assets/case/juwel/v0.mp4", "assets/case/case-health-brand/v1.mp4", "assets/case/kommunalkredit/v1.mp4", "assets/case/juwel/v1.mp4", "assets/case/case-health-brand/v2.mp4"])),
   logos=["isi", "looops", "juwel", "nordicspirit", "jti", "ilbosso", "kaisers", "funkhaus"],
   oplist=[("case-health-brand.html", "Dental-/Health-Marke", "−58 %", "CPA durch UGC"),
@@ -203,12 +228,14 @@ SERVICES = [
   diff=[("Anders als üblich", "Message-Match statt Sitemap", "Die Landingpage gehört zur Kampagne, nicht zur IT: Headline und Beweis wechseln mit der Anzeigengruppe.", "assets/img/ag_vision2.jpg"),
         ("Anders als üblich", "Der Lead-Magnet als Creative", "Ein Konfigurator, der den Bedarf rechnet, schlägt jedes Standard-Formular: 406 Leads für einen PV-Anbieter.", "assets/img/ag_vision1.jpg"),
         ("Anders als üblich", "Ehrlicher Kanalvergleich", "Bei einem Neubauprojekt lieferten Instant Forms Leads zu € 6,97, die Website zu € 15,66. Wir sagen auch, wenn die Landingpage nicht der beste Ort ist.", "assets/img/ag_review.jpg")],
-  zoom=dict(img="assets/case/case-web-noma/d0.jpg", side="right", aside="Die Landingpage als Ort für Tiefe: Grundrisse, Vertrauen, Abschluss.",
+  zoom=dict(img="assets/case/case-web-noma/d0.jpg", side="right", al="Ein Fall",
+            ah=["Tiefe statt", "Teaser."],
+            alink=("case-web-noma.html", "Den Fall im Detail"), aside="Die Landingpage als Ort für Tiefe: Grundrisse, Vertrauen, Abschluss.",
             zl="Projekt-Landingpage · Premium-Neubau", zt="Landingpage und Instant Forms im Verbund."),
   proof_h=["+487 % Besucher.", "406 Leads."],
   proof_nums=[("406", "Leads über den PV-Konfigurator"), ("+487 %", "Website-Besucher"), ("€ 6,97", "CPL Instant Form im ehrlichen Vergleich")],
   proof_quote="Sichtbarkeit und Conversion-Mechanik gehören zusammen: Search erntet Nachfrage, die schon da ist, die Seite macht sie zur Anfrage.",
-  visual=("phones", dict(h="Mobil zuerst gebaut.", t="Die Auftritte aus laufenden Mandaten, dort wo sie besucht werden: am Telefon.",
+  visual=("phones", dict(h=["Mobil zuerst", "gebaut."], t="Die Auftritte aus laufenden Mandaten, dort wo sie besucht werden: am Telefon.",
                           phones=["assets/img/web_noma_m.jpg", "assets/img/web_funkhausliving_m.jpg", "assets/img/web_trattner_m.jpg", "assets/img/web_unio_m.jpg", "assets/case/case-web-ib7/m0.jpg", "assets/img/web_pharmacom_m.jpg"])),
   logos=["funkhaus", "winegg", "seeresidenz", "vonpoll", "rhomberg", "soravia", "isi", "hagent"],
   oplist=[("case-photovoltaik.html", "Photovoltaik-Anbieter", "+487 %", "Besucher · 406 Leads"),
@@ -241,7 +268,9 @@ SERVICES = [
   diff=[("Anders als üblich", "KPI-Definition vorab", "Bevor der erste Euro läuft, steht fest, woran der Erfolg gemessen wird. Das verhindert schöngerechnete Kampagnen.", "assets/img/ag_strategy.jpg"),
         ("Anders als üblich", "Vertrauen als Funnel-Stufe", "Im Finance zählt der Cost per zugerechnetem Kapital, nicht der CPL: Aufklärung, Vertrauen, Handlung.", "assets/img/retreat-06.jpg"),
         ("Anders als üblich", "Ehrliches Stoppen", "Ein Paid-Test über € 278.727 brachte null Zeichnungen: Er wurde gestoppt, das Budget umgeschichtet. Genau dafür ist Struktur da.", "assets/img/ag_board1.jpg")],
-  zoom=dict(img="assets/img/ag_meeting.jpg", side="left", aside="Erst die Struktur, dann das Budget: Strategie-Session in Wien.",
+  zoom=dict(img="assets/img/ag_meeting.jpg", side="left", al="Ein Fall",
+            ah=["Erst die Struktur.", "Dann das Budget."],
+            alink=("case-crowdinvesting.html", "Den Fall im Detail"), aside="Erst die Struktur, dann das Budget: Strategie-Session in Wien.",
             zl="Strategie & Funnel", zt="€ 36k Budget wurden € 4,65 Mio. Kapital."),
   proof_h=["Aus € 36k wurden", "€ 4,65 Mio. Kapital."],
   proof_nums=[("129×", "Return, sauber zugerechnet"), ("8,75", "ROAS, vorher 2,14"), ("−69 %", "Kosten je Investor")],
@@ -270,14 +299,44 @@ for _slug, _e in _MF.items():
     for _v in _e.get("vids", []):
         _ORIENT[_v["src"]] = True
 
-def _content_section(slug):
-    items = SVC_CONTENT.get(slug, [])
-    if not items:
+def _wall(s):
+    w = s.get("wall")
+    cols = SVC_WALL.get(s["slug"], [])
+    if not w or not cols:
         return ""
-    ncol = 3 if len(items) <= 6 else 4
-    cols = [[] for _ in range(ncol)]
-    for i, m in enumerate(items):
-        cols[i % ncol].append(m)
+    speeds = ["0.055", "0.105", "0.075", "0.125", "0.09"]
+    ratios = ["r1", "r2", "r1", "r3", "r2", "r1", "r3", "r2"]
+    parts = []
+    for i, col in enumerate(cols):
+        cells = []
+        for j, m in enumerate(col):
+            cls = ratios[(i * 3 + j) % len(ratios)]
+            inner = ('<video data-auto muted loop playsinline preload="none" src="%s"></video>' % m) if m.endswith(".mp4") \
+                    else ('<img loading="lazy" decoding="async" src="%s" alt="">' % m)
+            cells.append('<span class="cwt %s">%s</span>' % (cls, inner))
+        parts.append('        <div class="cwcol" data-drift="%s">\n          %s\n        </div>'
+                     % (speeds[i % len(speeds)], "\n          ".join(cells)))
+    head = "".join('<span class="rl"><span>%s</span></span>' % x for x in w["h"])
+    link = ('<a class="zalink" href="%s">%s</a>' % w["link"]) if w.get("link") else ""
+    return ('  <!-- CONTENT-WAND: HOCHFORMAT AUS LAUFENDEN MANDATEN -->\n'
+            '  <section class="cwall" data-bg="#08080A" data-fg="light">\n'
+            '      <div class="cwcols">\n%s\n      </div>\n'
+            '      <div class="cwfront"><div class="cwbar">\n'
+            '      <div class="cwveil"></div>\n'
+            '      <div class="cwtxt">\n'
+            '        <span class="label" style="color:var(--champ)">%s</span>\n'
+            '        <h2 class="cwh" data-lines>%s</h2>\n'
+            '        <p class="cwp" data-fade>%s</p>\n'
+            '        %s\n'
+            '      </div>\n'
+            '      </div></div>\n'
+            '  </section>\n\n') % ("\n".join(parts), w["label"], head, w["t"], link)
+
+
+def _content_section(slug):
+    cols = SVC_COLS.get(slug, [])
+    if not cols:
+        return ""
     speeds = ["0.05", "0.085", "0.065", "0.10"]
     parts = []
     for i, col in enumerate(cols):
@@ -384,7 +443,7 @@ def _next(s):
             '  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">\n'
             '    <div class="wrap">\n'
             '      <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:clamp(24px,3vw,40px)">Was als Nächstes passiert</span>\n'
-            '      <h2 class="serif" data-lines style="font-size:clamp(30px,3.6vw,58px);margin-bottom:clamp(36px,4.4vw,60px)"><span class="rl"><span>%s</span></span></h2>\n'
+            '      <h2 class="dispn" data-lines style="font-size:clamp(32px,3.8vw,62px);margin-bottom:clamp(36px,4.4vw,60px)"><span class="rl"><span>%s</span></span></h2>\n'
             '      <div class="oplist" data-stagger>\n        %s\n      </div>\n'
             '    </div>\n  </section>\n\n') % (n["h"], rows)
 
@@ -410,18 +469,61 @@ def _bars(s):
     rows = "\n        ".join(
         '<div class="brow%s"><span class="bwho">%s</span><span class="btrack"><i class="bfill" data-w="%d"></i></span><span class="bval">%s</span></div>'
         % ((" now" if i == len(b["rows"]) - 1 else ""), w, pct, v) for i, (w, pct, v) in enumerate(b["rows"]))
+    blink = ('        <a class="zalink" style="display:block;width:max-content;margin:22px auto 0" href="%s">%s</a>\n' % b["link"]) if b.get("link") else ""
     return ('      <div style="margin-top:clamp(46px,5.5vw,80px);display:flex;flex-direction:column;align-items:center">\n'
             '        <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:22px">%s</span>\n'
             '        <div class="bacmp">\n        %s\n        </div>\n'
             '        <p style="font-size:12.5px;color:var(--grey-dark);margin-top:18px;max-width:52ch;text-align:center">%s</p>\n'
-            '      </div>\n') % (b["label"], rows, b["note"])
+            '%s'
+            '      </div>\n') % (b["label"], rows, b["note"], blink)
+
+def _crew(s):
+    c = s.get("crew")
+    if not c:
+        return ""
+    cells = "\n        ".join(
+        '<div class="pcell" data-fade style="--i:%d">\n'
+        '          <div class="pportrait" data-scale><img loading="lazy" decoding="async" src="%s" alt=""></div>\n'
+        '          <div class="pname"><b>%s</b><span>%s</span></div>\n'
+        '          <p class="prole">%s</p>\n'
+        '        </div>' % (i, img, name, role, txt)
+        for i, (name, role, txt, img) in enumerate(c["people"]))
+    head = "\n        ".join('<span class="rl"><span>%s</span></span>' % x for x in c["h"])
+    return ('  <!-- WER DARAN ARBEITET -->\n'
+            '  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">\n'
+            '    <div class="wrap">\n'
+            '      <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:clamp(20px,2.4vw,32px)">%s</span>\n'
+            '      <h2 class="disp" data-lines style="text-transform:none;letter-spacing:-0.028em">\n'
+            '        %s\n'
+            '      </h2>\n'
+            '      <p data-fade style="max-width:50ch;margin-top:clamp(20px,2.4vw,32px);color:var(--grey-dark);font-size:16px;line-height:1.65">%s</p>\n'
+            '      <div class="pgrid pgrid--role" data-stagger>\n'
+            '        %s\n'
+            '      </div>\n'
+            '    </div>\n'
+            '  </section>\n\n') % (c["label"], head, c["t"], cells)
+
+
+def _voice(s):
+    v = s.get("voice")
+    if not v:
+        return ""
+    return ('  <!-- WAS KUNDEN SAGEN -->\n'
+            '  <section class="sec fg-dark" data-bg="#0E0E10" data-fg="light" style="background:#0E0E10">\n'
+            '    <div class="wrap vsplit">\n'
+            '      <div class="vtxt">\n'
+            '        <span class="label" style="color:var(--champ)">%s</span>\n'
+            '        <p class="vq" data-fade>&bdquo;%s&ldquo;</p>\n'
+            '        <div class="va" data-fade>%s</div>\n'
+            '        <p class="vnote" data-fade>%s</p>\n'
+            '      </div>\n'
+            '      <div class="vmedia" data-fade><span data-scale><img loading="lazy" decoding="async" src="%s" alt=""></span></div>\n'
+            '    </div>\n'
+            '  </section>\n\n') % (v["label"], v["q"], v["a"], v["note"], v["img"])
+
 
 def render_service(s):
-    if s.get("zoom") and s.get("diff"):
-        s = dict(s)
-        _d = list(s["diff"])
-        _d[-1] = (_d[-1][0], _d[-1][1], _d[-1][2], s["zoom"]["img"])
-        s["diff"] = _d
+    aside_pos = "left:clamp(24px,6vw,110px)" if s["zoom"]["side"] == "right" else "right:clamp(24px,6vw,110px)"
     tags = "\n        ".join("<span>%s</span>" % t for t in s["tags"])
     h1 = ('<span class="rl"><span>%s</span></span>\n        <span class="rl"><span><i style="font-style:italic;color:var(--champ-deep)">%s</i></span></span>'
           % (s["h1"][0], s["h1"][1]))
@@ -438,12 +540,6 @@ def render_service(s):
           </div></div>
         </div>''' % (t, p, li))
     acc = "\n        ".join(acc_items)
-    beweis_block = ""
-    if s.get("zoom"):
-        beweis_block = ('\n          <div class="dblock" data-fade>\n'
-                        '            <div class="pk2">Der Beweis</div>\n'
-                        '            <p style="font-family:var(--f-serif);font-size:clamp(18px,1.5vw,23px);line-height:1.6;color:var(--ink);margin-top:12px;max-width:44ch">%s</p>\n'
-                        '          </div>') % s["zoom"]["aside"]
     dimgs = "\n            ".join(
         '<img loading="lazy" decoding="async" src="%s" alt="" class="%s">' % (img, "on" if i == 0 else "")
         for i, (k, t, p, img) in enumerate(s["diff"]))
@@ -454,7 +550,14 @@ def render_service(s):
           </div>''' % (k, i + 1, t, p) for i, (k, t, p, img) in enumerate(s["diff"]))
     z = s["zoom"]
     aside_pos = "left:clamp(24px,6vw,110px)" if z["side"] == "right" else "right:clamp(24px,6vw,110px)"
-    nums = "\n        ".join('''<div class="n" data-fade><div class="v num serif">%s</div><div class="l">%s</div></div>''' % (v, l) for v, l in s["proof_nums"])
+    nums_sec = ""
+    if s.get("proof_nums"):
+        nums_sec = ('      <div class="wnums" data-stagger style="justify-content:center;margin-top:clamp(30px,4vw,50px)">\n        %s\n      </div>\n'
+                    % "\n        ".join('<div class="n" data-fade><div class="v num serif">%s</div><div class="l">%s</div></div>' % (v, l) for v, l in s["proof_nums"]))
+    lead_sec = ""
+    if s.get("proof_lead"):
+        lead_sec = ('      <p data-fade style="font-family:var(--f-serif);font-size:clamp(17px,1.5vw,22px);line-height:1.6;color:var(--grey-dark);max-width:56ch;margin:clamp(26px,3vw,40px) auto 0;text-align:center">%s</p>\n'
+                    % s["proof_lead"])
     vkind, vd = s["visual"]
     if vkind == "panels":
         imgs = vd["imgs"]
@@ -503,14 +606,14 @@ def render_service(s):
                 return '<div class="phframe"><img loading="lazy" decoding="async" src="%s" alt=""></div>' % src
             fr = "\n          ".join(_pf(i) for i in items)
             return '<div class="phcol" data-drift="%s">\n          %s\n        </div>' % (speed, fr)
+        phh_lines = "".join('<span class="rl"><span>%s</span></span>' % x
+                            for x in (vd["h"] if isinstance(vd["h"], list) else [vd["h"]]))
         visual = '''  <!-- PROOF · PHONES (Screens ziehen vorbei) -->
   <section class="sec fg-light bg-paper phonesec" data-bg="#F3EDE1" data-fg="dark">
     <div class="wrap phwrap">
       <div class="phtxt">
-        <div class="lchap" style="grid-template-columns:1fr;gap:18px">
-          <div class="lh" data-lines><span class="rl"><span>%s</span></span></div>
-          <p class="lt3" data-fade>%s</p>
-        </div>
+        <h2 class="phh" data-lines>%s</h2>
+        <p class="lt3 phsub" data-fade>%s</p>
       </div>
       <div class="phcols">
         %s
@@ -519,7 +622,7 @@ def render_service(s):
     </div>
   </section>
 
-''' % (vd["h"], vd["t"], _pc(colA, "0.14"), _pc(colB, "0.24"))
+''' % (phh_lines, vd["t"], _pc(colA, "0.14"), _pc(colB, "0.24"))
     else:
         visual = '''  <!-- PROOF · STAGE -->
   <section class="fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding: 0 0 clamp(110px,14vw,200px)">
@@ -544,20 +647,27 @@ def render_service(s):
     content_sec = _content_section(s["slug"])
     content_before = content_sec if s.get("tell") else ""
     content_after = "" if s.get("tell") else content_sec
+    zah = "\n          ".join('<span class="rl"><span>%s</span></span>' % x for x in s["zoom"].get("ah", []))
+    zalink = ('<a class="zalink" href="%s">%s</a>' % s["zoom"]["alink"]) if s["zoom"].get("alink") else ""
     heronum_sec = _heronum(s)
     tell_sec = _tell(s)
     channels_sec = _channels(s)
     quote_sec = _quote(s)
     bars_sec = _bars(s)
     pq_sec = "" if s.get("quote") else ('<p class="serif" data-fade style="font-size:clamp(17px,1.4vw,21px);color:var(--grey-dark);max-width:52ch;margin:clamp(30px,4vw,46px) auto 0;text-align:center">%s</p>' % s["proof_quote"])
+    bars_here = "" if s.get("tell") else bars_sec
+    right_sec = bars_sec if s.get("tell") else quote_sec
     proofsplit_sec = ""
-    if s.get("channels") or s.get("quote"):
-        proofsplit_sec = ('  <!-- BELEG: KANAELE UND STIMME -->\n'
+    if s.get("channels") or right_sec:
+        proofsplit_sec = ('  <!-- BELEG: ZWEI VERGLEICHE, ZWEI PROJEKTE -->\n'
             '  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:clamp(50px,6vw,90px)">\n'
             '    <div class="wrap proofsplit">\n'
             + (channels_sec or "      <div></div>\n")
-            + (quote_sec or "      <div></div>\n")
+            + (right_sec or "      <div></div>\n")
             + '    </div>\n  </section>\n\n')
+    wall_sec = _wall(s)
+    crew_sec = _crew(s)
+    voice_sec = _voice(s)
     fit_sec = _fit(s)
     next_sec = _next(s)
     deliver_sec = _deliver(s)
@@ -608,7 +718,7 @@ def render_service(s):
           </div>
         </div>
         <div class="dright">
-          ''' + dblocks + beweis_block + '''
+          ''' + dblocks + '''
         </div>
       </div>
     </div>
@@ -617,6 +727,12 @@ def render_service(s):
   <!-- 05 · PROOF 1: ZOOM -->
   <section class="zoomsec" data-side="''' + z["side"] + '''" data-bg="#F3EDE1" data-fg="dark">
     <div class="zsticky">
+      <div class="zaside fg-light" style="''' + aside_pos + '''">
+        <span class="label" style="color:var(--champ-deep)">''' + z.get("al", "Der Beweis") + '''</span>
+        <h3 class="zah" data-lines>''' + zah + '''</h3>
+        <p class="zasub">''' + z["aside"] + '''</p>
+        ''' + zalink + '''
+      </div>
       <div class="zmedia"><img src="''' + z["img"] + '''" alt=""></div>
       <div class="zcap">
         <span class="zl">''' + z["zl"] + '''</span>
@@ -629,18 +745,15 @@ def render_service(s):
   <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">
     <div class="wrap" style="max-width:1100px">
       <span class="label" style="color:var(--champ-deep);display:block;text-align:center">Ergebnisse</span>
-      <h2 class="serif" data-lines style="font-size:clamp(34px,4.4vw,72px);text-align:center;margin-top:22px">
+      <h2 class="dispn" data-lines style="font-size:clamp(36px,4.6vw,78px);text-align:center;margin-top:22px">
         <span class="rl"><span>''' + s["proof_h"][0] + '''</span></span>
         <span class="rl"><span><i style="font-style:italic">''' + s["proof_h"][1] + '''</i></span></span>
       </h2>
-      <div class="wnums" data-stagger style="justify-content:center;margin-top:clamp(30px,4vw,50px)">
-        ''' + nums + '''
-      </div>
-      ''' + pq_sec + bars_sec + '''
+''' + nums_sec + lead_sec + pq_sec + bars_here + '''
     </div>
   </section>
 
-''' + content_before + tell_sec + proofsplit_sec + visual + '''  <!-- 07 · CASES -->
+''' + tell_sec + content_before + proofsplit_sec + visual + wall_sec + crew_sec + voice_sec + '''  <!-- 07 · CASES -->
   <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:clamp(60px,7vw,100px)">
     <div class="wrap">
       <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:clamp(28px,3.4vw,48px)">Ausgewählte Ergebnisse</span>

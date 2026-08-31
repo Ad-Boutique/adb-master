@@ -60,12 +60,20 @@ MENU_ITEMS = [
       </span>'''),
 ]
 
-def menu(active):
+BACKCIRCLE = """<a class="bkbtn" href="work.html" aria-label="Zurück zur Übersicht"><span class="bkar">&#8592;</span></a>
+<svg class="bkorbit" viewBox="0 0 100 100" aria-hidden="true">
+  <defs><path id="bkpath" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs>
+  <text><textPath href="#bkpath" startOffset="2%">Übersicht</textPath></text>
+</svg>
+"""
+
+
+def menu(active, back=False):
     rows = []
     for href, label, mv in MENU_ITEMS:
         act = " act" if href == active else ""
         rows.append('    <a class="mitem%s" href="%s">\n      <span class="mt">%s</span>\n      <span class="mthumb">%s</span>\n    </a>' % (act, href, label, mv))
-    return '''<button class="mbtn" aria-label="Menü öffnen"></button>
+    return (BACKCIRCLE if back else "") + '''<button class="mbtn" aria-label="Menü öffnen"></button>
 <svg class="morbit" viewBox="0 0 124 124" aria-hidden="true">
   <defs><path id="mpath" d="M62,62 m-48,0 a48,48 0 1,1 96,0 a48,48 0 1,1 -96,0"/></defs>
   <text class="t-open"><textPath href="#mpath" startOffset="2%">Menü</textPath></text>
@@ -311,7 +319,7 @@ def case_page(c, nxt):
     <img src="%s" alt="%s">
     <div class="hcap">
       <div class="cl" style="font-size:15px">%s <span>· %s</span></div>
-      <div class="serif" style="font-size:clamp(34px,4.4vw,72px);margin-top:10px;text-shadow:0 2px 24px rgba(0,0,0,0.4)">%s</div>
+      <div class="dispn" style="font-size:clamp(34px,4.6vw,74px);margin-top:10px;text-shadow:0 2px 24px rgba(0,0,0,0.4)">%s</div>
     </div>
     <div class="hkpi"><div class="kv">%s</div><div class="kl">(%s)</div></div>
     <div class="scrollhint">Scrollen</div>
@@ -320,7 +328,7 @@ def case_page(c, nxt):
         hero = """<section class="chero" data-bg="%s" data-fg="light" style="background:%s;color:%s">
     <div class="hcap">
       <div class="cl" style="font-size:15px">%s <span style="opacity:.65">· %s</span></div>
-      <div class="serif" style="font-size:clamp(34px,4.4vw,72px);margin-top:10px">%s</div>
+      <div class="dispn" style="font-size:clamp(34px,4.6vw,74px);margin-top:10px">%s</div>
     </div>
     <div class="hkpi"><div class="kv" style="font-size:clamp(60px,7vw,120px)">%s</div><div class="kl">(%s)</div></div>
     <div class="scrollhint">Scrollen</div>
@@ -375,7 +383,7 @@ def case_page(c, nxt):
         else:
             nxt_media = '<span style="display:flex;align-items:flex-end;aspect-ratio:4/3;background:%s;color:%s;padding:24px;border-radius:3px"><span style="font-family:var(--f-disp);font-weight:680;font-size:clamp(40px,4vw,64px);font-variant-numeric:tabular-nums">%s</span></span>' % (nxt.get("clr", "#22382C"), nxt.get("fg", "#EDF2EC"), nxt.get("big", ""))
     nxt_href = nxt["slug"] + ".html"
-    page = HEAD.format(title="Case · " + c["nav_title"], bodybg=world) + menu("work.html") + """<main>
+    page = HEAD.format(title="Case · " + c["nav_title"], bodybg=world) + menu("work.html", back=True) + """<main>
 
   <!-- HERO: Vollbild in der Case-Farbwelt -->
   """ + hero + """
@@ -408,7 +416,7 @@ def case_page(c, nxt):
   <section class="cstate fg-dark" data-bg="""" + world + """" data-fg="light" style="--case-clr:""" + world + """">
     <div class="inner">
       <span class="label" style="color:var(--champ)">So denken wir</span>
-      <h2 class="serif" data-lines>
+      <h2 class="dispn" data-lines>
 """ + stmt + """
       </h2>
     </div>
