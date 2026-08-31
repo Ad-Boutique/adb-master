@@ -13,8 +13,8 @@ HEAD = '''<!doctype html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="assets/master.css?v=12">
-<script src="assets/master.js?v=12" defer></script>
+<link rel="stylesheet" href="assets/master.css?v=13">
+<script src="assets/master.js?v=13" defer></script>
 </head>
 <body style="background-color:{bodybg}" class="on-light">
 
@@ -127,7 +127,7 @@ def logogrid(names):
     for i in range(slots):
         bg, tone = LOGO_TILE_BGS[i]
         chunk = names[i * per:(i + 1) * per]
-        out.append('<span class="lslot %s" style="background:%s" data-set="%s"></span>' % (tone, bg, ",".join(chunk)))
+        out.append('<span class="lslot" data-set="%s"></span>' % ",".join(chunk))
     return "\n        ".join(out)
 
 def logocycle(names, slots=3):
@@ -142,7 +142,7 @@ def logocycle(names, slots=3):
 # CASES (Reihenfolge = Staerke laut Briefing; Kette fuer "Naechster Case")
 # ============================================================
 CASES = [
- dict(slug="case-immobilien-investment", ziel="Zurechenbares Kapital", nav_title="Immobilien-Investment",
+ dict(slug="case-immobilien-investment", img="assets/prev/case-immobilien-investment.jpg", ziel="Zurechenbares Kapital", nav_title="Immobilien-Investment",
   title=["Immobilien-", "Investment."], sub="€ 36k Budget. € 4,65 Mio. Kapital. Zurechenbar.",
   clr="#2E3A2F", fg="#EDF2EC", big="129×", biglabel="zurechenbares Kapital",
   disz=[("Strategie & Funnel", "service-strategie.html"), ("Performance Marketing", "service-performance-marketing.html"), ("Websites & Landingpages", "service-websites.html")],
@@ -161,7 +161,7 @@ CASES = [
   learn=["Im Finance zählt der Cost per zugerechnetem Kapital, nicht der CPL.",
          "Ehrlich, auch unbequem: Ein € 278k-Test brachte 0 Zeichnungen und wurde gestoppt.",
          "Sauberes Tracking ist die Voraussetzung für jede ehrliche Aussage."]),
- dict(slug="case-d2c-lifestyle", ziel="Profitables Wachstum", nav_title="D2C-Lifestyle-Marke",
+ dict(slug="case-d2c-lifestyle", img="assets/img/c_candle.jpg", ziel="Profitables Wachstum", nav_title="D2C-Lifestyle-Marke",
   title=["D2C-Lifestyle-", "Marke."], sub="€ 520k → € 817k Umsatz. Das beste Jahr der Firmengeschichte.",
   clr="#4A3328", fg="#F4EEE8", big="+57 %", biglabel="Jahresumsatz",
   disz=[("E-Commerce Growth", "service-ecommerce.html"), ("Performance Marketing", "service-performance-marketing.html"), ("Content Creation", "service-content-creation.html")],
@@ -181,7 +181,7 @@ CASES = [
          "UGC hat den größten Conversion-Hebel.",
          "Profitabilität schlägt Reichweite, jede Woche aufs Neue."]),
  dict(slug="case-premium-neubau", nav_title="Premium-Neubau, Wien", handmade=True),
- dict(slug="case-crowdinvesting", ziel="Kapital je Projekt, planbar", nav_title="Crowdinvesting-Plattform",
+ dict(slug="case-crowdinvesting", img="assets/case/case-crowdinvesting/g0.jpg", ziel="Kapital je Projekt, planbar", nav_title="Crowdinvesting-Plattform",
   title=["Crowdinvesting-", "Plattform."], sub="Gleiches Budget. 4× mehr Kapital.",
   clr="#1C2530", fg="#E8EDF2", big="8,75", biglabel="ROAS, vorher 2,14",
   disz=[("Strategie & Funnel", "service-strategie.html"), ("Performance Marketing", "service-performance-marketing.html")],
@@ -200,7 +200,7 @@ CASES = [
   learn=["Struktur schlägt Einzelkampagne.",
          "Die KPI-Definition vorab ist die halbe Miete.",
          "Gleicher Spend, anderes Ergebnis: Der Beweis liegt im Vorher-Nachher."]),
- dict(slug="case-wohnbau-floridsdorf", ziel="Qualifizierte Kaufinteressenten", nav_title="Wohnbau, Floridsdorf",
+ dict(slug="case-wohnbau-floridsdorf", img="assets/prev/case-wohnbau-floridsdorf.jpg", ziel="Qualifizierte Kaufinteressenten", nav_title="Wohnbau, Floridsdorf",
   title=["Wohnbau,", "Floridsdorf."], sub="460 Kaufinteressenten zu € 12,77 pro Lead.",
   clr="#33383E", fg="#EFF1F3", big="460", biglabel="Leads · € 12,77 CPL",
   disz=[("Performance Marketing", "service-performance-marketing.html"), ("Content Creation", "service-content-creation.html"), ("Websites & Landingpages", "service-websites.html")],
@@ -263,7 +263,7 @@ CASES = [
   learn=["Ein gutes System ist wiederholbar, über Projekte hinweg.",
          "Lage plus Lebensgefühl schlagen Floskeln.",
          "Niedrige CPL kommt aus Disziplin, nicht aus Glück."]),
- dict(slug="case-health-brand", ziel="Profitable Skalierung", nav_title="Dental-/Health-Marke",
+ dict(slug="case-health-brand", img="assets/prev/case-health-brand.jpg", ziel="Profitable Skalierung", nav_title="Dental-/Health-Marke",
   title=["Dental-/", "Health-Marke."], sub="1.385 Verkäufe in 7 Monaten. Und der ehrliche Blick darauf.",
   clr="#1F3833", fg="#EAF1EE", big="1.385", biglabel="Verkäufe in 7 Monaten",
   disz=[("E-Commerce Growth", "service-ecommerce.html"), ("Content Creation", "service-content-creation.html")],
@@ -282,7 +282,7 @@ CASES = [
   learn=["Ehrlichkeit schlägt Schönfärben: Ein Ziel-Gap gehört offen ins Reporting.",
          "Der größte Hebel war das Creative, nicht das Budget.",
          "Retargeting ist der effizienteste Euro."]),
- dict(slug="case-photovoltaik", ziel="Qualifizierte Anfragen", nav_title="Photovoltaik-Anbieter",
+ dict(slug="case-photovoltaik", img="assets/img/a_gmund1.jpg", ziel="Qualifizierte Anfragen", nav_title="Photovoltaik-Anbieter",
   title=["Photovoltaik-", "Anbieter."], sub="406 Leads. Und +487 % mehr Website-Besucher.",
   clr="#3A3A2E", fg="#F0F0E6", big="+487 %", biglabel="Website-Besucher",
   disz=[("Websites & Landingpages", "service-websites.html"), ("Performance Marketing", "service-performance-marketing.html")],

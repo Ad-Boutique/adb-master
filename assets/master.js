@@ -400,6 +400,34 @@
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitWord);
   }
 
+
+  /* ---------- Videos: nur im Viewport abspielen ---------- */
+  var vids = document.querySelectorAll("video[data-auto]");
+  if (vids.length) {
+    var vio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var v = en.target;
+        if (en.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        else v.pause();
+      });
+    }, { threshold: 0.15 });
+    vids.forEach(function (v) { vio.observe(v); });
+  }
+
+  /* ---------- Eingebetteter Film: Ton auf Klick ---------- */
+  document.querySelectorAll(".filmwrap").forEach(function (wrap) {
+    var v = wrap.querySelector("video");
+    var btn = wrap.querySelector(".fplay");
+    if (!v || !btn) return;
+    btn.addEventListener("click", function () {
+      wrap.classList.add("playing");
+      v.muted = false;
+      v.controls = true;
+      var p = v.play(); if (p && p.catch) p.catch(function () {});
+    });
+    v.addEventListener("pause", function () { if (v.currentTime === 0) wrap.classList.remove("playing"); });
+  });
+
   /* ---------- Scroll-Loop ---------- */
   var vh = window.innerHeight;
   window.addEventListener("resize", function () { vh = window.innerHeight; });

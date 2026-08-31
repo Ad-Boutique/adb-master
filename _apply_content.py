@@ -1,0 +1,179 @@
+# Baut den Kunden-Content (assets/content.json) in Work-Kacheln und Case-Seiten ein.
+# -*- coding: utf-8 -*-
+import json, os, re
+
+M = json.load(open("assets/content.json", encoding="utf-8"))
+
+# ---------- 1) WORK: Preview-Medien in die Kacheln ----------
+# Anker (Text in der Kachel) -> Case-Slug im Manifest
+TILE = {
+    "Immobilien-Investment":     "case-immobilien-investment",
+    "Crowdinvesting-Plattform":  "case-crowdinvesting",
+    "Wohnbau, Floridsdorf":      "case-wohnbau-floridsdorf",
+    "Dental-/Health-Marke":      "case-health-brand",
+    "Premium-Consumer-Brand":    "case-consumer-brand",
+    "Premium-Neubau, Wien":      "case-premium-neubau",
+    "Noma Wien":                 "case-web-noma",
+    "Trattner &amp; Söhne":      "case-web-trattner",
+    "Trattner & Söhne":          "case-web-trattner",
+    "Northpoint Advisors":       "case-web-northpoint",
+    "Pharmacom":                 "case-web-pharmacom",
+    "Havenstone":                "case-web-havenstone",
+    "DaPhi":                     "case-web-daphi",
+    "IB-7":                      "case-web-ib7",
+    "Kommunalkredit":            "kommunalkredit",
+    "Juwel Wien":                "juwel",
+    "Hero Group":                "herogroup",
+}
+
+w = open("work.html", encoding="utf-8").read()
+
+def media_html(entry, alt):
+    p = entry.get("prev")
+    if not p:
+        return None
+    if entry.get("prev_kind") == "video":
+        return ('<video data-auto muted loop playsinline preload="metadata" '
+                'src="%s" aria-label="%s"></video>' % (p, alt))
+    return '<img loading="lazy" decoding="async" src="%s" alt="%s">' % (p, alt)
+
+def tile_bounds(s, start):
+    depth, end = 0, None
+    for mm in re.finditer(r'</?(a|div|span|img|video)\b[^>]*>', s[start:]):
+        tag = mm.group(0)
+        if tag.startswith('</'):
+            depth -= 1
+        elif not tag.endswith('/>') and mm.group(1) not in ('img',):
+            depth += 1
+        if depth == 0:
+            end = start + mm.end()
+            break
+    return end
+
+changed = 0
+for anchor, slug in TILE.items():
+    entry = M.get(slug)
+    if not entry:
+        continue
+    new_media = media_html(entry, anchor)
+    if not new_media:
+        continue
+    idx = w.find('<b>%s</b>' % anchor)
+    if idx < 0:
+        # Farbkachel: Anker im wclr-Label
+        idx = w.find('>%s</b>' % anchor)
+    if idx < 0:
+        print("  ? kein Anker:", anchor)
+        continue
+    start = w.rfind('<a class="wt tile', 0, idx)
+    d = w.rfind('<div class="wt tile', 0, idx)
+    if d > start:
+        start = d
+    end = tile_bounds(w, start)
+    if not end:
+        continue
+    block = w[start:end]
+    # bestehendes Bild ersetzen, sonst Farbfläche durch Medium tauschen
+    if '<img' in block and 'wclr' not in block:
+        nb = re.sub(r'<img[^>]*>', new_media, block, count=1)
+    else:
+        nb = re.sub(r'<span class="wclr".*?</span>\s*(?=<span class="wpill"|<span class="wlab"|$)',
+                    new_media, block, count=1, flags=re.S)
+        if nb == block:
+            continue
+        if 'has-media' not in nb:
+            nb = nb.replace('class="wt tile', 'class="wt tile has-media', 1)
+        # Label ergänzen, falls die Farbkachel keins hatte
+        if '<span class="wlab">' not in nb:
+            label = anchor
+            nb = nb.replace('</a>' if nb.startswith('<a') else '</div>',
+                            '<span class="wlab"><b>%s</b></span>%s' % (label, '</a>' if nb.startswith('<a') else '</div>'))
+    w = w[:start] + nb + w[end:]
+    changed += 1
+
+open("work.html", "w", encoding="utf-8").write(w)
+print("Work-Kacheln mit Preview:", changed)
+
+
+# ---------- 2) CASE-SEITEN: Intro-Medium + Content-Galerie ----------
+def gallery_html(entry, title):
+    items = []
+    for im in entry.get("imgs", []):
+        cls = "port" if im["portrait"] else "land"
+        items.append('<div class="%s" data-fade><figure><img loading="lazy" decoding="async" src="%s" alt=""></figure></div>'
+                     % (cls, im["src"]))
+    for v in entry.get("vids", []):
+        cls = "port" if v["portrait"] else "land"
+        items.append('<div class="%s" data-fade><figure><video data-auto muted loop playsinline preload="none" src="%s"></video></figure></div>'
+                     % (cls, v["src"]))
+    if not items:
+        return ""
+    return '''  <!-- CONTENT AUS DEM MANDAT -->
+  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">
+    <div class="wrap">
+      <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:clamp(28px,3.4vw,48px)">Aus dem Mandat</span>
+      <div class="cmix" data-stagger>
+        %s
+      </div>
+    </div>
+  </section>
+
+''' % ("\n        ".join(items))
+
+def film_html(entry, title, sub):
+    if not entry.get("recap"):
+        return ""
+    return '''  <!-- FILM -->
+  <section class="sec fg-dark" data-bg="#0A0A0A" data-fg="light" style="background:#0A0A0A">
+    <div class="wrap" style="max-width:1240px">
+      <span class="label" style="color:var(--champ);display:block;margin-bottom:clamp(26px,3vw,40px)">%s</span>
+      <div class="filmwrap" data-fade>
+        <video src="%s" preload="none" playsinline poster="%s"></video>
+        <button class="fplay" aria-label="Film abspielen"><span>▶</span></button>
+      </div>
+      <div class="filmcap">
+        <span>%s</span>
+        <span>Ton beim Abspielen</span>
+      </div>
+    </div>
+  </section>
+
+''' % (title, entry["recap"], entry.get("prev_img_poster", ""), sub)
+
+CASE_FILES = {
+    "case-immobilien-investment": "case-immobilien-investment.html",
+    "case-crowdinvesting": "case-crowdinvesting.html",
+    "case-wohnbau-floridsdorf": "case-wohnbau-floridsdorf.html",
+    "case-health-brand": "case-health-brand.html",
+    "case-consumer-brand": "case-consumer-brand.html",
+    "case-premium-neubau": "case-premium-neubau.html",
+    "case-web-noma": "case-web-noma.html",
+    "case-web-trattner": "case-web-trattner.html",
+    "case-web-northpoint": "case-web-northpoint.html",
+    "case-web-pharmacom": "case-web-pharmacom.html",
+    "case-web-havenstone": "case-web-havenstone.html",
+    "case-web-daphi": "case-web-daphi.html",
+    "case-web-ib7": "case-web-ib7.html",
+}
+
+added = 0
+for slug, fname in CASE_FILES.items():
+    entry = M.get(slug)
+    if not entry or not os.path.exists(fname):
+        continue
+    s = open(fname, encoding="utf-8").read()
+    if 'class="cmix"' in s:
+        continue
+    gal = gallery_html(entry, slug)
+    if not gal:
+        continue
+    # vor "NEXT" einsetzen
+    for marker in ("  <!-- NEXT CASE -->", "  <!-- NEXT -->"):
+        if marker in s:
+            s = s.replace(marker, gal + marker, 1)
+            break
+    else:
+        continue
+    open(fname, "w", encoding="utf-8").write(s)
+    added += 1
+print("Case-Seiten mit Content-Galerie:", added)

@@ -147,7 +147,7 @@ body.menuopen .mbtn::after { opacity: 1; }
 /* Filter-Kreis (Work-Seite), links neben dem Menü-Kreis */
 .fbtn {
   position: fixed; left: 50%; bottom: 42px; z-index: 90;
-  margin-left: -128px;
+  margin-left: -178px;
   width: 52px; height: 52px; border-radius: 50%; cursor: pointer;
   background: transparent; border: 1px solid var(--champ-deep);
   transition: transform 0.5s var(--e-out), background-color 0.4s ease;
@@ -161,7 +161,7 @@ body.filteropen .fbtn { background: var(--champ); border-color: var(--champ); }
 body.filteropen .fbtn::after { background: var(--ink); }
 .forbit {
   position: fixed; left: 50%; bottom: 18px; z-index: 90;
-  width: 100px; height: 100px; margin-left: -152px;
+  width: 100px; height: 100px; margin-left: -202px;
   pointer-events: none; mix-blend-mode: difference;
   animation: orbitspin 18s linear infinite reverse;
 }
@@ -171,7 +171,7 @@ body.filteropen .fbtn::after { background: var(--ink); }
 }
 .fpop {
   position: fixed; left: 50%; bottom: 112px; z-index: 89;
-  margin-left: -180px; display: flex; flex-direction: column; gap: 8px;
+  margin-left: -230px; display: flex; flex-direction: column; gap: 8px;
   align-items: flex-start; pointer-events: none;
 }
 .fpop .fchip,
@@ -1182,13 +1182,14 @@ body.loaded .chero img { transform: scale(1); }
 
 /* Logo-Block: zentriert, 2x4, flaechige Kacheln, Logos blenden durch */
 .logogrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(14px, 1.6vw, 24px); max-width: 1120px; margin: 0 auto; }
-.logogrid .lslot { position: relative; aspect-ratio: 16 / 9; border-radius: 4px; min-width: 0; max-width: none; height: auto; flex: none; }
+.logogrid .lslot { position: relative; aspect-ratio: 16 / 9; background: transparent !important; border-radius: 0; min-width: 0; max-width: none; height: auto; flex: none; }
 .logogrid .lslot img {
   position: absolute; inset: 0; margin: auto; left: 0; top: 0; right: 0; bottom: 0;
   height: clamp(20px, 2vw, 30px); width: auto; max-width: 58%; object-fit: contain;
 }
-.logogrid .lslot.dk img { filter: grayscale(1) brightness(2.2); }
-.logogrid .lslot.lt img { filter: grayscale(1) invert(1) brightness(0.22); }
+.logogrid .lslot img { filter: grayscale(1) invert(1) brightness(0.2); opacity: 0.72; }
+.fg-dark .logogrid .lslot img { filter: grayscale(1) brightness(2.4); opacity: 0.62; }
+.logogrid .lslot img { height: clamp(22px, 2.2vw, 34px); max-width: 66%; }
 @media (max-width: 900px) { .logogrid { grid-template-columns: 1fr 1fr; } }
 
 /* Pardo-Ruhe: Cases atmen mehr */
@@ -1200,7 +1201,7 @@ body.loaded .chero img { transform: scale(1); }
 /* Zweiter Filter-Kreis rechts: Branche */
 .bbtn {
   position: fixed; left: 50%; bottom: 42px; z-index: 90;
-  margin-left: 76px;
+  margin-left: 126px;
   width: 52px; height: 52px; border-radius: 50%; cursor: pointer;
   background: transparent; border: 1px solid var(--champ-deep);
   transition: transform 0.5s var(--e-out), background-color 0.4s ease;
@@ -1214,7 +1215,7 @@ body.branchopen .bbtn { background: var(--champ); border-color: var(--champ); }
 body.branchopen .bbtn::after { background: var(--ink); }
 .borbit {
   position: fixed; left: 50%; bottom: 18px; z-index: 90;
-  width: 100px; height: 100px; margin-left: 52px;
+  width: 100px; height: 100px; margin-left: 102px;
   pointer-events: none; mix-blend-mode: difference;
   animation: orbitspin 18s linear infinite;
 }
@@ -1224,7 +1225,7 @@ body.branchopen .bbtn::after { background: var(--ink); }
 }
 .bpop {
   position: fixed; left: 50%; bottom: 112px; z-index: 89;
-  margin-left: 52px; display: flex; flex-direction: column; gap: 8px;
+  margin-left: 102px; display: flex; flex-direction: column; gap: 8px;
   align-items: flex-start; pointer-events: none;
 }
 @media (max-width: 640px) {
@@ -1258,4 +1259,49 @@ body.branchopen .bbtn::after { background: var(--ink); }
   .oplist .okpi { grid-column: 2; text-align: left; white-space: normal; }
   .oplist .okpi .l { letter-spacing: 0.1em; }
   .oplist .otitle { font-size: clamp(19px, 6.4vw, 27px); }
+}
+
+
+/* ============================================================
+   Bewegtbild: Kacheln, Galerie, eingebetteter Film
+   ============================================================ */
+.wt video, .tile video {
+  width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; display: block;
+  transition: transform 0.9s var(--e-out);
+}
+.wt:hover video { transform: scale(1.04); }
+.wt .wmedia { position: relative; display: block; overflow: hidden; }
+
+/* Eingebetteter Film, quer, mit Ton auf Klick */
+.filmwrap { position: relative; border-radius: 4px; overflow: hidden; background: #0A0A0A; }
+.filmwrap video { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; display: block; background: #0A0A0A; }
+.filmwrap .fplay {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(to top, rgba(8,8,9,0.5), rgba(8,8,9,0.1));
+  cursor: pointer; transition: opacity 0.5s ease; border: 0;
+}
+.filmwrap.playing .fplay { opacity: 0; pointer-events: none; }
+.filmwrap .fplay span {
+  width: 76px; height: 76px; border-radius: 50%; background: var(--champ);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink); font-size: 20px; padding-left: 4px;
+  transition: transform 0.5s var(--e-out);
+}
+.filmwrap .fplay:hover span { transform: scale(1.1); }
+.filmcap { display: flex; justify-content: space-between; gap: 20px; margin-top: 16px; font-size: 12.5px; color: var(--grey-dark); }
+.fg-dark .filmcap { color: var(--grey); }
+
+/* Content-Galerie: Quer- und Hochformat gemischt */
+.cmix { display: grid; grid-template-columns: repeat(6, 1fr); gap: clamp(14px, 1.8vw, 26px); align-items: start; }
+.cmix > * { will-change: transform; }
+.cmix .land { grid-column: span 3; }
+.cmix .port { grid-column: span 2; }
+.cmix figure { margin: 0; border-radius: 3px; overflow: hidden; background: #101012; }
+.cmix img, .cmix video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cmix .land figure { aspect-ratio: 16 / 10; }
+.cmix .port figure { aspect-ratio: 4 / 5.6; }
+@media (max-width: 900px) {
+  .cmix { grid-template-columns: repeat(4, 1fr); }
+  .cmix .land { grid-column: span 4; }
+  .cmix .port { grid-column: span 2; }
 }
