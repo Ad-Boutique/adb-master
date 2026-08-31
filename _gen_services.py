@@ -282,7 +282,7 @@ def _content_section(slug):
                 cells.append('<img loading="lazy" decoding="async" src="%s" alt="">' % m)
         parts.append('      <div class="cpcol" data-drift="%s">\n        %s\n      </div>' % (speeds[i], "\n        ".join(cells)))
     return ('  <!-- CONTENT AUS DEM MANDAT -->\n'
-            '  <section class="collage collage--tight" data-bg="#0E0E10" data-fg="light">\n'
+            '  <section class="collage collage--tight" data-bg="#08080A" data-fg="light" style="background:#08080A">\n'
             '    <div class="wrap" style="position:relative;z-index:2;margin-bottom:clamp(30px,4vw,60px)">\n'
             '      <span class="label" style="color:var(--champ)">Aus laufenden Mandaten</span>\n'
             '    </div>\n'
@@ -311,13 +311,13 @@ def _tell(s):
             '    <div class="wrap">\n'
             '      <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:clamp(30px,3.6vw,52px)">Ein Fall, nachgerechnet</span>\n'
             '      <div class="tell">\n'
+            '        <div class="tsteps">\n        %s\n        </div>\n'
             '        <div class="tfix">\n'
             '          <div class="tv">%s</div>\n'
             '          <div class="tl">%s</div>\n'
             '        </div>\n'
-            '        <div class="tsteps">\n        %s\n        </div>\n'
             '      </div>\n'
-            '    </div>\n  </section>\n\n') % (first[0], first[1], steps)
+            '    </div>\n  </section>\n\n') % (steps, first[0], first[1])
 
 def _channels(s):
     c = s.get("channels")
@@ -496,6 +496,8 @@ def render_service(s):
     chips_sel = "\n        ".join('<button class="nopt" data-v="%s" style="--i:%d">%s <span class="plus">+</span></button>' % (cv, 7 - i, cv) for i, cv in enumerate(s["chips"]))
     logos = logogrid(s["logos"])
     content_sec = _content_section(s["slug"])
+    content_before = content_sec if s.get("tell") else ""
+    content_after = "" if s.get("tell") else content_sec
     heronum_sec = _heronum(s)
     tell_sec = _tell(s)
     channels_sec = _channels(s)
@@ -595,17 +597,7 @@ def render_service(s):
     </div>
   </section>
 
-''' + tell_sec + proofsplit_sec + visual + '''  <!-- LOGOS: zentriert, 2x4, flaechig -->
-  <section class="fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding: clamp(70px,9vw,130px) 0">
-    <div class="wrap">
-      <span class="label" style="color:var(--grey-dark);display:block;text-align:center;margin-bottom:clamp(30px,4vw,50px)">Marken, mit denen wir in diesem Feld arbeiten</span>
-      <div class="logocycle logogrid" data-fade>
-        ''' + logos + '''
-      </div>
-    </div>
-  </section>
-
-''' + content_sec + '''  <!-- 07 · CASES -->
+''' + content_before + tell_sec + proofsplit_sec + visual + '''  <!-- 07 · CASES -->
   <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:clamp(60px,7vw,100px)">
     <div class="wrap">
       <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:clamp(28px,3.4vw,48px)">Ausgewählte Ergebnisse</span>
@@ -615,7 +607,17 @@ def render_service(s):
     </div>
   </section>
 
-''' + fit_sec + '''  <!-- 08 · FAQ -->
+  <!-- LOGOS: zentriert, 2x4, flaechig -->
+  <section class="fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding: clamp(70px,9vw,130px) 0">
+    <div class="wrap">
+      <span class="label" style="color:var(--grey-dark);display:block;text-align:center;margin-bottom:clamp(30px,4vw,50px)">Marken, mit denen wir in diesem Feld arbeiten</span>
+      <div class="logocycle logogrid" data-fade>
+        ''' + logos + '''
+      </div>
+    </div>
+  </section>
+
+''' + content_after + fit_sec + '''  <!-- 08 · FAQ -->
   <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">
     <div class="wrap faq">
       <div>

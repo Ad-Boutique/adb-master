@@ -1329,10 +1329,10 @@ body.branchopen .bbtn::after { background: var(--ink); }
 @media (max-width: 800px) { .fit { grid-template-columns: 1fr; } }
 
 /* Sticky-Zahl mit Stationen (scrollgesteuert) */
-.tell { display: grid; grid-template-columns: 0.62fr 1.38fr; gap: clamp(28px, 3.6vw, 60px); align-items: start; }
-.tell .tfix { position: sticky; top: 50vh; transform: translateY(-50%); }
+.tell { display: grid; grid-template-columns: 1.38fr 0.62fr; gap: clamp(28px, 3.6vw, 60px); align-items: start; }
+.tell .tfix { position: sticky; top: 50vh; transform: translateY(-50%); text-align: right; }
 .tell .tv { font-family: var(--f-serif); font-size: clamp(46px, 5.6vw, 96px); line-height: 1; font-variant-numeric: tabular-nums; letter-spacing: -0.03em; transition: opacity 0.35s ease; }
-.tell .tl { font-size: 13px; color: var(--grey-dark); margin-top: 14px; max-width: 24ch; line-height: 1.6; transition: opacity 0.35s ease; }
+.tell .tl { font-size: 13px; color: var(--grey-dark); margin-top: 14px; max-width: 24ch; margin-left: auto; line-height: 1.6; transition: opacity 0.35s ease; }
 .fg-dark .tell .tl { color: var(--grey); }
 .tell .tsteps { display: flex; flex-direction: column; padding: clamp(30px, 7vh, 80px) 0; }
 .tell .ts { padding: clamp(30px, 5.5vh, 62px) 0; border-top: 1px solid var(--line-l); opacity: 0.3; transition: opacity 0.55s ease; }
@@ -1342,7 +1342,8 @@ body.branchopen .bbtn::after { background: var(--ink); }
 .tell .ts p { font-family: var(--f-serif); font-size: clamp(16px, 1.3vw, 18.5px); line-height: 1.7; color: var(--grey-dark); margin-top: 10px; max-width: 46ch; }
 @media (max-width: 900px) {
   .tell { grid-template-columns: 1fr; }
-  .tell .tfix { position: static; margin-bottom: 20px; }
+  .tell .tfix { position: static; order: -1; text-align: left; margin-bottom: 20px; }
+  .tell .tl { margin-left: 0; }
 }
 
 /* Kanal-Zeilen (kompakt, im Fluss) */
