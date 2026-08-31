@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Studie · Performance-Grafiken · ad.boutique Master</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+<link rel="stylesheet" href="assets/master.css?v=16">
+<style>
+  /* ============================================================
+     STUDIE: Performance-Grafiken im ADB-Design
+     Regeln: Hairlines statt Flächen · Champagne als einziger Akzent ·
+     Serif-Ziffern wie im Rest · Bewegung nur einmal beim Reveal ·
+     keine Achsen, kein Raster, keine Tooltips, keine Chart-Optik
+     ============================================================ */
+  .stwrap { width: min(1400px, calc(100% - clamp(40px, 6vw, 128px))); margin: 0 auto; }
+  .stitem { padding: clamp(70px, 9vw, 130px) 0; border-top: 1px solid var(--line-l); }
+  .stitem:first-of-type { border-top: 0; }
+  .sthead { display: grid; grid-template-columns: 0.4fr 1.6fr; gap: clamp(24px, 4vw, 70px); align-items: start; margin-bottom: clamp(36px, 4.5vw, 64px); }
+  .stnum { font-family: var(--f-serif); font-size: clamp(34px, 3.4vw, 54px); color: var(--champ-deep); line-height: 1; }
+  .sttitle { font-family: var(--f-disp); font-weight: 680; font-size: clamp(20px, 1.9vw, 27px); }
+  .stdesc { font-family: var(--f-serif); font-size: 16.5px; line-height: 1.7; color: var(--grey-dark); max-width: 60ch; margin-top: 10px; }
+  .stwhere { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--champ-deep); margin-top: 16px; display: block; }
+  .stdemo { background: #FBF8F2; border: 1px solid rgba(10,10,10,0.07); border-radius: 5px; padding: clamp(30px, 4.5vw, 70px); }
+  .stdemo.dk { background: #0E0E10; border-color: rgba(243,237,225,0.1); color: var(--paper); }
+  .stdemo.dk .lbl { color: var(--grey); }
+  .lbl { font-size: 10.5px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--grey-dark); }
+
+  /* A · Ziffer zählt hoch */
+  .cnt { display: flex; gap: clamp(40px, 6vw, 110px); flex-wrap: wrap; }
+  .cnt .c { min-width: 150px; }
+  .cnt .v { font-family: var(--f-serif); font-size: clamp(46px, 5vw, 86px); line-height: 1; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+  .cnt .l { font-size: 12px; color: var(--grey-dark); margin-top: 10px; }
+
+  /* B · Kurve zeichnet sich */
+  .crv { position: relative; }
+  .crv svg { width: 100%; height: clamp(150px, 17vw, 250px); display: block; overflow: visible; }
+  .crv .base { fill: none; stroke: rgba(10,10,10,0.13); stroke-width: 1; }
+  .crv .line { fill: none; stroke: var(--champ-deep); stroke-width: 2; stroke-linecap: round; }
+  .crv .dot { fill: var(--champ-deep); opacity: 0; }
+  .crv .endlab { font-family: var(--f-serif); font-size: 21px; fill: var(--ink); opacity: 0; }
+  .crv .capt { display: flex; justify-content: space-between; font-size: 11.5px; color: var(--grey-dark); margin-top: 14px; }
+
+  /* C · Vorher/Nachher */
+  .ba { display: flex; flex-direction: column; gap: clamp(22px, 2.6vw, 34px); }
+  .ba .row { display: grid; grid-template-columns: 108px 1fr auto; gap: clamp(16px, 2vw, 30px); align-items: center; }
+  .ba .who { font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--grey-dark); }
+  .ba .track { height: 2px; background: rgba(10,10,10,0.1); position: relative; }
+  .ba .fill { position: absolute; left: 0; top: 0; height: 2px; width: 0; background: var(--ink); transition: width 1.5s var(--e-out); }
+  .ba .row.now .fill { background: var(--champ-deep); height: 3px; top: -0.5px; }
+  .ba .val { font-family: var(--f-serif); font-size: clamp(22px, 2.2vw, 34px); font-variant-numeric: tabular-nums; min-width: 100px; text-align: right; }
+  .ba .row.now .val { color: var(--champ-deep); }
+
+  /* D · Anteil als Bogen */
+  .arcbox { display: flex; gap: clamp(34px, 5vw, 80px); align-items: center; flex-wrap: wrap; }
+  .arc { width: clamp(140px, 15vw, 200px); flex: 0 0 auto; }
+  .arc svg { width: 100%; height: auto; transform: rotate(-90deg); }
+  .arc .track2 { fill: none; stroke: rgba(10,10,10,0.11); stroke-width: 1.5; }
+  .arc .seg { fill: none; stroke: var(--champ-deep); stroke-width: 2.5; stroke-linecap: round; }
+  .arctxt .v { font-family: var(--f-serif); font-size: clamp(34px, 3.6vw, 56px); line-height: 1; font-variant-numeric: tabular-nums; }
+  .arctxt .l { font-size: 13.5px; color: var(--grey-dark); margin-top: 10px; max-width: 34ch; line-height: 1.6; }
+
+  /* E · Sparkline im Fließtext */
+  .inlinetext { font-family: var(--f-serif); font-size: clamp(19px, 1.7vw, 25px); line-height: 1.75; max-width: 46ch; }
+  .spark { display: inline-block; width: 86px; height: 20px; vertical-align: -3px; margin: 0 4px; }
+  .spark path { fill: none; stroke: var(--champ-deep); stroke-width: 1.8; stroke-linecap: round; }
+
+  /* F · Kanäle als Hairline-Zeilen */
+  .chn { display: flex; flex-direction: column; }
+  .chn .r { display: grid; grid-template-columns: 132px 1fr auto; gap: clamp(16px, 2vw, 30px); align-items: center; padding: 15px 0; border-top: 1px solid rgba(10,10,10,0.09); }
+  .chn .r:last-child { border-bottom: 1px solid rgba(10,10,10,0.09); }
+  .chn .n2 { font-size: 12.5px; font-weight: 600; }
+  .chn .t2 { height: 1px; background: rgba(10,10,10,0.1); position: relative; }
+  .chn .f2 { position: absolute; left: 0; top: -1px; height: 3px; width: 0; background: var(--champ-deep); transition: width 1.3s var(--e-out); }
+  .chn .r.blend .f2 { background: var(--ink); }
+  .chn .v2 { font-family: var(--f-serif); font-size: 19px; font-variant-numeric: tabular-nums; min-width: 62px; text-align: right; }
+
+  @media (max-width: 800px) {
+    .sthead { grid-template-columns: 1fr; gap: 12px; }
+    .ba .row, .chn .r { grid-template-columns: 84px 1fr auto; }
+  }
+</style>
+<script src="assets/master.js?v=16" defer></script>
+</head>
+<body style="background-color:#F3EDE1" class="on-light">
+
+<div class="pt"><div class="ptw">ad<i>.</i>boutique</div></div>
+
+<header class="chrome">
+  <a href="index.html" class="logo">ad<i>.</i>boutique</a>
+  <a href="work.html" class="ctc">Zurück</a>
+</header>
+
+<main>
+
+  <!-- KOPF -->
+  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-bottom:clamp(40px,5vw,70px)">
+    <div class="stwrap">
+      <span class="label" style="color:var(--grey-dark)">Studie · nicht Teil der Seite</span>
+      <h1 class="serif" data-lines style="font-size:clamp(34px,4.4vw,72px);margin-top:20px;max-width:20ch">
+        <span class="rl"><span>Performance-Grafiken,</span></span>
+        <span class="rl"><span>die nicht nach Dashboard aussehen.</span></span>
+      </h1>
+      <p data-fade style="font-family:var(--f-serif);font-size:clamp(17px,1.4vw,21px);color:var(--grey-dark);max-width:60ch;margin-top:24px;line-height:1.7">
+        Sechs Varianten, jede in den bestehenden Sektionen platzierbar. Gemeinsame Regel: Haarlinien statt Flächen,
+        Champagne als einziger Akzent, Serif-Ziffern wie überall sonst, und Bewegung genau einmal, wenn die Sektion
+        ins Bild kommt. Keine Achsen, kein Raster, keine Legenden.
+      </p>
+    </div>
+  </section>
+
+  <section class="fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-bottom:clamp(90px,12vw,170px)">
+    <div class="stwrap">
+
+      <!-- A -->
+      <div class="stitem">
+        <div class="sthead">
+          <div class="stnum">01</div>
+          <div>
+            <div class="sttitle">Die Ziffer zählt sich selbst hoch</div>
+            <p class="stdesc">Die vorhandenen Ergebnis-Zahlen bleiben exakt wie sie sind, nur der Weg dorthin wird sichtbar: Beim Eintritt zählt die Ziffer in gut einer Sekunde hoch, mit der bestehenden Serif und tabellarischen Ziffern. Kein zusätzliches Element, kein neuer Platzbedarf.</p>
+            <span class="stwhere">Ergebnis-Block der Cases · Zahlen &amp; Fakten auf der Agentur-Seite</span>
+          </div>
+        </div>
+        <div class="stdemo">
+          <span class="lbl">Ergebnis</span>
+          <div class="cnt" data-anim="count" style="margin-top:26px">
+            <div class="c"><div class="v" data-to="489" data-dec="0">0</div><div class="l">Leads gesamt</div></div>
+            <div class="c"><div class="v" data-to="11.77" data-dec="2" data-pre="€ ">0</div><div class="l">Ø Cost per Lead</div></div>
+            <div class="c"><div class="v" data-to="2.26" data-dec="2" data-suf=" %">0</div><div class="l">Click-Through-Rate</div></div>
+            <div class="c"><div class="v" data-to="54" data-dec="0" data-suf=" %">0</div><div class="l">aus einem Motiv</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- B -->
+      <div class="stitem">
+        <div class="sthead">
+          <div class="stnum">02</div>
+          <div>
+            <div class="sttitle">Eine Haarlinie zeichnet den Verlauf</div>
+            <p class="stdesc">Für Entwicklungen über Zeit: eine einzige Linie, die sich beim Scrollen von links nach rechts zeichnet, am Ende ein Punkt und der Zielwert. Keine Achsen, keine Gitter, keine Beschriftung dazwischen. Wirkt wie eine Zeichnung, nicht wie ein Report.</p>
+            <span class="stwhere">Ergebnis-Block · Serif-Passage der Cases · Proof-Sektion der Service-Seiten</span>
+          </div>
+        </div>
+        <div class="stdemo">
+          <span class="lbl">Jahresumsatz · zwölf Monate</span>
+          <div class="crv" data-anim="curve" style="margin-top:20px">
+            <svg viewBox="0 0 900 200" preserveAspectRatio="none" aria-hidden="true">
+              <path class="base" d="M 0 199 L 900 199"></path>
+              <path class="line" d="M 8 168 C 130 162, 210 150, 300 138 S 470 122, 560 92 S 720 54, 892 18"></path>
+              <circle class="dot" cx="892" cy="18" r="5"></circle>
+            </svg>
+            <div class="capt"><span>€ 520k</span><span style="color:var(--champ-deep);font-weight:600">€ 817k · +57 %</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- C -->
+      <div class="stitem">
+        <div class="sthead">
+          <div class="stnum">03</div>
+          <div>
+            <div class="sttitle">Vorher und Nachher als zwei Linien</div>
+            <p class="stdesc">Der stärkste Beweis der Agentur ist der Vergleich mit dem Zustand davor. Zwei Balken auf Haarlinien-Niveau, der neue Wert in Champagne und minimal kräftiger. Er wächst beim Eintritt in die passende Breite, der alte steht schon da.</p>
+            <span class="stwhere">Ergebnis-Block der Cases mit Vorher-Wert · Differenzierungs-Sektion der Service-Seiten</span>
+          </div>
+        </div>
+        <div class="stdemo">
+          <span class="lbl">Return on Ad Spend · Crowdinvesting-Plattform</span>
+          <div class="ba" data-anim="ba" style="margin-top:30px">
+            <div class="row"><span class="who">Vorher</span><span class="track"><i class="fill" data-w="24"></i></span><span class="val">2,14</span></div>
+            <div class="row now"><span class="who">Mit uns</span><span class="track"><i class="fill" data-w="100"></i></span><span class="val">8,75</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- D -->
+      <div class="stitem">
+        <div class="sthead">
+          <div class="stnum">04</div>
+          <div>
+            <div class="sttitle">Der Anteil als offener Bogen</div>
+            <p class="stdesc">Für Anteilswerte, wo ein Balken zu technisch wäre: ein offener Kreisbogen, der sich einmal zeichnet, daneben die Zahl in der bekannten Serif. Bewusst kein geschlossener Ring und kein Tortenstück, das wäre Dashboard-Sprache.</p>
+            <span class="stwhere">Perspektiven-Block der Cases · neben dem Zoom-Moment</span>
+          </div>
+        </div>
+        <div class="stdemo">
+          <div class="arcbox" data-anim="arc">
+            <div class="arc">
+              <svg viewBox="0 0 120 120" aria-hidden="true">
+                <circle class="track2" cx="60" cy="60" r="52"></circle>
+                <circle class="seg" cx="60" cy="60" r="52" data-pct="54"></circle>
+              </svg>
+            </div>
+            <div class="arctxt">
+              <div class="v">54 %</div>
+              <div class="l">aller Leads kamen aus einem einzigen Interior-Motiv, zu € 6,93 pro Lead.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- E -->
+      <div class="stitem">
+        <div class="sthead">
+          <div class="stnum">05</div>
+          <div>
+            <div class="sttitle">Die Kurve mitten im Satz</div>
+            <p class="stdesc">Die kleinste Form: eine daumennagelgroße Linie direkt im Fließtext, die sich beim Lesen zeichnet. Sie unterbricht den Satz nicht, sondern illustriert ihn. Besonders geeignet für die Serif-Passagen, in denen die Cases ihre Geschichte erzählen.</p>
+            <span class="stwhere">Serif-Passage der Cases · Intro der Service-Seiten</span>
+          </div>
+        </div>
+        <div class="stdemo">
+          <p class="inlinetext" data-anim="spark">
+            Das Budget wanderte konsequent dorthin, wo die Zahlen hinzeigten
+            <svg class="spark" viewBox="0 0 86 20" aria-hidden="true"><path d="M 2 16 L 18 14 L 32 15 L 46 9 L 60 10 L 74 4 L 84 3"></path></svg>
+            und aus € 5.755 Spend wurden 489 qualifizierte Kaufinteressenten.
+          </p>
+        </div>
+      </div>
+
+      <!-- F -->
+      <div class="stitem">
+        <div class="sthead">
+          <div class="stnum">06</div>
+          <div>
+            <div class="sttitle">Kanäle als Zeilen, nicht als Torte</div>
+            <p class="stdesc">Wo mehrere Kanäle verglichen werden, bleibt die Darstellung eine Liste: dieselben Haarlinien-Zeilen wie die Ergebnis-Liste auf den Service-Seiten, ergänzt um einen wachsenden Strich. Der Blend-Wert steht in Ink statt Champagne, damit die Hierarchie stimmt.</p>
+            <span class="stwhere">Ergebnis-Block · dort wo heute die Kanal-Zahlen im Fließtext stehen</span>
+          </div>
+        </div>
+        <div class="stdemo">
+          <span class="lbl">Return on Ad Spend je Kanal · D2C-Lifestyle-Marke</span>
+          <div class="chn" data-anim="chn" style="margin-top:24px">
+            <div class="r"><span class="n2">Pinterest</span><span class="t2"><i class="f2" data-w="100"></i></span><span class="v2">6,99</span></div>
+            <div class="r"><span class="n2">Google</span><span class="t2"><i class="f2" data-w="86"></i></span><span class="v2">5,98</span></div>
+            <div class="r"><span class="n2">Meta</span><span class="t2"><i class="f2" data-w="64"></i></span><span class="v2">4,45</span></div>
+            <div class="r blend"><span class="n2">Blended, inkl. Fee</span><span class="t2"><i class="f2" data-w="60"></i></span><span class="v2">4,17</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REGELN -->
+      <div class="stitem">
+        <div class="sthead">
+          <div class="stnum">·</div>
+          <div>
+            <div class="sttitle">Was diese Varianten zusammenhält</div>
+            <p class="stdesc">Damit nichts wie ein eingesetztes Fremdteil wirkt, gelten für alle sechs dieselben Regeln.</p>
+          </div>
+        </div>
+        <div class="stdemo dk">
+          <div class="oplist" style="--i:0">
+            <div class="op" style="border-color:rgba(243,237,225,0.14)">
+              <span class="onum" style="color:var(--grey)">01</span>
+              <span><span class="otitle" style="font-size:clamp(17px,1.6vw,23px)">Nur eine Akzentfarbe</span></span>
+              <span class="okpi"><span class="l" style="color:var(--grey)">Champagne, sonst Ink und Papier</span></span>
+            </div>
+            <div class="op" style="border-color:rgba(243,237,225,0.14)">
+              <span class="onum" style="color:var(--grey)">02</span>
+              <span><span class="otitle" style="font-size:clamp(17px,1.6vw,23px)">Linien statt Flächen</span></span>
+              <span class="okpi"><span class="l" style="color:var(--grey)">1 bis 3 Pixel, nie gefüllt</span></span>
+            </div>
+            <div class="op" style="border-color:rgba(243,237,225,0.14)">
+              <span class="onum" style="color:var(--grey)">03</span>
+              <span><span class="otitle" style="font-size:clamp(17px,1.6vw,23px)">Ziffern in der Haus-Serif</span></span>
+              <span class="okpi"><span class="l" style="color:var(--grey)">tabellarisch, wie im Ergebnis-Block</span></span>
+            </div>
+            <div class="op" style="border-color:rgba(243,237,225,0.14)">
+              <span class="onum" style="color:var(--grey)">04</span>
+              <span><span class="otitle" style="font-size:clamp(17px,1.6vw,23px)">Bewegung genau einmal</span></span>
+              <span class="okpi"><span class="l" style="color:var(--grey)">beim Eintritt, danach still</span></span>
+            </div>
+            <div class="op" style="border-color:rgba(243,237,225,0.14);border-bottom:1px solid rgba(243,237,225,0.14)">
+              <span class="onum" style="color:var(--grey)">05</span>
+              <span><span class="otitle" style="font-size:clamp(17px,1.6vw,23px)">Kein Rahmen, kein Kasten</span></span>
+              <span class="okpi"><span class="l" style="color:var(--grey)">die Grafik sitzt im Satzspiegel</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer data-bg="#070708" data-fg="light" style="padding-top:20px">
+    <div class="wrap">
+      <div class="fbase" style="margin-top:0">
+        <span>Studie · nicht verlinkt · ad.boutique Master</span>
+        <span style="display:flex;gap:22px"><a href="index.html">Start</a><a href="work.html">Work</a></span>
+      </div>
+    </div>
+    <div class="fword"><div>ad<i>.</i>boutique</div></div>
+  </footer>
+</main>
+
+<script>
+(function () {
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var ease = function (t) { return 1 - Math.pow(1 - t, 3); };
+
+  function countUp(el) {
+    var to = parseFloat(el.getAttribute("data-to"));
+    var dec = parseInt(el.getAttribute("data-dec") || "0", 10);
+    var pre = el.getAttribute("data-pre") || "";
+    var suf = el.getAttribute("data-suf") || "";
+    var dur = 1150, t0 = null;
+    function fmt(v) {
+      return pre + v.toLocaleString("de-AT", { minimumFractionDigits: dec, maximumFractionDigits: dec }) + suf;
+    }
+    if (reduced) { el.textContent = fmt(to); return; }
+    function step(ts) {
+      if (!t0) t0 = ts;
+      var p = Math.min(1, (ts - t0) / dur);
+      el.textContent = fmt(to * ease(p));
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function runCurve(box) {
+    var line = box.querySelector(".line"), dot = box.querySelector(".dot");
+    var len = line.getTotalLength();
+    line.style.strokeDasharray = len;
+    line.style.strokeDashoffset = reduced ? 0 : len;
+    if (reduced) { dot.style.opacity = 1; return; }
+    line.style.transition = "stroke-dashoffset 1.9s cubic-bezier(0.19,1,0.22,1)";
+    requestAnimationFrame(function () { line.style.strokeDashoffset = 0; });
+    setTimeout(function () { dot.style.transition = "opacity .5s ease"; dot.style.opacity = 1; }, 1500);
+  }
+
+  function runArc(box) {
+    var seg = box.querySelector(".seg");
+    var r = parseFloat(seg.getAttribute("r"));
+    var c = 2 * Math.PI * r;
+    var pct = parseFloat(seg.getAttribute("data-pct")) / 100;
+    seg.style.strokeDasharray = c;
+    seg.style.strokeDashoffset = reduced ? c * (1 - pct) : c;
+    if (reduced) return;
+    seg.style.transition = "stroke-dashoffset 1.7s cubic-bezier(0.19,1,0.22,1)";
+    requestAnimationFrame(function () { seg.style.strokeDashoffset = c * (1 - pct); });
+  }
+
+  function runSpark(box) {
+    var p = box.querySelector(".spark path");
+    var len = p.getTotalLength();
+    p.style.strokeDasharray = len;
+    p.style.strokeDashoffset = reduced ? 0 : len;
+    if (reduced) return;
+    p.style.transition = "stroke-dashoffset 1.2s cubic-bezier(0.19,1,0.22,1)";
+    requestAnimationFrame(function () { p.style.strokeDashoffset = 0; });
+  }
+
+  function runBars(box, sel) {
+    box.querySelectorAll(sel).forEach(function (f, i) {
+      var w = f.getAttribute("data-w") + "%";
+      if (reduced) { f.style.width = w; return; }
+      setTimeout(function () { f.style.width = w; }, 120 + i * 160);
+    });
+  }
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      var box = en.target, kind = box.getAttribute("data-anim");
+      if (kind === "count") box.querySelectorAll(".v").forEach(countUp);
+      if (kind === "curve") runCurve(box);
+      if (kind === "arc") runArc(box);
+      if (kind === "spark") runSpark(box);
+      if (kind === "ba") runBars(box, ".fill");
+      if (kind === "chn") runBars(box, ".f2");
+      io.unobserve(box);
+    });
+  }, { threshold: 0.35 });
+  document.querySelectorAll("[data-anim]").forEach(function (b) { io.observe(b); });
+})();
+</script>
+</body>
+</html>
