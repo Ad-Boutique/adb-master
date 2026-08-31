@@ -96,29 +96,40 @@ print("Work-Kacheln mit Preview:", changed)
 
 
 # ---------- 2) CASE-SEITEN: Intro-Medium + Content-Galerie ----------
-def gallery_html(entry, title):
-    items = []
-    for im in entry.get("imgs", []):
-        cls = "port" if im["portrait"] else "land"
-        items.append('<div class="%s" data-fade><figure><img loading="lazy" decoding="async" src="%s" alt=""></figure></div>'
-                     % (cls, im["src"]))
-    for v in entry.get("vids", []):
-        cls = "port" if v["portrait"] else "land"
-        items.append('<div class="%s" data-fade><figure><video data-auto muted loop playsinline preload="none" src="%s"></video></figure></div>'
-                     % (cls, v["src"]))
-    if not items:
+def gallery_html(entry, title, bg="#0E0E10"):
+    media = [im["src"] for im in entry.get("imgs", [])] + [v["src"] for v in entry.get("vids", [])]
+    if not media:
         return ""
-    return '''  <!-- CONTENT AUS DEM MANDAT -->
-  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">
-    <div class="wrap">
-      <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:clamp(28px,3.4vw,48px)">Aus dem Mandat</span>
-      <div class="cmix" data-stagger>
-        %s
-      </div>
-    </div>
-  </section>
+    cols = [[], [], [], []]
+    for i, m in enumerate(media):
+        cols[i % 4].append(m)
+    speeds = ["0.05", "0.085", "0.065", "0.10"]
+    parts = []
+    for i, col in enumerate(cols):
+        if not col:
+            continue
+        items = []
+        for m in col:
+            if m.endswith(".mp4"):
+                items.append('<video data-auto muted loop playsinline preload="none" src="%s"></video>' % m)
+            else:
+                items.append('<img loading="lazy" decoding="async" src="%s" alt="">' % m)
+        parts.append('      <div class="cpcol" data-drift="%s">\n        %s\n      </div>' % (speeds[i], "\n        ".join(items)))
+    return ('  <!-- CONTENT AUS DEM MANDAT -->\n'
+            '  <section class="collage collage--tight" data-bg="%s" data-fg="light">\n'
+            '    <div class="wrap" style="position:relative;z-index:2;margin-bottom:clamp(30px,4vw,60px)">\n'
+            '      <span class="label" style="color:var(--champ)">Aus dem Mandat</span>\n'
+            '    </div>\n'
+            '    <div class="cplane">\n%s\n    </div>\n  </section>\n\n') % (bg, "\n".join(parts))
 
-''' % ("\n        ".join(items))
+CASE_BG = {
+    "case-immobilien-investment": "#2E3A2F",
+    "case-crowdinvesting": "#1C2530",
+    "case-wohnbau-floridsdorf": "#33383E",
+    "case-health-brand": "#1F3833",
+    "case-consumer-brand": "#0E0E10",
+    "case-premium-neubau": "#22382C",
+}
 
 def film_html(entry, title, sub):
     if not entry.get("recap"):
@@ -162,9 +173,9 @@ for slug, fname in CASE_FILES.items():
     if not entry or not os.path.exists(fname):
         continue
     s = open(fname, encoding="utf-8").read()
-    if 'class="cmix"' in s:
+    if 'collage--tight' in s:
         continue
-    gal = gallery_html(entry, slug)
+    gal = gallery_html(entry, slug, CASE_BG.get(slug, '#0E0E10'))
     if not gal:
         continue
     # vor "NEXT" einsetzen

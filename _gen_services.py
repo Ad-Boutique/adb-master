@@ -39,8 +39,8 @@ SERVICES = [
   diff=[("Anders als üblich", "System statt Einzelmaßnahme", "Creatives, Landingpages, Angebot und Tracking greifen ineinander, mit klaren Zielwerten je Kanal. Eine schöne Kampagne auf einem undichten Shop ist verbranntes Budget.", "assets/img/ag_strategy.jpg"),
         ("Anders als üblich", "Ehrlichkeit im Reporting", "Blended-Sicht statt Kanal-Ego: Was nicht funktioniert, steht im Report und wird gestoppt, bevor es teuer wird.", "assets/img/retreat-04.jpg"),
         ("Anders als üblich", "Skin in the Game", "Unsere Vergütung ist an den messbaren Umsatz gekoppelt. Wir gewinnen nur, wenn Sie gewinnen.", "assets/img/ag_meeting.jpg")],
-  zoom=dict(img="assets/img/isi.jpg", side="right", aside="Saison als Architektur statt Zufall: Awareness im Vorlauf, Sales-Druck im Peak.",
-            zl="Premium-Consumer-Brand · Meta", zt="Black-Friday-ROAS 4,02. Benchmark 2,3."),
+  zoom=dict(img="assets/img/c_candle.jpg", side="right", aside="Erst messen, dann skalieren: Der Hebel lag im Checkout und im Creative, nicht im Budget.",
+            zl="D2C-Lifestyle-Marke · Meta, Google, Pinterest", zt="+57 % Jahresumsatz. Blended ROAS 5,57."),
   proof_h=["+57 % Jahresumsatz.", "Aus demselben Traffic."],
   proof_nums=[("5,57", "Blended ROAS, Ziel war 3,5"), ("€ 312k", "Umsatz aus € 56k Mediabudget"), ("+56 %", "Bestellungen im Rekordjahr")],
   proof_quote="„Pinterest führte mit ROAS 6,99, Google folgte mit 5,98. Inklusive Agentur-Fee blieb der Blend bei 4,17.“ Solche Sätze stehen bei uns im Reporting, nicht im Kleingedruckten.",
@@ -74,7 +74,7 @@ SERVICES = [
         ["Server-side Tracking", "Blended-Sicht statt Kanal-Ego", "CRM-Anbindung", "Consent-konform"]),
        ("Reporting", "Wöchentlich, transparent, auch unbequem: Ziel-Gaps und gestoppte Tests stehen im Report.",
         ["Wöchentliches Reporting", "Ehrliche Ziel-Gaps", "Klare Handlungsempfehlungen", "Direkter Draht, kein Ticketsystem"])],
-  diff=[("Anders als üblich", "Das Creative ist der Hebel", "Nicht das größte Budget gewinnt, sondern das stärkste Motiv. Wir verschieben Budget konsequent auf die Gewinner.", "assets/img/a_funk2.jpg"),
+  diff=[("Anders als üblich", "Das Creative ist der Hebel", "Nicht das größte Budget gewinnt, sondern das stärkste Motiv. Wir verschieben Budget konsequent auf die Gewinner.", "assets/img/ag_strategy.jpg"),
         ("Anders als üblich", "Ehrlich, auch wenn es wehtut", "In einem Finance-Mandat brachte ein Paid-Test über € 278.727 null zurechenbare Zeichnungen. Wir haben ihn gestoppt und umgeschichtet.", "assets/img/ag_board1.jpg"),
         ("Anders als üblich", "Ein Kanal sauber statt fünf halb", "Lieber einen Kanal ausreizen und beweisen, als Budget über fünf Kanäle verdampfen lassen.", "assets/img/ag_talk.jpg")],
   zoom=dict(img="assets/img/funkhaus.jpg", side="right", aside="Das stärkste Creative ist der größte Hebel, nicht das größte Budget.",
@@ -112,10 +112,10 @@ SERVICES = [
         ["Reels & Stories", "Statics & Collagen", "Karussells & Grundriss-Formate", "Saisonale Motive je Phase"]),
        ("Creative-System", "Kein Kampagnenfeuerwerk, sondern ein Loop: produzieren, testen, lernen, nachproduzieren.",
         ["Testing-Loop mit Performance", "Winner-Selektion nach Zahlen", "Motiv-Bibliothek je Marke", "Monatliche Nachproduktion"])],
-  diff=[("Anders als üblich", "Gemessen statt gemeint", "Interior-Motive trugen bei einem Neubauprojekt 54 Prozent aller Leads. Solche Antworten liefert Testing, kein Bauchgefühl.", "assets/img/a_funk1.jpg"),
+  diff=[("Anders als üblich", "Gemessen statt gemeint", "Interior-Motive trugen bei einem Neubauprojekt 54 Prozent aller Leads. Solche Antworten liefert Testing, kein Bauchgefühl.", "assets/img/ag_cam2.jpg"),
         ("Anders als üblich", "Content + Performance, ein Team", "Die Produktion kennt die Zahlen von gestern, die Kampagne bekommt Nachschub, bevor das Motiv müde wird.", "assets/img/ag_cam1.jpg"),
         ("Anders als üblich", "UGC ernst genommen", "UGC ist bei uns keine Billig-Alternative, sondern der oft effizienteste Hebel: minus 58 Prozent CPA gegen Studio-Video.", "assets/img/ag_shoot1.jpg")],
-  zoom=dict(img="assets/case/juwel/g0.jpg", side="left", aside="Produziert für den Feed: Content, der gemessen wird, nicht nur gefällt.",
+  zoom=dict(img="assets/img/c_champ.jpg", side="left", aside="Produziert für den Feed: Content, der gemessen wird, nicht nur gefällt.",
             zl="Content-Produktion · Food", zt="Jedes Motiv tritt gegen Benchmarks an."),
   proof_h=["Ein Motiv trug", "54 % aller Leads."],
   proof_nums=[("54 %", "aller Leads aus einem Interior-Motiv"), ("−58 %", "CPA durch UGC statt Studio-Video"), ("€ 0,99", "Awareness-CPM, 72 % unter Benchmark")],
@@ -150,10 +150,10 @@ SERVICES = [
         ["Konfiguratoren & Rechner", "Mehrstufige Lead-Strecken", "Qualifizierung im Formular", "Übergabe ans CRM"]),
        ("CRO & Testing", "Hypothese, Test, Entscheidung: Conversion-Optimierung als Routine, nicht als Projekt.",
         ["A/B-Tests mit klaren Hypothesen", "Heatmaps & Session-Analysen", "Checkout-Optimierung", "Wöchentliche Iteration"])],
-  diff=[("Anders als üblich", "Message-Match statt Sitemap", "Die Landingpage gehört zur Kampagne, nicht zur IT: Headline und Beweis wechseln mit der Anzeigengruppe.", "assets/img/d_funkhaus.jpg"),
+  diff=[("Anders als üblich", "Message-Match statt Sitemap", "Die Landingpage gehört zur Kampagne, nicht zur IT: Headline und Beweis wechseln mit der Anzeigengruppe.", "assets/img/ag_vision2.jpg"),
         ("Anders als üblich", "Der Lead-Magnet als Creative", "Ein Konfigurator, der den Bedarf rechnet, schlägt jedes Standard-Formular: 406 Leads für einen PV-Anbieter.", "assets/img/ag_vision1.jpg"),
         ("Anders als üblich", "Ehrlicher Kanalvergleich", "Bei einem Neubauprojekt lieferten Instant Forms Leads zu € 6,97, die Website zu € 15,66. Wir sagen auch, wenn die Landingpage nicht der beste Ort ist.", "assets/img/ag_review.jpg")],
-  zoom=dict(img="assets/img/d_funkhaus.jpg", side="right", aside="Die Landingpage als Ort für Tiefe: Grundrisse, Vertrauen, Abschluss.",
+  zoom=dict(img="assets/case/case-web-noma/d0.jpg", side="right", aside="Die Landingpage als Ort für Tiefe: Grundrisse, Vertrauen, Abschluss.",
             zl="Projekt-Landingpage · Premium-Neubau", zt="Landingpage und Instant Forms im Verbund."),
   proof_h=["+487 % Besucher.", "406 Leads."],
   proof_nums=[("406", "Leads über den PV-Konfigurator"), ("+487 %", "Website-Besucher"), ("€ 6,97", "CPL Instant Form im ehrlichen Vergleich")],
@@ -191,12 +191,12 @@ SERVICES = [
   diff=[("Anders als üblich", "KPI-Definition vorab", "Bevor der erste Euro läuft, steht fest, woran der Erfolg gemessen wird. Das verhindert schöngerechnete Kampagnen.", "assets/img/ag_strategy.jpg"),
         ("Anders als üblich", "Vertrauen als Funnel-Stufe", "Im Finance zählt der Cost per zugerechnetem Kapital, nicht der CPL: Aufklärung, Vertrauen, Handlung.", "assets/img/retreat-06.jpg"),
         ("Anders als üblich", "Ehrliches Stoppen", "Ein Paid-Test über € 278.727 brachte null Zeichnungen: Er wurde gestoppt, das Budget umgeschichtet. Genau dafür ist Struktur da.", "assets/img/ag_board1.jpg")],
-  zoom=dict(img="assets/case/case-crowdinvesting/g1.jpg", side="left", aside="Erst die Struktur, dann das Budget: Strategie-Session in Wien.",
+  zoom=dict(img="assets/img/ag_meeting.jpg", side="left", aside="Erst die Struktur, dann das Budget: Strategie-Session in Wien.",
             zl="Strategie & Funnel", zt="€ 36k Budget wurden € 4,65 Mio. Kapital."),
   proof_h=["Aus € 36k wurden", "€ 4,65 Mio. Kapital."],
   proof_nums=[("129×", "Return, sauber zugerechnet"), ("8,75", "ROAS, vorher 2,14"), ("−69 %", "Kosten je Investor")],
   proof_quote="Gleicher Spend, anderes Ergebnis: Der Beweis liegt im Vorher-Nachher. Struktur schlägt Einzelkampagne.",
-  visual=("stage", dict(img="assets/case/case-immobilien-investment/g0.jpg", cap="Aus dem Mandat · Investoren-Kommunikation")),
+  visual=("stage", dict(img="assets/case/case-web-northpoint/d0.jpg", cap="Aus dem Mandat · Auftritt mit Funnel-Logik")),
   logos=["ifa", "conda", "raiffeisen", "soravia", "fabrik1230", "hagent", "winegg", "buxbaum"],
   oplist=[("case-immobilien-investment.html", "Immobilien-Investment", "129×", "€ 36k → € 4,65 Mio. Kapital"),
           ("case-crowdinvesting.html", "Crowdinvesting-Plattform", "8,75", "ROAS, vorher 2,14"),
@@ -224,23 +224,27 @@ def _content_section(slug):
     items = SVC_CONTENT.get(slug, [])
     if not items:
         return ""
-    cells = []
-    for p in items:
-        port = _ORIENT.get(p, p.endswith(".mp4"))
-        cls = "port" if port else "land"
-        if p.endswith(".mp4"):
-            inner = '<video data-auto muted loop playsinline preload="none" src="%s"></video>' % p
-        else:
-            inner = '<img loading="lazy" decoding="async" src="%s" alt="">' % p
-        cells.append('<div class="%s" data-fade><figure>%s</figure></div>' % (cls, inner))
-    head = '  <!-- CONTENT AUS DEM MANDAT -->\n'
-    head += '  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:clamp(60px,7vw,100px)">\n'
-    head += '    <div class="wrap">\n'
-    head += '      <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:clamp(28px,3.4vw,48px)">Aus laufenden Mandaten</span>\n'
-    head += '      <div class="cmix" data-stagger>\n        '
-    head += "\n        ".join(cells)
-    head += '\n      </div>\n    </div>\n  </section>\n\n'
-    return head
+    cols = [[], [], [], []]
+    for i, m in enumerate(items):
+        cols[i % 4].append(m)
+    speeds = ["0.05", "0.085", "0.065", "0.10"]
+    parts = []
+    for i, col in enumerate(cols):
+        if not col:
+            continue
+        cells = []
+        for m in col:
+            if m.endswith(".mp4"):
+                cells.append('<video data-auto muted loop playsinline preload="none" src="%s"></video>' % m)
+            else:
+                cells.append('<img loading="lazy" decoding="async" src="%s" alt="">' % m)
+        parts.append('      <div class="cpcol" data-drift="%s">\n        %s\n      </div>' % (speeds[i], "\n        ".join(cells)))
+    return ('  <!-- CONTENT AUS DEM MANDAT -->\n'
+            '  <section class="collage collage--tight" data-bg="#0E0E10" data-fg="light">\n'
+            '    <div class="wrap" style="position:relative;z-index:2;margin-bottom:clamp(30px,4vw,60px)">\n'
+            '      <span class="label" style="color:var(--champ)">Aus laufenden Mandaten</span>\n'
+            '    </div>\n'
+            '    <div class="cplane">\n%s\n    </div>\n  </section>\n\n') % ("\n".join(parts))
 
 def render_service(s):
     tags = "\n        ".join("<span>%s</span>" % t for t in s["tags"])
