@@ -293,9 +293,9 @@ def _heronum(s):
     hn = s.get("heronum")
     if not hn:
         return ""
-    return ('      <div class="hnumline" data-fade style="--i:2;margin-top:26px;display:flex;gap:14px;align-items:baseline;justify-content:center">\n'
-            '        <span style="font-family:var(--f-serif);font-size:clamp(30px,3vw,46px);font-variant-numeric:tabular-nums;letter-spacing:-0.02em">%s</span>\n'
-            '        <span style="font-size:13px;color:var(--grey-dark)">%s</span>\n'
+    return ('      <div class="hnumline" data-fade style="--i:3">\n'
+            '        <span class="hv">%s</span>\n'
+            '        <span class="hl">%s</span>\n'
             '      </div>\n') % (hn[0], hn[1])
 
 def _tell(s):
@@ -307,9 +307,9 @@ def _tell(s):
         % ((" on" if i == 0 else ""), v, l, tt, p) for i, (v, l, tt, p) in enumerate(t["steps"]))
     first = t["steps"][0]
     return ('  <!-- ERGEBNIS ALS STATIONEN (scrollgesteuert) -->\n'
-            '  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">\n'
+            '  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:clamp(70px,9vw,140px)">\n'
             '    <div class="wrap">\n'
-            '      <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:clamp(26px,3vw,44px)">Ein Fall, nachgerechnet</span>\n'
+            '      <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:clamp(30px,3.6vw,52px)">Ein Fall, nachgerechnet</span>\n'
             '      <div class="tell">\n'
             '        <div class="tfix">\n'
             '          <div class="tv">%s</div>\n'
@@ -326,7 +326,7 @@ def _channels(s):
     rows = "\n        ".join(
         '<div class="cr%s"><span class="cn">%s</span><span class="ct"><i class="cf" data-w="%d"></i></span><span class="cv">%s</span></div>'
         % ((" blend" if i == len(c["rows"]) - 1 else ""), n, w, v) for i, (n, w, v) in enumerate(c["rows"]))
-    return ('      <div style="margin-top:clamp(40px,5vw,70px)">\n'
+    return ('      <div>\n'
             '        <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:20px">%s</span>\n'
             '        <div class="chrow">\n        %s\n        </div>\n'
             '        <p style="font-size:12.5px;color:var(--grey-dark);margin-top:16px;max-width:56ch">%s</p>\n'
@@ -337,6 +337,7 @@ def _quote(s):
     if not q:
         return ""
     return ('      <div class="qbox" data-fade>\n'
+            '        <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:18px">Eine Stimme</span>\n'
             '        <p class="qt">&bdquo;%s&ldquo;</p>\n'
             '        <div class="qa">%s</div>\n'
             '      </div>\n') % (q[0], q[1])
@@ -348,9 +349,9 @@ def _fit(s):
     yes = "\n            ".join("<li>%s</li>" % x for x in f["yes"])
     no = "\n            ".join("<li>%s</li>" % x for x in f["no"])
     return ('  <!-- PASST DAS -->\n'
-            '  <section class="sec fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark">\n'
+            '  <section class="sec fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark" style="padding:clamp(90px,11vw,150px) 0">\n'
             '    <div class="wrap">\n'
-            '      <div class="lchap" style="margin-bottom:clamp(40px,5vw,70px)">\n'
+            '      <div class="lchap" style="margin-bottom:clamp(36px,4.4vw,60px)">\n'
             '        <div class="lh" data-lines><span class="rl"><span>%s</span></span></div>\n'
             '        <p class="lt3" data-fade>%s</p>\n'
             '      </div>\n'
@@ -499,6 +500,15 @@ def render_service(s):
     tell_sec = _tell(s)
     channels_sec = _channels(s)
     quote_sec = _quote(s)
+    pq_sec = "" if s.get("quote") else ('<p class="serif" data-fade style="font-size:clamp(17px,1.4vw,21px);color:var(--grey-dark);max-width:52ch;margin:clamp(30px,4vw,46px) auto 0;text-align:center">%s</p>' % s["proof_quote"])
+    proofsplit_sec = ""
+    if s.get("channels") or s.get("quote"):
+        proofsplit_sec = ('  <!-- BELEG: KANAELE UND STIMME -->\n'
+            '  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:clamp(50px,6vw,90px)">\n'
+            '    <div class="wrap proofsplit">\n'
+            + (channels_sec or "      <div></div>\n")
+            + (quote_sec or "      <div></div>\n")
+            + '    </div>\n  </section>\n\n')
     fit_sec = _fit(s)
     next_sec = _next(s)
     deliver_sec = _deliver(s)
@@ -581,14 +591,11 @@ def render_service(s):
       <div class="wnums" data-stagger style="justify-content:center;margin-top:clamp(30px,4vw,50px)">
         ''' + nums + '''
       </div>
-      <p class="serif" data-fade style="font-size:clamp(17px,1.4vw,21px);color:var(--grey-dark);max-width:52ch;margin:clamp(30px,4vw,46px) auto 0;text-align:center">''' + s["proof_quote"] + '''</p>
-''' + quote_sec + '''    </div>
-    <div class="wrap" style="max-width:1100px">
-''' + channels_sec + '''
+      ''' + pq_sec + '''
     </div>
   </section>
 
-''' + visual + '''''' + tell_sec + '''  <!-- LOGOS: zentriert, 2x4, flaechig -->
+''' + tell_sec + proofsplit_sec + visual + '''  <!-- LOGOS: zentriert, 2x4, flaechig -->
   <section class="fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding: clamp(70px,9vw,130px) 0">
     <div class="wrap">
       <span class="label" style="color:var(--grey-dark);display:block;text-align:center;margin-bottom:clamp(30px,4vw,50px)">Marken, mit denen wir in diesem Feld arbeiten</span>
