@@ -17,7 +17,7 @@ def logos_row(names, label):
 
 ''' % (label, imgs)
 
-SVC_COLS = {"service-ecommerce": [["assets/case/case-health-brand/g2.jpg","assets/case/case-health-brand/g1.jpg","assets/case/case-web-ib7/g5.jpg"],["assets/case/case-consumer-brand/v0.mp4","assets/case/case-web-ib7/g4.jpg","assets/case/case-web-ib7/g1.jpg"],["assets/case/case-web-ib7/g2.jpg","assets/case/case-consumer-brand/g0.jpg","assets/case/case-health-brand/g3.jpg"],["assets/case/case-web-ib7/g3.jpg","assets/case/case-health-brand/g0.jpg","assets/case/case-web-ib7/g0.jpg"]],"service-performance-marketing": [["assets/case/case-premium-neubau/g0.jpg","assets/case/case-premium-neubau/g1.jpg","assets/case/case-premium-neubau/g4.jpg"],["assets/case/grandgarden/g0.jpg","assets/case/case-premium-neubau/g2.jpg","assets/case/case-premium-neubau/g5.jpg"],["assets/case/case-wohnbau-floridsdorf/g0.jpg","assets/case/case-premium-neubau/g3.jpg","assets/case/case-immobilien-investment/g1.jpg"],["assets/case/medcenter/g0.jpg","assets/case/case-premium-neubau/v2.mp4","assets/case/case-premium-neubau/v0.mp4"]],"service-content-creation": [["assets/case/juwel/g1.jpg","assets/case/juwel/g4.jpg","assets/case/juwel/g5.jpg"],["assets/case/juwel/g2.jpg","assets/case/kommunalkredit/v2.mp4","assets/case/kommunalkredit/g0.jpg"],["assets/case/juwel/g3.jpg","assets/case/juwel/v0.mp4","assets/case/kommunalkredit/g1.jpg"],["assets/case/juwel/g0.jpg","assets/case/juwel/v1.mp4","assets/case/kommunalkredit/g2.jpg"]],"service-websites": [["assets/case/case-web-noma/g0.jpg","assets/case/case-web-noma/g5.jpg"],["assets/case/case-web-noma/g1.jpg","assets/case/case-web-noma/d0.jpg","assets/case/case-web-ib7/d2.jpg"],["assets/case/case-web-trattner/d0.jpg","assets/case/case-web-noma/g4.jpg","assets/case/case-web-pharmacom/d0.jpg","assets/case/case-web-northpoint/d0.jpg"],["assets/case/case-web-noma/g2.jpg","assets/case/case-web-noma/g3.jpg","assets/case/case-web-noma/d1.jpg"]],"service-strategie": [["assets/case/case-crowdinvesting/g1.jpg","assets/case/case-crowdinvesting/g2.jpg","assets/case/case-crowdinvesting/g5.jpg"],["assets/case/case-crowdinvesting/g4.jpg","assets/case/case-crowdinvesting/g3.jpg","assets/case/case-immobilien-investment/g1.jpg"],["assets/case/case-crowdinvesting/v1.mp4","assets/case/case-immobilien-investment/v0.mp4","assets/case/case-immobilien-investment/g0.jpg"],["assets/case/case-crowdinvesting/v0.mp4","assets/case/case-crowdinvesting/g0.jpg","assets/case/grandgarden/g1.jpg"]]}
+SVC_COLS = {"service-ecommerce": [["assets/case/juwel/g0.jpg", "assets/case/juwel/g2.jpg", "assets/case/medcenter/g4.jpg", "assets/case/case-health-brand/g3.jpg", "assets/case/case-web-ib7/g1.jpg"], ["assets/case/medcenter/g0.jpg", "assets/case/medcenter/g2.jpg", "assets/case/case-consumer-brand/v0.mp4", "assets/case/case-consumer-brand/g0.jpg", "assets/case/grandgarden/g3.jpg"], ["assets/case/grandgarden/g0.jpg", "assets/case/grandgarden/g2.jpg", "assets/case/case-health-brand/v0.mp4", "assets/case/case-health-brand/g0.jpg", "assets/case/case-web-ib7/g4.jpg"], ["assets/case/juwel/g1.jpg", "assets/case/juwel/g3.jpg", "assets/case/grandgarden/v0.mp4", "assets/case/case-health-brand/g1.jpg", "assets/case/case-web-ib7/g0.jpg"], ["assets/case/medcenter/g1.jpg", "assets/case/medcenter/g3.jpg", "assets/case/case-health-brand/v1.mp4", "assets/case/grandgarden/g1.jpg", "assets/case/juwel/g5.jpg"], ["assets/case/case-health-brand/g2.jpg", "assets/case/juwel/g4.jpg", "assets/case/case-web-ib7/g2.jpg", "assets/case/case-web-ib7/g3.jpg", "assets/case/case-web-ib7/g5.jpg"]], "service-performance-marketing": [["assets/case/case-premium-neubau/g0.jpg", "assets/case/case-premium-neubau/g1.jpg", "assets/case/medcenter/g2.jpg", "assets/case/case-immobilien-investment/v0.mp4", "assets/case/grandgarden/g3.jpg"], ["assets/case/grandgarden/g0.jpg", "assets/case/case-wohnbau-floridsdorf/g1.jpg", "assets/case/juwel/g2.jpg", "assets/case/herogroup/v0.mp4", "assets/case/case-premium-neubau/g4.jpg"], ["assets/case/case-wohnbau-floridsdorf/g0.jpg", "assets/case/medcenter/g1.jpg", "assets/case/case-premium-neubau/g3.jpg", "assets/case/case-immobilien-investment/v1.mp4", "assets/case/herogroup/g1.jpg"], ["assets/case/medcenter/g0.jpg", "assets/case/juwel/g1.jpg", "assets/case/case-wohnbau-floridsdorf/g3.jpg", "assets/case/herogroup/v1.mp4", "assets/case/case-immobilien-investment/g1.jpg"], ["assets/case/juwel/g0.jpg", "assets/case/case-premium-neubau/g2.jpg", "assets/case/medcenter/g3.jpg", "assets/case/grandgarden/v0.mp4", "assets/case/case-immobilien-investment/g0.jpg"], ["assets/case/herogroup/g0.jpg", "assets/case/grandgarden/g2.jpg", "assets/case/juwel/g3.jpg", "assets/case/grandgarden/g1.jpg", "assets/case/case-wohnbau-floridsdorf/g2.jpg"]], "service-content-creation": [["assets/case/juwel/g0.jpg", "assets/case/medcenter/g1.jpg", "assets/case/case-premium-neubau/g2.jpg", "assets/case/kommunalkredit/g0.jpg", "assets/case/kommunalkredit/g2.jpg"], ["assets/case/grandgarden/g0.jpg", "assets/case/case-premium-neubau/g1.jpg", "assets/case/juwel/g3.jpg", "assets/case/case-health-brand/g0.jpg", "assets/case/kommunalkredit/g3.jpg"], ["assets/case/medcenter/g0.jpg", "assets/case/juwel/g2.jpg", "assets/case/medcenter/g3.jpg", "assets/case/kommunalkredit/g1.jpg", "assets/case/case-health-brand/g3.jpg"], ["assets/case/herogroup/g0.jpg", "assets/case/case-health-brand/g2.jpg", "assets/case/case-premium-neubau/g3.jpg", "assets/case/case-health-brand/g1.jpg", "assets/case/grandgarden/g3.jpg"], ["assets/case/case-premium-neubau/g0.jpg", "assets/case/grandgarden/g2.jpg", "assets/case/juwel/g4.jpg", "assets/case/grandgarden/g1.jpg", "assets/case/kommunalkredit/g4.jpg"], ["assets/case/juwel/g1.jpg", "assets/case/medcenter/g2.jpg", "assets/case/herogroup/v0.mp4", "assets/case/herogroup/v1.mp4", "assets/case/herogroup/g1.jpg"]], "service-websites": [["assets/case/case-web-noma/g0.jpg", "assets/case/case-premium-neubau/g3.jpg", "assets/case/grandgarden/g3.jpg", "assets/case/case-web-ib7/g0.jpg", "assets/case/case-web-noma/g2.jpg"], ["assets/case/case-premium-neubau/g0.jpg", "assets/case/grandgarden/v0.mp4", "assets/case/case-web-ib7/g2.jpg", "assets/case/case-web-pharmacom/g0.jpg", "assets/case/case-web-noma/g3.jpg"], ["assets/case/grandgarden/g0.jpg", "assets/case/grandgarden/v1.mp4", "assets/case/case-web-ib7/g3.jpg", "assets/case/case-web-trattner/g0.jpg", "assets/case/case-web-noma/g4.jpg"], ["assets/case/case-premium-neubau/g1.jpg", "assets/case/case-premium-neubau/v0.mp4", "assets/case/case-web-noma/g1.jpg", "assets/case/case-web-ib7/g4.jpg", "assets/case/case-web-noma/g5.jpg"], ["assets/case/case-premium-neubau/g2.jpg", "assets/case/grandgarden/v2.mp4", "assets/case/case-web-trattner/g1.jpg", "assets/case/case-premium-neubau/g4.jpg", "assets/case/case-web-ib7/g1.jpg"], ["assets/case/grandgarden/g2.jpg", "assets/case/case-premium-neubau/v1.mp4", "assets/case/grandgarden/g1.jpg", "assets/case/case-premium-neubau/g5.jpg", "assets/case/case-web-ib7/g5.jpg"]], "service-strategie": [["assets/case/grandgarden/g0.jpg", "assets/case/case-premium-neubau/g2.jpg", "assets/case/case-crowdinvesting/g0.jpg", "assets/case/kommunalkredit/g1.jpg", "assets/case/kommunalkredit/g4.jpg"], ["assets/case/herogroup/g0.jpg", "assets/case/case-premium-neubau/g3.jpg", "assets/case/kommunalkredit/g0.jpg", "assets/case/case-crowdinvesting/g2.jpg", "assets/case/case-premium-neubau/g4.jpg"], ["assets/case/case-premium-neubau/g0.jpg", "assets/case/case-crowdinvesting/g4.jpg", "assets/case/grandgarden/g1.jpg", "assets/case/kommunalkredit/g2.jpg", "assets/case/case-crowdinvesting/g5.jpg"], ["assets/case/case-crowdinvesting/g1.jpg", "assets/case/case-immobilien-investment/v0.mp4", "assets/case/herogroup/v1.mp4", "assets/case/case-crowdinvesting/g3.jpg", "assets/case/herogroup/g1.jpg"], ["assets/case/case-premium-neubau/g1.jpg", "assets/case/herogroup/v0.mp4", "assets/case/grandgarden/v0.mp4", "assets/case/grandgarden/g3.jpg", "assets/case/case-immobilien-investment/g1.jpg"], ["assets/case/grandgarden/g2.jpg", "assets/case/case-immobilien-investment/v1.mp4", "assets/case/herogroup/v2.mp4", "assets/case/kommunalkredit/g3.jpg", "assets/case/case-immobilien-investment/g0.jpg"]]}
 
 SVC_WALL = {"service-content-creation": [["assets/case/juwel/g0.jpg", "assets/case/herogroup/g0.jpg", "assets/case/medcenter/g1.jpg", "assets/case/grandgarden/g2.jpg"], ["assets/case/kommunalkredit/g0.jpg", "assets/case/juwel/g1.jpg", "assets/case/herogroup/v0.mp4", "assets/case/medcenter/g2.jpg"], ["assets/case/case-health-brand/g0.jpg", "assets/case/kommunalkredit/g1.jpg", "assets/case/juwel/g2.jpg", "assets/case/herogroup/v1.mp4"], ["assets/case/grandgarden/g0.jpg", "assets/case/case-health-brand/g1.jpg", "assets/case/kommunalkredit/g2.jpg", "assets/case/juwel/g3.jpg"], ["assets/case/medcenter/g0.jpg", "assets/case/grandgarden/g1.jpg", "assets/case/case-health-brand/g2.jpg", "assets/case/kommunalkredit/g3.jpg"]]}
 
@@ -80,6 +80,9 @@ SERVICES = [
       ("54 %", "aller Leads aus einem einzigen Motiv", "Die Erkenntnis",
        "Das Creative ist der Hebel, nicht das Budget. Genau deshalb testen wir, statt zu argumentieren."),
     ]),
+  proofsplit=dict(label="Zwei Rechnungen",
+                  h=["Wo der Unterschied", "wirklich entsteht."],
+                  t="Links ein Wohnbau-Projekt: dieselbe Zielgruppe, dieselbe Woche, drei Strecken, dreifacher Preisunterschied. Rechts eine Crowdinvesting-Plattform: nahezu gleiches Budget, andere Struktur. Beide Zahlen stehen so im Reporting, inklusive der Strecke, die wir gestoppt haben."),
   bars=dict(
     label="Return on Ad Spend · Crowdinvesting-Plattform",
     link=("case-crowdinvesting.html", "Crowdinvesting-Plattform im Detail"),
@@ -337,7 +340,7 @@ def _content_section(slug):
     cols = SVC_COLS.get(slug, [])
     if not cols:
         return ""
-    speeds = ["0.05", "0.085", "0.065", "0.10"]
+    speeds = ["0.042", "0.068", "0.05", "0.075", "0.056", "0.072"]
     parts = []
     for i, col in enumerate(cols):
         if not col:
@@ -469,13 +472,14 @@ def _bars(s):
     rows = "\n        ".join(
         '<div class="brow%s"><span class="bwho">%s</span><span class="btrack"><i class="bfill" data-w="%d"></i></span><span class="bval">%s</span></div>'
         % ((" now" if i == len(b["rows"]) - 1 else ""), w, pct, v) for i, (w, pct, v) in enumerate(b["rows"]))
-    blink = ('        <a class="zalink" style="display:block;width:max-content;margin:22px auto 0" href="%s">%s</a>\n' % b["link"]) if b.get("link") else ""
-    return ('      <div style="margin-top:clamp(46px,5.5vw,80px);display:flex;flex-direction:column;align-items:center">\n'
-            '        <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:22px">%s</span>\n'
+    blink = ('        <a class="zalink" href="%s">%s</a>\n' % b["link"]) if b.get("link") else ""
+    solo = "" if s.get("tell") else " barsblock--solo"
+    return ('      <div class="barsblock%s">\n'
+            '        <span class="label bt">%s</span>\n'
             '        <div class="bacmp">\n        %s\n        </div>\n'
-            '        <p style="font-size:12.5px;color:var(--grey-dark);margin-top:18px;max-width:52ch;text-align:center">%s</p>\n'
+            '        <p class="bnote">%s</p>\n'
             '%s'
-            '      </div>\n') % (b["label"], rows, b["note"], blink)
+            '      </div>\n') % (solo, b["label"], rows, b["note"], blink)
 
 def _crew(s):
     c = s.get("crew")
@@ -659,12 +663,26 @@ def render_service(s):
     right_sec = bars_sec if s.get("tell") else quote_sec
     proofsplit_sec = ""
     if s.get("channels") or right_sec:
-        proofsplit_sec = ('  <!-- BELEG: ZWEI VERGLEICHE, ZWEI PROJEKTE -->\n'
+        ps = s.get("proofsplit") or {}
+        ps_head = "".join('<span class="rl"><span>%s</span></span>' % x
+                          for x in ps.get("h", ["Wo der Unterschied", "wirklich entsteht."]))
+        proofsplit_sec = ('  <!-- BELEG: ZWEI RECHNUNGEN AUS ZWEI MANDATEN -->\n'
             '  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:clamp(50px,6vw,90px)">\n'
-            '    <div class="wrap proofsplit">\n'
+            '    <div class="wrap">\n'
+            '      <div class="pshead">\n'
+            '        <div>\n'
+            '          <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:clamp(16px,1.8vw,24px)">%s</span>\n'
+            '          <h2 class="dispn" data-lines style="font-size:clamp(30px,3.4vw,54px)">%s</h2>\n'
+            '        </div>\n'
+            '        <p class="pslead" data-fade>%s</p>\n'
+            '      </div>\n'
+            '      <div class="proofsplit">\n'
             + (channels_sec or "      <div></div>\n")
             + (right_sec or "      <div></div>\n")
-            + '    </div>\n  </section>\n\n')
+            + '      </div>\n'
+            '    </div>\n  </section>\n\n') % (
+                ps.get("label", "Zwei Rechnungen"), ps_head,
+                ps.get("t", "Zwei Mandate, zwei Fragen: Welche Strecke bringt die Anfrage billiger, und was passiert, wenn die Struktur stimmt statt das Budget wächst. Beide Zahlen stehen so im Reporting."))
     wall_sec = _wall(s)
     crew_sec = _crew(s)
     voice_sec = _voice(s)

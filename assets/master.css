@@ -321,9 +321,16 @@ body.cur-hov .cur { transform: scale(1.9); }
 @media (pointer: coarse) { .cur { display: none; } }
 
 /* ---------- Reveals ---------- */
-.rl { display: block; overflow: hidden; }
+/* Zeilen-Reveal: die Maske braucht Luft fuer Unterlaengen und Umlaute,
+   sonst schneiden enge Zeilenhoehen (0.94 bis 1.02) die Glyphen ab.
+   Der negative Aussenabstand haelt den Zeilenabstand unveraendert. */
+.rl {
+  display: block; overflow: hidden;
+  padding: 0.2em 0 0.22em;
+  margin: -0.2em 0 -0.22em;
+}
 .rl > span {
-  display: block; transform: translateY(112%);
+  display: block; transform: translateY(152%);
   transition: transform 1.05s var(--e-out);
   transition-delay: calc(var(--i, 0) * 0.09s);
 }
@@ -673,9 +680,29 @@ body.loaded .chero img { transform: scale(1); }
 .cpcol { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: clamp(20px, 2.6vw, 44px); will-change: transform; }
 .cpcol img, .cpcol video { width: 100%; display: block; border-radius: 4px; box-shadow: 0 18px 60px rgba(0,0,0,0.28); }
 /* kompakte Variante: mehr Spalten, kleinere Motive */
-.collage--tight { padding: clamp(80px, 10vw, 150px) 0 clamp(150px, 19vw, 280px); }
-.collage--tight .cplane { width: 128%; margin-left: -14%; gap: clamp(16px, 2vw, 32px); align-items: stretch; }
-.collage--tight .cpcol { gap: clamp(16px, 2vw, 32px); }
+.collage--tight { padding: clamp(70px, 8vw, 120px) 0 clamp(100px, 12vw, 170px); }
+/* kompakte Variante: sechs Spalten, ruhigere Motivgroesse (Vorlage BiA-Wand).
+   Fester Rahmen, die Spalten laufen oben und unten aus dem Bild,
+   damit keine leeren Flaechen am Rand entstehen. */
+.collage--tight { padding: 0; height: clamp(620px, 88vh, 940px); }
+.collage--tight .wrap { position: absolute; top: clamp(30px, 4vh, 54px); left: 0; right: 0; }
+.collage--tight .cplane {
+  position: absolute; top: 50%; left: 0;
+  width: 132%; margin-left: -16%;
+  gap: clamp(11px, 1.3vw, 20px); align-items: flex-start;
+  transform: translateY(-50%) rotate(-7deg);
+}
+.collage--tight .cpcol { gap: clamp(11px, 1.3vw, 20px); }
+.collage--tight .cpcol:nth-child(2) { margin-top: -9%; }
+.collage--tight .cpcol:nth-child(3) { margin-top: -19%; }
+.collage--tight .cpcol:nth-child(4) { margin-top: -5%; }
+.collage--tight .cpcol:nth-child(5) { margin-top: -15%; }
+.collage--tight .cpcol:nth-child(6) { margin-top: -11%; }
+@media (max-width: 900px) {
+  .collage--tight { height: clamp(520px, 72vh, 720px); }
+  .collage--tight .cplane { width: 168%; margin-left: -34%; }
+  .collage--tight .cpcol:nth-child(n+5) { display: none; }
+}
 
 /* Statement */
 .cstate { position: relative; min-height: 92vh; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; background: var(--case-clr, var(--green)); }
@@ -1495,7 +1522,31 @@ body.branchopen .bbtn::after { background: var(--ink); }
 .hnumline .hl { font-size: 12px; letter-spacing: 0.06em; color: var(--grey-dark); }
 
 /* Beleg-Sektion: Kanaele links, Stimme rechts */
-.proofsplit { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(40px, 6vw, 100px); align-items: start; }
+/* Kopf des Beleg-Kapitels: bindet die beiden Rechnungen zusammen */
+.pshead {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(30px, 4vw, 70px); align-items: end;
+  padding-bottom: clamp(34px, 4vw, 56px);
+  border-bottom: 1px solid var(--line-l);
+}
+.pshead .pslead {
+  font-family: var(--f-serif); font-size: clamp(16px, 1.35vw, 19.5px);
+  line-height: 1.62; color: var(--grey-dark); max-width: 48ch;
+}
+@media (max-width: 900px) { .pshead { grid-template-columns: 1fr; align-items: start; } }
+.proofsplit {
+  display: grid; grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(40px, 6vw, 100px); align-items: start;
+  padding-top: clamp(40px, 5vw, 76px);
+}
+/* rechte Rechnung sitzt an einer Haarlinie, damit beide als Paar lesbar sind */
+.proofsplit > div:nth-child(2) { padding-left: clamp(0px, 2.6vw, 44px); border-left: 1px solid var(--line-l); }
+@media (max-width: 900px) {
+  .proofsplit > div:nth-child(2) {
+    padding-left: 0; border-left: 0;
+    border-top: 1px solid var(--line-l); padding-top: clamp(30px, 4vw, 44px);
+  }
+}
 .proofsplit .qbox { max-width: none; margin: 0; text-align: left; padding-left: clamp(0px, 2vw, 34px); border-left: 1px solid var(--line-l); }
 .proofsplit .qbox .qt { font-size: clamp(19px, 1.6vw, 24px); }
 @media (max-width: 900px) {
@@ -1505,7 +1556,19 @@ body.branchopen .bbtn::after { background: var(--ink); }
 
 
 /* Vorher/Nachher-Balken (aus der Studie) */
+.barsblock { display: flex; flex-direction: column; align-items: stretch; }
+.barsblock .bt { color: var(--grey-dark); display: block; margin-bottom: clamp(18px, 2.2vw, 30px); }
+.barsblock .bnote { font-size: 12.5px; line-height: 1.6; color: var(--grey-dark); margin-top: 18px; max-width: 46ch; }
+.barsblock .zalink { margin-top: clamp(20px, 2.4vw, 30px); align-self: flex-start; }
+/* allein stehend (Seiten ohne Stationen-Kapitel): zentriert wie bisher */
+.barsblock--solo { align-items: center; margin-top: clamp(46px, 5.5vw, 80px); }
+.barsblock--solo .bnote { text-align: center; max-width: 52ch; }
+.barsblock--solo .zalink { align-self: center; }
+
 .bacmp { display: flex; flex-direction: column; gap: clamp(20px, 2.4vw, 30px); width: min(620px, 100%); }
+.barsblock:not(.barsblock--solo) .bacmp { width: 100%; }
+.barsblock:not(.barsblock--solo) .bacmp .brow { grid-template-columns: 92px 1fr auto; }
+.barsblock:not(.barsblock--solo) .bacmp .bval { min-width: 72px; }
 .bacmp .brow { display: grid; grid-template-columns: 104px 1fr auto; gap: clamp(14px, 1.8vw, 26px); align-items: center; }
 .bacmp .bwho { font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--grey-dark); }
 .bacmp .btrack { height: 2px; background: rgba(10,10,10,0.1); position: relative; }

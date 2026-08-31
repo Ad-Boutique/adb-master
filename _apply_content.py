@@ -1,6 +1,9 @@
 # Baut den Kunden-Content (assets/content.json) in Work-Kacheln und Case-Seiten ein.
 # -*- coding: utf-8 -*-
-import json, os, re
+import json, os, re, subprocess
+
+# Bildmasse (Breite, Hoehe) je Datei, siehe assets/imgdim.json
+DIMS = json.load(open("assets/imgdim.json")) if os.path.exists("assets/imgdim.json") else {}
 
 M = json.load(open("assets/content.json", encoding="utf-8"))
 
@@ -96,14 +99,42 @@ print("Work-Kacheln mit Preview:", changed)
 
 
 # ---------- 2) CASE-SEITEN: Intro-Medium + Content-Galerie ----------
+NCOL = 6
+
+
+def _ratio(p):
+    """Hoehe je Breiteneinheit, aus den echten Dateimassen."""
+    if p.endswith(".mp4"):
+        return 16 / 9.0
+    if p in DIMS and DIMS[p]:
+        return DIMS[p][1] / float(DIMS[p][0])
+    out = subprocess.run(["sips", "-g", "pixelWidth", "-g", "pixelHeight", p],
+                         capture_output=True, text=True).stdout
+    mw = re.search(r"pixelWidth:\s*(\d+)", out)
+    mh = re.search(r"pixelHeight:\s*(\d+)", out)
+    if not (mw and mh):
+        return 1.0
+    DIMS[p] = [int(mw.group(1)), int(mh.group(1))]
+    return DIMS[p][1] / float(DIMS[p][0])
+
+
 def gallery_html(entry, title, bg="#0E0E10"):
     media = [im["src"] for im in entry.get("imgs", [])] + [v["src"] for v in entry.get("vids", [])]
+    media = [m for m in media if os.path.exists(m)]
     if not media:
         return ""
-    cols = [[], [], [], []]
-    for i, m in enumerate(media):
-        cols[i % 4].append(m)
-    speeds = ["0.05", "0.085", "0.065", "0.10"]
+    # so oft wiederholen, dass jede der sechs Spalten den Rahmen ueberragt
+    while len(media) < NCOL * 4:
+        media = media + media
+    media = media[:NCOL * 5]
+    # jedes Motiv in die gerade kuerzeste Spalte, hohe zuerst
+    cols = [[] for _ in range(NCOL)]
+    hs = [0.0] * NCOL
+    for m, r in sorted(((m, _ratio(m)) for m in media), key=lambda x: -x[1]):
+        i = hs.index(min(hs))
+        cols[i].append(m)
+        hs[i] += r + 0.055
+    speeds = ["0.042", "0.068", "0.05", "0.075", "0.056", "0.072"]
     parts = []
     for i, col in enumerate(cols):
         if not col:
@@ -173,11 +204,17 @@ for slug, fname in CASE_FILES.items():
     if not entry or not os.path.exists(fname):
         continue
     s = open(fname, encoding="utf-8").read()
-    if 'collage--tight' in s:
-        continue
     gal = gallery_html(entry, slug, CASE_BG.get(slug, '#0E0E10'))
     if not gal:
         continue
+    # bestehende Galerie herausschneiden, damit sie neu verteilt wird
+    if 'collage--tight' in s:
+        a = s.find('  <!-- CONTENT AUS DEM MANDAT -->')
+        if a < 0:
+            a = s.rfind('<section class="collage collage--tight')
+        b = s.find('</section>', s.find('collage--tight', a))
+        if a >= 0 and b > a:
+            s = s[:a] + s[b + len('</section>'):].lstrip('\n')
     # vor "NEXT" einsetzen
     for marker in ("  <!-- NEXT CASE -->", "  <!-- NEXT -->"):
         if marker in s:
