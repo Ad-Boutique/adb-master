@@ -13,11 +13,15 @@
   font-display: swap;
 }
 /* Reckless Standard (Trial-Lizenz, nur Preview-Umgebung) ersetzt Newsreader */
+/* size-adjust gleicht die x-Hoehe an Newsreader an: Reckless setzt bei
+   gleicher em-Groesse rund 16 Prozent groesser, dadurch wirkte der Text
+   groesser als vorher. 87 Prozent bringt die reale Textgroesse zurueck. */
 @font-face {
   font-family: "Reckless";
   src: url("fonts/Reckless-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
+  size-adjust: 87%;
   font-display: swap;
 }
 @font-face {
@@ -25,6 +29,7 @@
   src: url("fonts/Reckless-Italic.woff2") format("woff2");
   font-weight: 400;
   font-style: italic;
+  size-adjust: 87%;
   font-display: swap;
 }
 @font-face {
@@ -32,6 +37,7 @@
   src: url("fonts/Reckless-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
+  size-adjust: 87%;
   font-display: swap;
 }
 
@@ -1934,7 +1940,7 @@ body.menuopen .bkbtn, body.menuopen .bkorbit { opacity: 0; pointer-events: none;
    Fotostrecke: Text links, dichte Bildwand rechts, heller Grund
    (Vorlage BiA-Case, helle Variante)
    ============================================================ */
-.photowall { position: relative; overflow: hidden; padding: clamp(90px, 11vw, 160px) 0 clamp(90px, 11vw, 160px); }
+.photowall { position: relative; overflow: hidden; padding: clamp(80px, 10vw, 140px) 0 clamp(50px, 6vw, 90px); }
 .photowall .pwwrap {
   display: grid; grid-template-columns: 0.86fr 1.14fr;
   gap: clamp(38px, 5vw, 92px); align-items: start;
@@ -1960,12 +1966,12 @@ body.menuopen .bkbtn, body.menuopen .bkorbit { opacity: 0; pointer-events: none;
 }
 .photowall .pwdisc .dd { font-size: 13.5px; line-height: 1.6; opacity: 0.68; }
 .photowall .pwcols {
-  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(12px, 1.5vw, 22px); align-items: start;
 }
 .photowall .pwcol { display: flex; flex-direction: column; gap: clamp(12px, 1.5vw, 22px); will-change: transform; }
-.photowall .pwcol:nth-child(2) { margin-top: clamp(40px, 7vw, 110px); }
-.photowall .pwcol:nth-child(3) { margin-top: clamp(14px, 2.5vw, 40px); }
+.photowall .pwcol:nth-child(2) { margin-top: clamp(26px, 4vw, 64px); }
+
 .photowall .pwcol img {
   width: 100%; display: block; border-radius: 3px;
   box-shadow: 0 16px 44px rgba(10,10,10,0.12);
@@ -1974,5 +1980,67 @@ body.menuopen .bkbtn, body.menuopen .bkorbit { opacity: 0; pointer-events: none;
   .photowall .pwwrap { grid-template-columns: 1fr; }
   .photowall .pwtxt { position: static; }
   .photowall .pwcols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .photowall .pwcol:nth-child(3) { display: none; }
+}
+
+
+/* ============================================================
+   Interview im Hochformat: laeuft stumm, Ton kommt per Klick
+   ============================================================ */
+.ivid { padding: clamp(80px, 10vw, 150px) 0; }
+.ivid .ivwrap {
+  display: grid; grid-template-columns: 0.92fr 1.08fr;
+  gap: clamp(36px, 5vw, 90px); align-items: center;
+}
+.ivid .ivtxt .ivh {
+  font-family: var(--f-disp); font-weight: 745;
+  font-size: clamp(28px, 3.2vw, 52px); line-height: 1.04; letter-spacing: -0.032em;
+  margin-top: clamp(16px, 1.8vw, 26px);
+}
+.ivid .ivtxt .ivh .rl { display: block; }
+.ivid .ivtxt .ivb {
+  font-family: var(--f-serif); font-size: clamp(16px, 1.35vw, 19.5px);
+  line-height: 1.6; color: var(--grey-dark);
+  margin-top: clamp(18px, 2.2vw, 30px); max-width: 42ch;
+}
+.ivid .ivmeta {
+  display: flex; gap: clamp(20px, 3vw, 44px); flex-wrap: wrap;
+  margin-top: clamp(26px, 3.2vw, 44px);
+  padding-top: clamp(22px, 2.6vw, 32px); border-top: 1px solid var(--line-l);
+}
+.ivid .ivmeta div .mt {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--champ-deep); margin-bottom: 8px;
+}
+.ivid .ivmeta div .md { font-size: 14px; color: var(--grey-dark); }
+.ivid .ivstage { position: relative; }
+.ivid .ivframe {
+  position: relative; width: min(100%, 460px); margin-left: auto;
+  aspect-ratio: 4 / 5; overflow: hidden; border-radius: 4px; background: #0E0E10;
+  box-shadow: 0 34px 90px rgba(10,10,10,0.2);
+}
+.ivid .ivframe video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ivid .ivsound {
+  position: absolute; left: 16px; bottom: 16px; z-index: 2;
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(10,10,10,0.6); backdrop-filter: blur(8px);
+  border: 1px solid rgba(243,237,225,0.28); border-radius: 100px;
+  padding: 11px 18px; cursor: pointer;
+  font-family: var(--f-ui); font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
+  color: var(--paper);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.ivid .ivsound:hover { background: rgba(10,10,10,0.8); border-color: var(--champ); }
+.ivid .ivsound .ivbars { display: flex; align-items: flex-end; gap: 2px; height: 12px; }
+.ivid .ivsound .ivbars i {
+  width: 2px; background: var(--champ); height: 4px; display: block;
+  transition: height 0.25s ease;
+}
+.ivid .ivframe.sound .ivsound .ivbars i { animation: ivpulse 0.9s ease-in-out infinite; }
+.ivid .ivframe.sound .ivsound .ivbars i:nth-child(2) { animation-delay: 0.15s; }
+.ivid .ivframe.sound .ivsound .ivbars i:nth-child(3) { animation-delay: 0.3s; }
+@keyframes ivpulse { 0%,100% { height: 4px; } 50% { height: 12px; } }
+@media (prefers-reduced-motion: reduce) { .ivid .ivframe.sound .ivsound .ivbars i { animation: none; height: 9px; } }
+@media (max-width: 900px) {
+  .ivid .ivwrap { grid-template-columns: 1fr; }
+  .ivid .ivframe { margin: 0 auto; }
 }

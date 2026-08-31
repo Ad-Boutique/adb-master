@@ -776,3 +776,46 @@
   sync();
   go(1, true);
 })();
+
+/* ============================================================
+   Interview im Hochformat: laeuft stumm, Ton per Klick
+   ============================================================ */
+(function () {
+  var frame = document.querySelector(".ivframe");
+  if (!frame) return;
+  var v = frame.querySelector(".ivplayer");
+  var btn = frame.querySelector(".ivsound");
+  var lab = btn ? btn.querySelector(".ivlabel") : null;
+  if (!v || !btn) return;
+
+  btn.addEventListener("click", function () {
+    var an = v.muted;
+    if (an) {
+      /* andere Tonquellen auf der Seite zuerst stumm schalten */
+      document.querySelectorAll("video").forEach(function (o) {
+        if (o !== v && !o.muted) { o.muted = true; o.pause(); }
+      });
+      document.querySelectorAll(".filmwrap.playing").forEach(function (w) { w.classList.remove("playing"); });
+      v.muted = false;
+      v.play().catch(function () {});
+    } else {
+      v.muted = true;
+    }
+    frame.classList.toggle("sound", !v.muted);
+    btn.setAttribute("aria-label", v.muted ? "Ton einschalten" : "Ton ausschalten");
+    if (lab) lab.textContent = v.muted ? "Ton an" : "Ton aus";
+  });
+
+  /* laeuft das Video aus dem Bild, geht der Ton wieder aus */
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting && !v.muted) {
+          v.muted = true;
+          frame.classList.remove("sound");
+          if (lab) lab.textContent = "Ton an";
+        }
+      });
+    }, { threshold: 0.25 }).observe(frame);
+  }
+})();
