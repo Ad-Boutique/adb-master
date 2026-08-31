@@ -44,7 +44,11 @@ SERVICES = [
   proof_h=["+57 % Jahresumsatz.", "Aus demselben Traffic."],
   proof_nums=[("5,57", "Blended ROAS, Ziel war 3,5"), ("€ 312k", "Umsatz aus € 56k Mediabudget"), ("+56 %", "Bestellungen im Rekordjahr")],
   proof_quote="„Pinterest führte mit ROAS 6,99, Google folgte mit 5,98. Inklusive Agentur-Fee blieb der Blend bei 4,17.“ Solche Sätze stehen bei uns im Reporting, nicht im Kleingedruckten.",
-  visual=("panels", dict(h="Der Auftritt, der verkauft.", t="Shop, Markenwelt und Kampagne aus einem Guss: Auftritte aus laufenden Commerce-Mandaten.",
+  visual=("panels", dict(label="Gebaute Auftritte",
+                          h="Ein Shop verkauft nicht, weil er schön ist. Sondern weil jeder Schritt sitzt.",
+                          t="Markenwelt, Produktseite und Checkout entstehen bei uns im selben Zug wie die Kampagne, die darauf führt. Was Sie hier sehen, läuft live und trägt Mediabudget.",
+                          d1=("Commerce", "Shop-Systeme · Produktseiten · Checkout-Optimierung · Bundle- und Angebotslogik"),
+                          d2=("Performance", "Meta · Google · Pinterest · Creative-Testing · Server-side Tracking"),
                           imgs=["assets/case/case-consumer-brand/d0.jpg", "assets/case/case-web-ib7/d0.jpg", "assets/img/web_twistnsparkle_d.jpg", "assets/case/case-web-ib7/d1.jpg"])),
   logos=["looops", "isi", "nordicspirit", "ilbosso", "kaisers", "jti", "juwel", "bojito"],
   oplist=[("case-consumer-brand.html", "Premium-Consumer-Brand", "4,02", "BFCM-ROAS · +75 %"),
@@ -73,6 +77,10 @@ SERVICES = [
       ("54 %", "aller Leads aus einem einzigen Motiv", "Die Erkenntnis",
        "Das Creative ist der Hebel, nicht das Budget. Genau deshalb testen wir, statt zu argumentieren."),
     ]),
+  bars=dict(
+    label="Return on Ad Spend · Crowdinvesting-Plattform",
+    rows=[("Vorher", 24, "2,14"), ("Mit uns", 100, "8,75")],
+    note="Nahezu gleiches Budget, andere Struktur: aus 16 Investments wurden 50, die Kosten je Investor fielen um 69 Prozent."),
   channels=dict(
     label="Cost per Lead je Strecke · Wohnbau-Projekt",
     rows=[("Instant Form, Eigennutzer", 100, "€ 9,59"), ("Instant Form, Anleger", 88, "€ 8,43"),
@@ -266,9 +274,10 @@ def _content_section(slug):
     items = SVC_CONTENT.get(slug, [])
     if not items:
         return ""
-    cols = [[], [], [], []]
+    ncol = 3 if len(items) <= 6 else 4
+    cols = [[] for _ in range(ncol)]
     for i, m in enumerate(items):
-        cols[i % 4].append(m)
+        cols[i % ncol].append(m)
     speeds = ["0.05", "0.085", "0.065", "0.10"]
     parts = []
     for i, col in enumerate(cols):
@@ -393,7 +402,26 @@ def _trust(s):
         return ""
     return ('      <div class="trust" data-fade>' + "".join("<span>%s</span>" % x for x in t) + '</div>\n')
 
+
+def _bars(s):
+    b = s.get("bars")
+    if not b:
+        return ""
+    rows = "\n        ".join(
+        '<div class="brow%s"><span class="bwho">%s</span><span class="btrack"><i class="bfill" data-w="%d"></i></span><span class="bval">%s</span></div>'
+        % ((" now" if i == len(b["rows"]) - 1 else ""), w, pct, v) for i, (w, pct, v) in enumerate(b["rows"]))
+    return ('      <div style="margin-top:clamp(46px,5.5vw,80px);display:flex;flex-direction:column;align-items:center">\n'
+            '        <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:22px">%s</span>\n'
+            '        <div class="bacmp">\n        %s\n        </div>\n'
+            '        <p style="font-size:12.5px;color:var(--grey-dark);margin-top:18px;max-width:52ch;text-align:center">%s</p>\n'
+            '      </div>\n') % (b["label"], rows, b["note"])
+
 def render_service(s):
+    if s.get("zoom") and s.get("diff"):
+        s = dict(s)
+        _d = list(s["diff"])
+        _d[-1] = (_d[-1][0], _d[-1][1], _d[-1][2], s["zoom"]["img"])
+        s["diff"] = _d
     tags = "\n        ".join("<span>%s</span>" % t for t in s["tags"])
     h1 = ('<span class="rl"><span>%s</span></span>\n        <span class="rl"><span><i style="font-style:italic;color:var(--champ-deep)">%s</i></span></span>'
           % (s["h1"][0], s["h1"][1]))
@@ -410,6 +438,12 @@ def render_service(s):
           </div></div>
         </div>''' % (t, p, li))
     acc = "\n        ".join(acc_items)
+    beweis_block = ""
+    if s.get("zoom"):
+        beweis_block = ('\n          <div class="dblock" data-fade>\n'
+                        '            <div class="pk2">Der Beweis</div>\n'
+                        '            <p style="font-family:var(--f-serif);font-size:clamp(18px,1.5vw,23px);line-height:1.6;color:var(--ink);margin-top:12px;max-width:44ch">%s</p>\n'
+                        '          </div>') % s["zoom"]["aside"]
     dimgs = "\n            ".join(
         '<img loading="lazy" decoding="async" src="%s" alt="" class="%s">' % (img, "on" if i == 0 else "")
         for i, (k, t, p, img) in enumerate(s["diff"]))
@@ -426,12 +460,21 @@ def render_service(s):
         imgs = vd["imgs"]
         col1 = "\n          ".join('<img loading="lazy" decoding="async" src="%s" alt="">' % i for i in imgs[0::2])
         col2 = "\n          ".join('<img loading="lazy" decoding="async" src="%s" alt="">' % i for i in imgs[1::2])
-        visual = '''  <!-- PROOF · PANELS (dunkel, Screens scrollen vorbei) -->
+        visual = '''  <!-- PROOF · PANELS (Editorial, Screens scrollen vorbei) -->
   <section class="panelscroll" data-bg="#0A0A0A" data-fg="light">
     <div class="wrap pswrap">
       <div class="pstxt">
-        <div class="chlab" data-lines><span class="rl"><span>%s</span></span></div>
-        <p class="chtxt" data-fade>%s</p>
+        <span class="pslabel">%s</span>
+        <p class="psbody" data-fade>%s</p>
+        <p class="psbody" data-fade>%s</p>
+        <div class="pslinks" data-fade>
+          <a href="work.html">Alle Cases</a>
+          <a href="#anfrage">Projekt anfragen</a>
+        </div>
+        <div class="psdisc" data-stagger>
+          <div data-fade><div class="dt">%s</div><div class="dd">%s</div></div>
+          <div data-fade><div class="dt">%s</div><div class="dd">%s</div></div>
+        </div>
       </div>
       <div class="pscols">
         <div class="pscol" data-drift="0.16">
@@ -444,7 +487,10 @@ def render_service(s):
     </div>
   </section>
 
-''' % (vd["h"], vd["t"], col1, col2)
+''' % (vd.get("label", "Aus dem Mandat"), vd["h"], vd["t"],
+       vd.get("d1", ("Leistungen", ""))[0], vd.get("d1", ("", ""))[1],
+       vd.get("d2", ("Ergebnis", ""))[0], vd.get("d2", ("", ""))[1],
+       col1, col2)
     elif vkind == "phones":
         screens = vd["phones"]
         if screens and isinstance(screens[0], list):
@@ -502,6 +548,7 @@ def render_service(s):
     tell_sec = _tell(s)
     channels_sec = _channels(s)
     quote_sec = _quote(s)
+    bars_sec = _bars(s)
     pq_sec = "" if s.get("quote") else ('<p class="serif" data-fade style="font-size:clamp(17px,1.4vw,21px);color:var(--grey-dark);max-width:52ch;margin:clamp(30px,4vw,46px) auto 0;text-align:center">%s</p>' % s["proof_quote"])
     proofsplit_sec = ""
     if s.get("channels") or s.get("quote"):
@@ -561,7 +608,7 @@ def render_service(s):
           </div>
         </div>
         <div class="dright">
-          ''' + dblocks + '''
+          ''' + dblocks + beweis_block + '''
         </div>
       </div>
     </div>
@@ -570,10 +617,6 @@ def render_service(s):
   <!-- 05 · PROOF 1: ZOOM -->
   <section class="zoomsec" data-side="''' + z["side"] + '''" data-bg="#F3EDE1" data-fg="dark">
     <div class="zsticky">
-      <div class="zaside fg-light" style="''' + aside_pos + '''">
-        <span class="label" style="color:var(--champ-deep)">Der Beweis</span>
-        <p class="serif" style="font-size:clamp(19px,1.7vw,26px);color:var(--ink)">''' + z["aside"] + '''</p>
-      </div>
       <div class="zmedia"><img src="''' + z["img"] + '''" alt=""></div>
       <div class="zcap">
         <span class="zl">''' + z["zl"] + '''</span>
@@ -593,7 +636,7 @@ def render_service(s):
       <div class="wnums" data-stagger style="justify-content:center;margin-top:clamp(30px,4vw,50px)">
         ''' + nums + '''
       </div>
-      ''' + pq_sec + '''
+      ''' + pq_sec + bars_sec + '''
     </div>
   </section>
 

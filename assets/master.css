@@ -651,11 +651,11 @@ body.loaded .chero img { transform: scale(1); }
 /* Schräge Screens-Collage */
 .collage { position: relative; overflow: hidden; padding: clamp(100px, 13vw, 200px) 0 clamp(190px, 24vw, 340px); }
 .cplane { display: flex; gap: clamp(20px, 2.6vw, 44px); width: 116%; margin-left: -8%; transform: rotate(-7deg); align-items: flex-start; }
-.cpcol { flex: 1; display: flex; flex-direction: column; gap: clamp(20px, 2.6vw, 44px); will-change: transform; }
+.cpcol { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: clamp(20px, 2.6vw, 44px); will-change: transform; }
 .cpcol img, .cpcol video { width: 100%; display: block; border-radius: 4px; box-shadow: 0 18px 60px rgba(0,0,0,0.28); }
 /* kompakte Variante: mehr Spalten, kleinere Motive */
 .collage--tight { padding: clamp(80px, 10vw, 150px) 0 clamp(150px, 19vw, 280px); }
-.collage--tight .cplane { width: 124%; margin-left: -12%; gap: clamp(16px, 2vw, 32px); }
+.collage--tight .cplane { width: 128%; margin-left: -14%; gap: clamp(16px, 2vw, 32px); align-items: stretch; }
 .collage--tight .cpcol { gap: clamp(16px, 2vw, 32px); }
 
 /* Statement */
@@ -1040,16 +1040,33 @@ body.loaded .chero img { transform: scale(1); }
 @media (max-width: 900px) { .lchap { grid-template-columns: 1fr; } }
 
 /* ============================================================
-   Dunkle Sektion: Text links, Website-Panels scrollen rechts vorbei
+   Dunkle Sektion im Editorial-Schnitt (Vorlage BiA-Case):
+   links Label, Serif-Passage, Links und Disziplinen; rechts Screens
    ============================================================ */
 .panelscroll { position: relative; overflow: hidden; background: #0A0A0A; color: var(--paper); }
-.panelscroll .pswrap { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(40px, 6vw, 110px); align-items: center; min-height: 120vh; }
-.panelscroll .pstxt { position: sticky; top: 0; align-self: start; padding-top: 34vh; padding-bottom: 20vh; }
-.panelscroll .pscols { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 30px); align-items: start; }
+.panelscroll .pswrap { display: grid; grid-template-columns: 0.92fr 1.08fr; gap: clamp(40px, 6vw, 110px); align-items: start; min-height: 130vh; }
+.panelscroll .pstxt { position: sticky; top: clamp(110px, 16vh, 180px); padding: clamp(40px, 7vh, 90px) 0 clamp(40px, 8vh, 100px); }
+.panelscroll .pstxt .pslabel { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--champ); }
+.panelscroll .pstxt .psbody {
+  font-family: var(--f-serif); font-size: clamp(19px, 1.65vw, 27px); line-height: 1.45;
+  color: var(--paper); margin-top: clamp(20px, 2.4vw, 34px); max-width: 34ch;
+}
+.panelscroll .pstxt .psbody + .psbody { font-size: clamp(16px, 1.25vw, 20px); color: rgba(243,237,225,0.72); margin-top: clamp(16px, 1.8vw, 26px); max-width: 40ch; }
+.panelscroll .pstxt .pslinks { display: flex; gap: clamp(24px, 3vw, 48px); margin-top: clamp(28px, 3.4vw, 46px); }
+.panelscroll .pstxt .pslinks a { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; border-bottom: 1px solid rgba(243,237,225,0.4); padding-bottom: 4px; }
+.panelscroll .pstxt .pslinks a:hover { color: var(--champ); border-color: var(--champ); }
+.panelscroll .pstxt .psdisc { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 2.6vw, 40px); margin-top: clamp(46px, 6vw, 90px); }
+.panelscroll .pstxt .psdisc .dt { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; }
+.panelscroll .pstxt .psdisc .dd { font-size: 13px; line-height: 1.65; color: rgba(243,237,225,0.6); margin-top: 10px; }
+.panelscroll .pscols { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 30px); align-items: start; padding: clamp(40px, 7vh, 90px) 0; }
 .panelscroll .pscol { display: flex; flex-direction: column; gap: clamp(16px, 2vw, 30px); will-change: transform; }
 .panelscroll .pscol img { border-radius: 3px; box-shadow: 0 24px 70px rgba(0,0,0,0.5); }
 .panelscroll .pscol:nth-child(2) { margin-top: clamp(60px, 8vw, 130px); }
-@media (max-width: 900px) { .panelscroll .pswrap { grid-template-columns: 1fr; } .panelscroll .pstxt { position: static; padding: 0; } }
+@media (max-width: 900px) {
+  .panelscroll .pswrap { grid-template-columns: 1fr; min-height: 0; }
+  .panelscroll .pstxt { position: static; padding: clamp(40px,7vh,80px) 0 20px; }
+  .panelscroll .pstxt .psdisc { margin-top: 34px; }
+}
 
 /* ============================================================
    Helle Sektion: Text links sticky, iPhones ziehen vorbei (Outpost)
@@ -1384,3 +1401,16 @@ body.branchopen .bbtn::after { background: var(--ink); }
   .proofsplit { grid-template-columns: 1fr; }
   .proofsplit .qbox { padding-left: 0; border-left: 0; border-top: 1px solid var(--line-l); padding-top: 28px; }
 }
+
+
+/* Vorher/Nachher-Balken (aus der Studie) */
+.bacmp { display: flex; flex-direction: column; gap: clamp(20px, 2.4vw, 30px); width: min(620px, 100%); }
+.bacmp .brow { display: grid; grid-template-columns: 104px 1fr auto; gap: clamp(14px, 1.8vw, 26px); align-items: center; }
+.bacmp .bwho { font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--grey-dark); }
+.bacmp .btrack { height: 2px; background: rgba(10,10,10,0.1); position: relative; }
+.bacmp .bfill { position: absolute; left: 0; top: 0; height: 2px; width: 0; background: var(--ink); transition: width 1.5s var(--e-out); }
+.bacmp .brow.now .bfill { background: var(--champ-deep); height: 3px; top: -0.5px; }
+.bacmp .bval { font-family: var(--f-serif); font-size: clamp(22px, 2.2vw, 32px); font-variant-numeric: tabular-nums; min-width: 92px; text-align: right; }
+.bacmp .brow.now .bval { color: var(--champ-deep); }
+.fg-dark .bacmp .btrack { background: rgba(243,237,225,0.16); }
+.fg-dark .bacmp .bfill { background: var(--paper); }

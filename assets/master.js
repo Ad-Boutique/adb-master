@@ -477,6 +477,23 @@
     });
   }
 
+
+  /* ---------- Vorher/Nachher-Balken (scrollgetrieben) ---------- */
+  var bacmps = Array.prototype.slice.call(document.querySelectorAll(".bacmp")).map(function (el) {
+    return { el: el, done: false };
+  });
+  function bacmpTick() {
+    bacmps.forEach(function (b) {
+      if (b.done) return;
+      var r = b.el.getBoundingClientRect();
+      if (r.top > vh * 0.85 || r.bottom < 0) return;
+      b.done = true;
+      b.el.querySelectorAll(".bfill").forEach(function (f, i) {
+        setTimeout(function () { f.style.width = f.getAttribute("data-w") + "%"; }, 120 + i * 260);
+      });
+    });
+  }
+
   /* ---------- Scroll-Loop ---------- */
   var vh = window.innerHeight;
   window.addEventListener("resize", function () { vh = window.innerHeight; });
@@ -513,6 +530,7 @@
     hprocTick();
     tellTick();
     chrowTick();
+    bacmpTick();
     ticking = false;
   }
   var ticking = false;
@@ -521,6 +539,8 @@
   }, { passive: true });
   window.addEventListener("load", onScroll);
   setTimeout(onScroll, 60);
+  setTimeout(onScroll, 700);
+  setTimeout(onScroll, 1600);
 
   /* ---------- Hero-Rotation ---------- */
   var show = document.querySelector(".hshow");
