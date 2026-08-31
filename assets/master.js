@@ -428,6 +428,55 @@
     v.addEventListener("pause", function () { if (v.currentTime === 0) wrap.classList.remove("playing"); });
   });
 
+
+  /* ---------- Sticky-Zahl mit Stationen (scrollgetrieben) ---------- */
+  var tells = Array.prototype.slice.call(document.querySelectorAll(".tell")).map(function (box) {
+    return {
+      box: box,
+      tv: box.querySelector(".tv"),
+      tl: box.querySelector(".tl"),
+      steps: Array.prototype.slice.call(box.querySelectorAll(".ts")),
+      cur: -1
+    };
+  }).filter(function (t) { return t.tv && t.steps.length; });
+
+  function tellTick() {
+    tells.forEach(function (t) {
+      var line = vh * 0.5, best = 0, bestD = Infinity;
+      t.steps.forEach(function (st, i) {
+        var r = st.getBoundingClientRect();
+        var d = Math.abs((r.top + r.height / 2) - line);
+        if (d < bestD) { bestD = d; best = i; }
+      });
+      if (best === t.cur) return;
+      t.cur = best;
+      t.steps.forEach(function (st, i) { st.classList.toggle("on", i === best); });
+      var act = t.steps[best];
+      t.tv.style.opacity = 0; t.tl.style.opacity = 0;
+      setTimeout(function () {
+        t.tv.textContent = act.getAttribute("data-v");
+        t.tl.textContent = act.getAttribute("data-l");
+        t.tv.style.opacity = 1; t.tl.style.opacity = 1;
+      }, 200);
+    });
+  }
+
+  /* ---------- Kanal-Zeilen (scrollgetrieben) ---------- */
+  var chrows = Array.prototype.slice.call(document.querySelectorAll(".chrow")).map(function (el) {
+    return { el: el, done: false };
+  });
+  function chrowTick() {
+    chrows.forEach(function (c) {
+      if (c.done) return;
+      var r = c.el.getBoundingClientRect();
+      if (r.top > vh * 0.85 || r.bottom < 0) return;
+      c.done = true;
+      c.el.querySelectorAll(".cf").forEach(function (f, i) {
+        setTimeout(function () { f.style.width = f.getAttribute("data-w") + "%"; }, 90 + i * 150);
+      });
+    });
+  }
+
   /* ---------- Scroll-Loop ---------- */
   var vh = window.innerHeight;
   window.addEventListener("resize", function () { vh = window.innerHeight; });
@@ -462,6 +511,8 @@
     zoomTick();
     procTick();
     hprocTick();
+    tellTick();
+    chrowTick();
     ticking = false;
   }
   var ticking = false;

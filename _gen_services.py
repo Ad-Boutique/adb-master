@@ -59,6 +59,48 @@ SERVICES = [
   chips=["Shop-Audit", "Ads-Setup", "UGC & Creatives", "Landingpage", "Tracking-Setup", "Conversion-Optimierung", "Zweitmeinung", "Growth-Partnerschaft"]),
 
  dict(slug="service-performance-marketing", nav="Performance Marketing", label="Leistung · Performance Marketing",
+  heronum=("5,87×", "Ø ROAS über alle aktiven Accounts"),
+  tell=dict(
+    h="Ein Projekt, vier Zahlen.",
+    t="Wie aus einem überschaubaren Budget 489 qualifizierte Kaufinteressenten wurden, Station für Station.",
+    steps=[
+      ("€ 5.755", "Mediabudget, das eingesetzt wurde", "Das Budget",
+       "Ein überschaubarer Betrag für ein Premium-Neubauprojekt in Wien. Die Frage war nie, ob mehr Budget hilft."),
+      ("489", "qualifizierte Kaufinteressenten", "Die Leads",
+       "Vier Motive im Test, konsequente Umschichtung auf den Sieger, gemessen über Instant Forms statt Website-Formular."),
+      ("€ 11,77", "gewichteter Cost per Lead", "Der Preis pro Anfrage",
+       "Das stärkste Motiv lieferte zu € 6,93. Der Schnitt über alle Motive blieb bei € 11,77, inklusive der Tests, die nicht liefen."),
+      ("54 %", "aller Leads aus einem einzigen Motiv", "Die Erkenntnis",
+       "Das Creative ist der Hebel, nicht das Budget. Genau deshalb testen wir, statt zu argumentieren."),
+    ]),
+  channels=dict(
+    label="Cost per Lead je Strecke · Wohnbau-Projekt",
+    rows=[("Instant Form, Eigennutzer", 100, "€ 9,59"), ("Instant Form, Anleger", 88, "€ 8,43"),
+          ("Website-Formular", 22, "€ 58,05")],
+    note="Dieselbe Zielgruppe, dieselbe Woche: Die Strecke entscheidet über den Preis der Anfrage."),
+  quote=("Endlich jemand, der nicht Reichweite feiert, sondern zeigt, wo der Euro wirklich landet.",
+         "Head of Marketing · Commerce"),
+  fit=dict(
+    h="Wir übernehmen wenige Accounts. Die dafür ganz.",
+    intro="Nicht aus Arroganz, sondern aus Respekt vor Ihrem Budget: Wir starten nur, wo wir einen echten Hebel sehen. Sehen wir keinen, sagen wir das.",
+    yes=["Sie geben bereits Mediabudget aus und wollen wissen, was es wirklich bringt",
+         "Produkt oder Projekt trägt eine Marge, die Wachstum erlaubt",
+         "Creatives dürfen angefasst werden, nicht nur das Werbekonto",
+         "Entscheidungen fallen bei Ihnen schnell und direkt"],
+    no=["Es geht um Reichweite, Awareness-Preise oder Followerzahlen",
+        "Das Budget soll monatlich neu verhandelt werden",
+        "Tracking und Datenzugriff bleiben verschlossen",
+        "Der erste Monat soll bereits die Bilanz retten"]),
+  steps_next=dict(
+    h="Von der Anfrage zum Klartext.",
+    rows=[("Heute", "Anfrage in zwei Minuten", "Kanäle, Budget, Ziel. Mehr brauchen wir für den Start nicht."),
+          ("Unter 24 h", "Ehrliche Ersteinschätzung", "Ein Gründer sieht sich das an und meldet sich, auch wenn es ein Nein wird."),
+          ("Tag 2 bis 5", "Account- und Tracking-Audit", "Struktur, Gebote, Zurechnung, Creatives. Wir schauen in die Konten, nicht auf Screenshots."),
+          ("Danach", "Klare Empfehlung", "Top-3-Hebel, geschätztes Potenzial, klare Ja/Nein-Empfehlung zur Zusammenarbeit.")]),
+  deliver=["Top-3-Hebel, priorisiert nach Umsatz-Wirkung",
+           "Wo Budget verdampft, in Euro pro Monat geschätzt",
+           "Ehrliche Ja/Nein-Empfehlung zur Zusammenarbeit"],
+  trust=["Kostenlos", "Unverbindlich", "Ein Gründer prüft", "Antwort unter 24 h"],
   h1=["Jeder Euro.", "Zurechenbar."], ital=1,
   tags=["Meta · Google · TikTok", "Lead-Generierung", "Creative-Testing", "Ehrliche Attribution"],
   sub="Kampagnen, die Leads und Verkäufe bringen, nicht Reichweite. Mit Attribution, der Sie trauen können.",
@@ -246,6 +288,110 @@ def _content_section(slug):
             '    </div>\n'
             '    <div class="cplane">\n%s\n    </div>\n  </section>\n\n') % ("\n".join(parts))
 
+
+def _heronum(s):
+    hn = s.get("heronum")
+    if not hn:
+        return ""
+    return ('      <div class="hnumline" data-fade style="--i:2;margin-top:26px;display:flex;gap:14px;align-items:baseline;justify-content:center">\n'
+            '        <span style="font-family:var(--f-serif);font-size:clamp(30px,3vw,46px);font-variant-numeric:tabular-nums;letter-spacing:-0.02em">%s</span>\n'
+            '        <span style="font-size:13px;color:var(--grey-dark)">%s</span>\n'
+            '      </div>\n') % (hn[0], hn[1])
+
+def _tell(s):
+    t = s.get("tell")
+    if not t:
+        return ""
+    steps = "\n        ".join(
+        '<div class="ts%s" data-v="%s" data-l="%s">\n          <div class="tt">%s</div>\n          <p>%s</p>\n        </div>'
+        % ((" on" if i == 0 else ""), v, l, tt, p) for i, (v, l, tt, p) in enumerate(t["steps"]))
+    first = t["steps"][0]
+    return ('  <!-- ERGEBNIS ALS STATIONEN (scrollgesteuert) -->\n'
+            '  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">\n'
+            '    <div class="wrap">\n'
+            '      <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:clamp(26px,3vw,44px)">Ein Fall, nachgerechnet</span>\n'
+            '      <div class="tell">\n'
+            '        <div class="tfix">\n'
+            '          <div class="tv">%s</div>\n'
+            '          <div class="tl">%s</div>\n'
+            '        </div>\n'
+            '        <div class="tsteps">\n        %s\n        </div>\n'
+            '      </div>\n'
+            '    </div>\n  </section>\n\n') % (first[0], first[1], steps)
+
+def _channels(s):
+    c = s.get("channels")
+    if not c:
+        return ""
+    rows = "\n        ".join(
+        '<div class="cr%s"><span class="cn">%s</span><span class="ct"><i class="cf" data-w="%d"></i></span><span class="cv">%s</span></div>'
+        % ((" blend" if i == len(c["rows"]) - 1 else ""), n, w, v) for i, (n, w, v) in enumerate(c["rows"]))
+    return ('      <div style="margin-top:clamp(40px,5vw,70px)">\n'
+            '        <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:20px">%s</span>\n'
+            '        <div class="chrow">\n        %s\n        </div>\n'
+            '        <p style="font-size:12.5px;color:var(--grey-dark);margin-top:16px;max-width:56ch">%s</p>\n'
+            '      </div>\n') % (c["label"], rows, c["note"])
+
+def _quote(s):
+    q = s.get("quote")
+    if not q:
+        return ""
+    return ('      <div class="qbox" data-fade>\n'
+            '        <p class="qt">&bdquo;%s&ldquo;</p>\n'
+            '        <div class="qa">%s</div>\n'
+            '      </div>\n') % (q[0], q[1])
+
+def _fit(s):
+    f = s.get("fit")
+    if not f:
+        return ""
+    yes = "\n            ".join("<li>%s</li>" % x for x in f["yes"])
+    no = "\n            ".join("<li>%s</li>" % x for x in f["no"])
+    return ('  <!-- PASST DAS -->\n'
+            '  <section class="sec fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark">\n'
+            '    <div class="wrap">\n'
+            '      <div class="lchap" style="margin-bottom:clamp(40px,5vw,70px)">\n'
+            '        <div class="lh" data-lines><span class="rl"><span>%s</span></span></div>\n'
+            '        <p class="lt3" data-fade>%s</p>\n'
+            '      </div>\n'
+            '      <div class="fit" data-stagger>\n'
+            '        <div class="fcol yes" data-fade><div class="fh">Passt gut</div>\n          <ul>\n            %s\n          </ul>\n        </div>\n'
+            '        <div class="fcol no" data-fade><div class="fh">Passt nicht</div>\n          <ul>\n            %s\n          </ul>\n        </div>\n'
+            '      </div>\n'
+            '    </div>\n  </section>\n\n') % (f["h"], f["intro"], yes, no)
+
+def _next(s):
+    n = s.get("steps_next")
+    if not n:
+        return ""
+    rows = "\n        ".join(
+        '<div class="op" data-fade>\n          <span class="onum">%s</span>\n'
+        '          <span><span class="otitle" style="font-size:clamp(18px,1.7vw,26px)">%s</span>\n'
+        '            <span style="display:block;font-family:var(--f-serif);font-size:15.5px;line-height:1.65;color:var(--grey-dark);margin-top:8px;max-width:52ch">%s</span>\n'
+        '          </span>\n          <span class="okpi"></span>\n        </div>' % (w, t, d)
+        for w, t, d in n["rows"])
+    return ('  <!-- WAS ALS NAECHSTES PASSIERT -->\n'
+            '  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">\n'
+            '    <div class="wrap">\n'
+            '      <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:clamp(24px,3vw,40px)">Was als Nächstes passiert</span>\n'
+            '      <h2 class="serif" data-lines style="font-size:clamp(30px,3.6vw,58px);margin-bottom:clamp(36px,4.4vw,60px)"><span class="rl"><span>%s</span></span></h2>\n'
+            '      <div class="oplist" data-stagger>\n        %s\n      </div>\n'
+            '    </div>\n  </section>\n\n') % (n["h"], rows)
+
+def _deliver(s):
+    d = s.get("deliver")
+    if not d:
+        return ""
+    return ('        <ul style="list-style:none;margin:22px 0 0;padding:0;display:flex;flex-direction:column;gap:10px">\n'
+            + "\n".join('          <li style="font-size:14.5px;color:var(--ink);padding-left:18px;position:relative"><i style="position:absolute;left:0;top:0.62em;width:9px;height:1.5px;background:var(--champ-deep)"></i>%s</li>' % x for x in d)
+            + '\n        </ul>\n')
+
+def _trust(s):
+    t = s.get("trust")
+    if not t:
+        return ""
+    return ('      <div class="trust" data-fade>' + "".join("<span>%s</span>" % x for x in t) + '</div>\n')
+
 def render_service(s):
     tags = "\n        ".join("<span>%s</span>" % t for t in s["tags"])
     h1 = ('<span class="rl"><span>%s</span></span>\n        <span class="rl"><span><i style="font-style:italic;color:var(--champ-deep)">%s</i></span></span>'
@@ -349,6 +495,14 @@ def render_service(s):
     chips_sel = "\n        ".join('<button class="nopt" data-v="%s" style="--i:%d">%s <span class="plus">+</span></button>' % (cv, 7 - i, cv) for i, cv in enumerate(s["chips"]))
     logos = logogrid(s["logos"])
     content_sec = _content_section(s["slug"])
+    heronum_sec = _heronum(s)
+    tell_sec = _tell(s)
+    channels_sec = _channels(s)
+    quote_sec = _quote(s)
+    fit_sec = _fit(s)
+    next_sec = _next(s)
+    deliver_sec = _deliver(s)
+    trust_sec = _trust(s)
 
     page = HEAD.format(title=s["nav"], bodybg="#F3EDE1") + menu("index.html#leistungen") + '''<main>
 
@@ -366,6 +520,7 @@ def render_service(s):
       </div>
       <p class="ssub" data-fade style="--i:1">''' + s["sub"] + '''</p>
       <div data-fade style="--i:2;margin-top:28px"><a class="alink" href="#anfrage">Direkt anfragen ↓</a></div>
+''' + heronum_sec + '''
     </div>
   </section>
 
@@ -427,10 +582,13 @@ def render_service(s):
         ''' + nums + '''
       </div>
       <p class="serif" data-fade style="font-size:clamp(17px,1.4vw,21px);color:var(--grey-dark);max-width:52ch;margin:clamp(30px,4vw,46px) auto 0;text-align:center">''' + s["proof_quote"] + '''</p>
+''' + quote_sec + '''    </div>
+    <div class="wrap" style="max-width:1100px">
+''' + channels_sec + '''
     </div>
   </section>
 
-''' + visual + '''  <!-- LOGOS: zentriert, 2x4, flaechig -->
+''' + visual + '''''' + tell_sec + '''  <!-- LOGOS: zentriert, 2x4, flaechig -->
   <section class="fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding: clamp(70px,9vw,130px) 0">
     <div class="wrap">
       <span class="label" style="color:var(--grey-dark);display:block;text-align:center;margin-bottom:clamp(30px,4vw,50px)">Marken, mit denen wir in diesem Feld arbeiten</span>
@@ -450,7 +608,7 @@ def render_service(s):
     </div>
   </section>
 
-  <!-- 08 · FAQ -->
+''' + fit_sec + '''  <!-- 08 · FAQ -->
   <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">
     <div class="wrap faq">
       <div>
@@ -463,7 +621,7 @@ def render_service(s):
     </div>
   </section>
 
-  <!-- 09 · NO-BRAINER + RISIKOUMKEHR -->
+''' + next_sec + '''  <!-- 09 · NO-BRAINER + RISIKOUMKEHR -->
   <section class="sec fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark">
     <div class="wrap lchap">
       <div>
@@ -473,6 +631,7 @@ def render_service(s):
       <div data-stagger>
         <p class="lt3" data-fade>''' + s["offer"][0] + '''</p>
         <p class="lt3" data-fade>''' + s["offer"][1] + '''</p>
+''' + deliver_sec + '''
       </div>
     </div>
   </section>
@@ -492,7 +651,8 @@ def render_service(s):
       <div class="needgrid" data-fade>
         ''' + chips_sel + '''
       </div>
-      <p data-fade style="font-size:13px;color:var(--grey-dark);margin-top:26px">Auswahl treffen, weiter klicken, und Ihre Anfrage ist vorformuliert. Antwort in unter 24 Stunden.</p>
+      <p data-fade style="font-size:13px;color:var(--grey-dark);margin-top:26px">Auswahl treffen, weiter klicken, und Ihre Anfrage ist vorformuliert.</p>
+''' + trust_sec + '''
     </div>
   </section>
 

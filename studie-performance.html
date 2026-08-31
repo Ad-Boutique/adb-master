@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="assets/master.css?v=16">
+<link rel="stylesheet" href="assets/master.css?v=17">
 <style>
   /* ============================================================
      STUDIE: Performance-Grafiken im ADB-Design
@@ -79,12 +79,41 @@
   .chn .r.blend .f2 { background: var(--ink); }
   .chn .v2 { font-family: var(--f-serif); font-size: 19px; font-variant-numeric: tabular-nums; min-width: 62px; text-align: right; }
 
+
+  /* G · Scrub: Wert folgt der Scrollposition */
+  .scrub { position: relative; height: 195vh; }
+  .scrub .sticky { position: sticky; top: 0; height: 78vh; display: flex; align-items: center; }
+  .scrub .inner { width: 100%; }
+  .scrub .big2 { font-family: var(--f-serif); font-size: clamp(64px, 9vw, 150px); line-height: 1; font-variant-numeric: tabular-nums; letter-spacing: -0.03em; }
+  .scrub .cap2 { font-size: 13px; color: var(--grey-dark); margin-top: 14px; }
+  .scrub svg { width: 100%; height: clamp(100px, 11vw, 165px); display: block; overflow: visible; margin-top: clamp(16px, 2.2vw, 30px); }
+  .scrub .base3 { fill: none; stroke: rgba(10,10,10,0.12); stroke-width: 1; }
+  .scrub .line3 { fill: none; stroke: var(--champ-deep); stroke-width: 2; stroke-linecap: round; }
+  .scrub .head3 { fill: var(--champ-deep); }
+  .scrub .prog { position: absolute; left: 0; bottom: 0; height: 2px; background: var(--champ-deep); width: 0; }
+
+  /* H · Sticky-Zahl, die beim Durchscrollen umspringt */
+  .stack { position: relative; }
+  .stack .fix { position: sticky; top: clamp(120px, 28vh, 300px); height: 0; }
+  .stack .fixin { display: flex; align-items: baseline; gap: clamp(20px, 3vw, 44px); }
+  .stack .fv { font-family: var(--f-serif); font-size: clamp(52px, 7vw, 118px); line-height: 1; font-variant-numeric: tabular-nums; letter-spacing: -0.03em; min-width: 4.2ch; }
+  .stack .fl { font-size: 13px; color: var(--grey-dark); max-width: 22ch; line-height: 1.6; }
+  .stack .steps { margin-left: auto; width: min(52%, 560px); display: flex; flex-direction: column; }
+  .stack .st { padding: clamp(30px, 8vh, 90px) 0; border-top: 1px solid rgba(10,10,10,0.1); opacity: 0.32; transition: opacity 0.5s ease; }
+  .stack .st.on { opacity: 1; }
+  .stack .st .t3 { font-family: var(--f-disp); font-weight: 680; font-size: clamp(18px, 1.7vw, 24px); }
+  .stack .st p { font-family: var(--f-serif); font-size: 16px; line-height: 1.7; color: var(--grey-dark); margin-top: 8px; }
+  @media (max-width: 900px) {
+    .stack .fix { position: static; height: auto; margin-bottom: 30px; }
+    .stack .steps { width: 100%; margin-left: 0; }
+  }
+
   @media (max-width: 800px) {
     .sthead { grid-template-columns: 1fr; gap: 12px; }
     .ba .row, .chn .r { grid-template-columns: 84px 1fr auto; }
   }
 </style>
-<script src="assets/master.js?v=16" defer></script>
+<script src="assets/master.js?v=17" defer></script>
 </head>
 <body style="background-color:#F3EDE1" class="on-light">
 
@@ -245,6 +274,76 @@
         </div>
       </div>
 
+
+      <!-- G -->
+      <div class="stitem">
+        <div class="sthead">
+          <div class="stnum">07</div>
+          <div>
+            <div class="sttitle">Der Wert wächst mit dem Daumen<span style="color:var(--champ-deep)"> · scrollgesteuert</span></div>
+            <p class="stdesc">Hier läuft nichts von selbst ab: Die Linie zeichnet sich genau so weit, wie weit gescrollt wurde, und die Ziffer zählt synchron mit. Wer zurückscrollt, sieht den Wert zurückgehen. Das macht aus einer Kennzahl eine Bewegung, die man selbst steuert, und hält die Sektion im Bild, solange die Geschichte dauert.</p>
+            <span class="stwhere">Ergebnis-Block, wenn eine Zahl die Hauptrolle spielt · Proof-Sektion der Service-Seiten</span>
+          </div>
+        </div>
+        <div class="stdemo" style="padding:0;overflow:hidden">
+          <div class="scrub" data-scrub-graphic>
+            <div class="sticky">
+              <div class="inner" style="padding:clamp(30px,4.5vw,70px)">
+                <span class="lbl">Zurechenbares Kapital · Immobilien-Investment</span>
+                <div class="big2" data-val="0">€ 0</div>
+                <div class="cap2">aus € 36.043 Google-Budget, sauber zugerechnet</div>
+                <svg viewBox="0 0 900 160" preserveAspectRatio="none" aria-hidden="true">
+                  <path class="base3" d="M 0 159 L 900 159"></path>
+                  <path class="line3" d="M 6 150 C 150 146, 280 138, 400 120 S 620 78, 760 44 S 860 20, 894 8"></path>
+                  <circle class="head3" cx="6" cy="150" r="4.5"></circle>
+                </svg>
+              </div>
+            </div>
+            <i class="prog"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- H -->
+      <div class="stitem">
+        <div class="sthead">
+          <div class="stnum">08</div>
+          <div>
+            <div class="sttitle">Eine Zahl bleibt stehen, die Geschichte läuft weiter<span style="color:var(--champ-deep)"> · scrollgesteuert</span></div>
+            <p class="stdesc">Die Kennzahl bleibt links im Bild, während rechts die Stationen vorbeiziehen. Bei jeder Station springt die Zahl auf den passenden Wert um. So erzählt der Funnel sich selbst, ohne dass drei einzelne Grafiken nötig wären. Nutzt dieselbe Sticky-Mechanik wie die Differenzierungs-Sektion.</p>
+            <span class="stwhere">Ergebnis-Block der Cases · Differenzierungs-Sektion der Service-Seiten</span>
+          </div>
+        </div>
+        <div class="stdemo">
+          <div class="stack" data-stack>
+            <div class="fix">
+              <div class="fixin">
+                <div class="fv" data-v0="€ 5.755">€ 5.755</div>
+                <div class="fl" data-l0="Mediabudget, das eingesetzt wurde">Mediabudget, das eingesetzt wurde</div>
+              </div>
+            </div>
+            <div class="steps">
+              <div class="st on" data-v="€ 5.755" data-l="Mediabudget, das eingesetzt wurde">
+                <div class="t3">Das Budget</div>
+                <p>Ein überschaubarer Betrag für ein Premium-Neubauprojekt. Die Frage war nie, ob mehr Budget hilft.</p>
+              </div>
+              <div class="st" data-v="489" data-l="qualifizierte Kaufinteressenten">
+                <div class="t3">Die Leads</div>
+                <p>Vier Motive im Test, konsequente Umschichtung auf den Sieger, sauber gemessen über Instant Forms.</p>
+              </div>
+              <div class="st" data-v="€ 11,77" data-l="gewichteter Cost per Lead">
+                <div class="t3">Der Preis pro Anfrage</div>
+                <p>Das stärkste Motiv lieferte zu € 6,93. Der Schnitt über alle Motive blieb bei € 11,77.</p>
+              </div>
+              <div class="st" data-v="54 %" data-l="aller Leads aus einem einzigen Motiv">
+                <div class="t3">Die Erkenntnis</div>
+                <p>Das Creative ist der Hebel, nicht das Budget. Genau das ist unsere Arbeitsweise, in einer Zahl.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- REGELN -->
       <div class="stitem">
         <div class="sthead">
@@ -363,6 +462,46 @@
       setTimeout(function () { f.style.width = w; }, 120 + i * 160);
     });
   }
+
+
+  /* G · scrollgesteuerte Kurve + Ziffer */
+  var scrubs = document.querySelectorAll("[data-scrub-graphic]");
+  scrubs.forEach(function (box) {
+    var line = box.querySelector(".line3"), head = box.querySelector(".head3");
+    var val = box.querySelector(".big2"), prog = box.querySelector(".prog");
+    var len = line.getTotalLength();
+    line.style.strokeDasharray = len;
+    function upd() {
+      var r = box.getBoundingClientRect();
+      var span = r.height - window.innerHeight;
+      var p = Math.max(0, Math.min(1, -r.top / span));
+      line.style.strokeDashoffset = len * (1 - p);
+      var pt = line.getPointAtLength(len * p);
+      head.setAttribute("cx", pt.x); head.setAttribute("cy", pt.y);
+      var v = 4650000 * p;
+      val.textContent = "€ " + (v / 1000000).toLocaleString("de-AT", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " Mio.";
+      prog.style.width = (p * 100) + "%";
+    }
+    upd();
+    window.addEventListener("scroll", upd, { passive: true });
+    window.addEventListener("resize", upd);
+  });
+
+  /* H · Sticky-Zahl mit Stationen */
+  document.querySelectorAll("[data-stack]").forEach(function (box) {
+    var fv = box.querySelector(".fv"), fl = box.querySelector(".fl");
+    var steps = box.querySelectorAll(".st");
+    var sio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        steps.forEach(function (s2) { s2.classList.remove("on"); });
+        en.target.classList.add("on");
+        fv.textContent = en.target.getAttribute("data-v");
+        fl.textContent = en.target.getAttribute("data-l");
+      });
+    }, { rootMargin: "-45% 0px -45% 0px" });
+    steps.forEach(function (s2) { sio.observe(s2); });
+  });
 
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (en) {
