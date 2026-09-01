@@ -22,14 +22,14 @@ SVC_COLS = {"service-ecommerce": [["assets/case/juwel/g0.jpg", "assets/case/juwe
 SVC_WALL = {"service-content-creation": [["assets/case/juwel/g0.jpg", "assets/case/herogroup/g0.jpg", "assets/case/medcenter/g1.jpg", "assets/case/grandgarden/g2.jpg"], ["assets/case/kommunalkredit/g0.jpg", "assets/case/juwel/g1.jpg", "assets/case/herogroup/v0.mp4", "assets/case/medcenter/g2.jpg"], ["assets/case/case-health-brand/g0.jpg", "assets/case/kommunalkredit/g1.jpg", "assets/case/juwel/g2.jpg", "assets/case/herogroup/v1.mp4"], ["assets/case/grandgarden/g0.jpg", "assets/case/case-health-brand/g1.jpg", "assets/case/kommunalkredit/g2.jpg", "assets/case/juwel/g3.jpg"], ["assets/case/medcenter/g0.jpg", "assets/case/grandgarden/g1.jpg", "assets/case/case-health-brand/g2.jpg", "assets/case/kommunalkredit/g3.jpg"]], "service-websites": [["assets/img/web_daphi_m.jpg", "assets/img/web_northpoint_m.jpg", "assets/case/case-consumer-brand/m0.jpg", "assets/case/case-web-ib7/m2.jpg"], ["assets/img/web_funkhausliving_m.jpg", "assets/img/web_pharmacom_m.jpg", "assets/case/case-premium-neubau/m0.jpg", "assets/case/case-web-northpoint/m0.jpg"], ["assets/img/web_havenstone_m.jpg", "assets/img/web_trattner_m.jpg", "assets/case/case-premium-neubau/m1.jpg", "assets/case/case-web-pharmacom/m0.jpg"], ["assets/img/web_ib7_m.jpg", "assets/img/web_twistnsparkle_m.jpg", "assets/case/case-web-ib7/m0.jpg", "assets/case/case-web-trattner/m0.jpg"], ["assets/img/web_noma_m.jpg", "assets/img/web_unio_m.jpg", "assets/case/case-web-ib7/m1.jpg", "assets/img/web_funkhausliving_m.jpg"]]}
 
 SERVICES = [
- dict(slug="service-ecommerce", nav="E-Commerce Growth", label="Leistung · E-Commerce Growth",
+ dict(slug="service-ecommerce", nav="E-Commerce Growth", label="Leistung, E-Commerce Growth",
   h1=["Ihr Shop wächst.", "Planbar."], ital=1,
-  tags=["Meta · Google · TikTok · Pinterest", "Shop & Conversion", "Server-side Tracking", "UGC & Creatives"],
+  tags=["Meta, Google, TikTok, Pinterest", "Shop & Conversion", "Server-side Tracking", "UGC & Creatives"],
   sub="Ads, Creatives, Shop und Tracking aus einer Hand, vergütet am Ergebnis.",
   problem_h=["Das Problem"],
   problem=["Sie kaufen Besucher, aber zu wenige kaufen: Steigende Klickpreise drücken die Marge, der Checkout verliert Käufer, und das Reporting verschleiert mehr, als es zeigt.",
            "<b>Mehr Budget skaliert dann nur das Problem.</b> Jeder Monat mit undichtem Funnel wird teurer, während Wettbewerber mit sauberem Setup denselben Klick in mehr Umsatz übersetzen."],
-  intro="Wir skalieren <b>D2C-Marken</b>, die wachsen wollen, statt Budget zu testen. Der Hebel liegt selten in mehr <b>Spend</b>, sondern im Zusammenspiel aus <b>Creative</b>, <b>Shop</b> und <b>Messung</b>. Deshalb bauen wir das System, nicht die Einzelmaßnahme.",
+  intro="Wir skalieren <b>D2C-Marken</b>die wachsen wollen, statt Budget zu testen. Der Hebel liegt selten in mehr <b>Spend</b>sondern im Zusammenspiel aus <b>Creative</b><b>Shop</b> und <b>Messung</b>. Deshalb bauen wir das System, nicht die Einzelmaßnahme.",
   acc=[("Ads & Creatives", "Iteratives Creative-Testing statt Bauchgefühl: Wir lassen Varianten gegeneinander laufen und schichten Budget wöchentlich auf die Gewinner um.",
         ["Meta, Google, TikTok, Pinterest", "UGC- und Studio-Produktion", "Systematisches Creative-Testing", "Budget-Steuerung, wöchentlich"]),
        ("Shop & Conversion", "Mehr Umsatz beginnt fast immer im Checkout, nicht im Ad-Account. Wir optimieren dort, wo der Klick zu Geld wird.",
@@ -44,7 +44,7 @@ SERVICES = [
   zoom=dict(img="assets/img/c_candle.jpg", side="right", al="Ein Fall",
             ah=["Erst messen.", "Dann skalieren."],
             alink=("case-d2c-lifestyle.html", "Den Fall im Detail"), aside="Erst messen, dann skalieren: Der Hebel lag im Checkout und im Creative, nicht im Budget.",
-            zl="D2C-Lifestyle-Marke · Meta, Google, Pinterest", zt="+57 % Jahresumsatz. Blended ROAS 5,57."),
+            zl="D2C-Lifestyle-Marke, Meta, Google, Pinterest", zt="+57 % Jahresumsatz. Blended ROAS 5,57."),
   proof_h=["Ein Shop.", "Jede Stufe nachgerechnet."],
   proof_lead="Statt Bestwerte aus mehreren Marken nebeneinanderzustellen, nehmen wir eine D2C-Lifestyle-Marke und zeigen die Kette: Mediabudget, Kanal-Mix, Blended-Sicht, Jahresumsatz.",
   proof_nums=[],
@@ -62,7 +62,7 @@ SERVICES = [
        "Plus 57 Prozent gegenüber dem Vorjahr, bei 56 Prozent mehr Bestellungen. Aus demselben Traffic, anders geführt."),
     ]),
   channels=dict(
-    label="Return on Ad Spend je Kanal · D2C-Lifestyle-Marke",
+    label="Return on Ad Spend je Kanal, D2C-Lifestyle-Marke",
     rows=[("Pinterest", 100, "6,99"), ("Google", 86, "5,98"), ("Blended, inkl. Fee", 60, "4,17")],
     note="Kein Kanal-Ego: Wir reporten den Blend inklusive unserer Fee, weil nur das die Marge des Shops beschreibt.",
     link=("case-d2c-lifestyle.html", "D2C-Lifestyle-Marke im Detail")),
@@ -78,7 +78,7 @@ SERVICES = [
                     ("Martin", "Founder", "Verantwortet die Blended-Sicht und sagt, wenn ein Kanal gestoppt wird.", "assets/img/founder.jpg")]),
   voice=dict(label="Was Kunden sagen",
              q="Pinterest führte mit ROAS 6,99, Google folgte mit 5,98. Inklusive Agentur-Fee blieb der Blend bei 4,17.",
-             a="Head of E-Commerce · D2C-Lifestyle",
+             a="Head of E-Commerce, D2C-Lifestyle",
              img="assets/img/ag_meeting.jpg",
              note="Solche Sätze stehen bei uns im Reporting, nicht im Kleingedruckten. Einmal im Monat gehen wir sie gemeinsam durch, inklusive der Kanäle, die wir gestoppt haben."),
   fit=dict(label="Bevor wir starten",
@@ -111,13 +111,13 @@ SERVICES = [
   visual=("panels", dict(label="Gebaute Auftritte",
                           h="Ein Shop verkauft nicht, weil er schön ist. Sondern weil jeder Schritt sitzt.",
                           t="Markenwelt, Produktseite und Checkout entstehen bei uns im selben Zug wie die Kampagne, die darauf führt. Was Sie hier sehen, läuft live und trägt Mediabudget.",
-                          d1=("Commerce", "Shop-Systeme · Produktseiten · Checkout-Optimierung · Bundle- und Angebotslogik"),
-                          d2=("Performance", "Meta · Google · Pinterest · Creative-Testing · Server-side Tracking"),
+                          d1=("Commerce", "Shop-Systeme, Produktseiten, Checkout-Optimierung, Bundle- und Angebotslogik"),
+                          d2=("Performance", "Meta, Google, Pinterest, Creative-Testing, Server-side Tracking"),
                           imgs=["assets/case/case-consumer-brand/d0.jpg", "assets/case/case-web-ib7/d0.jpg", "assets/img/web_twistnsparkle_d.jpg", "assets/case/case-web-ib7/d1.jpg"])),
   logos=["looops", "isi", "nordicspirit", "ilbosso", "kaisers", "jti", "juwel", "bojito"],
-  oplist=[("case-consumer-brand.html", "Premium-Consumer-Brand", "4,02", "BFCM-ROAS · +75 %"),
-          ("case-d2c-lifestyle.html", "D2C-Lifestyle-Marke", "+57 %", "Jahresumsatz · ROAS 5,57"),
-          ("case-health-brand.html", "Dental-/Health-Marke", "1.385", "Verkäufe · ehrlich reportet")],
+  oplist=[("case-consumer-brand.html", "Premium-Consumer-Brand", "4,02", "BFCM-ROAS, +75 %"),
+          ("case-d2c-lifestyle.html", "D2C-Lifestyle-Marke", "+57 %", "Jahresumsatz, ROAS 5,57"),
+          ("case-health-brand.html", "Dental-/Health-Marke", "1.385", "Verkäufe, ehrlich reportet")],
   faq=[("Wir haben schon eine Agentur. Warum wechseln?", "Nicht wechseln, vergleichen: Der Audit zeigt in zwei Wochen, wo Ihr Setup Geld liegen lässt. Danach entscheiden Sie mit Zahlen, nicht mit Bauchgefühl."),
        ("Was, wenn der ROAS nicht kommt?", "Dann verdienen wir weniger: Unsere Vergütung ist an den messbaren Umsatz gekoppelt. Skin in the Game heißt, dass Ihr Risiko auch unseres ist."),
        ("Wie schnell sehen wir Ergebnisse?", "Erste Signale nach dem Audit, belastbare Trends nach sechs bis acht Wochen Testing. Wir versprechen keine Wunder in Woche eins, dafür eine Kurve, die hält.")],
@@ -126,7 +126,7 @@ SERVICES = [
          "<b>Und wenn wir zusammenarbeiten, gilt die Risikoumkehr:</b> Basis-Fixum plus Beteiligung am messbaren Umsatz. Wächst Ihr Umsatz nicht, verdienen wir weniger. Wo sich Umsatz nicht sauber messen lässt, sagen wir das vorher, nicht nachher."],
   chips=["Shop-Audit", "Ads-Setup", "UGC & Creatives", "Landingpage", "Tracking-Setup", "Conversion-Optimierung", "Zweitmeinung", "Growth-Partnerschaft"]),
 
- dict(slug="service-performance-marketing", nav="Performance Marketing", label="Leistung · Performance Marketing",
+ dict(slug="service-performance-marketing", nav="Performance Marketing", label="Leistung, Performance Marketing",
   tell=dict(
     h="Ein Projekt, vier Zahlen.",
     t="Wie aus einem überschaubaren Budget 489 qualifizierte Kaufinteressenten wurden, Station für Station.",
@@ -144,17 +144,17 @@ SERVICES = [
                   h=["Wo der Unterschied", "wirklich entsteht."],
                   t="Links ein Wohnbau-Projekt: dieselbe Zielgruppe, dieselbe Woche, drei Strecken, dreifacher Preisunterschied. Rechts eine Crowdinvesting-Plattform: nahezu gleiches Budget, andere Struktur. Beide Zahlen stehen so im Reporting, inklusive der Strecke, die wir gestoppt haben."),
   bars=dict(
-    label="Return on Ad Spend · Crowdinvesting-Plattform",
+    label="Return on Ad Spend, Crowdinvesting-Plattform",
     link=("case-crowdinvesting.html", "Crowdinvesting-Plattform im Detail"),
     rows=[("Vorher", 24, "2,14"), ("Mit uns", 100, "8,75")],
     note="Nahezu gleiches Budget, andere Struktur: aus 16 Investments wurden 50, die Kosten je Investor fielen um 69 Prozent."),
   channels=dict(
-    label="Cost per Lead je Strecke · Wohnbau-Projekt",
+    label="Cost per Lead je Strecke, Wohnbau-Projekt",
     rows=[("Instant Form, Eigennutzer", 100, "€ 9,59"), ("Instant Form, Anleger", 88, "€ 8,43"),
           ("Website-Formular", 22, "€ 58,05")],
     note="Dieselbe Zielgruppe, dieselbe Woche: Die Strecke entscheidet über den Preis der Anfrage."),
   quote=("Endlich jemand, der nicht Reichweite feiert, sondern zeigt, wo der Euro wirklich landet.",
-         "Head of Marketing · Commerce"),
+         "Head of Marketing, Commerce"),
   fit=dict(
     label="Bevor wir starten",
     h=["Der Fit entscheidet.", "Nicht das Budget."],
@@ -182,12 +182,12 @@ SERVICES = [
            "Ehrliche Ja/Nein-Empfehlung zur Zusammenarbeit"],
   trust=["Kostenlos", "Unverbindlich", "Ein Gründer prüft", "Antwort unter 24 h"],
   h1=["Jeder Euro.", "Zurechenbar."], ital=1,
-  tags=["Meta · Google · TikTok", "Lead-Generierung", "Creative-Testing", "Ehrliche Attribution"],
+  tags=["Meta, Google, TikTok", "Lead-Generierung", "Creative-Testing", "Ehrliche Attribution"],
   sub="Kampagnen, die Leads und Verkäufe bringen, nicht Reichweite. Mit Attribution, der Sie trauen können.",
   problem_h=["Das Problem"],
   problem=["Budget läuft, Dashboards leuchten, aber niemand kann sagen, welcher Euro wirklich Umsatz gebracht hat. Doppelt gezählte Conversions feiern Erfolge, die es nie gab.",
            "<b>Ohne saubere Zurechnung fließt Budget monatelang in Kanäle, die nur Klicks liefern.</b> Der CPL steigt, die Pipeline bleibt leer, und am Ende heißt es: Performance funktioniert bei uns nicht."],
-  intro="Wir steuern <b>Meta, Google und TikTok</b> mit einer Regel: <b>Das Creative ist der Hebel</b>, nicht das Budget. Getestet wird systematisch, gemessen wird ehrlich, umgeschichtet wird <b>wöchentlich</b>.",
+  intro="Wir steuern <b>Meta, Google und TikTok</b> mit einer Regel: <b>Das Creative ist der Hebel</b>nicht das Budget. Getestet wird systematisch, gemessen wird ehrlich, umgeschichtet wird <b>wöchentlich</b>.",
   acc=[("Kampagnen-Setup", "Strukturen, die skalieren können: nach Rolle getrennte Kampagnen, saubere Zielwerte, Budgets dort, wo der ehrliche CPL hinzeigt.",
         ["Meta, Google, TikTok", "Instant Forms & Lead-Strecken", "Kaufnahe Search-Intents", "Budget-Steuerung, wöchentlich"]),
        ("Creative-Testing", "Viele Varianten, klare Sieger: Bei einem Wiener Neubauprojekt trug ein einziges Interior-Motiv 54 Prozent aller Leads.",
@@ -202,7 +202,7 @@ SERVICES = [
   zoom=dict(img="assets/img/funkhaus.jpg", side="right", al="Ein Fall",
             ah=["Das Creative", "ist der Hebel."],
             alink=("case-premium-neubau.html", "Den Fall im Detail"), aside="Das stärkste Creative ist der größte Hebel, nicht das größte Budget.",
-            zl="Premium-Neubau, Wien · Instant Forms", zt="489 Leads zu € 11,77. Ein Motiv trug 54 %."),
+            zl="Premium-Neubau Wien, Instant Forms", zt="489 Leads zu € 11,77. Ein Motiv trug 54 %."),
   proof_h=["Ein Projekt.", "Vollständig nachgerechnet."],
   proof_lead="Statt Bestwerte aus fünf Mandaten nebeneinanderzustellen, nehmen wir ein Projekt und zeigen jede Stufe: das Budget, die Motive, den Preis pro Anfrage, die Erkenntnis.",
   proof_nums=[],
@@ -218,13 +218,13 @@ SERVICES = [
                     ("Daniel", "Founder", "Sitzt im Reporting-Call und verantwortet die Zahl, die dort steht.", "assets/img/founder.jpg")]),
   voice=dict(label="Was Kunden sagen",
              q="Endlich jemand, der nicht Reichweite feiert, sondern zeigt, wo der Euro wirklich landet.",
-             a="Head of Marketing · Commerce",
+             a="Head of Marketing, Commerce",
              img="assets/img/ag_meeting.jpg",
              note="Wir schicken kein Dashboard, das niemand liest. Wir gehen einmal im Monat gemeinsam durch die Zahlen und sagen auch, was nicht funktioniert hat."),
   logos=["winegg", "funkhaus", "ifa", "conda", "soravia", "rhomberg", "vonpoll", "seeresidenz"],
-  oplist=[("case-premium-neubau.html", "Premium-Neubau, Wien", "489", "Leads · € 11,77 CPL"),
-          ("case-bautraeger-portfolio.html", "Bauträger-Portfolio, Wien", "€ 4,72", "CPL · der effizienteste im Portfolio"),
-          ("case-wohnbau-floridsdorf.html", "Wohnbau, Floridsdorf", "460", "Leads · € 12,77 CPL")],
+  oplist=[("case-premium-neubau.html", "Premium-Neubau, Wien", "489", "Leads, € 11,77 CPL"),
+          ("case-bautraeger-portfolio.html", "Bauträger-Portfolio, Wien", "€ 4,72", "CPL, der effizienteste im Portfolio"),
+          ("case-wohnbau-floridsdorf.html", "Wohnbau, Floridsdorf", "460", "Leads, € 12,77 CPL")],
   faq=[("Unsere Zielgruppe ist zu speziell für Performance.", "Das hören wir oft, auch von Investoren-Funnels und Premium-Neubau. Genau dort entscheidet die Botschaft je Zielgruppe: Bei Anlegern schlug der Service-Angle die Nachhaltigkeits-Story um das 2,3-Fache."),
        ("Woher wissen wir, dass die Zahlen stimmen?", "Server-side Tracking, Blended-Sicht und auf Wunsch der Blick in den Ad-Manager: Wir reporten die Realität, nicht die schönste Zählweise."),
        ("Was passiert, wenn ein Kanal nicht liefert?", "Dann wird er gestoppt, nicht schöngeredet. Ein € 278k-Test ohne zurechenbares Ergebnis flog bei uns aus dem Plan.")],
@@ -233,7 +233,7 @@ SERVICES = [
          "<b>Risikoumkehr inklusive:</b> Wo sich Umsatz messen lässt, koppeln wir unsere Vergütung daran. Basis-Fixum plus Erfolgsbeteiligung, wir gewinnen nur, wenn Sie gewinnen."],
   chips=["Account-Audit", "Meta-Setup", "Google-Setup", "Lead-Kampagne", "Creative-Testing", "Tracking-Setup", "Zweitmeinung", "Skalierung"]),
 
- dict(slug="service-content-creation", nav="Content Creation", label="Leistung · Content Creation",
+ dict(slug="service-content-creation", nav="Content Creation", label="Leistung, Content Creation",
   h1=["Content,", "der verkauft."], ital=1,
   tags=["UGC & Studio", "Foto & Film", "Social-Formate", "Creative-System"],
   sub="Foto, Film und UGC, produziert für Performance: gemessen am CPA, nicht am Applaus.",
@@ -259,7 +259,7 @@ SERVICES = [
   zoom=dict(img="assets/img/c_champ.jpg", side="left", al="Ein Fall",
             ah=["Produziert", "für den Feed."],
             alink=("case-premium-neubau.html", "Den Fall im Detail"), aside="Produziert für den Feed: Content, der gemessen wird, nicht nur gefällt.",
-            zl="Content-Produktion · Food", zt="Jedes Motiv tritt gegen Benchmarks an."),
+            zl="Content-Produktion, Food", zt="Jedes Motiv tritt gegen Benchmarks an."),
   proof_h=["Wie ein Motiv", "entsteht."],
   proof_lead="Content ist bei uns Handwerk mit Messpunkt: Wir zeigen den Weg von der Idee zum Sujet, das im Feed bestehen muss. Die Zahlen stehen am Ende, nicht am Anfang.",
   proof_nums=[],
@@ -288,7 +288,7 @@ SERVICES = [
                     ("Suman", "Social Media", "Bringt die Reaktionen aus dem Feed zurück in die nächste Produktion.", "assets/img/ag_talk.jpg")]),
   voice=dict(label="Was Kunden sagen",
              q="Der größte Hebel war das Creative, nicht das Budget. Das gilt in Commerce, Real Estate und Health gleichermaßen.",
-             a="Marketingleitung · Dental-/Health-Marke",
+             a="Marketingleitung, Dental-/Health-Marke",
              img="assets/img/c_champ.jpg",
              note="Wir liefern keine Mediathek zum Archivieren. Jedes Sujet läuft in einer Kampagne und wird daran gemessen, wie es dort abschneidet."),
   fit=dict(label="Bevor wir starten",
@@ -323,7 +323,7 @@ SERVICES = [
   logos=["isi", "looops", "juwel", "nordicspirit", "jti", "ilbosso", "kaisers", "funkhaus"],
   oplist=[("case-health-brand.html", "Dental-/Health-Marke", "−58 %", "CPA durch UGC"),
           ("case-premium-neubau.html", "Premium-Neubau, Wien", "54 %", "aller Leads aus einem Motiv"),
-          ("case-d2c-lifestyle.html", "D2C-Lifestyle-Marke", "+57 %", "Jahresumsatz · UGC schlug Studio")],
+          ("case-d2c-lifestyle.html", "D2C-Lifestyle-Marke", "+57 %", "Jahresumsatz, UGC schlug Studio")],
   faq=[("Wir haben schon einen Fotografen.", "Gut so, den ersetzen wir nicht zwingend. Wir ergänzen das System dahinter: Hooks, Testing, Winner-Selektion. Content ohne Messung bleibt Dekoration."),
        ("Ist UGC nicht billig fürs Markenbild?", "Falsch produziert: ja. Richtig produziert wirkt UGC glaubwürdiger als Hochglanz und senkte den CPA in unserem Health-Mandat um rund 58 Prozent."),
        ("Wie viel Content brauchen wir wirklich?", "Weniger, als Sie denken, aber öfter: Ein monatlicher Nachproduktions-Loop schlägt das eine große Shooting pro Jahr.")],
@@ -332,7 +332,7 @@ SERVICES = [
          "<b>Risikoumkehr:</b> Läuft die Produktion mit Performance-Mandat, koppeln wir die Vergütung an messbare Ergebnisse. Wir gewinnen nur, wenn Sie gewinnen."],
   chips=["Creative-Audit", "UGC-Produktion", "Studio-Shooting", "Reels & Social", "Kampagnen-Sujets", "Testing-Loop", "Zweitmeinung", "Content-Partnerschaft"]),
 
- dict(slug="service-websites", nav="Websites & Landingpages", label="Leistung · Websites & Landingpages",
+ dict(slug="service-websites", nav="Websites & Landingpages", label="Leistung, Websites & Landingpages",
   h1=["Seiten, die", "abschließen."], ital=1,
   tags=["Landingpages", "Shops & Websites", "Konfiguratoren", "CRO & A/B-Tests"],
   sub="Landingpages, Shops und interaktive Lead-Magnete: gebaut auf Conversion, gemessen am Abschluss.",
@@ -354,7 +354,7 @@ SERVICES = [
   zoom=dict(img="assets/case/case-web-noma/d0.jpg", side="right", al="Ein Fall",
             ah=["Tiefe statt", "Teaser."],
             alink=("case-web-noma.html", "Den Fall im Detail"), aside="Die Landingpage als Ort für Tiefe: Grundrisse, Vertrauen, Abschluss.",
-            zl="Projekt-Landingpage · Premium-Neubau", zt="Landingpage und Instant Forms im Verbund."),
+            zl="Projekt-Landingpage, Premium-Neubau", zt="Landingpage und Instant Forms im Verbund."),
   proof_h=["Wie eine Seite", "entsteht."],
   proof_lead="Eine Seite ist kein Bildband und kein Formular. Wir zeigen den Weg von der Struktur zum Auftritt, der Mediabudget tragen kann.",
   proof_nums=[],
@@ -387,7 +387,7 @@ SERVICES = [
                     ("Florian", "Founder", "Verantwortet, dass die Seite das Mediabudget trägt, das darauf führt.", "assets/img/founder.jpg")]),
   voice=dict(label="Was Kunden sagen",
              q="Sichtbarkeit und Conversion-Mechanik gehören zusammen. Search erntet die Nachfrage, die Seite macht sie zur Anfrage.",
-             a="Geschäftsführung · Photovoltaik-Anbieter",
+             a="Geschäftsführung, Photovoltaik-Anbieter",
              img="assets/case/case-web-northpoint/d0.jpg",
              note="Wir bauen keine Seite, die danach niemand anfassen darf. Änderungen an Struktur und Strecken gehören zum laufenden Betrieb."),
   fit=dict(label="Bevor wir starten",
@@ -420,7 +420,7 @@ SERVICES = [
   visual=("phones", dict(h=["Mobil zuerst", "gebaut."], t="Die Auftritte aus laufenden Mandaten, dort wo sie besucht werden: am Telefon.",
                           phones=["assets/img/web_noma_m.jpg", "assets/img/web_funkhausliving_m.jpg", "assets/img/web_trattner_m.jpg", "assets/img/web_unio_m.jpg", "assets/case/case-web-ib7/m0.jpg", "assets/img/web_pharmacom_m.jpg"])),
   logos=["funkhaus", "winegg", "seeresidenz", "vonpoll", "rhomberg", "soravia", "isi", "hagent"],
-  oplist=[("case-photovoltaik.html", "Photovoltaik-Anbieter", "+487 %", "Besucher · 406 Leads"),
+  oplist=[("case-photovoltaik.html", "Photovoltaik-Anbieter", "+487 %", "Besucher, 406 Leads"),
           ("case-premium-neubau.html", "Premium-Neubau, Wien", "€ 6,97", "CPL Instant Form vs. € 15,66 Website"),
           ("case-immobilien-investment.html", "Immobilien-Investment", "129×", "Funnel bis zur Zeichnung")],
   faq=[("Wir haben schon eine Website.", "Und sie hat einen Job: abschließen. Wenn sie das nicht tut, braucht es selten einen Relaunch, sondern eine Landingpage pro Kampagne und einen sauberen Test-Plan."),
@@ -431,14 +431,14 @@ SERVICES = [
          "<b>Risikoumkehr:</b> Läuft die Seite im Performance-Mandat, hängt unsere Vergütung an messbaren Ergebnissen. Wir gewinnen nur, wenn Sie gewinnen."],
   chips=["Seiten-Audit", "Landingpage", "Shop-Projekt", "Konfigurator", "CRO & Testing", "Relaunch-Begleitung", "Zweitmeinung", "Betreuung im Mandat"]),
 
- dict(slug="service-strategie", nav="Strategie & Funnel", label="Leistung · Strategie & Funnel",
+ dict(slug="service-strategie", nav="Strategie & Funnel", label="Leistung, Strategie & Funnel",
   h1=["Struktur schlägt", "Bauchgefühl."], ital=1,
   tags=["Funnel-Architektur", "KPI-Logik", "Attribution", "Positionierung"],
   sub="Vom Einzelprojekt zur Plattform: Funnel, KPI-Logik und Attribution, die Entscheidungen tragen.",
   problem_h=["Das Problem"],
   problem=["Jede Kampagne beginnt bei null: eigene Zielgruppen, eigene Zahlen, keine gemeinsame Datenbasis. Was funktioniert hat, weiß hinterher niemand genau.",
            "<b>Teuer erkaufte Learnings verpuffen.</b> Eine Plattform, die mit ROAS 2,14 lief, blieb genau so lange ineffizient, bis Struktur, KPI-Logik und projektübergreifendes Lernen kamen: Danach stand sie bei 8,75."],
-  intro="Wir bauen die <b>Struktur</b>, bevor wir Budget bewegen: <b>Funnel-Architektur</b>, KPI-Definitionen, die vorab feststehen, und eine <b>Attribution</b>, die jeden Euro zurechenbar macht. Erst dann wird skaliert.",
+  intro="Wir bauen die <b>Struktur</b>bevor wir Budget bewegen: <b>Funnel-Architektur</b>KPI-Definitionen, die vorab feststehen, und eine <b>Attribution</b>die jeden Euro zurechenbar macht. Erst dann wird skaliert.",
   acc=[("Funnel-Architektur", "Vom ersten Kontakt bis zur Zeichnung: Ein Investoren-Funnel übersetzte € 36k Google-Budget in € 4,65 Mio. zurechenbares Kapital.",
         ["Journey vom Lead bis zum Abschluss", "Vertrauensaufbau Schritt für Schritt", "CRM-Nurture für lange Wege", "Klare Übergaben an Vertrieb"]),
        ("KPI-Logik & Attribution", "Die KPI-Definition vorab ist die halbe Miete: Kosten je Investor, Ø Investment, Volumen, ROAS, sauber zugerechnet.",
@@ -471,12 +471,12 @@ SERVICES = [
        "€ 4,65 Mio. eingesammeltes Kapital, auf die Kampagne zugerechnet. Das ist ein Return von 129 zu 1."),
     ]),
   channels=dict(
-    label="Investments je Laufzeit · Crowdinvesting-Plattform",
+    label="Investments je Laufzeit, Crowdinvesting-Plattform",
     rows=[("Vorher", 32, "16"), ("Mit uns", 100, "50")],
     note="Nahezu gleiches Budget, andere Struktur: Aus 16 Investments wurden 50, die Kosten je Investor fielen um 69 Prozent.",
     link=("case-crowdinvesting.html", "Crowdinvesting-Plattform im Detail")),
   bars=dict(
-    label="Return on Ad Spend · Crowdinvesting-Plattform",
+    label="Return on Ad Spend, Crowdinvesting-Plattform",
     link=("case-crowdinvesting.html", "Dieselbe Plattform, andere Zahl"),
     rows=[("Vorher", 24, "2,14"), ("Mit uns", 100, "8,75")],
     note="Der Sprung kam nicht aus mehr Spend, sondern aus der Reihenfolge: erst die Struktur, dann das Budget."),
@@ -492,7 +492,7 @@ SERVICES = [
                     ("Alexis", "Sales", "Bringt die Sicht des Vertriebs ein: Welche Anfrage ist wirklich eine Anfrage.", "assets/img/ag_talk.jpg")]),
   voice=dict(label="Was Kunden sagen",
              q="Gleicher Spend, anderes Ergebnis. Der Beweis liegt im Vorher-Nachher, nicht in der Präsentation.",
-             a="Geschäftsführung · Crowdinvesting-Plattform",
+             a="Geschäftsführung, Crowdinvesting-Plattform",
              img="assets/img/ag_board1.jpg",
              note="Wir liefern keine Strategie-Folien zum Abheften. Wir legen die Reihenfolge fest, setzen sie um und rechnen sie nach."),
   fit=dict(label="Bevor wir starten",
@@ -522,7 +522,7 @@ SERVICES = [
            "Auf Wunsch die Umsetzung mit derselben Hand"],
   trust=["Kein Vertrag für die Session", "Ergebnis bleibt bei Ihnen", "Umsetzung optional"],
   proof_quote="Gleicher Spend, anderes Ergebnis: Der Beweis liegt im Vorher-Nachher. Struktur schlägt Einzelkampagne.",
-  visual=("stage", dict(img="assets/case/case-web-northpoint/d0.jpg", cap="Aus dem Mandat · Auftritt mit Funnel-Logik")),
+  visual=("stage", dict(img="assets/case/case-web-northpoint/d0.jpg", cap="Aus dem Mandat, Auftritt mit Funnel-Logik")),
   logos=["ifa", "conda", "raiffeisen", "soravia", "fabrik1230", "hagent", "winegg", "buxbaum"],
   oplist=[("case-immobilien-investment.html", "Immobilien-Investment", "129×", "€ 36k → € 4,65 Mio. Kapital"),
           ("case-crowdinvesting.html", "Crowdinvesting-Plattform", "8,75", "ROAS, vorher 2,14"),
@@ -805,7 +805,7 @@ def render_service(s):
         '<img loading="lazy" decoding="async" src="%s" alt="" class="%s">' % (img, "on" if i == 0 else "")
         for i, (k, t, p, img) in enumerate(s["diff"]))
     dblocks = "\n          ".join('''<div class="dblock" data-fade>
-            <div class="pk2">%s · 0%d</div>
+            <div class="pk2">%s, 0%d</div>
             <div class="ht2">%s</div>
             <p>%s</p>
           </div>''' % (k, i + 1, t, p) for i, (k, t, p, img) in enumerate(s["diff"]))
@@ -824,7 +824,7 @@ def render_service(s):
         imgs = vd["imgs"]
         col1 = "\n          ".join('<img loading="lazy" decoding="async" src="%s" alt="">' % i for i in imgs[0::2])
         col2 = "\n          ".join('<img loading="lazy" decoding="async" src="%s" alt="">' % i for i in imgs[1::2])
-        visual = '''  <!-- PROOF · PANELS (Editorial, Screens scrollen vorbei) -->
+        visual = '''  <!-- PROOF, PANELS (Editorial, Screens scrollen vorbei) -->
   <section class="panelscroll" data-bg="#0A0A0A" data-fg="light">
     <div class="wrap pswrap">
       <div class="pstxt">
@@ -869,7 +869,7 @@ def render_service(s):
             return '<div class="phcol" data-drift="%s">\n          %s\n        </div>' % (speed, fr)
         phh_lines = "".join('<span class="rl"><span>%s</span></span>' % x
                             for x in (vd["h"] if isinstance(vd["h"], list) else [vd["h"]]))
-        visual = '''  <!-- PROOF · PHONES (Screens ziehen vorbei) -->
+        visual = '''  <!-- PROOF, PHONES (Screens ziehen vorbei) -->
   <section class="sec fg-light bg-paper phonesec" data-bg="#F3EDE1" data-fg="dark">
     <div class="wrap phwrap">
       <div class="phtxt">
@@ -885,7 +885,7 @@ def render_service(s):
 
 ''' % (phh_lines, vd["t"], _pc(colA, "0.14"), _pc(colB, "0.24"))
     else:
-        visual = '''  <!-- PROOF · STAGE -->
+        visual = '''  <!-- PROOF, STAGE -->
   <section class="fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding: 0 0 clamp(110px,14vw,200px)">
     <div class="wrap">
       <div class="stage" data-fade><img loading="lazy" decoding="async" src="%s" alt=""></div>
@@ -951,7 +951,7 @@ def render_service(s):
 
     page = HEAD.format(title=s["nav"], bodybg="#F3EDE1") + menu("index.html#leistungen") + '''<main>
 
-  <!-- 01 · HERO -->
+  <!-- 01, HERO -->
   <section class="svc-hero fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="position:relative">
     <a class="svc-back" href="index.html#leistungen">← Alle Leistungen</a>
     <div class="wrap">
@@ -969,7 +969,7 @@ def render_service(s):
     </div>
   </section>
 
-  <!-- 03 · LÖSUNG: INTRO + AKKORDEON -->
+  <!-- 03, LÖSUNG: INTRO + AKKORDEON -->
   <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:clamp(30px,4vw,60px)">
     <div class="wrap svc-split">
       <div class="intro">
@@ -982,7 +982,7 @@ def render_service(s):
     </div>
   </section>
 
-  <!-- 04 · WAS WIR ANDERS MACHEN (BiA-Split: links sticky, rechts Text) -->
+  <!-- 04, WAS WIR ANDERS MACHEN (BiA-Split: links sticky, rechts Text) -->
   <section class="sec diffsec fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark">
     <div class="wrap">
       <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:clamp(40px,5vw,70px)">Was wir anders machen</span>
@@ -1000,7 +1000,7 @@ def render_service(s):
     </div>
   </section>
 
-  <!-- 05 · PROOF 1: ZOOM -->
+  <!-- 05, PROOF 1: ZOOM -->
   <section class="zoomsec" data-side="''' + z["side"] + '''" data-bg="#F3EDE1" data-fg="dark">
     <div class="zsticky">
       <div class="zaside fg-light" style="''' + aside_pos + '''">
@@ -1017,7 +1017,7 @@ def render_service(s):
     </div>
   </section>
 
-  <!-- 06 · PROOF 2: ERGEBNISSE -->
+  <!-- 06, PROOF 2: ERGEBNISSE -->
   <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">
     <div class="wrap" style="max-width:1100px">
       <span class="label" style="color:var(--champ-deep);display:block;text-align:center">Ergebnisse</span>
@@ -1029,7 +1029,7 @@ def render_service(s):
     </div>
   </section>
 
-''' + tell_sec + content_before + proofsplit_sec + visual + wall_sec + crew_sec + voice_sec + '''  <!-- 07 · CASES -->
+''' + tell_sec + content_before + proofsplit_sec + visual + wall_sec + crew_sec + voice_sec + '''  <!-- 07, CASES -->
   <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:clamp(60px,7vw,100px)">
     <div class="wrap">
       <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:clamp(28px,3.4vw,48px)">Ausgewählte Ergebnisse</span>
@@ -1049,7 +1049,7 @@ def render_service(s):
     </div>
   </section>
 
-''' + content_after + fit_sec + '''  <!-- 08 · FAQ -->
+''' + content_after + fit_sec + '''  <!-- 08, FAQ -->
   <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">
     <div class="wrap faq">
       <div>
@@ -1062,7 +1062,7 @@ def render_service(s):
     </div>
   </section>
 
-''' + next_sec + '''  <!-- 09 · NO-BRAINER + RISIKOUMKEHR -->
+''' + next_sec + '''  <!-- 09, NO-BRAINER + RISIKOUMKEHR -->
   <section class="sec fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark">
     <div class="wrap lchap">
       <div>
@@ -1077,7 +1077,7 @@ def render_service(s):
     </div>
   </section>
 
-  <!-- 10 · CTA: ANFRAGE-MECHANIK -->
+  <!-- 10, CTA: ANFRAGE-MECHANIK -->
   <section id="anfrage" class="sec fg-light bg-cream help" data-bg="#EFE7D6" data-fg="dark" style="padding-top:0">
     <div class="wrap">
       <h2 data-lines>

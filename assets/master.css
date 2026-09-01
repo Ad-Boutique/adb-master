@@ -127,7 +127,9 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------- Sektionen ---------- */
 .sec { position: relative; padding: clamp(110px, 14vw, 210px) 0; }
-.wrap { width: min(1560px, calc(100% - clamp(40px, 6vw, 128px))); margin: 0 auto; }
+/* der Abstand gilt je Seite, nicht fuer beide zusammen: vorher blieben
+   bei 1440px nur 43px Rand, der Satz lief bis fast an die Kante */
+.wrap { width: min(1560px, calc(100% - 2 * clamp(26px, 6.4vw, 130px))); margin: 0 auto; }
 
 /* Vordergrund-Modi je Sektion */
 .bg-paper { background: var(--paper); }
@@ -249,6 +251,7 @@ body.branchopen .bpop .fchip { opacity: 1; transform: none; }
 /* ---------- Menü-Sheet (Bottom-Sheet mit Seiten-Vorschauen) ---------- */
 .msheet {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 80;
+  max-width: 100vw; overflow: clip;
   background: #0B0B0D;
   transform: translateY(102%);
   transition: transform 0.75s var(--e-snap);
@@ -472,7 +475,9 @@ body.cur-hov .cur { scale: 1.85; }
 .stat .sl { font-family: var(--f-serif); font-size: clamp(17px, 1.3vw, 21px); color: var(--grey-dark); max-width: 24ch; margin: 18px auto 0; }
 
 /* Work-Teaser + Grid-Kacheln */
-.whead { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: clamp(36px, 4vw, 64px); }
+.whead { display: flex; justify-content: space-between; align-items: flex-end; gap: clamp(16px, 2.4vw, 40px); flex-wrap: wrap; margin-bottom: clamp(36px, 4vw, 64px); }
+.whead > * { min-width: 0; }
+@media (max-width: 620px) { .whead .btn { width: 100%; justify-content: center; text-align: center; } }
 .whead h2 { font-size: clamp(38px, 4.4vw, 76px); }
 
 .wgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(14px, 1.6vw, 26px); align-items: start; }
@@ -1937,49 +1942,94 @@ body.menuopen .bkbtn, body.menuopen .bkorbit { opacity: 0; pointer-events: none;
 
 
 /* ============================================================
-   Fotostrecke: Text links, dichte Bildwand rechts, heller Grund
-   (Vorlage BiA-Case, helle Variante)
+   Fotostrecke nach dem Vorbild des Case-Elements:
+   Text links steht fest, Bildmosaik rechts auf eigenem Grund
    ============================================================ */
-.photowall { position: relative; overflow: hidden; padding: clamp(80px, 10vw, 140px) 0 clamp(50px, 6vw, 90px); }
+.photowall { position: relative; overflow: hidden; }
+/* clip statt hidden, sonst setzt der Ueberlauf das sticky des Textes aus */
+@supports (overflow: clip) { .photowall { overflow: clip; } }
 .photowall .pwwrap {
-  display: grid; grid-template-columns: 0.86fr 1.14fr;
-  gap: clamp(38px, 5vw, 92px); align-items: start;
+  display: grid; grid-template-columns: 0.78fr 1.22fr;
+  gap: clamp(30px, 4vw, 76px); align-items: start;
 }
-.photowall .pwtxt { position: sticky; top: clamp(110px, 16vh, 190px); }
-.photowall .pwlabel { display: block; margin-bottom: clamp(18px, 2vw, 28px); }
+/* Text: oben Fliesstext, unten Disziplinen, dazwischen Luft */
+.photowall .pwtxt {
+  position: sticky; top: 0; height: 100vh;
+  display: flex; flex-direction: column;
+  padding: clamp(80px, 12vh, 150px) 0 clamp(60px, 9vh, 110px);
+}
+.photowall .pwlabel { display: block; margin-bottom: clamp(16px, 1.8vw, 26px); }
 .photowall .pwh {
   font-family: var(--f-disp); font-weight: 745;
-  font-size: clamp(30px, 3.4vw, 56px); line-height: 1.03; letter-spacing: -0.032em;
+  font-size: clamp(28px, 3vw, 50px); line-height: 1.03; letter-spacing: -0.032em;
 }
 .photowall .pwh .rl { display: block; }
 .photowall .pwbody {
-  font-family: var(--f-serif); font-size: clamp(16.5px, 1.4vw, 20px);
-  line-height: 1.6; margin-top: clamp(20px, 2.4vw, 32px); max-width: 40ch;
+  font-family: var(--f-serif); font-size: clamp(16px, 1.35vw, 19.5px);
+  line-height: 1.58; margin-top: clamp(18px, 2.2vw, 30px); max-width: 38ch;
 }
+.photowall .pwlinks { display: flex; gap: clamp(24px, 3.4vw, 56px); margin-top: clamp(24px, 3vw, 40px); }
+.photowall .pwlinks a {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+  padding-bottom: 6px; border-bottom: 1px solid var(--ink);
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+.photowall .pwlinks a:hover { color: var(--champ-deep); border-color: var(--champ-deep); }
 .photowall .pwdisc {
-  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(18px, 2.4vw, 34px);
-  margin-top: clamp(34px, 4.4vw, 62px);
+  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(18px, 2.4vw, 36px);
+  margin-top: auto; padding-top: clamp(26px, 3vw, 40px);
 }
 .photowall .pwdisc .dt {
   font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
   margin-bottom: 10px;
 }
-.photowall .pwdisc .dd { font-size: 13.5px; line-height: 1.6; opacity: 0.68; }
+.photowall .pwdisc .dd {
+  font-family: var(--f-serif); font-size: 14.5px; line-height: 1.55; color: var(--grey-dark);
+}
+/* Bildmosaik auf eigenem Grund, Kacheln unterschiedlich breit */
+.photowall .pwstage {
+  background: #E2DACA; padding: clamp(20px, 2.4vw, 40px);
+  margin-top: clamp(60px, 8vh, 110px); margin-bottom: clamp(60px, 8vh, 110px);
+}
 .photowall .pwcols {
-  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(12px, 1.5vw, 22px); align-items: start;
+  display: grid; grid-template-columns: 1.18fr 0.82fr 1fr;
+  gap: clamp(12px, 1.4vw, 22px); align-items: start;
 }
-.photowall .pwcol { display: flex; flex-direction: column; gap: clamp(12px, 1.5vw, 22px); will-change: transform; }
-.photowall .pwcol:nth-child(2) { margin-top: clamp(26px, 4vw, 64px); }
-
-.photowall .pwcol img {
-  width: 100%; display: block; border-radius: 3px;
-  box-shadow: 0 16px 44px rgba(10,10,10,0.12);
+.photowall .pwcol { display: flex; flex-direction: column; will-change: transform; }
+.photowall .pwcol:nth-child(1) { gap: clamp(12px, 1.4vw, 22px); }
+.photowall .pwcol:nth-child(2) { gap: clamp(18px, 2.2vw, 34px); margin-top: clamp(30px, 5vw, 78px); }
+.photowall .pwcol:nth-child(3) { gap: clamp(10px, 1.1vw, 17px); margin-top: clamp(10px, 1.8vw, 30px); }
+.photowall .pwcol img, .photowall .pwcol video {
+  width: 100%; display: block; border-radius: 2px;
 }
-@media (max-width: 900px) {
+/* Interview-Kachel in der Wand */
+.photowall .pwiv { position: relative; }
+.photowall .pwiv video { aspect-ratio: 4 / 5; object-fit: cover; background: #0E0E10; }
+.photowall .ivsound {
+  position: absolute; left: 12px; bottom: 12px; z-index: 2;
+  display: inline-flex; align-items: center; gap: 9px;
+  background: rgba(10,10,10,0.62); backdrop-filter: blur(8px);
+  border: 1px solid rgba(243,237,225,0.28); border-radius: 100px;
+  padding: 9px 15px; cursor: pointer;
+  font-family: var(--f-ui); font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+  color: var(--paper);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.photowall .ivsound:hover { background: rgba(10,10,10,0.82); border-color: var(--champ); }
+.photowall .ivsound .ivbars { display: flex; align-items: flex-end; gap: 2px; height: 11px; }
+.photowall .ivsound .ivbars i { width: 2px; background: var(--champ); height: 4px; display: block; }
+.photowall .pwiv.sound .ivbars i { animation: ivpulse 0.9s ease-in-out infinite; }
+.photowall .pwiv.sound .ivbars i:nth-child(2) { animation-delay: 0.15s; }
+.photowall .pwiv.sound .ivbars i:nth-child(3) { animation-delay: 0.3s; }
+@keyframes ivpulse { 0%,100% { height: 4px; } 50% { height: 11px; } }
+@media (prefers-reduced-motion: reduce) { .photowall .pwiv.sound .ivbars i { animation: none; height: 8px; } }
+@media (max-width: 980px) {
   .photowall .pwwrap { grid-template-columns: 1fr; }
-  .photowall .pwtxt { position: static; }
-  .photowall .pwcols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .photowall .pwtxt { position: static; height: auto; padding: clamp(60px,8vh,90px) 0 0; }
+  .photowall .pwdisc { margin-top: clamp(30px,4vw,48px); }
+  .photowall .pwstage { margin-top: clamp(34px,5vw,60px); }
+  .photowall .pwcols { grid-template-columns: 1.1fr 0.9fr; }
+  .photowall .pwcol:nth-child(3) { display: none; }
 }
 
 

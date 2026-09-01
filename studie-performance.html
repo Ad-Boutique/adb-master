@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Studie · Performance-Grafiken · ad.boutique Master</title>
+<title>Studie, Performance-Grafiken - ad.boutique Master</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 
-<link rel="stylesheet" href="assets/master.css?v=40">
+<link rel="stylesheet" href="assets/master.css?v=47">
 <style>
   /* ============================================================
      STUDIE: Performance-Grafiken im ADB-Design
-     Regeln: Hairlines statt Flächen · Champagne als einziger Akzent ·
-     Serif-Ziffern wie im Rest · Bewegung nur einmal beim Reveal ·
+     Regeln: Hairlines statt Flächen, Champagne als einziger Akzent ,
+     Serif-Ziffern wie im Rest, Bewegung nur einmal beim Reveal ,
      keine Achsen, kein Raster, keine Tooltips, keine Chart-Optik
      ============================================================ */
   .stwrap { width: min(1400px, calc(100% - clamp(40px, 6vw, 128px))); margin: 0 auto; }
@@ -29,13 +29,13 @@
   .stdemo.dk .lbl { color: var(--grey); }
   .lbl { font-size: 10.5px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--grey-dark); }
 
-  /* A · Ziffer zählt hoch */
+  /* A, Ziffer zählt hoch */
   .cnt { display: flex; gap: clamp(40px, 6vw, 110px); flex-wrap: wrap; }
   .cnt .c { min-width: 150px; }
   .cnt .v { font-family: var(--f-serif); font-size: clamp(46px, 5vw, 86px); line-height: 1; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
   .cnt .l { font-size: 12px; color: var(--grey-dark); margin-top: 10px; }
 
-  /* B · Kurve zeichnet sich */
+  /* B, Kurve zeichnet sich */
   .crv { position: relative; }
   .crv svg { width: 100%; height: clamp(150px, 17vw, 250px); display: block; overflow: visible; }
   .crv .base { fill: none; stroke: rgba(10,10,10,0.13); stroke-width: 1; }
@@ -44,7 +44,7 @@
   .crv .endlab { font-family: var(--f-serif); font-size: 21px; fill: var(--ink); opacity: 0; }
   .crv .capt { display: flex; justify-content: space-between; font-size: 11.5px; color: var(--grey-dark); margin-top: 14px; }
 
-  /* C · Vorher/Nachher */
+  /* C, Vorher/Nachher */
   .ba { display: flex; flex-direction: column; gap: clamp(22px, 2.6vw, 34px); }
   .ba .row { display: grid; grid-template-columns: 108px 1fr auto; gap: clamp(16px, 2vw, 30px); align-items: center; }
   .ba .who { font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--grey-dark); }
@@ -54,7 +54,7 @@
   .ba .val { font-family: var(--f-serif); font-size: clamp(22px, 2.2vw, 34px); font-variant-numeric: tabular-nums; min-width: 100px; text-align: right; }
   .ba .row.now .val { color: var(--champ-deep); }
 
-  /* D · Anteil als Bogen */
+  /* D, Anteil als Bogen */
   .arcbox { display: flex; gap: clamp(34px, 5vw, 80px); align-items: center; flex-wrap: wrap; }
   .arc { width: clamp(140px, 15vw, 200px); flex: 0 0 auto; }
   .arc svg { width: 100%; height: auto; transform: rotate(-90deg); }
@@ -63,12 +63,12 @@
   .arctxt .v { font-family: var(--f-serif); font-size: clamp(34px, 3.6vw, 56px); line-height: 1; font-variant-numeric: tabular-nums; }
   .arctxt .l { font-size: 13.5px; color: var(--grey-dark); margin-top: 10px; max-width: 34ch; line-height: 1.6; }
 
-  /* E · Sparkline im Fließtext */
+  /* E, Sparkline im Fließtext */
   .inlinetext { font-family: var(--f-serif); font-size: clamp(19px, 1.7vw, 25px); line-height: 1.75; max-width: 46ch; }
   .spark { display: inline-block; width: 86px; height: 20px; vertical-align: -3px; margin: 0 4px; }
   .spark path { fill: none; stroke: var(--champ-deep); stroke-width: 1.8; stroke-linecap: round; }
 
-  /* F · Kanäle als Hairline-Zeilen */
+  /* F, Kanäle als Hairline-Zeilen */
   .chn { display: flex; flex-direction: column; }
   .chn .r { display: grid; grid-template-columns: 132px 1fr auto; gap: clamp(16px, 2vw, 30px); align-items: center; padding: 15px 0; border-top: 1px solid rgba(10,10,10,0.09); }
   .chn .r:last-child { border-bottom: 1px solid rgba(10,10,10,0.09); }
@@ -79,7 +79,7 @@
   .chn .v2 { font-family: var(--f-serif); font-size: 19px; font-variant-numeric: tabular-nums; min-width: 62px; text-align: right; }
 
 
-  /* G · Scrub: Wert folgt der Scrollposition */
+  /* G, Scrub: Wert folgt der Scrollposition */
   .scrub { position: relative; height: 195vh; }
   .scrub .sticky { position: sticky; top: 0; height: 78vh; display: flex; align-items: center; }
   .scrub .inner { width: 100%; }
@@ -91,7 +91,7 @@
   .scrub .head3 { fill: var(--champ-deep); }
   .scrub .prog { position: absolute; left: 0; bottom: 0; height: 2px; background: var(--champ-deep); width: 0; }
 
-  /* H · Sticky-Zahl, die beim Durchscrollen umspringt */
+  /* H, Sticky-Zahl, die beim Durchscrollen umspringt */
   .stack { position: relative; }
   .stack .fix { position: sticky; top: clamp(120px, 28vh, 300px); height: 0; }
   .stack .fixin { display: flex; align-items: baseline; gap: clamp(20px, 3vw, 44px); }
@@ -112,7 +112,7 @@
     .ba .row, .chn .r { grid-template-columns: 84px 1fr auto; }
   }
 </style>
-<script src="assets/master.js?v=40" defer></script>
+<script src="assets/master.js?v=47" defer></script>
 </head>
 <body style="background-color:#F3EDE1" class="on-light">
 
@@ -128,9 +128,9 @@
   <!-- KOPF -->
   <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-bottom:clamp(40px,5vw,70px)">
     <div class="stwrap">
-      <span class="label" style="color:var(--grey-dark)">Studie · nicht Teil der Seite</span>
+      <span class="label" style="color:var(--grey-dark)">Studie, nicht Teil der Seite</span>
       <h1 class="serif" data-lines style="font-size:clamp(34px,4.4vw,72px);margin-top:20px;max-width:20ch">
-        <span class="rl"><span>Performance-Grafiken,</span></span>
+        <span class="rl"><span>Performance-Grafiken</span></span>
         <span class="rl"><span>die nicht nach Dashboard aussehen.</span></span>
       </h1>
       <p data-fade style="font-family:var(--f-serif);font-size:clamp(17px,1.4vw,21px);color:var(--grey-dark);max-width:60ch;margin-top:24px;line-height:1.7">
@@ -151,7 +151,7 @@
           <div>
             <div class="sttitle">Die Ziffer zählt sich selbst hoch</div>
             <p class="stdesc">Die vorhandenen Ergebnis-Zahlen bleiben exakt wie sie sind, nur der Weg dorthin wird sichtbar: Beim Eintritt zählt die Ziffer in gut einer Sekunde hoch, mit der bestehenden Serif und tabellarischen Ziffern. Kein zusätzliches Element, kein neuer Platzbedarf.</p>
-            <span class="stwhere">Ergebnis-Block der Cases · Zahlen &amp; Fakten auf der Agentur-Seite</span>
+            <span class="stwhere">Ergebnis-Block der Cases, Zahlen &amp; Fakten auf der Agentur-Seite</span>
           </div>
         </div>
         <div class="stdemo">
@@ -172,18 +172,18 @@
           <div>
             <div class="sttitle">Eine Haarlinie zeichnet den Verlauf</div>
             <p class="stdesc">Für Entwicklungen über Zeit: eine einzige Linie, die sich beim Scrollen von links nach rechts zeichnet, am Ende ein Punkt und der Zielwert. Keine Achsen, keine Gitter, keine Beschriftung dazwischen. Wirkt wie eine Zeichnung, nicht wie ein Report.</p>
-            <span class="stwhere">Ergebnis-Block · Serif-Passage der Cases · Proof-Sektion der Service-Seiten</span>
+            <span class="stwhere">Ergebnis-Block, Serif-Passage der Cases, Proof-Sektion der Service-Seiten</span>
           </div>
         </div>
         <div class="stdemo">
-          <span class="lbl">Jahresumsatz · zwölf Monate</span>
+          <span class="lbl">Jahresumsatz, zwölf Monate</span>
           <div class="crv" data-anim="curve" style="margin-top:20px">
             <svg viewBox="0 0 900 200" preserveAspectRatio="none" aria-hidden="true">
               <path class="base" d="M 0 199 L 900 199"></path>
               <path class="line" d="M 8 168 C 130 162, 210 150, 300 138 S 470 122, 560 92 S 720 54, 892 18"></path>
               <circle class="dot" cx="892" cy="18" r="5"></circle>
             </svg>
-            <div class="capt"><span>€ 520k</span><span style="color:var(--champ-deep);font-weight:600">€ 817k · +57 %</span></div>
+            <div class="capt"><span>€ 520k</span><span style="color:var(--champ-deep);font-weight:600">€ 817k, +57 %</span></div>
           </div>
         </div>
       </div>
@@ -195,11 +195,11 @@
           <div>
             <div class="sttitle">Vorher und Nachher als zwei Linien</div>
             <p class="stdesc">Der stärkste Beweis der Agentur ist der Vergleich mit dem Zustand davor. Zwei Balken auf Haarlinien-Niveau, der neue Wert in Champagne und minimal kräftiger. Er wächst beim Eintritt in die passende Breite, der alte steht schon da.</p>
-            <span class="stwhere">Ergebnis-Block der Cases mit Vorher-Wert · Differenzierungs-Sektion der Service-Seiten</span>
+            <span class="stwhere">Ergebnis-Block der Cases mit Vorher-Wert, Differenzierungs-Sektion der Service-Seiten</span>
           </div>
         </div>
         <div class="stdemo">
-          <span class="lbl">Return on Ad Spend · Crowdinvesting-Plattform</span>
+          <span class="lbl">Return on Ad Spend, Crowdinvesting-Plattform</span>
           <div class="ba" data-anim="ba" style="margin-top:30px">
             <div class="row"><span class="who">Vorher</span><span class="track"><i class="fill" data-w="24"></i></span><span class="val">2,14</span></div>
             <div class="row now"><span class="who">Mit uns</span><span class="track"><i class="fill" data-w="100"></i></span><span class="val">8,75</span></div>
@@ -214,7 +214,7 @@
           <div>
             <div class="sttitle">Der Anteil als offener Bogen</div>
             <p class="stdesc">Für Anteilswerte, wo ein Balken zu technisch wäre: ein offener Kreisbogen, der sich einmal zeichnet, daneben die Zahl in der bekannten Serif. Bewusst kein geschlossener Ring und kein Tortenstück, das wäre Dashboard-Sprache.</p>
-            <span class="stwhere">Perspektiven-Block der Cases · neben dem Zoom-Moment</span>
+            <span class="stwhere">Perspektiven-Block der Cases, neben dem Zoom-Moment</span>
           </div>
         </div>
         <div class="stdemo">
@@ -240,7 +240,7 @@
           <div>
             <div class="sttitle">Die Kurve mitten im Satz</div>
             <p class="stdesc">Die kleinste Form: eine daumennagelgroße Linie direkt im Fließtext, die sich beim Lesen zeichnet. Sie unterbricht den Satz nicht, sondern illustriert ihn. Besonders geeignet für die Serif-Passagen, in denen die Cases ihre Geschichte erzählen.</p>
-            <span class="stwhere">Serif-Passage der Cases · Intro der Service-Seiten</span>
+            <span class="stwhere">Serif-Passage der Cases, Intro der Service-Seiten</span>
           </div>
         </div>
         <div class="stdemo">
@@ -259,11 +259,11 @@
           <div>
             <div class="sttitle">Kanäle als Zeilen, nicht als Torte</div>
             <p class="stdesc">Wo mehrere Kanäle verglichen werden, bleibt die Darstellung eine Liste: dieselben Haarlinien-Zeilen wie die Ergebnis-Liste auf den Service-Seiten, ergänzt um einen wachsenden Strich. Der Blend-Wert steht in Ink statt Champagne, damit die Hierarchie stimmt.</p>
-            <span class="stwhere">Ergebnis-Block · dort wo heute die Kanal-Zahlen im Fließtext stehen</span>
+            <span class="stwhere">Ergebnis-Block, dort wo heute die Kanal-Zahlen im Fließtext stehen</span>
           </div>
         </div>
         <div class="stdemo">
-          <span class="lbl">Return on Ad Spend je Kanal · D2C-Lifestyle-Marke</span>
+          <span class="lbl">Return on Ad Spend je Kanal, D2C-Lifestyle-Marke</span>
           <div class="chn" data-anim="chn" style="margin-top:24px">
             <div class="r"><span class="n2">Pinterest</span><span class="t2"><i class="f2" data-w="100"></i></span><span class="v2">6,99</span></div>
             <div class="r"><span class="n2">Google</span><span class="t2"><i class="f2" data-w="86"></i></span><span class="v2">5,98</span></div>
@@ -279,16 +279,16 @@
         <div class="sthead">
           <div class="stnum">07</div>
           <div>
-            <div class="sttitle">Der Wert wächst mit dem Daumen<span style="color:var(--champ-deep)"> · scrollgesteuert</span></div>
+            <div class="sttitle">Der Wert wächst mit dem Daumen<span style="color:var(--champ-deep)">scrollgesteuert</span></div>
             <p class="stdesc">Hier läuft nichts von selbst ab: Die Linie zeichnet sich genau so weit, wie weit gescrollt wurde, und die Ziffer zählt synchron mit. Wer zurückscrollt, sieht den Wert zurückgehen. Das macht aus einer Kennzahl eine Bewegung, die man selbst steuert, und hält die Sektion im Bild, solange die Geschichte dauert.</p>
-            <span class="stwhere">Ergebnis-Block, wenn eine Zahl die Hauptrolle spielt · Proof-Sektion der Service-Seiten</span>
+            <span class="stwhere">Ergebnis-Block, wenn eine Zahl die Hauptrolle spielt, Proof-Sektion der Service-Seiten</span>
           </div>
         </div>
         <div class="stdemo" style="padding:0;overflow:hidden">
           <div class="scrub" data-scrub-graphic>
             <div class="sticky">
               <div class="inner" style="padding:clamp(30px,4.5vw,70px)">
-                <span class="lbl">Zurechenbares Kapital · Immobilien-Investment</span>
+                <span class="lbl">Zurechenbares Kapital, Immobilien-Investment</span>
                 <div class="big2" data-val="0">€ 0</div>
                 <div class="cap2">aus € 36.043 Google-Budget, sauber zugerechnet</div>
                 <svg viewBox="0 0 900 160" preserveAspectRatio="none" aria-hidden="true">
@@ -308,9 +308,9 @@
         <div class="sthead">
           <div class="stnum">08</div>
           <div>
-            <div class="sttitle">Eine Zahl bleibt stehen, die Geschichte läuft weiter<span style="color:var(--champ-deep)"> · scrollgesteuert</span></div>
+            <div class="sttitle">Eine Zahl bleibt stehen, die Geschichte läuft weiter<span style="color:var(--champ-deep)">scrollgesteuert</span></div>
             <p class="stdesc">Die Kennzahl bleibt links im Bild, während rechts die Stationen vorbeiziehen. Bei jeder Station springt die Zahl auf den passenden Wert um. So erzählt der Funnel sich selbst, ohne dass drei einzelne Grafiken nötig wären. Nutzt dieselbe Sticky-Mechanik wie die Differenzierungs-Sektion.</p>
-            <span class="stwhere">Ergebnis-Block der Cases · Differenzierungs-Sektion der Service-Seiten</span>
+            <span class="stwhere">Ergebnis-Block der Cases, Differenzierungs-Sektion der Service-Seiten</span>
           </div>
         </div>
         <div class="stdemo">
@@ -346,7 +346,7 @@
       <!-- REGELN -->
       <div class="stitem">
         <div class="sthead">
-          <div class="stnum">·</div>
+          <div class="stnum"></div>
           <div>
             <div class="sttitle">Was diese Varianten zusammenhält</div>
             <p class="stdesc">Damit nichts wie ein eingesetztes Fremdteil wirkt, gelten für alle sechs dieselben Regeln.</p>
@@ -389,7 +389,7 @@
   <footer data-bg="#070708" data-fg="light" style="padding-top:20px">
     <div class="wrap">
       <div class="fbase" style="margin-top:0">
-        <span>Studie · nicht verlinkt · ad.boutique Master</span>
+        <span>Studie, nicht verlinkt, ad.boutique Master</span>
         <span style="display:flex;gap:22px"><a href="index.html">Start</a><a href="work.html">Work</a></span>
       </div>
     </div>
@@ -463,7 +463,7 @@
   }
 
 
-  /* G · scrollgesteuerte Kurve + Ziffer */
+  /* G, scrollgesteuerte Kurve + Ziffer */
   var scrubs = document.querySelectorAll("[data-scrub-graphic]");
   scrubs.forEach(function (box) {
     var line = box.querySelector(".line3"), head = box.querySelector(".head3");
@@ -486,7 +486,7 @@
     window.addEventListener("resize", upd);
   });
 
-  /* H · Sticky-Zahl mit Stationen */
+  /* H, Sticky-Zahl mit Stationen */
   document.querySelectorAll("[data-stack]").forEach(function (box) {
     var fv = box.querySelector(".fv"), fl = box.querySelector(".fl");
     var steps = box.querySelectorAll(".st");

@@ -42,7 +42,7 @@ body = '''<main class="kmain">
       <div class="khead">
         <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:clamp(16px,1.8vw,24px)">Anfrage</span>
         <h1 class="dispn" data-lines>
-          <span class="rl"><span>Erzählen Sie uns,</span></span>
+          <span class="rl"><span>Erzählen Sie uns</span></span>
           <span class="rl"><span>worum es geht.</span></span>
         </h1>
         <p class="klead" data-fade>Drei Schritte, keine Pflichtfelder außer Ihrer Mailadresse. Wir prüfen den Fit in beide Richtungen und sagen offen, wenn wir die Falschen sind.</p>

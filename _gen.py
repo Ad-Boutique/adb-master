@@ -8,12 +8,12 @@ HEAD = '''<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>{title} · ad.boutique Master</title>
+<title>{title} - ad.boutique Master</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 
-<link rel="stylesheet" href="assets/master.css?v=40">
-<script src="assets/master.js?v=40" defer></script>
+<link rel="stylesheet" href="assets/master.css?v=47">
+<script src="assets/master.js?v=47" defer></script>
 </head>
 <body style="background-color:{bodybg}" class="on-light">
 
@@ -40,7 +40,7 @@ MENU_ITEMS = [
           <span><img loading="lazy" decoding="async" src="assets/img/a_otta1.jpg" alt=""></span>
         </span>
       </span>'''),
-    ("case-premium-neubau.html", "Case · Neubau Wien", '''<span class="mv">
+    ("case-premium-neubau.html", "Case, Neubau Wien", '''<span class="mv">
         <img loading="lazy" decoding="async" src="assets/img/fx-66.jpg" alt="" style="position:absolute;inset:0;height:100%">
         <span class="bars" style="left:7%;bottom:10%;width:30%;filter:invert(1)"><i style="width:100%"></i><i style="width:60%"></i></span>
       </span>'''),
@@ -84,7 +84,7 @@ def menu(active, back=False):
 ''' + "\n".join(rows) + '''
   </div>
   <div class="mfoot">
-    <span class="fl">ad.boutique · Master-Preview</span>
+    <span class="fl">ad.boutique Master-Preview</span>
     <span class="soc">
       <a href="https://www.instagram.com/ad.boutique.vienna/" target="_blank" rel="noopener">Instagram</a>
       <a href="https://www.linkedin.com/company/ad-boutique/" target="_blank" rel="noopener">LinkedIn</a>
@@ -97,7 +97,7 @@ def menu(active, back=False):
 FOOTER = '''  <footer data-bg="#070708" data-fg="light" style="padding-top:20px">
     <div class="wrap">
       <div class="fbase" style="margin-top:0">
-        <span>© 2026 ad.boutique · Tuchlauben 13, 1010 Wien · Zürich in Vorbereitung</span>
+        <span>© 2026 ad.boutique, Tuchlauben 13, 1010 Wien. Zürich in Vorbereitung</span>
         <span style="display:flex;gap:22px"><a href="index.html">Start</a><a href="work.html">Work</a><a href="agentur.html">Agentur</a><a href="index.html#kontakt">Kontakt</a></span>
       </div>
     </div>
@@ -154,7 +154,7 @@ CASES = [
   clr="#2E3A2F", fg="#EDF2EC", big="129×", biglabel="zurechenbares Kapital",
   disz=[("Strategie & Funnel", "service-strategie.html"), ("Performance Marketing", "service-performance-marketing.html"), ("Websites & Landingpages", "service-websites.html")],
   erg=["<em>129×</em> Return auf Google-Spend", "<em>€ 4,65 Mio.</em> zurechenbares Kapital", "<em>€ 3.004</em> Cost per Investor"],
-  rahmen="Finance · Immobilien-Investment<br>3 Quartale<br>Google · Funnel · CRM",
+  rahmen="Finance, Immobilien-Investment<br>3 Quartale<br>Google, Funnel, CRM",
   big_scrub="Ein hochwertiges Investment-Angebot ohne planbaren Zufluss <b>qualifizierter Investoren</b>: Vertrauen, Regulatorik und ein komplexer Entscheidungsweg machten reine <b>Reichweiten-Logik</b> wirkungslos.",
   body="Wir haben einen Investoren-Funnel gebaut, der Vertrauen Schritt für Schritt aufbaut, von der Aufklärung bis zur Zeichnung. Sauberes Tracking machte jeden Euro zurechenbar: € 4,65 Mio. Kapital aus € 36.043 Google-Budget, ein 129-facher Return. Über den gesamten Funnel wurden aus € 320k Spend € 12,8 Mio. Kapital, 446 Leads und 43 Zeichnungen.",
   statement=["Im Finance zählt der Cost per", "zugerechnetem Kapital.", "Nicht der CPL."],
@@ -173,7 +173,7 @@ CASES = [
   clr="#4A3328", fg="#F4EEE8", big="+57 %", biglabel="Jahresumsatz",
   disz=[("E-Commerce Growth", "service-ecommerce.html"), ("Performance Marketing", "service-performance-marketing.html"), ("Content Creation", "service-content-creation.html")],
   erg=["<em>+57 %</em> Jahresumsatz", "<em>5,57</em> Blended ROAS, Ziel 3,5", "<em>+56 %</em> Bestellungen"],
-  rahmen="D2C / Retail<br>12 Monate<br>Google · Pinterest · Meta · CRO",
+  rahmen="D2C / Retail<br>12 Monate<br>Google, Pinterest, Meta, CRO",
   big_scrub="Solide Reichweite, aber <b>Conversion unter Benchmark</b>: Steigende Klickpreise drückten die Marge, der <b>Checkout</b> verlor Käufer, das <b>Tracking</b> verschleierte mehr, als es zeigte.",
   body="Erst gemessen, dann gehandelt: serverseitiges Tracking und saubere Produkt-Feeds als Fundament, Checkout vereinfacht, Produktseiten auf Conversion getrimmt, Ad-Struktur nach Deckungsbeitrag, Creatives systematisch getestet. Und Pinterest als unterschätzten Effizienz-Kanal erschlossen: € 312k Umsatz aus € 56k Mediabudget.",
   statement=["Der unterschätzte Kanal", "liefert oft den", "besten ROAS."],
@@ -193,8 +193,8 @@ CASES = [
   clr="#1C2530", fg="#E8EDF2", big="8,75", biglabel="ROAS, vorher 2,14",
   disz=[("Strategie & Funnel", "service-strategie.html"), ("Performance Marketing", "service-performance-marketing.html")],
   erg=["<em>€ 172.117</em> Kapital, +293 %", "<em>8,75</em> ROAS, +309 %", "<em>−69 %</em> Kosten je Investor"],
-  rahmen="Finance · Crowdinvesting<br>POC-Phase<br>Meta · Google · Funnel",
-  big_scrub="Investoren-Kampagnen liefen <b>projektweise</b>, ohne gemeinsame Datenbasis: Bei rund € 20k Budget kamen 16 Investments und € 43.740 Kapital zustande, <b>ROAS 2,14</b>, Kosten je Investor € 1.277.",
+  rahmen="Finance, Crowdinvesting<br>POC-Phase<br>Meta, Google, Funnel",
+  big_scrub="Investoren-Kampagnen liefen <b>projektweise</b>ohne gemeinsame Datenbasis: Bei rund € 20k Budget kamen 16 Investments und € 43.740 Kapital zustande, <b>ROAS 2,14</b>Kosten je Investor € 1.277.",
   body="Wir haben von Einzelkampagnen auf eine plattformbasierte Struktur umgestellt: gemeinsame Daten, klare KPI-Logik mit Kosten je Investor, Ø Investment, Volumen und ROAS, projektübergreifendes Lernen. Bei nahezu gleichem Budget wurden daraus € 172.117 Kapital, 50 Investments und ein ROAS von 8,75.",
   statement=["Struktur schlägt", "Einzelkampagne."],
   lens=[("Effizienz", "Das Top-Projekt erreichte ROAS 26,1: aus € 2.121 wurden € 55.400."),
@@ -209,11 +209,11 @@ CASES = [
          "Gleicher Spend, anderes Ergebnis: Der Beweis liegt im Vorher-Nachher."]),
  dict(slug="case-wohnbau-floridsdorf", img="assets/prev/case-wohnbau-floridsdorf.jpg", ziel="Qualifizierte Kaufinteressenten", nav_title="Wohnbau, Floridsdorf",
   title=["Wohnbau,", "Floridsdorf."], sub="460 Kaufinteressenten zu € 12,77 pro Lead.",
-  clr="#33383E", fg="#EFF1F3", big="460", biglabel="Leads · € 12,77 CPL",
+  clr="#33383E", fg="#EFF1F3", big="460", biglabel="Leads, € 12,77 CPL",
   disz=[("Performance Marketing", "service-performance-marketing.html"), ("Content Creation", "service-content-creation.html"), ("Websites & Landingpages", "service-websites.html")],
   erg=["<em>460</em> Leads", "<em>€ 12,77</em> gewichteter CPL", "<em>€ 9,59</em> CPL Instant Form Eigennutzer"],
-  rahmen="Real Estate · Wohnbau<br>Q1 2026<br>Meta Instant Forms · Website",
-  big_scrub="Neubau-Eigentumswohnungen ab € 247.800 mit <b>zwei sehr unterschiedlichen Zielgruppen</b>, Eigennutzer und Anleger, und einem <b>unsteten Anfragefluss</b> über Website-Formulare.",
+  rahmen="Real Estate, Wohnbau<br>Q1 2026<br>Meta Instant Forms, Website",
+  big_scrub="Neubau-Eigentumswohnungen ab € 247.800 mit <b>zwei sehr unterschiedlichen Zielgruppen</b>Eigennutzer und Anleger, und einem <b>unsteten Anfragefluss</b> über Website-Formulare.",
   body="Vier Kampagnen, Eigennutzer und Anleger sauber getrennt, Schwerpunkt auf Meta Instant Forms, Botschaften je Zielgruppe gegeneinander getestet. Das Ergebnis: 460 Leads aus € 5.874 Spend, ein gewichteter CPL von € 12,77, und Instant Forms, die das Website-Formular beim CPL um den Faktor 3 bis 6 schlugen.",
   statement=["Eigennutzer und Anleger", "sind zwei Märkte.", "Kein gemeinsamer."],
   lens=[("Effizienz", "Instant Form schlug das Website-Formular beim CPL um Faktor 3 bis 6: € 9,59 statt € 58,05 bei Eigennutzern."),
@@ -234,7 +234,7 @@ CASES = [
   img="assets/img/isi.jpg", big="4,02", biglabel="BFCM-ROAS",
   disz=[("E-Commerce Growth", "service-ecommerce.html"), ("Performance Marketing", "service-performance-marketing.html"), ("Content Creation", "service-content-creation.html")],
   erg=["<em>4,02</em> BFCM-ROAS, Benchmark 2,3", "<em>€ 0,99</em> Awareness-CPM, −72 %", "<em>7,26 Mio.</em> Impressions"],
-  rahmen="Consumer · Beverage-Lifestyle<br>Saison-Peaks<br>Meta",
+  rahmen="Consumer, Beverage-Lifestyle<br>Saison-Peaks<br>Meta",
   big_scrub="Eine starke Marke mit <b>saisonalen Spitzen</b> wie Black Friday und Weihnachten, aber Mediakosten und Sales-Effizienz schwankten ohne klare <b>Kampagnen-Architektur</b>.",
   body="Wir haben die Saison als getaktete Architektur gebaut: effiziente Awareness im Vorlauf, Sales-Druck im Peak, sauberes Audience-Layering und Retargeting. Der BFCM-ROAS lag mit 4,02 um 75 Prozent über dem Account-Benchmark von 2,3, die Awareness kostete mit € 0,99 CPM 72 Prozent weniger als der Benchmark.",
   statement=["Saison ist Architektur.", "Kein Zufall."],
@@ -256,7 +256,7 @@ CASES = [
   img="assets/img/a_otta1.jpg", big="€ 4,72", biglabel="Cost per Lead",
   disz=[("Performance Marketing", "service-performance-marketing.html"), ("Content Creation", "service-content-creation.html")],
   erg=["<em>109</em> Leads aus € 515 Spend", "<em>€ 4,72</em> Cost per Lead", "<em>2,24 %</em> CTR"],
-  rahmen="Real Estate · Wohnbau<br>Laufend, mehrere Projekte<br>Meta Instant Forms",
+  rahmen="Real Estate, Wohnbau<br>Laufend, mehrere Projekte<br>Meta Instant Forms",
   big_scrub="Ein Bauträger mit mehreren parallelen Wiener Projekten brauchte <b>planbare, vergleichbare Lead-Qualität</b> über das gesamte Portfolio, nicht projektweise <b>Bauchentscheidungen</b>.",
   body="Wir haben ein wiederholbares Lead-System über alle Projekte ausgerollt: gleiche Test-Mechanik, lagespezifische Lifestyle-Botschaften, konsequente Creative-Selektion nach CPL. Im Projekt im 7. Bezirk: 109 Leads aus € 515 Spend zu € 4,72, der niedrigste CPL im gesamten Wohnbau-Portfolio.",
   statement=["Ein gutes System ist", "wiederholbar. Über", "Projekte hinweg."],
@@ -275,7 +275,7 @@ CASES = [
   clr="#1F3833", fg="#EAF1EE", big="1.385", biglabel="Verkäufe in 7 Monaten",
   disz=[("E-Commerce Growth", "service-ecommerce.html"), ("Content Creation", "service-content-creation.html")],
   erg=["<em>1.385</em> Verkäufe", "<em>€ 60</em> Retargeting-CPA", "<em>−58 %</em> CPA durch UGC"],
-  rahmen="E-Commerce · Health<br>7 Monate<br>Meta",
+  rahmen="E-Commerce, Health<br>7 Monate<br>Meta",
   big_scrub="Wachstum bei steigendem Spend, aber die <b>Profitabilität blieb unter Zielwert</b>: ein klassischer <b>Skalierungs-Konflikt</b>.",
   body="Wir haben über € 200k Mediabudget systematisch gesteuert: Kampagnen nach Rolle getrennt, Creatives nach CPA getestet, Budget auf die effizientesten Hebel verschoben. Und offen reportet, wo das Ziel noch nicht erreicht wurde: Blended ROAS 1,07 bei Ziel 1,50. Der effizienteste Hebel war Retargeting mit € 60 CPA.",
   statement=["Ehrlichkeit schlägt", "Schönfärben."],
@@ -294,7 +294,7 @@ CASES = [
   clr="#3A3A2E", fg="#F0F0E6", big="+487 %", biglabel="Website-Besucher",
   disz=[("Websites & Landingpages", "service-websites.html"), ("Performance Marketing", "service-performance-marketing.html")],
   erg=["<em>406</em> Leads", "<em>€ 30,83</em> pro Lead", "<em>+487 %</em> Website-Besucher"],
-  rahmen="Energie · Photovoltaik<br>Kampagnenphase<br>Google Search · Konfigurator",
+  rahmen="Energie, Photovoltaik<br>Kampagnenphase<br>Google Search, Konfigurator",
   big_scrub="Hohe Nachfrage im Markt, aber zu wenig <b>Sichtbarkeit</b> und kein Mechanismus, Interessenten in <b>qualifizierte Anfragen</b> zu verwandeln.",
   body="Wir haben Google Search auf kaufnahe Intents ausgerichtet und einen PV-Konfigurator als Lead-Magnet gebaut: Der Besucher rechnet seinen Bedarf und wird dabei zum Lead. 406 Leads zu € 30,83, und 487 Prozent mehr Website-Besucher.",
   statement=["Der Konfigurator selbst", "ist das beste Creative."],
@@ -317,21 +317,21 @@ def case_page(c, nxt):
         hero = """<section class="chero" data-bg="%s" data-fg="light">
     <img src="%s" alt="%s">
     <div class="hcap">
-      <div class="cl" style="font-size:15px">%s <span>· %s</span></div>
+      <div class="cl" style="font-size:15px">%s <span>%s</span></div>
       <div class="dispn" style="font-size:clamp(34px,4.6vw,74px);margin-top:10px;text-shadow:0 2px 24px rgba(0,0,0,0.4)">%s</div>
     </div>
     <div class="hkpi"><div class="kv">%s</div><div class="kl">(%s)</div></div>
     <div class="scrollhint">Scrollen</div>
-  </section>""" % (world, c["img"], c["nav_title"], c["nav_title"], c["rahmen"].split("<br>")[0].split("·")[0].strip(), c["sub"], c["big"], c["biglabel"])
+  </section>""" % (world, c["img"], c["nav_title"], c["nav_title"], c["rahmen"].split("<br>")[0].split(",")[0].strip(), c["sub"], c["big"], c["biglabel"])
     else:
         hero = """<section class="chero" data-bg="%s" data-fg="light" style="background:%s;color:%s">
     <div class="hcap">
-      <div class="cl" style="font-size:15px">%s <span style="opacity:.65">· %s</span></div>
+      <div class="cl" style="font-size:15px">%s <span style="opacity:.65">%s</span></div>
       <div class="dispn" style="font-size:clamp(34px,4.6vw,74px);margin-top:10px">%s</div>
     </div>
     <div class="hkpi"><div class="kv" style="font-size:clamp(60px,7vw,120px)">%s</div><div class="kl">(%s)</div></div>
     <div class="scrollhint">Scrollen</div>
-  </section>""" % (world, world, wfg, c["nav_title"], c["rahmen"].split("<br>")[0].split("·")[0].strip(), c["sub"], c["big"], c["biglabel"])
+  </section>""" % (world, world, wfg, c["nav_title"], c["rahmen"].split("<br>")[0].split(",")[0].strip(), c["sub"], c["big"], c["biglabel"])
     disz_links = "\n          ".join('<a href="%s">%s</a>' % (h, t) for t, h in c["disz"])
     lens_rows = "\n".join('        <div class="lrow" data-fade><div class="ll">%s</div><div class="lt">%s</div></div>' % (l, t) for l, t in c["lens"])
     nums = "\n".join('        <div class="n" data-fade><div class="l">%s</div><div class="v num serif">%s</div></div>' % (l, v) for l, v in c["nums"])
@@ -382,7 +382,7 @@ def case_page(c, nxt):
         else:
             nxt_media = '<span style="display:flex;align-items:flex-end;aspect-ratio:4/3;background:%s;color:%s;padding:24px;border-radius:3px"><span style="font-family:var(--f-disp);font-weight:680;font-size:clamp(40px,4vw,64px);font-variant-numeric:tabular-nums">%s</span></span>' % (nxt.get("clr", "#22382C"), nxt.get("fg", "#EDF2EC"), nxt.get("big", ""))
     nxt_href = nxt["slug"] + ".html"
-    page = HEAD.format(title="Case · " + c["nav_title"], bodybg=world) + menu("work.html", back=True) + """<main>
+    page = HEAD.format(title="Case, " + c["nav_title"], bodybg=world) + menu("work.html", back=True) + """<main>
 
   <!-- HERO: Vollbild in der Case-Farbwelt -->
   """ + hero + """
@@ -391,7 +391,7 @@ def case_page(c, nxt):
   <section class="sec fg-light cintro bg-paper" data-bg="#F3EDE1" data-fg="dark">
     <div class="wrap grid">
       <div>
-        <span class="label" style="color:var(--grey-dark)">""" + c["rahmen"].replace("<br>", " · ") + """</span>
+        <span class="label" style="color:var(--grey-dark)">""" + c["rahmen"].replace("<br>", ", ") + """</span>
         <p class="serif" data-scrub style="margin-top:22px">""" + c["big_scrub"] + """</p>
         <p class="body" data-fade style="--i:1">""" + c["body"] + """</p>
         <div data-fade style="--i:2;margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">

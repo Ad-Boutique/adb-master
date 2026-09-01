@@ -1,4 +1,4 @@
-/* ad.boutique Master · Engine
+/* ad.boutique Master, Engine
    Cursor, Menue-Sheet, Reveals, Keyword-Scrub, Hero-Rotation,
    Hintergrund-Morph, Drift-Parallax, Filter-FLIP, Tile-Expansion,
    Page-Transitions. Kein Framework, keine Abhaengigkeiten. */
@@ -723,14 +723,14 @@
     var w = picked(); var extra = val("#kfree");
     var lines = [];
     lines.push("<b>Womit:</b> " + (w.length ? w.join(", ") : '<span class="kempty">noch offen</span>') +
-               (extra ? " · " + extra : ""));
+               (extra ? ", " + extra : ""));
     var firm = val("#kfirm"), goal = val("#kgoal"), b = opt("budget"), wn = opt("when");
     if (firm) lines.push("<b>Projekt:</b> " + firm);
     if (goal) lines.push("<b>Ziel:</b> " + goal);
     if (b) lines.push("<b>Mediabudget:</b> " + b);
     if (wn) lines.push("<b>Zeitpunkt:</b> " + wn);
     var nm = val("#kname"), ml = val("#kmail"), ph = val("#kphone");
-    if (nm || ml || ph) lines.push("<b>Kontakt:</b> " + [nm, ml, ph].filter(Boolean).join(" · "));
+    if (nm || ml || ph) lines.push("<b>Kontakt:</b> " + [nm, ml, ph].filter(Boolean).join(", "));
     sumBody.innerHTML = lines.join("<br>");
   }
   root.querySelectorAll(".kinput").forEach(function (i) { i.addEventListener("input", sync); });
@@ -767,7 +767,7 @@
     if (opt("when")) t.push("Zeitpunkt: " + opt("when"));
     if (from && SEITEN[from]) t.push("Gekommen ueber: " + SEITEN[from]);
     t.push("");
-    t.push([val("#kname"), val("#kmail"), val("#kphone")].filter(Boolean).join(" · "));
+    t.push([val("#kname"), val("#kmail"), val("#kphone")].filter(Boolean).join(", "));
     location.href = "mailto:hello@ad.boutique?subject=" + encodeURIComponent(subject) +
                     "&body=" + encodeURIComponent(t.join("\n"));
     setTimeout(function () { go(4); }, 400);
@@ -781,7 +781,7 @@
    Interview im Hochformat: laeuft stumm, Ton per Klick
    ============================================================ */
 (function () {
-  var frame = document.querySelector(".ivframe");
+  var frame = document.querySelector(".pwiv") || document.querySelector(".ivframe");
   if (!frame) return;
   var v = frame.querySelector(".ivplayer");
   var btn = frame.querySelector(".ivsound");

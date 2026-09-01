@@ -7,52 +7,52 @@ from _gen import HEAD, FOOTER, menu
 
 WEBCASES = [
  dict(slug="case-web-noma", key="noma", name="Noma Wien", url="https://www.noma.wien",
-  branche="Real Estate · Projekt-Vermarktung",
+  branche="Real Estate, Projekt-Vermarktung",
   line="Projekt-Website mit Wohnungsfinder für 26 Eigentumswohnungen in 1030 Wien.",
   story="Ein Neubauprojekt am Prater brauchte einen Auftritt, der Ruhe ausstrahlt und trotzdem verkauft: klare Struktur, Wohnungsfinder, Anleger-Strecke und eine Bildsprache, die das Zuhause zeigt, nicht das Exposé.",
   leistungen="Strategie & Struktur<br>Design & Copy<br>Umsetzung & Wohnungsfinder"),
  dict(slug="case-web-funkhausliving", key="funkhausliving", name="funkhaus.living", url="https://funkhaus.living",
-  branche="Real Estate · Projekt-Vermarktung",
+  branche="Real Estate, Projekt-Vermarktung",
   line="Projekt-Website für das Funkhaus: Living, Culture, History.",
   story="Ikonische Architektur, gelebte Kultur und das Echo der Geschichte: Die Projekt-Website erzählt das Funkhaus als Ort, nicht als Grundriss-Katalog, und führt trotzdem in wenigen Schritten zur Wohnung.",
   leistungen="Strategie & Storytelling<br>Design & Copy<br>Umsetzung & Wohnungsfinder"),
  dict(slug="case-web-trattner", key="trattner", name="Trattner & Söhne", url="https://www.trattner-soehne.at",
-  branche="Immobilien · Makler-Traditionsbetrieb",
+  branche="Immobilien, Makler-Traditionsbetrieb",
   line="Neue Website inklusive Strategie, Struktur und Umsetzung.",
   story="Ein Traditionsbetrieb, der digital so souverän auftreten soll wie im persönlichen Gespräch: klare Objektsuche, ruhige Typografie und eine Struktur, die Suchende und Eigentümer getrennt abholt.",
   leistungen="Strategie & Struktur<br>Design & Copy<br>Umsetzung"),
  dict(slug="case-web-unio", key="unio", name="UNIO", url="https://www.unio.at",
-  branche="PropTech · Venture",
+  branche="PropTech, Venture",
   line="Venture-Partnerschaft: Marke, Website und Produkt-Design.",
   story="Real Estate, endlich einfach: Für das Immobilien-Betriebssystem UNIO entstanden Marke, Website und Produkt-Oberflächen aus einem Guss, als Venture, an dem wir selbst beteiligt sind. Skin in the Game, wörtlich.",
   leistungen="Marke & Positionierung<br>Website & Produkt-Design<br>Laufende Weiterentwicklung"),
  dict(slug="case-web-havenstone", key="havenstone", name="Havenstone", url="https://www.havenstone.at",
-  branche="Real Estate · Development",
+  branche="Real Estate, Development",
   line="Website für den Projektentwickler: From Vision to Reality.",
   story="Internationale Projekte brauchen einen Auftritt, der Größe zeigt, ohne laut zu werden: großes Bewegtbild, wenige Worte, klare Wege zu den Projekten.",
   leistungen="Strategie & Struktur<br>Design<br>Umsetzung"),
  dict(slug="case-web-northpoint", key="northpoint", name="Northpoint Advisors", url="https://northpoint-advisors.com",
-  branche="Finance · Advisory",
+  branche="Finance, Advisory",
   line="Website für die Beratungsboutique an der Schnittstelle von Kapital, Strategie und Immobilie.",
   story="Strategie, Struktur, Verantwortung: Der Auftritt übersetzt die Beratungsleistung in eine klare, vertrauensbildende Erzählung, mit ruhiger Bildwelt und präziser Sprache in zwei Sprachen.",
   leistungen="Strategie & Positionierung<br>Design & Copy<br>Umsetzung"),
  dict(slug="case-web-pharmacom", key="pharmacom", name="Pharmacom", url="https://www.pharmacom.at",
-  branche="Pharma · B2B",
+  branche="Pharma, B2B",
   line="Corporate Website: Direct to Pharmacy.",
   story="Ein erklärungsbedürftiges B2B-Modell, verständlich gemacht: Die Website führt Hersteller und Apotheken durch Prozess, Nutzen und Team, seriös und ohne Fachjargon-Wände.",
   leistungen="Strategie & Struktur<br>Design & Copy<br>Umsetzung"),
  dict(slug="case-web-daphi", key="daphi", name="DaPhi", url="https://www.daphi.de",
-  branche="IT-Dienstleistung · B2B",
+  branche="IT-Dienstleistung, B2B",
   line="Neue Website inklusive Sitemap, Wireframes und Service-Landingpages.",
   story="Vom Kick-off bis zum Go-live in einem strukturierten Sprint-Plan: Sitemap und Wireframes für Home und sieben Service-Landingpages, Screendesign in zwei Runden, Umsetzung mit CMS, danach Content und Launch.",
   leistungen="Strategie, Sitemap & Wireframes<br>Screendesign<br>Umsetzung mit CMS"),
  dict(slug="case-web-ib7", key="ib7", name="IB-7", url="https://ib-7.com",
-  branche="Beauty · D2C",
+  branche="Beauty, D2C",
   line="Website und Markenauftritt: Wo Jahrtausende auf den Moment treffen.",
   story="Antikes Wissen über Hautpflege trifft moderne Wissenschaft: Der Auftritt erzählt die Marke, führt zu den Produkten und trägt die Kampagnen, die wir parallel in Performance und Content fahren.",
   leistungen="Website & Markenauftritt<br>Content Creation<br>Performance Marketing"),
- dict(slug="case-web-twistnsparkle", key="twistnsparkle", name="Twist'n Sparkle · isi", url="https://www.twistnsparkle.isi.com/en",
-  branche="Consumer · Produkt-Kampagne",
+ dict(slug="case-web-twistnsparkle", key="twistnsparkle", name="Twist'n Sparkle, isi", url="https://www.twistnsparkle.isi.com/en",
+  branche="Consumer, Produkt-Kampagne",
   line="Produkt-Kampagnen-Site: Sparkle it your way.",
   story="Ein Produkt, ein Versprechen, eine Seite: Die Kampagnen-Site macht aus dem Twist'n Sparkle ein Erlebnis, von Benefits über How-to bis zu Rezepten, gebaut für Kampagnen-Traffic.",
   leistungen="Struktur & Story<br>Design<br>Umsetzung"),
@@ -129,13 +129,13 @@ def page(c, nxt):
 
     nxt_href = nxt["slug"] + ".html"
     nxt_img = "%s/web_%s_d.jpg" % (IMG, nxt["key"])
-    body = HEAD.format(title="Case · " + c["name"], bodybg="#0E0E10") + menu("work.html", back=True) + """<main>
+    body = HEAD.format(title="Case, " + c["name"], bodybg="#0E0E10") + menu("work.html", back=True) + """<main>
 
   <!-- HERO: Vollbild-Screenshot -->
   <section class="chero" data-bg="#0E0E10" data-fg="light">
     <img src=\"""" + hero_img + """\" alt=\"""" + c["name"] + """\" style="object-position: top">
     <div class="hcap">
-      <div class="cl" style="font-size:15px">""" + c["name"] + """ <span>· """ + c["branche"] + """</span></div>
+      <div class="cl" style="font-size:15px">""" + c["name"] + """ <span>""" + c["branche"] + """</span></div>
       <div class="dispn" style="font-size:clamp(30px,4vw,62px);margin-top:10px;text-shadow:0 2px 24px rgba(0,0,0,0.45)">""" + c["line"] + """</div>
     </div>
     <div class="scrollhint">Scrollen</div>
