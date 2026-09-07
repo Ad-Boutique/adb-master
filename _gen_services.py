@@ -73,20 +73,18 @@ SERVICES = [
             h=["Vier Rollen,", "die am Umsatz hängen."],
             t="Shop, Creative und Kampagne entstehen im selben Team. Wer den Checkout ändert, sitzt auch im Call über den ROAS.",
             people=[("Fabi", "Performance Manager", "Steuert die Kanäle und schichtet Budget wöchentlich auf die Gewinner um.", "assets/img/ag_strategy.jpg"),
-                    ("Suman", "Social Media", "Baut die Sujets, die im Feed gegeneinander antreten, und liest die Kommentare mit.", "assets/img/ag_board1.jpg"),
-                    ("Evgenia", "Design", "Gestaltet Produktseiten und Angebotslogik dort, wo der Klick zu Geld wird.", "assets/img/retreat-02.jpg"),
-                    ("Martin", "Founder", "Verantwortet die Blended-Sicht und sagt, wenn ein Kanal gestoppt wird.", "assets/img/founder.jpg")]),
+                    ("Suman", "Social Media", "Baut die Sujets, die im Feed gegeneinander antreten, und liest die Kommentare mit.", "assets/img/team/suman.jpg"),
+                    ("Evgenia", "Design", "Gestaltet Produktseiten und Angebotslogik dort, wo der Klick zu Geld wird.", "assets/img/team/evgenia.jpg"),
+                    ("Martin", "Founder", "Verantwortet die Blended-Sicht und sagt, wenn ein Kanal gestoppt wird.", "assets/img/team/martin.jpg")]),
   voice=dict(label="Was Kunden sagen",
-             lead="Michael, Gründer und CEO von IB-7, über die Zusammenarbeit mit ad.boutique: Marke, Website, Performance und Content aus einer Hand.",
-             a="Michael, Gründer und CEO, IB-7",
+             lead="Michael Rohrmeier, Gründer und CEO von IB-7, über die Zusammenarbeit mit ad.boutique: Marke, Website, Performance und Content aus einer Hand.",
+             a="Michael Rohrmeier, Gründer und CEO, IB-7",
              video="assets/video/kundenstimme-ib7.mp4",
              note="Solche Sätze stehen bei uns im Reporting, nicht im Kleingedruckten. Einmal im Monat gehen wir sie gemeinsam durch, inklusive der Kanäle, die wir gestoppt haben."),
   fit=dict(label="Bevor wir starten",
            h=["Der Fit entscheidet.", "Nicht die Shopgröße."],
            yes_h="Wir passen zusammen, wenn",
            no_h="Wir sind die Falschen, wenn",
-           cap_v="6",
-           cap_t="Mandate betreuen wir gleichzeitig. Wir arbeiten als verlängerte Marketingabteilung, und das geht nur mit wenigen Marken.",
            intro="Wir sind keine Agentur, die Accounts sammelt. Wir sitzen in Ihren Meetings, kennen Ihre Marge und streiten mit Ihnen über Motive. Das funktioniert nur, wenn die Zusammenarbeit auf beiden Seiten passt, deshalb prüfen wir das vorher, offen und in beide Richtungen.",
            yes=["Sie haben Produkt-Markt-Fit und wollen skalieren, nicht testen",
                 "Mediabudget ab etwa € 5k im Monat",
@@ -142,7 +140,7 @@ SERVICES = [
     ]),
   proofsplit=dict(label="Zwei Rechnungen",
                   h=["Wo der Unterschied", "wirklich entsteht."],
-                  t="Links ein Wohnbau-Projekt: dieselbe Zielgruppe, dieselbe Woche, drei Strecken, dreifacher Preisunterschied. Rechts eine Crowdinvesting-Plattform: nahezu gleiches Budget, andere Struktur. Beide Zahlen stehen so im Reporting, inklusive der Strecke, die wir gestoppt haben."),
+                  t="Links ein Wohnbau-Projekt: dieselbe Zielgruppe, dieselbe Woche, drei Strecken, sechsfacher Preisunterschied. Rechts eine Crowdinvesting-Plattform: nahezu gleiches Budget, andere Struktur. Beide Zahlen stehen so im Reporting, inklusive der Strecke, die wir gestoppt haben."),
   bars=dict(
     label="Return on Ad Spend, Crowdinvesting-Plattform",
     link=("case-crowdinvesting.html", "Crowdinvesting-Plattform im Detail"),
@@ -160,8 +158,6 @@ SERVICES = [
     h=["Der Fit entscheidet.", "Nicht das Budget."],
     yes_h="Wir passen zusammen, wenn",
     no_h="Wir sind die Falschen, wenn",
-    cap_v="6",
-    cap_t="Mandate betreuen wir gleichzeitig. Mehr geht nicht, wenn dieselben Leute im Call sitzen, die auch die Kampagne bauen.",
     intro="Wir übernehmen wenige Accounts, die dafür ganz. Wir verstehen uns als verlängerte Marketingabteilung: Wir sitzen in Ihren Runden, kennen Ihre Zahlen und widersprechen, wenn es nötig ist. Das trägt nur, wenn es auf beiden Seiten passt, deshalb prüfen wir den Fit vorher, offen und in beide Richtungen.",
     yes=["Sie geben bereits Mediabudget aus und wollen wissen, was es wirklich bringt",
          "Produkt oder Projekt trägt eine Marge, die Wachstum erlaubt",
@@ -197,7 +193,7 @@ SERVICES = [
        ("Reporting", "Wöchentlich, transparent, auch unbequem: Ziel-Gaps und gestoppte Tests stehen im Report.",
         ["Wöchentliches Reporting", "Ehrliche Ziel-Gaps", "Klare Handlungsempfehlungen", "Direkter Draht, kein Ticketsystem"])],
   diff=[("Anders als üblich", "Das Creative ist der Hebel", "Nicht das größte Budget gewinnt, sondern das stärkste Motiv. Wir verschieben Budget konsequent auf die Gewinner.", "assets/img/ag_strategy.jpg"),
-        ("Anders als üblich", "Ehrlich, auch wenn es wehtut", "In einem Finance-Mandat brachte ein Paid-Test über € 278.727 null zurechenbare Zeichnungen. Wir haben ihn gestoppt und umgeschichtet.", "assets/img/ag_board1.jpg"),
+        ("Anders als üblich", "Ehrlich, auch wenn es wehtut", "Ein Finance-Kunde hatte einen Paid-Kanal schon laufen, als wir kamen. Wir haben ihn messbar gemacht, parallel den zweiten Kanal aufgebaut, und als die Zahlen bestätigten, dass der erste keine zurechenbaren Zeichnungen bringt, haben wir ihn geschlossen.", "assets/img/ag_board1.jpg"),
         ("Anders als üblich", "Ein Kanal sauber statt fünf halb", "Lieber einen Kanal ausreizen und beweisen, als Budget über fünf Kanäle verdampfen lassen.", "assets/img/ag_talk.jpg")],
   zoom=dict(img="assets/img/funkhaus.jpg", side="right", al="Ein Fall",
             ah=["Das Creative", "ist der Hebel."],
@@ -212,13 +208,13 @@ SERVICES = [
   crew=dict(label="Wer daran arbeitet",
             h=["Vier Rollen,", "die am Ergebnis hängen."],
             t="Kein Ticketsystem, kein Junior am Konto. Wer Ihre Kampagne baut, sitzt auch im Call, in dem sie erklärt wird.",
-            people=[("Steve", "Performance Manager", "Baut die Kontostruktur und schichtet Budget um, sobald ein Motiv kippt.", "assets/img/ag_strategy.jpg"),
-                    ("Constantin", "Design", "Entwirft die Sujets, die gegeneinander antreten, jede Woche neue Varianten.", "assets/img/ag_board1.jpg"),
+            people=[("Steve", "Performance Manager", "Baut die Kontostruktur und schichtet Budget um, sobald ein Motiv kippt.", "assets/img/team/steve.jpg"),
+                    ("Constantin", "Design", "Entwirft die Sujets, die gegeneinander antreten, jede Woche neue Varianten.", "assets/img/team/constantin.jpg"),
                     ("Leny", "Film und Foto", "Produziert das Material im Hochformat, gedreht für den Feed statt für den Katalog.", "assets/img/retreat-04.jpg"),
-                    ("Daniel", "Founder", "Sitzt im Reporting-Call und verantwortet die Zahl, die dort steht.", "assets/img/founder.jpg")]),
+                    ("Daniel", "Founder", "Sitzt im Reporting-Call und verantwortet die Zahl, die dort steht.", "assets/img/team/daniel.jpg")]),
   voice=dict(label="Was Kunden sagen",
-             lead="Michael, Gründer und CEO von IB-7, über die Zusammenarbeit mit ad.boutique: Marke, Website, Performance und Content aus einer Hand.",
-             a="Michael, Gründer und CEO, IB-7",
+             lead="Michael Rohrmeier, Gründer und CEO von IB-7, über die Zusammenarbeit mit ad.boutique: Marke, Website, Performance und Content aus einer Hand.",
+             a="Michael Rohrmeier, Gründer und CEO, IB-7",
              video="assets/video/kundenstimme-ib7.mp4",
              note="Wir schicken kein Dashboard, das niemand liest. Wir gehen einmal im Monat gemeinsam durch die Zahlen und sagen auch, was nicht funktioniert hat."),
   logos=["winegg", "funkhaus", "ifa", "conda", "soravia", "rhomberg", "vonpoll", "seeresidenz"],
@@ -227,7 +223,7 @@ SERVICES = [
           ("case-wohnbau-floridsdorf.html", "Wohnbau, Floridsdorf", "460", "Leads, € 12,77 CPL")],
   faq=[("Unsere Zielgruppe ist zu speziell für Performance.", "Das hören wir oft, auch von Investoren-Funnels und Premium-Neubau. Genau dort entscheidet die Botschaft je Zielgruppe: Bei Anlegern schlug der Service-Angle die Nachhaltigkeits-Story um das 2,3-Fache."),
        ("Woher wissen wir, dass die Zahlen stimmen?", "Server-side Tracking, Blended-Sicht und auf Wunsch der Blick in den Ad-Manager: Wir reporten die Realität, nicht die schönste Zählweise."),
-       ("Was passiert, wenn ein Kanal nicht liefert?", "Dann wird er gestoppt, nicht schöngeredet. Ein € 278k-Test ohne zurechenbares Ergebnis flog bei uns aus dem Plan.")],
+       ("Was passiert, wenn ein Kanal nicht liefert?", "Dann wird er geschlossen, nicht schöngeredet. Bei einem Finance-Kunden lief ein Kanal schon vor uns. Wir haben ihn messbar gemacht, die Hypothese bestätigt, dass er keine zurechenbaren Zeichnungen bringt, und ihn geschlossen, während der zweite Kanal lieferte.")],
   offer_h="Der Einstieg ist ein Account-Audit. Kein Vertrag.",
   offer=["Wir prüfen Kampagnenstruktur, Creatives, Tracking und Zurechnung und zeigen Ihnen in zwei Wochen, wo Budget verdampft und wo der ehrliche CPL liegt. Danach entscheiden Sie.",
          "<b>Risikoumkehr inklusive:</b> Wo sich Umsatz messen lässt, koppeln wir unsere Vergütung daran. Basis-Fixum plus Erfolgsbeteiligung, wir gewinnen nur, wenn Sie gewinnen."],
@@ -283,20 +279,18 @@ SERVICES = [
             h=["Vier Rollen,", "die am Motiv arbeiten."],
             t="Kamera, Schnitt und Kampagne sitzen im selben Team. Wer dreht, weiß, wogegen das Sujet antreten muss.",
             people=[("Leny", "Film und Foto", "Dreht im Hochformat, mit dem Licht, das da ist, statt mit dem, das gebaut wird.", "assets/img/retreat-04.jpg"),
-                    ("Constantin", "Design", "Setzt Typo und Hook, damit die erste Sekunde die Botschaft trägt.", "assets/img/ag_board1.jpg"),
-                    ("Sarah", "Graphic Design", "Baut die Varianten, die gegeneinander antreten, und hält die Marke zusammen.", "assets/img/retreat-02.jpg"),
-                    ("Suman", "Social Media", "Bringt die Reaktionen aus dem Feed zurück in die nächste Produktion.", "assets/img/ag_talk.jpg")]),
+                    ("Constantin", "Design", "Setzt Typo und Hook, damit die erste Sekunde die Botschaft trägt.", "assets/img/team/constantin.jpg"),
+                    ("Sarah", "Graphic Design", "Baut die Varianten, die gegeneinander antreten, und hält die Marke zusammen.", "assets/img/team/sarah.jpg"),
+                    ("Suman", "Social Media", "Bringt die Reaktionen aus dem Feed zurück in die nächste Produktion.", "assets/img/team/suman.jpg")]),
   voice=dict(label="Was Kunden sagen",
-             lead="Michael, Gründer und CEO von IB-7, über die Zusammenarbeit mit ad.boutique: Marke, Website, Performance und Content aus einer Hand.",
-             a="Michael, Gründer und CEO, IB-7",
+             lead="Michael Rohrmeier, Gründer und CEO von IB-7, über die Zusammenarbeit mit ad.boutique: Marke, Website, Performance und Content aus einer Hand.",
+             a="Michael Rohrmeier, Gründer und CEO, IB-7",
              video="assets/video/kundenstimme-ib7.mp4",
              note="Wir liefern keine Mediathek zum Archivieren. Jedes Sujet läuft in einer Kampagne und wird daran gemessen, wie es dort abschneidet."),
   fit=dict(label="Bevor wir starten",
            h=["Der Fit entscheidet.", "Nicht das Briefing."],
            yes_h="Wir passen zusammen, wenn",
            no_h="Wir sind die Falschen, wenn",
-           cap_v="6",
-           cap_t="Mandate betreuen wir gleichzeitig. Wer bei uns dreht, kennt Ihre Marke, und das braucht Zeit statt Skalierung.",
            intro="Wir arbeiten als verlängerte Marketingabteilung, nicht als Produktionsdienstleister. Wir müssen Ihre Marke verstehen, bevor wir die Kamera aufstellen, und Sie müssen uns zutrauen, dass wir Motive verwerfen. Deshalb prüfen wir den Fit vorher, in beide Richtungen.",
            yes=["Es gibt Kampagnen, in denen das Material laufen soll",
                 "Hochformat ist erlaubt, auch wenn es weniger nach Katalog aussieht",
@@ -381,21 +375,19 @@ SERVICES = [
   crew=dict(label="Wer daran arbeitet",
             h=["Vier Rollen,", "die die Seite bauen."],
             t="Struktur, Gestaltung und Kampagne entstehen im selben Zug. Wer die Seite baut, weiß, welche Anzeige darauf führt.",
-            people=[("Constantin", "Design", "Entwirft mobil zuerst und hält jede Sektion auf eine Frage.", "assets/img/ag_board1.jpg"),
-                    ("Valentina", "Graphic Design", "Bringt Bildsprache und Typo in eine Form, die die Marke trägt.", "assets/img/retreat-02.jpg"),
+            people=[("Constantin", "Design", "Entwirft mobil zuerst und hält jede Sektion auf eine Frage.", "assets/img/team/constantin.jpg"),
+                    ("Valentina", "Graphic Design", "Bringt Bildsprache und Typo in eine Form, die die Marke trägt.", "assets/img/team/valentina.jpg"),
                     ("Philipp", "Sales", "Prüft jede Strecke aus Sicht der Anfrage: Was fehlt bis zum Termin.", "assets/img/ag_talk.jpg"),
-                    ("Florian", "Founder", "Verantwortet, dass die Seite das Mediabudget trägt, das darauf führt.", "assets/img/founder.jpg")]),
+                    ("Florian", "Founder", "Verantwortet, dass die Seite das Mediabudget trägt, das darauf führt.", "assets/img/team/florian.jpg")]),
   voice=dict(label="Was Kunden sagen",
-             lead="Michael, Gründer und CEO von IB-7, über die Zusammenarbeit mit ad.boutique: Marke, Website, Performance und Content aus einer Hand.",
-             a="Michael, Gründer und CEO, IB-7",
+             lead="Michael Rohrmeier, Gründer und CEO von IB-7, über die Zusammenarbeit mit ad.boutique: Marke, Website, Performance und Content aus einer Hand.",
+             a="Michael Rohrmeier, Gründer und CEO, IB-7",
              video="assets/video/kundenstimme-ib7.mp4",
              note="Wir bauen keine Seite, die danach niemand anfassen darf. Änderungen an Struktur und Strecken gehören zum laufenden Betrieb."),
   fit=dict(label="Bevor wir starten",
            h=["Der Fit entscheidet.", "Nicht der Umfang."],
            yes_h="Wir passen zusammen, wenn",
            no_h="Wir sind die Falschen, wenn",
-           cap_v="6",
-           cap_t="Mandate betreuen wir gleichzeitig. Eine Seite, die arbeiten soll, braucht jemanden, der sie danach weiter kennt.",
            intro="Wir bauen keine Seite und verschwinden. Wir arbeiten als verlängerte Marketingabteilung weiter daran, wenn die Zahlen etwas anderes sagen als der Entwurf. Das setzt Vertrauen in beide Richtungen voraus, deshalb prüfen wir den Fit vorher.",
            yes=["Die Seite soll Anfragen bringen, nicht nur repräsentieren",
                 "Mobil zuerst ist in Ordnung, auch wenn Desktop später kommt",
@@ -449,7 +441,7 @@ SERVICES = [
         ["Gemeinsame Datenbasis", "Wiederholbare Test-Mechanik", "Portfolio-Sicht auf CPL und ROAS", "Skalierung mit System"])],
   diff=[("Anders als üblich", "KPI-Definition vorab", "Bevor der erste Euro läuft, steht fest, woran der Erfolg gemessen wird. Das verhindert schöngerechnete Kampagnen.", "assets/img/ag_strategy.jpg"),
         ("Anders als üblich", "Vertrauen als Funnel-Stufe", "Im Finance zählt der Cost per zugerechnetem Kapital, nicht der CPL: Aufklärung, Vertrauen, Handlung.", "assets/img/retreat-06.jpg"),
-        ("Anders als üblich", "Ehrliches Stoppen", "Ein Paid-Test über € 278.727 brachte null Zeichnungen: Er wurde gestoppt, das Budget umgeschichtet. Genau dafür ist Struktur da.", "assets/img/ag_board1.jpg")],
+        ("Anders als üblich", "Ehrliches Schließen", "Ein bestehender Paid-Kanal wurde erst messbar gemacht, dann an der Hypothese geprüft, dann geschlossen, während der zurechenbare Kanal parallel wuchs. Genau dafür ist Struktur da.", "assets/img/ag_board1.jpg")],
   zoom=dict(img="assets/img/ag_meeting.jpg", side="left", al="Ein Fall",
             ah=["Erst die Struktur.", "Dann das Budget."],
             alink=("case-crowdinvesting.html", "Den Fall im Detail"), aside="Erst die Struktur, dann das Budget: Strategie-Session in Wien.",
@@ -486,21 +478,19 @@ SERVICES = [
   crew=dict(label="Wer daran arbeitet",
             h=["Vier Rollen,", "die an der Struktur bauen."],
             t="Strategie ohne Umsetzung ist eine Folie. Wer die Reihenfolge festlegt, verantwortet auch die Zahl am Ende.",
-            people=[("Daniel", "Founder", "Legt die Reihenfolge fest und verantwortet die Zahl, die am Ende im Report steht.", "assets/img/founder.jpg"),
-                    ("Florian", "Founder", "Führt die Strategie-Session und übersetzt Geschäftsziele in messbare Stufen.", "assets/img/ag_meeting.jpg"),
-                    ("Steve", "Performance Manager", "Baut die Struktur in die Konten und misst, ob die Reihenfolge trägt.", "assets/img/ag_strategy.jpg"),
-                    ("Alexis", "Sales", "Bringt die Sicht des Vertriebs ein: Welche Anfrage ist wirklich eine Anfrage.", "assets/img/ag_talk.jpg")]),
+            people=[("Daniel", "Founder", "Legt die Reihenfolge fest und verantwortet die Zahl, die am Ende im Report steht.", "assets/img/team/daniel.jpg"),
+                    ("Florian", "Founder", "Führt die Strategie-Session und übersetzt Geschäftsziele in messbare Stufen.", "assets/img/team/florian.jpg"),
+                    ("Steve", "Performance Manager", "Baut die Struktur in die Konten und misst, ob die Reihenfolge trägt.", "assets/img/team/steve.jpg"),
+                    ("Alexis", "Sales", "Bringt die Sicht des Vertriebs ein: Welche Anfrage ist wirklich eine Anfrage.", "assets/img/team/alexis.jpg")]),
   voice=dict(label="Was Kunden sagen",
-             lead="Michael, Gründer und CEO von IB-7, über die Zusammenarbeit mit ad.boutique: Marke, Website, Performance und Content aus einer Hand.",
-             a="Michael, Gründer und CEO, IB-7",
+             lead="Michael Rohrmeier, Gründer und CEO von IB-7, über die Zusammenarbeit mit ad.boutique: Marke, Website, Performance und Content aus einer Hand.",
+             a="Michael Rohrmeier, Gründer und CEO, IB-7",
              video="assets/video/kundenstimme-ib7.mp4",
              note="Wir liefern keine Strategie-Folien zum Abheften. Wir legen die Reihenfolge fest, setzen sie um und rechnen sie nach."),
   fit=dict(label="Bevor wir starten",
            h=["Der Fit entscheidet.", "Nicht die Vorlage."],
            yes_h="Wir passen zusammen, wenn",
            no_h="Wir sind die Falschen, wenn",
-           cap_v="6",
-           cap_t="Mandate betreuen wir gleichzeitig. Strategie, die wir auch umsetzen, lässt sich nicht beliebig oft vergeben.",
            intro="Wir liefern keine Strategie zum Abheften. Wir setzen sie um und verantworten die Zahl am Ende, als verlängerte Marketingabteilung. Das geht nur mit Mandaten, bei denen die Zusammenarbeit trägt, deshalb prüfen wir den Fit vorher, in beide Richtungen.",
            yes=["Es gibt ein Ziel in Zahlen: Kapital, Einheiten, Anfragen",
                 "Sie wollen die Umsetzung mit derselben Hand, nicht nur das Konzept",
@@ -535,44 +525,45 @@ SERVICES = [
          "<b>Risikoumkehr:</b> Geht die Strategie in ein Umsetzungs-Mandat über, koppeln wir die Vergütung an messbare Ergebnisse. Wir gewinnen nur, wenn Sie gewinnen."],
   chips=["Strategie-Session", "Funnel-Architektur", "KPI-Logik", "Attribution-Setup", "Positionierung", "Portfolio-Struktur", "Zweitmeinung", "Umsetzungs-Mandat"]),
  dict(slug="service-chatgpt-ads", nav="ChatGPT Ads", label="Leistung, ChatGPT Ads, Frühzugang vor der Öffnung für Europa",
-  h1=["In der Antwort.", "Vor allen anderen."], ital=1,
-  tags=["Frühzugang", "Eignungs-Check vorab", "Karten, die Fragen beantworten", "Messung mit Pixel und API"],
-  sub="Seit 24. August läuft Werbung in ChatGPT auch in Österreich: eine gekennzeichnete Karte unter der Antwort. Wir haben Kampagnen aufgesetzt, bevor der Self-Service für Europa geöffnet wurde, und übernehmen für Sie Prüfung, Aufbau, Text und Messung. Der Kanal ist noch leer. Das ist Ihr Vorteil, wenn Sie jetzt starten.",
+  h1=["Anfragen aus ChatGPT.", "Bevor der Kanal voll ist."], ital=1,
+  tags=["Seit 24. August in 31 europäischen Märkten", "Rund ein Viertel der kommerziellen Prompts", "Frühzugang vor dem Self-Service", "Erfolgsbeteiligung statt Retainer"],
+  sub="Ihre Kunden stellen ihre Kaufentscheidung heute als Frage an ChatGPT. Wir sorgen dafür, dass Ihr Angebot unter dieser Antwort steht, solange der Platz dort noch frei ist. Wir haben Kampagnen aufgesetzt, bevor der Self-Service für Europa geöffnet wurde, und übernehmen für Sie Prüfung, Aufbau, Text und Messung. Der Kanal ist noch leer. Das ist Ihr Vorteil, wenn Sie jetzt starten.",
   content_label="Aus dem Studio",
+  sol_label="Die Ausgangslage",
   problem_h=["Das Problem"],
   problem=["", ""],
-  intro="Kurz zur Sache: In ChatGPT gibt es <b>keine Keywords</b>. Es gibt eine Karte unter der Antwort, ausgespielt nach dem <b>Gespräch</b>, das gerade läuft, und Richtlinien, die entscheiden, ob Ihre Branche überhaupt darf. Drei Dinge, die Sie wissen müssen, bevor Sie Budget freigeben.",
-  acc=[("Was Sie bekommen", "Eine gekennzeichnete Karte unter der ChatGPT-Antwort: Titel, Text, Bild, Link. Sie erscheint, wenn das Gespräch zu Ihrem Angebot passt, nicht wenn jemand ein Wort sucht.",
-        ["Karte unter der Antwort, klar als Sponsored gekennzeichnet", "Ausspielung nach Gesprächskontext", "Die Antwort selbst bleibt unbeeinflusst", "Klick führt auf Ihre Seite"]),
-       ("Wen Sie erreichen", "Eingeloggte Erwachsene in den Tarifen Free und Go. Zahlende Nutzer sehen keine Anzeigen. Bei kommerziellen Fragen erscheint bei rund einem Viertel der Prompts eine Karte.",
-        ["Free und Go, ab 18 Jahren", "Rund ein Viertel der kommerziellen Prompts", "Österreich seit 24. August 2026", "Kein Retargeting, kein Profil im EWR"]),
-       ("Was es kostet", "Kein Mindestbudget mehr. Tagesbudget ab rund 15 Euro, Gebot je Klick. OpenAI empfiehlt 3 bis 5 Dollar als Obergrenze, gemessen wurden 1,72 bis 7,16.",
-        ["Tagesbudget ab rund 15 Euro", "Klickpreis als Steuergröße", "Vier Wochen Test als sinnvolle Einheit", "Konto bleibt in Ihrem Besitz"])],
+  intro="Kurz zur Sache: In ChatGPT gibt es <b>keine Keywords</b> und keine Rangliste. Es gibt eine Karte unter der Antwort, ausgespielt nach dem <b>Gespräch</b>, das gerade läuft. Wer die Frage dahinter versteht, bekommt den Klick. <b>Alle anderen bleiben unsichtbar.</b> Drei Dinge, die Sie wissen sollten, bevor Sie Budget freigeben.",
+  acc=[("Was sich gerade verschiebt", "Ein wachsender Teil der Kaufrecherche findet nicht mehr in der Suchmaschine statt, sondern im Gespräch. Dort gibt es kein SEO, keine Rangliste und bis vor wenigen Wochen keine Werbung. Die Karte unter der Antwort ist der einzige Weg in dieses Gespräch.",
+        ["Kaufentscheidungen werden als Frage gestellt", "Eine Antwort statt zehn Treffer", "Bei rund einem Viertel der kommerziellen Prompts erscheint eine Karte", "Ausspielung nach Gesprächskontext, nicht nach Keyword"]),
+       ("Was Warten kostet", "Jeder neue Kanal hat eine kurze Phase, in der wenige Anbieter um viel Aufmerksamkeit konkurrieren. Wer in dieser Phase lernt, welche Formulierung im Gespräch trägt, kauft später zu Bedingungen ein, die Nachzügler nicht mehr bekommen.",
+        ["Gebote steigen, sobald der Kanal voll ist", "Erfahrungswerte zu Kontext und Karte lassen sich nicht nachkaufen", "Richtlinien-Freigaben brauchen Vorlauf", "Wer wartet, testet später gegen Wettbewerber statt gegen die Leere"]),
+       ("Was Sie stattdessen bekommen", "Einen Test mit einer klaren Frage: Bringt der Kanal Ihnen Anfragen oder Verkäufe zu einem Preis, der trägt? Nach vier Wochen haben Sie eine Antwort mit Zahlen, keine Meinung.",
+        ["Eignungsaussage vor dem ersten Euro", "Konto, Karten, Landingpage und Messung aus einer Hand", "Wöchentliche Lesung der Zahlen mit Ihnen", "Empfehlung nach vier Wochen: ausbauen, anpassen oder stoppen"])],
   diff=[("Was wir beitragen", "Erfahrung aus dem Frühzugang", "Wir haben Kampagnen im Ads Manager aufgesetzt, bevor er in Europa geöffnet wurde. Sie starten mit Erfahrungswerten zu Kontext, Gebot und Karte, nicht mit Vermutungen.", "assets/img/ag_strategy.jpg"),
         ("Was wir beitragen", "Richtlinien-Prüfung vor dem ersten Euro", "Finanz und Gesundheit sind im EWR gesperrt, einzelne Immobilienangebote auch. Wir klären das vor dem Start und holen Freigaben ein, damit kein Budget in ein Konto fließt, das gesperrt wird.", "assets/img/ag_board1.jpg"),
-        ("Was wir beitragen", "Anzeigentexte, die Fragen beantworten", "Titel und Text schreiben wir als Antwort auf die Frage, die im Gespräch gestellt wird. Aus dem Creative-Testing wissen wir, welche Formulierung trägt und welche im Gespräch durchfällt.", "assets/img/ag_talk.jpg"),
-        ("Was wir beitragen", "Messung mit klaren Grenzen", "Pixel, Conversions API, eigene Auswertung bis auf Anzeigenebene. Wir nennen vorab, was in 24 bis 48 Stunden zählbar ist und was nicht, statt es im Report zu verstecken.", "assets/img/ag_review.jpg")],
+        ("Was wir beitragen", "Karte, Strecke und Messung aus einer Hand", "Der Klick ist der Anfang. In einem Wohnbau-Mandat machte allein die Strecke nach dem Klick aus € 9,59 je Anfrage € 58,05, dieselbe Zielgruppe, dieselbe Woche. Deshalb bauen wir Landingpage, Pixel und Conversions API mit und sagen vorab, was zählbar ist.", "assets/img/ag_talk.jpg"),
+        ("Was wir beitragen", "Erfolgsbeteiligung statt Retainer", "Wo sich Ergebnis messen lässt, koppeln wir unsere Vergütung daran: Basis-Fixum plus Erfolgsbeteiligung. Wir gewinnen nur, wenn Sie gewinnen. Das dreht das Risiko um und sorgt dafür, dass wir einen Kanal stoppen, der nicht liefert, statt ihn zu verwalten.", "assets/img/ag_review.jpg")],
   zoom=dict(img="assets/img/gpt/card-hero.jpg", side="right", al="So sieht es aus",
             ah=["Ihr Angebot,", "unter der Antwort."],
             alink=("kontakt.html?w=Eignungs-Check&from=service-chatgpt-ads", "Eignung prüfen lassen"),
             aside="Gekennzeichnet, getrennt von der Antwort, mit Ihrem Bild und Ihrem Link. Das Beispiel zeigt eine Projektplattform, kein einzelnes Objekt, denn genau das erlauben die Richtlinien.",
             zl="Beispielkarte, Projektplattform", zt="Titel, Text, Bild, Link. Mehr braucht die Karte nicht."),
-  proof_h=["Vier Schritte.", "Ein Test, der eine Antwort gibt."],
-  proof_lead="So arbeiten wir mit Ihnen: Erst die Eignung, dann der Kontext, dann die Karte, dann die Lesung. Nach vier Wochen wissen Sie, ob der Kanal für Sie trägt, mit Zahlen statt Meinung.",
+  proof_label="Woher wir das wissen",
+  proof_h=["Der Kanal ist neu.", "Die Methode nicht."],
+  proof_lead="ChatGPT Ads sind neu, unsere Arbeitsweise ist es nicht. Vier Zahlen aus laufenden Mandaten, die genau die Fragen beantworten, die auch bei der Karte entscheiden: welche Botschaft trägt, welche Strecke hält und welche Struktur skaliert.",
   proof_nums=[],
   proof_quote="",
   tell=dict(
-    h="Vier Schritte, ein Test.",
-    t="Unsere Herangehensweise, von der ersten Prüfung bis zur Entscheidung.",
+    label="Vier Zahlen, ein Übertrag",
     steps=[
-      ("1 Tag", "bis zur Eignungsaussage", "Eignung prüfen",
-       "Wir prüfen Ihre Branche gegen die aktuellen Richtlinien und sagen Ihnen innerhalb eines Tages, ob und wie Sie werben dürfen. Braucht es eine Freigabe, holen wir sie ein."),
-      ("12", "Gesprächssituationen als Ausgangspunkt", "Kontext schreiben",
-       "Statt Keyword-Listen beschreiben wir die Situationen, in denen jemand Ihre Antwort braucht. Zwölf Situationen zum Start, nach Themen sortiert, breit statt auf die Marke verengt."),
-      ("3", "Kartenvarianten im Test", "Karte testen",
-       "Drei Titel, drei Texte, ein Bild ohne Schrift. Die Varianten laufen gegeneinander, das Budget wandert zur Karte, die im Gespräch geklickt wird."),
-      ("4 Wochen", "bis zur Empfehlung", "Lesen und entscheiden",
-       "Wöchentliche Lesung mit Ihnen, nach vier Wochen eine Empfehlung: ausbauen, anpassen oder stoppen. Mit den Zahlen, die der Kanal liefert, und der Nennung dessen, was er nicht liefert."),
+      ("489", "qualifizierte Anfragen, Premium-Neubau Wien", "Botschaft schlägt Budget",
+       "Vier Motive im Test, konsequente Umschichtung auf den Sieger, € 11,77 je Anfrage im Schnitt. Für die Karte heißt das: drei Titel, drei Texte, und das Gespräch entscheidet, nicht der Geschmack."),
+      ("54 %", "aller Anfragen aus einem einzigen Motiv", "Testen statt raten",
+       "Ein Motiv trug mehr als die Hälfte aller Anfragen desselben Projekts. In ChatGPT gilt das doppelt: 50 Zeichen Titel, 100 Zeichen Text, ein Bild. Welche Formulierung trägt, zeigt nur der Test."),
+      ("€ 9,59", "je Anfrage über die richtige Strecke, statt € 58,05", "Die Strecke entscheidet",
+       "Dieselbe Zielgruppe, dieselbe Woche, Wohnbau-Projekt: Formular direkt in der Plattform gegen Website-Formular, sechsfacher Preisunterschied. Deshalb bauen wir die Landingpage hinter der Karte mit."),
+      ("8,75", "Return on Ad Spend, Crowdinvesting, vorher 2,14", "Struktur statt mehr Budget",
+       "Nahezu gleiches Budget, andere Kontostruktur: aus 16 Investments wurden 50. Für ChatGPT Ads bauen wir das Konto von Tag eins nach Gesprächssituationen, nicht nach Produktlisten."),
     ]),
   channels=dict(
     label="Cost per Lead je Strecke, Wohnbau-Projekt",
@@ -584,9 +575,9 @@ SERVICES = [
     link=("case-premium-neubau.html", "Premium-Neubau im Detail"),
     rows=[("Drei weitere Motive", 85, "46 %"), ("Ein Motiv", 100, "54 %")],
     note="Vier Motive im Test, eines trug mehr als die Hälfte aller Anfragen. Genau diese Disziplin übertragen wir auf die Karte: testen statt raten."),
-  proofsplit=dict(label="Woher die Methode kommt",
+  proofsplit=dict(label="Zwei davon als Grafik",
                   h=["Zwei Zahlen,", "eine Arbeitsweise."],
-                  t="ChatGPT Ads sind neu, unsere Arbeitsweise ist es nicht. Links: Die Strecke nach dem Klick bestimmt den Preis der Anfrage. Rechts: Testen schlägt Raten, ein Motiv trug 54 Prozent. Beides gilt für die Karte genauso wie für Meta und Google."),
+                  t="Links die Strecke: dieselbe Zielgruppe, dieselbe Woche, sechsfacher Preisunterschied je Anfrage. Rechts das Motiv: eines trug 54 Prozent. Beides steht so im Reporting, und beides gilt für die Karte genauso wie für Meta und Google."),
   visual=("panels", dict(label="Drei Situationen, drei Karten",
                           h="Dieselbe Karte, drei Gespräche. Der Unterschied liegt im Satz, den wir für Sie schreiben.",
                           t="Ein Shop, ein Finanzteam, eine Eventlocation. Jede Karte beantwortet die Frage, die gerade gestellt wurde. Die Beispiele sind gebaut, nicht geschaltet, und liegen exakt in den Limits von 50 und 100 Zeichen, mit denen wir arbeiten.",
@@ -594,28 +585,26 @@ SERVICES = [
                           d2=("Was wir bauen", "Konto, Karten, Landingpage, Pixel und Conversions API, alles aus einer Hand"),
                           imgs=["assets/img/gpt/card-shop.jpg", "assets/img/gpt/card-b2b.jpg", "assets/img/gpt/card-event.jpg", "assets/img/gpt/card-hero.jpg"])),
   voice=dict(label="Was Kunden sagen",
-             lead="Michael, Gründer und CEO von IB-7, über die Zusammenarbeit mit ad.boutique: Marke, Website, Performance und Content aus einer Hand.",
-             a="Michael, Gründer und CEO, IB-7",
+             lead="Michael Rohrmeier, Gründer und CEO von IB-7, über die Zusammenarbeit mit ad.boutique: Marke, Website, Performance und Content aus einer Hand.",
+             a="Michael Rohrmeier, Gründer und CEO, IB-7",
              video="assets/video/kundenstimme-ib7.mp4",
              note="Wir liefern kein Dashboard, das niemand liest. Einmal in der Woche gehen wir die Zahlen gemeinsam durch, auch die, die nicht funktioniert haben."),
   crew=dict(label="Wer daran arbeitet",
             h=["Vier Rollen,", "ein Team für Ihr Konto."],
             t="Konto, Kontext, Karte und Reporting sitzen im selben Raum. Wer die Gesprächssituationen schreibt, liest auch die Zahlen dazu und sitzt mit Ihnen im Call.",
-            people=[("Steve", "Performance Manager", "Baut das Konto, setzt Gebote und Tagesbudget und liest, welche Situationen Klicks bringen.", "assets/img/ag_strategy.jpg"),
-                    ("Constantin", "Design", "Baut Karte und Landingpage: Bild ohne Text, klar erkennbar, Strecke ohne Umweg.", "assets/img/ag_board1.jpg"),
+            people=[("Steve", "Performance Manager", "Baut das Konto, setzt Gebote und Budget und liest, welche Situationen Klicks bringen.", "assets/img/team/steve.jpg"),
+                    ("Constantin", "Design", "Baut Karte und Landingpage: Bild ohne Text, klar erkennbar, Strecke ohne Umweg.", "assets/img/team/constantin.jpg"),
                     ("Philipp", "Sales", "Prüft vor dem Start, ob Ihre Branche freigegeben ist, und holt die Freigabe ein, wenn nötig.", "assets/img/ag_talk.jpg"),
-                    ("Daniel", "Founder", "Schreibt die Gesprächssituationen mit Ihnen und verantwortet Reporting und Empfehlung.", "assets/img/founder.jpg")]),
+                    ("Daniel", "Founder", "Schreibt die Gesprächssituationen mit Ihnen und verantwortet Reporting und Empfehlung.", "assets/img/team/daniel.jpg")]),
   logos=[],
   oplist=[("case-premium-neubau.html", "Premium-Neubau, Wien", "489", "Leads, ein Motiv trug 54 %"),
           ("case-crowdinvesting.html", "Crowdinvesting-Plattform", "8,75", "ROAS, vorher 2,14, gleiches Budget"),
           ("case-d2c-lifestyle.html", "D2C-Lifestyle-Marke", "+57 %", "Jahresumsatz, Blended ROAS 5,57")],
   fit=dict(label="Bevor wir starten",
-           h=["Wenige Plätze.", "Aus gutem Grund."],
+           h=["Passt es?", "In beide Richtungen."],
            yes_h="Wir passen zusammen, wenn",
            no_h="Wir sind die Falschen, wenn",
-           cap_v="3",
-           cap_t="Testmandate für ChatGPT Ads nehmen wir bis Jahresende an. Jedes braucht eine eigene Prüfung, eigene Gesprächssituationen und eine Person, die die Zahlen mit Ihnen liest. Mehr geht nicht, ohne dass die Qualität leidet.",
-           intro="Warum jetzt: Der Kanal ist in Österreich seit wenigen Wochen offen, die Gebote sind niedrig, die meisten Wettbewerber prüfen noch. Wer heute startet, sammelt Erfahrungswerte, die in sechs Monaten teuer sind. Gleichzeitig gelten Richtlinien: Finanz und Gesundheit sind im EWR gesperrt, einzelne Immobilienangebote auch, Plattformen erlaubt. Wir prüfen das im ersten Gespräch, offen und in beide Richtungen.",
+           intro="Der Kanal ist in Österreich seit wenigen Wochen offen, die meisten Wettbewerber prüfen noch. Wer heute startet, sammelt Erfahrungswerte, die in sechs Monaten teuer sind. Gleichzeitig gelten Richtlinien: Finanz und Gesundheit sind im EWR gesperrt, einzelne Immobilienangebote auch, Plattformen erlaubt. Wir prüfen das im ersten Gespräch, offen und in beide Richtungen.",
            yes=["Shop mit Produktfeed oder klarem Produktversprechen",
                 "B2B und Software mit erklärungsbedürftigem Angebot",
                 "Gastro, Event, Reise, Bildung ohne Gesundheitsbezug",
@@ -626,27 +615,55 @@ SERVICES = [
                "Der Kanal soll in vier Wochen Google ersetzen"]),
   steps_next=dict(
     h="Von der Anfrage zur ersten Karte.",
-    rows=[("Heute", "Anfrage in zwei Minuten", "Branche, Angebot, was Sie sich erwarten."),
-          ("Unter 24 h", "Eignungsaussage", "Wir sagen, ob Ihre Branche freigegeben ist und ob eine Freigabe nötig wird."),
-          ("Tag 2 bis 10", "Konto, Kontext, Karten, Messung", "Sie legen das Konto an, wir bauen Situationen, Karten, Landingpage und Pixel."),
-          ("Danach", "Vier Wochen Test", "Ab 15 Euro Tagesbudget, wöchentliche Lesung, dann eine Empfehlung mit Zahlen.")]),
+    rows=[("Heute", "Anfrage und Eignungsaussage", "Branche, Angebot, Erwartung: zwei Minuten. Innerhalb eines Tages sagen wir, ob Ihre Branche freigegeben ist und ob eine Freigabe nötig wird."),
+          ("Tag 2 bis 10", "Konto, Kontext, Karten, Messung", "Sie legen das Konto an, es bleibt in Ihrem Besitz. Wir schreiben die Gesprächssituationen, bauen Karten, Landingpage, Pixel und Conversions API."),
+          ("Woche 3 bis 6", "Vier Wochen Test, eine Empfehlung", "Drei Kartenvarianten laufen gegeneinander, wöchentliche Lesung mit Ihnen. Am Ende eine Empfehlung mit Zahlen: ausbauen, anpassen oder stoppen.")]),
   deliver=["Eignungsaussage zu Ihrer Branche innerhalb eines Tages",
-           "Zwölf Gesprächssituationen, drei Kartenvarianten, Landingpage-Strecke",
+           "Gesprächssituationen, drei Kartenvarianten, Landingpage-Strecke",
            "Pixel, Conversions API und Auswertung bis auf Anzeigenebene",
            "Wöchentliche Lesung und nach vier Wochen eine klare Empfehlung"],
-  trust=["Eignungs-Check kostenlos", "Kein Vertrag für den Test", "Konto bleibt bei Ihnen", "Drei Plätze bis Jahresende"],
-  faq=[("Warum jetzt und nicht in einem Jahr?", "Weil die Gebote steigen, sobald der Kanal voll ist. Wer heute testet, kennt in sechs Monaten seine Gesprächssituationen, Karten und Kosten, während andere anfangen."),
-       ("Was macht ad.boutique, was wir nicht selbst könnten?", "Konto anlegen können Sie selbst. Was Erfahrung braucht: die Richtlinien-Prüfung vor dem Start, Gesprächssituationen statt Keywords, Karten, die im Gespräch geklickt werden, und eine Messung, die die Lücken des Kanals kennt."),
-       ("Dürfen wir mit Immobilien werben?", "Plattformen und Projektübersichten ja, einzelne Objekte nein. Anzeige und Landingpage dürfen nicht auf ein einzelnes Angebot zeigen. Wir bauen die Strecke so, dass sie hält."),
-       ("Was kostet ein Test?", "Das Mediabudget bestimmen Sie, ab rund 15 Euro am Tag. Unsere Leistung ist für den Vier-Wochen-Test pauschal, ohne Vertrag darüber hinaus. Der Eignungs-Check ist kostenlos."),
-       ("Wie messen wir Erfolg?", "Pixel und Conversions API, 24 bis 48 Stunden nach dem Klick, bis auf Anzeigenebene. Wir zeigen, was zählbar ist, und benennen vorab, was der Kanal nicht liefert.")],
+  trust=["Eignungs-Check kostenlos", "Kein Vertrag für den Test", "Konto bleibt bei Ihnen", "Erfolgsbeteiligung statt Retainer"],
+  faq=[("Warum jetzt und nicht in einem Jahr?", "Weil die Gebote steigen, sobald der Kanal voll ist, und weil Erfahrungswerte Zeit brauchen. Wer heute testet, kennt in sechs Monaten seine Gesprächssituationen, Karten und Kosten, während andere anfangen."),
+       ("Können wir das nicht selbst machen?", "Das Konto anlegen: ja. Was Erfahrung braucht: die Richtlinien-Prüfung vor dem Start, Gesprächssituationen statt Keywords, Karten, die im Gespräch geklickt werden, und eine Messung, die die Lücken des Kanals kennt. Genau das bringen wir aus dem Frühzugang mit."),
+       ("Dürfen wir mit Immobilien oder Finanzprodukten werben?", "Immobilien: Plattformen und Projektübersichten ja, einzelne Objekte nein. Finanz und Gesundheit sind im EWR gesperrt, außer das Ads Solutions Team gibt frei. Wir klären das vor dem ersten Euro, und ohne Freigabe gibt es keine Kampagne und keine Rechnung."),
+       ("Was kostet der Test?", "Das Mediabudget legen Sie fest, gesteuert wird über den Klickpreis. Unsere Leistung für den Vier-Wochen-Test ist pauschal, ohne Vertrag darüber hinaus. Der Eignungs-Check davor ist kostenlos. Wird daraus ein laufendes Mandat, gilt Basis-Fixum plus Erfolgsbeteiligung."),
+       ("Woher wissen wir, dass es funktioniert?", "Pixel und Conversions API, 24 bis 48 Stunden nach dem Klick, bis auf Anzeigenebene. Wir zeigen, was zählbar ist, und benennen vorab, was der Kanal nicht liefert, etwa Retargeting im EWR."),
+       ("Und wenn der Kanal nichts bringt?", "Dann steht das nach vier Wochen so im Report, mit der Empfehlung zu stoppen. Sie haben dann für überschaubares Geld eine Antwort, die Ihre Wettbewerber noch nicht haben.")],
   offer_h="Der Einstieg ist ein Eignungs-Check. Kostenlos, ohne Vertrag.",
   offer=["Wir prüfen Ihre Branche gegen die aktuellen Richtlinien, schreiben drei Gesprächssituationen und eine Karte als Vorschlag und sagen Ihnen, ob sich ein Test lohnt. Innerhalb eines Tages. Danach entscheiden Sie.",
-         "<b>Drei Testmandate bis Jahresende.</b> Braucht Ihre Branche eine Freigabe, holen wir sie ein, bevor ein Euro läuft. Kommt sie nicht, gibt es keine Kampagne und keine Rechnung."],
-  chips=["Eignungs-Check", "Testmandat", "Konto-Setup", "Gesprächssituationen", "Kartenvarianten", "Landingpage", "Pixel & CAPI", "Zweitmeinung"]),
+         "<b>Risikoumkehr inklusive:</b> Braucht Ihre Branche eine Freigabe, holen wir sie ein, bevor ein Euro läuft. Kommt sie nicht, gibt es keine Kampagne und keine Rechnung. Und wo sich Ergebnis messen lässt, koppeln wir unsere Vergütung daran: Basis-Fixum plus Erfolgsbeteiligung."],
+  chips=["Eignungs-Check", "Vier-Wochen-Test", "Konto-Setup", "Gesprächssituationen", "Kartenvarianten", "Landingpage", "Pixel & CAPI", "Zweitmeinung"]),
 
 ]
 
+
+# Stoerer vor dem Angebot: ein Bild, ein Satz zur Risikoumkehr, dunkel gesetzt
+STOER = {
+ "service-performance-marketing": dict(img="assets/img/retreat-04.jpg", side="left", al="Die Risikoumkehr",
+    ah=["Wir gewinnen nur,", "wenn Sie gewinnen."],
+    aside="Basis-Fixum plus Erfolgsbeteiligung: Unsere Vergütung hängt an dem, was sich messen lässt. Das ist kein Marketing-Satz, sondern unser Vertrag.",
+    zl="Wie wir arbeiten", zt="Dieselben Leute im Call, die auch die Kampagne bauen."),
+ "service-ecommerce": dict(img="assets/img/retreat-11.jpg", side="left", al="Die Risikoumkehr",
+    ah=["Beteiligt am Umsatz.", "Nicht am Aufwand."],
+    aside="Basis-Fixum plus Beteiligung am messbaren Umsatz statt Retainer. Wo sich Umsatz nicht sauber messen lässt, sagen wir das vorher, nicht nachher.",
+    zl="Wie wir arbeiten", zt="Ads, Shop und Tracking aus einer Hand."),
+ "service-content-creation": dict(img="assets/img/retreat-08.jpg", side="left", al="Die Risikoumkehr",
+    ah=["Verkauft es nicht,", "zählt es nicht."],
+    aside="Läuft die Produktion mit Performance-Mandat, koppeln wir die Vergütung an messbare Ergebnisse. Wir gewinnen nur, wenn Sie gewinnen.",
+    zl="Wie wir arbeiten", zt="Wer dreht, liest auch die Zahlen zum Motiv."),
+ "service-websites": dict(img="assets/img/retreat-01.jpg", side="left", al="Die Risikoumkehr",
+    ah=["Anfragen statt Lob.", "Daran messen wir uns."],
+    aside="Läuft die Seite im Performance-Mandat, hängt unsere Vergütung an messbaren Ergebnissen. Wir gewinnen nur, wenn Sie gewinnen.",
+    zl="Wie wir arbeiten", zt="Design, Text und Tracking sitzen im selben Raum."),
+ "service-strategie": dict(img="assets/img/retreat-05.jpg", side="left", al="Die Risikoumkehr",
+    ah=["Strategie, gemessen", "am Ergebnis."],
+    aside="Geht die Strategie in ein Umsetzungs-Mandat über, koppeln wir die Vergütung an messbare Ergebnisse. Wir gewinnen nur, wenn Sie gewinnen.",
+    zl="Wie wir arbeiten", zt="Zielbild, KPI-Logik, Reihenfolge. Dann bauen."),
+ "service-chatgpt-ads": dict(img="assets/img/retreat-06.jpg", side="left", al="Die Risikoumkehr",
+    ah=["Keine Freigabe,", "keine Rechnung."],
+    aside="Braucht Ihre Branche eine Freigabe, holen wir sie ein, bevor ein Euro läuft. Kommt sie nicht, gibt es keine Kampagne. Und wo sich Ergebnis messen lässt: Basis-Fixum plus Erfolgsbeteiligung.",
+    zl="Wie wir arbeiten", zt="Der Kanal ist neu. Die Regel ist alt: Wir gewinnen nur, wenn Sie gewinnen."),
+}
 
 import json as _json
 _MF = _json.load(open("assets/content.json", encoding="utf-8"))
@@ -735,7 +752,7 @@ def _tell(s):
     return ('  <!-- ERGEBNIS ALS STATIONEN (scrollgesteuert) -->\n'
             '  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:clamp(70px,9vw,140px)">\n'
             '    <div class="wrap">\n'
-            '      <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:clamp(30px,3.6vw,52px)">Ein Fall, nachgerechnet</span>\n'
+            '      <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:clamp(30px,3.6vw,52px)">%s</span>\n'
             '      <div class="tell">\n'
             '        <div class="tsteps">\n        %s\n        </div>\n'
             '        <div class="tfix">\n'
@@ -743,7 +760,7 @@ def _tell(s):
             '          <div class="tl">%s</div>\n'
             '        </div>\n'
             '      </div>\n'
-            '    </div>\n  </section>\n\n') % (steps, first[0], first[1])
+            '    </div>\n  </section>\n\n') % (t.get("label", "Ein Fall, nachgerechnet"), steps, first[0], first[1])
 
 def _channels(s):
     c = s.get("channels")
@@ -779,7 +796,7 @@ def _fit(s):
     cap = ('      <div class="fitcap" data-fade>\n'
            '        <span class="fcnum">%s</span>\n'
            '        <span class="fctxt">%s</span>\n'
-           '      </div>\n') % (f.get("cap_v", "6"), f.get("cap_t", "Mandate betreuen wir gleichzeitig. Mehr geht nicht, wenn dieselben Leute im Call sitzen, die auch bauen.")) if f.get("cap_t") or f.get("cap_v") else ""
+           '      </div>\n') % (f.get("cap_v", ""), f.get("cap_t", "")) if f.get("cap_t") and f.get("cap_v") else ""
     return ('  <!-- GEGENSEITIGE PRUEFUNG -->\n'
             '  <section class="sec fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark" style="padding:clamp(90px,11vw,150px) 0">\n'
             '    <div class="wrap">\n'
@@ -804,19 +821,41 @@ def _next(s):
     if not n:
         return ""
     rows = "\n        ".join(
-        '<div class="op" data-fade>\n'
+        '<div class="op">\n'
         '          <span class="owhen">%s</span>\n'
         '          <span class="otitle">%s</span>\n'
         '          <span class="odesc">%s</span>\n'
         '        </div>' % (w, t, d)
         for w, t, d in n["rows"])
-    return ('  <!-- WAS ALS NAECHSTES PASSIERT -->\n'
-            '  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">\n'
+    return ('  <!-- WAS ALS NAECHSTES PASSIERT (dunkles Kapitel, Zeilen werden beim Scrollen aktiv) -->\n'
+            '  <section class="sec fg-dark nextsec" data-bg="#0E0E10" data-fg="light" style="background:#0E0E10">\n'
             '    <div class="wrap">\n'
-            '      <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:clamp(24px,3vw,40px)">Was als Nächstes passiert</span>\n'
+            '      <span class="label" style="color:var(--champ);display:block;margin-bottom:clamp(24px,3vw,40px)">Was als Nächstes passiert</span>\n'
             '      <h2 class="dispn" data-lines style="font-size:clamp(32px,3.8vw,62px);margin-bottom:clamp(36px,4.4vw,60px)"><span class="rl"><span>%s</span></span></h2>\n'
-            '      <div class="oplist oplist--steps" data-stagger>\n        %s\n      </div>\n'
+            '      <div class="oplist oplist--steps">\n        %s\n      </div>\n'
             '    </div>\n  </section>\n\n') % (n["h"], rows)
+
+def _stoer(s):
+    z = STOER.get(s["slug"])
+    if not z:
+        return ""
+    pos = "left:clamp(24px,6vw,110px)" if z["side"] == "right" else "right:clamp(24px,6vw,110px)"
+    ah = "".join('<span class="rl"><span>%s</span></span>' % x for x in z["ah"])
+    return ('  <!-- STOERER: RISIKOUMKEHR ALS BILD -->\n'
+            '  <section class="zoomsec zoomsec--dark" data-side="%s" data-bg="#0E0E10" data-fg="light" style="background:#0E0E10">\n'
+            '    <div class="zsticky">\n'
+            '      <div class="zaside fg-dark" style="%s">\n'
+            '        <span class="label" style="color:var(--champ)">%s</span>\n'
+            '        <h3 class="zah" data-lines>%s</h3>\n'
+            '        <p class="zasub">%s</p>\n'
+            '      </div>\n'
+            '      <div class="zmedia"><img src="%s" alt=""></div>\n'
+            '      <div class="zcap">\n'
+            '        <span class="zl">%s</span>\n'
+            '        <div class="zt">%s</div>\n'
+            '      </div>\n'
+            '    </div>\n'
+            '  </section>\n\n') % (z["side"], pos, z["al"], ah, z["aside"], z["img"], z["zl"], z["zt"])
 
 def _deliver(s):
     d = s.get("deliver")
@@ -1089,7 +1128,7 @@ def render_service(s):
     crew_sec = _crew(s)
     voice_sec = _voice(s)
     fit_sec = _fit(s)
-    next_sec = _next(s)
+    next_sec = _next(s) + _stoer(s)
     deliver_sec = _deliver(s)
     trust_sec = _trust(s)
 
@@ -1117,7 +1156,7 @@ def render_service(s):
   <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:clamp(30px,4vw,60px)">
     <div class="wrap svc-split">
       <div class="intro">
-        <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:20px">Die Lösung</span>
+        <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:20px">''' + s.get("sol_label", "Die Lösung") + '''</span>
         <p class="serif" data-scrub>''' + s["intro"] + '''</p>
       </div>
       <div class="acc">
@@ -1164,7 +1203,7 @@ def render_service(s):
   <!-- 06, PROOF 2: ERGEBNISSE -->
   <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">
     <div class="wrap" style="max-width:1100px">
-      <span class="label" style="color:var(--champ-deep);display:block;text-align:center">Ergebnisse</span>
+      <span class="label" style="color:var(--champ-deep);display:block;text-align:center">''' + s.get("proof_label", "Ergebnisse") + '''</span>
       <h2 class="dispn" data-lines style="font-size:clamp(36px,4.6vw,78px);text-align:center;margin-top:22px">
         <span class="rl"><span>''' + s["proof_h"][0] + '''</span></span>
         <span class="rl"><span><i style="font-style:italic">''' + s["proof_h"][1] + '''</i></span></span>

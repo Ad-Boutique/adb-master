@@ -17,6 +17,11 @@ func pump(_ s: Double) { let t = Date(); while Date().timeIntervalSince(t) < s {
 web.load(URLRequest(url: url))
 let t0 = Date(); while !d.done && Date().timeIntervalSince(t0) < 20 { pump(0.1) }
 pump(4)
+// Optional: JS vor den Screenshots ausfuehren (z. B. Cookie-Banner schliessen), via Umgebungsvariable PREJS
+if let pre = ProcessInfo.processInfo.environment["PREJS"], !pre.isEmpty {
+  web.evaluateJavaScript(pre, completionHandler: nil)
+  pump(2)
+}
 for (i, y) in ys.enumerated() {
   web.evaluateJavaScript("window.scrollTo({top: \(y), behavior:'instant'});", completionHandler: nil)
   pump(2.5)

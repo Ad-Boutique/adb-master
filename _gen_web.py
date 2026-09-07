@@ -45,7 +45,16 @@ WEBCASES = [
   branche="Beauty, D2C",
   line="Website und Marke: Wo Jahrtausende auf den Moment treffen.",
   story="Antikes Wissen über Hautpflege trifft moderne Wissenschaft: Der Auftritt erzählt die Marke, führt zu den Produkten und trägt die Kampagnen, die wir parallel in Performance und Content fahren.",
-  leistungen="Website & Markenauftritt<br>Content Creation<br>Performance Marketing"),
+  leistungen="Website & Markenauftritt<br>Content Creation<br>Performance Marketing",
+  kap=dict(label="Zweites und drittes Kapitel",
+           h="Content und Performance aus derselben Hand.",
+           p1="Die Website ist der Ort, an dem alles zusammenläuft. Parallel produzieren wir den Content für Feed und Shop, von der Produktfotografie bis zum Bewegtbild, und steuern die Performance-Kampagnen, die den Traffic bringen.",
+           p2="<b>Ein Team, eine Logik:</b> Wer die Seite baut, sitzt auch im Call, in dem die Kampagnenzahlen gelesen werden. Marke, Website, Content und Performance folgen so einer Linie, statt an drei Agenturen zu hängen."),
+  voice=dict(label="Was der Kunde sagt",
+             lead="Michael Rohrmeier, Gründer und CEO von IB-7, über die Zusammenarbeit mit ad.boutique: Marke, Website, Performance und Content aus einer Hand.",
+             a="Michael Rohrmeier, Gründer und CEO, IB-7",
+             video="assets/video/kundenstimme-ib7.mp4",
+             note="Kein Dashboard, das niemand liest. Wir gehen die Zahlen gemeinsam durch, auch die, die nicht funktioniert haben.")),
  dict(slug="case-web-twistnsparkle", key="twistnsparkle", name="Twist'n Sparkle, isi", url="https://www.twistnsparkle.isi.com/en",
   branche="Consumer, Produkt-Kampagne",
   line="Produkt-Kampagnen-Site: Sparkle it your way.",
@@ -122,6 +131,49 @@ def page(c, nxt):
 
 """
 
+    # Weitere Kapitel: was ueber die Website hinaus fuer den Kunden laeuft, plus Kundenstimme.
+    # Der Marker "KAPITEL: MEHR" ist die Einsetzstelle fuer die Content-Galerie aus _apply_content.py,
+    # damit die Reihenfolge Website -> Content -> Performance-Text -> Kundenstimme -> Next entsteht.
+    extra = ""
+    if c.get("kap"):
+        k = c["kap"]
+        extra += """  <!-- KAPITEL: MEHR -->
+  <section class="sec fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark">
+    <div class="wrap lchap">
+      <div>
+        <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:16px">%s</span>
+        <div class="lh" data-lines><span class="rl"><span>%s</span></span></div>
+      </div>
+      <div data-stagger>
+        <p class="lt3" data-fade>%s</p>
+        <p class="lt3" data-fade>%s</p>
+      </div>
+    </div>
+  </section>
+
+""" % (k["label"], k["h"], k["p1"], k["p2"])
+    if c.get("voice"):
+        v = c["voice"]
+        extra += """  <!-- KAPITEL: KUNDENSTIMME -->
+  <section class="sec fg-dark" data-bg="#0E0E10" data-fg="light" style="background:#0E0E10">
+    <div class="wrap vsplit">
+      <div class="vtxt">
+        <span class="label" style="color:var(--champ)">%s</span>
+        <p class="vq vq--lead" data-fade>%s</p>
+        <div class="va" data-fade>%s</div>
+        <p class="vnote" data-fade>%s</p>
+      </div>
+      <div class="vmedia vmedia--video" data-fade>
+        <div class="pwiv">
+          <video class="ivplayer" data-auto muted loop playsinline preload="none" width="640" height="1138" src="%s"></video>
+          <button class="ivsound" type="button" aria-label="Ton einschalten"><span class="ivbars"><i></i><i></i><i></i></span><span class="ivlabel">Ton an</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+""" % (v["label"], v["lead"], v["a"], v["note"], v["video"])
+
     nxt_href = nxt["slug"] + ".html"
     nxt_img = "%s/web_%s_d.jpg" % (IMG, nxt["key"])
     body = HEAD.format(title="Case, " + c["name"], bodybg="#0E0E10") + menu("work.html", back=True) + """<main>
@@ -156,7 +208,7 @@ def page(c, nxt):
     </div>
   </section>
 
-""" + stage + phones + gal + """  <!-- NEXT -->
+""" + stage + phones + gal + extra + """  <!-- NEXT -->
   <section class="sec npro-sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-bottom:0;padding-top:clamp(60px,8vw,110px)">
     <div class="wrap">
       <div class="npbar2"><span>Nächste Website</span><a href="work.html">Alle ansehen</a></div>

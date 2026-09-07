@@ -216,7 +216,7 @@ for slug, fname in CASE_FILES.items():
         if a >= 0 and b > a:
             s = s[:a] + s[b + len('</section>'):].lstrip('\n')
     # vor "NEXT" einsetzen
-    for marker in ("  <!-- NEXT CASE -->", "  <!-- NEXT -->"):
+    for marker in ("  <!-- KAPITEL: MEHR -->", "  <!-- NEXT CASE -->", "  <!-- NEXT -->"):
         if marker in s:
             s = s.replace(marker, gal + marker, 1)
             break

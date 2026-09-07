@@ -499,6 +499,15 @@
     });
   }
 
+  /* ---------- Ablauf-Zeilen (scrollgetrieben, in beide Richtungen) ---------- */
+  var steprows = Array.prototype.slice.call(document.querySelectorAll(".oplist--steps .op"));
+  function stepsTick() {
+    for (var i = 0; i < steprows.length; i++) {
+      var r = steprows[i].getBoundingClientRect();
+      steprows[i].classList.toggle("on", (r.top + r.height * 0.5) < vh * 0.74 && r.bottom > 0);
+    }
+  }
+
   /* ---------- Scroll-Loop ---------- */
   var vh = window.innerHeight;
   window.addEventListener("resize", function () { vh = window.innerHeight; });
@@ -536,6 +545,7 @@
     tellTick();
     chrowTick();
     bacmpTick();
+    stepsTick();
     ticking = false;
   }
   var ticking = false;

@@ -12,8 +12,8 @@ HEAD = '''<!doctype html>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 
-<link rel="stylesheet" href="assets/master.css?v=61">
-<script src="assets/master.js?v=61" defer></script>
+<link rel="stylesheet" href="assets/master.css?v=63">
+<script src="assets/master.js?v=63" defer></script>
 </head>
 <body style="background-color:{bodybg}" class="on-light">
 
@@ -163,9 +163,9 @@ CASES = [
         ("Creative", "Bewegtbild für Vertrauen, Daten-Visuals für die Entscheidung."),
         ("Kanal", "Google sauber zurechenbar, CRM-Nurture für die Reife langer Entscheidungswege.")],
   nums=[("(Return on Ad Spend)", "129×"), ("(zurechenbares Kapital)", "€ 4,65 Mio."), ("(Cost per Investor)", "€ 3.004"), ("(Zeichnungen im Funnel)", "43")],
-  note="Gesamt-Funnel: € 320k Spend, € 12,8 Mio. Kapital, 446 Leads. Ehrlich gemessen: Ein paralleler Paid-Media-Test über € 278.727 brachte 0 zugerechnete Zeichnungen und wurde gestoppt.",
+  note="Gesamt-Funnel: € 320k Spend, € 12,8 Mio. Kapital, 446 Leads. Ehrlich gemessen: Ein zweiter Paid-Kanal lief beim Kunden bereits, bevor wir kamen. Wir haben ihn messbar gemacht, parallel den zurechenbaren Kanal aufgebaut, und als sich bestätigte, dass er keine Zeichnungen bringt, geschlossen.",
   learn=["Im Finance zählt der Cost per zugerechnetem Kapital, nicht der CPL.",
-         "Ehrlich, auch unbequem: Ein € 278k-Test brachte 0 Zeichnungen und wurde gestoppt.",
+         "Ehrlich, auch unbequem: Ein bestehender Kanal wurde messbar gemacht, die Hypothese bestätigt, dass er nichts bringt, und geschlossen.",
          "Sauberes Tracking ist die Voraussetzung für jede ehrliche Aussage."]),
  dict(slug="case-d2c-lifestyle", img="assets/img/c_candle.jpg", ziel="Profitables Wachstum", nav_title="D2C-Lifestyle-Marke",
   title=["D2C-Lifestyle-", "Marke."], sub="€ 520k → € 817k Umsatz. Das beste Jahr der Firma.",
