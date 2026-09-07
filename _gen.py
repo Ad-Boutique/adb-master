@@ -12,8 +12,8 @@ HEAD = '''<!doctype html>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 
-<link rel="stylesheet" href="assets/master.css?v=63">
-<script src="assets/master.js?v=63" defer></script>
+<link rel="stylesheet" href="assets/master.css?v=64">
+<script src="assets/master.js?v=64" defer></script>
 </head>
 <body style="background-color:{bodybg}" class="on-light">
 
@@ -39,9 +39,6 @@ MENU_ITEMS = [
           <span style="background:#1C2530"></span>
           <span><img loading="lazy" decoding="async" src="assets/img/a_otta1.jpg" alt=""></span>
         </span>
-      </span>'''),
-    ("service-chatgpt-ads.html", "ChatGPT Ads", '''<span class="mv" style="background:#F3EDE1">
-        <img loading="lazy" decoding="async" src="assets/img/gpt/card-hero.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left top">
       </span>'''),
     ("index.html#leistungen", "Leistungen", '''<span class="mv" style="background:#F3EDE1">
         <span class="bars" style="left:8%;top:22%;width:40%"><i style="width:95%;height:9px"></i><i style="width:70%;height:9px"></i><i style="width:50%;margin-top:6px"></i><i style="width:26%;height:10px;margin-top:8px"></i></span>
