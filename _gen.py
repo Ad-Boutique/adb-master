@@ -12,8 +12,8 @@ HEAD = '''<!doctype html>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 
-<link rel="stylesheet" href="assets/master.css?v=47">
-<script src="assets/master.js?v=47" defer></script>
+<link rel="stylesheet" href="assets/master.css?v=50">
+<script src="assets/master.js?v=50" defer></script>
 </head>
 <body style="background-color:{bodybg}" class="on-light">
 
@@ -39,10 +39,6 @@ MENU_ITEMS = [
           <span style="background:#1C2530"></span>
           <span><img loading="lazy" decoding="async" src="assets/img/a_otta1.jpg" alt=""></span>
         </span>
-      </span>'''),
-    ("case-premium-neubau.html", "Case, Neubau Wien", '''<span class="mv">
-        <img loading="lazy" decoding="async" src="assets/img/fx-66.jpg" alt="" style="position:absolute;inset:0;height:100%">
-        <span class="bars" style="left:7%;bottom:10%;width:30%;filter:invert(1)"><i style="width:100%"></i><i style="width:60%"></i></span>
       </span>'''),
     ("index.html#leistungen", "Leistungen", '''<span class="mv" style="background:#F3EDE1">
         <span class="bars" style="left:8%;top:22%;width:40%"><i style="width:95%;height:9px"></i><i style="width:70%;height:9px"></i><i style="width:50%;margin-top:6px"></i><i style="width:26%;height:10px;margin-top:8px"></i></span>
@@ -169,7 +165,7 @@ CASES = [
          "Ehrlich, auch unbequem: Ein € 278k-Test brachte 0 Zeichnungen und wurde gestoppt.",
          "Sauberes Tracking ist die Voraussetzung für jede ehrliche Aussage."]),
  dict(slug="case-d2c-lifestyle", img="assets/img/c_candle.jpg", ziel="Profitables Wachstum", nav_title="D2C-Lifestyle-Marke",
-  title=["D2C-Lifestyle-", "Marke."], sub="€ 520k → € 817k Umsatz. Das beste Jahr der Firmengeschichte.",
+  title=["D2C-Lifestyle-", "Marke."], sub="€ 520k → € 817k Umsatz. Das beste Jahr der Firma.",
   clr="#4A3328", fg="#F4EEE8", big="+57 %", biglabel="Jahresumsatz",
   disz=[("E-Commerce Growth", "service-ecommerce.html"), ("Performance Marketing", "service-performance-marketing.html"), ("Content Creation", "service-content-creation.html")],
   erg=["<em>+57 %</em> Jahresumsatz", "<em>5,57</em> Blended ROAS, Ziel 3,5", "<em>+56 %</em> Bestellungen"],
@@ -230,7 +226,7 @@ CASES = [
   phones=dict(h="Gebaut für den Daumen.", t="Die Saison lebt mobil: Kampagnen-Site und Sujets, dort wo der Kauf beginnt.",
               imgs=["assets/img/web_twistnsparkle_m0.jpg", "assets/img/web_twistnsparkle_m1.jpg", "assets/img/web_twistnsparkle_m2.jpg", "assets/img/web_twistnsparkle_ms0.jpg"]),
   ziel="Profitabler Saison-Peak", nav_title="Premium-Consumer-Brand",
-  title=["Premium-", "Consumer-Brand."], sub="Black-Friday-ROAS 4,02. 75 % über dem eigenen Benchmark.",
+  title=["Premium-", "Consumer-Brand."], sub="Black-Friday-ROAS 4,02. 75 % über Benchmark.",
   img="assets/img/isi.jpg", big="4,02", biglabel="BFCM-ROAS",
   disz=[("E-Commerce Growth", "service-ecommerce.html"), ("Performance Marketing", "service-performance-marketing.html"), ("Content Creation", "service-content-creation.html")],
   erg=["<em>4,02</em> BFCM-ROAS, Benchmark 2,3", "<em>€ 0,99</em> Awareness-CPM, −72 %", "<em>7,26 Mio.</em> Impressions"],
@@ -252,7 +248,7 @@ CASES = [
   phones=dict(h="Sujets, die im Feed bestehen.", t="Lage plus Lebensgefühl statt Floskeln: die Motive aus dem laufenden Portfolio.",
               imgs=["assets/img/a_otta1.jpg", "assets/img/a_otta2.jpg", "assets/img/a_otta3.jpg"]),
   ziel="Planbare Leads im Portfolio", nav_title="Bauträger-Portfolio, Wien",
-  title=["Bauträger-", "Portfolio, Wien."], sub="€ 4,72 pro Lead. Der effizienteste im ganzen Portfolio.",
+  title=["Bauträger-", "Portfolio, Wien."], sub="€ 4,72 pro Lead. Der effizienteste im Portfolio.",
   img="assets/img/a_otta1.jpg", big="€ 4,72", biglabel="Cost per Lead",
   disz=[("Performance Marketing", "service-performance-marketing.html"), ("Content Creation", "service-content-creation.html")],
   erg=["<em>109</em> Leads aus € 515 Spend", "<em>€ 4,72</em> Cost per Lead", "<em>2,24 %</em> CTR"],
@@ -271,7 +267,7 @@ CASES = [
          "Lage plus Lebensgefühl schlagen Floskeln.",
          "Niedrige CPL kommt aus Disziplin, nicht aus Glück."]),
  dict(slug="case-health-brand", img="assets/prev/case-health-brand.jpg", ziel="Profitable Skalierung", nav_title="Dental-/Health-Marke",
-  title=["Dental-/", "Health-Marke."], sub="1.385 Verkäufe in 7 Monaten. Und der ehrliche Blick darauf.",
+  title=["Dental-/", "Health-Marke."], sub="1.385 Verkäufe in 7 Monaten, ehrlich gerechnet.",
   clr="#1F3833", fg="#EAF1EE", big="1.385", biglabel="Verkäufe in 7 Monaten",
   disz=[("E-Commerce Growth", "service-ecommerce.html"), ("Content Creation", "service-content-creation.html")],
   erg=["<em>1.385</em> Verkäufe", "<em>€ 60</em> Retargeting-CPA", "<em>−58 %</em> CPA durch UGC"],
@@ -318,20 +314,20 @@ def case_page(c, nxt):
     <img src="%s" alt="%s">
     <div class="hcap">
       <div class="cl" style="font-size:15px">%s <span>%s</span></div>
-      <div class="dispn" style="font-size:clamp(34px,4.6vw,74px);margin-top:10px;text-shadow:0 2px 24px rgba(0,0,0,0.4)">%s</div>
+      <div class="dispn" style="--n:%d">%s</div>
     </div>
     <div class="hkpi"><div class="kv">%s</div><div class="kl">(%s)</div></div>
     <div class="scrollhint">Scrollen</div>
-  </section>""" % (world, c["img"], c["nav_title"], c["nav_title"], c["rahmen"].split("<br>")[0].split(",")[0].strip(), c["sub"], c["big"], c["biglabel"])
+  </section>""" % (world, c["img"], c["nav_title"], c["nav_title"], c["rahmen"].split("<br>")[0].split(",")[0].strip(), len(c["sub"]), c["sub"], c["big"], c["biglabel"])
     else:
         hero = """<section class="chero" data-bg="%s" data-fg="light" style="background:%s;color:%s">
     <div class="hcap">
       <div class="cl" style="font-size:15px">%s <span style="opacity:.65">%s</span></div>
-      <div class="dispn" style="font-size:clamp(34px,4.6vw,74px);margin-top:10px">%s</div>
+      <div class="dispn" style="--n:%d">%s</div>
     </div>
     <div class="hkpi"><div class="kv" style="font-size:clamp(60px,7vw,120px)">%s</div><div class="kl">(%s)</div></div>
     <div class="scrollhint">Scrollen</div>
-  </section>""" % (world, world, wfg, c["nav_title"], c["rahmen"].split("<br>")[0].split(",")[0].strip(), c["sub"], c["big"], c["biglabel"])
+  </section>""" % (world, world, wfg, c["nav_title"], c["rahmen"].split("<br>")[0].split(",")[0].strip(), len(c["sub"]), c["sub"], c["big"], c["biglabel"])
     disz_links = "\n          ".join('<a href="%s">%s</a>' % (h, t) for t, h in c["disz"])
     lens_rows = "\n".join('        <div class="lrow" data-fade><div class="ll">%s</div><div class="lt">%s</div></div>' % (l, t) for l, t in c["lens"])
     nums = "\n".join('        <div class="n" data-fade><div class="l">%s</div><div class="v num serif">%s</div></div>' % (l, v) for l, v in c["nums"])
