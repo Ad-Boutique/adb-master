@@ -17,7 +17,7 @@ def logos_row(names, label):
 
 ''' % (label, imgs)
 
-SVC_COLS = {"service-ecommerce": [["assets/case/juwel/g0.jpg", "assets/case/juwel/g2.jpg", "assets/case/medcenter/g4.jpg", "assets/case/case-health-brand/g3.jpg", "assets/case/case-web-ib7/g1.jpg"], ["assets/case/medcenter/g0.jpg", "assets/case/medcenter/g2.jpg", "assets/case/case-consumer-brand/v0.mp4", "assets/case/case-consumer-brand/g0.jpg", "assets/case/grandgarden/g3.jpg"], ["assets/case/grandgarden/g0.jpg", "assets/case/grandgarden/g2.jpg", "assets/case/case-health-brand/v0.mp4", "assets/case/case-health-brand/g0.jpg", "assets/case/case-web-ib7/g4.jpg"], ["assets/case/juwel/g1.jpg", "assets/case/juwel/g3.jpg", "assets/case/grandgarden/v0.mp4", "assets/case/case-health-brand/g1.jpg", "assets/case/case-web-ib7/g0.jpg"], ["assets/case/medcenter/g1.jpg", "assets/case/medcenter/g3.jpg", "assets/case/case-health-brand/v1.mp4", "assets/case/grandgarden/g1.jpg", "assets/case/juwel/g5.jpg"], ["assets/case/case-health-brand/g2.jpg", "assets/case/juwel/g4.jpg", "assets/case/case-web-ib7/g2.jpg", "assets/case/case-web-ib7/g3.jpg", "assets/case/case-web-ib7/g5.jpg"]], "service-performance-marketing": [["assets/case/case-premium-neubau/g0.jpg", "assets/case/case-premium-neubau/g1.jpg", "assets/case/medcenter/g2.jpg", "assets/case/case-immobilien-investment/v0.mp4", "assets/case/grandgarden/g3.jpg"], ["assets/case/grandgarden/g0.jpg", "assets/case/case-wohnbau-floridsdorf/g1.jpg", "assets/case/juwel/g2.jpg", "assets/case/herogroup/v0.mp4", "assets/case/case-premium-neubau/g4.jpg"], ["assets/case/case-wohnbau-floridsdorf/g0.jpg", "assets/case/medcenter/g1.jpg", "assets/case/case-premium-neubau/g3.jpg", "assets/case/case-immobilien-investment/v1.mp4", "assets/case/herogroup/g1.jpg"], ["assets/case/medcenter/g0.jpg", "assets/case/juwel/g1.jpg", "assets/case/case-wohnbau-floridsdorf/g3.jpg", "assets/case/herogroup/v1.mp4", "assets/case/case-immobilien-investment/g1.jpg"], ["assets/case/juwel/g0.jpg", "assets/case/case-premium-neubau/g2.jpg", "assets/case/medcenter/g3.jpg", "assets/case/grandgarden/v0.mp4", "assets/case/case-immobilien-investment/g0.jpg"], ["assets/case/herogroup/g0.jpg", "assets/case/grandgarden/g2.jpg", "assets/case/juwel/g3.jpg", "assets/case/grandgarden/g1.jpg", "assets/case/case-wohnbau-floridsdorf/g2.jpg"]], "service-content-creation": [["assets/case/juwel/g0.jpg", "assets/case/medcenter/g1.jpg", "assets/case/case-premium-neubau/g2.jpg", "assets/case/kommunalkredit/g0.jpg", "assets/case/kommunalkredit/g2.jpg"], ["assets/case/grandgarden/g0.jpg", "assets/case/case-premium-neubau/g1.jpg", "assets/case/juwel/g3.jpg", "assets/case/case-health-brand/g0.jpg", "assets/case/kommunalkredit/g3.jpg"], ["assets/case/medcenter/g0.jpg", "assets/case/juwel/g2.jpg", "assets/case/medcenter/g3.jpg", "assets/case/kommunalkredit/g1.jpg", "assets/case/case-health-brand/g3.jpg"], ["assets/case/herogroup/g0.jpg", "assets/case/case-health-brand/g2.jpg", "assets/case/case-premium-neubau/g3.jpg", "assets/case/case-health-brand/g1.jpg", "assets/case/grandgarden/g3.jpg"], ["assets/case/case-premium-neubau/g0.jpg", "assets/case/grandgarden/g2.jpg", "assets/case/juwel/g4.jpg", "assets/case/grandgarden/g1.jpg", "assets/case/kommunalkredit/g4.jpg"], ["assets/case/juwel/g1.jpg", "assets/case/medcenter/g2.jpg", "assets/case/herogroup/v0.mp4", "assets/case/herogroup/v1.mp4", "assets/case/herogroup/g1.jpg"]], "service-websites": [["assets/case/case-web-noma/g0.jpg", "assets/case/case-premium-neubau/g3.jpg", "assets/case/grandgarden/g3.jpg", "assets/case/case-web-ib7/g0.jpg", "assets/case/case-web-noma/g2.jpg"], ["assets/case/case-premium-neubau/g0.jpg", "assets/case/grandgarden/v0.mp4", "assets/case/case-web-ib7/g2.jpg", "assets/case/case-web-pharmacom/g0.jpg", "assets/case/case-web-noma/g3.jpg"], ["assets/case/grandgarden/g0.jpg", "assets/case/grandgarden/v1.mp4", "assets/case/case-web-ib7/g3.jpg", "assets/case/case-web-trattner/g0.jpg", "assets/case/case-web-noma/g4.jpg"], ["assets/case/case-premium-neubau/g1.jpg", "assets/case/case-premium-neubau/v0.mp4", "assets/case/case-web-noma/g1.jpg", "assets/case/case-web-ib7/g4.jpg", "assets/case/case-web-noma/g5.jpg"], ["assets/case/case-premium-neubau/g2.jpg", "assets/case/grandgarden/v2.mp4", "assets/case/case-web-trattner/g1.jpg", "assets/case/case-premium-neubau/g4.jpg", "assets/case/case-web-ib7/g1.jpg"], ["assets/case/grandgarden/g2.jpg", "assets/case/case-premium-neubau/v1.mp4", "assets/case/grandgarden/g1.jpg", "assets/case/case-premium-neubau/g5.jpg", "assets/case/case-web-ib7/g5.jpg"]], "service-strategie": [["assets/case/grandgarden/g0.jpg", "assets/case/case-premium-neubau/g2.jpg", "assets/case/case-crowdinvesting/g0.jpg", "assets/case/kommunalkredit/g1.jpg", "assets/case/kommunalkredit/g4.jpg"], ["assets/case/herogroup/g0.jpg", "assets/case/case-premium-neubau/g3.jpg", "assets/case/kommunalkredit/g0.jpg", "assets/case/case-crowdinvesting/g2.jpg", "assets/case/case-premium-neubau/g4.jpg"], ["assets/case/case-premium-neubau/g0.jpg", "assets/case/case-crowdinvesting/g4.jpg", "assets/case/grandgarden/g1.jpg", "assets/case/kommunalkredit/g2.jpg", "assets/case/case-crowdinvesting/g5.jpg"], ["assets/case/case-crowdinvesting/g1.jpg", "assets/case/case-immobilien-investment/v0.mp4", "assets/case/herogroup/v1.mp4", "assets/case/case-crowdinvesting/g3.jpg", "assets/case/herogroup/g1.jpg"], ["assets/case/case-premium-neubau/g1.jpg", "assets/case/herogroup/v0.mp4", "assets/case/grandgarden/v0.mp4", "assets/case/grandgarden/g3.jpg", "assets/case/case-immobilien-investment/g1.jpg"], ["assets/case/grandgarden/g2.jpg", "assets/case/case-immobilien-investment/v1.mp4", "assets/case/herogroup/v2.mp4", "assets/case/kommunalkredit/g3.jpg", "assets/case/case-immobilien-investment/g0.jpg"]]}
+SVC_COLS = {"service-ecommerce": [["assets/case/juwel/g0.jpg", "assets/case/juwel/g2.jpg", "assets/case/medcenter/g4.jpg", "assets/case/case-health-brand/g3.jpg", "assets/case/case-web-ib7/g1.jpg"], ["assets/case/medcenter/g0.jpg", "assets/case/medcenter/g2.jpg", "assets/case/case-consumer-brand/v0.mp4", "assets/case/case-consumer-brand/g0.jpg", "assets/case/grandgarden/g3.jpg"], ["assets/case/grandgarden/g0.jpg", "assets/case/grandgarden/g2.jpg", "assets/case/case-health-brand/v0.mp4", "assets/case/case-health-brand/g0.jpg", "assets/case/case-web-ib7/g4.jpg"], ["assets/case/juwel/g1.jpg", "assets/case/juwel/g3.jpg", "assets/case/grandgarden/v0.mp4", "assets/case/case-health-brand/g1.jpg", "assets/case/case-web-ib7/g0.jpg"], ["assets/case/medcenter/g1.jpg", "assets/case/medcenter/g3.jpg", "assets/case/case-health-brand/v1.mp4", "assets/case/grandgarden/g1.jpg", "assets/case/juwel/g5.jpg"], ["assets/case/case-health-brand/g2.jpg", "assets/case/juwel/g4.jpg", "assets/case/case-web-ib7/g2.jpg", "assets/case/case-web-ib7/g3.jpg", "assets/case/case-web-ib7/g5.jpg"]], "service-performance-marketing": [["assets/case/case-premium-neubau/g0.jpg", "assets/case/case-premium-neubau/g1.jpg", "assets/case/medcenter/g2.jpg", "assets/case/case-immobilien-investment/v0.mp4", "assets/case/grandgarden/g3.jpg"], ["assets/case/grandgarden/g0.jpg", "assets/case/case-wohnbau-floridsdorf/g1.jpg", "assets/case/juwel/g2.jpg", "assets/case/herogroup/v0.mp4", "assets/case/case-premium-neubau/g4.jpg"], ["assets/case/case-wohnbau-floridsdorf/g0.jpg", "assets/case/medcenter/g1.jpg", "assets/case/case-premium-neubau/g3.jpg", "assets/case/case-immobilien-investment/v1.mp4", "assets/case/herogroup/g1.jpg"], ["assets/case/medcenter/g0.jpg", "assets/case/juwel/g1.jpg", "assets/case/case-wohnbau-floridsdorf/g3.jpg", "assets/case/herogroup/v1.mp4", "assets/case/case-immobilien-investment/g1.jpg"], ["assets/case/juwel/g0.jpg", "assets/case/case-premium-neubau/g2.jpg", "assets/case/medcenter/g3.jpg", "assets/case/grandgarden/v0.mp4", "assets/case/case-immobilien-investment/g0.jpg"], ["assets/case/herogroup/g0.jpg", "assets/case/grandgarden/g2.jpg", "assets/case/juwel/g3.jpg", "assets/case/grandgarden/g1.jpg", "assets/case/case-wohnbau-floridsdorf/g2.jpg"]], "service-content-creation": [["assets/case/juwel/g0.jpg", "assets/case/medcenter/g1.jpg", "assets/case/case-premium-neubau/g2.jpg", "assets/case/kommunalkredit/g0.jpg", "assets/case/kommunalkredit/g2.jpg"], ["assets/case/grandgarden/g0.jpg", "assets/case/case-premium-neubau/g1.jpg", "assets/case/juwel/g3.jpg", "assets/case/case-health-brand/g0.jpg", "assets/case/kommunalkredit/g3.jpg"], ["assets/case/medcenter/g0.jpg", "assets/case/juwel/g2.jpg", "assets/case/medcenter/g3.jpg", "assets/case/kommunalkredit/g1.jpg", "assets/case/case-health-brand/g3.jpg"], ["assets/case/herogroup/g0.jpg", "assets/case/case-health-brand/g2.jpg", "assets/case/case-premium-neubau/g3.jpg", "assets/case/case-health-brand/g1.jpg", "assets/case/grandgarden/g3.jpg"], ["assets/case/case-premium-neubau/g0.jpg", "assets/case/grandgarden/g2.jpg", "assets/case/juwel/g4.jpg", "assets/case/grandgarden/g1.jpg", "assets/case/kommunalkredit/g4.jpg"], ["assets/case/juwel/g1.jpg", "assets/case/medcenter/g2.jpg", "assets/case/herogroup/v0.mp4", "assets/case/herogroup/v1.mp4", "assets/case/herogroup/g1.jpg"]], "service-websites": [["assets/case/case-web-noma/g0.jpg", "assets/case/case-premium-neubau/g3.jpg", "assets/case/grandgarden/g3.jpg", "assets/case/case-web-ib7/g0.jpg", "assets/case/case-web-noma/g2.jpg"], ["assets/case/case-premium-neubau/g0.jpg", "assets/case/grandgarden/v0.mp4", "assets/case/case-web-ib7/g2.jpg", "assets/case/case-web-pharmacom/g0.jpg", "assets/case/case-web-noma/g3.jpg"], ["assets/case/grandgarden/g0.jpg", "assets/case/grandgarden/v1.mp4", "assets/case/case-web-ib7/g3.jpg", "assets/case/case-web-trattner/g0.jpg", "assets/case/case-web-noma/g4.jpg"], ["assets/case/case-premium-neubau/g1.jpg", "assets/case/case-premium-neubau/v0.mp4", "assets/case/case-web-noma/g1.jpg", "assets/case/case-web-ib7/g4.jpg", "assets/case/case-web-noma/g5.jpg"], ["assets/case/case-premium-neubau/g2.jpg", "assets/case/grandgarden/v2.mp4", "assets/case/case-web-trattner/g1.jpg", "assets/case/case-premium-neubau/g4.jpg", "assets/case/case-web-ib7/g1.jpg"], ["assets/case/grandgarden/g2.jpg", "assets/case/case-premium-neubau/v1.mp4", "assets/case/grandgarden/g1.jpg", "assets/case/case-premium-neubau/g5.jpg", "assets/case/case-web-ib7/g5.jpg"]], "service-strategie": [["assets/case/grandgarden/g0.jpg", "assets/case/case-premium-neubau/g2.jpg", "assets/case/case-crowdinvesting/g0.jpg", "assets/case/kommunalkredit/g1.jpg", "assets/case/kommunalkredit/g4.jpg"], ["assets/case/herogroup/g0.jpg", "assets/case/case-premium-neubau/g3.jpg", "assets/case/kommunalkredit/g0.jpg", "assets/case/case-crowdinvesting/g2.jpg", "assets/case/case-premium-neubau/g4.jpg"], ["assets/case/case-premium-neubau/g0.jpg", "assets/case/case-crowdinvesting/g4.jpg", "assets/case/grandgarden/g1.jpg", "assets/case/kommunalkredit/g2.jpg", "assets/case/case-crowdinvesting/g5.jpg"], ["assets/case/case-crowdinvesting/g1.jpg", "assets/case/case-immobilien-investment/v0.mp4", "assets/case/herogroup/v1.mp4", "assets/case/case-crowdinvesting/g3.jpg", "assets/case/herogroup/g1.jpg"], ["assets/case/case-premium-neubau/g1.jpg", "assets/case/herogroup/v0.mp4", "assets/case/grandgarden/v0.mp4", "assets/case/grandgarden/g3.jpg", "assets/case/case-immobilien-investment/g1.jpg"], ["assets/case/grandgarden/g2.jpg", "assets/case/case-immobilien-investment/v1.mp4", "assets/case/herogroup/v2.mp4", "assets/case/kommunalkredit/g3.jpg", "assets/case/case-immobilien-investment/g0.jpg"]], "service-chatgpt-ads": [["assets/img/ag_strategy.jpg", "assets/img/ag_cam1.jpg", "assets/img/retreat-06.jpg"], ["assets/img/ag_board1.jpg", "assets/img/ag_shoot1.jpg", "assets/img/retreat-08.jpg"], ["assets/img/ag_talk.jpg", "assets/img/ag_vision1.jpg", "assets/img/ag_cam2.jpg"], ["assets/img/ag_meeting.jpg", "assets/img/ag_poster.jpg", "assets/img/ag_vision2.jpg"], ["assets/img/ag_review.jpg", "assets/img/retreat-02.jpg", "assets/img/retreat-01.jpg"], ["assets/img/ag_laugh.jpg", "assets/img/retreat-04.jpg", "assets/img/retreat-10.jpg"]]}
 
 SVC_WALL = {"service-content-creation": [["assets/case/juwel/g0.jpg", "assets/case/herogroup/g0.jpg", "assets/case/medcenter/g1.jpg", "assets/case/grandgarden/g2.jpg"], ["assets/case/kommunalkredit/g0.jpg", "assets/case/juwel/g1.jpg", "assets/case/herogroup/v0.mp4", "assets/case/medcenter/g2.jpg"], ["assets/case/case-health-brand/g0.jpg", "assets/case/kommunalkredit/g1.jpg", "assets/case/juwel/g2.jpg", "assets/case/herogroup/v1.mp4"], ["assets/case/grandgarden/g0.jpg", "assets/case/case-health-brand/g1.jpg", "assets/case/kommunalkredit/g2.jpg", "assets/case/juwel/g3.jpg"], ["assets/case/medcenter/g0.jpg", "assets/case/grandgarden/g1.jpg", "assets/case/case-health-brand/g2.jpg", "assets/case/kommunalkredit/g3.jpg"]], "service-websites": [["assets/img/web_daphi_m.jpg", "assets/img/web_northpoint_m.jpg", "assets/case/case-consumer-brand/m0.jpg", "assets/case/case-web-ib7/m2.jpg"], ["assets/img/web_funkhausliving_m.jpg", "assets/img/web_pharmacom_m.jpg", "assets/case/case-premium-neubau/m0.jpg", "assets/case/case-web-northpoint/m0.jpg"], ["assets/img/web_havenstone_m.jpg", "assets/img/web_trattner_m.jpg", "assets/case/case-premium-neubau/m1.jpg", "assets/case/case-web-pharmacom/m0.jpg"], ["assets/img/web_ib7_m.jpg", "assets/img/web_twistnsparkle_m.jpg", "assets/case/case-web-ib7/m0.jpg", "assets/case/case-web-trattner/m0.jpg"], ["assets/img/web_noma_m.jpg", "assets/img/web_unio_m.jpg", "assets/case/case-web-ib7/m1.jpg", "assets/img/web_funkhausliving_m.jpg"]]}
 
@@ -534,6 +534,107 @@ SERVICES = [
   offer=["Status quo, Zielbild, KPI-Logik: In einer strukturierten Session zeigen wir, wo Ihr Funnel Kapital liegen lässt und was zuerst gebaut gehört. Danach entscheiden Sie.",
          "<b>Risikoumkehr:</b> Geht die Strategie in ein Umsetzungs-Mandat über, koppeln wir die Vergütung an messbare Ergebnisse. Wir gewinnen nur, wenn Sie gewinnen."],
   chips=["Strategie-Session", "Funnel-Architektur", "KPI-Logik", "Attribution-Setup", "Positionierung", "Portfolio-Struktur", "Zweitmeinung", "Umsetzungs-Mandat"]),
+ dict(slug="service-chatgpt-ads", nav="ChatGPT Ads", label="Leistung, ChatGPT Ads, Frühzugang vor der Öffnung für Europa",
+  h1=["Werbung im Gespräch.", "Nicht in der Suche."], ital=1,
+  content_label="Aus dem Studio",
+  tags=["Sponsored Cards", "Context Hints", "Produktfeeds", "Pixel & Conversions API"],
+  sub="Eine gekennzeichnete Karte unter der Antwort, ausgespielt nach Gesprächskontext statt Keyword. Wir waren vor der Öffnung für Europa drin und kennen die Regeln, bevor Sie Budget einsetzen.",
+  problem_h=["Das Problem"],
+  problem=["", ""],
+  intro="Anzeigen in ChatGPT sind kein neues Google. Es gibt <b>keine Keywords</b>, keine Suchbegriff-Berichte, kein Retargeting im EWR. Es gibt eine Karte unter der Antwort, ein <b>Gespräch als Kontext</b> und eine Handvoll Regeln, die entscheiden, ob Ihre Branche überhaupt darf. Wer die kennt, spart das erste Quartal.",
+  acc=[("Kontext statt Keyword", "Der Werbetreibende beschreibt Gesprächssituationen, sogenannte Context Hints. OpenAI ordnet die Karte dem laufenden Gespräch zu, nicht einem Suchwort.",
+        ["Context Hints nach Themen, nicht nach Markenbegriffen", "Standort, Gerät, Tageszeit, Sprache als Signale", "Keine alten Chats, keine Memory im EWR", "Customer Match ab 25.000 Kontakten"]),
+       ("Eine Karte, sechs Bausteine", "Werbetreibender, Favicon, Titel bis 50 Zeichen, Text bis 100 Zeichen, ein quadratisches Bild, ein Link. Mehr gibt es nicht, und genau das ist die Aufgabe.",
+        ["Titel beantwortet die gestellte Frage", "Bild ohne Text, klar erkennbar", "Keine Rabatt-Sprache, sie fällt im Gespräch durch", "Varianten je Gesprächssituation"]),
+       ("Messen, mit Grenzen", "Pixel und Conversions API funktionieren wie gewohnt. Was fehlt, sagen wir vorher: 24 bis 48 Stunden Attributionsfenster, nur Click-Through, kein natives Reporting, das den Namen verdient.",
+        ["OAIQ-Pixel und Conversions API", "UTM-Struktur bis auf Anzeigenebene", "Eigene Auswertung statt Dashboard-Export", "Wöchentliche Lesung mit Ihnen"]),
+       ("Wer die Karte sieht", "Nur Free- und Go-Nutzer, keine Plus-, Pro- oder Business-Konten, niemand unter 18. Und selbst bei kommerziellen Fragen zeigt ChatGPT nur bei rund einem Viertel der Prompts eine Anzeige.",
+        ["Free und Go, sonst niemand", "Rund ein Viertel der kommerziellen Prompts", "Reichweite planen, nicht überschätzen", "CPC-Gebot als Steuergröße"])],
+  diff=[("Anders als üblich", "Wir waren vor der Öffnung drin", "Zugang über das Ads Solutions Team, bevor der Self-Service für Europa aufging. Die Regeln, die andere jetzt lesen, haben wir im Konto gelernt.", "assets/img/ag_strategy.jpg"),
+        ("Anders als üblich", "Wir prüfen die Branche, bevor Sie zahlen", "Finanz und Gesundheit sind im EWR gesperrt, einzelne Immobilienangebote auch. Wir sagen es im ersten Gespräch, nicht nach dem Kontoaufbau.", "assets/img/ag_board1.jpg"),
+        ("Anders als üblich", "Wir schreiben Gespräche, keine Listen", "Context Hints sind Sätze über Situationen, in denen jemand Ihre Antwort braucht. Das ist Copywriting, kein Keyword-Export.", "assets/img/ag_talk.jpg")],
+  zoom=dict(img="assets/img/gpt/card-hero.jpg", side="right", al="So sieht es aus",
+            ah=["Eine Karte", "unter der Antwort."],
+            alink=("kontakt.html?w=Eignungs-Check&from=service-chatgpt-ads", "Eignung prüfen lassen"),
+            aside="Gekennzeichnet, getrennt von der Antwort, und die Antwort selbst bleibt unberührt. Das Beispiel zeigt eine Projektplattform, kein einzelnes Objekt, denn genau das ist die Regel.",
+            zl="Beispielkarte, Projektplattform", zt="Titel bis 50 Zeichen. Text bis 100. Ein Bild, ein Link."),
+  proof_h=["Ein Prompt.", "Vier Stationen."],
+  proof_lead="Keine Bestwerte, die es noch nicht gibt. Stattdessen der Weg einer Anzeige durch ein Gespräch, mit den Zahlen, die OpenAI selbst vorgibt.",
+  proof_nums=[],
+  proof_quote="",
+  tell=dict(
+    h="Ein Prompt, vier Stationen.",
+    t="Wie aus einer Frage eine Karte wird, und was auf dem Weg dorthin feststeht.",
+    steps=[
+      ("6", "Bausteine, mehr gibt es nicht", "Die Karte",
+       "Werbetreibender, Favicon, Titel, Text, Bild, Link. Keine zweite Headline, keine Extensions, kein Video. Die Disziplin liegt in den Worten."),
+      ("50", "Zeichen für den Titel", "Der Titel",
+       "Er beantwortet die Frage, die gerade gestellt wurde. Der Sprudler, der auf 20 cm Tiefe passt. Nicht: Jetzt 30 Prozent sparen."),
+      ("100", "Zeichen für den Text", "Der Text",
+       "Ein Satz, der die Entscheidung erleichtert: Glasflasche, kein Strom, 30 Tage Rückgabe. Fakten, die im Gespräch weiterhelfen."),
+      ("48 h", "Attributionsfenster, nur Click-Through", "Die Messung",
+       "Pixel und Conversions API zählen, was in 24 bis 48 Stunden nach dem Klick passiert. Länger nicht. Das planen wir ein, statt es zu beschönigen."),
+    ]),
+  channels=dict(
+    label="Wer die Karte sieht",
+    rows=[("ChatGPT Free", 100, "ja"), ("ChatGPT Go", 100, "ja"), ("Plus, Pro, Business", 0, "nein"), ("Unter 18 Jahren", 0, "nein")],
+    note="Nur eingeloggte Erwachsene in den beiden günstigsten Tarifen. Bei kommerziellen Fragen erscheint bei rund einem Viertel der Prompts überhaupt eine Anzeige."),
+  quote=("Die Anzeige beeinflusst die Antwort nicht. Das ist keine Einschränkung, das ist der Grund, warum die Karte Vertrauen hat.",
+         "ad.boutique, Haltung zu ChatGPT Ads"),
+  proofsplit=dict(label="Zwei Dinge, die Sie vorher wissen sollten",
+                  h=["Wer sie sieht,", "und was zählt."],
+                  t="Links die Tarife, in denen Anzeigen erscheinen. Rechts der Grund, warum wir das Format ernst nehmen: Die Antwort bleibt unabhängig, die Karte steht darunter. Wer das versteht, schreibt andere Anzeigen."),
+  visual=("panels", dict(label="Drei Gespräche, drei Karten",
+                          h="Dieselbe Karte, drei Situationen. Der Unterschied liegt im Satz.",
+                          t="Ein Shop, ein Finanzteam, eine Eventlocation. Jede Karte beantwortet die Frage, die gerade gestellt wurde, statt zu werben. Die Beispiele sind gebaut, nicht geschaltet, und exakt innerhalb der Limits von 50 und 100 Zeichen.",
+                          d1=("Context Hints", "Gesprächssituationen statt Keywords, nach Themen sortiert, breit statt markenverengt"),
+                          d2=("Creative", "Titel als Antwort, Text als Entscheidungshilfe, Bild ohne Schrift"),
+                          imgs=["assets/img/gpt/card-shop.jpg", "assets/img/gpt/card-b2b.jpg", "assets/img/gpt/card-event.jpg", "assets/img/gpt/card-hero.jpg"])),
+  crew=dict(label="Wer daran arbeitet",
+            h=["Vier Rollen,", "die an der Karte arbeiten."],
+            t="Konto, Kontext, Karte und Reporting sitzen im selben Raum. Wer die Context Hints schreibt, liest auch die Zahlen dazu.",
+            people=[("Steve", "Performance Manager", "Baut das Konto, setzt Gebote und Tagesbudget und liest, welche Situationen Klicks bringen.", "assets/img/ag_strategy.jpg"),
+                    ("Constantin", "Design", "Baut die Karte: Bild ohne Text, klar erkennbar, im Quadrat.", "assets/img/ag_board1.jpg"),
+                    ("Philipp", "Sales", "Prüft vor dem Start, ob Ihre Branche freigegeben ist, und holt die Freigabe ein, wenn nötig.", "assets/img/ag_talk.jpg"),
+                    ("Daniel", "Founder", "Schreibt die Context Hints mit Ihnen und verantwortet das Reporting, inklusive der Lücken.", "assets/img/founder.jpg")]),
+  fit=dict(label="Bevor wir starten",
+           h=["Der Fit entscheidet.", "Nicht der Hype."],
+           yes_h="Wir passen zusammen, wenn",
+           no_h="Wir sind die Falschen, wenn",
+           cap_v="6",
+           cap_t="Mandate betreuen wir gleichzeitig, ChatGPT Ads eingeschlossen. Ein Konto mehr heißt bei uns eine Person mehr im Raum, nicht ein Login mehr.",
+           intro="Die Richtlinien entscheiden mit: Finanzdienstleistungen und Gesundheit sind im EWR gesperrt, Rechtsberatung überall, einzelne Immobilienangebote dürfen nicht beworben werden, Projektplattformen schon. Für Finanz gibt es eine schriftliche Freigabe des Ads Solutions Teams, oder es gibt keine Kampagne. Wir prüfen das im ersten Gespräch, offen und in beide Richtungen.",
+           yes=["Shop mit Produktfeed oder klarem Produktversprechen",
+                "B2B und Software mit erklärungsbedürftigem Angebot",
+                "Gastro, Event, Reise, Bildung ohne Gesundheitsbezug",
+                "Plattformen und Marktplätze, auch für Immobilien"],
+           no=["Einzelne Wohnungen oder Objekte als Anzeigenziel",
+               "Finanzdienstleistungen ohne Freigabe des Ads Solutions Teams",
+               "Gesundheit, Recht, Glücksspiel, Dating",
+               "Es soll in vier Wochen Google ersetzen"]),
+  steps_next=dict(
+    h="Von der Anfrage zur ersten Karte.",
+    rows=[("Heute", "Anfrage in zwei Minuten", "Branche, Angebot, was Sie sich erwarten."),
+          ("Unter 24 h", "Eignungs-Check", "Wir sagen, ob Ihre Branche freigegeben ist und ob eine Freigabe nötig wird."),
+          ("Tag 2 bis 10", "Konto, Context Hints, Pixel", "Sie legen das Konto an, wir bauen Struktur, Situationen, Karten und Messung."),
+          ("Danach", "Vier Wochen Test", "Ab 15 Euro Tagesbudget, wöchentliche Lesung, dann eine ehrliche Empfehlung.")]),
+  deliver=["Eignungs-Check Ihrer Branche gegen die aktuellen Richtlinien",
+           "Konto-Struktur, Context Hints nach Themen, drei Kartenvarianten",
+           "Pixel, Conversions API und UTM-Struktur bis auf Anzeigenebene",
+           "Wöchentliche Lesung der Zahlen, inklusive der Lücken im Reporting"],
+  trust=["Eignungs-Check kostenlos", "Kein Vertrag für den Test", "Konto bleibt bei Ihnen", "Antwort unter 24 h"],
+  logos=[],
+  oplist=[],
+  faq=[("Beeinflusst die Anzeige die Antwort?", "Nein. Das Modell kennt die Anzeige nicht, die Karte steht gekennzeichnet unter der Antwort. Deshalb funktioniert nur Copy, die zur Frage passt."),
+       ("Sehen Plus- oder Business-Nutzer die Anzeige?", "Nein. Nur Free und Go, nur eingeloggt, nur ab 18. Die Reichweite ist kleiner, als die Nutzerzahl vermuten lässt, und das planen wir ein."),
+       ("Dürfen wir mit Immobilien werben?", "Plattformen und Projektübersichten ja, einzelne Objekte nein. Anzeige und Landingpage dürfen nicht auf ein einzelnes Angebot zeigen. Wir bauen die Strecke so, dass sie hält."),
+       ("Was kostet ein Klick?", "OpenAI empfiehlt ein Höchstgebot von 3 bis 5 Dollar, gemessen wurden 1,72 bis 7,16. Ein Mindestbudget gibt es nicht mehr, in Österreich liegt das Tagesminimum bei rund 15 Euro."),
+       ("Wie messen wir Erfolg?", "Pixel und Conversions API, 24 bis 48 Stunden nach dem Klick. Kein View-Through in der Bewertung, keine Lift-Studien. Wir zeigen, was zählbar ist, und benennen, was nicht.")],
+  offer_h="Der Einstieg ist ein Eignungs-Check. Kein Vertrag.",
+  offer=["Wir prüfen Ihre Branche gegen die aktuellen Richtlinien, schreiben drei Context Hints und eine Karte als Vorschlag und sagen Ihnen, ob sich ein Test lohnt. Danach entscheiden Sie.",
+         "<b>Risikoumkehr inklusive:</b> Braucht Ihre Branche eine Freigabe, holen wir sie ein, bevor ein Euro läuft. Kommt sie nicht, gibt es keine Kampagne und keine Rechnung."],
+  chips=["Eignungs-Check", "Konto-Setup", "Context Hints", "Kartenvarianten", "Produktfeed", "Pixel & CAPI", "Testkampagne", "Zweitmeinung"]),
+
 ]
 
 
@@ -580,7 +681,7 @@ def _wall(s):
             '  </section>\n\n') % ("\n".join(parts), w["label"], head, w["t"], link)
 
 
-def _content_section(slug):
+def _content_section(slug, label="Aus laufenden Mandaten"):
     cols = SVC_COLS.get(slug, [])
     if not cols:
         return ""
@@ -599,7 +700,7 @@ def _content_section(slug):
     return ('  <!-- CONTENT AUS DEM MANDAT -->\n'
             '  <section class="collage collage--tight" data-bg="#08080A" data-fg="light" style="background:#08080A">\n'
             '    <div class="wrap" style="position:relative;z-index:2;margin-bottom:clamp(30px,4vw,60px)">\n'
-            '      <span class="label" style="color:var(--champ)">Aus laufenden Mandaten</span>\n'
+            '      <span class="label" style="color:var(--champ)">' + label + '</span>\n'
             '    </div>\n'
             '    <div class="cplane">\n%s\n    </div>\n  </section>\n\n') % ("\n".join(parts))
 
@@ -899,13 +1000,35 @@ def render_service(s):
           <span><span class="otitle">%s</span></span>
           <span class="okpi"><span class="v">%s</span><span class="l">%s</span></span>
         </a>''' % (h, i + 1, t, v, l) for i, (h, t, v, l) in enumerate(s["oplist"]))
+    cases_sec = ("""  <!-- 07, CASES -->
+  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:clamp(60px,7vw,100px)">
+    <div class="wrap">
+      <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:clamp(28px,3.4vw,48px)">Ausgewählte Ergebnisse</span>
+      <div class="oplist" data-stagger>
+        """ + ops + """
+      </div>
+    </div>
+  </section>
+
+""") if s.get("oplist") else ""
     faqs = "\n        ".join('''<div class="qa" data-fade>
           <div class="q">%s</div>
           <div class="a">%s</div>
         </div>''' % (q, a) for q, a in s["faq"])
     chips_sel = "\n        ".join('<button class="nopt" data-v="%s" style="--i:%d">%s <span class="plus">+</span></button>' % (cv, 7 - i, cv) for i, cv in enumerate(s["chips"]))
-    logos = logogrid(s["logos"])
-    content_sec = _content_section(s["slug"])
+    logos = logogrid(s["logos"]) if s.get("logos") else ""
+    logos_sec = ("""  <!-- LOGOS: zentriert, 2x4, flaechig -->
+  <section class="fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding: clamp(70px,9vw,130px) 0">
+    <div class="wrap">
+      <span class="label" style="color:var(--grey-dark);display:block;text-align:center;margin-bottom:clamp(30px,4vw,50px)">Marken, mit denen wir in diesem Feld arbeiten</span>
+      <div class="logocycle logogrid" data-fade>
+        """ + logos + """
+      </div>
+    </div>
+  </section>
+
+""") if s.get("logos") else ""
+    content_sec = _content_section(s["slug"], s.get("content_label", "Aus laufenden Mandaten"))
     content_before = content_sec if s.get("tell") else ""
     content_after = "" if s.get("tell") else content_sec
     zah = "\n          ".join('<span class="rl"><span>%s</span></span>' % x for x in s["zoom"].get("ah", []))
@@ -1029,27 +1152,7 @@ def render_service(s):
     </div>
   </section>
 
-''' + tell_sec + content_before + proofsplit_sec + visual + wall_sec + crew_sec + voice_sec + '''  <!-- 07, CASES -->
-  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:clamp(60px,7vw,100px)">
-    <div class="wrap">
-      <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:clamp(28px,3.4vw,48px)">Ausgewählte Ergebnisse</span>
-      <div class="oplist" data-stagger>
-        ''' + ops + '''
-      </div>
-    </div>
-  </section>
-
-  <!-- LOGOS: zentriert, 2x4, flaechig -->
-  <section class="fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding: clamp(70px,9vw,130px) 0">
-    <div class="wrap">
-      <span class="label" style="color:var(--grey-dark);display:block;text-align:center;margin-bottom:clamp(30px,4vw,50px)">Marken, mit denen wir in diesem Feld arbeiten</span>
-      <div class="logocycle logogrid" data-fade>
-        ''' + logos + '''
-      </div>
-    </div>
-  </section>
-
-''' + content_after + fit_sec + '''  <!-- 08, FAQ -->
+''' + tell_sec + content_before + proofsplit_sec + visual + wall_sec + crew_sec + voice_sec + cases_sec + logos_sec + content_after + fit_sec + '''  <!-- 08, FAQ -->
   <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">
     <div class="wrap faq">
       <div>

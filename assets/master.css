@@ -436,7 +436,8 @@ body.cur-hov .cur { scale: 1.85; }
   color: #fff; text-shadow: 0 1px 16px rgba(0,0,0,0.45);
 }
 .hcap .cl { font-size: 13px; font-weight: 700; letter-spacing: 0.04em; }
-.hcap .cl span { font-weight: 400; opacity: 0.85; }
+/* Bildzeile: fetter Titel oben, duenne Zeile darunter, linksbuendig */
+.hcap .cl span { display: block; font-weight: 400; opacity: 0.85; margin-top: 4px; }
 /* Kennzahl sitzt links unten ueber der Bildzeile, nicht mehr in der rechten Ecke */
 .hkpi {
   position: absolute; left: clamp(24px, 3vw, 48px); bottom: 68px; z-index: 3;
@@ -735,7 +736,7 @@ body.loaded .chero img { transform: scale(1); }
    Fester Rahmen, die Spalten laufen oben und unten aus dem Bild,
    damit keine leeren Flaechen am Rand entstehen. */
 .collage--tight { padding: 0; height: clamp(620px, 88vh, 940px); }
-.collage--tight .wrap { position: absolute; top: clamp(30px, 4vh, 54px); left: 0; right: 0; }
+.collage--tight .wrap { position: absolute; top: clamp(60px, 8vh, 96px); left: 0; right: 0; }
 .collage--tight .cplane {
   position: absolute; top: 50%; left: 0;
   width: 132%; margin-left: -16%;

@@ -670,6 +670,7 @@
     "service-content-creation": "Content Creation",
     "service-websites": "Websites & Landingpages",
     "service-strategie": "Strategie & Funnel",
+    "service-chatgpt-ads": "ChatGPT Ads",
     "work": "Work",
     "index": "Startseite"
   };
