@@ -12,8 +12,8 @@ HEAD = '''<!doctype html>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 
-<link rel="stylesheet" href="assets/master.css?v=66">
-<script src="assets/master.js?v=66" defer></script>
+<link rel="stylesheet" href="assets/master.css?v=67">
+<script src="assets/master.js?v=67" defer></script>
 </head>
 <body style="background-color:{bodybg}" class="on-light">
 
@@ -306,6 +306,135 @@ CASES = [
          "Sichtbarkeit und Conversion-Mechanik gehören zusammen."]),
 ]
 
+# Weitere Kapitel und Kundenstimmen je Case, Quelle: Reportings, Angebote und Kundenmails (Recherche 7.9.2026).
+# Kunden bleiben anonymisiert, Zitate tragen nur die Rolle.
+EXTRA = {
+ "case-immobilien-investment": dict(
+  rahmen="Finance, Immobilien-Investment<br>Seit 2023, laufend<br>Google, LinkedIn, Funnel, CRM, Video",
+  disz=[("Strategie & Funnel", "service-strategie.html"), ("Performance Marketing", "service-performance-marketing.html"), ("Websites & Landingpages", "service-websites.html"), ("Content Creation", "service-content-creation.html")],
+  chapters=[dict(label="Zweites Kapitel, Bewegtbild", h=["Ein komplexes Produkt,", "erklärt vom Vorstand."],
+    p1="Ein Bauherrenmodell versteht niemand aus einer Anzeige. Deshalb haben wir mit dem Vorstand gedreht: sechs Kurzvideos für Feed und Search-Begleitung, eine Langversion, ein Erklärvideo, das den Weg vom Investment bis zur Steuerwirkung in wenigen Minuten aufmacht, dazu Making-of für die eigenen Kanäle.",
+    p2="<b>Dahinter läuft seit 2023 die Maschine:</b> Always-on-Suche, Kampagnen je Objekt mit Learning-Transfer von Projekt zu Projekt, LinkedIn für die Anleihe, und ein Lead-Dashboard mit täglichem Datenfeed, das jede Anfrage bis zur Zeichnung mitführt. 2024 kamen 80 Prozent der Anfragen online, bei einem Preis je Online-Anfrage, der gegenüber dem Vorjahr um 19 Prozent sank.",
+    nums=[("(Kurzvideos aus einem Drehtag)", "6"), ("(Online-Anteil der Anfragen 2024)", "80 %"), ("(Preis je Online-Anfrage, zu 2023)", "−19 %")],
+    note="Werte aus dem Lead-Report des Kunden für 2023 und 2024. Das Erklärvideo läuft auf der Website, in Search-Begleitkampagnen und im Vertrieb.",
+    links=[("service-content-creation.html", "Content Creation"), ("service-strategie.html", "Strategie & Funnel")])]),
+ "case-d2c-lifestyle": dict(
+  chapters=[dict(label="Zweites Kapitel, das Fundament", h=["Erst messen,", "dann kaufen."],
+    p1="Bevor ein Euro mehr in Anzeigen floss, haben wir das Fundament gelegt: Tag Manager, Analytics und serverseitiges Tracking, damit jede Bestellung einmal gezählt wird, dazu saubere Produkt-Feeds über ein Feed-Management, das Meta, Google und Pinterest aus einer Quelle versorgt.",
+    p2="<b>Dann drei Kanäle mit klaren Rollen:</b> Meta für Nachfrage, Google für den Abverkauf, Pinterest als unterschätzter Effizienz-Kanal für eine Marke, deren Produkt von Bildern lebt. Saisonal getaktet auf Weihnachten und Valentinstag, wöchentlich gelesen, wöchentlich umgeschichtet.",
+    links=[("service-ecommerce.html", "E-Commerce Growth"), ("service-performance-marketing.html", "Performance Marketing")])]),
+ "case-crowdinvesting": dict(
+  rahmen="Finance, Crowdinvesting<br>Zwei POC-Phasen, laufend<br>Meta, Google, Funnel, UGC",
+  disz=[("Strategie & Funnel", "service-strategie.html"), ("Performance Marketing", "service-performance-marketing.html"), ("Content Creation", "service-content-creation.html")],
+  learn=["Struktur schlägt Einzelkampagne.",
+         "Die KPI-Definition vorab ist die halbe Miete.",
+         "Eine laufende Plattform-Kampagne schlägt die Einzelkampagne beim Return um den Faktor 2,5.",
+         "Gleicher Spend, anderes Ergebnis: Der Beweis liegt im Vorher-Nachher."],
+  chapters=[dict(label="Zweites Kapitel, die Skalierung", h=["Vom Beweis", "zur Maschine."],
+    p1="Nach dem ersten Proof of Concept kam der zweite, mit einer Hypothese: nicht mehr das einzelne Projekt bewerben, sondern die Plattform. Gemeinsame Daten über alle Emissionen, eine laufende Kampagne statt Stop-and-go, Google als Abschlusskanal für die Nachfrage, die Meta erzeugt. Dazu Talking-Head-Videos und UGC statt Stockbilder.",
+    p2="<b>Das Budget wurde mehr als verdreifacht, der Return stieg trotzdem:</b> 67.180 Euro Mediabudget brachten 114 Investments und 1,26 Millionen Euro Kapital, ein ROAS von 18,7. Die reine Plattform-Kampagne lag bei 42, die Markensuche bei Google über 100. Und das durchschnittliche Investment war fast dreimal so hoch wie geplant.",
+    nums=[("(ROAS, zweite POC-Phase)", "18,7"), ("(Kapital in drei Monaten)", "€ 1,26 Mio."), ("(Investments)", "114"), ("(Ø Investment, Ziel € 3.800)", "€ 11.039")],
+    note="Vergütung in dieser Phase: Selbstkosten plus Beteiligung am zurechenbaren Zeichnungsvolumen. Wir haben nur verdient, wenn gezeichnet wurde. Geschwister-Varianten desselben Motivs fielen durch, und die Markensuche erntet Nachfrage, sie erzeugt sie nicht.",
+    links=[("service-strategie.html", "Strategie & Funnel"), ("service-content-creation.html", "Content Creation")])]),
+ "case-wohnbau-floridsdorf": dict(
+  rahmen="Real Estate, Wohnbau<br>Seit Jänner 2026, laufend<br>Meta Instant Forms, Website, Landingpage",
+  learn=["Eigennutzer und Anleger sind zwei Märkte, kein gemeinsamer.",
+         "Anleger wollen Rendite-Sicherheit, keine Zertifikate.",
+         "Was die Plattform zählt und was im Postfach ankommt, sind zwei Zahlen. Wir berichten beide.",
+         "Ehrlicher CPL entsteht durch Testing."],
+  chapters=[dict(label="Zweites Kapitel, das zweite Quartal", h=["Volumen war da.", "Verbindlichkeit fehlte."],
+    p1="Im zweiten Quartal kamen weitere 232 Anfragen zu 16,60 Euro. Die Auswertung mit dem Vertrieb zeigte den Engpass hinter der Zahl: Viele Interessenten waren nach dem Formular schwer erreichbar, der Erstkontakt kam zu spät, und was Meta als Anfrage zählte, war nicht immer das, was im Postfach des Kunden ankam.",
+    p2="<b>Unsere Antwort war kein größeres Budget, sondern eine andere Strecke:</b> weg vom reinen Instant Form, hin zu Website-Anfragen mit eigener Projekt-Landingpage, Terminbuchung und einer Rückruf-Logik, die den Vertrieb schneller macht. Weniger Anfragen, dafür bessere. Genau das, was ein Bauträger braucht, um zu verkaufen.",
+    nums=[("(Anfragen im zweiten Quartal)", "232"), ("(gewichteter CPL Q2)", "€ 16,60"), ("(Meta zählte in drei Wochen)", "18"), ("(im Postfach ankamen)", "8")],
+    note="Die Differenz zwischen Plattform-Zählung und echten Anfragen ist kein Schönheitsfehler, sondern die wichtigste Zahl im Report. Wir klären sie, bevor wir optimieren."),
+   dict(label="Drittes Kapitel, die Landingpage", h=["Eine eigene Seite", "für das Projekt."],
+    p1="Die Bauträger-Website war für das Portfolio gebaut, nicht für eine Kampagne. Deshalb bekam das Projekt eine eigene Landingpage: ein Versprechen, eine Preisspanne, ein Formular, eine Terminbuchung, alles in der Bildsprache der Sujets, die darauf führen.",
+    p2="Seit August laufen die Kampagnen auf diese Seite. Damit ist die Strecke vom ersten Kontakt bis zum Beratungstermin durchgehend in unserer Hand und messbar.",
+    links=[("service-websites.html", "Websites & Landingpages"), ("service-performance-marketing.html", "Performance Marketing")])],
+  quote=("Vielen lieben Dank zunächst für die tollen Creatives. Ausführung und Umsetzung gefallen uns bereits sehr gut!", "Marketing, Wiener Bauträger")),
+ "case-consumer-brand": dict(
+  rahmen="Consumer, Beverage-Lifestyle<br>Saison-Peaks, Produktlaunch<br>Meta, Kampagnen-Site",
+  disz=[("E-Commerce Growth", "service-ecommerce.html"), ("Performance Marketing", "service-performance-marketing.html"), ("Content Creation", "service-content-creation.html"), ("Websites & Landingpages", "service-websites.html")],
+  chapters=[dict(label="Zweites Kapitel, der Produktlaunch", h=["Eine Seite, drei Sprachen,", "vier Termine."],
+    p1="Für ein neues Produkt der Marke haben wir die Kampagnen-Site gebaut, an der die gesamte Einführung hing: Messe in Frankfurt im Februar, US-Messen Ende Februar, B2B-Start in Kanada im März, Launch in Österreich, Deutschland und den USA im April. Deutsch, Englisch, Französisch, ein Formular für Händler und Endkunden, Anbindung an das CRM des Kunden.",
+    p2="<b>Der Content der Kreativagentur kam spät, die Termine standen.</b> Also haben wir mit Platzhaltern gebaut, in Etappen live gestellt und die Seite bis heute weiterentwickelt: neue Produktfarben, Bewegtbild im Header, mobile Videos. Ein Learning aus der Performance-Zeit gilt auch hier: Ein Produkt, das nicht lieferbar ist, zerstört jede Lernphase der Kampagne.",
+    links=[("case-web-twistnsparkle.html", "Die Kampagnen-Site im Detail"), ("service-websites.html", "Websites & Landingpages")])],
+  quote=("Mit der Zusammenarbeit im Performance-Bereich war und bin ich sehr zufrieden, und auch die Ergebnisse können sich sehen lassen.", "Teamlead E-Commerce, Consumer-Marke")),
+ "case-bautraeger-portfolio": dict(
+  rahmen="Real Estate, Wohnbau<br>Laufend, drei Projekte<br>Meta Instant Forms, Landingpages",
+  disz=[("Performance Marketing", "service-performance-marketing.html"), ("Content Creation", "service-content-creation.html"), ("Websites & Landingpages", "service-websites.html")],
+  chapters=[dict(label="Zweites Kapitel, zwei Projekte im zweiten Quartal", h=["Zwei Projekte,", "ein System, ein Quartal."],
+    p1="Im zweiten Quartal 2026 liefen zwei Projekte des Portfolios parallel mit derselben Mechanik: getrennte Zielgruppen, wenige Sujets im Test, wöchentliche Umschichtung auf den Sieger. Das eine Projekt brachte 287 Anfragen zu 6,33 Euro, das andere 259 Anfragen zu 5,93 Euro, dem besten Preis im gesamten Portfolio.",
+    p2="<b>In beiden Projekten trug ein einziges Sujet über 90 Prozent der Anfragen.</b> Das ist kein Zufall, sondern der Grund, warum wir testen, statt zu diskutieren: Der Sieger steht nach zwei Wochen fest, danach fließt jeder Euro dorthin.",
+    nums=[("(Anfragen, Projekt A)", "287"), ("(CPL, Projekt A)", "€ 6,33"), ("(Anfragen, Projekt B)", "259"), ("(CPL, Projekt B)", "€ 5,93")],
+    note="Spend im Quartal: 1.817 Euro und 1.535 Euro, Reichweite 79.648 und 59.250 Personen. Alle Werte aus dem Quartalsreport an den Kunden."),
+   dict(label="Drittes Kapitel, nach dem Lead", h=["Der Engpass sitzt", "hinter dem Formular."],
+    p1="Die CRM-Auswertung zeigte, was Kampagnenzahlen nicht zeigen: 44 Prozent der Anfragen waren beim ersten Versuch nicht erreichbar, bei über 90 Prozent stand 'erneut kontaktieren' im System. Preis oder Lage waren fast nie der Einwand.",
+    p2="Deshalb bauen wir seit dem Sommer die Strecke um: eigene Projekt-Landingpages statt Portfolio-Website, Terminbuchung statt Rückruf-Lotterie, und ein Reporting, das die Erstkontakt-Zeit des Vertriebs genauso ausweist wie den CPL.",
+    links=[("service-websites.html", "Websites & Landingpages"), ("service-performance-marketing.html", "Performance Marketing")])],
+  quote=("Danke für den Start. Wir haben schon einige Leads seit gestern Abend hereinbekommen.", "Verkauf, Wiener Bauträger, am Morgen nach dem Kampagnenstart")),
+ "case-health-brand": dict(
+  rahmen="E-Commerce, Health<br>Seit Herbst 2025, laufend<br>Meta, Google, Creator, Workshop",
+  disz=[("E-Commerce Growth", "service-ecommerce.html"), ("Performance Marketing", "service-performance-marketing.html"), ("Content Creation", "service-content-creation.html"), ("Strategie & Funnel", "service-strategie.html")],
+  chapters=[dict(label="Zweites Kapitel, der Weg zum Ziel", h=["Ein Ziel-Gap ist", "ein Arbeitsauftrag."],
+    p1="Der Report zeigte 1,07 bei Ziel 1,50. Statt die Zahl zu erklären, haben wir den Weg gebaut: Der Creator schlug das Produktvideo beim Preis je Kauf um mehr als die Hälfte, 82 Euro gegen 215 bis 232 Euro, die Rabatt-Statics brachten den besten Return, Retargeting blieb der effizienteste Euro.",
+    p2="<b>Daraus wurde die Roadmap für das Jahr:</b> Advertorial-Landingpage, Video Sales Letter, Newsletter, Split-Tests auf der Produktseite, Ziel-Return in Stufen von 1,4 über 1,6 auf über 1,8. Begonnen hat alles mit einem Strategie-Workshop, in dem Produkt, Zielgruppe und Zahlenlogik auf einen Tisch kamen.",
+    nums=[("(Creator, Preis je Kauf)", "€ 82"), ("(Produktvideo, Preis je Kauf)", "€ 215"), ("(bester Return, Rabatt-Static)", "1,37"), ("(Zielstufen im Jahr)", "3")],
+    note="Die Stufen: 1,4 im Mai, 1,6 im Juni, über 1,8 ab Juli. Jede Stufe hat einen Hebel, der sie tragen soll, und ein Datum, an dem sie gemessen wird.",
+    links=[("service-strategie.html", "Strategie & Funnel"), ("service-content-creation.html", "Content Creation")])],
+  quote=("Wir wollten uns nur kurz für den produktiven und inspirierenden Workshop gestern bedanken, es hat uns viel Freude gemacht.", "Geschäftsführer, Health-Marke")),
+}
+for _c in CASES:
+    _c.update(EXTRA.get(_c["slug"], {}))
+
+
+def _chapters(c):
+    out = []
+    for i, k in enumerate(c.get("chapters", [])):
+        # Kapitel wechseln den Grund ab: creme, papier, creme
+        bg, bgcls = ("#EFE7D6", "bg-cream") if i % 2 == 0 else ("#F3EDE1", "bg-paper")
+        head = "".join('<span class="rl"><span>%s</span></span>' % x for x in k["h"])
+        links = ""
+        if k.get("links"):
+            links = ('        <div data-fade style="display:flex;gap:clamp(22px,3vw,44px);flex-wrap:wrap;margin-top:22px">\n'
+                     + "".join('          <a class="zalink" href="%s">%s</a>\n' % l for l in k["links"]) + '        </div>\n')
+        nums = ""
+        if k.get("nums"):
+            nums = ('    <div class="wrap" style="margin-top:clamp(44px,5.5vw,80px)">\n      <div class="cnums" data-stagger>\n'
+                    + "\n".join('        <div class="n" data-fade><div class="l">%s</div><div class="v num serif">%s</div></div>' % (l, v) for l, v in k["nums"])
+                    + '\n      </div>\n' + ('      <p class="cfoot-note" data-fade>%s</p>\n' % k["note"] if k.get("note") else "") + '    </div>\n')
+        out.append('  <!-- KAPITEL: %s -->\n'
+                   '  <section class="sec fg-light %s" data-bg="%s" data-fg="dark">\n'
+                   '    <div class="wrap lchap">\n'
+                   '      <div>\n'
+                   '        <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:16px">%s</span>\n'
+                   '        <h2 class="dispn" data-lines style="font-size:clamp(26px,2.7vw,42px)">%s</h2>\n'
+                   '      </div>\n'
+                   '      <div data-stagger>\n'
+                   '        <p class="lt3" data-fade>%s</p>\n'
+                   '        <p class="lt3" data-fade>%s</p>\n'
+                   '%s'
+                   '      </div>\n'
+                   '    </div>\n'
+                   '%s'
+                   '  </section>\n\n' % (k["label"].upper(), bgcls, bg, k["label"], head, k["p1"], k["p2"], links, nums))
+    return "".join(out)
+
+
+def _cquote(c):
+    q = c.get("quote")
+    if not q:
+        return ""
+    return ('  <!-- WAS DER KUNDE SAGT -->\n'
+            '  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">\n'
+            '    <div class="wrap" style="max-width:980px">\n'
+            '      <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:clamp(22px,3vw,40px)">Was der Kunde sagt</span>\n'
+            '      <p class="serif" data-fade style="font-size:clamp(24px,2.6vw,40px);line-height:1.3;letter-spacing:-0.01em">&bdquo;%s&ldquo;</p>\n'
+            '      <div data-fade style="margin-top:22px;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--grey-dark)">%s</div>\n'
+            '    </div>\n'
+            '  </section>\n\n') % q
+
+
 def case_page(c, nxt):
     world = c.get("clr", "#22382C")
     wfg = c.get("fg", "#EDF2EC")
@@ -438,7 +567,7 @@ def case_page(c, nxt):
     </div>
   </section>
 
-""" + phones_sec + """  <!-- LEARNINGS -->
+""" + _chapters(c) + _cquote(c) + phones_sec + """  <!-- LEARNINGS -->
   <section class="sec fg-dark" data-bg="""" + world + """" data-fg="light" style="background:""" + world + """">
     <div class="wrap" style="max-width:900px">
       <span class="label" style="color:var(--champ);display:block;margin-bottom:26px">Learnings</span>
@@ -466,10 +595,11 @@ def case_page(c, nxt):
 """ + FOOTER
     return page
 
-for i, c in enumerate(CASES):
-    if c.get("handmade"):
-        continue
-    nxt = CASES[(i + 1) % len(CASES)]
-    open(c["slug"] + ".html", "w", encoding="utf-8").write(case_page(c, nxt))
-    print("case", c["slug"])
-print("cases done")
+if __name__ == "__main__":
+    for i, c in enumerate(CASES):
+        if c.get("handmade"):
+            continue
+        nxt = CASES[(i + 1) % len(CASES)]
+        open(c["slug"] + ".html", "w", encoding="utf-8").write(case_page(c, nxt))
+        print("case", c["slug"])
+    print("cases done")

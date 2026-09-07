@@ -10,7 +10,13 @@ WEBCASES = [
   branche="Real Estate, Projekt-Vermarktung",
   line="Projekt-Website mit Wohnungsfinder für 26 Wohnungen.",
   story="Ein Neubauprojekt am Prater brauchte einen Auftritt, der Ruhe ausstrahlt und trotzdem verkauft: klare Struktur, Wohnungsfinder, Anleger-Strecke und eine Bildsprache, die das Zuhause zeigt, nicht das Exposé.",
-  leistungen="Strategie & Struktur<br>Design & Copy<br>Umsetzung & Wohnungsfinder"),
+  leistungen="Branding & Storytelling<br>Website & Wohnungsfinder<br>Broschüre, Exposés, Bauzaun<br>Performance Marketing",
+  disz=[("Websites & Landingpages", "service-websites.html"), ("Performance Marketing", "service-performance-marketing.html"), ("Content Creation", "service-content-creation.html")],
+  kap=dict(label="Zweites Kapitel, die Vermarktung",
+           h="Vom Namen bis zum Kaufvertrag.",
+           p1="Noma begann nicht mit einer Website, sondern mit einem Namen. Danach kamen Logo und Bildsprache, die Projektwebsite mit Wohnungsfinder und Grundrissen, eine Broschüre, Verkaufspläne, Exposés je Wohnung und der Bauzaun. Und die Meta-Kampagnen, die seit dem Verkaufsstart im März auf die Seite führen, fast ausschließlich mobil.",
+           p2="<b>In den ersten elf Wochen kamen rund 70 Anfragen von 35 Interessenten über die Website, darunter sieben Anleger.</b> Fünf Monate nach Go-live waren vier Wohnungen verkauft. Dazwischen lag die unangenehmste Erkenntnis des Projekts: Die Seite lud am Telefon in 16 Sekunden. Der größte Conversion-Hebel war kein neues Sujet, sondern Ladezeit.",
+           links=[("service-performance-marketing.html", "Performance Marketing"), ("service-content-creation.html", "Content Creation")])),
  dict(slug="case-web-trattner", key="trattner", name="Trattner & Söhne", url="https://www.trattner-soehne.at",
   branche="Immobilien, Makler-Traditionsbetrieb",
   line="Neue Website: Strategie, Struktur, Umsetzung.",
@@ -20,12 +26,23 @@ WEBCASES = [
   branche="PropTech, Venture",
   line="Venture-Partnerschaft: Marke, Website, Produkt.",
   story="Real Estate, endlich einfach: Für das Immobilien-Betriebssystem UNIO entstanden Marke, Website und Produkt-Oberflächen aus einem Guss, als Venture, an dem wir selbst beteiligt sind. Skin in the Game, wörtlich.",
-  leistungen="Marke & Positionierung<br>Website & Produkt-Design<br>Laufende Weiterentwicklung"),
+  leistungen="Marke & Positionierung<br>Website & Produkt-Design<br>Film, Print & Beschilderung<br>Laufende Weiterentwicklung",
+  disz=[("Websites & Landingpages", "service-websites.html"), ("Strategie & Funnel", "service-strategie.html"), ("Content Creation", "service-content-creation.html")],
+  kap=dict(label="Zweites Kapitel, die Marke",
+           h="Eine Kategorie braucht mehr als eine Website.",
+           p1="Für UNIO haben wir in unter zwölf Monaten alles gebaut, was eine neue Kategorie sichtbar macht: Brand Guide mit Farben und Schriften, drei Storylines für Makler, Bauträger und Partner, einen Trailer, Pitch-Decks, Faltschilder, Banner, Karten und Plakate für Events, die Beschilderung für den Standort und die Website mit Lead-Routing an die richtigen Teams.",
+           p2="<b>Dazu ein Ausschreibungs-Framework für Bauträger:</b> zwei Lose, Marketing und Vermarktung, sieben Ausschlusskriterien. Es macht aus einer Agenturauswahl eine Entscheidung mit Kriterien. Wir sitzen dabei auf beiden Seiten des Tisches, als Marketing-Engine von UNIO und als Beteiligte.",
+           links=[("service-strategie.html", "Strategie & Funnel"), ("service-content-creation.html", "Content Creation")])),
  dict(slug="case-web-havenstone", key="havenstone", name="Havenstone", url="https://www.havenstone.at",
   branche="Real Estate, Development",
   line="Website für den Entwickler: From Vision to Reality.",
   story="Internationale Projekte brauchen einen Auftritt, der Größe zeigt, ohne laut zu werden: großes Bewegtbild, wenige Worte, klare Wege zu den Projekten.",
-  leistungen="Strategie & Struktur<br>Design<br>Umsetzung"),
+  leistungen="Strategie & Struktur<br>Design<br>Umsetzung<br>Signaturen, Vorlagen, Workspace",
+  kap=dict(label="Zweites Kapitel, vier Wochen",
+           h="Vier Partner, eine Meinung, vier Wochen.",
+           p1="Vier Gründer mit vier Vorstellungen davon, wie Seriosität aussieht. Wir haben nicht diskutiert, sondern gezeigt: fünf Bildstile zur Auswahl, ein Bewegtbild im Header, wenige Worte. Vom Briefing bis zur Go-live-Freigabe vergingen vier Wochen.",
+           p2="<b>Dazu alles, was ein neues Beratungshaus am ersten Tag braucht:</b> E-Mail-Signaturen, Präsentationsvorlage, LinkedIn-Design, Exposé-Vorlage für die Objekte und die Einrichtung des Arbeitsplatzes in der Cloud. Ein Auftritt, der von der Website bis zur Mail-Signatur dieselbe Sprache spricht."),
+  quote=("Das Feedback des Teams zur Website ist durchweg positiv. Wir fühlen uns damit sehr wohl und möchten uns noch einmal herzlich für den persönlichen Einsatz in so kurzer Zeit bedanken.", "Robert Petrović, Partner und Co-Founder, Havenstone")),
  dict(slug="case-web-northpoint", key="northpoint", name="Northpoint Advisors", url="https://northpoint-advisors.com",
   branche="Finance, Advisory",
   line="Website für die Beratungsboutique: Kapital, Strategie, Immobilie.",
@@ -35,17 +52,30 @@ WEBCASES = [
   branche="Pharma, B2B",
   line="Corporate Website: Direct to Pharmacy.",
   story="Ein erklärungsbedürftiges B2B-Modell, verständlich gemacht: Die Website führt Hersteller und Apotheken durch Prozess, Nutzen und Team, seriös und ohne Fachjargon-Wände.",
-  leistungen="Strategie & Struktur<br>Design & Copy<br>Umsetzung"),
+  leistungen="Strategie & Struktur<br>Design & Copy<br>Umsetzung<br>Fotoshooting",
+  kap=dict(label="Zweites Kapitel, fünf Wochen",
+           h="Angebot am Vormittag, Unterschrift am Nachmittag.",
+           p1="Drei Stunden nach dem Angebot kam die Unterschrift zurück. Fünf Wochen später stand die Seite: sechs Seiten plus Blog und Jobs in zwei Sprachen, Anfrageformular, CMS, ein halber Drehtag für die Fotos und Screenrecordings der eigenen Software, damit das B2B-Modell sichtbar wird statt erklärt.",
+           p2="<b>Aus dem Projekt wurde ein zweites:</b> Die Geschäftsführung brachte die Schwesterfirma DaPhi mit, deren Website wir direkt im Anschluss gebaut haben.",
+           links=[("case-web-daphi.html", "Zum Schwesterprojekt DaPhi")]),
+  quote=("Unterschrieben anbei. Wir freuen uns auf die Zusammenarbeit.", "Christoph Siegesleuthner, Geschäftsführung, Pharmacom, drei Stunden nach dem Angebot")),
  dict(slug="case-web-daphi", key="daphi", name="DaPhi", url="https://www.daphi.de",
   branche="IT-Dienstleistung, B2B",
   line="Neue Website: Sitemap, Wireframes, Service-Landingpages.",
   story="Vom Kick-off bis zum Go-live in einem strukturierten Sprint-Plan: Sitemap und Wireframes für Home und sieben Service-Landingpages, Screendesign in zwei Runden, Umsetzung mit CMS, danach Content und Launch.",
-  leistungen="Strategie, Sitemap & Wireframes<br>Screendesign<br>Umsetzung mit CMS"),
+  leistungen="Strategie, Sitemap & Wireframes<br>Screendesign<br>Umsetzung mit CMS",
+  kap=dict(label="Zweites Kapitel, der Sprint",
+           h="Vom Kick-off zur Übergabe in zwölf Wochen.",
+           p1="Kick-off Mitte November, Übergabe Mitte Februar: sechs Seiten, Blog und Karrierebereich in zwei Sprachen, gebaut in Webflow nach Wireframes und Screendesign in Figma. Der Kunde bekam einen Sprint-Plan mit Kalenderwochen statt einer Wunschliste.",
+           p2="<b>Der Auftrag kam über einen Kunden:</b> Wer eine Website bei uns gebaut hat, empfiehlt uns weiter. DaPhi ist das Schwesterprojekt von Pharmacom, beide Auftritte entstanden nacheinander aus einer Hand.",
+           links=[("case-web-pharmacom.html", "Zum Schwesterprojekt Pharmacom")]),
+  quote=("Danke fürs schnelle Fixen! Ihr habt schon sehr viel für uns gemacht.", "Hendrik Walter, Projektleitung, DaPhi")),
  dict(slug="case-web-ib7", key="ib7", name="IB-7", url="https://ib-7.com",
   branche="Beauty, D2C",
   line="Website und Marke: Wo Jahrtausende auf den Moment treffen.",
   story="Antikes Wissen über Hautpflege trifft moderne Wissenschaft: Der Auftritt erzählt die Marke, führt zu den Produkten und trägt die Kampagnen, die wir parallel in Performance und Content fahren.",
   leistungen="Website & Markenauftritt<br>Content Creation<br>Performance Marketing",
+  disz=[("Websites & Landingpages", "service-websites.html"), ("Content Creation", "service-content-creation.html"), ("Performance Marketing", "service-performance-marketing.html")],
   kap=dict(label="Zweites und drittes Kapitel",
            h="Content und Performance aus derselben Hand.",
            p1="Die Website ist der Ort, an dem alles zusammenläuft. Parallel produzieren wir den Content für Feed und Shop, von der Produktfotografie bis zum Bewegtbild, und steuern die Performance-Kampagnen, die den Traffic bringen.",
@@ -59,7 +89,14 @@ WEBCASES = [
   branche="Consumer, Produkt-Kampagne",
   line="Produkt-Kampagnen-Site: Sparkle it your way.",
   story="Ein Produkt, ein Versprechen, eine Seite: Die Kampagnen-Site macht aus dem Twist'n Sparkle ein Erlebnis, von Benefits über How-to bis zu Rezepten, gebaut für Kampagnen-Traffic.",
-  leistungen="Struktur & Story<br>Design<br>Umsetzung"),
+  leistungen="Struktur & Story<br>Design<br>Umsetzung<br>Laufende Weiterentwicklung",
+  disz=[("Websites & Landingpages", "service-websites.html"), ("Performance Marketing", "service-performance-marketing.html")],
+  kap=dict(label="Zweites Kapitel, die Zahlen dahinter",
+           h="Die Seite trägt die Kampagne. Die Kampagne trägt die Marke.",
+           p1="Die Kampagnen-Site ist der Ort, auf den die Saison-Kampagnen der Marke führen. Am Black Friday lag der Return on Ad Spend bei 4,02, 75 Prozent über dem Benchmark des Kontos, die Awareness im Vorlauf kostete 0,99 Euro je tausend Kontakte statt 3,50.",
+           p2="<b>Gebaut wurde die Seite gegen die Zeit:</b> vier Launch-Termine in drei Ländern, Content der Kreativagentur, der spät kam, und ein Pitch gegen eine zweite Agentur, den wir gewonnen haben. Die ganze Geschichte steht im Consumer-Brand-Case.",
+           links=[("case-consumer-brand.html", "Zum Performance-Case"), ("service-performance-marketing.html", "Performance Marketing")]),
+  quote=("Mit der Zusammenarbeit im Performance-Bereich war und bin ich sehr zufrieden, und auch die Ergebnisse können sich sehen lassen.", "Teamlead E-Commerce, isi")),
 ]
 
 IMG = "assets/img"
@@ -147,11 +184,23 @@ def page(c, nxt):
       <div data-stagger>
         <p class="lt3" data-fade>%s</p>
         <p class="lt3" data-fade>%s</p>
-      </div>
+%s      </div>
     </div>
   </section>
 
-""" % (k["label"], k["h"], k["p1"], k["p2"])
+""" % (k["label"], k["h"], k["p1"], k["p2"],
+       ('        <div data-fade style="display:flex;gap:clamp(22px,3vw,44px);flex-wrap:wrap;margin-top:22px">\n' + "".join('          <a class="zalink" href="%s">%s</a>\n' % l for l in k["links"]) + '        </div>\n') if k.get("links") else "")
+    if c.get("quote"):
+        extra += """  <!-- WAS DER KUNDE SAGT -->
+  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">
+    <div class="wrap" style="max-width:980px">
+      <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:clamp(22px,3vw,40px)">Was der Kunde sagt</span>
+      <p class="serif" data-fade style="font-size:clamp(24px,2.6vw,40px);line-height:1.3;letter-spacing:-0.01em">&bdquo;%s&ldquo;</p>
+      <div data-fade style="margin-top:22px;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--grey-dark)">%s</div>
+    </div>
+  </section>
+
+""" % c["quote"]
     if c.get("voice"):
         v = c["voice"]
         extra += """  <!-- KAPITEL: KUNDENSTIMME -->
@@ -203,7 +252,9 @@ def page(c, nxt):
         <div class="m" data-fade><div class="ml">Branche</div><div class="mv2">""" + c["branche"] + """</div></div>
         <div class="m" data-fade><div class="ml">Projekt</div><div class="mv2">Neue Website</div></div>
         <div class="m" data-fade><div class="ml">Leistungen</div><div class="mv2">""" + c["leistungen"] + """</div></div>
-        <div class="m" data-fade><div class="ml">Leistung</div><div class="mv2"><a href="service-websites.html">Websites & Landingpages</a></div></div>
+        <div class="m" data-fade><div class="ml">Leistungsseiten</div><div class="mv2">
+          """ + "\n          ".join('<a href="%s">%s</a>' % (h, t) for t, h in c.get("disz", [("Websites & Landingpages", "service-websites.html")])) + """
+        </div></div>
       </div>
     </div>
   </section>
@@ -226,8 +277,9 @@ def page(c, nxt):
 """ + FOOTER
     return body
 
-for i, c in enumerate(WEBCASES):
-    nxt = WEBCASES[(i + 1) % len(WEBCASES)]
-    open(c["slug"] + ".html", "w", encoding="utf-8").write(page(c, nxt))
-    print("webcase", c["slug"])
-print("webcases done")
+if __name__ == "__main__":
+    for i, c in enumerate(WEBCASES):
+        nxt = WEBCASES[(i + 1) % len(WEBCASES)]
+        open(c["slug"] + ".html", "w", encoding="utf-8").write(page(c, nxt))
+        print("webcase", c["slug"])
+    print("webcases done")

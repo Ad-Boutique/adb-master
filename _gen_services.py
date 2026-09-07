@@ -1,7 +1,8 @@
 # Service-LP-Generator: Schema Problem → Konsequenz → Lösung → Differenzierung →
 # Proof ×3 → Logos → Case-Liste → FAQ → No-Brainer + Risikoumkehr → CTA
 # -*- coding: utf-8 -*-
-from _gen import HEAD, FOOTER, menu, logocycle, logogrid
+from _gen import HEAD, FOOTER, menu, logocycle, logogrid, CASES
+from _gen_web import WEBCASES
 
 def logos_row(names, label):
     imgs = "\n      ".join('<img loading="lazy" decoding="async" src="assets/logos/%s.png" alt="%s">' % (n, n) for n in names)
@@ -218,9 +219,11 @@ SERVICES = [
              video="assets/video/kundenstimme-ib7.mp4",
              note="Wir schicken kein Dashboard, das niemand liest. Wir gehen einmal im Monat gemeinsam durch die Zahlen und sagen auch, was nicht funktioniert hat."),
   logos=["winegg", "funkhaus", "ifa", "conda", "soravia", "rhomberg", "vonpoll", "seeresidenz"],
-  oplist=[("case-premium-neubau.html", "Premium-Neubau, Wien", "489", "Leads, € 11,77 CPL"),
-          ("case-bautraeger-portfolio.html", "Bauträger-Portfolio, Wien", "€ 4,72", "CPL, der effizienteste im Portfolio"),
-          ("case-wohnbau-floridsdorf.html", "Wohnbau, Floridsdorf", "460", "Leads, € 12,77 CPL")],
+  oplist=[("case-premium-neubau.html", "Premium-Neubau, Wien", "489", "Leads, € 11,77 CPL, Wellen unter € 5"),
+          ("case-bautraeger-portfolio.html", "Bauträger-Portfolio, Wien", "€ 5,93", "CPL im zweiten Quartal, 546 Anfragen aus zwei Projekten"),
+          ("case-wohnbau-floridsdorf.html", "Wohnbau, Floridsdorf", "460", "Leads, € 12,77 CPL, dann Pivot auf Qualität"),
+          ("case-crowdinvesting.html", "Crowdinvesting-Plattform", "18,7", "ROAS in der zweiten POC-Phase, vorher 2,14"),
+          ("case-health-brand.html", "Dental-/Health-Marke", "1.385", "Verkäufe, Ziel-Gap offen reportet")],
   faq=[("Unsere Zielgruppe ist zu speziell für Performance.", "Das hören wir oft, auch von Investoren-Funnels und Premium-Neubau. Genau dort entscheidet die Botschaft je Zielgruppe: Bei Anlegern schlug der Service-Angle die Nachhaltigkeits-Story um das 2,3-Fache."),
        ("Woher wissen wir, dass die Zahlen stimmen?", "Server-side Tracking, Blended-Sicht und auf Wunsch der Blick in den Ad-Manager: Wir reporten die Realität, nicht die schönste Zählweise."),
        ("Was passiert, wenn ein Kanal nicht liefert?", "Dann wird er geschlossen, nicht schöngeredet. Bei einem Finance-Kunden lief ein Kanal schon vor uns. Wir haben ihn messbar gemacht, die Hypothese bestätigt, dass er keine zurechenbaren Zeichnungen bringt, und ihn geschlossen, während der zweite Kanal lieferte.")],
@@ -315,8 +318,9 @@ SERVICES = [
   visual=("phones", dict(h=["Gebaut", "für den Daumen."], t="Sujets aus laufenden Mandaten: Gastro, Event, Immobilie, Produkt. Immer mit Hook, immer messbar.",
                           phones=["assets/case/kommunalkredit/v0.mp4", "assets/case/juwel/v0.mp4", "assets/case/case-health-brand/v1.mp4", "assets/case/kommunalkredit/v1.mp4", "assets/case/juwel/v1.mp4", "assets/case/case-health-brand/v2.mp4"])),
   logos=["isi", "looops", "juwel", "nordicspirit", "jti", "ilbosso", "kaisers", "funkhaus"],
-  oplist=[("case-health-brand.html", "Dental-/Health-Marke", "−58 %", "CPA durch UGC"),
+  oplist=[("case-health-brand.html", "Dental-/Health-Marke", "−58 %", "CPA durch Creator statt Produktvideo"),
           ("case-premium-neubau.html", "Premium-Neubau, Wien", "54 %", "aller Leads aus einem Motiv"),
+          ("case-kommunalkredit.html", "Kommunalkredit, Sommergespräche", "19", "Social Clips, Recap und Doku aus drei Drehtagen"),
           ("case-d2c-lifestyle.html", "D2C-Lifestyle-Marke", "+57 %", "Jahresumsatz, UGC schlug Studio")],
   faq=[("Wir haben schon einen Fotografen.", "Gut so, den ersetzen wir nicht zwingend. Wir ergänzen das System dahinter: Hooks, Testing, Winner-Selektion. Content ohne Messung bleibt Dekoration."),
        ("Ist UGC nicht billig fürs Markenbild?", "Falsch produziert: ja. Richtig produziert wirkt UGC glaubwürdiger als Hochglanz und senkte den CPA in unserem Health-Mandat um rund 58 Prozent."),
@@ -412,9 +416,11 @@ SERVICES = [
   visual=("phones", dict(h=["Mobil zuerst", "gebaut."], t="Die Auftritte aus laufenden Mandaten, dort wo sie besucht werden: am Telefon.",
                           phones=["assets/img/web_noma_m.jpg", "assets/img/web_funkhausliving_m.jpg", "assets/img/web_trattner_m.jpg", "assets/img/web_unio_m.jpg", "assets/case/case-web-ib7/m0.jpg", "assets/img/web_pharmacom_m.jpg"])),
   logos=["funkhaus", "winegg", "seeresidenz", "vonpoll", "rhomberg", "soravia", "isi", "hagent"],
-  oplist=[("case-photovoltaik.html", "Photovoltaik-Anbieter", "+487 %", "Besucher, 406 Leads"),
-          ("case-premium-neubau.html", "Premium-Neubau, Wien", "€ 6,97", "CPL Instant Form vs. € 15,66 Website"),
-          ("case-immobilien-investment.html", "Immobilien-Investment", "129×", "Funnel bis zur Zeichnung")],
+  oplist=[("case-premium-neubau.html", "Premium-Neubau, Wien", "€ 6,97", "CPL Instant Form vs. € 15,66 Website, dazu die Projekt-Website"),
+          ("case-web-noma.html", "Noma Wien", "70", "Anfragen in elf Wochen über die Website"),
+          ("case-web-twistnsparkle.html", "Twist'n Sparkle, isi", "3", "Sprachen, vier Launch-Termine"),
+          ("case-immobilien-investment.html", "Immobilien-Investment", "129×", "Funnel bis zur Zeichnung"),
+          ("case-photovoltaik.html", "Photovoltaik-Anbieter", "+487 %", "Besucher, 406 Leads")],
   faq=[("Wir haben schon eine Website.", "Und sie hat einen Job: abschließen. Wenn sie das nicht tut, braucht es selten einen Relaunch, sondern eine Landingpage pro Kampagne und einen sauberen Test-Plan."),
        ("Warum nicht einfach ein Baukasten?", "Für den Start völlig okay. Sobald Mediabudget auf die Seite trifft, entscheiden Ladezeit, Message-Match und Testing, und da rechnet sich Handarbeit schnell."),
        ("Landingpage oder Instant Form?", "Das entscheiden die Zahlen, nicht die Vorliebe: Wir testen beides und schichten dorthin um, wo der ehrliche CPL liegt.")],
@@ -515,8 +521,9 @@ SERVICES = [
   visual=("stage", dict(img="assets/case/case-web-northpoint/d0.jpg", cap="Aus dem Mandat, Auftritt mit Funnel-Logik")),
   logos=["ifa", "conda", "raiffeisen", "soravia", "fabrik1230", "hagent", "winegg", "buxbaum"],
   oplist=[("case-immobilien-investment.html", "Immobilien-Investment", "129×", "€ 36k → € 4,65 Mio. Kapital"),
-          ("case-crowdinvesting.html", "Crowdinvesting-Plattform", "8,75", "ROAS, vorher 2,14"),
-          ("case-consumer-brand.html", "Premium-Consumer-Brand", "4,02", "Saison als Architektur")],
+          ("case-crowdinvesting.html", "Crowdinvesting-Plattform", "18,7", "ROAS nach Umbau auf Plattform-Logik, vorher 2,14"),
+          ("case-consumer-brand.html", "Premium-Consumer-Brand", "4,02", "Saison als Architektur"),
+          ("case-health-brand.html", "Dental-/Health-Marke", "3", "Zielstufen aus einem Workshop: 1,4, 1,6, 1,8")],
   faq=[("Brauchen wir wirklich Strategie, oder einfach bessere Ads?", "Wenn die Struktur steht, reichen oft bessere Ads. Wenn nicht, verbrennt auch das beste Creative Budget: ROAS 2,14 wurde erst durch Struktur zu 8,75."),
        ("Wie lange dauert so etwas?", "Die Strategie-Phase ist in zwei bis vier Wochen durch, danach wird umgesetzt. Strategie ohne Umsetzung verkaufen wir nicht."),
        ("Was, wenn die Analyse zeigt, dass wenig zu holen ist?", "Dann sagen wir das. Eine ehrliche Absage ist billiger als zwölf Monate Mandat ohne Hebel.")],
@@ -944,6 +951,42 @@ def _voice(s):
             '  </section>\n\n') % (v["label"], v["a"], v["note"])
 
 
+# Handgebaute Cases und ihre Leistungen (stehen nicht in CASES/WEBCASES als Daten)
+HAND_CASES = {
+    "case-premium-neubau.html": ("Premium-Neubau, Wien", ["service-performance-marketing.html", "service-content-creation.html", "service-websites.html"]),
+    "case-kommunalkredit.html": ("Kommunalkredit, Sommergespräche", ["service-content-creation.html", "service-performance-marketing.html", "service-strategie.html"]),
+}
+
+def _all_cases_for(slug):
+    """(href, titel) aller Cases, die die Leistung <slug> als Leistung ausweisen"""
+    href = slug + ".html"
+    out = []
+    for c in CASES:
+        if c.get("handmade"):
+            continue
+        if any(h == href for _, h in c["disz"]):
+            out.append((c["slug"] + ".html", c["nav_title"]))
+    for c in WEBCASES:
+        disz = c.get("disz", [("Websites & Landingpages", "service-websites.html")])
+        if any(h == href for _, h in disz):
+            out.append((c["slug"] + ".html", c["name"]))
+    for h, (t, svcs) in HAND_CASES.items():
+        if href in svcs:
+            out.append((h, t))
+    return out
+
+def _more_cases(s):
+    listed = {h for h, _, _, _ in s.get("oplist", [])}
+    allc = _all_cases_for(s["slug"])
+    for h in listed:
+        if h not in {a for a, _ in allc}:
+            print("  Hinweis: %s listet %s, aber der Case verlinkt die Leistung nicht" % (s["slug"], h))
+    rest = [(h, t) for h, t in allc if h not in listed]
+    if not rest:
+        return ""
+    return ('      <p class="morecases" data-fade><span>Auch mit dieser Leistung</span>'
+            + "".join('<a href="%s">%s</a>' % (h, t) for h, t in rest) + '</p>\n')
+
 def render_service(s):
     aside_pos = "left:clamp(24px,6vw,110px)" if s["zoom"]["side"] == "right" else "right:clamp(24px,6vw,110px)"
     tags = "\n        ".join("<span>%s</span>" % t for t in s["tags"])
@@ -1060,6 +1103,7 @@ def render_service(s):
           <span><span class="otitle">%s</span></span>
           <span class="okpi"><span class="v">%s</span><span class="l">%s</span></span>
         </a>''' % (h, i + 1, t, v, l) for i, (h, t, v, l) in enumerate(s["oplist"]))
+    more = _more_cases(s)
     cases_sec = ("""  <!-- 07, CASES -->
   <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:clamp(60px,7vw,100px)">
     <div class="wrap">
@@ -1067,7 +1111,7 @@ def render_service(s):
       <div class="oplist" data-stagger>
         """ + ops + """
       </div>
-    </div>
+""" + more + """    </div>
   </section>
 
 """) if s.get("oplist") else ""

@@ -1117,6 +1117,15 @@ body.loaded .chero img { transform: scale(1); }
 @media (prefers-reduced-motion: reduce) {
   .oplist--steps .op { opacity: 1; transform: none; }
 }
+/* Leistungsseite: weitere Cases mit dieser Leistung, als Textzeile unter der Ergebnisliste */
+.morecases {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 22px;
+  margin-top: clamp(24px, 3vw, 40px); font-size: 13px; color: var(--grey-dark);
+}
+.morecases span { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; margin-right: 6px; }
+.morecases a { color: var(--ink); padding-bottom: 3px; border-bottom: 1px solid var(--line-l); transition: color 0.3s ease, border-color 0.3s ease; }
+.morecases a:hover { color: var(--champ-deep); border-color: var(--champ-deep); }
+@media (max-width: 640px) { .cnums { grid-template-columns: 1fr 1fr; } }
 /* Stoerer: Zoom-Element auf dunklem Grund */
 .zoomsec--dark .zaside .zah { color: var(--paper); }
 .zoomsec--dark .zaside .zasub { color: var(--grey); }
