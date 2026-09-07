@@ -2109,3 +2109,30 @@ body.menuopen .bkbtn, body.menuopen .bkorbit { opacity: 0; pointer-events: none;
 /* Kacheln ohne eigene Case-Seite verhalten sich nicht wie Links */
 div.wt.tile { cursor: default; }
 div.wt.tile:hover img, div.wt.tile:hover video { transform: none; }
+
+
+/* Kundenstimme als Hochformat-Video, Ton per Klick (gleiche Mechanik wie das Interview) */
+.vsplit .vmedia--video { display: flex; justify-content: flex-end; }
+.vsplit .vmedia--video .pwiv {
+  position: relative; width: min(100%, 380px); aspect-ratio: 9 / 16;
+  overflow: hidden; border-radius: 4px; background: #131315;
+  box-shadow: 0 34px 90px rgba(0,0,0,0.45);
+}
+.vsplit .vmedia--video video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.vsplit .vmedia--video .ivsound {
+  position: absolute; left: 14px; bottom: 14px; z-index: 2;
+  display: inline-flex; align-items: center; gap: 9px;
+  background: rgba(10,10,10,0.62); backdrop-filter: blur(8px);
+  border: 1px solid rgba(243,237,225,0.28); border-radius: 100px;
+  padding: 10px 16px; cursor: pointer;
+  font-family: var(--f-ui); font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em; color: var(--paper);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.vsplit .vmedia--video .ivsound:hover { background: rgba(10,10,10,0.85); border-color: var(--champ); }
+.vsplit .vmedia--video .ivbars { display: flex; align-items: flex-end; gap: 2px; height: 11px; }
+.vsplit .vmedia--video .ivbars i { width: 2px; background: var(--champ); height: 4px; display: block; }
+.vsplit .vmedia--video .pwiv.sound .ivbars i { animation: ivpulse 0.9s ease-in-out infinite; }
+.vsplit .vmedia--video .pwiv.sound .ivbars i:nth-child(2) { animation-delay: 0.15s; }
+.vsplit .vmedia--video .pwiv.sound .ivbars i:nth-child(3) { animation-delay: 0.3s; }
+.vsplit .vtxt .vq--lead { font-style: normal; font-size: clamp(22px, 2.4vw, 38px); }
+@media (max-width: 900px) { .vsplit .vmedia--video { justify-content: center; } }
