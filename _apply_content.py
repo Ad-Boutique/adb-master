@@ -196,6 +196,9 @@ CASE_FILES = {
     "case-web-havenstone": "case-web-havenstone.html",
     "case-web-daphi": "case-web-daphi.html",
     "case-web-ib7": "case-web-ib7.html",
+    "juwel": "case-juwel.html",
+    "medcenter": "case-medcenter.html",
+    "grandgarden": "case-bautraeger-portfolio.html",
 }
 
 added = 0

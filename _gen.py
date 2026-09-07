@@ -12,8 +12,8 @@ HEAD = '''<!doctype html>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 
-<link rel="stylesheet" href="assets/master.css?v=67">
-<script src="assets/master.js?v=67" defer></script>
+<link rel="stylesheet" href="assets/master.css?v=68">
+<script src="assets/master.js?v=68" defer></script>
 </head>
 <body style="background-color:{bodybg}" class="on-light">
 
@@ -304,6 +304,97 @@ CASES = [
   learn=["Ein interaktiver Lead-Magnet schlägt das Standard-Formular.",
          "Search erntet Nachfrage, die schon da ist.",
          "Sichtbarkeit und Conversion-Mechanik gehören zusammen."]),
+ dict(slug="case-seeresidenz", ziel="Kaufinteressenten für ein Seeprojekt", nav_title="Seeresidenz Gmunden",
+  title=["Seeresidenz", "Gmunden."], sub="Ein Projekt am See. Anfragen aus dem ganzen Land.",
+  clr="#2A3D4A", fg="#E8EEF2", big="1.761", biglabel="Anfragen über Meta",
+  disz=[("Performance Marketing", "service-performance-marketing.html"), ("Strategie & Funnel", "service-strategie.html"), ("Content Creation", "service-content-creation.html")],
+  rahmen="Real Estate, Seeprojekt<br>Juli 2024 bis Dezember 2025<br>Meta, Google Search, Landingpage",
+  big_scrub="Ein Premium-Projekt am Traunsee mit <b>österreichweiter Zielgruppe</b>: Wer hier kauft, wohnt selten um die Ecke. Reichweite gab es, aber die <b>Anfragen</b> kamen unstet und teuer.",
+  body="Wir haben Meta und Google Search als Paar gebaut: Meta erzeugt die Nachfrage mit Sujets vom See, Google fängt sie, wenn gesucht wird. In eineinhalb Jahren: 3,4 Millionen Impressionen und 43.000 Klicks über Meta, 4,6 Millionen Impressionen und 76.000 Klicks über Google, 1.761 Anfragen. Im Jahr 2024 kostete eine Anfrage im Schnitt 8 Euro.",
+  statement=["Reichweite ist billig.", "Anfragen sind der Beweis."],
+  lens=[("Effizienz", "1.460 Anfragen aus 9.540 Euro Mediabudget im Jahr 2024, rund 8 Euro je Anfrage."),
+        ("Zielgruppe", "Zweitwohnsitz und Kapitalanlage, österreichweit statt regional."),
+        ("Message", "Der See als Argument, der Preis als Filter."),
+        ("Creative", "Stimmungsbilder vom Wasser im Hochformat, der Grundriss erst auf der Seite."),
+        ("Kanal", "Meta erzeugt Nachfrage, Google Search erntet sie, beides zurechenbar bis zur Anfrage.")],
+  nums=[("(Anfragen, 18 Monate)", "1.761"), ("(Impressionen Google)", "4,6 Mio."), ("(Klicks Meta und Google)", "119.000"), ("(je Anfrage, 2024)", "€ 8")],
+  note="Werte aus den Konto-Exporten Juli 2024 bis Dezember 2025 und dem Lead-Report der Gruppe für 2024. Über die gesamte Projektgruppe des Kunden stieg der Online-Anteil der Anfragen innerhalb eines Jahres von rund der Hälfte auf hundert Prozent, der Preis je Anfrage fiel von 405 auf 48 Euro.",
+  phones=dict(h="Der See im Hochformat.", t="Sujets aus der Kampagne, gebaut für den Feed.",
+              imgs=["assets/img/a_gmund1.jpg", "assets/img/gmunden.jpg", "assets/img/a_gmund2.jpg"]),
+  chapters=[dict(label="Zweites Kapitel, die Gruppe", h=["Sechs Projekte,", "eine Lead-Logik."],
+    p1="Das Seeprojekt war eines von sechs, die wir für die Gruppe parallel geführt haben: zwei Türme an der Donau, ein Schlosspark, ein Gewerbeprojekt im Süden Wiens, ein nachhaltiges Bürohaus. Jedes mit eigener Zielgruppe, alle mit derselben Zurechnungslogik bis zur Anfrage.",
+    p2="<b>Das Ergebnis über die Gruppe:</b> Binnen eines Jahres kamen die Anfragen nicht mehr zur Hälfte, sondern vollständig online, und der Preis je Anfrage fiel von 405 auf 48 Euro. Das Donau-Projekt brachte 172 Anfragen, das Gewerbeprojekt 162 Mietinteressenten über Google.",
+    nums=[("(Projekte parallel)", "6"), ("(Anfragen, Donau-Projekt)", "172"), ("(Gewerbe-Anfragen über Google)", "162"), ("(Online-Anteil, Ende 2024)", "100 %")],
+    note="Alle Werte aus dem monatlichen Lead-Report, den wir für die Gruppe geführt haben.",
+    links=[("service-strategie.html", "Strategie & Funnel"), ("service-performance-marketing.html", "Performance Marketing")])],
+  quote=("Eure professionelle und verlässliche Arbeitsweise hat wesentlich zum Erfolg unserer bisherigen Projekte beigetragen.", "Marketing Managerin, Soravia"),
+  learn=["Reichweite ist billig, Anfragen sind der Beweis.",
+         "Meta und Google sind kein Entweder-oder, sondern ein Paar.",
+         "Der Online-Anteil der Anfragen ist die Kennzahl, an der man eine Gruppe steuert."]),
+ dict(slug="case-nordic-spirit", ziel="Markteinführung mit messbaren Abschlüssen", nav_title="Nordic Spirit, JTI",
+  title=["Nordic Spirit,", "JTI."], sub="Von 800 auf 7.800 Bestellungen im Monat.",
+  clr="#0F2A44", fg="#E6EEF6", big="23.579", biglabel="Abschlüsse in zwölf Monaten",
+  disz=[("Performance Marketing", "service-performance-marketing.html"), ("Strategie & Funnel", "service-strategie.html"), ("E-Commerce Growth", "service-ecommerce.html")],
+  rahmen="Consumer, Markteinführung<br>Juli 2025 bis Juni 2026<br>Meta, Google, Sampling-Funnel",
+  big_scrub="Eine neue Marke in einer <b>regulierten Kategorie</b>, ohne Bekanntheit in Österreich, mit einem Ziel, das sich zählen lässt: <b>Gratis-Samples</b>, die zu Kunden werden. Und mit Regeln, die viele Werbemittel und Zielgruppen ausschließen.",
+  body="Wir haben den Funnel als Sampling-Maschine gebaut: Meta für Volumen mit Angeboten wie vier Dosen gratis, Google für Effizienz auf der Suche, Ziel-CPA-Gebote als Steuerung, Gewinnspiele und Kooperationen bewusst getrennt vom Sales-Funnel. Aus 275.906 Euro Mediabudget wurden 23.579 Abschlüsse zu 11,70 Euro, die Bestellungen stiegen von 800 auf 7.800 im Monat.",
+  statement=["Meta bringt Volumen.", "Google bringt Effizienz.", "Zusammen bringen sie Kunden."],
+  lens=[("Effizienz", "Google mit 7,18 Euro je Abschluss, Search Always-on bei 4,80 Euro. Meta-CPA in den Conversion-Kampagnen von 13,01 auf 8,36 Euro gesenkt."),
+        ("Zielgruppe", "Erwachsene Umsteiger, geschärft über Signale aus dem Sampling, kein Streuverlust in gesperrte Segmente."),
+        ("Message", "Gratis probieren schlägt jedes Markenversprechen: Hol dir das Discovery Kit."),
+        ("Creative", "Angebots-Statics und ein Markenfilm, wöchentlich neue Varianten gegen die Ermüdung."),
+        ("Kanal", "Meta mit 73 Prozent des Budgets für Reichweite und Abschlüsse, Google mit 27 Prozent als Effizienzkanal, dazu ein Loyalty-Programm für Wiederkäufer.")],
+  nums=[("(Abschlüsse)", "23.579"), ("(je Abschluss, gesamt)", "€ 11,70"), ("(Bestellungen je Monat, Peak)", "7.800"), ("(Reichweite Meta)", "2,8 Mio.")],
+  note="Mediabudget 275.906 Euro, davon 202.221 Euro Meta und 73.685 Euro Google, 46,1 Millionen Impressionen. Peak von September bis Dezember 2025 mit über 6.000 Abschlüssen im Monat. Werte aus dem Performance Review an den Kunden.",
+  chapters=[dict(label="Zweites Kapitel, die Übergabe", h=["Aufbauen, skalieren,", "sauber übergeben."],
+    p1="Neben dem Sales-Funnel liefen zwei Nebenschauplätze mit eigener Logik: über zwanzig Gewinnspiel-Kooperationen mit rund 65.000 Interaktionen zu höchstens 52 Cent je Interaktion, und ein Loyalty-Programm für Wiederkäufer, das mit 4.499 Euro 142 Anmeldungen brachte. Beides bewusst getrennt gemessen, damit keine Zahl die andere verfälscht.",
+    p2="<b>Nach zwölf Monaten haben wir das Konto übergeben:</b> mit Struktur, Dokumentation und den Learnings aus einem Jahr. Ein Mandat muss nicht ewig laufen, um ein gutes Mandat zu sein. Es muss sauber gebaut sein.",
+    nums=[("(Gewinnspiel-Kooperationen)", "20+"), ("(Interaktionen daraus)", "65.000"), ("(je Interaktion, maximal)", "€ 0,52"), ("(Loyalty-Anmeldungen)", "142")],
+    note="Werte aus dem Performance Review zum Abschluss der Zusammenarbeit im Juni 2026.",
+    links=[("service-strategie.html", "Strategie & Funnel"), ("service-ecommerce.html", "E-Commerce Growth")])],
+  learn=["Ziel-CPA-Gebote waren der größte Hebel, nicht das Budget.",
+         "Gewinnspiele gehören getrennt vom Sales-Funnel, sonst verfälschen sie jede Zahl.",
+         "Eine Marke ohne Bekanntheit gewinnt über das Angebot, nicht über das Versprechen."]),
+ dict(slug="case-medcenter", ziel="Patientenanfragen für ein neues Zentrum", nav_title="MedCenter 1030",
+  title=["MedCenter", "1030."], sub="Ein Arztzentrum. Sichtbar in einer Woche.",
+  clr="#3E5A52", fg="#EEF3F1", big=None, biglabel="",
+  disz=[("Websites & Landingpages", "service-websites.html"), ("Performance Marketing", "service-performance-marketing.html"), ("Content Creation", "service-content-creation.html")],
+  rahmen="Health, Arztzentrum<br>Seit März 2026, laufend<br>Website, Google, Meta",
+  big_scrub="Ein neues Arztzentrum im dritten Bezirk, mehrere Fachrichtungen unter einem Dach, aber <b>kein Auftritt</b>, keine Sichtbarkeit und ein Startdatum, das <b>nicht wartete</b>.",
+  body="Innerhalb einer Woche standen Website und Kampagnen-Setup: eine Seite, die Fachrichtungen, Team und Termine ohne Umweg zeigt, dazu Google für die aktive Suche und Meta für die Nachbarschaft, mit Sujets, die das Zentrum als Ort zeigen, nicht als Leistungsverzeichnis. Die Kampagnen laufen seit dem Frühjahr, die Zahlen lesen wir vierteljährlich mit der Praxisleitung.",
+  statement=["Gesundheit braucht Nähe.", "Auch online."],
+  lens=[("Effizienz", "Ein Setup, zwei Kanäle, ein Reporting, ohne Agenturaufwand, der eine Ordination überfordert."),
+        ("Zielgruppe", "Menschen im Grätzel und Suchende mit konkretem Anliegen."),
+        ("Message", "Ein Zentrum, viele Fachrichtungen, kurze Wege."),
+        ("Creative", "Ruhige Statics in der Farbwelt des Zentrums, Menschen statt Geräte."),
+        ("Kanal", "Google für die Suche, Meta für die Nachbarschaft.")],
+  nums=[], note="",
+  phones=dict(h="Sujets für das Grätzel.", t="Kampagnen-Statics aus dem Setup, gebaut für den Feed.",
+              imgs=["assets/case/medcenter/g0.jpg", "assets/case/medcenter/g1.jpg", "assets/case/medcenter/g2.jpg", "assets/case/medcenter/g3.jpg", "assets/case/medcenter/g4.jpg"]),
+  quote=("Die Seite sieht echt schon sehr gut aus.", "Marketing-Koordination, MedCenter 1030, nach der ersten Abnahme"),
+  learn=["Eine Ordination braucht keinen Konzern-Auftritt, sondern einen, der in einer Woche steht.",
+         "Empfehlungen entstehen aus Arbeit: Der Kontakt kam über eine Projektmanagerin aus dem Immobilienumfeld.",
+         "Gesundheit verkauft sich über Nähe, nicht über Rabatt."]),
+ dict(slug="case-juwel", ziel="Qualifizierte Eventanfragen", nav_title="Juwel Wien",
+  title=["Juwel", "Wien."], sub="Eine Location im 15. Stock. Sichtbar in der ganzen Stadt.",
+  clr="#2B2620", fg="#EFE6D6", big=None, biglabel="",
+  disz=[("Content Creation", "service-content-creation.html"), ("Performance Marketing", "service-performance-marketing.html"), ("Websites & Landingpages", "service-websites.html")],
+  rahmen="Event-Location, Gastronomie<br>Seit November 2025, laufend<br>Instagram, Meta, Google, LinkedIn",
+  big_scrub="Eine Rooftop-Location über den Dächern Wiens, die jeder kennt, der oben war, und zu wenige, die noch nicht oben waren. <b>Social Media lief nebenbei</b>, Anfragen kamen <b>über Umwege</b>.",
+  body="Wir führen die Kanäle als verlängertes Team der Location: zwölf Beiträge und Stories im Monat, Content-Tage alle zwei Monate, Community-Management, dazu Kampagnen auf Meta, Google und LinkedIn für Firmenevents, Hochzeiten und private Feiern. Seit dem Sommer 2026 mit eigenen Landingpages je Anlass und einem Vergütungsmodell, das am Eventwert hängt: Wir verdienen mit, wenn gebucht wird.",
+  statement=["Wir verdienen,", "wenn gebucht wird."],
+  lens=[("Effizienz", "Erfolgsbeteiligung statt Fixhonorar für die Kampagnen, gestaffelt nach Eventwert."),
+        ("Zielgruppe", "Firmen, die einen Ort für ihre Feier suchen, Paare vor der Hochzeit, Gastgeber privater Runden."),
+        ("Message", "Der Blick ist das Versprechen, der Service das Argument."),
+        ("Creative", "Editorial-Shooting mit Models statt Eventfotografie, damit die Location wie eine Marke aussieht."),
+        ("Kanal", "Instagram als Bühne, Meta und Google für Anfragen, LinkedIn für Firmenevents.")],
+  nums=[], note="",
+  phones=dict(h="Silvester über der Stadt.", t="Sujets und Stories aus der Kampagne zum Jahreswechsel.",
+              imgs=["assets/img/a_silv1.jpg", "assets/case/juwel/g0.jpg", "assets/img/a_silv2.jpg", "assets/case/juwel/g2.jpg"]),
+  quote=("Passt perfekt!", "Geschäftsführung, Juwel Wien, zum Vergütungsmodell nach Eventwert"),
+  learn=["Eine Location ist eine Marke, wenn man sie so fotografiert.",
+         "Landingpages je Anlass schlagen die eine Kontaktseite.",
+         "Erfolgsbeteiligung macht aus Agentur und Kunde ein Team."]),
 ]
 
 # Weitere Kapitel und Kundenstimmen je Case, Quelle: Reportings, Angebote und Kundenmails (Recherche 7.9.2026).
@@ -387,6 +478,21 @@ EXTRA = {
 for _c in CASES:
     _c.update(EXTRA.get(_c["slug"], {}))
 
+# Hero-Zeilen als echte Headlines, keine Erklaerungen
+SUBS = {
+ "case-immobilien-investment": "Aus 36.000 Euro wurden 4,65 Millionen. Zurechenbar.",
+ "case-d2c-lifestyle": "Das beste Jahr der Firma. Aus demselben Traffic.",
+ "case-crowdinvesting": "Gleiches Budget. Viermal mehr Kapital.",
+ "case-wohnbau-floridsdorf": "Zwei Märkte, ein Projekt. Sauber getrennt gewonnen.",
+ "case-consumer-brand": "Wenn alle schreien, gewinnt Relevanz.",
+ "case-bautraeger-portfolio": "Ein System. Drei Projekte. Der beste Preis im Portfolio.",
+ "case-health-brand": "Ehrlich gerechnet. Und trotzdem gewachsen.",
+ "case-photovoltaik": "Der Konfigurator ist das Creative.",
+}
+for _c in CASES:
+    if _c["slug"] in SUBS:
+        _c["sub"] = SUBS[_c["slug"]]
+
 
 def _chapters(c):
     out = []
@@ -454,9 +560,10 @@ def case_page(c, nxt):
       <div class="cl" style="font-size:15px">%s <span style="opacity:.65">%s</span></div>
       <div class="dispn" style="--n:%d">%s</div>
     </div>
-    <div class="hkpi"><div class="kv" style="font-size:clamp(60px,7vw,120px)">%s</div><div class="kl">(%s)</div></div>
+%s
     <div class="scrollhint">Scrollen</div>
-  </section>""" % (world, world, wfg, c["nav_title"], c["rahmen"].split("<br>")[0].split(",")[0].strip(), len(c["sub"]), c["sub"], c["big"], c["biglabel"])
+  </section>""" % (world, world, wfg, c["nav_title"], c["rahmen"].split("<br>")[0].split(",")[0].strip(), len(c["sub"]), c["sub"],
+                   "")  # Farbwelt-Hero ohne Kennzahl, die Zahl steht im Ergebnis
     disz_links = "\n          ".join('<a href="%s">%s</a>' % (h, t) for t, h in c["disz"])
     lens_rows = "\n".join('        <div class="lrow" data-fade><div class="ll">%s</div><div class="lt">%s</div></div>' % (l, t) for l, t in c["lens"])
     nums = "\n".join('        <div class="n" data-fade><div class="l">%s</div><div class="v num serif">%s</div></div>' % (l, v) for l, v in c["nums"])
@@ -505,7 +612,7 @@ def case_page(c, nxt):
         if nxt.get("img"):
             nxt_media = '<img loading="lazy" decoding="async" src="%s" alt="">' % nxt["img"]
         else:
-            nxt_media = '<span style="display:flex;align-items:flex-end;aspect-ratio:4/3;background:%s;color:%s;padding:24px;border-radius:3px"><span style="font-family:var(--f-disp);font-weight:680;font-size:clamp(40px,4vw,64px);font-variant-numeric:tabular-nums">%s</span></span>' % (nxt.get("clr", "#22382C"), nxt.get("fg", "#EDF2EC"), nxt.get("big", ""))
+            nxt_media = '<span style="display:flex;align-items:flex-end;aspect-ratio:4/3;background:%s;color:%s;padding:24px;border-radius:3px"><span style="font-family:var(--f-disp);font-weight:680;font-size:clamp(40px,4vw,64px);font-variant-numeric:tabular-nums">%s</span></span>' % (nxt.get("clr", "#22382C"), nxt.get("fg", "#EDF2EC"), nxt.get("big") or nxt["nav_title"])
     nxt_href = nxt["slug"] + ".html"
     page = HEAD.format(title="Case, " + c["nav_title"], bodybg=world) + menu("work.html", back=True) + """<main>
 
@@ -556,7 +663,7 @@ def case_page(c, nxt):
     </div>
   </section>
 
-  <!-- ERGEBNIS -->
+""" + (("""  <!-- ERGEBNIS -->
   <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:0">
     <div class="wrap">
       <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:clamp(30px,4vw,50px)">Ergebnis</span>
@@ -567,7 +674,7 @@ def case_page(c, nxt):
     </div>
   </section>
 
-""" + _chapters(c) + _cquote(c) + phones_sec + """  <!-- LEARNINGS -->
+""") if c.get("nums") else "") + _chapters(c) + _cquote(c) + phones_sec + """  <!-- LEARNINGS -->
   <section class="sec fg-dark" data-bg="""" + world + """" data-fg="light" style="background:""" + world + """">
     <div class="wrap" style="max-width:900px">
       <span class="label" style="color:var(--champ);display:block;margin-bottom:26px">Learnings</span>
