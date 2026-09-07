@@ -34,6 +34,11 @@
       requestAnimationFrame(function () {
         pt.classList.add("cover");
         setTimeout(function () { location.href = href; }, 520);
+        setTimeout(function () {
+          /* Seite ist noch da: Blende wieder oeffnen statt schwarz stehen zu bleiben */
+          pt.classList.remove("cover");
+          setTimeout(function () { pt.classList.remove("enter"); pt.classList.add("gone"); }, 520);
+        }, 4000);
       });
     });
   }
@@ -44,9 +49,26 @@
     if (!href || href.indexOf("#") === 0 || a.target === "_blank" ||
         href.indexOf("http") === 0 || href.indexOf("mailto:") === 0) return;
     if (a.hasAttribute("data-flip")) return; /* Tile-Expansion regelt selbst */
+    /* Sprung innerhalb derselben Seite (z. B. index.html#leistungen von der Startseite aus):
+       kein Seitenwechsel, also keine Blende, sonst bleibt sie schwarz stehen */
+    var url;
+    try { url = new URL(href, location.href); } catch (err) { url = null; }
+    if (url && url.hash && url.pathname === location.pathname) { closeMenu(); return; }
     e.preventDefault();
     closeMenu();
     leaveTo(href);
+  });
+  /* Sicherheitsnetz: Blende nie dauerhaft stehen lassen. Zurueck-Navigation aus dem
+     Browser-Cache stellt die Seite mit geschlossener Blende wieder her; und wenn nach dem
+     Klick kein Seitenwechsel passiert ist, geht die Blende wieder auf. */
+  window.addEventListener("pageshow", function (e) {
+    if (e.persisted && pt) {
+      pt.style.transition = "none";
+      pt.classList.remove("enter", "cover");
+      pt.classList.add("gone");
+      document.body.classList.add("loaded");
+      requestAnimationFrame(function () { pt.style.transition = ""; });
+    }
   });
 
   /* ---------- Cursor ---------- */
