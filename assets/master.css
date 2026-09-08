@@ -1177,6 +1177,14 @@ body.loaded .chero img { transform: scale(1); }
   color: var(--grey-dark);
 }
 .svc-back:hover { color: var(--ink); }
+/* Am Telefon brauchen Textlinks eine Trefferflaeche, die man wirklich trifft */
+@media (max-width: 860px) {
+  .svc-back { padding: 12px 14px; margin: -12px -14px; }
+  .fbase a, .fcols > div > a { display: inline-block; padding: 9px 0; }
+  .npbar2 a, .npbar a { display: inline-block; padding: 8px 0; }
+  a.see, .svcard .see { display: inline-block; padding: 8px 0; }
+  .zalink, .alink { padding-top: 6px; padding-bottom: 8px; }
+}
 .svc-glyph {
   width: 34px; height: 34px; border: 1px solid var(--champ-deep); border-radius: 50%;
   margin: 0 auto 22px; position: relative;
@@ -2078,6 +2086,7 @@ body.menuopen .bkbtn, body.menuopen .bkorbit { opacity: 0; pointer-events: none;
 .photowall .pwtrack video { aspect-ratio: 4 / 5; object-fit: cover; background: #0E0E10; }
 .photowall .pwtrack .pwiv { aspect-ratio: 4 / 5; }
 .photowall .pwtrack .pwiv video { width: 100%; height: 100%; }
+.photowall .pwstage.pwpaused .pwtrack { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) { .photowall .pwtrack { animation: none; } }
 /* Interview-Kachel in der Wand */
 .photowall .pwiv { position: relative; }
@@ -2105,6 +2114,8 @@ body.menuopen .bkbtn, body.menuopen .bkorbit { opacity: 0; pointer-events: none;
   .photowall .pwtxt { position: static; height: auto; padding: clamp(60px,8vh,90px) 0 0; }
   .photowall .pwdisc { margin-top: clamp(30px,4vw,48px); }
   .photowall .pwstage { --pwstageh: clamp(420px, 78vh, 640px); margin-top: clamp(34px,5vw,60px); }
+  /* am Telefon gibt es kein Hover: der Ton-Knopf braucht Platz und bleibt bedienbar */
+  .photowall .ivsound { padding: 12px 16px; }
 }
 
 

@@ -530,6 +530,29 @@
     }
   }
 
+  /* ---------- Sicherheitsnetz fuer Einblendungen ----------
+     Am Telefon wird mit Schwung gescrollt. Der IntersectionObserver kann dabei Elemente
+     verpassen, die in einem Frame durchs Bild fliegen, und dann bleibt Text unsichtbar.
+     Deshalb im Scroll-Loop synchron nachziehen: alles, was oben im Blick war, wird sichtbar. */
+  var pending = Array.prototype.slice.call(document.querySelectorAll("[data-fade], [data-scale], [data-lines]"));
+  function revealSafety() {
+    for (var i = pending.length - 1; i >= 0; i--) {
+      var el = pending[i];
+      if (el.classList.contains("inview")) { pending.splice(i, 1); continue; }
+      var r = el.getBoundingClientRect();
+      /* im Blick oder schon vorbei: beides heisst sichtbar */
+      if (r.top < vh * 0.94) { el.classList.add("inview"); pending.splice(i, 1); }
+    }
+  }
+
+  /* ---------- Bildband: Tippen haelt es an, damit man am Telefon lesen und den Ton treffen kann ---------- */
+  document.querySelectorAll(".pwstage").forEach(function (st) {
+    st.addEventListener("click", function (e) {
+      if (e.target.closest(".ivsound")) return;   /* der Ton-Knopf regelt sich selbst */
+      st.classList.toggle("pwpaused");
+    });
+  });
+
   /* ---------- Bildband: Tempo in Prozent der Fensterbreite je Sekunde, Dauer aus der Bandbreite ---------- */
   var tracks = Array.prototype.slice.call(document.querySelectorAll(".pwtrack"));
   function trackDur() {
@@ -587,6 +610,7 @@
     chrowTick();
     bacmpTick();
     stepsTick();
+    revealSafety();
     ticking = false;
   }
   var ticking = false;
@@ -856,6 +880,9 @@
     frame.classList.toggle("sound", !v.muted);
     btn.setAttribute("aria-label", v.muted ? "Ton einschalten" : "Ton ausschalten");
     if (lab) lab.textContent = v.muted ? "Ton an" : "Ton aus";
+    /* laeuft das Interview in einem Bildband, haelt das Band beim Zuhoeren an */
+    var st = frame.closest(".pwstage");
+    if (st) st.classList.toggle("pwpaused", !v.muted);
   });
 
   /* laeuft das Video aus dem Bild, geht der Ton wieder aus */
