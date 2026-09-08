@@ -12,8 +12,8 @@ HEAD = '''<!doctype html>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 
-<link rel="stylesheet" href="assets/master.css?v=69">
-<script src="assets/master.js?v=69" defer></script>
+<link rel="stylesheet" href="assets/master.css?v=70">
+<script src="assets/master.js?v=70" defer></script>
 </head>
 <body style="background-color:{bodybg}" class="on-light">
 
@@ -395,6 +395,29 @@ CASES = [
   learn=["Eine Location ist eine Marke, wenn man sie so fotografiert.",
          "Landingpages je Anlass schlagen die eine Kontaktseite.",
          "Erfolgsbeteiligung macht aus Agentur und Kunde ein Team."]),
+ dict(slug="case-bella-vita", img="assets/prev/herogroup.jpg", ziel="Kaufinteressenten für 49 fertige Wohnungen", nav_title="Bella Vita, Hero Group",
+  title=["Bella Vita,", "Wiener Neustadt."], sub="Fertig gebaut. Jetzt wird verkauft.",
+  clr="#3B3A36", fg="#F1EEE8", big="21", biglabel="Anfragen in der ersten Woche",
+  disz=[("Performance Marketing", "service-performance-marketing.html"), ("Content Creation", "service-content-creation.html")],
+  rahmen="Real Estate, Wohnbau<br>Seit Mai 2026, laufend<br>Meta, Google, Makler-Übergabe",
+  big_scrub="49 fertiggestellte Wohnungen in Wiener Neustadt, zwei Maklerhäuser im Vertrieb und eine Vorgänger-Agentur, bei der eine Google-Anfrage rund <b>80 Euro</b> kostete. Das Projekt brauchte <b>Volumen zu einem Preis, der trägt</b>, und Anfragen, die beim Makler ankommen.",
+  body="Wir haben in drei Wochen Setup, Sujets und Funnel gebaut und im Mai mit Meta gestartet: 21 Anfragen in der ersten Woche, rund 57 bis Mitte Juli, überwiegend Eigennutzer mit drei bis vier Zimmern und einem Budget zwischen 280.000 und 450.000 Euro. Jede Anfrage geht automatisch an eines der beiden Maklerhäuser, mit einer Rückmeldeschleife zur Qualität. Seit August ergänzt Google die Suche nach dem Projekt.",
+  statement=["Der Lead ist erst", "beim Makler ein Lead."],
+  lens=[("Effizienz", "Wenige Sujets, klare Zielgruppe, wöchentliche Umschichtung: Volumen ohne Streuverlust."),
+        ("Zielgruppe", "Eigennutzer aus der Region mit konkretem Zeithorizont von sechs bis zwölf Monaten."),
+        ("Message", "Fertig, besichtigbar, sofort beziehbar. Das Argument eines fertigen Projekts."),
+        ("Creative", "Renderings und Bewegtbild aus dem Projekt, der Grundriss erst auf der Seite."),
+        ("Kanal", "Meta für Volumen, Google seit August für die aktive Suche, Übergabe je zur Hälfte an zwei Makler.")],
+  nums=[("(Anfragen, erste Woche)", "21"), ("(Anfragen bis Mitte Juli)", "57"), ("(Zeithorizont der Interessenten)", "6 bis 12 Monate"), ("(Maklerhäuser im Vertrieb)", "2")],
+  note="Werte aus der Lead-Liste an die Makler, Mai bis Juli 2026. Preis je Anfrage und Verkäufe reportieren wir, sobald das Quartal geschlossen ist.",
+  chapters=[dict(label="Zweites Kapitel, nach dem Lead", h=["Zwei Makler,", "eine Rückmeldeschleife."],
+    p1="Jede Anfrage landet bei einem der beiden Maklerhäuser, und jede Rückmeldung landet wieder bei uns: Exposé verschickt, Telefonat geführt, nicht erreichbar, zu teuer, zu wenig zentral. Aus diesen Notizen lernen die Kampagnen, welche Botschaft die Menschen bringt, die dann auch besichtigen.",
+    p2="<b>Das wichtigste Learning kam vom Kunden selbst:</b> Social-Media-Anfragen müssen innerhalb von Stunden kontaktiert werden, sonst sind sie kalt. Deshalb ist die Erstkontakt-Zeit der Makler Teil unseres Reportings, nicht nur der Preis je Anfrage.",
+    links=[("service-performance-marketing.html", "Performance Marketing"), ("case-web-noma.html", "Noma Living, das zweite Projekt mit Hero Group")])],
+  quote=("Social-Media-Leads müssen sehr kurzfristig kontaktiert werden, um zum Erfolg zu kommen.", "Projektleitung, Hero Group, an die Maklerhäuser"),
+  learn=["Der Lead ist erst beim Makler ein Lead.",
+         "Ein fertiges Projekt verkauft sich über Verfügbarkeit, nicht über Visionen.",
+         "Die Erstkontakt-Zeit gehört ins Reporting."]),
 ]
 
 # Weitere Kapitel und Kundenstimmen je Case, Quelle: Reportings, Angebote und Kundenmails (Recherche 7.9.2026).

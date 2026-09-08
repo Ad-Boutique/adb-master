@@ -197,6 +197,7 @@ CASE_FILES = {
     "case-web-daphi": "case-web-daphi.html",
     "case-web-ib7": "case-web-ib7.html",
     "juwel": "case-juwel.html",
+    "herogroup": "case-bella-vita.html",
     "medcenter": "case-medcenter.html",
     "grandgarden": "case-bautraeger-portfolio.html",
 }
