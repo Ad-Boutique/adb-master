@@ -280,7 +280,7 @@
   }
 
   /* ---------- Akkordeon ---------- */
-  document.querySelectorAll(".acc .ahead").forEach(function (h) {
+  document.querySelectorAll(".acc .ahead, .faq .ahead").forEach(function (h) {
     h.addEventListener("click", function () {
       var item = h.parentElement;
       var body = item.querySelector(".abody");

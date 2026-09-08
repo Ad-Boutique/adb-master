@@ -30,7 +30,7 @@ SERVICES = [
   problem_h=["Das Problem"],
   problem=["Sie kaufen Besucher, aber zu wenige kaufen: Steigende Klickpreise drücken die Marge, der Checkout verliert Käufer, und das Reporting verschleiert mehr, als es zeigt.",
            "<b>Mehr Budget skaliert dann nur das Problem.</b> Jeder Monat mit undichtem Funnel wird teurer, während Wettbewerber mit sauberem Setup denselben Klick in mehr Umsatz übersetzen."],
-  intro="Wir skalieren <b>D2C-Marken</b>die wachsen wollen, statt Budget zu testen. Der Hebel liegt selten in mehr <b>Spend</b>sondern im Zusammenspiel aus <b>Creative</b><b>Shop</b> und <b>Messung</b>. Deshalb bauen wir das System, nicht die Einzelmaßnahme.",
+  intro="Mehr <b>Spend</b> löst selten das Problem. Der Hebel liegt im Zusammenspiel aus <b>Creative</b>, <b>Shop</b> und <b>Messung</b>. Wir bauen das System, nicht die Einzelmaßnahme.",
   acc=[("Ads & Creatives", "Iteratives Creative-Testing statt Bauchgefühl: Wir lassen Varianten gegeneinander laufen und schichten Budget wöchentlich auf die Gewinner um.",
         ["Meta, Google, TikTok, Pinterest", "UGC- und Studio-Produktion", "Systematisches Creative-Testing", "Budget-Steuerung, wöchentlich"]),
        ("Shop & Conversion", "Mehr Umsatz beginnt fast immer im Checkout, nicht im Ad-Account. Wir optimieren dort, wo der Klick zu Geld wird.",
@@ -185,7 +185,7 @@ SERVICES = [
   problem_h=["Das Problem"],
   problem=["Budget läuft, Dashboards leuchten, aber niemand kann sagen, welcher Euro wirklich Umsatz gebracht hat. Doppelt gezählte Conversions feiern Erfolge, die es nie gab.",
            "<b>Ohne saubere Zurechnung fließt Budget monatelang in Kanäle, die nur Klicks liefern.</b> Der CPL steigt, die Pipeline bleibt leer, und am Ende heißt es: Performance funktioniert bei uns nicht."],
-  intro="Wir steuern <b>Meta, Google und TikTok</b> mit einer Regel: <b>Das Creative ist der Hebel</b>nicht das Budget. Getestet wird systematisch, gemessen wird ehrlich, umgeschichtet wird <b>wöchentlich</b>.",
+  intro="<b>Meta, Google und TikTok</b> mit einer Regel: <b>Das Creative ist der Hebel</b>, nicht das Budget. Systematisch getestet, ehrlich gemessen, <b>wöchentlich</b> umgeschichtet.",
   acc=[("Kampagnen-Setup", "Strukturen, die skalieren können: nach Rolle getrennte Kampagnen, saubere Zielwerte, Budgets dort, wo der ehrliche CPL hinzeigt.",
         ["Meta, Google, TikTok", "Instant Forms & Lead-Strecken", "Kaufnahe Search-Intents", "Budget-Steuerung, wöchentlich"]),
        ("Creative-Testing", "Viele Varianten, klare Sieger: Bei einem Wiener Neubauprojekt trug ein einziges Interior-Motiv 54 Prozent aller Leads.",
@@ -241,7 +241,7 @@ SERVICES = [
   problem_h=["Das Problem"],
   problem=["Feeds voller Hochglanz, aber die CPMs steigen und niemand misst, welches Motiv wirklich trägt. Schöner Content, der nichts verkauft, ist Dekoration.",
            "<b>Die Konsequenz: teure Produktionen ohne Wirkung.</b> Jedes Shooting ohne Testing-Plan produziert Material fürs Archiv, während die Kampagne mit dem falschen Motiv weiterläuft."],
-  intro="Bei uns sitzen <b>Content und Performance</b> an einem Tisch: Jedes Motiv wird gegen echte <b>Benchmarks</b> getestet, nicht gegen Geschmack. Was trägt, wird skaliert. Was nicht trägt, fliegt raus, egal wie <b>schön</b> es ist.",
+  intro="<b>Content und Performance</b> sitzen bei uns an einem Tisch. Jedes Motiv läuft gegen echte <b>Zahlen</b>, nicht gegen Geschmack. Was trägt, wird skaliert, egal wie <b>schön</b> der Rest war.",
   acc=[("UGC-Produktion", "Echte Menschen, echte Nutzung: In einem Health-Mandat schlug UGC die klassischen Produkt-Videos beim CPA um rund 58 Prozent.",
         ["Creator-Casting & Briefing", "Skripte nach Hook-Logik", "Iterationen nach CPA", "Rechte & Freigaben sauber"]),
        ("Studio & On-Location", "Produktwelten, Interiors, Menschen: produziert mit Blick auf den Feed, nicht auf das Portfolio.",
@@ -339,7 +339,7 @@ SERVICES = [
   problem_h=["Das Problem"],
   problem=["Teure Klicks landen auf Seiten, die nicht konvertieren: langsam, überladen, ohne klares Nutzenversprechen über dem Falz und ohne Message-Match zur Anzeige.",
            "<b>Jeder Euro Mediabudget wird dadurch entwertet.</b> Wer € 3 pro Klick zahlt und 1 Prozent konvertiert, zahlt € 300 pro Lead, und wundert sich über den Markt."],
-  intro="Wir bauen Seiten vom <b>Abschluss</b> her: eine Botschaft, ein Ziel, <b>Message-Match</b> zur Kampagne. Und wir messen ehrlich, wann eine Landingpage der richtige Ort ist, und wann ein <b>Instant Form</b> schlicht besser performt.",
+  intro="Wir bauen Seiten vom <b>Abschluss</b> her: eine Botschaft, ein Ziel, <b>Message-Match</b> zur Kampagne. Und wir sagen Ihnen, wann ein <b>Instant Form</b> die bessere Wahl ist.",
   acc=[("Landingpages je Kampagne", "Eine Seite pro Botschaft: Headline, Beweis und CTA passen zur Anzeige, nicht zur Sitemap.",
         ["Message-Match zur Kampagne", "Ein Ziel pro Seite", "Proof an den Entscheidungspunkten", "Noindex, schnell, mobil zuerst"]),
        ("Shops & Websites", "Vom Produkt bis zum Checkout: Auftritte, die Markenwelt und Abschluss verbinden.",
@@ -438,7 +438,7 @@ SERVICES = [
   problem_h=["Das Problem"],
   problem=["Jede Kampagne beginnt bei null: eigene Zielgruppen, eigene Zahlen, keine gemeinsame Datenbasis. Was funktioniert hat, weiß hinterher niemand genau.",
            "<b>Teuer erkaufte Learnings verpuffen.</b> Eine Plattform, die mit ROAS 2,14 lief, blieb genau so lange ineffizient, bis Struktur, KPI-Logik und projektübergreifendes Lernen kamen: Danach stand sie bei 8,75."],
-  intro="Wir bauen die <b>Struktur</b>bevor wir Budget bewegen: <b>Funnel-Architektur</b>KPI-Definitionen, die vorab feststehen, und eine <b>Attribution</b>die jeden Euro zurechenbar macht. Erst dann wird skaliert.",
+  intro="Erst die <b>Struktur</b>, dann das Budget: <b>Funnel</b>, KPI-Definitionen, die vorab feststehen, und eine <b>Attribution</b>, die jeden Euro zurechenbar macht.",
   acc=[("Funnel-Architektur", "Vom ersten Kontakt bis zur Zeichnung: Ein Investoren-Funnel übersetzte € 36k Google-Budget in € 4,65 Mio. zurechenbares Kapital.",
         ["Journey vom Lead bis zum Abschluss", "Vertrauensaufbau Schritt für Schritt", "CRM-Nurture für lange Wege", "Klare Übergaben an Vertrieb"]),
        ("KPI-Logik & Attribution", "Die KPI-Definition vorab ist die halbe Miete: Kosten je Investor, Ø Investment, Volumen, ROAS, sauber zugerechnet.",
@@ -536,12 +536,12 @@ SERVICES = [
  dict(slug="service-chatgpt-ads", nav="ChatGPT Ads", label="Leistung, ChatGPT Ads, Frühzugang vor der Öffnung für Europa",
   h1=["Werben, wo andere", "nicht werben."], ital=1,
   tags=["Neu in Österreich seit 24. August", "Im Moment der Entscheidung", "Fühlt sich nicht wie Werbung an", "Frühzugang vor dem Self-Service"],
-  sub="Ihre Kunden fragen ChatGPT, bevor sie entscheiden. Genau dort, wo bis vor wenigen Wochen keine Werbung möglich war, steht Ihr Angebot jetzt als Teil der Antwort: ruhig, passend, nicht wie eine Anzeige. Wir haben Kampagnen aufgesetzt, bevor der Self-Service für Europa geöffnet wurde, und übernehmen für Sie Prüfung, Aufbau, Text und Messung. Der Kanal ist noch leer. Das ist Ihr Vorteil, wenn Sie jetzt starten.",
+  sub="Ihre Kunden fragen ChatGPT, bevor sie entscheiden. Wir haben Kampagnen aufgesetzt, bevor der Self-Service für Europa geöffnet wurde, und übernehmen für Sie Prüfung, Aufbau, Text und Messung. Der Kanal ist noch leer. Das ist Ihr Vorteil, wenn Sie jetzt starten.",
   content_label="Aus dem Studio",
   sol_label="Die Ausgangslage",
   problem_h=["Das Problem"],
   problem=["", ""],
-  intro="Kurz zur Sache: Wer ChatGPT fragt, hat sich schon entschieden, etwas zu tun. Er vergleicht, wählt, will eine Antwort. In diesem Moment ist die Aufmerksamkeit so hoch wie nirgends sonst im Netz, und bisher konnte dort <b>niemand werben</b>. Jetzt steht Ihr Angebot direkt unter der Antwort, <b>als Empfehlung im Gespräch</b>, nicht als Banner. Drei Dinge, die Sie wissen sollten, bevor Sie starten.",
+  intro="Wer ChatGPT fragt, will entscheiden. Die Aufmerksamkeit ist hoch, und bis vor wenigen Wochen konnte dort <b>niemand werben</b>. Jetzt steht Ihr Angebot unter der Antwort, <b>als Empfehlung</b>, nicht als Banner.",
   acc=[("Wo der Fokus heute liegt", "Die Frage nach dem richtigen Produkt, dem richtigen Anbieter, dem richtigen nächsten Schritt wird immer öfter ChatGPT gestellt. Wer dort antwortet, erreicht Menschen in dem Moment, in dem sie wirklich zuhören.",
         ["Entscheidungen werden im Gespräch vorbereitet", "Volle Aufmerksamkeit, kein Scrollen, kein Lärm", "Eine Antwort statt einer Trefferliste", "Ihr Angebot als Teil dieser Antwort"]),
        ("Warum es sich nicht wie Werbung anfühlt", "Die Karte erscheint nur, wenn das Gespräch zu Ihrem Angebot passt. Keine Unterbrechung, kein Störgefühl: Der Mensch bekommt genau das, wonach er gerade gefragt hat, und Ihre Marke steht als Empfehlung daneben.",
@@ -1117,9 +1117,9 @@ def render_service(s):
   </section>
 
 """) if s.get("oplist") else ""
-    faqs = "\n        ".join('''<div class="qa" data-fade>
-          <div class="q">%s</div>
-          <div class="a">%s</div>
+    faqs = "\n        ".join('''<div class="qa aitem" data-fade>
+          <button class="ahead q" type="button">%s <span class="plus">+</span></button>
+          <div class="abody"><div class="abody-in"><p>%s</p></div></div>
         </div>''' % (q, a) for q, a in s["faq"])
     chips_sel = "\n        ".join('<button class="nopt" data-v="%s" style="--i:%d">%s <span class="plus">+</span></button>' % (cv, 7 - i, cv) for i, cv in enumerate(s["chips"]))
     logos = logogrid(s["logos"]) if s.get("logos") else ""

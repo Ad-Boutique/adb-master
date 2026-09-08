@@ -823,10 +823,22 @@ body.loaded .chero img { transform: scale(1); }
 .faq { display: grid; grid-template-columns: 0.8fr 1.4fr; gap: clamp(36px, 5vw, 90px); }
 .faq h2 { font-size: clamp(34px, 3.8vw, 62px); }
 .faq .fint { font-size: 15px; color: var(--grey-dark); margin-top: 16px; max-width: 34ch; font-family: var(--f-serif); }
-.faq .qa { padding: 22px 0; border-top: 1px solid var(--line-l); }
+/* FAQ: Frage als Zeile, Antwort klappt auf (dieselbe Mechanik wie das Akkordeon oben) */
+.faq .qa { border-top: 1px solid var(--line-l); }
 .faq .qa:last-child { border-bottom: 1px solid var(--line-l); }
-.faq .qa .q { font-weight: 700; font-size: 16.5px; }
-.faq .qa .a { font-size: 14.5px; color: var(--grey-dark); line-height: 1.65; margin-top: 9px; max-width: 62ch; }
+.faq .ahead {
+  display: flex; align-items: center; justify-content: space-between; gap: 22px;
+  width: 100%; padding: 21px 0; background: none; border: 0; text-align: left;
+  font-family: inherit; font-weight: 700; font-size: 16.5px; color: var(--ink);
+  cursor: pointer; transition: color 0.3s ease;
+}
+.faq .ahead:hover { color: var(--champ-deep); }
+.faq .ahead .plus { font-weight: 400; font-size: 24px; line-height: 1; color: var(--grey-dark); transition: transform 0.45s var(--e-out), color 0.3s ease; }
+.faq .qa.open .ahead { color: var(--champ-deep); }
+.faq .qa.open .ahead .plus { transform: rotate(45deg); color: var(--champ-deep); }
+.faq .abody { overflow: hidden; max-height: 0; transition: max-height 0.6s var(--e-snap); }
+.faq .abody-in { padding: 0 0 24px; }
+.faq .abody p { font-size: 14.5px; color: var(--grey-dark); line-height: 1.65; max-width: 62ch; }
 
 .modell { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px, 5vw, 80px); align-items: center; }
 .modell .serif { font-size: clamp(26px, 2.8vw, 42px); line-height: 1.25; max-width: 22ch; margin-top: 14px; }
