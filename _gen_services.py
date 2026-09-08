@@ -930,10 +930,10 @@ def _voice(s):
     if v.get("video"):
         media = ('      <div class="vmedia vmedia--video" data-fade>\n'
                  '        <div class="pwiv">\n'
-                 '          <video class="ivplayer" data-auto muted loop playsinline preload="none" width="640" height="1138" src="%s"></video>\n'
+                 '          <video class="ivplayer" data-auto muted loop playsinline preload="metadata" poster="%s" width="640" height="1138" src="%s"></video>\n'
                  '          <button class="ivsound" type="button" aria-label="Ton einschalten"><span class="ivbars"><i></i><i></i><i></i></span><span class="ivlabel">Ton an</span></button>\n'
                  '        </div>\n'
-                 '      </div>\n') % v["video"]
+                 '      </div>\n') % (v["video"].replace(".mp4", "-poster.jpg"), v["video"])
     else:
         media = ('      <div class="vmedia" data-fade><span data-scale><img loading="lazy" decoding="async" src="%s" alt=""></span></div>\n'
                  % v["img"])

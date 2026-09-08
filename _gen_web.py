@@ -215,14 +215,14 @@ def page(c, nxt):
       </div>
       <div class="vmedia vmedia--video" data-fade>
         <div class="pwiv">
-          <video class="ivplayer" data-auto muted loop playsinline preload="none" width="640" height="1138" src="%s"></video>
+          <video class="ivplayer" data-auto muted loop playsinline preload="metadata" poster="%s" width="640" height="1138" src="%s"></video>
           <button class="ivsound" type="button" aria-label="Ton einschalten"><span class="ivbars"><i></i><i></i><i></i></span><span class="ivlabel">Ton an</span></button>
         </div>
       </div>
     </div>
   </section>
 
-""" % (v["label"], v["lead"], v["a"], v["note"], v["video"])
+""" % (v["label"], v["lead"], v["a"], v["note"], v["video"].replace(".mp4", "-poster.jpg"), v["video"])
 
     nxt_href = nxt["slug"] + ".html"
     nxt_img = "%s/web_%s_d.jpg" % (IMG, nxt["key"])
