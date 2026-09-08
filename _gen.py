@@ -12,8 +12,8 @@ HEAD = '''<!doctype html>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 
-<link rel="stylesheet" href="assets/master.css?v=79">
-<script src="assets/master.js?v=79" defer></script>
+<link rel="stylesheet" href="assets/master.css?v=83">
+<script src="assets/master.js?v=83" defer></script>
 </head>
 <body style="background-color:{bodybg}" class="on-light">
 

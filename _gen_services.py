@@ -537,13 +537,13 @@ SERVICES = [
   flow="v2",
   h1=["Werben, wo andere", "nicht werben."], ital=1,
   tags=["Neu in Österreich seit 24. August", "Im Moment der Entscheidung", "Fühlt sich nicht wie Werbung an", "Frühzugang vor dem Self-Service"],
-  sub="Ihre Kunden fragen ChatGPT, bevor sie entscheiden. Wir haben Kampagnen aufgesetzt, bevor der Self-Service für Europa geöffnet wurde, und übernehmen für Sie Prüfung, Aufbau, Text und Messung. Der Kanal ist noch leer. Das ist Ihr Vorteil, wenn Sie jetzt starten.",
+  sub="Ihre Kunden fragen ChatGPT, bevor sie entscheiden. Wir haben Kampagnen aufgesetzt, bevor der Self-Service für Europa geöffnet wurde. Der Kanal ist noch leer. Das ist Ihr Vorteil, wenn Sie jetzt starten.",
   content_label="Aus dem Studio",
   sol_label="Die Ausgangslage",
   problem_label="Die Ausgangslage",
   problem_h=["Die Recherche", "ist umgezogen."],
-  problem=["Wer heute kauft, fragt zuerst. Nicht mehr die Trefferliste, sondern das Gespräch: Was passt zu mir, was kostet das, wer kann das liefern. Die Antwort kommt als Text, nicht als zehn blaue Links.",
-           "<b>In diesem Gespräch gibt es kein SEO und keine Rangliste.</b> Wer nicht in der Antwort steht, kommt in dieser Recherche nicht vor. Und die Recherche entscheidet, bevor Ihre Website überhaupt aufgerufen wird."],
+  problem=["Wer heute kauft, fragt zuerst. Nicht die Trefferliste, sondern das Gespräch. Die Antwort kommt als Text, nicht als zehn blaue Links.",
+           "<b>Dort gibt es kein SEO und keine Rangliste.</b> Wer nicht in der Antwort steht, kommt in dieser Recherche nicht vor. Und sie entscheidet, bevor Ihre Website aufgerufen wird."],
   bene_label="Was für Sie dabei herauskommt",
   bene_h=["Sechs Gründe,", "einer pro Satz."],
   bene=[("Im Moment der Entscheidung", "Die Karte erscheint, während gefragt wird. Nicht Wochen später im Feed."),
@@ -552,7 +552,10 @@ SERVICES = [
         ("Prüfung vor dem ersten Euro", "Nicht jede Branche darf werben. Wir klären die Freigabe, bevor Budget läuft."),
         ("Antworten statt Anzeigen", "Wir schreiben die Karte aus der Frage heraus und bauen die Seite dahinter mit."),
         ("Nach vier Wochen Klartext", "Ausbauen, anpassen oder stoppen. Mit Zahlen statt Meinung.")],
-  mq=["Eignungs-Check", "Gesprächssituationen", "Kartenvarianten", "Landingpage", "Pixel und Conversions API", "Wöchentliche Lesung", "Vier-Wochen-Test", "Klare Empfehlung"],
+  band=dict(label="Aus dem Studio",
+            imgs=["assets/img/ag_strategy.jpg", "assets/img/retreat-04.jpg", "assets/img/ag_talk.jpg",
+                  "assets/img/ag_meeting.jpg", "assets/img/ag_board1.jpg", "assets/img/retreat-06.jpg",
+                  "assets/img/ag_review.jpg", "assets/img/retreat-01.jpg", "assets/img/ag_cam1.jpg"]),
   intro="Wer ChatGPT fragt, will entscheiden. Die Aufmerksamkeit ist hoch, und bis vor wenigen Wochen konnte dort <b>niemand werben</b>. Jetzt steht Ihr Angebot unter der Antwort, <b>als Empfehlung</b>, nicht als Banner.",
   acc=[("Wo der Fokus heute liegt", "Die Frage nach dem richtigen Produkt, dem richtigen Anbieter, dem richtigen nächsten Schritt wird immer öfter ChatGPT gestellt. Wer dort antwortet, erreicht Menschen in dem Moment, in dem sie wirklich zuhören.",
         ["Entscheidungen werden im Gespräch vorbereitet", "Volle Aufmerksamkeit, kein Scrollen, kein Lärm", "Eine Antwort statt einer Trefferliste", "Ihr Angebot als Teil dieser Antwort"]),
@@ -570,20 +573,20 @@ SERVICES = [
             zl="Beispielkarte", zt="Sie stört nicht. Sie antwortet."),
   proof_label="Woher wir das wissen",
   proof_h=["Der Ort ist neu.", "Das Handwerk nicht."],
-  proof_lead="In ChatGPT werben kann seit wenigen Wochen jeder mit Zugang. Was zählt, ist, ob man es kann: die richtige Botschaft im richtigen Moment, eine Strecke, die hält, und Zahlen, die stimmen. Vier Ergebnisse aus vier Branchen, so wie sie im Reporting stehen.",
+  proof_lead="Werben kann dort jeder mit Zugang. Was zählt, ist die richtige Botschaft im richtigen Moment. Vier Ergebnisse aus vier Branchen, so wie sie im Reporting stehen.",
   proof_nums=[],
   proof_quote="",
   tell=dict(
     label="Vier Branchen, vier Zahlen", nolabel=True,
     steps=[
       ("+57 %", "Jahresumsatz, D2C-Lifestyle-Marke", "Wachstum aus der Botschaft",
-       "Von € 520k auf € 817k im besten Jahr der Firma, Blended ROAS 5,57. Nicht mehr Budget hat das gebracht, sondern die richtige Ansprache am richtigen Punkt der Entscheidung. Genau dort setzt die Karte an."),
+       "Von € 520k auf € 817k im besten Jahr der Firma. Das kam aus der richtigen Ansprache im richtigen Moment, nicht aus mehr Budget."),
       ("4,02", "Return on Ad Spend am Black Friday, Consumer-Brand", "Gewinnen, wenn alle schreien",
-       "75 Prozent über der Benchmark, in der lautesten Woche des Jahres. Wer sich dort durchsetzt, tut es mit Relevanz. In der Antwort von ChatGPT ist Relevanz die einzige Währung."),
+       "75 Prozent über der Benchmark, in der lautesten Woche des Jahres. Dort gewinnt nur Relevanz, und in der Antwort ist Relevanz alles."),
       ("489", "Anfragen für ein Neubauprojekt in Wien", "Der Satz entscheidet",
-       "Vier Botschaften im Test, eine trug mehr als die Hälfte aller Anfragen. Welche Formulierung Menschen zum Handeln bringt, wissen wir nach dem Test, nicht davor. Deshalb testen wir auch die Karte, statt sie zu raten."),
+       "Vier Botschaften im Test, eine trug mehr als die Hälfte. Welche Formulierung Menschen bewegt, zeigt der Test, nicht die Meinung."),
       ("8,75", "Return on Ad Spend, Crowdinvesting, vorher 2,14", "Struktur statt mehr Geld",
-       "Nahezu gleiches Budget, aus 16 Investments wurden 50. Wer den Aufbau versteht, holt aus demselben Geld das Vierfache. Das gilt für jeden Kanal, auch für einen neuen."),
+       "Gleiches Budget, aus 16 Investments wurden 50. Wer den Aufbau versteht, holt aus demselben Geld das Vierfache."),
     ]),
   channels=dict(
     label="Jahresumsatz, D2C-Lifestyle-Marke",
@@ -600,7 +603,7 @@ SERVICES = [
                   t="Links eine D2C-Marke, die im besten Jahr der Firma um 57 Prozent wuchs. Rechts eine Consumer-Brand, die am Black Friday 75 Prozent über der Benchmark lag. Beides kam aus Relevanz im Moment der Entscheidung, und genau dafür ist die Karte in ChatGPT gebaut."),
   visual=("panels", dict(label="Drei Situationen, drei Karten",
                           h="Ein Shop, ein Finanzteam, eine Eventlocation. Jede Karte fühlt sich an wie der nächste logische Schritt.",
-                          t="Die Beispiele sind gebaut, nicht geschaltet. Sie zeigen, worum es geht: nicht laut sein, sondern passend. Wer gerade nach einem Geschenk, einer Software oder einem Ort für die Feier fragt, bekommt eine Antwort, und Ihr Angebot steht darin.",
+                          t="Die Beispiele sind gebaut, nicht geschaltet. Sie zeigen, worum es geht: nicht laut sein, sondern passend zur Frage, die gerade gestellt wurde.",
                           d1=("Was wir schreiben", "Antworten auf die Frage, die gerade gestellt wird, im Ton des Gesprächs"),
                           d2=("Was wir bauen", "Konto, Karten, die Seite dahinter und die Messung, alles aus einer Hand"),
                           imgs=["assets/img/gpt/card-shop.jpg", "assets/img/gpt/card-b2b.jpg", "assets/img/gpt/card-event.jpg", "assets/img/gpt/card-hero.jpg"])),
@@ -624,7 +627,7 @@ SERVICES = [
            h=["Passt es?", "In beide Richtungen."],
            yes_h="Wir passen zusammen, wenn",
            no_h="Wir sind die Falschen, wenn",
-           intro="Der Kanal ist in Österreich seit wenigen Wochen offen, die meisten Wettbewerber prüfen noch. Wer heute startet, ist dort präsent, wo Entscheidungen fallen, bevor es voll wird. Gleichzeitig gilt: Nicht jede Branche ist freigegeben. Wir prüfen das im ersten Gespräch, offen und in beide Richtungen.",
+           intro="Der Kanal ist seit wenigen Wochen offen, die meisten Wettbewerber prüfen noch. Gleichzeitig gilt: Nicht jede Branche ist freigegeben. Wir prüfen das im ersten Gespräch, offen und in beide Richtungen.",
            yes=["Shop mit klarem Produktversprechen, das man empfehlen kann",
                 "B2B und Software, wo Menschen erst fragen und dann kaufen",
                 "Gastro, Event, Reise, Bildung ohne Gesundheitsbezug",
@@ -650,8 +653,8 @@ SERVICES = [
        ("Was kostet der Test?", "Das Mediabudget legen Sie fest. Unsere Leistung für den Vier-Wochen-Test ist pauschal, ohne Vertrag darüber hinaus. Der Eignungs-Check davor ist kostenlos."),
        ("Und wenn der Kanal nichts bringt?", "Dann steht das nach vier Wochen so im Report, mit der Empfehlung zu stoppen. Sie haben dann für überschaubares Geld eine Antwort, die Ihre Wettbewerber noch nicht haben.")],
   offer_h="Der Einstieg ist ein Eignungs-Check. Kostenlos, ohne Vertrag.",
-  offer=["Wir prüfen, ob Ihre Branche in ChatGPT werben darf, schreiben drei Situationen, in denen Ihr Angebot die Antwort ist, und eine Karte als Vorschlag. Innerhalb eines Tages wissen Sie, ob sich ein Test lohnt. Danach entscheiden Sie.",
-         "<b>Risikoumkehr inklusive:</b> Braucht Ihre Branche eine Freigabe, holen wir sie ein, bevor ein Euro läuft. Kommt sie nicht, gibt es keine Kampagne und keine Rechnung. Und nach vier Wochen sagen wir Ihnen ehrlich, ob es sich lohnt weiterzumachen."],
+  offer=["Wir prüfen, ob Ihre Branche werben darf, und schreiben drei Situationen samt einer Karte als Vorschlag. Innerhalb eines Tages wissen Sie, ob sich ein Test lohnt.",
+         "<b>Risikoumkehr inklusive:</b> Kommt keine Freigabe, gibt es keine Kampagne und keine Rechnung. Und nach vier Wochen sagen wir ehrlich, ob es weitergeht."],
   chips=["Eignungs-Check", "Vier-Wochen-Test", "Konto-Setup", "Gesprächssituationen", "Kartenvarianten", "Landingpage", "Pixel & CAPI", "Zweitmeinung"]),
 
 ]
@@ -916,11 +919,11 @@ def _problem(s):
         return ""
     head = "".join('<span class="rl"><span>%s</span></span>' % x for x in s.get("problem_h", ["Das Problem"]))
     return ('  <!-- AKT 1: DAS PROBLEM -->\n'
-            '  <section class="sec fg-light bg-paper kapsec" data-bg="#F3EDE1" data-fg="dark">\n'
-            '    <div class="wrap kaprule">\n'
+            '  <section class="sec fg-dark kapsec kapsec--dark" data-bg="#0E0E10" data-fg="light" style="background:#0E0E10">\n'
+            '    <div class="wrap">\n'
             '      <div class="lchap">\n'
             '        <div>\n'
-            '          <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:16px">%s</span>\n'
+            '          <span class="label" style="color:var(--champ);display:block;margin-bottom:16px">%s</span>\n'
             '          <h2 class="dispn" data-lines style="font-size:clamp(30px,3.6vw,58px)">%s</h2>\n'
             '        </div>\n'
             '        <div data-stagger>\n'
@@ -953,18 +956,19 @@ def _bene(s):
             '    </div>\n  </section>\n\n') % (s.get("bene_label", "Was dabei herauskommt"), head, s["intro"], cells)
 
 
-def _svcmq(s):
-    """Laufband als Rhythmusbrecher zwischen zwei Textbloecken, gleiche Mechanik wie das Bildband."""
-    w = s.get("mq")
-    if not w:
+def _svcband(s):
+    """Bildband als Auflockerung zwischen zwei Textbloecken: laeuft von selbst, also auch am Telefon."""
+    b = s.get("band")
+    if not b:
         return ""
-    items = "".join('<span>%s</span>' % x for x in w)
-    return ('  <!-- LAUFBAND -->\n'
-            '  <section class="svcmq fg-dark" data-bg="#0E0E10" data-fg="light" style="background:#0E0E10">\n'
-            '    <div class="svcmqrow" data-speed="7">\n'
-            '      <div class="svcmqtrack pwtrack">%s</div>\n'
-            '      <div class="svcmqtrack pwtrack" aria-hidden="true">%s</div>\n'
-            '    </div>\n  </section>\n\n') % (items, items)
+    items = "".join('<img loading="lazy" decoding="async" src="%s" alt="">' % x for x in b["imgs"])
+    return ('  <!-- BILDBAND -->\n'
+            '  <section class="svcband fg-dark" data-bg="#0E0E10" data-fg="light" style="background:#0E0E10">\n'
+            '    <div class="wrap"><span class="label" style="color:var(--champ)">%s</span></div>\n'
+            '    <div class="svcbandrow" data-speed="5">\n'
+            '      <div class="svcbandtrack pwtrack">%s</div>\n'
+            '      <div class="svcbandtrack pwtrack" aria-hidden="true">%s</div>\n'
+            '    </div>\n  </section>\n\n') % (b.get("label", "Aus dem Studio"), items, items)
 
 
 def _stoer(s):
@@ -1306,7 +1310,7 @@ def render_service(s):
         wall_sec = ""
         content_before = ""
         content_after = ""
-        sol_sec = _problem(s) + _bene(s) + _svcmq(s)
+        sol_sec = _problem(s) + _bene(s) + _svcband(s)
     else:
         sol_sec = SOL_ACC.format(sol_label=s.get("sol_label", "Die Lösung"), intro=s["intro"], acc=acc) + DIFF_BLOCK.format(dimgs=dimgs, dblocks=dblocks)
     deliver_sec = _deliver(s)
@@ -1318,6 +1322,8 @@ def render_service(s):
     if v2:
         # Akt 2 Beweis: Karte zeigen, dann einmal beweisen, dann in die Cases weiterfuehren.
         # Akt 3 Vertrauen: erst die Kundenstimme, danach das Team.
+        # Farbkette: nach zwei Papier-Bloecken (Kopf, Stationen) wechseln die Cases auf Creme.
+        cases_sec = cases_sec.replace('bg-paper" data-bg="#F3EDE1"', 'bg-cream" data-bg="#EFE7D6"')
         mid_sec = visual + proof_head + tell_sec + cases_sec + voice_sec + crew_sec + fit_sec
     else:
         mid_sec = (proof_head + tell_sec + content_before + proofsplit_sec + visual + wall_sec

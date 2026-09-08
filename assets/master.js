@@ -214,7 +214,13 @@
 
   /* ---------- Bild-Zoom-Uebergang ---------- */
   var zsecs = Array.prototype.slice.call(document.querySelectorAll(".zoomsec")).map(function (sec) {
-    return { sec: sec, media: sec.querySelector(".zmedia"), side: sec.getAttribute("data-side") || "right" };
+    var m = sec.querySelector(".zmedia");
+    var el = m ? m.querySelector("img, video") : null;
+    /* Seitenverhaeltnis aus den Attributen, damit es schon vor dem Laden stimmt */
+    var w = el ? +(el.getAttribute("width") || el.naturalWidth || el.videoWidth || 0) : 0;
+    var h = el ? +(el.getAttribute("height") || el.naturalHeight || el.videoHeight || 0) : 0;
+    return { sec: sec, media: m, side: sec.getAttribute("data-side") || "right",
+             ar: (w && h) ? h / w : 0.63 };
   });
   function easeZ(t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
   function zoomTick() {
@@ -223,6 +229,19 @@
       var span = r.height - vh;
       var p = Math.max(0, Math.min(1, -r.top / span));
       var e = reduced ? 1 : easeZ(p);
+      if (window.innerWidth <= 860) {
+        /* Am Telefon waechst die Karte auf voll Breite, die Hoehe folgt dem Bild.
+           Kein Vollbild-Beschnitt, sonst ist von einem breiten Screenshot nichts zu lesen. */
+        var wp = (76 + 24 * e) / 100 * window.innerWidth;
+        var hp = wp * z.ar;
+        z.media.style.width = wp + "px";
+        z.media.style.height = hp + "px";
+        z.media.style.left = ((window.innerWidth - wp) / 2) + "px";
+        z.media.style.top = (vh * 0.68 - hp / 2) + "px";
+        z.media.style.borderRadius = (3 * (1 - e)) + "px";
+        z.sec.classList.toggle("zdone", p > 0.82);
+        return;
+      }
       var w0 = 34, h0 = 46, l0 = z.side === "right" ? 58 : 8;
       var w = w0 + (100 - w0) * e;
       var h = h0 + (100 - h0) * e;
@@ -554,10 +573,12 @@
   });
 
   /* ---------- Bildband: Tempo in Prozent der Fensterbreite je Sekunde, Dauer aus der Bandbreite ---------- */
-  var tracks = Array.prototype.slice.call(document.querySelectorAll(".pwtrack"));
+  var tracks = Array.prototype.slice.call(document.querySelectorAll(".pwtrack, .svcbandtrack"));
   function trackDur() {
     for (var i = 0; i < tracks.length; i++) {
       var t = tracks[i], sp = parseFloat(t.parentNode.getAttribute("data-speed") || "6");
+      /* Am Telefon sind die Bilder kleiner: gleiches Tempo in vw wirkt dort zaeh */
+      if (window.innerWidth <= 860) sp *= 2;
       var w = t.getBoundingClientRect().width;
       if (w > 0) t.style.setProperty("--dur", (w / (window.innerWidth * sp / 100)).toFixed(1) + "s");
     }
@@ -570,6 +591,15 @@
       m.addEventListener("load", trackDur); m.addEventListener("loadedmetadata", trackDur);
     });
     setTimeout(trackDur, 900);
+  }
+
+  /* ---------- Nutzen-Kacheln: jede kommt einzeln, sobald sie die Leselinie erreicht ---------- */
+  var bcells = Array.prototype.slice.call(document.querySelectorAll(".benegrid .bcell"));
+  function bcellTick() {
+    for (var i = 0; i < bcells.length; i++) {
+      var r = bcells[i].getBoundingClientRect();
+      if (r.top < vh * 0.82) bcells[i].classList.add("on");
+    }
   }
 
   /* ---------- Scroll-Loop ---------- */
@@ -610,6 +640,7 @@
     chrowTick();
     bacmpTick();
     stepsTick();
+    bcellTick();
     revealSafety();
     ticking = false;
   }
