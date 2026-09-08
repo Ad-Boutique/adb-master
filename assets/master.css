@@ -1997,7 +1997,7 @@ body.menuopen .bkbtn, body.menuopen .bkorbit { opacity: 0; pointer-events: none;
    Fotostrecke nach dem Vorbild des Case-Elements:
    Text links steht fest, Bildmosaik rechts auf eigenem Grund
    ============================================================ */
-.photowall { position: relative; overflow: hidden; }
+.photowall { position: relative; overflow: hidden; padding-top: clamp(80px, 10vw, 150px); }
 /* clip statt hidden, sonst setzt der Ueberlauf das sticky des Textes aus */
 @supports (overflow: clip) { .photowall { overflow: clip; } }
 .photowall .pwwrap {
@@ -2043,7 +2043,7 @@ body.menuopen .bkbtn, body.menuopen .bkorbit { opacity: 0; pointer-events: none;
    Hoehen laufen ueber eine Variable, nicht ueber Prozentketten, damit nichts ins Intrinsische kippt. */
 .photowall .pwwrap { align-items: stretch; }
 .photowall .pwstage {
-  --pwpad: clamp(14px, 1.6vw, 26px);
+  --pwpad: clamp(22px, 2.6vw, 44px);
   --pwstageh: 100vh;
   --pwrowh: calc((var(--pwstageh) - 3 * var(--pwpad)) / 2);
   background: #E2DACA; padding: var(--pwpad); box-sizing: border-box;
@@ -2053,7 +2053,7 @@ body.menuopen .bkbtn, body.menuopen .bkorbit { opacity: 0; pointer-events: none;
 .photowall .pwrow { height: var(--pwrowh); display: flex; overflow: hidden; }
 .photowall .pwtrack {
   display: flex; flex: 0 0 auto; align-items: stretch; height: var(--pwrowh);
-  gap: clamp(12px, 1.4vw, 22px); padding-right: clamp(12px, 1.4vw, 22px);
+  gap: var(--pwpad); padding-right: var(--pwpad);
   animation: pwband var(--dur, 60s) linear infinite;
   will-change: transform;
 }
