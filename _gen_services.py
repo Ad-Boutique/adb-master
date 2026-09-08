@@ -534,13 +534,25 @@ SERVICES = [
          "<b>Risikoumkehr:</b> Geht die Strategie in ein Umsetzungs-Mandat über, koppeln wir die Vergütung an messbare Ergebnisse. Wir gewinnen nur, wenn Sie gewinnen."],
   chips=["Strategie-Session", "Funnel-Architektur", "KPI-Logik", "Attribution-Setup", "Positionierung", "Portfolio-Struktur", "Zweitmeinung", "Umsetzungs-Mandat"]),
  dict(slug="service-chatgpt-ads", nav="ChatGPT Ads", label="Leistung, ChatGPT Ads, Frühzugang vor der Öffnung für Europa",
+  flow="v2",
   h1=["Werben, wo andere", "nicht werben."], ital=1,
   tags=["Neu in Österreich seit 24. August", "Im Moment der Entscheidung", "Fühlt sich nicht wie Werbung an", "Frühzugang vor dem Self-Service"],
   sub="Ihre Kunden fragen ChatGPT, bevor sie entscheiden. Wir haben Kampagnen aufgesetzt, bevor der Self-Service für Europa geöffnet wurde, und übernehmen für Sie Prüfung, Aufbau, Text und Messung. Der Kanal ist noch leer. Das ist Ihr Vorteil, wenn Sie jetzt starten.",
   content_label="Aus dem Studio",
   sol_label="Die Ausgangslage",
-  problem_h=["Das Problem"],
-  problem=["", ""],
+  problem_label="Die Ausgangslage",
+  problem_h=["Die Recherche", "ist umgezogen."],
+  problem=["Wer heute kauft, fragt zuerst. Nicht mehr die Trefferliste, sondern das Gespräch: Was passt zu mir, was kostet das, wer kann das liefern. Die Antwort kommt als Text, nicht als zehn blaue Links.",
+           "<b>In diesem Gespräch gibt es kein SEO und keine Rangliste.</b> Wer nicht in der Antwort steht, kommt in dieser Recherche nicht vor. Und die Recherche entscheidet, bevor Ihre Website überhaupt aufgerufen wird."],
+  bene_label="Was für Sie dabei herauskommt",
+  bene_h=["Sechs Gründe,", "einer pro Satz."],
+  bene=[("Im Moment der Entscheidung", "Die Karte erscheint, während gefragt wird. Nicht Wochen später im Feed."),
+        ("Fühlt sich nicht wie Werbung an", "Kein Banner, keine Unterbrechung: Ihr Angebot steht als Empfehlung neben der Antwort."),
+        ("Noch fast kein Wettbewerb", "In Österreich ist der Kanal seit wenigen Wochen offen. Die meisten prüfen noch."),
+        ("Prüfung vor dem ersten Euro", "Nicht jede Branche darf werben. Wir klären die Freigabe, bevor Budget läuft."),
+        ("Antworten statt Anzeigen", "Wir schreiben die Karte aus der Frage heraus und bauen die Seite dahinter mit."),
+        ("Nach vier Wochen Klartext", "Ausbauen, anpassen oder stoppen. Mit Zahlen statt Meinung.")],
+  mq=["Eignungs-Check", "Gesprächssituationen", "Kartenvarianten", "Landingpage", "Pixel und Conversions API", "Wöchentliche Lesung", "Vier-Wochen-Test", "Klare Empfehlung"],
   intro="Wer ChatGPT fragt, will entscheiden. Die Aufmerksamkeit ist hoch, und bis vor wenigen Wochen konnte dort <b>niemand werben</b>. Jetzt steht Ihr Angebot unter der Antwort, <b>als Empfehlung</b>, nicht als Banner.",
   acc=[("Wo der Fokus heute liegt", "Die Frage nach dem richtigen Produkt, dem richtigen Anbieter, dem richtigen nächsten Schritt wird immer öfter ChatGPT gestellt. Wer dort antwortet, erreicht Menschen in dem Moment, in dem sie wirklich zuhören.",
         ["Entscheidungen werden im Gespräch vorbereitet", "Volle Aufmerksamkeit, kein Scrollen, kein Lärm", "Eine Antwort statt einer Trefferliste", "Ihr Angebot als Teil dieser Antwort"]),
@@ -562,7 +574,7 @@ SERVICES = [
   proof_nums=[],
   proof_quote="",
   tell=dict(
-    label="Vier Branchen, vier Zahlen",
+    label="Vier Branchen, vier Zahlen", nolabel=True,
     steps=[
       ("+57 %", "Jahresumsatz, D2C-Lifestyle-Marke", "Wachstum aus der Botschaft",
        "Von € 520k auf € 817k im besten Jahr der Firma, Blended ROAS 5,57. Nicht mehr Budget hat das gebracht, sondern die richtige Ansprache am richtigen Punkt der Entscheidung. Genau dort setzt die Karte an."),
@@ -757,18 +769,22 @@ def _tell(s):
         '<div class="ts%s" data-v="%s" data-l="%s">\n          <div class="tt">%s</div>\n          <p>%s</p>\n        </div>'
         % ((" on" if i == 0 else ""), v, l, tt, p) for i, (v, l, tt, p) in enumerate(t["steps"]))
     first = t["steps"][0]
-    return ('  <!-- ERGEBNIS ALS STATIONEN (scrollgesteuert) -->\n'
-            '  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:clamp(70px,9vw,140px)">\n'
-            '    <div class="wrap">\n'
-            '      <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:clamp(30px,3.6vw,52px)">%s</span>\n'
-            '      <div class="tell">\n'
+    # Steht der Beweis-Kopf direkt darueber, braucht es hier kein zweites Label
+    lab = ('      <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:clamp(30px,3.6vw,52px)">'
+           + t.get("label", "Ein Fall, nachgerechnet") + '</span>\n') if not t.get("nolabel") else ""
+    pad = "clamp(20px,3vw,50px)" if t.get("nolabel") else "clamp(70px,9vw,140px)"
+    head = ('  <!-- ERGEBNIS ALS STATIONEN (scrollgesteuert) -->\n'
+            '  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:' + pad + '">\n'
+            '    <div class="wrap">\n' + lab)
+    rest = ('      <div class="tell">\n'
             '        <div class="tsteps">\n        %s\n        </div>\n'
             '        <div class="tfix">\n'
             '          <div class="tv">%s</div>\n'
             '          <div class="tl">%s</div>\n'
             '        </div>\n'
             '      </div>\n'
-            '    </div>\n  </section>\n\n') % (t.get("label", "Ein Fall, nachgerechnet"), steps, first[0], first[1])
+            '    </div>\n  </section>\n\n') % (steps, first[0], first[1])
+    return head + rest
 
 def _channels(s):
     c = s.get("channels")
@@ -842,6 +858,114 @@ def _next(s):
             '      <h2 class="dispn" data-lines style="font-size:clamp(32px,3.8vw,62px);margin-bottom:clamp(36px,4.4vw,60px)"><span class="rl"><span>%s</span></span></h2>\n'
             '      <div class="oplist oplist--steps">\n        %s\n      </div>\n'
             '    </div>\n  </section>\n\n') % (n["h"], rows)
+
+PROOF_HEAD = """  <!-- 06, PROOF 2: ERGEBNISSE -->
+  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">
+    <div class="wrap" style="max-width:1100px">
+      <span class="label" style="color:var(--champ-deep);display:block;text-align:center">{proof_label}</span>
+      <h2 class="dispn" data-lines style="font-size:clamp(36px,4.6vw,78px);text-align:center;margin-top:22px">
+        <span class="rl"><span>{h0}</span></span>
+        <span class="rl"><span><i style="font-style:italic">{h1}</i></span></span>
+      </h2>
+{rest}
+    </div>
+  </section>
+
+"""
+
+SOL_ACC = """  <!-- 03, LÖSUNG: INTRO + AKKORDEON -->
+  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:clamp(30px,4vw,60px)">
+    <div class="wrap svc-split">
+      <div class="intro">
+        <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:20px">{sol_label}</span>
+        <p class="serif" data-scrub>{intro}</p>
+      </div>
+      <div class="acc">
+        {acc}
+      </div>
+    </div>
+  </section>
+
+"""
+
+DIFF_BLOCK = """  <!-- 04, WAS WIR ANDERS MACHEN (BiA-Split: links sticky, rechts Text) -->
+  <section class="sec diffsec fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark">
+    <div class="wrap">
+      <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:clamp(40px,5vw,70px)">Was wir anders machen</span>
+      <div class="dgrid">
+        <div class="dleft">
+          <div class="dnum">01</div>
+          <div class="dimg">
+            {dimgs}
+          </div>
+        </div>
+        <div class="dright">
+          {dblocks}
+        </div>
+      </div>
+    </div>
+  </section>
+
+"""
+
+
+def _problem(s):
+    """Akt 1: Spannung. Raster nach dem Vorbild functn: Trennlinie, Headline links, Text rechts."""
+    p = s.get("problem")
+    if not p or not p[0]:
+        return ""
+    head = "".join('<span class="rl"><span>%s</span></span>' % x for x in s.get("problem_h", ["Das Problem"]))
+    return ('  <!-- AKT 1: DAS PROBLEM -->\n'
+            '  <section class="sec fg-light bg-paper kapsec" data-bg="#F3EDE1" data-fg="dark">\n'
+            '    <div class="wrap kaprule">\n'
+            '      <div class="lchap">\n'
+            '        <div>\n'
+            '          <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:16px">%s</span>\n'
+            '          <h2 class="dispn" data-lines style="font-size:clamp(30px,3.6vw,58px)">%s</h2>\n'
+            '        </div>\n'
+            '        <div data-stagger>\n'
+            '          <p class="lt3" data-fade>%s</p>\n'
+            '          <p class="lt3" data-fade>%s</p>\n'
+            '        </div>\n'
+            '      </div>\n'
+            '    </div>\n  </section>\n\n') % (s.get("problem_label", "Die Ausgangslage"), head, p[0], p[1])
+
+
+def _bene(s):
+    """Akt 1: These plus sechs Nutzen-Kacheln, je ein Satz. Ersetzt die zweite Erklaerebene."""
+    b = s.get("bene")
+    if not b:
+        return ""
+    head = "".join('<span class="rl"><span>%s</span></span>' % x for x in s.get("bene_h", ["Was Sie davon haben"]))
+    cells = "\n        ".join(
+        '<div class="bcell" data-fade><div class="bt">%s</div><p class="bd">%s</p></div>' % (t, d) for t, d in b)
+    return ('  <!-- AKT 1: THESE UND NUTZEN -->\n'
+            '  <section class="sec fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark">\n'
+            '    <div class="wrap">\n'
+            '      <div class="benehead">\n'
+            '        <div>\n'
+            '          <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:16px">%s</span>\n'
+            '          <h2 class="dispn" data-lines style="font-size:clamp(30px,3.6vw,58px)">%s</h2>\n'
+            '        </div>\n'
+            '        <p class="serif benelead" data-scrub>%s</p>\n'
+            '      </div>\n'
+            '      <div class="benegrid" data-stagger>\n        %s\n      </div>\n'
+            '    </div>\n  </section>\n\n') % (s.get("bene_label", "Was dabei herauskommt"), head, s["intro"], cells)
+
+
+def _svcmq(s):
+    """Laufband als Rhythmusbrecher zwischen zwei Textbloecken, gleiche Mechanik wie das Bildband."""
+    w = s.get("mq")
+    if not w:
+        return ""
+    items = "".join('<span>%s</span>' % x for x in w)
+    return ('  <!-- LAUFBAND -->\n'
+            '  <section class="svcmq fg-dark" data-bg="#0E0E10" data-fg="light" style="background:#0E0E10">\n'
+            '    <div class="svcmqrow" data-speed="7">\n'
+            '      <div class="svcmqtrack pwtrack">%s</div>\n'
+            '      <div class="svcmqtrack pwtrack" aria-hidden="true">%s</div>\n'
+            '    </div>\n  </section>\n\n') % (items, items)
+
 
 def _stoer(s):
     z = STOER.get(s["slug"])
@@ -1170,12 +1294,34 @@ def render_service(s):
         proofsplit_sec += (channels_sec or "      <div></div>\n") + (right_sec or "      <div></div>\n")
         proofsplit_sec += '      </div>\n    </div>\n  </section>\n\n'
     wall_sec = _wall(s)
+    # Dramaturgie v2: Problem und Nutzen-Kacheln statt Akkordeon und zweiter Erklaerebene,
+    # Beweis nur einmal (Stationen), keine zweite Grafikstrecke, keine Stimmungs-Bildwand.
+    v2 = s.get("flow") == "v2"
     crew_sec = _crew(s)
     voice_sec = _voice(s)
     fit_sec = _fit(s)
-    next_sec = _next(s) + _stoer(s)
+    next_sec = _next(s) + ("" if v2 else _stoer(s))
+    if v2:
+        proofsplit_sec = ""
+        wall_sec = ""
+        content_before = ""
+        content_after = ""
+        sol_sec = _problem(s) + _bene(s) + _svcmq(s)
+    else:
+        sol_sec = SOL_ACC.format(sol_label=s.get("sol_label", "Die Lösung"), intro=s["intro"], acc=acc) + DIFF_BLOCK.format(dimgs=dimgs, dblocks=dblocks)
     deliver_sec = _deliver(s)
     trust_sec = _trust(s)
+
+    proof_head = PROOF_HEAD.format(
+        proof_label=s.get("proof_label", "Ergebnisse"), h0=s["proof_h"][0], h1=s["proof_h"][1],
+        rest=nums_sec + lead_sec + pq_sec + bars_here)
+    if v2:
+        # Akt 2 Beweis: Karte zeigen, dann einmal beweisen, dann in die Cases weiterfuehren.
+        # Akt 3 Vertrauen: erst die Kundenstimme, danach das Team.
+        mid_sec = visual + proof_head + tell_sec + cases_sec + voice_sec + crew_sec + fit_sec
+    else:
+        mid_sec = (proof_head + tell_sec + content_before + proofsplit_sec + visual + wall_sec
+                   + crew_sec + voice_sec + cases_sec + logos_sec + content_after + fit_sec)
 
     page = HEAD.format(title=s["nav"], bodybg="#F3EDE1") + menu("index.html#leistungen") + '''<main>
 
@@ -1197,38 +1343,7 @@ def render_service(s):
     </div>
   </section>
 
-  <!-- 03, LÖSUNG: INTRO + AKKORDEON -->
-  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:clamp(30px,4vw,60px)">
-    <div class="wrap svc-split">
-      <div class="intro">
-        <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:20px">''' + s.get("sol_label", "Die Lösung") + '''</span>
-        <p class="serif" data-scrub>''' + s["intro"] + '''</p>
-      </div>
-      <div class="acc">
-        ''' + acc + '''
-      </div>
-    </div>
-  </section>
-
-  <!-- 04, WAS WIR ANDERS MACHEN (BiA-Split: links sticky, rechts Text) -->
-  <section class="sec diffsec fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark">
-    <div class="wrap">
-      <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:clamp(40px,5vw,70px)">Was wir anders machen</span>
-      <div class="dgrid">
-        <div class="dleft">
-          <div class="dnum">01</div>
-          <div class="dimg">
-            ''' + dimgs + '''
-          </div>
-        </div>
-        <div class="dright">
-          ''' + dblocks + '''
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 05, PROOF 1: ZOOM -->
+''' + sol_sec + '''  <!-- 05, PROOF 1: ZOOM -->
   <section class="zoomsec" data-side="''' + z["side"] + '''" data-bg="#F3EDE1" data-fg="dark">
     <div class="zsticky">
       <div class="zaside fg-light" style="''' + aside_pos + '''">
@@ -1245,19 +1360,7 @@ def render_service(s):
     </div>
   </section>
 
-  <!-- 06, PROOF 2: ERGEBNISSE -->
-  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">
-    <div class="wrap" style="max-width:1100px">
-      <span class="label" style="color:var(--champ-deep);display:block;text-align:center">''' + s.get("proof_label", "Ergebnisse") + '''</span>
-      <h2 class="dispn" data-lines style="font-size:clamp(36px,4.6vw,78px);text-align:center;margin-top:22px">
-        <span class="rl"><span>''' + s["proof_h"][0] + '''</span></span>
-        <span class="rl"><span><i style="font-style:italic">''' + s["proof_h"][1] + '''</i></span></span>
-      </h2>
-''' + nums_sec + lead_sec + pq_sec + bars_here + '''
-    </div>
-  </section>
-
-''' + tell_sec + content_before + proofsplit_sec + visual + wall_sec + crew_sec + voice_sec + cases_sec + logos_sec + content_after + fit_sec + '''  <!-- 08, FAQ -->
+''' + mid_sec + '''  <!-- 08, FAQ -->
   <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">
     <div class="wrap faq">
       <div>

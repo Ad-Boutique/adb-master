@@ -823,6 +823,58 @@ body.loaded .chero img { transform: scale(1); }
 .faq { display: grid; grid-template-columns: 0.8fr 1.4fr; gap: clamp(36px, 5vw, 90px); }
 .faq h2 { font-size: clamp(34px, 3.8vw, 62px); }
 .faq .fint { font-size: 15px; color: var(--grey-dark); margin-top: 16px; max-width: 34ch; font-family: var(--f-serif); }
+/* ============================================================
+   Dramaturgie v2: Kapitel-Raster, Nutzen-Kacheln, Laufband
+   ============================================================ */
+/* Kapitel mit Trennlinie darueber, Vorbild functn: Headline links, Absatz rechts */
+.kapsec .kaprule { border-top: 1px solid var(--line-l); padding-top: clamp(30px, 4vw, 60px); }
+.benehead {
+  display: grid; grid-template-columns: 0.82fr 1.18fr; gap: clamp(30px, 4vw, 76px);
+  align-items: end; padding-bottom: clamp(34px, 4.4vw, 64px);
+}
+.benehead .benelead {
+  font-family: var(--f-serif); font-size: clamp(18px, 1.6vw, 25px);
+  line-height: 1.5; color: var(--grey-dark); max-width: 46ch;
+}
+.benehead .benelead b { color: var(--ink); font-weight: 500; }
+/* Sechs Kacheln, je ein Satz: ersetzt einen Block Fliesstext */
+.benegrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--line-l); }
+.benegrid .bcell {
+  padding: clamp(24px, 2.8vw, 40px) clamp(20px, 2.4vw, 34px) clamp(26px, 3vw, 44px) 0;
+  border-bottom: 1px solid var(--line-l);
+}
+.benegrid .bcell:not(:nth-child(3n)) { border-right: 1px solid var(--line-l); padding-right: clamp(20px, 2.4vw, 34px); }
+.benegrid .bcell:not(:nth-child(3n)) { padding-left: 0; }
+.benegrid .bcell:nth-child(3n+2), .benegrid .bcell:nth-child(3n) { padding-left: clamp(20px, 2.4vw, 34px); }
+.benegrid .bt {
+  font-family: var(--f-disp); font-weight: 700; font-size: clamp(16px, 1.4vw, 20px);
+  letter-spacing: -0.012em; line-height: 1.2;
+}
+.benegrid .bd {
+  font-family: var(--f-serif); font-size: clamp(14.5px, 1.15vw, 16.5px);
+  line-height: 1.6; color: var(--grey-dark); margin-top: 10px; max-width: 34ch;
+}
+@media (max-width: 860px) {
+  .benehead { grid-template-columns: 1fr; align-items: start; }
+  .benegrid { grid-template-columns: 1fr; }
+  .benegrid .bcell, .benegrid .bcell:not(:nth-child(3n)) { border-right: 0; padding-left: 0; padding-right: 0; }
+}
+/* Laufband zwischen zwei Textbloecken, gleiche Animation wie das Bildband */
+.svcmq { padding: 0; overflow: hidden; }
+.svcmqrow { display: flex; overflow: hidden; padding: clamp(22px, 2.6vw, 38px) 0; }
+.svcmqtrack {
+  display: flex; flex: 0 0 auto; align-items: center; gap: clamp(30px, 4vw, 64px);
+  padding-right: clamp(30px, 4vw, 64px); height: auto;
+  animation: pwband var(--dur, 40s) linear infinite; will-change: transform;
+}
+.svcmqtrack span {
+  font-family: var(--f-disp); font-weight: 700; font-size: clamp(19px, 2.2vw, 34px);
+  letter-spacing: -0.02em; color: var(--paper); white-space: nowrap; opacity: 0.92;
+}
+.svcmqtrack span::after { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--champ); margin-left: clamp(30px, 4vw, 64px); vertical-align: 0.25em; }
+.svcmq:hover .svcmqtrack { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .svcmqtrack { animation: none; } }
+
 /* FAQ: Frage als Zeile, Antwort klappt auf (dieselbe Mechanik wie das Akkordeon oben) */
 .faq .qa { border-top: 1px solid var(--line-l); }
 .faq .qa:last-child { border-bottom: 1px solid var(--line-l); }
