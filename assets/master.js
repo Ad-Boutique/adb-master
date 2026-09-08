@@ -530,6 +530,25 @@
     }
   }
 
+  /* ---------- Bildband: Tempo in Prozent der Fensterbreite je Sekunde, Dauer aus der Bandbreite ---------- */
+  var tracks = Array.prototype.slice.call(document.querySelectorAll(".pwtrack"));
+  function trackDur() {
+    for (var i = 0; i < tracks.length; i++) {
+      var t = tracks[i], sp = parseFloat(t.parentNode.getAttribute("data-speed") || "6");
+      var w = t.getBoundingClientRect().width;
+      if (w > 0) t.style.setProperty("--dur", (w / (window.innerWidth * sp / 100)).toFixed(1) + "s");
+    }
+  }
+  if (tracks.length) {
+    trackDur();
+    window.addEventListener("load", trackDur);
+    window.addEventListener("resize", trackDur);
+    document.querySelectorAll(".pwtrack img, .pwtrack video").forEach(function (m) {
+      m.addEventListener("load", trackDur); m.addEventListener("loadedmetadata", trackDur);
+    });
+    setTimeout(trackDur, 900);
+  }
+
   /* ---------- Scroll-Loop ---------- */
   var vh = window.innerHeight;
   window.addEventListener("resize", function () { vh = window.innerHeight; });

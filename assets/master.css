@@ -2038,25 +2038,37 @@ body.menuopen .bkbtn, body.menuopen .bkorbit { opacity: 0; pointer-events: none;
 .photowall .pwdisc .dd {
   font-family: var(--f-serif); font-size: 14.5px; line-height: 1.55; color: var(--grey-dark);
 }
-/* Bildmosaik auf eigenem Grund, Kacheln unterschiedlich breit */
+/* Bildband: zwei horizontale Reihen, die endlos nach rechts laufen (Vorlage: gelooptes Element,
+   nicht scrollgetrieben). Bilder in voller Reihenhoehe, Breite folgt dem Seitenverhaeltnis.
+   Hoehen laufen ueber eine Variable, nicht ueber Prozentketten, damit nichts ins Intrinsische kippt. */
+.photowall .pwwrap { align-items: stretch; }
 .photowall .pwstage {
-  background: #E2DACA; padding: clamp(20px, 2.4vw, 40px);
-  margin-top: clamp(60px, 8vh, 110px); margin-bottom: clamp(60px, 8vh, 110px);
+  --pwpad: clamp(14px, 1.6vw, 26px);
+  --pwstageh: 100vh;
+  --pwrowh: calc((var(--pwstageh) - 3 * var(--pwpad)) / 2);
+  background: #E2DACA; padding: var(--pwpad); box-sizing: border-box;
+  height: var(--pwstageh); display: flex; flex-direction: column; gap: var(--pwpad);
+  overflow: hidden;
 }
-.photowall .pwcols {
-  display: grid; grid-template-columns: 1.18fr 0.82fr 1fr;
-  gap: clamp(12px, 1.4vw, 22px); align-items: start;
+.photowall .pwrow { height: var(--pwrowh); display: flex; overflow: hidden; }
+.photowall .pwtrack {
+  display: flex; flex: 0 0 auto; align-items: stretch; height: var(--pwrowh);
+  gap: clamp(12px, 1.4vw, 22px); padding-right: clamp(12px, 1.4vw, 22px);
+  animation: pwband var(--dur, 60s) linear infinite;
+  will-change: transform;
 }
-.photowall .pwcol { display: flex; flex-direction: column; will-change: transform; }
-.photowall .pwcol:nth-child(1) { gap: clamp(12px, 1.4vw, 22px); }
-.photowall .pwcol:nth-child(2) { gap: clamp(18px, 2.2vw, 34px); margin-top: clamp(30px, 5vw, 78px); }
-.photowall .pwcol:nth-child(3) { gap: clamp(10px, 1.1vw, 17px); margin-top: clamp(10px, 1.8vw, 30px); }
-.photowall .pwcol img, .photowall .pwcol video {
-  width: 100%; display: block; border-radius: 2px;
+.photowall .pwrow--b .pwtrack { animation-delay: -17s; }
+.photowall .pwstage:hover .pwtrack { animation-play-state: paused; }
+@keyframes pwband { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+.photowall .pwtrack img, .photowall .pwtrack video, .photowall .pwtrack .pwiv {
+  height: var(--pwrowh); width: auto; flex: 0 0 auto; display: block; border-radius: 2px;
 }
+.photowall .pwtrack video { aspect-ratio: 4 / 5; object-fit: cover; background: #0E0E10; }
+.photowall .pwtrack .pwiv { aspect-ratio: 4 / 5; }
+.photowall .pwtrack .pwiv video { width: 100%; height: 100%; }
+@media (prefers-reduced-motion: reduce) { .photowall .pwtrack { animation: none; } }
 /* Interview-Kachel in der Wand */
 .photowall .pwiv { position: relative; }
-.photowall .pwcol video { aspect-ratio: 4 / 5; object-fit: cover; background: #0E0E10; }
 .photowall .pwiv video { aspect-ratio: 4 / 5; object-fit: cover; background: #0E0E10; }
 .photowall .ivsound {
   position: absolute; left: 12px; bottom: 12px; z-index: 2;
@@ -2080,9 +2092,7 @@ body.menuopen .bkbtn, body.menuopen .bkorbit { opacity: 0; pointer-events: none;
   .photowall .pwwrap { grid-template-columns: 1fr; }
   .photowall .pwtxt { position: static; height: auto; padding: clamp(60px,8vh,90px) 0 0; }
   .photowall .pwdisc { margin-top: clamp(30px,4vw,48px); }
-  .photowall .pwstage { margin-top: clamp(34px,5vw,60px); }
-  .photowall .pwcols { grid-template-columns: 1.1fr 0.9fr; }
-  .photowall .pwcol:nth-child(3) { display: none; }
+  .photowall .pwstage { --pwstageh: clamp(420px, 78vh, 640px); margin-top: clamp(34px,5vw,60px); }
 }
 
 
