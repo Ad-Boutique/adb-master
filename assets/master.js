@@ -593,12 +593,21 @@
     setTimeout(trackDur, 900);
   }
 
-  /* ---------- Nutzen-Kacheln: jede kommt einzeln, sobald sie die Leselinie erreicht ---------- */
-  var bcells = Array.prototype.slice.call(document.querySelectorAll(".benegrid .bcell"));
+  /* ---------- Nutzen-Kacheln: eine nach der anderen, gesteuert vom Scrollfortschritt der ganzen Wand.
+       Ueber die Position der einzelnen Kachel kaemen am Desktop drei gleichzeitig, also eine Rasterreihe. ---------- */
+  var begrids = Array.prototype.slice.call(document.querySelectorAll(".benegrid")).map(function (g) {
+    return { grid: g, cells: Array.prototype.slice.call(g.querySelectorAll(".bcell")) };
+  });
   function bcellTick() {
-    for (var i = 0; i < bcells.length; i++) {
-      var r = bcells[i].getBoundingClientRect();
-      if (r.top < vh * 0.82) bcells[i].classList.add("on");
+    for (var g = 0; g < begrids.length; g++) {
+      var b = begrids[g], n = b.cells.length;
+      if (!n) continue;
+      var r = b.grid.getBoundingClientRect();
+      /* 0, wenn die Wand die Leselinie erreicht, 1, wenn sie oben durch ist */
+      var p = reduced ? 1 : (vh * 0.9 - r.top) / (r.height + vh * 0.62);
+      for (var i = 0; i < n; i++) {
+        b.cells[i].classList.toggle("on", p >= (i + 0.6) / (n + 0.6) * 0.86);
+      }
     }
   }
 

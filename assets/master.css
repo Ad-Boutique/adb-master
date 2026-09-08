@@ -876,13 +876,26 @@ body.loaded .chero img { transform: scale(1); }
 .svcbandtrack img { height: var(--bandh); width: auto; flex: 0 0 auto; display: block; border-radius: 2px; object-fit: cover; }
 .svcband:hover .svcbandtrack { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) { .svcbandtrack { animation: none; } }
-/* Nutzen-Kacheln kommen einzeln, sobald sie die Leselinie erreichen (Klasse "on" aus master.js) */
-.benegrid .bcell {
-  opacity: 0.14; transform: translateY(18px);
-  transition: opacity 0.55s ease, transform 0.7s var(--e-out);
+/* Nutzen-Kacheln kommen eine nach der anderen (Klasse "on" aus master.js, Reihenfolge aus dem Scrollfortschritt).
+   Das Raster steht von Anfang an, gefuellt wird es Kachel fuer Kachel. */
+.benegrid .bcell { position: relative; }
+.benegrid .bcell > .bt, .benegrid .bcell > .bd {
+  opacity: 0.12; transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.72s var(--e-out);
 }
-.benegrid .bcell.on { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) { .benegrid .bcell { opacity: 1; transform: none; } }
+.benegrid .bcell > .bd { transition-delay: 0.07s; }
+.benegrid .bcell.on > .bt, .benegrid .bcell.on > .bd { opacity: 1; transform: none; }
+/* Die Linie ueber der Kachel zieht sich beim Ankommen von links nach rechts */
+.benegrid .bcell::after {
+  content: ""; position: absolute; left: 0; top: -1px; height: 1px; right: 0;
+  background: var(--champ-deep); transform: scaleX(0); transform-origin: left center;
+  transition: transform 0.6s var(--e-out);
+}
+.benegrid .bcell.on::after { transform: scaleX(1); }
+@media (prefers-reduced-motion: reduce) {
+  .benegrid .bcell > .bt, .benegrid .bcell > .bd { opacity: 1; transform: none; }
+  .benegrid .bcell::after { display: none; }
+}
 
 /* FAQ: Frage als Zeile, Antwort klappt auf (dieselbe Mechanik wie das Akkordeon oben) */
 .faq .qa { border-top: 1px solid var(--line-l); }
