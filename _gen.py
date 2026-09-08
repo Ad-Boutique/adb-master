@@ -12,8 +12,8 @@ HEAD = '''<!doctype html>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 
-<link rel="stylesheet" href="assets/master.css?v=68">
-<script src="assets/master.js?v=68" defer></script>
+<link rel="stylesheet" href="assets/master.css?v=69">
+<script src="assets/master.js?v=69" defer></script>
 </head>
 <body style="background-color:{bodybg}" class="on-light">
 
@@ -345,10 +345,10 @@ CASES = [
         ("Creative", "Angebots-Statics und ein Markenfilm, wöchentlich neue Varianten gegen die Ermüdung."),
         ("Kanal", "Meta mit 73 Prozent des Budgets für Reichweite und Abschlüsse, Google mit 27 Prozent als Effizienzkanal, dazu ein Loyalty-Programm für Wiederkäufer.")],
   nums=[("(Abschlüsse)", "23.579"), ("(je Abschluss, gesamt)", "€ 11,70"), ("(Bestellungen je Monat, Peak)", "7.800"), ("(Reichweite Meta)", "2,8 Mio.")],
-  note="Mediabudget 275.906 Euro, davon 202.221 Euro Meta und 73.685 Euro Google, 46,1 Millionen Impressionen. Peak von September bis Dezember 2025 mit über 6.000 Abschlüssen im Monat. Werte aus dem Performance Review an den Kunden.",
+  note="Mediabudget 275.906 Euro, davon 202.221 Euro Meta und 73.685 Euro Google, 46,1 Millionen Impressionen. Peak von September bis Dezember 2025 mit über 6.000 Abschlüssen im Monat. Werte aus dem Performance Review an den Kunden. Die Kampagnen liefen bis 30. Juni 2026 im damals gültigen rechtlichen Rahmen, danach griff die neue Gesetzeslage für die Kategorie und die Bewerbung wurde planmäßig beendet.",
   chapters=[dict(label="Zweites Kapitel, die Übergabe", h=["Aufbauen, skalieren,", "sauber übergeben."],
     p1="Neben dem Sales-Funnel liefen zwei Nebenschauplätze mit eigener Logik: über zwanzig Gewinnspiel-Kooperationen mit rund 65.000 Interaktionen zu höchstens 52 Cent je Interaktion, und ein Loyalty-Programm für Wiederkäufer, das mit 4.499 Euro 142 Anmeldungen brachte. Beides bewusst getrennt gemessen, damit keine Zahl die andere verfälscht.",
-    p2="<b>Nach zwölf Monaten haben wir das Konto übergeben:</b> mit Struktur, Dokumentation und den Learnings aus einem Jahr. Ein Mandat muss nicht ewig laufen, um ein gutes Mandat zu sein. Es muss sauber gebaut sein.",
+    p2="<b>Zum 30. Juni 2026 haben wir das Konto übergeben:</b> mit Struktur, Dokumentation und den Learnings aus einem Jahr. Der Zeitpunkt war kein Zufall, sondern das Datum, an dem die neue Gesetzeslage für die Kategorie griff. Ein Mandat muss nicht ewig laufen, um ein gutes Mandat zu sein. Es muss sauber gebaut sein und zum richtigen Zeitpunkt enden.",
     nums=[("(Gewinnspiel-Kooperationen)", "20+"), ("(Interaktionen daraus)", "65.000"), ("(je Interaktion, maximal)", "€ 0,52"), ("(Loyalty-Anmeldungen)", "142")],
     note="Werte aus dem Performance Review zum Abschluss der Zusammenarbeit im Juni 2026.",
     links=[("service-strategie.html", "Strategie & Funnel"), ("service-ecommerce.html", "E-Commerce Growth")])],
