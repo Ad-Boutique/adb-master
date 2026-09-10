@@ -27,9 +27,29 @@ SERVICES = [
   h1=["Ihr Shop wächst.", "Planbar."], ital=1,
   tags=["Meta, Google, TikTok, Pinterest", "Shop & Conversion", "Server-side Tracking", "UGC & Creatives"],
   sub="Ads, Creatives, Shop und Tracking aus einer Hand, vergütet am Ergebnis.",
-  problem_h=["Das Problem"],
+  flow="v2", v2_content=True, v2_graphic=True,
+  problem_label="Die Ausgangslage",
+  problem_h=["Traffic kostet.", "Kaufen tun wenige."],
   problem=["Sie kaufen Besucher, aber zu wenige kaufen: Steigende Klickpreise drücken die Marge, der Checkout verliert Käufer, und das Reporting verschleiert mehr, als es zeigt.",
            "<b>Mehr Budget skaliert dann nur das Problem.</b> Jeder Monat mit undichtem Funnel wird teurer, während Wettbewerber mit sauberem Setup denselben Klick in mehr Umsatz übersetzen."],
+  bene_label="Was für Ihren Umsatz dabei herauskommt",
+  bene_h=["Was sich ändert,", "wenn es sitzt."],
+  bene=[("Mehr Umsatz aus demselben Traffic", "Bei einer D2C-Marke wurden aus € 56k Mediabudget € 312k Umsatz, plus 57 Prozent im Jahr."),
+        ("Der Checkout wird mitgedacht", "Wir arbeiten dort, wo der Klick zu Geld wird, nicht nur im Werbekonto."),
+        ("Eine Zahl, der Sie trauen können", "Blended-Sicht über alle Kanäle, inklusive unserer Fee, in einem Dashboard."),
+        ("Creatives, die getestet sind", "Varianten laufen gegeneinander, Budget geht wöchentlich auf den Gewinner."),
+        ("Kein Kanal-Ego", "Was nicht trägt, wird gestoppt und steht so im Report, nicht im Kleingedruckten."),
+        ("Wir verdienen mit Ihrem Umsatz", "Basis-Fixum plus Beteiligung: Wächst Ihr Umsatz nicht, verdienen wir weniger.")],
+  band=dict(label="Material, das läuft",
+            imgs=["assets/case/case-consumer-brand/g0.jpg",
+                  "assets/case/juwel/g0.jpg",
+                  "assets/case/medcenter/g0.jpg",
+                  "assets/case/case-health-brand/g0.jpg",
+                  "assets/case/case-web-ib7/g1.jpg",
+                  "assets/case/juwel/g2.jpg",
+                  "assets/case/grandgarden/g3.jpg",
+                  "assets/case/case-health-brand/g3.jpg",
+                  "assets/case/medcenter/g4.jpg"]),
   intro="Mehr <b>Spend</b> löst selten das Problem. Der Hebel liegt im Zusammenspiel aus <b>Creative</b>, <b>Shop</b> und <b>Messung</b>. Wir bauen das System, nicht die Einzelmaßnahme.",
   acc=[("Ads & Creatives", "Iteratives Creative-Testing statt Bauchgefühl: Wir lassen Varianten gegeneinander laufen und schichten Budget wöchentlich auf die Gewinner um.",
         ["Meta, Google, TikTok, Pinterest", "UGC- und Studio-Produktion", "Systematisches Creative-Testing", "Budget-Steuerung, wöchentlich"]),
@@ -50,6 +70,7 @@ SERVICES = [
   proof_lead="Statt Bestwerte aus mehreren Marken nebeneinanderzustellen, nehmen wir eine D2C-Lifestyle-Marke und zeigen die Kette: Mediabudget, Kanal-Mix, Blended-Sicht, Jahresumsatz.",
   proof_nums=[],
   tell=dict(
+    nolabel=True,
     h="Ein Jahr, vier Zahlen.",
     t="Wie aus € 56k Mediabudget € 312k Umsatz wurden, Station für Station statt als Bestwert.",
     steps=[
@@ -128,6 +149,7 @@ SERVICES = [
 
  dict(slug="service-performance-marketing", nav="Performance Marketing", label="Leistung, Performance Marketing",
   tell=dict(
+    nolabel=True,
     h="Ein Projekt, vier Zahlen.",
     t="Wie aus einem überschaubaren Budget 489 qualifizierte Kaufinteressenten wurden, Station für Station.",
     steps=[
@@ -182,9 +204,29 @@ SERVICES = [
   h1=["Jeder Euro.", "Zurechenbar."], ital=1,
   tags=["Meta, Google, TikTok", "Lead-Generierung", "Creative-Testing", "Ehrliche Attribution"],
   sub="Kampagnen, die Leads und Verkäufe bringen, nicht Reichweite. Mit Attribution, der Sie trauen können.",
-  problem_h=["Das Problem"],
+  flow="v2", v2_content=True, v2_graphic=True,
+  problem_label="Die Ausgangslage",
+  problem_h=["Budget läuft.", "Zuordnen kann es niemand."],
   problem=["Budget läuft, Dashboards leuchten, aber niemand kann sagen, welcher Euro wirklich Umsatz gebracht hat. Doppelt gezählte Conversions feiern Erfolge, die es nie gab.",
            "<b>Ohne saubere Zurechnung fließt Budget monatelang in Kanäle, die nur Klicks liefern.</b> Der CPL steigt, die Pipeline bleibt leer, und am Ende heißt es: Performance funktioniert bei uns nicht."],
+  bene_label="Was für Ihr Budget dabei herauskommt",
+  bene_h=["Sechs Punkte,", "die den Preis drücken."],
+  bene=[("Sie sehen, was eine Anfrage kostet", "Bei einem Wiener Neubauprojekt € 11,77 im Schnitt, inklusive der Tests, die nicht liefen."),
+        ("Das Motiv entscheidet, nicht das Budget", "Ein einziges Motiv trug 54 Prozent aller 489 Anfragen."),
+        ("Jede Conversion wird einmal gezählt", "Server-side Tracking und Blended-Sicht statt doppelt gefeierter Erfolge."),
+        ("Ein Kanal richtig statt fünf halb", "Wir reizen aus, was trägt, statt Budget über fünf Kanäle zu verteilen."),
+        ("Wöchentlich umgeschichtet", "Budget wandert auf die Gewinner, solange die Kampagne läuft."),
+        ("Auch die schlechte Nachricht kommt", "Ziel-Gaps und gestoppte Strecken stehen im Report, nicht im Nachgespräch.")],
+  band=dict(label="Aus laufenden Kampagnen",
+            imgs=["assets/case/case-premium-neubau/g0.jpg",
+                  "assets/case/case-wohnbau-floridsdorf/g0.jpg",
+                  "assets/case/herogroup/g0.jpg",
+                  "assets/case/case-premium-neubau/g3.jpg",
+                  "assets/case/grandgarden/g0.jpg",
+                  "assets/case/case-immobilien-investment/g0.jpg",
+                  "assets/case/medcenter/g1.jpg",
+                  "assets/case/case-wohnbau-floridsdorf/g1.jpg",
+                  "assets/case/case-premium-neubau/g4.jpg"]),
   intro="<b>Meta, Google und TikTok</b> mit einer Regel: <b>Das Creative ist der Hebel</b>, nicht das Budget. Systematisch getestet, ehrlich gemessen, <b>wöchentlich</b> umgeschichtet.",
   acc=[("Kampagnen-Setup", "Strukturen, die skalieren können: nach Rolle getrennte Kampagnen, saubere Zielwerte, Budgets dort, wo der ehrliche CPL hinzeigt.",
         ["Meta, Google, TikTok", "Instant Forms & Lead-Strecken", "Kaufnahe Search-Intents", "Budget-Steuerung, wöchentlich"]),
@@ -238,9 +280,29 @@ SERVICES = [
   h1=["Content,", "der verkauft."], ital=1,
   tags=["UGC & Studio", "Foto & Film", "Social-Formate", "Creative-System"],
   sub="Foto, Film und UGC, produziert für Performance: gemessen am CPA, nicht am Applaus.",
-  problem_h=["Das Problem"],
+  flow="v2", v2_content=True, v2_graphic=True,
+  problem_label="Die Ausgangslage",
+  problem_h=["Schöner Content.", "Wirkung unbekannt."],
   problem=["Feeds voller Hochglanz, aber die CPMs steigen und niemand misst, welches Motiv wirklich trägt. Schöner Content, der nichts verkauft, ist Dekoration.",
            "<b>Die Konsequenz: teure Produktionen ohne Wirkung.</b> Jedes Shooting ohne Testing-Plan produziert Material fürs Archiv, während die Kampagne mit dem falschen Motiv weiterläuft."],
+  bene_label="Was für Ihre Kampagne dabei herauskommt",
+  bene_h=["Was Content", "leisten muss."],
+  bene=[("Motive, die messbar tragen", "Bei einem Neubauprojekt trug ein Interior-Motiv 54 Prozent aller Anfragen."),
+        ("UGC als Hebel, nicht als Sparlösung", "In einem Health-Mandat lag der CPA rund 58 Prozent unter der Studio-Produktion."),
+        ("Produktion und Kampagne, ein Team", "Wer dreht, kennt die Zahlen von gestern und produziert nach, bevor das Motiv müde wird."),
+        ("Nachschub statt Kampagnenfeuerwerk", "Ein Loop aus produzieren, testen, lernen, nachproduzieren."),
+        ("Formate, die die Plattform belohnt", "Hook in den ersten Sekunden, nativ gedacht, nicht nachträglich umgeschnitten."),
+        ("Kein Material fürs Archiv", "Jedes Shooting hat vorher einen Testing-Plan und danach eine Zahl.")],
+  band=dict(label="Aus der Produktion",
+            imgs=["assets/case/kommunalkredit/g0.jpg",
+                  "assets/case/juwel/g0.jpg",
+                  "assets/case/kommunalkredit/g2.jpg",
+                  "assets/case/medcenter/g1.jpg",
+                  "assets/case/case-health-brand/g0.jpg",
+                  "assets/case/kommunalkredit/g3.jpg",
+                  "assets/case/juwel/g3.jpg",
+                  "assets/case/case-premium-neubau/g2.jpg",
+                  "assets/case/kommunalkredit/g1.jpg"]),
   intro="<b>Content und Performance</b> sitzen bei uns an einem Tisch. Jedes Motiv läuft gegen echte <b>Zahlen</b>, nicht gegen Geschmack. Was trägt, wird skaliert, egal wie <b>schön</b> der Rest war.",
   acc=[("UGC-Produktion", "Echte Menschen, echte Nutzung: In einem Health-Mandat schlug UGC die klassischen Produkt-Videos beim CPA um rund 58 Prozent.",
         ["Creator-Casting & Briefing", "Skripte nach Hook-Logik", "Iterationen nach CPA", "Rechte & Freigaben sauber"]),
@@ -265,6 +327,7 @@ SERVICES = [
   proof_lead="Content ist bei uns Handwerk mit Messpunkt: Wir zeigen den Weg von der Idee zum Sujet, das im Feed bestehen muss. Die Zahlen stehen am Ende, nicht am Anfang.",
   proof_nums=[],
   tell=dict(
+    nolabel=True,
     h="Ein Motiv, vier Stationen.",
     t="Vom Briefing bis zum Sujet, das gegen echte Benchmarks antritt statt gegen Geschmack.",
     steps=[
@@ -336,9 +399,29 @@ SERVICES = [
   h1=["Seiten, die", "abschließen."], ital=1,
   tags=["Landingpages", "Shops & Websites", "Konfiguratoren", "CRO & A/B-Tests"],
   sub="Landingpages, Shops und interaktive Lead-Magnete: gebaut auf Conversion, gemessen am Abschluss.",
-  problem_h=["Das Problem"],
+  flow="v2", v2_content=True, v2_graphic=True,
+  problem_label="Die Ausgangslage",
+  problem_h=["Teure Klicks.", "Die Seite hält nicht."],
   problem=["Teure Klicks landen auf Seiten, die nicht konvertieren: langsam, überladen, ohne klares Nutzenversprechen über dem Falz und ohne Message-Match zur Anzeige.",
            "<b>Jeder Euro Mediabudget wird dadurch entwertet.</b> Wer € 3 pro Klick zahlt und 1 Prozent konvertiert, zahlt € 300 pro Lead, und wundert sich über den Markt."],
+  bene_label="Was für Ihre Abschlüsse dabei herauskommt",
+  bene_h=["Was die Seite", "können muss."],
+  bene=[("Eine Seite pro Botschaft", "Headline, Beweis und Ziel passen zur Anzeige, nicht zur Sitemap."),
+        ("Rechnen statt Formular", "Ein Konfigurator brachte einem PV-Anbieter 406 Anfragen und 487 Prozent mehr Besucher."),
+        ("Wir sagen, wenn die Seite nicht der Weg ist", "Bei einem Neubauprojekt lieferten Instant Forms zu € 6,97, die Website zu € 15,66."),
+        ("Schnell, weil Ladezeit Geld kostet", "Aufbau und Tempo entscheiden mit über den Preis jeder Anfrage."),
+        ("Conversion-Optimierung als Routine", "Hypothese, Test, Entscheidung, statt Relaunch alle drei Jahre."),
+        ("Marke und Abschluss im selben Zug", "Der Auftritt trägt die Kampagne, die darauf führt, nicht nur das Portfolio.")],
+  band=dict(label="Aus der Umsetzung",
+            imgs=["assets/img/web_noma_d.jpg",
+                  "assets/img/web_ib7_d.jpg",
+                  "assets/img/web_havenstone_d.jpg",
+                  "assets/img/web_unio_d.jpg",
+                  "assets/img/web_twistnsparkle_d.jpg",
+                  "assets/img/web_daphi_d.jpg",
+                  "assets/img/web_funkhausliving_d.jpg",
+                  "assets/img/web_pharmacom_d.jpg",
+                  "assets/img/web_trattner_d.jpg"]),
   intro="Wir bauen Seiten vom <b>Abschluss</b> her: eine Botschaft, ein Ziel, <b>Message-Match</b> zur Kampagne. Und wir sagen Ihnen, wann ein <b>Instant Form</b> die bessere Wahl ist.",
   acc=[("Landingpages je Kampagne", "Eine Seite pro Botschaft: Headline, Beweis und CTA passen zur Anzeige, nicht zur Sitemap.",
         ["Message-Match zur Kampagne", "Ein Ziel pro Seite", "Proof an den Entscheidungspunkten", "Noindex, schnell, mobil zuerst"]),
@@ -359,6 +442,7 @@ SERVICES = [
   proof_lead="Eine Seite ist kein Bildband und kein Formular. Wir zeigen den Weg von der Struktur zum Auftritt, der Mediabudget tragen kann.",
   proof_nums=[],
   tell=dict(
+    nolabel=True,
     h="Eine Seite, vier Stationen.",
     t="Von der Reihenfolge über die Bildsprache bis zur Strecke, die aus dem Besuch eine Anfrage macht.",
     steps=[
@@ -435,9 +519,29 @@ SERVICES = [
   h1=["Struktur schlägt", "Bauchgefühl."], ital=1,
   tags=["Funnel-Architektur", "KPI-Logik", "Attribution", "Positionierung"],
   sub="Vom Einzelprojekt zur Plattform: Funnel, KPI-Logik und Attribution, die Entscheidungen tragen.",
-  problem_h=["Das Problem"],
+  flow="v2", v2_content=True, v2_graphic=True,
+  problem_label="Die Ausgangslage",
+  problem_h=["Jede Kampagne", "beginnt bei null."],
   problem=["Jede Kampagne beginnt bei null: eigene Zielgruppen, eigene Zahlen, keine gemeinsame Datenbasis. Was funktioniert hat, weiß hinterher niemand genau.",
            "<b>Teuer erkaufte Learnings verpuffen.</b> Eine Plattform, die mit ROAS 2,14 lief, blieb genau so lange ineffizient, bis Struktur, KPI-Logik und projektübergreifendes Lernen kamen: Danach stand sie bei 8,75."],
+  bene_label="Was für Ihre Entscheidungen dabei herauskommt",
+  bene_h=["Was Struktur", "wirklich bringt."],
+  bene=[("Aus 2,14 wurde 8,75", "Gleiches Budget, andere Struktur: aus 16 Investments wurden 50."),
+        ("Die KPI steht vor dem ersten Euro", "Woran Erfolg gemessen wird, ist vorher geklärt, nicht hinterher."),
+        ("€ 36k, die € 4,65 Mio. zurechenbar machten", "Ein Investoren-Funnel, dessen Wirkung bis zur Zeichnung nachvollziehbar blieb."),
+        ("Jedes weitere Projekt wird günstiger", "Projektübergreifendes Lernen statt eigener Insel je Kampagne."),
+        ("Vertrauen ist eine Funnel-Stufe", "Im Finance zählt der Preis je zugerechnetem Kapital, nicht der Preis je Klick."),
+        ("Auch Schließen gehört dazu", "Ein bestehender Kanal wurde messbar gemacht, geprüft und dann beendet.")],
+  band=dict(label="Aus der Zusammenarbeit",
+            imgs=["assets/case/case-crowdinvesting/g0.jpg",
+                  "assets/case/herogroup/g0.jpg",
+                  "assets/case/case-premium-neubau/g0.jpg",
+                  "assets/case/kommunalkredit/g1.jpg",
+                  "assets/case/case-crowdinvesting/g2.jpg",
+                  "assets/case/grandgarden/g0.jpg",
+                  "assets/case/case-immobilien-investment/g0.jpg",
+                  "assets/case/case-crowdinvesting/g4.jpg",
+                  "assets/case/kommunalkredit/g4.jpg"]),
   intro="Erst die <b>Struktur</b>, dann das Budget: <b>Funnel</b>, KPI-Definitionen, die vorab feststehen, und eine <b>Attribution</b>, die jeden Euro zurechenbar macht.",
   acc=[("Funnel-Architektur", "Vom ersten Kontakt bis zur Zeichnung: Ein Investoren-Funnel übersetzte € 36k Google-Budget in € 4,65 Mio. zurechenbares Kapital.",
         ["Journey vom Lead bis zum Abschluss", "Vertrauensaufbau Schritt für Schritt", "CRM-Nurture für lange Wege", "Klare Übergaben an Vertrieb"]),
@@ -458,6 +562,7 @@ SERVICES = [
   proof_lead="Ein Immobilien-Investment-Mandat, Stufe für Stufe: das eingesetzte Budget, die Struktur, die Zurechnung, das eingesammelte Kapital.",
   proof_nums=[],
   tell=dict(
+    nolabel=True,
     h="Ein Mandat, vier Zahlen.",
     t="Wie aus € 36k Mediabudget € 4,65 Mio. Kapital wurden, Stufe für Stufe nachgerechnet.",
     steps=[
@@ -956,6 +1061,24 @@ def _bene(s):
             '    </div>\n  </section>\n\n') % (s.get("bene_label", "Was dabei herauskommt"), head, s["intro"], cells)
 
 
+def _detail(s, acc):
+    """Akt 4: die Leistungstiefe bleibt, aber zugeklappt. So steht sie nicht im Weg,
+    ist aber da, wenn jemand genau wissen will, was dazugehoert."""
+    if not acc:
+        return ""
+    return ('  <!-- AKT 4: LEISTUNG IM DETAIL, ZUGEKLAPPT -->\n'
+            '  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">\n'
+            '    <div class="wrap svc-split">\n'
+            '      <div class="intro">\n'
+            '        <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:20px">Im Detail</span>\n'
+            '        <h2 class="dispn" data-lines style="font-size:clamp(28px,2.8vw,44px)">'
+            '<span class="rl"><span>Was dazugehört,</span></span>'
+            '<span class="rl"><span>wenn Sie es genau wissen wollen.</span></span></h2>\n'
+            '      </div>\n'
+            '      <div class="acc">\n        ' + acc + '\n      </div>\n'
+            '    </div>\n  </section>\n\n')
+
+
 def _svcband(s):
     """Bildband als Auflockerung zwischen zwei Textbloecken: laeuft von selbst, also auch am Telefon."""
     b = s.get("band")
@@ -1316,15 +1439,23 @@ def render_service(s):
     deliver_sec = _deliver(s)
     trust_sec = _trust(s)
 
+    # Dramaturgie v2: eine Grafik direkt unter dem Beweis-Kopf statt zwei in einer eigenen Strecke
+    graphic_v2 = ('      <div class="proofone">\n' + channels_sec + '      </div>\n') if (v2 and s.get("v2_graphic") and channels_sec) else ""
     proof_head = PROOF_HEAD.format(
         proof_label=s.get("proof_label", "Ergebnisse"), h0=s["proof_h"][0], h1=s["proof_h"][1],
-        rest=nums_sec + lead_sec + pq_sec + bars_here)
+        rest=nums_sec + lead_sec + pq_sec + bars_here + graphic_v2)
     if v2:
         # Akt 2 Beweis: Karte zeigen, dann einmal beweisen, dann in die Cases weiterfuehren.
         # Akt 3 Vertrauen: erst die Kundenstimme, danach das Team.
         # Farbkette: nach zwei Papier-Bloecken (Kopf, Stationen) wechseln die Cases auf Creme.
         cases_sec = cases_sec.replace('bg-paper" data-bg="#F3EDE1"', 'bg-cream" data-bg="#EFE7D6"')
-        mid_sec = visual + proof_head + tell_sec + cases_sec + voice_sec + crew_sec + fit_sec
+        # Echtes Mandatsmaterial bleibt im Beweisteil, wo es etwas belegt. Auf der ChatGPT-Seite
+        # zeigt das Laufband schon dieselben Studiobilder, dort waere es eine Wiederholung.
+        content_v2 = content_sec if s.get("v2_content") else ""
+        mid_sec = (visual + content_v2 + proof_head + tell_sec + cases_sec
+                   + voice_sec + crew_sec + logos_sec + fit_sec
+                   # Die ChatGPT-Seite bleibt so, wie sie freigegeben wurde: dort keine zweite Erklaerebene
+                   + (_detail(s, acc) if s.get("v2_content") else ""))
     else:
         mid_sec = (proof_head + tell_sec + content_before + proofsplit_sec + visual + wall_sec
                    + crew_sec + voice_sec + cases_sec + logos_sec + content_after + fit_sec)
