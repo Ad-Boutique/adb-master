@@ -884,6 +884,110 @@ body.loaded .chero img { transform: scale(1); }
 .svcbandtrack img { height: var(--bandh); width: auto; flex: 0 0 auto; display: block; border-radius: 2px; object-fit: cover; }
 .svcband:hover .svcbandtrack { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) { .svcbandtrack { animation: none; } }
+/* ============================================================
+   Apple-Prinzipien (iphone-duo): Stat-Group, Highlights-Stapel, Viewer, Fett-Lead
+   ============================================================ */
+/* Stat-Group: drei Werte direkt unter dem Absatz, der sie behauptet */
+.statg { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(18px, 2.4vw, 40px); margin-top: clamp(26px, 3vw, 44px); }
+.statg.statg--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 560px; }
+.statg .st { border-top: 1px solid var(--line-l); padding-top: 14px; }
+.statg .sv { font-family: var(--f-serif); font-size: clamp(30px, 3.2vw, 52px); line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.statg .sc { font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em; color: var(--grey-dark); margin-top: 8px; line-height: 1.45; }
+.fg-dark .statg .st, .chero .statg .st { border-color: rgba(255,255,255,0.28); }
+.fg-dark .statg .sc, .chero .statg .sc { color: rgba(255,255,255,0.78); }
+.chero .statg { margin-top: clamp(22px, 2.6vw, 40px); max-width: 640px; }
+.chero .statg .sv { font-size: clamp(26px, 2.6vw, 42px); }
+/* Fett-Lead-Caption: der fette Satz ist die Aussage, der Rest optional */
+.cap { font-family: var(--f-serif); font-size: clamp(15.5px, 1.2vw, 17.5px); line-height: 1.6; color: var(--grey-dark); }
+.cap b { color: var(--ink); font-weight: 500; }
+.fg-dark .cap { color: var(--grey); } .fg-dark .cap b { color: var(--paper); }
+/* Highlights-Stapel: Medium bleibt stehen, die Karten ziehen vorbei, Tabnav zeigt und springt */
+.hlxhead { max-width: 760px; margin-bottom: clamp(36px, 4.4vw, 64px); }
+.hlxgrid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(36px, 5vw, 90px); align-items: start; }
+/* Rasterkinder duerfen nicht breiter werden als ihre Spalte, sonst schiebt die Chip-Reihe die Seite auf */
+.hlxgrid > *, .viewer > * { min-width: 0; }
+.hlxnav, .vchips { max-width: 100%; }
+.chero--stats .scrollhint { display: none; }
+.hlxsticky { position: sticky; top: clamp(84px, 12vh, 130px); }
+.hlxnav { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.hlxnav .hn {
+  font: inherit; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; color: var(--grey-dark);
+  background: transparent; border: 1px solid var(--line-l); border-radius: 999px; padding: 8px 14px; cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.hlxnav .hn.on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.hlxmedia { position: relative; aspect-ratio: 4 / 5; max-height: 72vh; background: #22382C; border-radius: 4px; overflow: hidden; }
+.hlxmedia img, .hlxmedia video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transform: scale(1.03); transition: opacity 0.55s ease, transform 0.9s var(--e-out); }
+.hlxmedia img.on, .hlxmedia video.on { opacity: 1; transform: none; }
+.hlxsteps { padding: clamp(10px, 4vh, 60px) 0; }
+.hlxsteps .hs { padding: clamp(34px, 6vh, 70px) 0; border-top: 1px solid var(--line-l); opacity: 0.3; transition: opacity 0.55s ease; }
+.hlxsteps .hs:first-child { border-top: 0; }
+.hlxsteps .hs.on { opacity: 1; }
+.hlxsteps .hst { font-family: var(--f-disp); font-weight: 730; letter-spacing: -0.024em; font-size: clamp(26px, 2.8vw, 44px); line-height: 1.06; }
+.hlxsteps .hs .cap { margin-top: 12px; max-width: 42ch; }
+/* Viewer: Chips wechseln Medium und Caption, wie Apples Product Viewer */
+.viewer { display: grid; grid-template-columns: 0.95fr 1.05fr; grid-template-areas: "chips stage" "caps stage"; gap: 22px clamp(30px, 4.5vw, 80px); align-items: center; }
+.vchips { grid-area: chips; display: flex; flex-direction: column; gap: 10px; align-self: end; }
+.vcaps { grid-area: caps; align-self: start; }
+.vstage { grid-area: stage; }
+.vchips .vc {
+  font: inherit; text-align: left; font-size: 14px; font-weight: 600; letter-spacing: 0.01em; color: var(--ink);
+  background: rgba(255,255,255,0.45); border: 1px solid var(--line-l); border-radius: 14px; padding: 14px 18px; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center; gap: 14px;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.vchips .vc .vcn { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: var(--grey-dark); text-transform: uppercase; }
+.vchips .vc.on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.vchips .vc.on .vcn { color: var(--champ); }
+.vcaps .vcap { display: none; max-width: 40ch; }
+.vcaps .vcap.on { display: block; animation: vcapin 0.5s var(--e-out) both; }
+@keyframes vcapin { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.vstage { display: flex; justify-content: center; }
+.vstage .phframe { width: min(100%, 340px); position: relative; }
+.vstage .phframe img { position: absolute; inset: 0; opacity: 0; transition: opacity 0.5s ease; }
+.vstage .phframe img.on { opacity: 1; position: relative; }
+.zoomsec .zmedia video { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Stat-Group im Leistungs-Hero: Zahlen statt Schlagwort-Pillen */
+.svc-hero .statg { margin: clamp(22px, 2.6vw, 36px) auto 0; max-width: 680px; text-align: left; }
+/* Chips ueber den Stationen: zeigen an, wo man ist, und springen auf Tipp */
+.tellnav { margin-bottom: clamp(18px, 2.4vw, 34px); }
+/* Vergleich: drei Cases nebeneinander, Zeile fuer Zeile, wie Apples Compare */
+.cmp { margin-top: clamp(34px, 4vw, 60px); }
+.cmprow { display: grid; grid-template-columns: 0.75fr 1fr 1fr 1fr; gap: clamp(14px, 2vw, 34px); padding: clamp(16px, 1.8vw, 24px) 0; border-top: 1px solid var(--line-l); align-items: baseline; }
+.cmprow:last-child { border-bottom: 1px solid var(--line-l); }
+.cmprow--head { border-top: 0; align-items: end; padding-top: 0; }
+.cmprow--head a { font-family: var(--f-disp); font-weight: 720; letter-spacing: -0.018em; font-size: clamp(17px, 1.5vw, 23px); line-height: 1.15; color: var(--ink); }
+.cmprow--head a:hover { color: var(--champ-deep); }
+.cmpl { font-size: 11.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey-dark); }
+.cmpv { font-family: var(--f-serif); font-size: clamp(28px, 3vw, 48px); line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.cmpd { font-family: var(--f-serif); font-size: clamp(14.5px, 1.15vw, 16.5px); line-height: 1.55; color: var(--grey-dark); }
+.cmprow--go { align-items: start; }
+@media (max-width: 860px) {
+  .cmprow { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; row-gap: 10px; }
+  .cmpl { grid-column: 1 / -1; }
+  .cmpv { font-size: clamp(22px, 6.4vw, 30px); }
+  .cmprow--head a { font-size: 15px; }
+  .cmprow--go .zalink { font-size: 11px; }
+}
+@media (max-width: 860px) {
+  .statg { gap: 14px; } .statg .sv { font-size: clamp(24px, 7vw, 30px); } .statg .sc { font-size: 10.5px; }
+  .chero--stats .hcap { padding-bottom: 88px; }
+  .statg.statg--2 { max-width: none; }
+  .hlxgrid { grid-template-columns: 1fr; gap: 0; }
+  /* Am Telefon steht das Medium oben fest, die Karten laufen darunter durch */
+  .hlxsticky { top: 64px; z-index: 2; background: var(--paper); padding-bottom: 10px; }
+  .hlxnav { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; margin: 0 -6px 12px; padding: 0 6px; }
+  .hlxnav::-webkit-scrollbar { display: none; }
+  .hlxnav .hn { flex: 0 0 auto; }
+  .hlxmedia { aspect-ratio: 4 / 3; max-height: 42vh; }
+  .hlxsteps .hs { padding: 30px 0; }
+  .viewer { grid-template-columns: 1fr; grid-template-areas: "chips" "stage" "caps"; gap: 22px; }
+  .vchips { flex-direction: row; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; margin: 0 -6px; padding: 2px 6px; }
+  .vchips::-webkit-scrollbar { display: none; }
+  .vchips .vc { flex: 0 0 auto; flex-direction: column; align-items: flex-start; gap: 4px; padding: 10px 14px; font-size: 13px; }
+  .vstage .phframe { width: min(78vw, 300px); }
+}
+
 /* Eine Grafik unter dem Beweis-Kopf: der Beweis kommt einmal, nicht in zwei Strecken */
 .proofone {
   margin-top: clamp(34px, 4.4vw, 62px); padding-top: clamp(26px, 3vw, 44px);

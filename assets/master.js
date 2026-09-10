@@ -219,8 +219,10 @@
     /* Seitenverhaeltnis aus den Attributen, damit es schon vor dem Laden stimmt */
     var w = el ? +(el.getAttribute("width") || el.naturalWidth || el.videoWidth || 0) : 0;
     var h = el ? +(el.getAttribute("height") || el.naturalHeight || el.videoHeight || 0) : 0;
+    var vid = m ? m.querySelector("video[data-scrub]") : null;
+    if (vid) { vid.pause(); vid.muted = true; }
     return { sec: sec, media: m, side: sec.getAttribute("data-side") || "right",
-             ar: (w && h) ? h / w : 0.63 };
+             ar: (w && h) ? h / w : 0.63, vid: vid };
   });
   function easeZ(t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
   function zoomTick() {
@@ -229,11 +231,18 @@
       var span = r.height - vh;
       var p = Math.max(0, Math.min(1, -r.top / span));
       var e = reduced ? 1 : easeZ(p);
+      /* Scrollgebundenes Video: der Fortschritt der Sektion ist die Zeitachse (Apple-Muster) */
+      if (z.vid && z.vid.duration && !z.vid.seeking) {
+        var tt = p * z.vid.duration;
+        if (Math.abs(tt - z.vid.currentTime) > 0.04) z.vid.currentTime = tt;
+      }
       if (window.innerWidth <= 860) {
         /* Am Telefon waechst die Karte auf voll Breite, die Hoehe folgt dem Bild.
-           Kein Vollbild-Beschnitt, sonst ist von einem breiten Screenshot nichts zu lesen. */
+           Kein Vollbild-Beschnitt, sonst ist von einem breiten Screenshot nichts zu lesen.
+           Hochformat wird an der Hoehe gedeckelt, damit es in die Buehne passt. */
         var wp = (76 + 24 * e) / 100 * window.innerWidth;
-        var hp = wp * z.ar;
+        var hp = Math.min(wp * z.ar, vh * 0.6);
+        wp = Math.min(wp, hp / z.ar);
         z.media.style.width = wp + "px";
         z.media.style.height = hp + "px";
         z.media.style.left = ((window.innerWidth - wp) / 2) + "px";
@@ -477,13 +486,24 @@
 
   /* ---------- Sticky-Zahl mit Stationen (scrollgetrieben) ---------- */
   var tells = Array.prototype.slice.call(document.querySelectorAll(".tell")).map(function (box) {
-    return {
+    var t = {
       box: box,
       tv: box.querySelector(".tv"),
       tl: box.querySelector(".tl"),
       steps: Array.prototype.slice.call(box.querySelectorAll(".ts")),
+      /* optionale Chips direkt davor: zeigen die Station an und springen hin */
+      nav: Array.prototype.slice.call((box.parentElement || box).querySelectorAll(".tellnav .hn")),
       cur: -1
     };
+    t.nav.forEach(function (b, i) {
+      b.addEventListener("click", function () {
+        var target = t.steps[i];
+        if (!target) return;
+        var y = target.getBoundingClientRect().top + window.pageYOffset - vh * 0.5 + target.offsetHeight / 2;
+        window.scrollTo({ top: y, behavior: reduced ? "auto" : "smooth" });
+      });
+    });
+    return t;
   }).filter(function (t) { return t.tv && t.steps.length; });
 
   function tellTick() {
@@ -497,6 +517,7 @@
       if (best === t.cur) return;
       t.cur = best;
       t.steps.forEach(function (st, i) { st.classList.toggle("on", i === best); });
+      t.nav.forEach(function (b, i) { b.classList.toggle("on", i === best); });
       var act = t.steps[best];
       t.tv.style.opacity = 0; t.tl.style.opacity = 0;
       setTimeout(function () {
@@ -506,6 +527,58 @@
       }, 200);
     });
   }
+
+  /* ---------- Highlights-Stapel: Medium steht, Karten ziehen vorbei, Tabnav zeigt an und springt ---------- */
+  var stacks = Array.prototype.slice.call(document.querySelectorAll(".hlxgrid")).map(function (box) {
+    var st = {
+      steps: Array.prototype.slice.call(box.querySelectorAll(".hs")),
+      media: Array.prototype.slice.call(box.querySelectorAll(".hlxmedia > *")),
+      nav: Array.prototype.slice.call(box.querySelectorAll(".hlxnav .hn")),
+      cur: -1
+    };
+    st.nav.forEach(function (b, i) {
+      b.addEventListener("click", function () {
+        var target = st.steps[i];
+        if (!target) return;
+        var y = target.getBoundingClientRect().top + window.pageYOffset - vh * 0.5 + target.offsetHeight / 2;
+        window.scrollTo({ top: y, behavior: reduced ? "auto" : "smooth" });
+      });
+    });
+    return st;
+  }).filter(function (s) { return s.steps.length; });
+  function stackTick() {
+    stacks.forEach(function (s) {
+      var line = vh * 0.5, best = 0, bestD = Infinity;
+      s.steps.forEach(function (st, i) {
+        var r = st.getBoundingClientRect();
+        var d = Math.abs((r.top + r.height / 2) - line);
+        if (d < bestD) { bestD = d; best = i; }
+      });
+      if (best === s.cur) return;
+      s.cur = best;
+      s.steps.forEach(function (st, i) { st.classList.toggle("on", i === best); });
+      s.nav.forEach(function (b, i) { b.classList.toggle("on", i === best); });
+      s.media.forEach(function (m, i) {
+        var on = i === best;
+        m.classList.toggle("on", on);
+        if (m.tagName === "VIDEO") { if (on) { m.play().catch(function () {}); } else { m.pause(); } }
+      });
+    });
+  }
+
+  /* ---------- Viewer: Chips wechseln Medium und Caption ---------- */
+  document.querySelectorAll(".viewer").forEach(function (v) {
+    var chips = Array.prototype.slice.call(v.querySelectorAll(".vchips .vc"));
+    var media = Array.prototype.slice.call(v.querySelectorAll(".vstage img, .vstage video"));
+    var caps = Array.prototype.slice.call(v.querySelectorAll(".vcaps .vcap"));
+    chips.forEach(function (c, i) {
+      c.addEventListener("click", function () {
+        chips.forEach(function (x, j) { x.classList.toggle("on", j === i); });
+        media.forEach(function (x, j) { x.classList.toggle("on", j === i); });
+        caps.forEach(function (x, j) { x.classList.toggle("on", j === i); });
+      });
+    });
+  });
 
   /* ---------- Kanal-Zeilen (scrollgetrieben) ---------- */
   var chrows = Array.prototype.slice.call(document.querySelectorAll(".chrow")).map(function (el) {
@@ -646,6 +719,7 @@
     procTick();
     hprocTick();
     tellTick();
+    stackTick();
     chrowTick();
     bacmpTick();
     stepsTick();
