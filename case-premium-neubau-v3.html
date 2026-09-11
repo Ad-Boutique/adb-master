@@ -8,8 +8,8 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 
-<link rel="stylesheet" href="assets/master.css?v=90">
-<script src="assets/master.js?v=90" defer></script>
+<link rel="stylesheet" href="assets/master.css?v=93">
+<script src="assets/master.js?v=93" defer></script>
 </head>
 <body style="background-color:#22382C">
 
@@ -86,7 +86,17 @@
 </nav>
 
 
-<main>
+<main class="apl">
+
+  <!-- KAPITEL-LEISTE: schwebende Pille wie Apples Produktnavigation, erscheint nach dem Hero -->
+  <nav class="chapnav" aria-label="Kapitel">
+    <span class="cn-title">Premium-Neubau</span>
+    <a href="#kampagne">Kampagne</a>
+    <a href="#seite">Seite</a>
+    <a href="#wellen">Wellen</a>
+    <a href="#learnings">Learnings</a>
+    <a class="cn-cta" href="kontakt.html?from=case-premium-neubau"><span class="cn-long">Projekt anfragen</span><span class="cn-short">Anfragen</span></a>
+  </nav>
 
   <!-- HERO: Vollbild in der Case-Farbwelt, darunter die Stat-Group statt Kennzahl-Ecke -->
   <section class="chero chero--stats" data-bg="#22382C" data-fg="light">
@@ -166,14 +176,14 @@
   </section>
 
   <!-- KAPITEL 1: DIE KAMPAGNE. Eyebrow, These, ein Absatz, Stat-Group -->
-  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-bottom:clamp(40px,5vw,70px)">
+  <section id="kampagne" class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-bottom:clamp(40px,5vw,70px)">
     <div class="wrap lchap">
       <div>
         <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:16px">Die Kampagne</span>
         <h2 class="dispn" data-lines style="font-size:clamp(30px,3.6vw,58px)"><span class="rl"><span>Vier Motive.</span></span><span class="rl"><span>Ein Sieger.</span></span></h2>
       </div>
       <div data-stagger>
-        <p class="lt3" data-fade>Viele Varianten liefen gegeneinander, das Budget wanderte wöchentlich auf das stärkste Motiv. Gemessen wurde über Instant Forms, nicht über Bauchgefühl. Am Ende trug ein einziges Interior-Motiv 262 der 489 Anfragen, die drei anderen zusammen 227.</p>
+        <p class="lt3" data-fade>Viele Varianten liefen gegeneinander, das Budget wanderte wöchentlich auf das stärkste Motiv. Gemessen wurde über Instant Forms, nicht über Bauchgefühl. Am Ende trug <b>ein einziges Interior-Motiv 262 der 489 Anfragen</b>, die drei anderen zusammen 227.</p>
         <div class="statg" data-stagger>
           <div class="st" data-fade><div class="sv">€ 5.755</div><div class="sc">Mediabudget, gesamt</div></div>
           <div class="st" data-fade><div class="sv">489</div><div class="sc">qualifizierte Anfragen</div></div>
@@ -228,14 +238,14 @@
   </section>
 
   <!-- KAPITEL 2: DIE SEITE -->
-  <section class="sec fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark" style="padding-bottom:clamp(40px,5vw,70px)">
+  <section id="seite" class="sec fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark" style="padding-bottom:clamp(40px,5vw,70px)">
     <div class="wrap lchap">
       <div>
         <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:16px">Die Seite</span>
         <h2 class="dispn" data-lines style="font-size:clamp(30px,3.6vw,58px)"><span class="rl"><span>Vom Sujet</span></span><span class="rl"><span>zur Seite.</span></span></h2>
       </div>
       <div data-stagger>
-        <p class="lt3" data-fade>Nach der Kampagne kam der Auftritt: das Haus als Ort, nicht als Grundriss-Katalog, und trotzdem in wenigen Schritten zur Wohnung. Strategie, Design, Copy und Wohnungsfinder aus einer Hand, in derselben Bildsprache wie die Sujets, die darauf führen.</p>
+        <p class="lt3" data-fade>Nach der Kampagne kam der Auftritt: das Haus als Ort, nicht als Grundriss-Katalog, und trotzdem <b>in wenigen Schritten zur Wohnung</b>. Strategie, Design, Copy und Wohnungsfinder aus einer Hand, in derselben Bildsprache wie die Sujets, die darauf führen.</p>
         <div class="statg statg--2" data-stagger>
           <div class="st" data-fade><div class="sv">€ 6,97</div><div class="sc">je Anfrage über Instant Form</div></div>
           <div class="st" data-fade><div class="sv">€ 15,66</div><div class="sc">je Anfrage über die Website</div></div>
@@ -276,14 +286,14 @@
   </section>
 
   <!-- KAPITEL 3: DIE WELLEN -->
-  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-bottom:clamp(40px,5vw,70px)">
+  <section id="wellen" class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-bottom:clamp(40px,5vw,70px)">
     <div class="wrap lchap">
       <div>
         <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:16px">Die Wellen</span>
         <h2 class="dispn" data-lines style="font-size:clamp(30px,3.6vw,58px)"><span class="rl"><span>Unter fünf Euro.</span></span><span class="rl"><span>Welle für Welle.</span></span></h2>
       </div>
       <div data-stagger>
-        <p class="lt3" data-fade>Instant Form und Website-Formular liefen parallel, die Anfragen gingen automatisch je zur Hälfte an zwei Vertriebspartner, direkt ins CRM. Im Sommer haben wir neu geschnitten: drei Wohnwelten statt einer Zielgruppe. Und als der Kunde nach dem Ausland fragte, war die Empfehlung ein Nein, solange Wien zu diesem Preis liefert.</p>
+        <p class="lt3" data-fade>Instant Form und Website-Formular liefen parallel, die Anfragen gingen automatisch je zur Hälfte an zwei Vertriebspartner, direkt ins CRM. Im Sommer haben wir neu geschnitten: <b>drei Wohnwelten statt einer Zielgruppe</b>. Und als der Kunde nach dem Ausland fragte, war die Empfehlung ein Nein, solange Wien zu diesem Preis liefert.</p>
         <div class="statg" data-stagger>
           <div class="st" data-fade><div class="sv">€ 5,00</div><div class="sc">84 Anfragen, erste Welle, zehn Tage</div></div>
           <div class="st" data-fade><div class="sv">€ 4,99</div><div class="sc">65 Anfragen, zweite Welle</div></div>
@@ -324,7 +334,7 @@
   </section>
 
   <!-- LEARNINGS ALS FRAGEN: Apples "Questions? Answers." -->
-  <section class="sec fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark">
+  <section id="learnings" class="sec fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark">
     <div class="wrap faq">
       <div>
         <h2 class="disp" data-lines style="text-transform:none;letter-spacing:-0.02em"><span class="rl"><span>Was wir</span></span><span class="rl"><span>gelernt haben.</span></span></h2>

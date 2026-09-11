@@ -566,6 +566,31 @@
     });
   }
 
+  /* ---------- Kapitel-Leiste: erscheint nach dem Hero, zeigt das Kapitel, springt per Klick ---------- */
+  var chap = document.querySelector(".chapnav");
+  var chapLinks = chap ? Array.prototype.slice.call(chap.querySelectorAll("a[href^='#']")) : [];
+  var chapTargets = chapLinks.map(function (a) { return document.getElementById(a.getAttribute("href").slice(1)); });
+  var chapHero = document.querySelector(".chero, .svc-hero");
+  chapLinks.forEach(function (a, i) {
+    a.addEventListener("click", function (ev) {
+      var t = chapTargets[i];
+      if (!t) return;
+      ev.preventDefault();
+      window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - 40, behavior: reduced ? "auto" : "smooth" });
+    });
+  });
+  function chapTick() {
+    if (!chap) return;
+    var showAt = chapHero ? chapHero.offsetHeight * 0.6 : 400;
+    chap.classList.toggle("show", window.pageYOffset > showAt);
+    /* der Kaufknopf springt zwar, wird aber nie als Kapitel markiert */
+    var cur = -1;
+    chapTargets.forEach(function (t, i) { if (t && !chapLinks[i].classList.contains("cn-cta") && t.getBoundingClientRect().top <= vh * 0.45) cur = i; });
+    chapLinks.forEach(function (a, i) { if (!a.classList.contains("cn-cta")) a.classList.toggle("on", i === cur); });
+    /* dunkle Pille auf dunklem Grund: body.on-light setzt der Hintergrund-Tracker weiter unten */
+    chap.classList.toggle("dark", !document.body.classList.contains("on-light"));
+  }
+
   /* ---------- Viewer: Chips wechseln Medium und Caption ---------- */
   document.querySelectorAll(".viewer").forEach(function (v) {
     var chips = Array.prototype.slice.call(v.querySelectorAll(".vchips .vc"));
@@ -720,6 +745,7 @@
     hprocTick();
     tellTick();
     stackTick();
+    chapTick();
     chrowTick();
     bacmpTick();
     stepsTick();

@@ -892,7 +892,47 @@ body.loaded .chero img { transform: scale(1); }
 .statg.statg--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 560px; }
 .statg .st { border-top: 1px solid var(--line-l); padding-top: 14px; }
 .statg .sv { font-family: var(--f-serif); font-size: clamp(30px, 3.2vw, 52px); line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
-.statg .sc { font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em; color: var(--grey-dark); margin-top: 8px; line-height: 1.45; }
+/* Caption wie bei Apple: 14 px, Satzschreibung, lesbar statt Etikett (dort 40 zu 14) */
+.statg .sc { font-size: 13px; font-weight: 500; letter-spacing: 0; color: var(--grey-dark); margin-top: 8px; line-height: 1.45; }
+/* Seiten nach Apple-Prinzip: groessere, graue Lesekopie mit schwarzen Hervorhebungen, engeres Mass */
+.apl .lt3, .apl .lchap .lt3 { font-size: clamp(16px, 1.2vw, 18px); line-height: 1.62; max-width: 48ch; }
+.apl .cap { font-size: clamp(16px, 1.2vw, 17.5px); }
+.apl .hlxsticky { top: clamp(118px, 14vh, 150px); }
+/* Kapitel-Leiste: schwebende Pille unter dem Kopf, wie Apples Produktnavigation mit Kaufknopf */
+.chapnav {
+  position: fixed; top: 62px; left: 50%; z-index: 60;
+  display: flex; align-items: center; gap: 2px;
+  padding: 5px 6px 5px 14px; border-radius: 999px;
+  background: rgba(243,237,225,0.86); border: 1px solid var(--line-l);
+  -webkit-backdrop-filter: blur(18px) saturate(1.15); backdrop-filter: blur(18px) saturate(1.15);
+  box-shadow: 0 12px 34px rgba(10,10,10,0.09);
+  max-width: calc(100vw - 24px); overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  transform: translate(-50%, -160%); opacity: 0; pointer-events: none;
+  transition: transform 0.55s var(--e-out), opacity 0.4s ease;
+}
+.chapnav::-webkit-scrollbar { display: none; }
+.chapnav.show { transform: translate(-50%, 0); opacity: 1; pointer-events: auto; }
+.chapnav .cn-title { font-size: 12.5px; font-weight: 700; letter-spacing: 0.01em; color: var(--ink); margin-right: 10px; white-space: nowrap; }
+.chapnav a { font-size: 12px; font-weight: 600; color: var(--grey-dark); padding: 7px 11px; border-radius: 999px; white-space: nowrap; flex: 0 0 auto; transition: background 0.3s ease, color 0.3s ease; }
+.chapnav a:hover { color: var(--ink); }
+.chapnav a.on { background: var(--ink); color: var(--paper); }
+.chapnav a.cn-cta { background: var(--champ-deep); color: var(--paper); margin-left: 6px; }
+.chapnav a.cn-cta:hover { background: var(--ink); color: var(--paper); }
+.chapnav.dark { background: rgba(14,14,16,0.78); border-color: rgba(255,255,255,0.14); }
+.chapnav.dark .cn-title { color: var(--paper); } .chapnav.dark a { color: var(--grey); } .chapnav.dark a.on { background: var(--paper); color: var(--ink); }
+.chapnav .cn-short { display: none; }
+@media (max-width: 860px) {
+  .chapnav { top: 58px; padding: 4px 5px; gap: 0; }
+  .chapnav .cn-title { display: none; }
+  .chapnav a { font-size: 11.5px; padding: 7px 9px; }
+  .chapnav a.cn-cta { margin-left: 2px; }
+  .chapnav .cn-long { display: none; } .chapnav .cn-short { display: inline; }
+  .apl .hlxsticky { top: 108px; }
+  /* Am Telefon zeigt Apple Punkte statt Tabs: die Kapitel-Leiste darueber uebernimmt das Benennen */
+  .apl .hlxnav { justify-content: center; gap: 8px; margin: 0 0 10px; padding: 0; overflow: visible; }
+  .apl .hlxnav .hn { font-size: 0; width: 8px; height: 8px; padding: 0; border-radius: 50%; border-color: rgba(10,10,10,0.25); background: transparent; }
+  .apl .hlxnav .hn.on { background: var(--ink); border-color: var(--ink); }
+}
 .fg-dark .statg .st, .chero .statg .st { border-color: rgba(255,255,255,0.28); }
 .fg-dark .statg .sc, .chero .statg .sc { color: rgba(255,255,255,0.78); }
 .chero .statg { margin-top: clamp(22px, 2.6vw, 40px); max-width: 640px; }
