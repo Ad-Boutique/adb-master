@@ -591,6 +591,36 @@
     chap.classList.toggle("dark", !document.body.classList.contains("on-light"));
   }
 
+  /* ---------- Prozess-Schema: Linien zeichnen sich mit dem Scroll, Knoten leuchten auf, danach laufen die Impulse ---------- */
+  var pmaps = Array.prototype.slice.call(document.querySelectorAll(".pmap")).map(function (box) {
+    var paths = Array.prototype.slice.call(box.querySelectorAll("path[data-draw]")).map(function (p) {
+      var L = 0;
+      try { L = p.getTotalLength(); } catch (e) { L = 0; }
+      p.style.strokeDasharray = L + " " + L;
+      p.style.strokeDashoffset = L;
+      return { el: p, L: L, s: parseFloat(p.getAttribute("data-s")), e: parseFloat(p.getAttribute("data-e")) };
+    });
+    if (reduced) {
+      Array.prototype.slice.call(box.querySelectorAll("svg")).forEach(function (sv) { if (sv.pauseAnimations) sv.pauseAnimations(); });
+    }
+    return { box: box, paths: paths, nodes: Array.prototype.slice.call(box.querySelectorAll(".pn[data-at]")), p: -1 };
+  });
+  function pmapTick() {
+    pmaps.forEach(function (m) {
+      var r = m.box.getBoundingClientRect();
+      /* 0, wenn das Schema unten auftaucht, 1, wenn gut die Haelfte durch ist */
+      var p = reduced ? 1 : Math.max(0, Math.min(1, (vh * 0.92 - r.top) / (r.height * 0.55 + vh * 0.4)));
+      if (Math.abs(p - m.p) < 0.002) return;
+      m.p = p;
+      m.paths.forEach(function (x) {
+        var q = Math.max(0, Math.min(1, (p - x.s) / (x.e - x.s)));
+        x.el.style.strokeDashoffset = x.L * (1 - q);
+      });
+      m.nodes.forEach(function (n) { n.classList.toggle("on", p >= parseFloat(n.getAttribute("data-at"))); });
+      m.box.classList.toggle("live", p > 0.97);
+    });
+  }
+
   /* ---------- Viewer: Chips wechseln Medium und Caption ---------- */
   document.querySelectorAll(".viewer").forEach(function (v) {
     var chips = Array.prototype.slice.call(v.querySelectorAll(".vchips .vc"));
@@ -746,6 +776,7 @@
     tellTick();
     stackTick();
     chapTick();
+    pmapTick();
     chrowTick();
     bacmpTick();
     stepsTick();

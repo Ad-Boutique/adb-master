@@ -50,6 +50,17 @@ SERVICES = [
                   "assets/case/grandgarden/g3.jpg",
                   "assets/case/case-health-brand/g3.jpg",
                   "assets/case/medcenter/g4.jpg"]),
+  pmap=dict(label="So läuft es", h=["Von Ihrem Shop", "zum Blended ROAS."],
+    t="Sie bringen Shop, Feed und Marge, wir bringen Creatives, Checkout und Messung zusammen. Ein Dashboard, eine ehrliche Zahl, wöchentlich mit Ihnen gelesen.",
+    inputs=[("Ihr Shop und Ihre Marge", "Ihr Shop, Ihre Marge", "sie"),
+          ("Produktfeed und Sortiment", "Produktfeed", "sie"),
+          ("Creatives und UGC im Test", "Creatives, UGC", "wir"),
+          ("Produktseiten und Checkout", "Produktseite, Checkout", "wir"),
+          ("Server-side Tracking", "Server-side Tracking", "wir"),
+          ("Angebots- und Bundle-Logik", "Angebotslogik", "wir")],
+    engine=dict(title="Creative, Shop, Messung", loop=["Testen", "Umschichten", "Optimieren", "Rechnen"]),
+    touch="Wöchentlich mit Ihnen",
+    output=("Umsatz, der zurechenbar ist", "Blended ROAS inklusive Fee,|ein Dashboard für alle Kanäle", "Ihre Zahl, Ihre Entscheidung")),
   intro="Mehr <b>Spend</b> löst selten das Problem. Der Hebel liegt im Zusammenspiel aus <b>Creative</b>, <b>Shop</b> und <b>Messung</b>. Wir bauen das System, nicht die Einzelmaßnahme.",
   acc=[("Ads & Creatives", "Iteratives Creative-Testing statt Bauchgefühl: Wir lassen Varianten gegeneinander laufen und schichten Budget wöchentlich auf die Gewinner um.",
         ["Meta, Google, TikTok, Pinterest", "UGC- und Studio-Produktion", "Systematisches Creative-Testing", "Budget-Steuerung, wöchentlich"]),
@@ -227,6 +238,17 @@ SERVICES = [
                   "assets/case/medcenter/g1.jpg",
                   "assets/case/case-wohnbau-floridsdorf/g1.jpg",
                   "assets/case/case-premium-neubau/g4.jpg"]),
+  pmap=dict(label="So läuft es", h=["Von Ihrem Briefing", "zur Zahl."],
+    t="Sie bringen Ziel und Zugänge, wir bauen, testen und lesen. Einmal in der Woche sitzen wir gemeinsam vor den Zahlen, und Sie entscheiden, was weiterläuft.",
+    inputs=[("Ihr Briefing und Ihr Ziel", "Ihr Briefing und Ziel", "sie"),
+          ("Zugänge zu Ihren Konten", "Ihre Kontozugänge", "sie"),
+          ("Zielgruppen und Strecken", "Zielgruppen, Strecken", "wir"),
+          ("Motive und Texte im Test", "Motive im Test", "wir"),
+          ("Landingpage oder Formular", "Seite oder Formular", "wir"),
+          ("Tracking, einmal gezählt", "Tracking", "wir")],
+    engine=dict(title="Testen, messen, umschichten", loop=["Hypothese", "Test", "Lesen", "Umschichten"]),
+    touch="Jede Woche mit Ihnen",
+    output=("Anfragen und Verkäufe", "Wöchentlicher Report,|jede Zahl mit Quelle", "Sie entscheiden, was läuft")),
   intro="<b>Meta, Google und TikTok</b> mit einer Regel: <b>Das Creative ist der Hebel</b>, nicht das Budget. Systematisch getestet, ehrlich gemessen, <b>wöchentlich</b> umgeschichtet.",
   acc=[("Kampagnen-Setup", "Strukturen, die skalieren können: nach Rolle getrennte Kampagnen, saubere Zielwerte, Budgets dort, wo der ehrliche CPL hinzeigt.",
         ["Meta, Google, TikTok", "Instant Forms & Lead-Strecken", "Kaufnahe Search-Intents", "Budget-Steuerung, wöchentlich"]),
@@ -303,6 +325,17 @@ SERVICES = [
                   "assets/case/juwel/g3.jpg",
                   "assets/case/case-premium-neubau/g2.jpg",
                   "assets/case/kommunalkredit/g1.jpg"]),
+  pmap=dict(label="So läuft es", h=["Vom Briefing", "zum Motiv, das trägt."],
+    t="Sie geben Produkt, Marke und Freigabe, wir produzieren gegen die Zahlen von gestern. Was trägt, bekommt Nachschub, bevor es müde wird.",
+    inputs=[("Ihr Produkt und Ihre Marke", "Ihr Produkt, Ihre Marke", "sie"),
+          ("Ihre Freigaben", "Ihre Freigaben", "sie"),
+          ("Zahlen aus der Kampagne", "Zahlen von gestern", "wir"),
+          ("Creator, Studio, Location", "Creator und Studio", "wir"),
+          ("Skript und Hook je Format", "Skript und Hook", "wir"),
+          ("Schnitt und Varianten", "Schnitt, Varianten", "wir")],
+    engine=dict(title="Produzieren, testen, lernen", loop=["Produzieren", "Testen", "Lernen", "Nachproduzieren"]),
+    touch="Freigabe durch Sie",
+    output=("Motive, die den CPA senken", "Gemessen im Konto,|nicht am Applaus", "Sie sehen, was trägt")),
   intro="<b>Content und Performance</b> sitzen bei uns an einem Tisch. Jedes Motiv läuft gegen echte <b>Zahlen</b>, nicht gegen Geschmack. Was trägt, wird skaliert, egal wie <b>schön</b> der Rest war.",
   acc=[("UGC-Produktion", "Echte Menschen, echte Nutzung: In einem Health-Mandat schlug UGC die klassischen Produkt-Videos beim CPA um rund 58 Prozent.",
         ["Creator-Casting & Briefing", "Skripte nach Hook-Logik", "Iterationen nach CPA", "Rechte & Freigaben sauber"]),
@@ -422,6 +455,17 @@ SERVICES = [
                   "assets/img/web_funkhausliving_d.jpg",
                   "assets/img/web_pharmacom_d.jpg",
                   "assets/img/web_trattner_d.jpg"]),
+  pmap=dict(label="So läuft es", h=["Von der Botschaft", "zur Seite, die abschließt."],
+    t="Sie bringen Marke, Inhalte und Angebot, wir bauen vom Abschluss her: eine Botschaft, ein Ziel, Message-Match zur Kampagne. Zwei Abstimmungen, dann live.",
+    inputs=[("Ihre Marke und Ihre Inhalte", "Ihre Marke, Inhalte", "sie"),
+          ("Ihr Angebot, Ihre Grundrisse", "Ihr Angebot", "sie"),
+          ("Botschaft der Kampagne", "Kampagnenbotschaft", "wir"),
+          ("Struktur und Text", "Struktur und Text", "wir"),
+          ("Design und Build", "Design und Build", "wir"),
+          ("Messung bis zum Abschluss", "Messung", "wir")],
+    engine=dict(title="Vom Abschluss her gebaut", loop=["Konzept", "Design", "Build", "Test"]),
+    touch="Abstimmung mit Ihnen",
+    output=("Eine Seite, die konvertiert", "Message-Match zur Anzeige,|gemessen am Abschluss", "Ihr Preis je Anfrage")),
   intro="Wir bauen Seiten vom <b>Abschluss</b> her: eine Botschaft, ein Ziel, <b>Message-Match</b> zur Kampagne. Und wir sagen Ihnen, wann ein <b>Instant Form</b> die bessere Wahl ist.",
   acc=[("Landingpages je Kampagne", "Eine Seite pro Botschaft: Headline, Beweis und CTA passen zur Anzeige, nicht zur Sitemap.",
         ["Message-Match zur Kampagne", "Ein Ziel pro Seite", "Proof an den Entscheidungspunkten", "Noindex, schnell, mobil zuerst"]),
@@ -542,6 +586,17 @@ SERVICES = [
                   "assets/case/case-immobilien-investment/g0.jpg",
                   "assets/case/case-crowdinvesting/g4.jpg",
                   "assets/case/kommunalkredit/g4.jpg"]),
+  pmap=dict(label="So läuft es", h=["Von Ihren Zielen", "zur Struktur."],
+    t="Sie bringen Ziele, Budget und Bestandsdaten, wir definieren die KPI vorab und bauen Funnel und Attribution. Ein Workshop mit Ihnen, danach Sprints.",
+    inputs=[("Ihre Ziele und Ihr Budget", "Ihre Ziele, Ihr Budget", "sie"),
+          ("Ihre Bestandsdaten", "Ihre Bestandsdaten", "sie"),
+          ("Zielgruppen und Märkte", "Zielgruppen, Märkte", "wir"),
+          ("KPI-Definition vorab", "KPI-Definition", "wir"),
+          ("Funnel-Architektur", "Funnel-Architektur", "wir"),
+          ("Attribution je Euro", "Attribution", "wir")],
+    engine=dict(title="Struktur vor Budget", loop=["Definieren", "Bauen", "Messen", "Lernen"]),
+    touch="Workshop mit Ihnen",
+    output=("Eine Struktur, die trägt", "KPI vorab, jeder Euro|zurechenbar", "Sie entscheiden mit Zahlen")),
   intro="Erst die <b>Struktur</b>, dann das Budget: <b>Funnel</b>, KPI-Definitionen, die vorab feststehen, und eine <b>Attribution</b>, die jeden Euro zurechenbar macht.",
   acc=[("Funnel-Architektur", "Vom ersten Kontakt bis zur Zeichnung: Ein Investoren-Funnel übersetzte € 36k Google-Budget in € 4,65 Mio. zurechenbares Kapital.",
         ["Journey vom Lead bis zum Abschluss", "Vertrauensaufbau Schritt für Schritt", "CRM-Nurture für lange Wege", "Klare Übergaben an Vertrieb"]),
@@ -661,6 +716,17 @@ SERVICES = [
             imgs=["assets/img/ag_strategy.jpg", "assets/img/retreat-04.jpg", "assets/img/ag_talk.jpg",
                   "assets/img/ag_meeting.jpg", "assets/img/ag_board1.jpg", "assets/img/retreat-06.jpg",
                   "assets/img/ag_review.jpg", "assets/img/retreat-01.jpg", "assets/img/ag_cam1.jpg"]),
+  pmap=dict(label="So läuft es", h=["Von Ihrem Angebot", "in die Antwort."],
+    t="Sie bringen Branche, Angebot und Website, wir prüfen die Freigabe, schreiben die Situationen und bauen Karte, Seite und Messung. Jede Woche lesen wir gemeinsam.",
+    inputs=[("Ihre Branche und Ihr Angebot", "Ihre Branche, Ihr Angebot", "sie"),
+          ("Ihre Website", "Ihre Website", "sie"),
+          ("Freigabe-Check, vorab", "Freigabe-Check", "wir"),
+          ("Die passenden Situationen", "Situationen", "wir"),
+          ("Karten und die Seite dahinter", "Karten und Seite", "wir"),
+          ("Messung je Karte", "Messung je Karte", "wir")],
+    engine=dict(title="Antworten statt Anzeigen", loop=["Prüfen", "Schreiben", "Bauen", "Lesen"]),
+    touch="Lesung mit Ihnen",
+    output=("Ihr Angebot in der Antwort", "Vier Wochen Test,|jede Karte gemessen", "Sie entscheiden, was läuft")),
   intro="Wer ChatGPT fragt, will entscheiden. Die Aufmerksamkeit ist hoch, und bis vor wenigen Wochen konnte dort <b>niemand werben</b>. Jetzt steht Ihr Angebot unter der Antwort, <b>als Empfehlung</b>, nicht als Banner.",
   acc=[("Wo der Fokus heute liegt", "Die Frage nach dem richtigen Produkt, dem richtigen Anbieter, dem richtigen nächsten Schritt wird immer öfter ChatGPT gestellt. Wer dort antwortet, erreicht Menschen in dem Moment, in dem sie wirklich zuhören.",
         ["Entscheidungen werden im Gespräch vorbereitet", "Volle Aufmerksamkeit, kein Scrollen, kein Lärm", "Eine Antwort statt einer Trefferliste", "Ihr Angebot als Teil dieser Antwort"]),
@@ -1079,6 +1145,178 @@ def _detail(s, acc):
             '    </div>\n  </section>\n\n')
 
 
+def _pmap(s):
+    """Prozess-Schema am Anfang der Leistungsseite: was von Ihnen kommt, was wir tun, was Sie bekommen.
+    Zwei SVGs aus denselben Daten: quer fuer den Desktop, hochkant fuers Telefon. Linien zeichnen sich
+    beim Scrollen (master.js), Impulse laufen und die Verben im Kern wechseln als Schleife (SMIL)."""
+    pm = s.get("pmap")
+    if not pm:
+        return ""
+    slug = s["slug"].replace("service-", "")
+    ins = pm["inputs"]                     # (lang, kurz, "sie" | "wir")
+    eng = pm["engine"]                     # dict(title, loop=[...])
+    out = pm["output"]                     # (titel, untertitel mit | als Zeilenumbruch, tag)
+    touch = pm["touch"]
+    words = eng["loop"]
+    n = len(words)
+
+    def esc(t):
+        return t.replace("&", "&amp;").replace("<", "&lt;")
+
+    def loopwords(x, y, size, anchor="start"):
+        parts = []
+        for i, w in enumerate(words):
+            t0, t1 = i / n, (i + 1) / n
+            kt = "0;%.3f;%.3f;%.3f;%.3f;1" % (max(t0 - 0.03, 0), t0, max(t1 - 0.03, t0), min(t1, 1))
+            parts.append('<text class="pw" x="%d" y="%d" font-size="%d" text-anchor="%s" opacity="0">%s'
+                         '<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="%s" dur="%ds" repeatCount="indefinite"/></text>'
+                         % (x, y, size, anchor, esc(w), kt, n * 2))
+        return "".join(parts)
+
+    def pulse(pid, dur, begin, r=3):
+        return ('<circle class="pp" r="%s"><animateMotion dur="%ss" begin="%ss" repeatCount="indefinite"><mpath href="#%s"/></animateMotion></circle>'
+                % (r, dur, begin, pid))
+
+    def ring(cx, cy, r):
+        return ('<g class="pring"><circle cx="%d" cy="%d" r="%d" class="pr1"/>'
+                '<circle cx="%d" cy="%d" r="%d" class="pr2"><animateTransform attributeName="transform" type="rotate" from="0 %d %d" to="360 %d %d" dur="16s" repeatCount="indefinite"/></circle>'
+                '<circle cx="%d" cy="%d" r="2.2" class="prd"/></g>' % (cx, cy, r, cx, cy, r + 5, cx, cy, cx, cy, cx, cy))
+
+    # ---------- Desktop, quer ----------
+    # Etiketten laenger als 24 Zeichen passen nicht in die Pille, dann gilt die Kurzform
+    W, H = 1200, 600
+    pw, ph, px0 = 250, 50, 20
+    gap = 28
+    tot = len(ins) * ph + (len(ins) - 1) * gap
+    y0 = (H - tot) / 2
+    bus = 340
+    d = []
+    cys = []
+    for i, (lang, kurz, who) in enumerate(ins):
+        lab = lang if len(lang) <= 24 else kurz
+        cy = y0 + ph / 2 + i * (ph + gap)
+        cys.append(cy)
+        d.append('<g class="pn" data-at="%.2f"><rect x="%d" y="%.1f" width="%d" height="%d" rx="%d" class="pill"/>'
+                 '<circle cx="%d" cy="%.1f" r="4.5" class="dot dot-%s"/><text x="%d" y="%.1f" font-size="15.5" class="pt">%s</text></g>'
+                 % (0.02 + i * 0.03, px0, cy - ph / 2, pw, ph, ph // 2, px0 + 22, cy, who, px0 + 38, cy + 5.5, esc(lab)))
+    first, last = cys[0], cys[-1]
+    for i, cy in enumerate(cys):
+        pid = "d-%s-in%d" % (slug, i)
+        if i == 0:
+            path = "M%d,%.1f H%d a22,22 0 0 1 22,22" % (px0 + pw, cy, bus - 22)
+        elif i == len(cys) - 1:
+            path = "M%d,%.1f H%d a22,22 0 0 0 22,-22" % (px0 + pw, cy, bus - 22)
+        else:
+            path = "M%d,%.1f H%d" % (px0 + pw, cy, bus)
+        d.append('<path id="%s" d="%s" class="pl" data-draw data-s="0.05" data-e="0.35"/>' % (pid, path))
+    d.append('<path id="d-%s-bus" d="M%d,%.1f V%.1f" class="pl" data-draw data-s="0.2" data-e="0.42"/>' % (slug, bus, first + 22, last - 22))
+    mid = (first + last) / 2
+    ex, ew, eh = 420, 300, 220
+    ey = mid - eh / 2
+    d.append('<path id="d-%s-e" d="M%d,%.1f H%d" class="pl" data-draw data-s="0.4" data-e="0.55"/>' % (slug, bus, mid, ex))
+    # Kern
+    d.append('<g class="pn pcore" data-at="0.52"><rect x="%d" y="%.1f" width="%d" height="%d" rx="20" class="card"/>' % (ex, ey, ew, eh))
+    d.append(ring(ex + 36, int(ey + 36), 10))
+    d.append('<text x="%d" y="%.1f" font-size="14" class="pt pb">ad.boutique</text>' % (ex + 58, ey + 41))
+    d.append('<rect x="%d" y="%.1f" width="44" height="22" rx="11" class="tagw"/><text x="%d" y="%.1f" font-size="10" text-anchor="middle" class="ptw">WIR</text>' % (ex + ew - 66, ey + 25, ex + ew - 44, ey + 40))
+    d.append('<text x="%d" y="%.1f" font-size="17" class="pt pb">%s</text>' % (ex + 28, ey + 104, esc(eng["title"])))
+    d.append('<path d="M%d,%.1f H%d" class="pl thin"/>' % (ex + 28, ey + 126, ex + ew - 28))
+    d.append(loopwords(ex + 28, int(ey + 166), 20))
+    d.append('<text x="%d" y="%.1f" font-size="10.5" text-anchor="end" class="pt pg">Schleife, jede Woche</text></g>' % (ex + ew - 28, ey + eh - 20))
+    ox, ow, oh = 910, 280, 200
+    oy = mid - oh / 2
+    d.append('<path id="d-%s-o" d="M%d,%.1f H%d" class="pl" data-draw data-s="0.55" data-e="0.75"/>' % (slug, ex + ew, mid, ox))
+    # Beruehrungspunkt mit dem Kunden auf der Verbindung
+    tx = (ex + ew + ox) / 2
+    tw = 40 + len(touch) * 6.2
+    d.append('<g class="pn ptouch" data-at="0.7"><rect x="%.1f" y="%.1f" width="%.1f" height="30" rx="15" class="pill dashed"/>'
+             '<circle cx="%.1f" cy="%.1f" r="4" class="dot dot-sie"/><text x="%.1f" y="%.1f" font-size="11" class="pt">%s</text></g>'
+             % (tx - tw / 2, mid - 15, tw, tx - tw / 2 + 15, mid, tx - tw / 2 + 27, mid + 4, esc(touch)))
+    # Ergebnis
+    sub_lines = out[1].split("|")
+    d.append('<g class="pn pout" data-at="0.78"><rect x="%d" y="%.1f" width="%d" height="%d" rx="20" class="card dashed"/>' % (ox, oy, ow, oh))
+    d.append('<text x="%d" y="%.1f" font-size="16.5" class="pt pb">%s</text>' % (ox + 24, oy + 44, esc(out[0])))
+    for j, ln in enumerate(sub_lines):
+        d.append('<text x="%d" y="%.1f" font-size="13" class="pt pg">%s</text>' % (ox + 24, oy + 72 + j * 20, esc(ln.strip())))
+    tgw = 40 + len(out[2]) * 6.2
+    d.append('<rect x="%d" y="%.1f" width="%.1f" height="30" rx="15" class="pill"/><circle cx="%d" cy="%.1f" r="4" class="dot dot-sie"/>'
+             '<text x="%d" y="%.1f" font-size="11" class="pt">%s</text></g>' % (ox + 24, oy + oh - 54, tgw, ox + 39, oy + oh - 39, ox + 51, oy + oh - 35, esc(out[2])))
+    # Impulse: erst wenn alles gezeichnet ist (Klasse live)
+    d.append(pulse("d-%s-in1" % slug, 2.4, 0))
+    d.append(pulse("d-%s-in4" % slug, 2.4, 1.1))
+    d.append(pulse("d-%s-e" % slug, 1.6, 0.6))
+    d.append(pulse("d-%s-o" % slug, 2.2, 1.4))
+    svg_d = '<svg class="pmap-d" viewBox="0 0 %d %d" aria-hidden="true">%s</svg>' % (W, H, "".join(d))
+
+    # ---------- Telefon, hochkant ----------
+    MW = 390
+    mpw, mph, mgap, mx0 = 204, 40, 14, 14
+    mbus = 258
+    m = []
+    mcys = []
+    my0 = 16
+    for i, (lang, kurz, who) in enumerate(ins):
+        cy = my0 + mph / 2 + i * (mph + mgap)
+        mcys.append(cy)
+        m.append('<g class="pn" data-at="%.2f"><rect x="%d" y="%.1f" width="%d" height="%d" rx="%d" class="pill"/>'
+                 '<circle cx="%d" cy="%.1f" r="3.5" class="dot dot-%s"/><text x="%d" y="%.1f" font-size="12.5" class="pt">%s</text></g>'
+                 % (0.02 + i * 0.03, mx0, cy - mph / 2, mpw, mph, mph // 2, mx0 + 18, cy, who, mx0 + 31, cy + 4.5, esc(kurz)))
+    mfirst, mlast = mcys[0], mcys[-1]
+    for i, cy in enumerate(mcys):
+        pid = "m-%s-in%d" % (slug, i)
+        if i == 0:
+            path = "M%d,%.1f H%d a16,16 0 0 1 16,16" % (mx0 + mpw, cy, mbus - 16)
+        else:
+            path = "M%d,%.1f H%d" % (mx0 + mpw, cy, mbus)
+        m.append('<path id="%s" d="%s" class="pl" data-draw data-s="0.05" data-e="0.35"/>' % (pid, path))
+    mex, mey, mew, meh = 14, mlast + 46, MW - 28, 140
+    m.append('<path id="m-%s-bus" d="M%d,%.1f V%.1f a16,16 0 0 1 -16,16 H%d a16,16 0 0 0 -16,16 V%d" class="pl" data-draw data-s="0.2" data-e="0.5"/>'
+             % (slug, mbus, mfirst + 16, mey - 44, MW / 2 + 16, mey))
+    m.append('<g class="pn pcore" data-at="0.5"><rect x="%d" y="%d" width="%d" height="%d" rx="16" class="card"/>' % (mex, mey, mew, meh))
+    m.append(ring(mex + 28, mey + 28, 8))
+    m.append('<text x="%d" y="%d" font-size="12" class="pt pb">ad.boutique</text>' % (mex + 46, mey + 32))
+    m.append('<rect x="%d" y="%d" width="36" height="18" rx="9" class="tagw"/><text x="%d" y="%d" font-size="9" text-anchor="middle" class="ptw">WIR</text>' % (mex + mew - 50, mey + 19, mex + mew - 32, mey + 31.5))
+    m.append('<text x="%d" y="%d" font-size="15" class="pt pb">%s</text>' % (mex + 20, mey + 74, esc(eng["title"])))
+    m.append('<path d="M%d,%d H%d" class="pl thin"/>' % (mex + 20, mey + 90, mex + mew - 20))
+    m.append(loopwords(mex + 20, mey + 118, 15))
+    m.append('<text x="%d" y="%d" font-size="10" text-anchor="end" class="pt pg">Schleife, jede Woche</text></g>' % (mex + mew - 20, mey + 118))
+    moy = mey + meh + 76
+    m.append('<path id="m-%s-o" d="M%d,%d V%d" class="pl" data-draw data-s="0.55" data-e="0.75"/>' % (slug, MW // 2, mey + meh, moy))
+    ttw = 40 + len(touch) * 6.0
+    m.append('<g class="pn ptouch" data-at="0.7"><rect x="%.1f" y="%d" width="%.1f" height="28" rx="14" class="pill dashed"/>'
+             '<circle cx="%.1f" cy="%d" r="3.5" class="dot dot-sie"/><text x="%.1f" y="%d" font-size="11" class="pt">%s</text></g>'
+             % (MW / 2 - ttw / 2, mey + meh + 24, ttw, MW / 2 - ttw / 2 + 14, mey + meh + 38, MW / 2 - ttw / 2 + 25, mey + meh + 42, esc(touch)))
+    moh = 150
+    m.append('<g class="pn pout" data-at="0.78"><rect x="%d" y="%d" width="%d" height="%d" rx="16" class="card dashed"/>' % (mex, moy, mew, moh))
+    m.append('<text x="%d" y="%d" font-size="14.5" class="pt pb">%s</text>' % (mex + 20, moy + 36, esc(out[0])))
+    for j, ln in enumerate(sub_lines):
+        m.append('<text x="%d" y="%d" font-size="12" class="pt pg">%s</text>' % (mex + 20, moy + 60 + j * 17, esc(ln.strip())))
+    mtgw = 24 + len(out[2]) * 6.1
+    m.append('<rect x="%d" y="%d" width="%.1f" height="28" rx="14" class="pill"/><circle cx="%d" cy="%d" r="3.5" class="dot dot-sie"/>'
+             '<text x="%d" y="%d" font-size="11" class="pt">%s</text></g>' % (mex + 20, moy + moh - 46, mtgw, mex + 34, moy + moh - 32, mex + 45, moy + moh - 28, esc(out[2])))
+    m.append(pulse("m-%s-in2" % slug, 2.2, 0, 2.6))
+    m.append(pulse("m-%s-bus" % slug, 2.6, 0.8, 2.6))
+    m.append(pulse("m-%s-o" % slug, 1.8, 1.2, 2.6))
+    MH = moy + moh + 16
+    svg_m = '<svg class="pmap-m" viewBox="0 0 %d %d" aria-hidden="true">%s</svg>' % (MW, MH, "".join(m))
+
+    head = "".join('<span class="rl"><span>%s</span></span>' % x for x in pm["h"])
+    return ('  <!-- PROZESS-SCHEMA: was von Ihnen kommt, was wir tun, was Sie bekommen -->\n'
+            '  <section class="sec fg-light bg-paper pmapsec" data-bg="#F3EDE1" data-fg="dark">\n'
+            '    <div class="wrap">\n'
+            '      <div class="lchap pmaphead">\n'
+            '        <div>\n'
+            '          <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:16px">' + pm.get("label", "So läuft es") + '</span>\n'
+            '          <h2 class="dispn" data-lines style="font-size:clamp(30px,3.6vw,58px)">' + head + '</h2>\n'
+            '        </div>\n'
+            '        <p class="lt3" data-fade>' + pm["t"] + '</p>\n'
+            '      </div>\n'
+            '      <div class="pmap">\n        ' + svg_d + '\n        ' + svg_m + '\n'
+            '        <div class="pmap-legend" data-fade><span><i class="dot-sie"></i>Kommt von Ihnen</span><span><i class="dot-wir"></i>Machen wir</span><span><i class="dot-out"></i>Bekommen Sie</span></div>\n'
+            '      </div>\n'
+            '    </div>\n  </section>\n\n')
+
+
 def _svcband(s):
     """Bildband als Auflockerung zwischen zwei Textbloecken: laeuft von selbst, also auch am Telefon."""
     b = s.get("band")
@@ -1433,7 +1671,7 @@ def render_service(s):
         wall_sec = ""
         content_before = ""
         content_after = ""
-        sol_sec = _problem(s) + _bene(s) + _svcband(s)
+        sol_sec = _pmap(s) + _problem(s) + _bene(s) + _svcband(s)
     else:
         sol_sec = SOL_ACC.format(sol_label=s.get("sol_label", "Die Lösung"), intro=s["intro"], acc=acc) + DIFF_BLOCK.format(dimgs=dimgs, dblocks=dblocks)
     deliver_sec = _deliver(s)
