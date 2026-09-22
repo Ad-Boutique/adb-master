@@ -1,92 +1,19 @@
-<!doctype html>
-<html lang="de">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
-<title>Premium-Neubau, Wien, Vorschau v3 | ad.boutique</title>
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
+# -*- coding: utf-8 -*-
+"""Funkhaus-Case nach den Apple-Prinzipien (iphone-duo) als eigene Vorschau-Seite (v3).
+Kopf, Menue und Fuss kommen aus der bestehenden Seite, der Inhalt ist neu erzaehlt:
+Eyebrow, These, ein Absatz, Stat-Group, ein Medium je Kapitel, Fett-Lead-Captions,
+Highlights-Stapel vorne, Viewer statt Erklaerung, Learnings als Fragen, Kapitel-Leiste."""
+import re
 
+SRC = "case-premium-neubau.html"
+OUT = "case-premium-neubau-v3.html"
 
-<link rel="stylesheet" href="assets/master.css?v=99">
-<script src="assets/master.js?v=99" defer></script>
-</head>
-<body style="background-color:#22382C">
+src = open(SRC, encoding="utf-8").read()
+head = src.split("<main>", 1)[0]
+head = re.sub(r"<title>.*?</title>", "<title>Premium-Neubau, Wien, Vorschau v3 | ad.boutique</title>", head, count=1, flags=re.S)
+foot = "  <footer" + src.split("  <footer", 1)[1]
 
-<div class="pt"><div class="ptw">ad<i>.</i>boutique</div></div>
-
-<header class="chrome">
-  <a href="index.html" class="logo">ad<i>.</i>boutique</a>
-  <a href="kontakt.html" class="ctc">Kontakt</a>
-</header>
-
-<a class="bkbtn" href="work.html" aria-label="Zurück zur Übersicht"><span class="bkar">&#8592;</span></a>
-<svg class="bkorbit" viewBox="0 0 100 100" aria-hidden="true">
-  <defs><path id="bkpath" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs>
-  <text><textPath href="#bkpath" startOffset="2%">Übersicht</textPath></text>
-</svg>
-<button class="mbtn" aria-label="Menü öffnen"></button>
-<svg class="morbit" viewBox="0 0 124 124" aria-hidden="true">
-  <defs><path id="mpath" d="M62,62 m-48,0 a48,48 0 1,1 96,0 a48,48 0 1,1 -96,0"/></defs>
-  <text class="t-open"><textPath href="#mpath" startOffset="2%">Menü</textPath></text>
-  <text class="t-close"><textPath href="#mpath" startOffset="2%">Schließen</textPath></text>
-</svg>
-<div class="mdim"></div>
-<nav class="msheet" aria-label="Hauptmenü">
-  <div class="mrow">
-    <a class="mitem" href="index.html">
-      <span class="mt">Start</span>
-      <span class="mthumb"><span class="mv">
-        <span class="half-d"><img loading="lazy" decoding="async" src="assets/img/funkhaus.jpg" alt="" width="656" height="820"></span>
-        <span class="half-p"></span>
-        <span class="bars" style="left:56%;top:26%;width:34%"><i style="width:92%"></i><i style="width:76%"></i><i style="width:84%"></i><i style="width:30%;height:8px;margin-top:5px"></i></span>
-      </span></span>
-    </a>
-    <a class="mitem act" href="work.html">
-      <span class="mt">Work</span>
-      <span class="mthumb"><span class="mv">
-        <span class="grid4">
-          <span><img loading="lazy" decoding="async" src="assets/img/isi.jpg" alt="" width="820" height="463"></span>
-          <span><img loading="lazy" decoding="async" src="assets/img/a_funk2.jpg" alt="" width="360" height="640"></span>
-          <span style="background:#1C2530"></span>
-          <span><img loading="lazy" decoding="async" src="assets/img/a_otta1.jpg" alt="" width="360" height="640"></span>
-        </span>
-      </span></span>
-    </a>
-    <a class="mitem" href="index.html#leistungen">
-      <span class="mt">Leistungen</span>
-      <span class="mthumb"><span class="mv" style="background:#F3EDE1">
-        <span class="bars" style="left:8%;top:22%;width:40%"><i style="width:95%;height:9px"></i><i style="width:70%;height:9px"></i><i style="width:50%;margin-top:6px"></i><i style="width:26%;height:10px;margin-top:8px"></i></span>
-        <img loading="lazy" decoding="async" src="assets/img/isi.jpg" alt="" style="position:absolute;right:6%;top:18%;width:36%;height:64%;border-radius:2px" width="820" height="463">
-      </span></span>
-    </a>
-    <a class="mitem" href="agentur.html">
-      <span class="mt">Agentur</span>
-      <span class="mthumb"><span class="mv">
-        <span class="grid4" style="grid-template-columns:1fr 1fr">
-          <span><img loading="lazy" decoding="async" src="assets/img/retreat-08.jpg" alt="" width="1920" height="1280"></span>
-          <span><img loading="lazy" decoding="async" src="assets/img/retreat-01.jpg" alt="" width="1920" height="1280"></span>
-        </span>
-      </span></span>
-    </a>
-    <a class="mitem" href="kontakt.html">
-      <span class="mt">Kontakt</span>
-      <span class="mthumb"><span class="mv" style="background:#EFE7D6">
-        <span class="bars" style="left:8%;top:24%;width:84%"><i style="width:70%;height:9px"></i><i style="width:100%;height:1px;opacity:.3;margin:7px 0"></i><i style="width:52%;height:9px"></i><i style="width:100%;height:1px;opacity:.3;margin:7px 0"></i><i style="width:44%;height:9px"></i></span>
-      </span></span>
-    </a>
-  </div>
-  <div class="mfoot">
-    <span class="fl">ad.boutique Master-Preview</span>
-    <span class="soc">
-      <a href="https://www.instagram.com/ad.boutique.vienna/" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.linkedin.com/company/ad-boutique/" target="_blank" rel="noopener">LinkedIn</a>
-    </span>
-  </div>
-</nav>
-
-
-<main class="apl">
+main = '''<main class="apl">
 
   <!-- KAPITEL-LEISTE: schwebende Pille wie Apples Produktnavigation, erscheint nach dem Hero -->
   <nav class="chapnav" aria-label="Kapitel">
@@ -362,58 +289,7 @@
   </section>
 
   <!-- AUS DEM MANDAT: das Material, unveraendert -->
-
-  <section class="collage collage--tight" data-bg="#22382C" data-fg="light">
-    <div class="wrap" style="position:relative;z-index:2;margin-bottom:clamp(30px,4vw,60px)">
-      <span class="label" style="color:var(--champ)">Aus dem Mandat</span>
-    </div>
-    <div class="cplane">
-      <div class="cpcol" data-drift="0.042">
-        <img loading="lazy" decoding="async" src="assets/case/case-premium-neubau/g0.jpg" alt="" width="843" height="1500">
-        <img loading="lazy" decoding="async" src="assets/case/case-premium-neubau/g2.jpg" alt="" width="843" height="1500">
-        <img loading="lazy" decoding="async" src="assets/case/case-premium-neubau/g0.jpg" alt="" width="843" height="1500">
-        <video data-auto muted loop playsinline preload="none" src="assets/case/case-premium-neubau/v0.mp4" poster="assets/case/case-premium-neubau/v0-poster.jpg"></video>
-        <img loading="lazy" decoding="async" src="assets/case/case-premium-neubau/g5.jpg" alt="" width="1200" height="1500">
-      </div>
-      <div class="cpcol" data-drift="0.068">
-        <img loading="lazy" decoding="async" src="assets/case/case-premium-neubau/g1.jpg" alt="" width="843" height="1500">
-        <img loading="lazy" decoding="async" src="assets/case/case-premium-neubau/g3.jpg" alt="" width="843" height="1500">
-        <img loading="lazy" decoding="async" src="assets/case/case-premium-neubau/g1.jpg" alt="" width="843" height="1500">
-        <video data-auto muted loop playsinline preload="none" src="assets/case/case-premium-neubau/v1.mp4" poster="assets/case/case-premium-neubau/v1-poster.jpg"></video>
-        <img loading="lazy" decoding="async" src="assets/case/case-premium-neubau/g4.jpg" alt="" width="1200" height="1500">
-      </div>
-      <div class="cpcol" data-drift="0.05">
-        <img loading="lazy" decoding="async" src="assets/case/case-premium-neubau/g2.jpg" alt="" width="843" height="1500">
-        <img loading="lazy" decoding="async" src="assets/case/case-premium-neubau/g0.jpg" alt="" width="843" height="1500">
-        <img loading="lazy" decoding="async" src="assets/case/case-premium-neubau/g2.jpg" alt="" width="843" height="1500">
-        <video data-auto muted loop playsinline preload="none" src="assets/case/case-premium-neubau/v2.mp4" poster="assets/case/case-premium-neubau/v2-poster.jpg"></video>
-        <img loading="lazy" decoding="async" src="assets/case/case-premium-neubau/g5.jpg" alt="" width="1200" height="1500">
-      </div>
-      <div class="cpcol" data-drift="0.075">
-        <img loading="lazy" decoding="async" src="assets/case/case-premium-neubau/g3.jpg" alt="" width="843" height="1500">
-        <img loading="lazy" decoding="async" src="assets/case/case-premium-neubau/g1.jpg" alt="" width="843" height="1500">
-        <video data-auto muted loop playsinline preload="none" src="assets/case/case-premium-neubau/v0.mp4" poster="assets/case/case-premium-neubau/v0-poster.jpg"></video>
-        <video data-auto muted loop playsinline preload="none" src="assets/case/case-premium-neubau/v0.mp4" poster="assets/case/case-premium-neubau/v0-poster.jpg"></video>
-        <img loading="lazy" decoding="async" src="assets/case/case-premium-neubau/g4.jpg" alt="" width="1200" height="1500">
-      </div>
-      <div class="cpcol" data-drift="0.056">
-        <img loading="lazy" decoding="async" src="assets/case/case-premium-neubau/g0.jpg" alt="" width="843" height="1500">
-        <img loading="lazy" decoding="async" src="assets/case/case-premium-neubau/g2.jpg" alt="" width="843" height="1500">
-        <video data-auto muted loop playsinline preload="none" src="assets/case/case-premium-neubau/v1.mp4" poster="assets/case/case-premium-neubau/v1-poster.jpg"></video>
-        <video data-auto muted loop playsinline preload="none" src="assets/case/case-premium-neubau/v1.mp4" poster="assets/case/case-premium-neubau/v1-poster.jpg"></video>
-        <img loading="lazy" decoding="async" src="assets/case/case-premium-neubau/g5.jpg" alt="" width="1200" height="1500">
-      </div>
-      <div class="cpcol" data-drift="0.072">
-        <img loading="lazy" decoding="async" src="assets/case/case-premium-neubau/g1.jpg" alt="" width="843" height="1500">
-        <img loading="lazy" decoding="async" src="assets/case/case-premium-neubau/g3.jpg" alt="" width="843" height="1500">
-        <video data-auto muted loop playsinline preload="none" src="assets/case/case-premium-neubau/v2.mp4" poster="assets/case/case-premium-neubau/v2-poster.jpg"></video>
-        <video data-auto muted loop playsinline preload="none" src="assets/case/case-premium-neubau/v2.mp4" poster="assets/case/case-premium-neubau/v2-poster.jpg"></video>
-        <img loading="lazy" decoding="async" src="assets/case/case-premium-neubau/g4.jpg" alt="" width="1200" height="1500">
-      </div>
-    </div>
-  </section>
-
-  <!-- NEXT CASE -->
+''' + src.split("  <!-- CONTENT AUS DEM MANDAT -->", 1)[1].split("  <!-- NEXT CASE -->", 1)[0] + '''  <!-- NEXT CASE -->
   <section class="sec npro-sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-bottom:0">
     <div class="wrap">
       <div class="npbar2"><span>Nächster Case</span><a href="work.html">Alle ansehen</a></div>
@@ -428,15 +304,7 @@
     </div>
   </section>
 
-  <footer data-bg="#070708" data-fg="light" style="padding-top:20px">
-    <div class="wrap">
-      <div class="fbase" style="margin-top:0">
-        <span>© 2026 ad.boutique, Tuchlauben 13, 1010 Wien</span>
-        <span style="display:flex;gap:22px"><a href="index.html">Start</a><a href="work.html">Work</a><a href="index.html#kontakt">Kontakt</a></span>
-      </div>
-    </div>
-    <div class="fword"><div>ad<i>.</i>boutique</div></div>
-  </footer>
-</main>
-</body>
-</html>
+'''
+
+open(OUT, "w", encoding="utf-8").write(head + main + foot)
+print("geschrieben:", OUT, len(head + main + foot), "Zeichen, Sektionen:", (head + main + foot).count("<section"))
