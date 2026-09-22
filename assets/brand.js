@@ -122,4 +122,33 @@
   }
   build();
   arm();
+
+  /* ---------- Stationen: Punktzeile unter der grossen Zahl folgt der aktiven Station ---------- */
+  var tellBoxes = Array.prototype.slice.call(document.querySelectorAll(".tell")).map(function (box) {
+    var fix = box.querySelector(".tfix"), steps = box.querySelectorAll(".ts");
+    if (!fix || !steps.length) return null;
+    var row = document.createElement("div"); row.className = "tdots";
+    for (var i = 0; i < steps.length; i++) row.appendChild(document.createElement("i"));
+    fix.appendChild(row);
+    return { steps: steps, dots: row.children, cur: -1 };
+  }).filter(Boolean);
+
+  /* ---------- Scroll-Fortschritt als Punkt auf gepunkteter Bahn ---------- */
+  var prog = document.createElement("div"); prog.className = "sprog"; prog.setAttribute("aria-hidden", "true");
+  var pdot = document.createElement("i"); prog.appendChild(pdot); body.appendChild(prog);
+
+  function brandTick() {
+    tellBoxes.forEach(function (t) {
+      var idx = -1;
+      for (var i = 0; i < t.steps.length; i++) if (t.steps[i].classList.contains("on")) { idx = i; break; }
+      if (idx === t.cur) return;
+      t.cur = idx;
+      for (var k = 0; k < t.dots.length; k++) t.dots[k].classList.toggle("on", k === idx);
+    });
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var p = max > 0 ? Math.max(0, Math.min(1, window.pageYOffset / max)) : 0;
+    pdot.style.transform = "translateY(" + (p * (prog.offsetHeight - 12)).toFixed(1) + "px)";
+    requestAnimationFrame(brandTick);
+  }
+  requestAnimationFrame(brandTick);
 })();
