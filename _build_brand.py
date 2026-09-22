@@ -136,7 +136,7 @@ SERVICES = {
       </div>
       <div class="rate" data-cpl="11.77" data-fade>
         <div class="ratehead"><span class="ratev">€ 5.755</span><span class="raten"><b>489</b>Anfragen</span></div>
-        <input type="range" class="rateslider" min="1000" max="12000" step="50" value="5755" aria-label="Mediabudget in Euro">
+        <input type="range" class="rateslider" min="1000" max="12000" step="5" value="5755" aria-label="Mediabudget in Euro">
         <div class="ratedots" aria-hidden="true"></div>
         <p class="dotnote">Beispielrechnung, kein Angebot. Der echte Preis je Anfrage hängt von Branche, Motiv und Strecke ab.</p>
       </div>
