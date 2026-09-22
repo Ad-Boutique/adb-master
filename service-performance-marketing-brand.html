@@ -8,11 +8,11 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 
-<link rel="stylesheet" href="assets/master.css?v=103">
+<link rel="stylesheet" href="assets/master.css?v=105">
 <link rel="stylesheet" href="https://use.typekit.net/udf8wjj.css">
-<link rel="stylesheet" href="assets/brand.css?v=103">
-<script src="assets/brand.js?v=103" defer></script>
-<script src="assets/master.js?v=103" defer></script>
+<link rel="stylesheet" href="assets/brand.css?v=105">
+<script src="assets/brand.js?v=105" defer></script>
+<script src="assets/master.js?v=105" defer></script>
 </head>
 <body style="background-color:#F3EDE1" class="brand on-light">
 
@@ -83,7 +83,18 @@
   </div>
 </nav>
 
-<main>
+<main class="apl">
+
+  <!-- KAPITEL-LEISTE -->
+  <nav class="chapnav" aria-label="Kapitel">
+    <span class="cn-title">Performance Marketing</span>
+    <a href="#problem">Problem</a>
+    <a href="#nutzen">Nutzen</a>
+    <a href="#beweis">Beweis</a>
+    <a href="#cases">Cases</a>
+    <a class="cn-cta" href="#anfrage">Anfragen</a>
+  </nav>
+
 
   <!-- 01, HERO -->
   <section class="svc-hero fg-light bg-paper" data-bg="#f4f3ec" data-fg="dark" style="position:relative">
@@ -127,7 +138,7 @@
   </section>
 
   <!-- AKT 1: DAS PROBLEM -->
-  <section class="dotzoom sec fg-dark kapsec kapsec--dark" data-bg="#0f0f0f" data-fg="light" style="background:#0f0f0f">
+  <section id="problem" class="dotzoom sec fg-dark kapsec kapsec--dark" data-bg="#0f0f0f" data-fg="light" style="background:#0f0f0f">
     <div class="wrap">
       <div class="lchap">
         <div>
@@ -144,7 +155,7 @@
   </section>
 
   <!-- AKT 1: THESE UND NUTZEN -->
-  <section class="sec fg-light bg-cream" data-bg="#e9e8df" data-fg="dark">
+  <section id="nutzen" class="sec fg-light bg-cream" data-bg="#e9e8df" data-fg="dark">
     <div class="wrap">
       <div class="benehead">
         <div>
@@ -265,7 +276,7 @@
   </section>
 
   <!-- 06, PROOF 2: ERGEBNISSE -->
-  <section class="sec fg-light bg-paper" data-bg="#f4f3ec" data-fg="dark">
+  <section id="beweis" class="sec fg-light bg-paper" data-bg="#f4f3ec" data-fg="dark">
     <div class="wrap" style="max-width:1100px">
       <div class="actring" aria-hidden="true" style="margin:0 auto 26px"></div>
           <span class="label" style="color:var(--champ-deep);display:block;text-align:center">Ergebnisse</span>
@@ -330,7 +341,7 @@
   </section>
 
   <!-- 07, CASES -->
-  <section class="sec fg-light bg-cream" data-bg="#e9e8df" data-fg="dark" style="padding-top:clamp(60px,7vw,100px)">
+  <section id="cases" class="sec fg-light bg-cream" data-bg="#e9e8df" data-fg="dark" style="padding-top:clamp(60px,7vw,100px)">
     <div class="wrap">
       <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:clamp(28px,3.4vw,48px)">Ausgewählte Ergebnisse</span>
       <div class="oplist" data-stagger>

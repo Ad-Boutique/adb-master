@@ -123,6 +123,82 @@
   build();
   arm();
 
+  /* ---------- Favicon: Ring waehrend des Ladens, danach der Punkt ---------- */
+  var ico = document.querySelector('link[rel="icon"]');
+  function icon(kind) {
+    var inner = kind === "ring"
+      ? '<circle cx="32" cy="32" r="12" fill="none" stroke="#d7ff45" stroke-width="5"/>'
+      : '<circle cx="32" cy="32" r="13" fill="#d7ff45"/><circle cx="32" cy="32" r="5" fill="#0f0f0f"/>';
+    return "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#0f0f0f"/>' + inner + '</svg>');
+  }
+  if (ico) {
+    ico.setAttribute("href", icon("ring"));
+    var icoWait = setInterval(function () { if (body.classList.contains("mready")) { ico.setAttribute("href", icon("dot")); clearInterval(icoWait); } }, 200);
+  }
+
+  /* ---------- Der Weiter-Knopf ist der Punkt am Ende: beim Druecken laufen die Ziel-Ringe ---------- */
+  document.addEventListener("pointerdown", function (e) {
+    var go = e.target.closest(".ngo");
+    if (!go) return;
+    go.classList.remove("fired");
+    requestAnimationFrame(function () { go.classList.add("fired"); });
+    setTimeout(function () { go.classList.remove("fired"); }, 800);
+  });
+
+  /* ---------- Punktfeld: echte Einheiten als Punkte. Beim Laden sammeln sie sich ins Raster,
+       der Lime-Anteil steht in Leserichtung, am Desktop ziehen sie sich zum Cursor. ---------- */
+  Array.prototype.slice.call(document.querySelectorAll("canvas.dotfield")).forEach(function (cv) {
+    var total = parseInt(cv.getAttribute("data-total"), 10) || 100;
+    var lime = parseInt(cv.getAttribute("data-lime"), 10) || 0;
+    var ctx = cv.getContext("2d"), dots = [], W = 0, H = 0, dpr = Math.min(2, window.devicePixelRatio || 1);
+    var mx = -9999, my = -9999, start = 0, seen = false, running = false, fine = window.matchMedia("(pointer: fine)").matches;
+    function layout() {
+      var r = cv.getBoundingClientRect(); W = r.width; H = r.height;
+      if (!W || !H) return;
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var cols = Math.max(4, Math.ceil(Math.sqrt(total * W / H))), rows = Math.ceil(total / cols);
+      var gx = W / cols, gy = H / rows, rad = Math.max(2.4, Math.min(gx, gy) * 0.22);
+      dots = [];
+      for (var i = 0; i < total; i++) {
+        var c = i % cols, rw = Math.floor(i / cols);
+        dots.push({ x: gx * (c + 0.5), y: gy * (rw + 0.5), sx: W / 2 + (Math.random() - 0.5) * W * 1.8, sy: H / 2 + (Math.random() - 0.5) * H * 1.8, r: rad, lime: i < lime, d: Math.random() * 0.4 });
+      }
+    }
+    function ease(t) { return 1 - Math.pow(1 - t, 3); }
+    function frame(now) {
+      if (!running) return;
+      if (!start) start = now;
+      var t = (now - start) / 1000;
+      ctx.clearRect(0, 0, W, H);
+      var settled = true;
+      for (var i = 0; i < dots.length; i++) {
+        var d = dots[i];
+        var p = reduced ? 1 : Math.max(0, Math.min(1, (t - d.d) / 1.1));
+        if (p < 1) settled = false;
+        var e = ease(p), x = d.sx + (d.x - d.sx) * e, y = d.sy + (d.y - d.sy) * e, r = d.r;
+        if (fine && p >= 1) {
+          var dx = mx - x, dy = my - y, dist = Math.sqrt(dx * dx + dy * dy), R = 150;
+          if (dist < R) { var f = 1 - dist / R; x += dx / (dist || 1) * f * 12; y += dy / (dist || 1) * f * 12; r = d.r * (1 + f * 0.9); }
+        }
+        ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
+        if (d.lime) { ctx.fillStyle = "#d7ff45"; ctx.fill(); ctx.lineWidth = 1; ctx.strokeStyle = "rgba(15,15,15,0.6)"; ctx.stroke(); }
+        else { ctx.fillStyle = "rgba(15,15,15,0.16)"; ctx.fill(); }
+      }
+      /* nach dem Sammeln nur weiterzeichnen, wenn ein Cursor da ist, den es zu folgen gilt */
+      if (!settled || (fine && mx > -9000)) requestAnimationFrame(frame); else running = false;
+    }
+    function wake() { if (!running) { running = true; requestAnimationFrame(frame); } }
+    if (fine) {
+      cv.addEventListener("pointermove", function (e) { var r = cv.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top; wake(); });
+      cv.addEventListener("pointerleave", function () { mx = -9999; my = -9999; wake(); });
+    }
+    var io = new IntersectionObserver(function (en) {
+      en.forEach(function (x) { if (x.isIntersecting && !seen) { seen = true; layout(); wake(); } });
+    }, { rootMargin: "0px 0px -10% 0px" });
+    io.observe(cv);
+    window.addEventListener("resize", function () { if (seen) { layout(); start = 0; wake(); } });
+  });
+
   /* ---------- Stationen: Punktzeile unter der grossen Zahl folgt der aktiven Station ---------- */
   var tellBoxes = Array.prototype.slice.call(document.querySelectorAll(".tell")).map(function (box) {
     var fix = box.querySelector(".tfix"), steps = box.querySelectorAll(".ts");
