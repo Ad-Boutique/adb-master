@@ -1046,10 +1046,11 @@ body.loaded .chero img { transform: scale(1); }
 .pmap .ptw { fill: var(--paper); font-weight: 700; letter-spacing: 0.14em; }
 .pmap .tagw { fill: var(--ink); }
 .pmap .pill { fill: rgba(255,255,255,0.55); stroke: rgba(10,10,10,0.22); stroke-width: 1; vector-effect: non-scaling-stroke; }
-.pmap .pill.dashed { stroke: var(--champ-deep); stroke-dasharray: 3 4; fill: rgba(255,255,255,0.4); }
+.pmap .pill.dashed { stroke: var(--champ-deep); stroke-dasharray: 3 4; fill: var(--paper); }
 .pmap .card { fill: #FBF7EE; stroke: rgba(10,10,10,0.3); stroke-width: 1; vector-effect: non-scaling-stroke; }
-.pmap .card.dashed { stroke-dasharray: 4 5; fill: rgba(255,255,255,0.45); }
-.pmap .pl { fill: none; stroke: rgba(10,10,10,0.55); stroke-width: 1.25; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.pmap .card.dashed { stroke-dasharray: 4 5; fill: var(--paper); }
+/* keine non-scaling-stroke auf gezeichneten Pfaden: die Dash-Laenge waere sonst in Bildschirm-Pixeln und die Linie endet zu frueh */
+.pmap .pl { fill: none; stroke: rgba(10,10,10,0.55); stroke-width: 1.2; stroke-linecap: round; }
 .pmap .pl.thin { stroke: rgba(10,10,10,0.14); }
 .pmap .dot-sie { fill: var(--champ-deep); }
 .pmap .dot-wir { fill: var(--ink); }

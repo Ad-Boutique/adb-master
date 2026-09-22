@@ -1226,6 +1226,11 @@ def _pmap(s):
     ox, ow, oh = 910, 280, 200
     oy = mid - oh / 2
     d.append('<path id="d-%s-o" d="M%d,%.1f H%d" class="pl" data-draw data-s="0.55" data-e="0.75"/>' % (slug, ex + ew, mid, ox))
+    # Impulse liegen unter Pille und Karte, damit kein Punkt ueber Text laeuft (sichtbar erst mit Klasse live)
+    d.append(pulse("d-%s-in1" % slug, 2.4, 0))
+    d.append(pulse("d-%s-in4" % slug, 2.4, 1.1))
+    d.append(pulse("d-%s-e" % slug, 1.6, 0.6))
+    d.append(pulse("d-%s-o" % slug, 2.2, 1.4))
     # Beruehrungspunkt mit dem Kunden auf der Verbindung
     tx = (ex + ew + ox) / 2
     tw = 40 + len(touch) * 6.2
@@ -1241,11 +1246,6 @@ def _pmap(s):
     tgw = 40 + len(out[2]) * 6.2
     d.append('<rect x="%d" y="%.1f" width="%.1f" height="30" rx="15" class="pill"/><circle cx="%d" cy="%.1f" r="4" class="dot dot-sie"/>'
              '<text x="%d" y="%.1f" font-size="11" class="pt">%s</text></g>' % (ox + 24, oy + oh - 54, tgw, ox + 39, oy + oh - 39, ox + 51, oy + oh - 35, esc(out[2])))
-    # Impulse: erst wenn alles gezeichnet ist (Klasse live)
-    d.append(pulse("d-%s-in1" % slug, 2.4, 0))
-    d.append(pulse("d-%s-in4" % slug, 2.4, 1.1))
-    d.append(pulse("d-%s-e" % slug, 1.6, 0.6))
-    d.append(pulse("d-%s-o" % slug, 2.2, 1.4))
     svg_d = '<svg class="pmap-d" viewBox="0 0 %d %d" aria-hidden="true">%s</svg>' % (W, H, "".join(d))
 
     # ---------- Telefon, hochkant ----------
@@ -1282,6 +1282,9 @@ def _pmap(s):
     m.append('<text x="%d" y="%d" font-size="10" text-anchor="end" class="pt pg">Schleife, jede Woche</text></g>' % (mex + mew - 20, mey + 118))
     moy = mey + meh + 76
     m.append('<path id="m-%s-o" d="M%d,%d V%d" class="pl" data-draw data-s="0.55" data-e="0.75"/>' % (slug, MW // 2, mey + meh, moy))
+    m.append(pulse("m-%s-in2" % slug, 2.2, 0, 2.6))
+    m.append(pulse("m-%s-bus" % slug, 2.6, 0.8, 2.6))
+    m.append(pulse("m-%s-o" % slug, 1.8, 1.2, 2.6))
     ttw = 40 + len(touch) * 6.0
     m.append('<g class="pn ptouch" data-at="0.7"><rect x="%.1f" y="%d" width="%.1f" height="28" rx="14" class="pill dashed"/>'
              '<circle cx="%.1f" cy="%d" r="3.5" class="dot dot-sie"/><text x="%.1f" y="%d" font-size="11" class="pt">%s</text></g>'
@@ -1294,9 +1297,6 @@ def _pmap(s):
     mtgw = 24 + len(out[2]) * 6.1
     m.append('<rect x="%d" y="%d" width="%.1f" height="28" rx="14" class="pill"/><circle cx="%d" cy="%d" r="3.5" class="dot dot-sie"/>'
              '<text x="%d" y="%d" font-size="11" class="pt">%s</text></g>' % (mex + 20, moy + moh - 46, mtgw, mex + 34, moy + moh - 32, mex + 45, moy + moh - 28, esc(out[2])))
-    m.append(pulse("m-%s-in2" % slug, 2.2, 0, 2.6))
-    m.append(pulse("m-%s-bus" % slug, 2.6, 0.8, 2.6))
-    m.append(pulse("m-%s-o" % slug, 1.8, 1.2, 2.6))
     MH = moy + moh + 16
     svg_m = '<svg class="pmap-m" viewBox="0 0 %d %d" aria-hidden="true">%s</svg>' % (MW, MH, "".join(m))
 

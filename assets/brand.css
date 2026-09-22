@@ -47,10 +47,6 @@ body.brand { background: var(--paper); }
 
 /* ---------- Flaechen ---------- */
 .brand [data-bg="#0f0f0f"] { background: #0f0f0f !important; }
-.brand .lime-sec, .brand [data-bg="#d7ff45"] { background: var(--lime) !important; color: var(--ink); }
-.brand .lime-sec .label, .brand .lime-sec .grey, .brand .lime-sec p { color: var(--ink); }
-.brand .lime-sec .btn-i { background: var(--ink); color: var(--lime); }
-.brand .lime-sec .nopt, .brand .lime-sec .nsel, .brand .lime-sec .kopt { border-color: rgba(15,15,15,0.35); }
 
 /* ---------- Knoepfe ---------- */
 .brand .btn-i:hover { background: var(--lime); color: var(--ink); }
@@ -105,8 +101,6 @@ body.brand.menuopen .mbtn::after { background: var(--lime); }
   border-top-style: dotted; border-top-width: 2px; border-top-color: rgba(15,15,15,0.28);
 }
 .brand .fg-dark .kapsec .kaprule { border-top-color: rgba(244,243,236,0.3); }
-.brand .benegrid .bcell::after { background: var(--lime); height: 2px; top: -2px; }
-.brand .benegrid { border-top: 0; }
 .brand .hlxnav .hn.on, .brand .vchips .vc.on, .brand .chapnav a.on { background: var(--ink); color: var(--lime); }
 .brand .chapnav a.cn-cta { background: var(--lime); color: var(--ink); }
 .brand .chapnav a.cn-cta:hover { background: var(--ink); color: var(--lime); }
@@ -125,29 +119,42 @@ body.brand.menuopen .mbtn::after { background: var(--lime); }
 /* ============================================================
    Der Punkt ueberall: aus dem Board Punkt, Expand, Fokus, Target, Loading, Pattern
    ============================================================ */
-/* Cursor: der Lime-Punkt aus dem Board */
-.brand .cur { border: 0; background: var(--lime); width: 14px; height: 14px; margin: -7px 0 0 -7px; mix-blend-mode: normal; }
+/* Cursor: der Lime-Punkt aus dem Board, in den vier Zustaenden
+   Punkt (Standard), Expand (ueber Links: waechst, ein Satellit kreist), Fokus (ueber Bildern: Ring),
+   Target (beim Klick: Ringe laufen aus) */
+.brand .cur { border: 0; background: var(--lime); width: 14px; height: 14px; margin: -7px 0 0 -7px; mix-blend-mode: normal; box-shadow: 0 0 0 1px rgba(15,15,15,0.5); transition: scale 0.28s var(--e-out), background-color 0.25s ease, box-shadow 0.25s ease, opacity 0.3s ease; }
+.brand .cur::before { content: ""; position: absolute; left: 50%; top: -7px; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: var(--ink); opacity: 0; transform-origin: 2px 14px; animation: orbit 1.4s linear infinite; animation-play-state: paused; transition: opacity 0.25s ease; }
 .brand .cur::after { display: none; }
+.brand.cur-hov .cur { scale: 2; }
+.brand.cur-hov .cur::before { opacity: 1; animation-play-state: running; }
+.brand.cur-media .cur { scale: 3; background: transparent; box-shadow: inset 0 0 0 1.5px var(--lime), 0 0 0 1px rgba(15,15,15,0.35); }
+.brand.cur-tap .cur::after { display: block; content: ""; position: absolute; inset: -3px; border-radius: 50%; border: 1.5px solid var(--lime); animation: bring 0.55s ease-out forwards; }
+@keyframes orbit { to { transform: rotate(360deg); } }
+/* Menue-Kreis: beim Hover kreist ein Satellit, der Expand-Zustand aus dem Board */
+.brand .mbtn::before { content: ""; position: absolute; left: 50%; top: -14px; width: 8px; height: 8px; margin-left: -4px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 1px var(--ink); transform-origin: 4px 46px; opacity: 0; animation: orbit 2.4s linear infinite; animation-play-state: paused; transition: opacity 0.3s ease; }
+.brand .mbtn:hover::before { opacity: 1; animation-play-state: running; }
+/* Punkt-Zoom: die naechste Sektion oeffnet sich aus einem Punkt (Cover mit wachsendem Loch) */
+.dotzoom { position: relative; }
+.dotzoom::after {
+  content: ""; position: absolute; inset: 0; z-index: 5; pointer-events: none; background: var(--paper);
+  -webkit-mask: radial-gradient(circle at 50% 42%, transparent var(--zr, 0px), #000 calc(var(--zr, 0px) + 1px));
+  mask: radial-gradient(circle at 50% 42%, transparent var(--zr, 0px), #000 calc(var(--zr, 0px) + 1px));
+}
+.dotzoom--dark::after { background: var(--ink); }
+.dotzoom::before {
+  content: ""; position: absolute; left: 50%; top: 42%; z-index: 6; pointer-events: none;
+  width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%; background: var(--lime);
+  box-shadow: 0 0 0 1px rgba(15,15,15,0.4); transform: scale(var(--zd, 0));
+}
+.dotzoom.zdone::after, .dotzoom.zdone::before { display: none; }
+@media (prefers-reduced-motion: reduce) { .dotzoom::after, .dotzoom::before { display: none; } }
 /* Wortmarke: der Punkt ist Lime */
 .brand .fword i, .brand .pt .ptw i { color: var(--lime); }
-/* Pattern: Punktraster als Textur auf dunklen Sektionen */
-.brand .kapsec--dark, .brand .nextsec, .brand .voice-sec, .brand .fg-dark.sec[data-bg="#0f0f0f"] {
-  background-image: radial-gradient(circle, rgba(244,243,236,0.09) 1px, transparent 1.4px) !important;
-  background-size: 22px 22px !important; background-color: #0f0f0f !important;
-}
 /* Akt-Marke: die gepunktete Ringform aus dem Board, dreht sich langsam */
 .pring { width: 26px; height: 26px; border-radius: 50%; border: 2px dotted var(--ink); margin-bottom: 26px; position: relative; animation: pspin 40s linear infinite; }
 .pring::after { content: ""; position: absolute; inset: 8px; border-radius: 50%; background: var(--lime); }
 .fg-dark .pring { border-color: var(--lime); } .fg-dark .pring::after { background: var(--lime); }
 @keyframes pspin { to { transform: rotate(360deg); } }
-/* Nutzen-Kacheln: statt Linie ein Punkt, der beim Ankommen zum Ziel wird */
-.brand .benegrid .bcell { padding-left: 26px; }
-.brand .benegrid .bcell::after { display: none; }
-.brand .benegrid .bcell::before {
-  content: ""; position: absolute; left: 0; top: calc(clamp(24px, 2.8vw, 40px) + 6px); width: 10px; height: 10px; border-radius: 50%;
-  background: rgba(15,15,15,0.18); transform: scale(0.6); transition: background-color 0.4s ease, transform 0.6s var(--e-out), box-shadow 0.6s ease;
-}
-.brand .benegrid .bcell.on::before { background: var(--lime); transform: scale(1); box-shadow: 0 0 0 1px var(--ink), 0 0 0 5px rgba(215,255,69,0.35); }
 /* Stationen: Punktzeile zeigt, wo man ist */
 .tdots { display: flex; gap: 8px; justify-content: flex-end; margin-top: 18px; }
 .tdots i { width: 8px; height: 8px; border-radius: 50%; background: rgba(15,15,15,0.18); transition: background-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease; }
@@ -177,7 +184,7 @@ body.brand.menuopen .mbtn::after { background: var(--lime); }
 body.brand.mready .sprog { opacity: 1; }
 .sprog i { position: absolute; left: -5px; top: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 1px var(--ink); will-change: transform; }
 body:not(.on-light) .sprog { background-image: radial-gradient(circle, rgba(244,243,236,0.35) 1px, transparent 1.3px); }
-@media (max-width: 860px) { .sprog { display: none; } .brand .benegrid .bcell::before { top: 28px; } }
+@media (max-width: 860px) { .sprog { display: none; } }
 
 /* ---------- Punkt-Graphen: jede Einheit ein Punkt ---------- */
 .dotgraph { display: grid; grid-template-columns: repeat(var(--cols, 10), 1fr); gap: clamp(7px, 1vw, 13px); max-width: 440px; }

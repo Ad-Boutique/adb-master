@@ -137,7 +137,37 @@
   var prog = document.createElement("div"); prog.className = "sprog"; prog.setAttribute("aria-hidden", "true");
   var pdot = document.createElement("i"); prog.appendChild(pdot); body.appendChild(prog);
 
+  /* ---------- Cursor-Zustaende: Fokus ueber Bildern, Target beim Klick (Expand ueber Links setzt master.js als cur-hov) ---------- */
+  if (window.matchMedia("(pointer: fine)").matches) {
+    document.addEventListener("pointerover", function (e) {
+      body.classList.toggle("cur-media", !!e.target.closest("img, video, .phframe, .hlxmedia, .zmedia, .stage"));
+    });
+    document.addEventListener("pointerdown", function () {
+      body.classList.remove("cur-tap");
+      requestAnimationFrame(function () { body.classList.add("cur-tap"); });
+      setTimeout(function () { body.classList.remove("cur-tap"); }, 600);
+    });
+  }
+
+  /* ---------- Punkt-Zoom: Sektion oeffnet sich aus einem Punkt, gesteuert vom Scroll ---------- */
+  var zooms = Array.prototype.slice.call(document.querySelectorAll(".dotzoom")).map(function (s) { return { el: s, p: -1 }; });
+  function zoomTick() {
+    zooms.forEach(function (z) {
+      var r = z.el.getBoundingClientRect();
+      var p = reduced ? 1 : Math.max(0, Math.min(1, (window.innerHeight * 0.95 - r.top) / (window.innerHeight * 0.62)));
+      if (Math.abs(p - z.p) < 0.003) return;
+      z.p = p;
+      /* erst waechst der Punkt (0 bis 0,2), dann oeffnet sich aus ihm das Loch und der Punkt zieht sich zurueck */
+      var zd = p < 0.2 ? p / 0.2 : Math.max(0, 1 - (p - 0.2) / 0.22);
+      var zr = p < 0.2 ? 0 : (p - 0.2) / 0.8 * Math.hypot(r.width, r.height) * 0.62;
+      z.el.style.setProperty("--zd", zd.toFixed(3));
+      z.el.style.setProperty("--zr", zr.toFixed(0) + "px");
+      z.el.classList.toggle("zdone", p >= 1);
+    });
+  }
+
   function brandTick() {
+    zoomTick();
     tellBoxes.forEach(function (t) {
       var idx = -1;
       for (var i = 0; i < t.steps.length; i++) if (t.steps[i].classList.contains("on")) { idx = i; break; }
