@@ -16,7 +16,12 @@
     pt.classList.add("gone");
     requestAnimationFrame(function () { pt.style.transition = ""; });
   }
+  var entered = false;
   function enterPage() {
+    if (entered) return;
+    entered = true;
+    /* Brand-Test: eine eigene Choreografie (Punkt wandert in den Menue-Kreis) darf uebernehmen */
+    if (window.ADB_ENTER && pt) { window.ADB_ENTER(pt, function () { document.body.classList.add("loaded"); }); return; }
     document.body.classList.add("loaded");
     if (!pt) return;
     requestAnimationFrame(function () {
@@ -28,6 +33,7 @@
 
   function leaveTo(href) {
     if (reduced || !pt) { location.href = href; return; }
+    if (window.ADB_LEAVE) { window.ADB_LEAVE(pt, href); return; }
     pt.classList.remove("gone");
     pt.classList.add("enter");
     requestAnimationFrame(function () {
