@@ -54,13 +54,7 @@ def index():
     h = rep(h, '<span class="label">Wofür wir stehen</span>', '<div class="actring" aria-hidden="true"></div>\n      <span class="label">Wofür wir stehen</span>', "Ring These")
     h = rep(h, '<span class="label" style="color:var(--grey-dark);display:block;margin-bottom:clamp(30px,4vw,54px)">Reden wir</span>',
             '<div class="actring" aria-hidden="true"></div>\n      <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:clamp(30px,4vw,54px)">Reden wir</span>', "Ring Kontakt")
-    # Zahlen als Punkte: ein Punkt sind 100.000 Euro, ein Projekt, ein Kunde
-    h = rep(h, '<div class="sl">Verwaltetes Ad-Budget, jeder Euro zurechenbar</div></div>',
-            '<div class="sl">Verwaltetes Ad-Budget, jeder Euro zurechenbar</div><div class="dotgraph" data-total="167" data-value="167" style="--cols:24" aria-hidden="true"></div><div class="dotcapmini">Ein Punkt sind € 100.000</div></div>', "Stat Budget")
-    h = rep(h, '<div class="sl">Projekte in Commerce, Finance und Real Estate</div></div>',
-            '<div class="sl">Projekte in Commerce, Finance und Real Estate</div><div class="dotgraph" data-total="50" data-value="50" style="--cols:25" aria-hidden="true"></div><div class="dotcapmini">Ein Punkt ein Projekt</div></div>', "Stat Projekte")
-    h = rep(h, '<div class="sl">Kunden, von denen die meisten wiederkommen</div></div>',
-            '<div class="sl">Kunden, von denen die meisten wiederkommen</div><div class="dotgraph" data-total="25" data-value="25" style="--cols:25" aria-hidden="true"></div><div class="dotcapmini">Ein Punkt ein Kunde</div></div>', "Stat Kunden")
+    # Punkte unter den Zahlen: auf Kundenwunsch weggelassen, die Zahl steht allein
     open("index-brand.html", "w", encoding="utf-8").write(h)
     print("index-brand.html", len(h))
 
