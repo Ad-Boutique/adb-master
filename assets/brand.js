@@ -290,12 +290,13 @@
 
   /* ---------- Zeitleiste: 42 Tage als Punkte, gefuellt beim Ankommen ---------- */
   Array.prototype.slice.call(document.querySelectorAll(".tline .tldots")).forEach(function (row) {
+    /* Segmente aus data-seg, z. B. "h1 b9 g4 t28": Klasse und Anzahl je Abschnitt */
+    var seg = (row.getAttribute("data-seg") || "h1 b9 g4 t28").split(/\s+/);
     var frag = document.createDocumentFragment();
-    for (var i = 0; i < 42; i++) {
-      var d = document.createElement("i");
-      d.className = i === 0 ? "h" : (i < 10 ? "b" : (i < 14 ? "g" : "t"));
-      frag.appendChild(d);
-    }
+    seg.forEach(function (s) {
+      var cls = s.charAt(0), n = parseInt(s.slice(1), 10) || 0;
+      for (var i = 0; i < n; i++) { var d = document.createElement("i"); d.className = cls; frag.appendChild(d); }
+    });
     row.appendChild(frag);
     var io3 = new IntersectionObserver(function (en) {
       en.forEach(function (x) {

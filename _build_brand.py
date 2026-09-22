@@ -36,6 +36,31 @@ def index():
     h = rep(h, '<span class="rl"><span>Kein Zufall.</span></span>', '<span class="rl"><span><i>Kein Zufall.</i></span></span>', "Hero-Zeile")
     h = rep(h, '<div class="hpitch">\n      <span class="label">', '<div class="hpitch">\n      <span class="bdot" aria-hidden="true"></span>\n      <span class="label">', "Hero-Punkt")
     h = rep(h, '<section class="sec fg-light stats bg-paper"', '<section class="sec fg-light stats bg-paper dotzoom dotzoom--dark"', "Punkt-Zoom Zahlen")
+    h = rep(h, "<main>", '''<main class="apl">
+
+  <!-- KAPITEL-LEISTE -->
+  <nav class="chapnav" aria-label="Kapitel">
+    <span class="cn-title">ad.boutique</span>
+    <a href="#work">Work</a>
+    <a href="#leistungen">Leistungen</a>
+    <a href="#team">Team</a>
+    <a class="cn-cta" href="#kontakt">Kontakt</a>
+  </nav>
+''', "main")
+    h = rep(h, '  <!-- 04, WORK-TEASER -->\n  <section class="sec fg-light bg-paper"', '  <!-- 04, WORK-TEASER -->\n  <section id="work" class="sec fg-light bg-paper"', "Work-ID")
+    h = rep(h, '<section class="sec fg-light team-int bg-paper"', '<section id="team" class="sec fg-light team-int bg-paper"', "Team-ID")
+    h = rep(h, 'Wir gewinnen nur, wenn Sie gewinnen.</p>\n      <div class="hbtns"',
+            'Wir gewinnen nur, wenn Sie gewinnen.</p>\n      <div class="dotline" data-fade style="--i:1"><span>strategie</span><span>creative</span><span>digital</span><span>growth</span></div>\n      <div class="hbtns"', "Punktzeile")
+    h = rep(h, '<span class="label">Wofür wir stehen</span>', '<div class="actring" aria-hidden="true"></div>\n      <span class="label">Wofür wir stehen</span>', "Ring These")
+    h = rep(h, '<span class="label" style="color:var(--grey-dark);display:block;margin-bottom:clamp(30px,4vw,54px)">Reden wir</span>',
+            '<div class="actring" aria-hidden="true"></div>\n      <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:clamp(30px,4vw,54px)">Reden wir</span>', "Ring Kontakt")
+    # Zahlen als Punkte: ein Punkt sind 100.000 Euro, ein Projekt, ein Kunde
+    h = rep(h, '<div class="sl">Verwaltetes Ad-Budget, jeder Euro zurechenbar</div></div>',
+            '<div class="sl">Verwaltetes Ad-Budget, jeder Euro zurechenbar</div><div class="dotgraph" data-total="167" data-value="167" style="--cols:24" aria-hidden="true"></div><div class="dotcapmini">Ein Punkt sind € 100.000</div></div>', "Stat Budget")
+    h = rep(h, '<div class="sl">Projekte in Commerce, Finance und Real Estate</div></div>',
+            '<div class="sl">Projekte in Commerce, Finance und Real Estate</div><div class="dotgraph" data-total="50" data-value="50" style="--cols:25" aria-hidden="true"></div><div class="dotcapmini">Ein Punkt ein Projekt</div></div>', "Stat Projekte")
+    h = rep(h, '<div class="sl">Kunden, von denen die meisten wiederkommen</div></div>',
+            '<div class="sl">Kunden, von denen die meisten wiederkommen</div><div class="dotgraph" data-total="25" data-value="25" style="--cols:25" aria-hidden="true"></div><div class="dotcapmini">Ein Punkt ein Kunde</div></div>', "Stat Kunden")
     open("index-brand.html", "w", encoding="utf-8").write(h)
     print("index-brand.html", len(h))
 
@@ -50,24 +75,36 @@ SERVICES = {
           LABEL % ("var(--champ-deep)", "text-align:center", "Ergebnisse"),
           LABEL % ("var(--champ-deep)", "margin-bottom:clamp(16px,1.8vw,24px)", "Bevor wir starten")],
    drop_proofone=True,
-   dotfield=None,
+   dotfield='''      <div class="dotfield-wrap" data-fade style="--i:3">
+        <canvas class="dotfield" data-total="489" data-lime="262" data-form="262" aria-label="489 Punkte, 262 davon in Lime"></canvas>
+        <p class="dotfield-cap"><b>489 Anfragen</b> für ein Neubauprojekt in Wien aus € 5.755 Mediabudget, <b>262 davon aus einem einzigen Motiv</b>. Jeder Punkt eine Anfrage.<span class="dothint">Antippen</span></p>
+      </div>
+''',
+   tline='''      <div class="tline" data-fade>
+        <div class="tldots" data-seg="h1 b1 t4 e1" aria-label="Sieben Schritte als Punkte"></div>
+        <div class="tllegend"><span><i class="tl-h"></i>Heute: Anfrage</span><span><i class="tl-b"></i>Unter 24 h: Ersteinschätzung</span><span><i class="tl-t"></i>Tag 2 bis 5: Audit im Konto</span><span><i class="tl-e"></i>Danach: klare Empfehlung</span></div>
+      </div>
+''',
    graph='''  <!-- PUNKT-GRAPHEN: jede Einheit ein Punkt -->
   <section class="sec fg-light bg-paper dotsec" data-bg="#f4f3ec" data-fg="dark">
     <div class="wrap lchap">
       <div>
         <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:16px">Punkt für Punkt</span>
-        <h2 class="dispn" data-lines style="font-size:clamp(30px,3.6vw,58px)"><span class="rl"><span>Ein Motiv,</span></span><span class="rl"><span><i>54 von 100 Anfragen.</i></span></span></h2>
-        <p class="lt3" data-fade style="margin-top:22px">Vier Motive liefen gegeneinander. Jeder Punkt ist ein Prozent der 489 Anfragen, die Lime-Punkte kamen aus dem einen Interior-Motiv.</p>
+        <h2 class="dispn" data-lines style="font-size:clamp(30px,3.6vw,58px)"><span class="rl"><span>Die Strecke</span></span><span class="rl"><span><i>entscheidet, in Punkten.</i></span></span></h2>
+        <p class="lt3" data-fade style="margin-top:22px">Zwei Fälle aus dem Reporting. Dieselbe Zielgruppe, dieselbe Woche, drei Strecken: Der Preis je Anfrage hängt am Weg, nicht am Budget. Und eine Plattform, die mit gleichem Geld das Dreifache holte.</p>
       </div>
       <div>
-        <div class="dotgraph" data-total="100" data-value="54" style="--cols:10" aria-label="54 von 100 Punkten"></div>
-        <div class="dotcap" data-fade><span class="dv">54 %</span><span class="dl">aller Anfragen aus einem einzigen Motiv, 262 von 489</span></div>
-        <div class="dotbars" data-fade>
+        <div class="dotbars" data-fade style="margin-top:0">
           <div class="row"><span class="rl">Instant Form, Eigennutzer</span><span class="dots" data-n="30" data-on="5"></span><span class="rv">€ 9,59</span></div>
           <div class="row"><span class="rl">Instant Form, Anleger</span><span class="dots" data-n="30" data-on="4"></span><span class="rv">€ 8,43</span></div>
           <div class="row hi"><span class="rl">Website-Formular</span><span class="dots" data-n="30" data-on="29"></span><span class="rv">€ 58,05</span></div>
         </div>
-        <p class="dotnote" data-fade>Ein Punkt sind zwei Euro je Anfrage. Dieselbe Zielgruppe, dieselbe Woche: Die Strecke entscheidet über den Preis.</p>
+        <p class="dotnote" data-fade>Wohnbau-Projekt, ein Punkt sind zwei Euro je Anfrage.</p>
+        <div class="dotbars" data-fade>
+          <div class="row"><span class="rl">Investments vorher</span><span class="dots" data-n="50" data-on="16"></span><span class="rv">16</span></div>
+          <div class="row hi"><span class="rl">Investments mit uns</span><span class="dots" data-n="50" data-on="50"></span><span class="rv">50</span></div>
+        </div>
+        <p class="dotnote" data-fade>Crowdinvesting-Plattform, gleiches Budget, ein Punkt ein Investment. ROAS 8,75 statt 2,14.</p>
       </div>
     </div>
   </section>
@@ -128,7 +165,7 @@ SERVICES = {
          ("Cases", "cases", "  <!-- 07, CASES -->\n  <section class=\"sec fg-light bg-cream\"")],
    rate="",  # Kalkulator auf Wunsch des Kunden wieder raus
    tline='''      <div class="tline" data-fade>
-        <div class="tldots" aria-label="42 Tage als Punkte"></div>
+        <div class="tldots" data-seg="h1 b9 g4 t28" aria-label="42 Tage als Punkte"></div>
         <div class="tllegend"><span><i class="tl-h"></i>Heute: Anfrage und Einschätzung</span><span><i class="tl-b"></i>Tag 2 bis 10: Konto, Karten, Seite</span><span><i class="tl-t"></i>Woche 3 bis 6: der Test, jede Woche gelesen</span></div>
       </div>
 '''),

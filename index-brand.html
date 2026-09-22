@@ -8,11 +8,11 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 
-<link rel="stylesheet" href="assets/master.css?v=108">
+<link rel="stylesheet" href="assets/master.css?v=111">
 <link rel="stylesheet" href="https://use.typekit.net/udf8wjj.css">
-<link rel="stylesheet" href="assets/brand.css?v=108">
-<script src="assets/brand.js?v=108" defer></script>
-<script src="assets/master.js?v=108" defer></script>
+<link rel="stylesheet" href="assets/brand.css?v=111">
+<script src="assets/brand.js?v=111" defer></script>
+<script src="assets/master.js?v=111" defer></script>
 </head>
 <body style="background-color:#0A0A0A" class="brand">
 
@@ -84,7 +84,17 @@
 </nav>
 
 
-<main>
+<main class="apl">
+
+  <!-- KAPITEL-LEISTE -->
+  <nav class="chapnav" aria-label="Kapitel">
+    <span class="cn-title">ad.boutique</span>
+    <a href="#work">Work</a>
+    <a href="#leistungen">Leistungen</a>
+    <a href="#team">Team</a>
+    <a class="cn-cta" href="#kontakt">Kontakt</a>
+  </nav>
+
 
   <!-- 01, SPLIT-HERO -->
   <section class="hero" data-bg="#0f0f0f" data-fg="light">
@@ -119,6 +129,7 @@
         <span class="rl"><span><i>Kein Zufall.</i></span></span>
       </h1>
       <p class="sub" data-fade>Wir bauen Marken und Kampagnen, die messbar verkaufen. Mit Skin in the Game: Wir gewinnen nur, wenn Sie gewinnen.</p>
+      <div class="dotline" data-fade style="--i:1"><span>strategie</span><span>creative</span><span>digital</span><span>growth</span></div>
       <div class="hbtns" data-fade style="--i:2">
         <a class="btn btn-i" href="work.html">Unsere Arbeit</a>
         <a class="btn btn-o" href="index.html#kontakt">Strategiegespräch</a>
@@ -129,6 +140,7 @@
   <!-- 02, THESE (Keyword-Scrub) -->
   <section class="sec fg-dark thesis" data-bg="#0f0f0f" data-fg="light">
     <div class="wrap">
+      <div class="actring" aria-hidden="true"></div>
       <span class="label">Wofür wir stehen</span>
       <p class="serif" data-scrub>Wir lieben es, <b>Marken</b> zum Leben zu erwecken, <b>E-Commerce</b> zu skalieren, an <b>Performance-Kampagnen</b> zu tüfteln und <b>Content</b> zu bauen, der verkauft. Aber fertig sind wir erst, wenn <b>Ihre Zahlen</b> es beweisen.</p>
     </div>
@@ -139,14 +151,14 @@
     <div class="wrap">
       <span class="label sticky-l" style="color:var(--grey-dark)">Zahlen & Fakten</span>
       <div class="stat" data-fade><div class="sv num serif">5,87×</div><div class="sl">Durchschnittlicher ROAS über alle Accounts</div></div>
-      <div class="stat" data-fade><div class="sv num serif">€ 16,7 Mio.</div><div class="sl">Verwaltetes Ad-Budget, jeder Euro zurechenbar</div></div>
-      <div class="stat" data-fade><div class="sv num serif">50+</div><div class="sl">Projekte in Commerce, Finance und Real Estate</div></div>
-      <div class="stat" data-fade><div class="sv num serif">25+</div><div class="sl">Kunden, von denen die meisten wiederkommen</div></div>
+      <div class="stat" data-fade><div class="sv num serif">€ 16,7 Mio.</div><div class="sl">Verwaltetes Ad-Budget, jeder Euro zurechenbar</div><div class="dotgraph" data-total="167" data-value="167" style="--cols:24" aria-hidden="true"></div><div class="dotcapmini">Ein Punkt sind € 100.000</div></div>
+      <div class="stat" data-fade><div class="sv num serif">50+</div><div class="sl">Projekte in Commerce, Finance und Real Estate</div><div class="dotgraph" data-total="50" data-value="50" style="--cols:25" aria-hidden="true"></div><div class="dotcapmini">Ein Punkt ein Projekt</div></div>
+      <div class="stat" data-fade><div class="sv num serif">25+</div><div class="sl">Kunden, von denen die meisten wiederkommen</div><div class="dotgraph" data-total="25" data-value="25" style="--cols:25" aria-hidden="true"></div><div class="dotcapmini">Ein Punkt ein Kunde</div></div>
     </div>
   </section>
 
   <!-- 04, WORK-TEASER -->
-  <section class="sec fg-light bg-paper" data-bg="#f4f3ec" data-fg="dark">
+  <section id="work" class="sec fg-light bg-paper" data-bg="#f4f3ec" data-fg="dark">
     <div class="wrap">
       <div class="whead">
         <h2 class="disp" data-lines><span class="rl"><span>Die Beweise.</span></span></h2>
@@ -268,7 +280,7 @@
   </section>
 
   <!-- 06, TEAM -->
-  <section class="sec fg-light team-int bg-paper" data-bg="#f4f3ec" data-fg="dark">
+  <section id="team" class="sec fg-light team-int bg-paper" data-bg="#f4f3ec" data-fg="dark">
     <div class="wrap">
       <h2 class="dispn" data-lines>
         <span class="rl"><span>Wir gewinnen nur</span></span>
@@ -287,6 +299,7 @@
   <!-- 07, KONTAKT-CTA -->
   <section class="sec fg-light bg-cream" data-bg="#e9e8df" data-fg="dark" id="kontakt">
     <div class="wrap">
+      <div class="actring" aria-hidden="true"></div>
       <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:clamp(30px,4vw,54px)">Reden wir</span>
       <div class="ctarows">
         <a class="cr" href="kontakt.html?w=Strategie-Session&from=index">Strategiegespräch vereinbaren

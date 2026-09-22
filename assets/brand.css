@@ -246,6 +246,14 @@ canvas.dotfield { cursor: pointer; }
 .tldots i.b.on { background: var(--paper); }
 .tldots i.g.on { background: rgba(244,243,236,0.22); }
 .tldots i.t.on { background: var(--lime); }
+.tldots i.e.on { background: var(--lime); box-shadow: 0 0 0 2px var(--ink), 0 0 0 4px var(--lime); }
+.tllegend .tl-e { background: var(--lime); box-shadow: 0 0 0 1.5px var(--ink), 0 0 0 3px var(--lime); }
+/* Zahlen der Startseite: unter der grossen Zahl ihre Einheiten als Punkte */
+.stat .dotgraph { margin: 22px auto 0; max-width: 420px; gap: 6px; }
+.stat .dotgraph i { transform: scale(0.6); }
+.stat .dotcapmini { font-size: 12px; color: var(--grey-dark); margin-top: 12px; }
+.brand .team-int .ti img { filter: grayscale(1) contrast(1.04); transition: filter 0.6s ease; }
+.brand .team-int .ti:hover img { filter: none; }
 .tllegend { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 14px; font-size: 12px; color: var(--grey); }
 .tllegend i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; vertical-align: 1px; box-sizing: border-box; }
 .tllegend .tl-h { border: 2px solid var(--lime); } .tllegend .tl-b { background: var(--paper); } .tllegend .tl-t { background: var(--lime); }
@@ -264,7 +272,11 @@ canvas.dotfield { cursor: pointer; }
 .sprog b { position: absolute; left: -2px; width: 6px; height: 6px; border-radius: 50%; background: rgba(15,15,15,0.28); transition: background-color 0.3s ease, transform 0.3s ease; }
 .sprog b.on { background: var(--lime); box-shadow: 0 0 0 1px var(--ink); transform: scale(1.3); }
 body:not(.on-light) .sprog b { background: rgba(244,243,236,0.35); }
-@media (max-width: 860px) { .ratedots { min-height: 90px; } }
+@media (max-width: 860px) {
+  .ratedots { min-height: 90px; }
+  /* Kein seitliches Wackeln am Telefon: clip statt hidden, damit sticky und Scroll-Ereignisse unberuehrt bleiben */
+  html { overflow-x: clip; }
+}
 
 /* ---------- Punkt-Graphen: jede Einheit ein Punkt ---------- */
 .dotgraph { display: grid; grid-template-columns: repeat(var(--cols, 10), 1fr); gap: clamp(7px, 1vw, 13px); max-width: 440px; }

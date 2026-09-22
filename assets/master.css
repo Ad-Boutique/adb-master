@@ -1979,7 +1979,13 @@ body.branchopen .bbtn::after { background: var(--ink); }
 @media (max-width: 900px) {
   .tell { grid-template-columns: 1fr; }
   /* transform: none, sonst rutscht die Zahl um die halbe Hoehe nach oben in das, was davor steht */
-  .tell .tfix { position: static; order: -1; text-align: left; margin-bottom: 20px; transform: none; }
+  /* Am Telefon bleibt die grosse Zahl oben kleben und wechselt mit den Stationen, wie am Desktop.
+     Kompakter: Zahl kleiner, Zeile darunter, Grund in Papierfarbe, damit der Text darunter durchlaeuft. */
+  .tell .tfix { position: sticky; top: 64px; z-index: 3; order: -1; text-align: left; margin: 0 0 20px; padding: 12px 0 14px; transform: none; background: var(--paper); border-bottom: 1px solid var(--line-l); }
+  .apl .tell .tfix { top: 104px; }
+  .tell .tfix .tv { font-size: clamp(40px, 12vw, 56px); line-height: 1; }
+  .tell .tfix .tl { margin-top: 8px; font-size: 12.5px; max-width: none; }
+  .fg-dark .tell .tfix { background: var(--ink); border-bottom-color: var(--line-d); }
   .tell .tl { margin-left: 0; }
 }
 
