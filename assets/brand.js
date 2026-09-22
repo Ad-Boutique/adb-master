@@ -54,9 +54,37 @@
     }, 1050);
   };
 
+  /* Beim Verlassen: eine Wolke aus Punkten sammelt sich zur Mitte, wo der Punkt wartet */
+  function cloud() {
+    if (reduced) return;
+    var cv = document.createElement("canvas");
+    cv.style.cssText = "position:fixed;inset:0;width:100%;height:100%;z-index:205;pointer-events:none";
+    var dpr = Math.min(2, window.devicePixelRatio || 1), W = window.innerWidth, H = window.innerHeight;
+    cv.width = W * dpr; cv.height = H * dpr; body.appendChild(cv);
+    var c = cv.getContext("2d"); c.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var ps = [];
+    for (var i = 0; i < 140; i++) {
+      var ang = Math.random() * Math.PI * 2, rad = Math.max(W, H) * (0.35 + Math.random() * 0.6);
+      ps.push({ x: W / 2 + Math.cos(ang) * rad, y: H / 2 + Math.sin(ang) * rad, r: 2 + Math.random() * 3.5, d: Math.random() * 0.25 });
+    }
+    var t0 = performance.now();
+    (function draw(now) {
+      var t = (now - t0) / 1000; c.clearRect(0, 0, W, H);
+      var alive = false;
+      ps.forEach(function (p) {
+        var q = Math.max(0, Math.min(1, (t - p.d) / 0.6)); if (q < 1) alive = true;
+        var e = q * q * (3 - 2 * q), x = p.x + (W / 2 - p.x) * e, y = p.y + (H / 2 - p.y) * e;
+        c.beginPath(); c.arc(x, y, p.r * (1 - e * 0.6), 0, Math.PI * 2);
+        c.fillStyle = "#d7ff45"; c.fill(); c.lineWidth = 1; c.strokeStyle = "rgba(15,15,15,0.7)"; c.stroke();
+      });
+      if (alive) requestAnimationFrame(draw); else setTimeout(function () { cv.remove(); }, 200);
+    })(t0);
+  }
+
   window.ADB_LEAVE = function (pt, href) {
     var t = target();
     body.classList.remove("mready");
+    cloud();
     dot.classList.remove("pulse");
     dot.style.transition = "none";
     dot.style.opacity = "1";
@@ -152,6 +180,23 @@
     var lime = parseInt(cv.getAttribute("data-lime"), 10) || 0;
     var ctx = cv.getContext("2d"), dots = [], W = 0, H = 0, dpr = Math.min(2, window.devicePixelRatio || 1);
     var mx = -9999, my = -9999, start = 0, seen = false, running = false, fine = window.matchMedia("(pointer: fine)").matches;
+    /* Antippen: die Lime-Punkte sammeln sich zur Zahl (data-form), zweites Antippen loest sie wieder */
+    var formText = cv.getAttribute("data-form"), formed = false, form = 0, formT = 0;
+    function targets() {
+      if (!formText || !W) return;
+      var oc = document.createElement("canvas"); oc.width = Math.round(W); oc.height = Math.round(H);
+      var o = oc.getContext("2d");
+      o.font = "400 " + Math.round(H * 0.92) + 'px "amandine", Georgia, serif';
+      o.textAlign = "center"; o.textBaseline = "middle"; o.fillStyle = "#000";
+      o.fillText(formText, W / 2, H / 2 + H * 0.04);
+      var img = o.getImageData(0, 0, oc.width, oc.height).data, pts = [];
+      for (var y = 0; y < oc.height; y += 3) for (var x = 0; x < oc.width; x += 3) if (img[(y * oc.width + x) * 4 + 3] > 128) pts.push([x, y]);
+      var limeDots = dots.filter(function (d) { return d.lime; });
+      if (!pts.length) return;
+      pts.sort(function (a, b) { return a[0] - b[0] || a[1] - b[1]; });
+      for (var i = 0; i < limeDots.length; i++) { var k = Math.floor(i / limeDots.length * pts.length); limeDots[i].tx = pts[k][0]; limeDots[i].ty = pts[k][1]; }
+    }
+    if (formText) cv.addEventListener("click", function () { formed = !formed; formT = performance.now(); wake(); });
     function layout() {
       var r = cv.getBoundingClientRect(); W = r.width; H = r.height;
       if (!W || !H) return;
@@ -171,21 +216,28 @@
       var t = (now - start) / 1000;
       ctx.clearRect(0, 0, W, H);
       var settled = true;
+      /* Formfortschritt: hin zur Zahl oder zurueck ins Raster, je 0,8 s */
+      var target = formed ? 1 : 0, fdt = Math.min(1, (now - formT) / 800);
+      var formNow = formed ? fdt : 1 - fdt;
+      if (Math.abs(formNow - target) > 0.001) settled = false;
+      form = formNow;
+      var ef = ease(form);
       for (var i = 0; i < dots.length; i++) {
         var d = dots[i];
         var p = reduced ? 1 : Math.max(0, Math.min(1, (t - d.d) / 1.1));
         if (p < 1) settled = false;
         var e = ease(p), x = d.sx + (d.x - d.sx) * e, y = d.sy + (d.y - d.sy) * e, r = d.r;
-        if (fine && p >= 1) {
+        if (d.lime && d.tx != null && form > 0) { x += (d.tx - x) * ef; y += (d.ty - y) * ef; r = d.r * (1 + ef * 0.25); }
+        if (fine && p >= 1 && form === 0) {
           var dx = mx - x, dy = my - y, dist = Math.sqrt(dx * dx + dy * dy), R = 150;
           if (dist < R) { var f = 1 - dist / R; x += dx / (dist || 1) * f * 12; y += dy / (dist || 1) * f * 12; r = d.r * (1 + f * 0.9); }
         }
         ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
         if (d.lime) { ctx.fillStyle = "#d7ff45"; ctx.fill(); ctx.lineWidth = 1; ctx.strokeStyle = "rgba(15,15,15,0.6)"; ctx.stroke(); }
-        else { ctx.fillStyle = "rgba(15,15,15,0.16)"; ctx.fill(); }
+        else { ctx.fillStyle = "rgba(15,15,15," + (0.16 * (1 - ef * 0.7)).toFixed(3) + ")"; ctx.fill(); }
       }
       /* nach dem Sammeln nur weiterzeichnen, wenn ein Cursor da ist, den es zu folgen gilt */
-      if (!settled || (fine && mx > -9000)) requestAnimationFrame(frame); else running = false;
+      if (!settled || (fine && mx > -9000 && form === 0)) requestAnimationFrame(frame); else running = false;
     }
     function wake() { if (!running) { running = true; requestAnimationFrame(frame); } }
     if (fine) {
@@ -193,10 +245,73 @@
       cv.addEventListener("pointerleave", function () { mx = -9999; my = -9999; wake(); });
     }
     var io = new IntersectionObserver(function (en) {
-      en.forEach(function (x) { if (x.isIntersecting && !seen) { seen = true; layout(); wake(); } });
+      en.forEach(function (x) { if (x.isIntersecting && !seen) { seen = true; layout(); targets(); wake(); } });
     }, { rootMargin: "0px 0px -10% 0px" });
     io.observe(cv);
-    window.addEventListener("resize", function () { if (seen) { layout(); start = 0; wake(); } });
+    window.addEventListener("resize", function () { if (seen) { layout(); targets(); start = 0; wake(); } });
+  });
+
+  /* ---------- Budget-Regler: jeder Punkt eine Anfrage, gerechnet mit einem echten Preis je Anfrage ---------- */
+  Array.prototype.slice.call(document.querySelectorAll(".rate")).forEach(function (box) {
+    var cpl = parseFloat(box.getAttribute("data-cpl")) || 10, slider = box.querySelector(".rateslider"), grid = box.querySelector(".ratedots");
+    var vEl = box.querySelector(".ratev"), nEl = box.querySelector(".raten");
+    if (!slider || !grid) return;
+    var maxN = Math.round(parseFloat(slider.max) / cpl);
+    var frag = document.createDocumentFragment();
+    for (var i = 0; i < maxN; i++) frag.appendChild(document.createElement("i"));
+    grid.appendChild(frag);
+    var cells = grid.children, cur = -1;
+    function euro(v) { return "€ " + Math.round(v).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
+    function render() {
+      var v = parseFloat(slider.value), n = Math.round(v / cpl);
+      vEl.textContent = euro(v);
+      nEl.innerHTML = "<b>" + n + "</b>Anfragen";
+      if (n === cur) return;
+      cur = n;
+      for (var k = 0; k < cells.length; k++) cells[k].classList.toggle("on", k < n);
+    }
+    slider.addEventListener("input", render);
+    var io2 = new IntersectionObserver(function (en) { en.forEach(function (x) { if (x.isIntersecting) { render(); io2.unobserve(box); } }); }, { rootMargin: "0px 0px -15% 0px" });
+    io2.observe(box);
+  });
+
+  /* ---------- Zeitleiste: 42 Tage als Punkte, gefuellt beim Ankommen ---------- */
+  Array.prototype.slice.call(document.querySelectorAll(".tline .tldots")).forEach(function (row) {
+    var frag = document.createDocumentFragment();
+    for (var i = 0; i < 42; i++) {
+      var d = document.createElement("i");
+      d.className = i === 0 ? "h" : (i < 10 ? "b" : (i < 14 ? "g" : "t"));
+      frag.appendChild(d);
+    }
+    row.appendChild(frag);
+    var io3 = new IntersectionObserver(function (en) {
+      en.forEach(function (x) {
+        if (!x.isIntersecting) return;
+        Array.prototype.forEach.call(row.children, function (d, k) { setTimeout(function () { d.classList.add("on"); }, reduced ? 0 : k * 45); });
+        io3.unobserve(row);
+      });
+    }, { rootMargin: "0px 0px -15% 0px" });
+    io3.observe(row);
+  });
+
+  /* ---------- Fit als Punktetest: Aussagen antippen, ein Satz antwortet ---------- */
+  Array.prototype.slice.call(document.querySelectorAll(".fcard--yes")).forEach(function (card) {
+    var items = Array.prototype.slice.call(card.querySelectorAll("li"));
+    if (!items.length) return;
+    var res = document.createElement("div"); res.className = "fitres";
+    var dotsHtml = ""; for (var i = 0; i < items.length; i++) dotsHtml += "<i></i>";
+    res.innerHTML = '<span class="frdots">' + dotsHtml + '</span><span class="frtxt">Tippen Sie an, was auf Sie zutrifft.</span>';
+    card.appendChild(res);
+    var frd = res.querySelectorAll(".frdots i"), txt = res.querySelector(".frtxt");
+    function update() {
+      var n = items.filter(function (li) { return li.classList.contains("hit"); }).length, all = items.length;
+      for (var k = 0; k < frd.length; k++) frd[k].classList.toggle("on", k < n);
+      if (n === 0) txt.innerHTML = "Tippen Sie an, was auf Sie zutrifft.";
+      else if (n === all) txt.innerHTML = "<b>" + n + " von " + all + ".</b> Wir sollten sprechen.";
+      else if (n >= all / 2) txt.innerHTML = "<b>" + n + " von " + all + ".</b> Das sieht nach einem Fit aus, der Rest klärt sich im Gespräch.";
+      else txt.innerHTML = "<b>" + n + " von " + all + ".</b> Noch wenig Überschneidung. Ein Gespräch kostet trotzdem nichts.";
+    }
+    items.forEach(function (li) { li.addEventListener("click", function () { li.classList.toggle("hit"); update(); }); });
   });
 
   /* ---------- Stationen: Punktzeile unter der grossen Zahl folgt der aktiven Station ---------- */
@@ -212,6 +327,22 @@
   /* ---------- Scroll-Fortschritt als Punkt auf gepunkteter Bahn ---------- */
   var prog = document.createElement("div"); prog.className = "sprog"; prog.setAttribute("aria-hidden", "true");
   var pdot = document.createElement("i"); prog.appendChild(pdot); body.appendChild(prog);
+  /* Kapitel-Marken auf der Bahn: die Ziele der Kapitel-Leiste, gelesen werden sie Lime */
+  var marks = Array.prototype.slice.call(document.querySelectorAll(".chapnav a[href^='#']:not(.cn-cta)")).map(function (a) {
+    var t = document.getElementById(a.getAttribute("href").slice(1));
+    if (!t) return null;
+    var b = document.createElement("b"); prog.appendChild(b);
+    return { t: t, el: b, f: 0 };
+  }).filter(Boolean);
+  function placeMarks() {
+    var max = document.documentElement.scrollHeight - window.innerHeight, h = prog.offsetHeight - 12;
+    marks.forEach(function (m) {
+      m.f = max > 0 ? Math.max(0, Math.min(1, (m.t.getBoundingClientRect().top + window.pageYOffset - window.innerHeight * 0.45) / max)) : 0;
+      m.el.style.top = (m.f * h + 3).toFixed(1) + "px";
+    });
+  }
+  setTimeout(placeMarks, 800);
+  window.addEventListener("resize", placeMarks);
 
   /* ---------- Cursor-Zustaende: Fokus ueber Bildern, Target beim Klick (Expand ueber Links setzt master.js als cur-hov) ---------- */
   if (window.matchMedia("(pointer: fine)").matches) {
@@ -254,6 +385,7 @@
     var max = document.documentElement.scrollHeight - window.innerHeight;
     var p = max > 0 ? Math.max(0, Math.min(1, window.pageYOffset / max)) : 0;
     pdot.style.transform = "translateY(" + (p * (prog.offsetHeight - 12)).toFixed(1) + "px)";
+    marks.forEach(function (m) { m.el.classList.toggle("on", p >= m.f); });
     requestAnimationFrame(brandTick);
   }
   requestAnimationFrame(brandTick);

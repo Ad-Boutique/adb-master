@@ -89,8 +89,8 @@ SERVICES = {
    drop_proofone=False,
    # Punktfeld im Hero: 489 Anfragen fuer ein Neubauprojekt, 262 aus einem einzigen Satz (Case Premium-Neubau)
    dotfield='''      <div class="dotfield-wrap" data-fade style="--i:3">
-        <canvas class="dotfield" data-total="489" data-lime="262" aria-label="489 Punkte, 262 davon in Lime"></canvas>
-        <p class="dotfield-cap"><b>489 Anfragen</b> für ein Neubauprojekt in Wien, <b>262 davon aus einem einzigen Satz</b>. Der Satz entscheidet, im Feed wie in der Antwort. Jeder Punkt eine Anfrage.</p>
+        <canvas class="dotfield" data-total="489" data-lime="262" data-form="262" aria-label="489 Punkte, 262 davon in Lime"></canvas>
+        <p class="dotfield-cap"><b>489 Anfragen</b> für ein Neubauprojekt in Wien, <b>262 davon aus einem einzigen Satz</b>. Der Satz entscheidet, im Feed wie in der Antwort. Jeder Punkt eine Anfrage.<span class="dothint">Antippen</span></p>
       </div>
 ''',
    graph='''  <!-- PUNKT-GRAPHEN: jede Einheit ein Punkt -->
@@ -112,6 +112,11 @@ SERVICES = {
           <div class="row hi"><span class="rl">Mit uns</span><span class="dots" data-n="42" data-on="40"></span><span class="rv">4,02</span></div>
         </div>
         <p class="dotnote" data-fade>Premium-Consumer-Brand, ein Punkt sind 0,1 ROAS. 75 Prozent über der Benchmark in der lautesten Woche des Jahres.</p>
+        <div class="dotbars" data-fade>
+          <div class="row"><span class="rl">Investments vorher</span><span class="dots" data-n="50" data-on="16"></span><span class="rv">16</span></div>
+          <div class="row hi"><span class="rl">Investments mit uns</span><span class="dots" data-n="50" data-on="50"></span><span class="rv">50</span></div>
+        </div>
+        <p class="dotnote" data-fade>Crowdinvesting-Plattform, gleiches Budget, ein Punkt ein Investment. ROAS 8,75 statt 2,14: Struktur statt mehr Geld.</p>
       </div>
     </div>
   </section>
@@ -120,7 +125,30 @@ SERVICES = {
    chap=[("Problem", "problem", "  <!-- AKT 1: DAS PROBLEM -->\n  <section class=\"dotzoom sec fg-dark kapsec kapsec--dark\""),
          ("Nutzen", "nutzen", "  <!-- AKT 1: THESE UND NUTZEN -->\n  <section class=\"sec fg-light bg-cream\""),
          ("Beweis", "beweis", "  <!-- 06, PROOF 2: ERGEBNISSE -->\n  <section class=\"sec fg-light bg-paper\""),
-         ("Cases", "cases", "  <!-- 07, CASES -->\n  <section class=\"sec fg-light bg-cream\"")]),
+         ("Cases", "cases", "  <!-- 07, CASES -->\n  <section class=\"sec fg-light bg-cream\"")],
+   rate='''  <!-- BUDGET-REGLER: jeder Punkt eine Anfrage -->
+  <section class="sec fg-light bg-cream ratesec" data-bg="#e9e8df" data-fg="dark">
+    <div class="wrap lchap">
+      <div>
+        <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:16px">Rechnen Sie selbst</span>
+        <h2 class="dispn" data-lines style="font-size:clamp(30px,3.6vw,58px)"><span class="rl"><span>Ein Budget,</span></span><span class="rl"><span><i>in Anfragen gezählt.</i></span></span></h2>
+        <p class="lt3" data-fade style="margin-top:22px">Ziehen Sie den Regler. Jeder Punkt ist eine Anfrage, gerechnet mit dem Preis je Anfrage aus dem Neubauprojekt, € 11,77. Werte aus ChatGPT gibt es erst nach Ihrem Test, deshalb rechnen wir mit einer Zahl, die wir haben.</p>
+      </div>
+      <div class="rate" data-cpl="11.77" data-fade>
+        <div class="ratehead"><span class="ratev">€ 5.755</span><span class="raten"><b>489</b>Anfragen</span></div>
+        <input type="range" class="rateslider" min="1000" max="12000" step="50" value="5755" aria-label="Mediabudget in Euro">
+        <div class="ratedots" aria-hidden="true"></div>
+        <p class="dotnote">Beispielrechnung, kein Angebot. Der echte Preis je Anfrage hängt von Branche, Motiv und Strecke ab.</p>
+      </div>
+    </div>
+  </section>
+
+''',
+   tline='''      <div class="tline" data-fade>
+        <div class="tldots" aria-label="42 Tage als Punkte"></div>
+        <div class="tllegend"><span><i class="tl-h"></i>Heute: Anfrage und Einschätzung</span><span><i class="tl-b"></i>Tag 2 bis 10: Konto, Karten, Seite</span><span><i class="tl-t"></i>Woche 3 bis 6: der Test, jede Woche gelesen</span></div>
+      </div>
+'''),
 }
 
 
@@ -150,8 +178,11 @@ def service(slug, c):
     for anchor in c["rings"]:
         center = ' style="margin:0 auto 26px"' if "text-align:center" in anchor else ""
         h = rep(h, anchor, '<div class="actring" aria-hidden="true"%s></div>\n          ' % center + anchor, "Akt-Marke")
-    # Punkt-Graphen vor den Cases
-    h = rep(h, "  <!-- 07, CASES -->", c["graph"] + "  <!-- 07, CASES -->", "Punkt-Graphen")
+    # Punkt-Graphen vor den Cases, danach der Budget-Regler, wo es ihn gibt
+    h = rep(h, "  <!-- 07, CASES -->", c["graph"] + c.get("rate", "") + "  <!-- 07, CASES -->", "Punkt-Graphen")
+    # Zeitleiste im Ablauf
+    if c.get("tline"):
+        h = rep(h, '      <div class="oplist oplist--steps">', c["tline"] + '      <div class="oplist oplist--steps">', "Zeitleiste")
     out = slug + "-brand.html"
     open(out, "w", encoding="utf-8").write(h)
     print(out, len(h))

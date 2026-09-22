@@ -214,6 +214,54 @@ body:not(.on-light) .sprog { background-image: radial-gradient(circle, rgba(244,
 .brand .nopt.sel .plus { background: var(--lime); box-shadow: 0 0 0 4px rgba(215,255,69,0.3); }
 @media (max-width: 860px) { .dotfield { height: 200px; } }
 
+/* ============================================================
+   Punktgrafik weitergedacht: Regler, Zeitleiste, Fit-Test, Scroll-Marken, Zahl aus Punkten
+   ============================================================ */
+/* Punktfeld: antippen sammelt die Lime-Punkte zur Zahl */
+canvas.dotfield { cursor: pointer; }
+.dothint { display: inline-block; margin-left: 10px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--grey-dark); }
+.dothint::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 1px var(--ink); margin-right: 8px; vertical-align: 1px; }
+/* Budget-Regler: jeder Punkt eine Anfrage */
+.rate { max-width: 560px; }
+.ratehead { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; margin-bottom: 14px; }
+.ratehead .ratev { font-family: var(--f-serif); font-size: clamp(30px, 3vw, 46px); line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.ratehead .raten { font-size: 13px; font-weight: 700; letter-spacing: 0.04em; color: var(--ink); }
+.ratehead .raten b { font-family: var(--f-serif); font-weight: 400; font-size: clamp(22px, 2vw, 30px); letter-spacing: -0.01em; margin-right: 6px; }
+.rateslider { -webkit-appearance: none; appearance: none; width: 100%; height: 2px; background: rgba(15,15,15,0.25); border-radius: 2px; outline: none; margin: 10px 0 22px; }
+.rateslider::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--lime); border: 1.5px solid var(--ink); cursor: grab; box-shadow: 0 0 0 5px rgba(215,255,69,0.25); }
+.rateslider::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: var(--lime); border: 1.5px solid var(--ink); cursor: grab; }
+.ratedots { display: grid; grid-template-columns: repeat(auto-fill, 9px); gap: 5px; min-height: 120px; }
+.ratedots i { width: 9px; height: 9px; border-radius: 50%; background: rgba(15,15,15,0.08); transform: scale(0.5); transition: background-color 0.25s ease, transform 0.35s var(--e-out); }
+.ratedots i.on { background: var(--lime); box-shadow: inset 0 0 0 1px rgba(15,15,15,0.5); transform: none; }
+/* Zeitleiste: sechs Wochen als 42 Punkte, auf der dunklen Ablauf-Sektion */
+.tline { margin: 0 0 clamp(30px, 4vw, 50px); }
+.tldots { display: flex; flex-wrap: wrap; gap: 7px; }
+.tldots i { width: 10px; height: 10px; border-radius: 50%; background: rgba(244,243,236,0.14); transform: scale(0.5); transition: background-color 0.3s ease, transform 0.4s var(--e-out), box-shadow 0.3s ease; }
+.tldots i.on { transform: none; }
+.tldots i.h.on { background: transparent; box-shadow: inset 0 0 0 2px var(--lime); }
+.tldots i.b.on { background: var(--paper); }
+.tldots i.g.on { background: rgba(244,243,236,0.22); }
+.tldots i.t.on { background: var(--lime); }
+.tllegend { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 14px; font-size: 12px; color: var(--grey); }
+.tllegend i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; vertical-align: 1px; box-sizing: border-box; }
+.tllegend .tl-h { border: 2px solid var(--lime); } .tllegend .tl-b { background: var(--paper); } .tllegend .tl-t { background: var(--lime); }
+/* Fit als Punktetest: Aussagen antippen, die Punkte fuellen sich, ein Satz antwortet */
+.brand .fcard--yes li { cursor: pointer; user-select: none; }
+.brand .fcard--yes li .fdot { background: transparent; border: 1.5px solid var(--ink); box-sizing: border-box; transition: background-color 0.3s ease, box-shadow 0.3s ease; }
+.brand .fcard--yes li.hit .fdot { background: var(--lime); box-shadow: 0 0 0 4px rgba(215,255,69,0.3); }
+.fitres { margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--line-l); display: flex; align-items: center; gap: 14px; font-size: 14px; line-height: 1.45; }
+.fitres .frdots { display: flex; gap: 6px; flex: 0 0 auto; }
+.fitres .frdots i { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--ink); box-sizing: border-box; transition: background-color 0.3s ease; }
+.fitres .frdots i.on { background: var(--lime); }
+.fitres .frtxt { color: var(--grey-dark); }
+.fitres .frtxt b { color: var(--ink); font-weight: 600; }
+.brand .fitcards .fcard--yes .fh::after { content: "  ·  antippen"; text-transform: none; letter-spacing: 0.02em; opacity: 0.6; }
+/* Scroll-Marken: die Bahn rechts merkt sich die Kapitel */
+.sprog b { position: absolute; left: -2px; width: 6px; height: 6px; border-radius: 50%; background: rgba(15,15,15,0.28); transition: background-color 0.3s ease, transform 0.3s ease; }
+.sprog b.on { background: var(--lime); box-shadow: 0 0 0 1px var(--ink); transform: scale(1.3); }
+body:not(.on-light) .sprog b { background: rgba(244,243,236,0.35); }
+@media (max-width: 860px) { .ratedots { min-height: 90px; } }
+
 /* ---------- Punkt-Graphen: jede Einheit ein Punkt ---------- */
 .dotgraph { display: grid; grid-template-columns: repeat(var(--cols, 10), 1fr); gap: clamp(7px, 1vw, 13px); max-width: 440px; }
 .dotgraph i {
