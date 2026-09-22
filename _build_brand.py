@@ -63,7 +63,7 @@ def service():
                    '<span class="label" style="color:var(--champ-deep);display:block;margin-bottom:clamp(16px,1.8vw,24px)">Bevor wir starten</span>']:
         assert h.count(anchor) == 1, anchor[:60]
         center = ' style="margin:0 auto 26px"' if "text-align:center" in anchor else ""
-        h = h.replace(anchor, '<div class="pring" aria-hidden="true"%s></div>\n          ' % center + anchor)
+        h = h.replace(anchor, '<div class="actring" aria-hidden="true"%s></div>\n          ' % center + anchor)
     # Punkt-Graphen vor den Cases: jede Anfrage ein Punkt, jeder Euro zwei Punkte
     sec = '''  <!-- PUNKT-GRAPHEN: jede Einheit ein Punkt -->
   <section class="sec fg-light bg-paper dotsec" data-bg="#f4f3ec" data-fg="dark">

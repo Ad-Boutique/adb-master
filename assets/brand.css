@@ -151,9 +151,9 @@ body.brand.menuopen .mbtn::after { background: var(--lime); }
 /* Wortmarke: der Punkt ist Lime */
 .brand .fword i, .brand .pt .ptw i { color: var(--lime); }
 /* Akt-Marke: die gepunktete Ringform aus dem Board, dreht sich langsam */
-.pring { width: 26px; height: 26px; border-radius: 50%; border: 2px dotted var(--ink); margin-bottom: 26px; position: relative; animation: pspin 40s linear infinite; }
-.pring::after { content: ""; position: absolute; inset: 8px; border-radius: 50%; background: var(--lime); }
-.fg-dark .pring { border-color: var(--lime); } .fg-dark .pring::after { background: var(--lime); }
+.actring { width: 26px; height: 26px; border-radius: 50%; border: 2px dotted var(--ink); margin-bottom: 26px; position: relative; animation: pspin 40s linear infinite; }
+.actring::after { content: ""; position: absolute; inset: 8px; border-radius: 50%; background: var(--lime); }
+.fg-dark .actring { border-color: var(--lime); } .fg-dark .actring::after { background: var(--lime); }
 @keyframes pspin { to { transform: rotate(360deg); } }
 /* Stationen: Punktzeile zeigt, wo man ist */
 .tdots { display: flex; gap: 8px; justify-content: flex-end; margin-top: 18px; }
