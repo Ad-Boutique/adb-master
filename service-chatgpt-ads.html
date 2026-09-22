@@ -8,8 +8,8 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 
-<link rel="stylesheet" href="assets/master.css?v=100">
-<script src="assets/master.js?v=100" defer></script>
+<link rel="stylesheet" href="assets/master.css?v=103">
+<script src="assets/master.js?v=103" defer></script>
 </head>
 <body style="background-color:#F3EDE1" class="on-light">
 
@@ -334,32 +334,57 @@
     </div>
   </section>
 
-  <!-- GEGENSEITIGE PRUEFUNG -->
-  <section class="sec fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark" style="padding:clamp(90px,11vw,150px) 0">
+  <!-- GEGENSEITIGE PRUEFUNG, ZWEI KARTEN -->
+  <section class="sec fg-light bg-paper fitsec" data-bg="#F3EDE1" data-fg="dark">
     <div class="wrap">
-      <div class="fithead">
+      <div class="fithead fithead--v2">
         <div>
           <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:clamp(16px,1.8vw,24px)">Bevor wir starten</span>
           <h2 class="dispn fitH" data-lines><span class="rl"><span>Passt es?</span></span><span class="rl"><span>In beide Richtungen.</span></span></h2>
         </div>
         <p class="fitlead" data-fade>Der Kanal ist seit wenigen Wochen offen, die meisten Wettbewerber prüfen noch. Gleichzeitig gilt: Nicht jede Branche ist freigegeben. Wir prüfen das im ersten Gespräch, offen und in beide Richtungen.</p>
       </div>
-      <div class="fit" data-stagger>
-        <div class="fcol yes" data-fade><div class="fh">Wir passen zusammen, wenn</div>
+      <div class="fitcards" data-stagger>
+        <div class="fcard fcard--yes" data-fade><div class="fh">Wir passen zusammen, wenn</div>
           <ul>
-            <li>Shop mit klarem Produktversprechen, das man empfehlen kann</li>
-            <li>B2B und Software, wo Menschen erst fragen und dann kaufen</li>
-            <li>Gastro, Event, Reise, Bildung ohne Gesundheitsbezug</li>
-            <li>Plattformen und Marktplätze, auch für Immobilien</li>
+            <li><i class="fdot"></i>Shop mit klarem Produktversprechen, das man empfehlen kann</li>
+            <li><i class="fdot"></i>B2B und Software, wo Menschen erst fragen und dann kaufen</li>
+            <li><i class="fdot"></i>Gastro, Event, Reise, Bildung ohne Gesundheitsbezug</li>
+            <li><i class="fdot"></i>Plattformen und Marktplätze, auch für Immobilien</li>
           </ul>
         </div>
-        <div class="fcol no" data-fade><div class="fh">Wir sind die Falschen, wenn</div>
+        <div class="fcard fcard--no" data-fade><div class="fh">Wir sind die Falschen, wenn</div>
           <ul>
-            <li>Einzelne Wohnungen oder Objekte als Anzeigenziel</li>
-            <li>Finanzdienstleistungen ohne Freigabe von OpenAI</li>
-            <li>Gesundheit, Recht, Glücksspiel, Dating</li>
-            <li>Der Kanal soll in vier Wochen Google ersetzen</li>
+            <li><i class="fdot fdot--no"></i>Einzelne Wohnungen oder Objekte als Anzeigenziel</li>
+            <li><i class="fdot fdot--no"></i>Finanzdienstleistungen ohne Freigabe von OpenAI</li>
+            <li><i class="fdot fdot--no"></i>Gesundheit, Recht, Glücksspiel, Dating</li>
+            <li><i class="fdot fdot--no"></i>Der Kanal soll in vier Wochen Google ersetzen</li>
           </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAS ALS NAECHSTES PASSIERT (dunkles Kapitel, Zeilen werden beim Scrollen aktiv) -->
+  <section class="sec fg-dark nextsec" data-bg="#0E0E10" data-fg="light" style="background:#0E0E10">
+    <div class="wrap">
+      <span class="label" style="color:var(--champ);display:block;margin-bottom:clamp(24px,3vw,40px)">Was als Nächstes passiert</span>
+      <h2 class="dispn" data-lines style="font-size:clamp(32px,3.8vw,62px);margin-bottom:clamp(36px,4.4vw,60px)"><span class="rl"><span>Von der Anfrage zur ersten Karte.</span></span></h2>
+      <div class="oplist oplist--steps">
+        <div class="op">
+          <span class="owhen">Heute</span>
+          <span class="otitle">Anfrage und erste Einschätzung</span>
+          <span class="odesc">Branche, Angebot, Erwartung: zwei Minuten. Innerhalb eines Tages sagen wir Ihnen, ob Sie dort werben dürfen und ob sich ein Test lohnt.</span>
+        </div>
+        <div class="op">
+          <span class="owhen">Tag 2 bis 10</span>
+          <span class="otitle">Wir bauen Ihre Präsenz in der Antwort</span>
+          <span class="odesc">Das Konto bleibt in Ihrem Besitz. Wir schreiben die Situationen, in denen Ihr Angebot die Antwort ist, und bauen Karten, Seite und Messung.</span>
+        </div>
+        <div class="op">
+          <span class="owhen">Woche 3 bis 6</span>
+          <span class="otitle">Vier Wochen Test, eine klare Antwort</span>
+          <span class="odesc">Mehrere Karten laufen gegeneinander, wöchentlich lesen wir die Zahlen mit Ihnen. Am Ende wissen Sie, ob der Kanal für Sie trägt.</span>
         </div>
       </div>
     </div>
@@ -396,31 +421,6 @@
         <div class="qa aitem" data-fade>
           <button class="ahead q" type="button">Und wenn der Kanal nichts bringt? <span class="plus">+</span></button>
           <div class="abody"><div class="abody-in"><p>Dann steht das nach vier Wochen so im Report, mit der Empfehlung zu stoppen. Sie haben dann für überschaubares Geld eine Antwort, die Ihre Wettbewerber noch nicht haben.</p></div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WAS ALS NAECHSTES PASSIERT (dunkles Kapitel, Zeilen werden beim Scrollen aktiv) -->
-  <section class="sec fg-dark nextsec" data-bg="#0E0E10" data-fg="light" style="background:#0E0E10">
-    <div class="wrap">
-      <span class="label" style="color:var(--champ);display:block;margin-bottom:clamp(24px,3vw,40px)">Was als Nächstes passiert</span>
-      <h2 class="dispn" data-lines style="font-size:clamp(32px,3.8vw,62px);margin-bottom:clamp(36px,4.4vw,60px)"><span class="rl"><span>Von der Anfrage zur ersten Karte.</span></span></h2>
-      <div class="oplist oplist--steps">
-        <div class="op">
-          <span class="owhen">Heute</span>
-          <span class="otitle">Anfrage und erste Einschätzung</span>
-          <span class="odesc">Branche, Angebot, Erwartung: zwei Minuten. Innerhalb eines Tages sagen wir Ihnen, ob Sie dort werben dürfen und ob sich ein Test lohnt.</span>
-        </div>
-        <div class="op">
-          <span class="owhen">Tag 2 bis 10</span>
-          <span class="otitle">Wir bauen Ihre Präsenz in der Antwort</span>
-          <span class="odesc">Das Konto bleibt in Ihrem Besitz. Wir schreiben die Situationen, in denen Ihr Angebot die Antwort ist, und bauen Karten, Seite und Messung.</span>
-        </div>
-        <div class="op">
-          <span class="owhen">Woche 3 bis 6</span>
-          <span class="otitle">Vier Wochen Test, eine klare Antwort</span>
-          <span class="odesc">Mehrere Karten laufen gegeneinander, wöchentlich lesen wir die Zahlen mit Ihnen. Am Ende wissen Sie, ob der Kanal für Sie trägt.</span>
         </div>
       </div>
     </div>

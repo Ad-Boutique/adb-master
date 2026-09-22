@@ -995,6 +995,27 @@ def _fit(s):
            '        <span class="fcnum">%s</span>\n'
            '        <span class="fctxt">%s</span>\n'
            '      </div>\n') % (f.get("cap_v", ""), f.get("cap_t", "")) if f.get("cap_t") and f.get("cap_v") else ""
+    if s.get("flow") == "v2":
+        # Zwei Karten, eine hell, eine dunkel: der Ja-Nein-Kontrast ist die Form, nicht zwei gleiche Listen
+        yes2 = "\n            ".join('<li><i class="fdot"></i>%s</li>' % x for x in f["yes"])
+        no2 = "\n            ".join('<li><i class="fdot fdot--no"></i>%s</li>' % x for x in f["no"])
+        return ('  <!-- GEGENSEITIGE PRUEFUNG, ZWEI KARTEN -->\n'
+                '  <section class="sec fg-light bg-paper fitsec" data-bg="#F3EDE1" data-fg="dark">\n'
+                '    <div class="wrap">\n'
+                '      <div class="fithead fithead--v2">\n'
+                '        <div>\n'
+                '          <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:clamp(16px,1.8vw,24px)">%s</span>\n'
+                '          <h2 class="dispn fitH" data-lines>' + head + '</h2>\n'
+                '        </div>\n'
+                '        <p class="fitlead" data-fade>%s</p>\n'
+                '      </div>\n'
+                '      <div class="fitcards" data-stagger>\n'
+                '        <div class="fcard fcard--yes" data-fade><div class="fh">%s</div>\n          <ul>\n            %s\n          </ul>\n        </div>\n'
+                '        <div class="fcard fcard--no" data-fade><div class="fh">%s</div>\n          <ul>\n            %s\n          </ul>\n        </div>\n'
+                '      </div>\n'
+                '    </div>\n  </section>\n\n') % (f.get("label", "Bevor wir starten"), f["intro"],
+           f.get("yes_h", "Wir passen zusammen, wenn"), yes2,
+           f.get("no_h", "Wir sind die Falschen, wenn"), no2)
     return ('  <!-- GEGENSEITIGE PRUEFUNG -->\n'
             '  <section class="sec fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark" style="padding:clamp(90px,11vw,150px) 0">\n'
             '    <div class="wrap">\n'
@@ -1128,20 +1149,25 @@ def _bene(s):
 
 
 def _detail(s, acc):
-    """Akt 4: die Leistungstiefe bleibt, aber zugeklappt. So steht sie nicht im Weg,
-    ist aber da, wenn jemand genau wissen will, was dazugehoert."""
-    if not acc:
+    """Akt 4: die Leistungstiefe als Raster aus vier Karten (Titel, ein Satz, vier Punkte).
+    Am Telefon eine Reihe zum Wischen. Kein zweites Akkordeon vor der FAQ."""
+    items = s.get("acc") or []
+    if not items:
         return ""
-    return ('  <!-- AKT 4: LEISTUNG IM DETAIL, ZUGEKLAPPT -->\n'
-            '  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">\n'
-            '    <div class="wrap svc-split">\n'
-            '      <div class="intro">\n'
-            '        <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:20px">Im Detail</span>\n'
+    cells = []
+    for i, (t, p, lis) in enumerate(items):
+        li = "\n              ".join("<li>%s</li>" % x for x in lis)
+        cells.append('<div class="dcell" data-fade>\n            <span class="dnum">0%d</span>\n            <div class="dt">%s</div>\n            <p>%s</p>\n            <ul>\n              %s\n            </ul>\n          </div>' % (i + 1, t, p, li))
+    return ('  <!-- AKT 4: LEISTUNG IM DETAIL, VIER KARTEN -->\n'
+            '  <section class="sec fg-light bg-cream detsec" data-bg="#EFE7D6" data-fg="dark">\n'
+            '    <div class="wrap">\n'
+            '      <div class="dethead">\n'
+            '        <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:16px">Im Detail</span>\n'
             '        <h2 class="dispn" data-lines style="font-size:clamp(28px,2.8vw,44px)">'
             '<span class="rl"><span>Was dazugehört,</span></span>'
             '<span class="rl"><span>wenn Sie es genau wissen wollen.</span></span></h2>\n'
             '      </div>\n'
-            '      <div class="acc">\n        ' + acc + '\n      </div>\n'
+            '      <div class="detgrid" data-stagger>\n          ' + "\n          ".join(cells) + '\n      </div>\n'
             '    </div>\n  </section>\n\n')
 
 
@@ -1691,13 +1717,27 @@ def render_service(s):
         # zeigt das Laufband schon dieselben Studiobilder, dort waere es eine Wiederholung.
         content_v2 = content_sec if s.get("v2_content") else ""
         mid_sec = (visual + content_v2 + proof_head + tell_sec + cases_sec
-                   + voice_sec + crew_sec + logos_sec + fit_sec
-                   # Die ChatGPT-Seite bleibt so, wie sie freigegeben wurde: dort keine zweite Erklaerebene
-                   + (_detail(s, acc) if s.get("v2_content") else ""))
+                   + voice_sec + crew_sec + logos_sec + fit_sec)
     else:
         mid_sec = (proof_head + tell_sec + content_before + proofsplit_sec + visual + wall_sec
                    + crew_sec + voice_sec + cases_sec + logos_sec + content_after + fit_sec)
 
+    faq_sec = ('  <!-- 08, FAQ -->\n'
+               '  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">\n'
+               '    <div class="wrap faq">\n'
+               '      <div>\n'
+               '        <h2 class="disp" data-lines style="text-transform:none;letter-spacing:-0.02em"><span class="rl"><span>Die ehrlichen</span></span><span class="rl"><span>Fragen.</span></span></h2>\n'
+               '        <p class="fint" data-fade>Was uns vor dem Start wirklich gefragt wird, und was wir antworten.</p>\n'
+               '      </div>\n'
+               '      <div data-stagger>\n        ' + faqs + '\n      </div>\n'
+               '    </div>\n  </section>\n\n')
+    # v2: nach dem Fit erst der dunkle Ablauf, dann das Detail-Raster, dann die FAQ.
+    # Drei Textbloecke gleicher Form hintereinander gibt es so nicht mehr.
+    # Die ChatGPT-Seite bleibt so, wie sie freigegeben wurde: dort kein Detail-Raster.
+    if v2:
+        after_mid = next_sec + (_detail(s, acc) if s.get("v2_content") else "") + faq_sec
+    else:
+        after_mid = faq_sec + next_sec
     page = HEAD.format(title=s["nav"], bodybg="#F3EDE1") + menu("index.html#leistungen") + '''<main>
 
   <!-- 01, HERO -->
@@ -1735,20 +1775,7 @@ def render_service(s):
     </div>
   </section>
 
-''' + mid_sec + '''  <!-- 08, FAQ -->
-  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">
-    <div class="wrap faq">
-      <div>
-        <h2 class="disp" data-lines style="text-transform:none;letter-spacing:-0.02em"><span class="rl"><span>Die ehrlichen</span></span><span class="rl"><span>Fragen.</span></span></h2>
-        <p class="fint" data-fade>Was uns vor dem Start wirklich gefragt wird, und was wir antworten.</p>
-      </div>
-      <div data-stagger>
-        ''' + faqs + '''
-      </div>
-    </div>
-  </section>
-
-''' + next_sec + '''  <!-- 09, NO-BRAINER + RISIKOUMKEHR -->
+''' + mid_sec + after_mid + '''  <!-- 09, NO-BRAINER + RISIKOUMKEHR -->
   <section class="sec fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark">
     <div class="wrap lchap">
       <div>

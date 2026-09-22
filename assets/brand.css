@@ -35,6 +35,10 @@ body.brand { background: var(--paper); }
   font-family: var(--f-ui); font-weight: 400; letter-spacing: 0; line-height: 1.6;
 }
 .brand p.serif[data-scrub] { font-weight: 500; letter-spacing: -0.015em; line-height: 1.3; }
+/* Reste mit hoeherer Spezifitaet oder Inline-Schrift: Fit-Einleitung und -Listen, Zoom-Untertext, Phone-Untertext, Beweis-Lead */
+.brand .fitlead, .brand .fit li, .brand .fitcards li, .brand .zoomsec .zaside .zasub, .brand .phonesec .phtxt .phsub, .brand .lt3.phsub,
+.brand .fcard p, .brand .dcell p, .brand .dcell li { font-family: var(--f-ui); }
+.brand section p[style*="f-serif"] { font-family: var(--f-ui) !important; }
 .brand .benegrid .bd, .brand .oplist--steps .odesc, .brand .cmpd, .brand .prole, .brand .hs .cap, .brand .vcap, .brand .okpi .l,
 .brand .chtxt, .brand .lens .lt, .brand .abody p, .brand .offer p, .brand .deliver li, .brand .npsub2 { font-family: var(--f-ui); }
 /* Versal-Headlines gibt es im neuen Design nicht mehr */
