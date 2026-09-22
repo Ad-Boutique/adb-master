@@ -210,10 +210,17 @@
       }
     }
     function ease(t) { return 1 - Math.pow(1 - t, 3); }
+    /* Am Telefon gibt es keinen Cursor: dort sammeln sich die Punkte mit dem Scroll (vor und zurueck)
+       und die Lime-Punkte atmen in einer langsamen Welle, solange das Feld im Bild ist */
+    var coarse = !fine || /coarse/.test(location.search), inView = false;  /* ?coarse erzwingt den Telefon-Pfad fuer Pruefungen */
+    function scrollP() {
+      var r = cv.getBoundingClientRect(), vh = window.innerHeight;
+      return Math.max(0, Math.min(1, (vh * 0.95 - r.top) / (vh * 0.55)));
+    }
     function frame(now) {
       if (!running) return;
       if (!start) start = now;
-      var t = (now - start) / 1000;
+      var t = (now - start) / 1000, sp = coarse ? scrollP() : 1;
       ctx.clearRect(0, 0, W, H);
       var settled = true;
       /* Formfortschritt: hin zur Zahl oder zurueck ins Raster, je 0,8 s */
@@ -224,9 +231,10 @@
       var ef = ease(form);
       for (var i = 0; i < dots.length; i++) {
         var d = dots[i];
-        var p = reduced ? 1 : Math.max(0, Math.min(1, (t - d.d) / 1.1));
+        var p = reduced ? 1 : (coarse ? Math.max(0, Math.min(1, (sp * 1.4 - d.d) / 0.6)) : Math.max(0, Math.min(1, (t - d.d) / 1.1)));
         if (p < 1) settled = false;
         var e = ease(p), x = d.sx + (d.x - d.sx) * e, y = d.sy + (d.y - d.sy) * e, r = d.r;
+        if (coarse && d.lime && p >= 1 && form === 0 && !reduced) { r = d.r * (1 + 0.32 * Math.sin(t * 1.6 + (d.x + d.y) / 55)); settled = false; }
         if (d.lime && d.tx != null && form > 0) { x += (d.tx - x) * ef; y += (d.ty - y) * ef; r = d.r * (1 + ef * 0.25); }
         if (fine && p >= 1 && form === 0) {
           var dx = mx - x, dy = my - y, dist = Math.sqrt(dx * dx + dy * dy), R = 150;
@@ -236,8 +244,8 @@
         if (d.lime) { ctx.fillStyle = "#d7ff45"; ctx.fill(); ctx.lineWidth = 1; ctx.strokeStyle = "rgba(15,15,15,0.6)"; ctx.stroke(); }
         else { ctx.fillStyle = "rgba(15,15,15," + (0.16 * (1 - ef * 0.7)).toFixed(3) + ")"; ctx.fill(); }
       }
-      /* nach dem Sammeln nur weiterzeichnen, wenn ein Cursor da ist, den es zu folgen gilt */
-      if (!settled || (fine && mx > -9000 && form === 0)) requestAnimationFrame(frame); else running = false;
+      /* nach dem Sammeln nur weiterzeichnen, wenn ein Cursor da ist oder das Feld am Telefon im Bild atmet */
+      if ((!settled && (fine || inView)) || (fine && mx > -9000 && form === 0)) requestAnimationFrame(frame); else running = false;
     }
     function wake() { if (!running) { running = true; requestAnimationFrame(frame); } }
     if (fine) {
@@ -245,9 +253,14 @@
       cv.addEventListener("pointerleave", function () { mx = -9999; my = -9999; wake(); });
     }
     var io = new IntersectionObserver(function (en) {
-      en.forEach(function (x) { if (x.isIntersecting && !seen) { seen = true; layout(); targets(); wake(); } });
+      en.forEach(function (x) {
+        inView = x.isIntersecting;
+        if (x.isIntersecting && !seen) { seen = true; layout(); targets(); }
+        if (x.isIntersecting) wake();
+      });
     }, { rootMargin: "0px 0px -10% 0px" });
     io.observe(cv);
+    if (coarse) window.addEventListener("scroll", function () { if (inView) wake(); }, { passive: true });
     window.addEventListener("resize", function () { if (seen) { layout(); targets(); start = 0; wake(); } });
   });
 
@@ -373,8 +386,38 @@
     });
   }
 
+  /* ---------- Lime ist Licht: im Bildband bekommt das Bild in der Mitte seine Farbe zurueck.
+       Am Desktop uebernimmt das der Hover, am Telefon wandert der Spot mit dem Band. ---------- */
+  var bandImgs = Array.prototype.slice.call(document.querySelectorAll(".svcband img"));
+  var bandLit = null, bandSec = document.querySelector(".svcband");
+  function spotTick() {
+    if (!bandImgs.length || !bandSec) return;
+    var sr = bandSec.getBoundingClientRect();
+    if (sr.bottom < 0 || sr.top > window.innerHeight) return;
+    var cx = window.innerWidth / 2, best = null, bd = Infinity;
+    for (var i = 0; i < bandImgs.length; i++) {
+      var r = bandImgs[i].getBoundingClientRect();
+      var d = Math.abs(r.left + r.width / 2 - cx);
+      if (d < bd) { bd = d; best = bandImgs[i]; }
+    }
+    if (best !== bandLit) { if (bandLit) bandLit.classList.remove("lit"); if (best) best.classList.add("lit"); bandLit = best; }
+  }
+
+  /* ---------- Punktzeile im Hero: die Punkte fuellen sich nacheinander, sobald die Zeile im Bild ist ---------- */
+  Array.prototype.slice.call(document.querySelectorAll(".dotline")).forEach(function (line) {
+    var ioL = new IntersectionObserver(function (en) {
+      en.forEach(function (x) {
+        if (!x.isIntersecting) return;
+        Array.prototype.forEach.call(line.children, function (sp, k) { setTimeout(function () { sp.classList.add("on"); }, reduced ? 0 : 300 + k * 220); });
+        ioL.unobserve(line);
+      });
+    });
+    ioL.observe(line);
+  });
+
   function brandTick() {
     zoomTick();
+    spotTick();
     tellBoxes.forEach(function (t) {
       var idx = -1;
       for (var i = 0; i < t.steps.length; i++) if (t.steps[i].classList.contains("on")) { idx = i; break; }

@@ -196,7 +196,11 @@ body:not(.on-light) .sprog { background-image: radial-gradient(circle, rgba(244,
    ============================================================ */
 /* Eigene Bilder in Schwarzweiss, das Werk der Kunden bleibt farbig. Lime kommt nur als Spot. */
 .brand .svcband img, .brand .pportrait img, .brand .ivplayer, .brand .cstate .bgim img { filter: grayscale(1) contrast(1.04); }
-.brand .svcband img:hover { filter: grayscale(0); transition: filter 0.5s ease; }
+.brand .svcband img { transition: filter 0.6s ease; }
+.brand .svcband img:hover, .brand .svcband img.lit { filter: grayscale(0) contrast(1); }
+/* Punktzeile: die Punkte fuellen sich nacheinander */
+.dotline span::before { background: transparent; border: 1.5px solid var(--ink); box-sizing: border-box; box-shadow: none; transition: background-color 0.35s ease, box-shadow 0.35s ease; }
+.dotline span.on::before { background: var(--lime); box-shadow: 0 0 0 3px rgba(215,255,69,0.3); }
 /* Zwei Stimmen: die Sans stellt fest, die Serife antwortet einen Atemzug spaeter */
 .brand .rl > span:has(> i) { transition-delay: 0.32s; }
 /* Punktfeld: jede Einheit ein Punkt, der Lime-Anteil in Leserichtung */

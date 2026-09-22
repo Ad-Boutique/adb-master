@@ -126,24 +126,7 @@ SERVICES = {
          ("Nutzen", "nutzen", "  <!-- AKT 1: THESE UND NUTZEN -->\n  <section class=\"sec fg-light bg-cream\""),
          ("Beweis", "beweis", "  <!-- 06, PROOF 2: ERGEBNISSE -->\n  <section class=\"sec fg-light bg-paper\""),
          ("Cases", "cases", "  <!-- 07, CASES -->\n  <section class=\"sec fg-light bg-cream\"")],
-   rate='''  <!-- BUDGET-REGLER: jeder Punkt eine Anfrage -->
-  <section class="sec fg-light bg-cream ratesec" data-bg="#e9e8df" data-fg="dark">
-    <div class="wrap lchap">
-      <div>
-        <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:16px">Rechnen Sie selbst</span>
-        <h2 class="dispn" data-lines style="font-size:clamp(30px,3.6vw,58px)"><span class="rl"><span>Ein Budget,</span></span><span class="rl"><span><i>in Anfragen gezählt.</i></span></span></h2>
-        <p class="lt3" data-fade style="margin-top:22px">Ziehen Sie den Regler. Jeder Punkt ist eine Anfrage, gerechnet mit dem Preis je Anfrage aus dem Neubauprojekt, € 11,77. Werte aus ChatGPT gibt es erst nach Ihrem Test, deshalb rechnen wir mit einer Zahl, die wir haben.</p>
-      </div>
-      <div class="rate" data-cpl="11.77" data-fade>
-        <div class="ratehead"><span class="ratev">€ 5.755</span><span class="raten"><b>489</b>Anfragen</span></div>
-        <input type="range" class="rateslider" min="1000" max="12000" step="5" value="5755" aria-label="Mediabudget in Euro">
-        <div class="ratedots" aria-hidden="true"></div>
-        <p class="dotnote">Beispielrechnung, kein Angebot. Der echte Preis je Anfrage hängt von Branche, Motiv und Strecke ab.</p>
-      </div>
-    </div>
-  </section>
-
-''',
+   rate="",  # Kalkulator auf Wunsch des Kunden wieder raus
    tline='''      <div class="tline" data-fade>
         <div class="tldots" aria-label="42 Tage als Punkte"></div>
         <div class="tllegend"><span><i class="tl-h"></i>Heute: Anfrage und Einschätzung</span><span><i class="tl-b"></i>Tag 2 bis 10: Konto, Karten, Seite</span><span><i class="tl-t"></i>Woche 3 bis 6: der Test, jede Woche gelesen</span></div>
