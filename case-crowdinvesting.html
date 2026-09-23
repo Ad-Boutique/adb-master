@@ -8,11 +8,11 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 
-<link rel="stylesheet" href="assets/master.css?v=118">
+<link rel="stylesheet" href="assets/master.css?v=120">
 <link rel="stylesheet" href="https://use.typekit.net/udf8wjj.css">
-<link rel="stylesheet" href="assets/brand.css?v=118">
-<script src="assets/brand.js?v=118" defer></script>
-<script src="assets/master.js?v=118" defer></script>
+<link rel="stylesheet" href="assets/brand.css?v=120">
+<script src="assets/brand.js?v=120" defer></script>
+<script src="assets/master.js?v=120" defer></script>
 </head>
 <body style="background-color:#1C2530" class="on-light brand">
 
@@ -127,6 +127,43 @@
     </div>
   </section>
 
+  <!-- AUF EINEN BLICK: drei Karten, vorher, nachher, der Sprung in Lime -->
+  <section class="sec fg-light bg-paper kpisec" data-bg="#F3EDE1" data-fg="dark" style="padding-top:clamp(60px,7vw,110px);padding-bottom:clamp(50px,6vw,90px)">
+    <div class="wrap">
+      <div class="kpihead">
+        <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:16px">Auf einen Blick</span>
+        <h2 class="dispn" data-lines style="font-size:clamp(30px,3.6vw,58px)"><span class="rl"><span>Was besser wurde,</span></span><span class="rl"><span><i>in drei Zahlen.</i></span></span></h2>
+      </div>
+      <div class="kpiboard" data-stagger>
+        <div class="kpi kpi--jump" data-fade>
+          <div class="khead"><span class="kl">Kapital je POC-Phase</span><span class="kpill">+293 %</span></div>
+          <div class="kvals"><span class="kfrom">€ 43.740</span><span class="karrow" aria-hidden="true">&rarr;</span><span class="kto" data-from="43740" data-to="172117" data-decimals="0" data-prefix="€ " data-suffix="">€ 172.117</span></div>
+          <div class="kdots" aria-hidden="true">
+            <div class="row"><span class="rl">Vorher</span><span class="dots" data-n="34" data-on="9"></span></div>
+            <div class="row hi"><span class="rl">Mit uns</span><span class="dots" data-n="34" data-on="34"></span></div>
+          </div>
+          <p class="kcap">Nahezu gleiches Budget, andere Struktur. Ein Punkt sind 5.000 Euro.</p>
+        </div>
+        <div class="kpi kpi--jump" data-fade>
+          <div class="khead"><span class="kl">Return on Ad Spend</span><span class="kpill">+309 %</span></div>
+          <div class="kvals"><span class="kfrom">2,14</span><span class="karrow" aria-hidden="true">&rarr;</span><span class="kto" data-from="2.14" data-to="8.75" data-decimals="2" data-prefix="" data-suffix="">8,75</span></div>
+          <svg class="kline" viewBox="0 0 260 90" data-points="2.14,8.75,18.7" aria-hidden="true"></svg>
+          <p class="kcap">Vorher, erste POC-Phase, zweite POC-Phase mit Plattform-Logik: 18,7 bei mehr als verdreifachtem Budget.</p>
+        </div>
+        <div class="kpi kpi--jump" data-fade>
+          <div class="khead"><span class="kl">Kosten je Investor</span><span class="kpill">−69 %</span></div>
+          <div class="kvals"><span class="kfrom">€ 1.277</span><span class="karrow" aria-hidden="true">&rarr;</span><span class="kto" data-from="1277" data-to="393" data-decimals="0" data-prefix="€ " data-suffix="">€ 393</span></div>
+          <div class="kdots" aria-hidden="true">
+            <div class="row"><span class="rl">Vorher</span><span class="dots" data-n="26" data-on="26"></span></div>
+            <div class="row hi"><span class="rl">Mit uns</span><span class="dots" data-n="26" data-on="8"></span></div>
+          </div>
+          <p class="kcap">Aus 16 Investments wurden 50, bei nahezu gleichem Spend. Ein Punkt sind 50 Euro.</p>
+        </div>
+      </div>
+      <p class="cfoot-note knote" data-fade>Gleicher Spend, anderes Ergebnis: Der Beweis liegt im Vorher-Nachher der POC-Phase. Better selling through data.</p>
+    </div>
+  </section>
+
   <!-- STATEMENT in der Farbwelt -->
   <section class="cstate fg-dark" data-bg= + world +  data-fg="light" style="--case-clr:#1C2530">
     <div class="inner">
@@ -152,20 +189,6 @@
     </div>
   </section>
 
-  <!-- ERGEBNIS -->
-  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:0">
-    <div class="wrap">
-      <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:clamp(30px,4vw,50px)">Ergebnis</span>
-      <div class="cnums" data-stagger>
-        <div class="n" data-fade><div class="l">(Kapital, vorher € 43.740)</div><div class="v num serif">€ 172.117</div></div>
-        <div class="n" data-fade><div class="l">(ROAS, vorher 2,14)</div><div class="v num serif">8,75</div></div>
-        <div class="n" data-fade><div class="l">(Investments, vorher 16)</div><div class="v num serif">50</div></div>
-        <div class="n" data-fade><div class="l">(Kosten je Investor, vorher € 1.277)</div><div class="v num serif">€ 393</div></div>
-      </div>
-      <p class="cfoot-note" data-fade>Gleicher Spend, anderes Ergebnis: Der Beweis liegt im Vorher-Nachher der POC-Phase. Better selling through data.</p>
-    </div>
-  </section>
-
   <!-- KAPITEL: ZWEITES KAPITEL, DIE SKALIERUNG -->
   <section class="sec fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark">
     <div class="wrap lchap">
@@ -182,14 +205,14 @@
         </div>
       </div>
     </div>
-    <div class="wrap" style="margin-top:clamp(44px,5.5vw,80px)">
-      <div class="cnums" data-stagger>
-        <div class="n" data-fade><div class="l">(ROAS, zweite POC-Phase)</div><div class="v num serif">18,7</div></div>
-        <div class="n" data-fade><div class="l">(Kapital in drei Monaten)</div><div class="v num serif">€ 1,26 Mio.</div></div>
-        <div class="n" data-fade><div class="l">(Investments)</div><div class="v num serif">114</div></div>
-        <div class="n" data-fade><div class="l">(Ø Investment, Ziel € 3.800)</div><div class="v num serif">€ 11.039</div></div>
+    <div class="wrap">
+      <div class="kpiboard kpiboard--mini" data-stagger>
+        <div class="kpi kpi--mini" data-fade><span class="kl">ROAS, zweite POC-Phase</span><div class="kvals"><span class="kto">18,7</span></div></div>
+        <div class="kpi kpi--mini" data-fade><span class="kl">Kapital in drei Monaten</span><div class="kvals"><span class="kto">€ 1,26 Mio.</span></div></div>
+        <div class="kpi kpi--mini" data-fade><span class="kl">Investments</span><div class="kvals"><span class="kto">114</span></div></div>
+        <div class="kpi kpi--mini" data-fade><span class="kl">Ø Investment, Ziel € 3.800</span><div class="kvals"><span class="kto">€ 11.039</span></div></div>
       </div>
-      <p class="cfoot-note" data-fade>Vergütung in dieser Phase: Selbstkosten plus Beteiligung am zurechenbaren Zeichnungsvolumen. Wir haben nur verdient, wenn gezeichnet wurde. Geschwister-Varianten desselben Motivs fielen durch, und die Markensuche erntet Nachfrage, sie erzeugt sie nicht.</p>
+      <p class="cfoot-note knote" data-fade>Vergütung in dieser Phase: Selbstkosten plus Beteiligung am zurechenbaren Zeichnungsvolumen. Wir haben nur verdient, wenn gezeichnet wurde. Geschwister-Varianten desselben Motivs fielen durch, und die Markensuche erntet Nachfrage, sie erzeugt sie nicht.</p>
     </div>
   </section>
 

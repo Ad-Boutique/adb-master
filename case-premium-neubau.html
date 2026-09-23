@@ -8,11 +8,11 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 
-<link rel="stylesheet" href="assets/master.css?v=118">
+<link rel="stylesheet" href="assets/master.css?v=120">
 <link rel="stylesheet" href="https://use.typekit.net/udf8wjj.css">
-<link rel="stylesheet" href="assets/brand.css?v=118">
-<script src="assets/brand.js?v=118" defer></script>
-<script src="assets/master.js?v=118" defer></script>
+<link rel="stylesheet" href="assets/brand.css?v=120">
+<script src="assets/brand.js?v=120" defer></script>
+<script src="assets/master.js?v=120" defer></script>
 </head>
 <body style="background-color:#22382C" class="brand">
 
@@ -128,6 +128,39 @@
     </div>
   </section>
 
+  <!-- AUF EINEN BLICK: drei Karten, vorher, nachher, der Sprung in Lime -->
+  <section class="sec fg-light bg-paper kpisec" data-bg="#F3EDE1" data-fg="dark" style="padding-top:clamp(60px,7vw,110px);padding-bottom:clamp(50px,6vw,90px)">
+    <div class="wrap">
+      <div class="kpihead">
+        <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:16px">Auf einen Blick</span>
+        <h2 class="dispn" data-lines style="font-size:clamp(30px,3.6vw,58px)"><span class="rl"><span>Was besser wurde,</span></span><span class="rl"><span><i>in drei Zahlen.</i></span></span></h2>
+      </div>
+      <div class="kpiboard" data-stagger>
+        <div class="kpi kpi--jump" data-fade>
+          <div class="khead"><span class="kl">Preis je Anfrage</span><span class="kpill">−57 %</span></div>
+          <div class="kvals"><span class="kfrom">€ 11,77</span><span class="karrow" aria-hidden="true">&rarr;</span><span class="kto" data-from="11.77" data-to="5.0" data-decimals="2" data-prefix="€ " data-suffix="">€ 5,00</span></div>
+          <svg class="kline" viewBox="0 0 260 90" data-points="11.77,6.97,5.88,5.0,4.99,5.78" aria-hidden="true"></svg>
+          <p class="kcap">Vom Schnitt der ersten Kampagne zur ersten Welle. Dazwischen: Instant Form € 6,97, Februar € 5,88, danach € 4,99 und € 5,78.</p>
+        </div>
+        <div class="kpi kpi--jump" data-fade>
+          <div class="khead"><span class="kl">Strecke zur Anfrage</span><span class="kpill">−55 %</span></div>
+          <div class="kvals"><span class="kfrom">€ 15,66</span><span class="karrow" aria-hidden="true">&rarr;</span><span class="kto" data-from="15.66" data-to="6.97" data-decimals="2" data-prefix="€ " data-suffix="">€ 6,97</span></div>
+          <div class="kdots" aria-hidden="true">
+            <div class="row"><span class="rl">Website</span><span class="dots" data-n="32" data-on="31"></span></div>
+            <div class="row hi"><span class="rl">Instant Form</span><span class="dots" data-n="32" data-on="14"></span></div>
+          </div>
+          <p class="kcap">Dieselbe Kampagne, zwei Wege zur Anfrage. Das Formular im Feed kostet weniger als die Hälfte. Ein Punkt sind 50 Cent.</p>
+        </div>
+        <div class="kpi kpi--jump" data-fade>
+          <div class="khead"><span class="kl">Anteil des stärksten Motivs</span><span class="kpill">54 %</span></div>
+          <div class="kvals"><span class="kfrom">4 Motive</span><span class="karrow" aria-hidden="true">&rarr;</span><span class="kto" data-from="0" data-to="262" data-decimals="0" data-prefix="" data-suffix=" von 489">262 von 489</span></div>
+          <div class="dotgraph kwaffle" data-total="100" data-value="54" style="--cols:20" aria-hidden="true"></div>
+          <p class="kcap">Ein einziges Interior-Motiv trug mehr als die Hälfte aller Anfragen. Jeder Punkt ein Prozent.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- COLLAGE: Creatives, driftend, leicht rotiert -->
   <section class="collage" data-bg="#22382C" data-fg="light">
     <div class="cplane">
@@ -188,21 +221,6 @@
       </div>
     </div>
   </section>
-
-  <!-- ERGEBNIS -->
-  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">
-    <div class="wrap">
-      <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:clamp(30px,4vw,50px)">Ergebnis</span>
-      <div class="cnums" data-stagger>
-        <div class="n" data-fade><div class="l">(Leads gesamt)</div><div class="v num serif">489</div></div>
-        <div class="n" data-fade><div class="l">(Ø Cost per Lead)</div><div class="v num serif">€ 11,77</div></div>
-        <div class="n" data-fade><div class="l">(Click-Through-Rate)</div><div class="v num serif">2,26 %</div></div>
-        <div class="n" data-fade><div class="l">(bestes Creative, 262 Leads)</div><div class="v num serif">€ 6,93</div></div>
-      </div>
-      <p class="cfoot-note" data-fade>Spend gesamt: € 5.755, Reichweite: 244.827 Personen. Alle Werte aus dem Ad-Manager, anonymisierte Darstellung mit Freigabe.</p>
-    </div>
-  </section>
-
 
   <!-- DUNKLES KAPITEL, DIE LANDINGPAGE -->
   <section class="sec chapter" data-bg="#0A0A0A" data-fg="light" style="background:#0A0A0A">
@@ -323,11 +341,11 @@
       </div>
     </div>
     <div class="wrap" style="margin-top:clamp(44px,5.5vw,80px)">
-      <div class="cnums" data-stagger>
-        <div class="n" data-fade><div class="l">(Anfragen, erste Welle)</div><div class="v num serif">84</div></div>
-        <div class="n" data-fade><div class="l">(CPL, erste Welle)</div><div class="v num serif">€ 5,00</div></div>
-        <div class="n" data-fade><div class="l">(Anfragen, dritte Welle)</div><div class="v num serif">94</div></div>
-        <div class="n" data-fade><div class="l">(CPL, dritte Welle)</div><div class="v num serif">€ 5,78</div></div>
+            <div class="kpiboard kpiboard--mini" data-stagger>
+        <div class="kpi kpi--mini" data-fade><span class="kl">Anfragen, erste Welle</span><div class="kvals"><span class="kto">84</span></div></div>
+        <div class="kpi kpi--mini" data-fade><span class="kl">CPL, erste Welle</span><div class="kvals"><span class="kto">€ 5,00</span></div></div>
+        <div class="kpi kpi--mini" data-fade><span class="kl">Anfragen, dritte Welle</span><div class="kvals"><span class="kto">94</span></div></div>
+        <div class="kpi kpi--mini" data-fade><span class="kl">CPL, dritte Welle</span><div class="kvals"><span class="kto">€ 5,78</span></div></div>
       </div>
       <p class="cfoot-note" data-fade>Instant Form gegen Website-Formular im Februar: 5,88 Euro gegen 11,12 Euro je Anfrage. Alle Werte aus dem laufenden Reporting an den Kunden.</p>
     </div>

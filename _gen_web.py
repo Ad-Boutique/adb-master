@@ -4,6 +4,7 @@
 # -*- coding: utf-8 -*-
 import os
 from _gen import HEAD, FOOTER, menu
+from _kpi import board as kpi_board, WEB_KPI
 
 WEBCASES = [
  dict(slug="case-web-noma", key="noma", name="Noma Wien", url="https://www.noma.wien",
@@ -226,6 +227,8 @@ def page(c, nxt):
 
     nxt_href = nxt["slug"] + ".html"
     nxt_img = "%s/web_%s_d.jpg" % (IMG, nxt["key"])
+    # KPI-Board nach dem Intro: bei Web-Projekten Produktion und Qualitaet statt Kampagnenzahlen
+    kpi_sec = kpi_board(WEB_KPI[c["slug"]]) if c["slug"] in WEB_KPI else ""
     body = HEAD.format(title="Case, " + c["name"], bodybg="#0E0E10") + menu("work.html", back=True) + """<main>
 
   <!-- HERO: Vollbild-Screenshot -->
@@ -260,7 +263,7 @@ def page(c, nxt):
     </div>
   </section>
 
-""" + stage + phones + gal + extra + """  <!-- NEXT -->
+""" + kpi_sec + stage + phones + gal + extra + """  <!-- NEXT -->
   <section class="sec npro-sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-bottom:0;padding-top:clamp(60px,8vw,110px)">
     <div class="wrap">
       <div class="npbar2"><span>Nächste Website</span><a href="work.html">Alle ansehen</a></div>

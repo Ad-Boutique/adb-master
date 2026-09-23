@@ -3,6 +3,7 @@
 # -*- coding: utf-8 -*-
 from _gen import HEAD, FOOTER, menu, logocycle, logogrid, CASES
 from _gen_web import WEBCASES
+from _kpi import board as kpi_board, dotrows as kpi_dotrows, SERVICE_KPI
 
 def logos_row(names, label):
     imgs = "\n      ".join('<img loading="lazy" decoding="async" src="assets/logos/%s.png" alt="%s">' % (n, n) for n in names)
@@ -988,14 +989,12 @@ def _channels(s):
     c = s.get("channels")
     if not c:
         return ""
-    rows = "\n        ".join(
-        '<div class="cr%s"><span class="cn">%s</span><span class="ct"><i class="cf" data-w="%d"></i></span><span class="cv">%s</span></div>'
-        % ((" blend" if i == len(c["rows"]) - 1 else ""), n, w, v) for i, (n, w, v) in enumerate(c["rows"]))
+    # Balken sind Punktreihen: jede Zeile 25 Punkte, der Bestwert Lime (brand.js fuellt beim Ankommen)
     return ('      <div>\n'
             '        <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:20px">%s</span>\n'
-            '        <div class="chrow">\n        %s\n        </div>\n'
-            '        <p style="font-size:12.5px;color:var(--grey-dark);margin-top:16px;max-width:56ch">%s</p>\n'
-            '      </div>\n') % (c["label"], rows, c["note"])
+            '%s\n'
+            '        <p class="dotnote">%s</p>\n'
+            '      </div>\n') % (c["label"], kpi_dotrows(c["rows"]), c["note"])
 
 def _quote(s):
     q = s.get("quote")
@@ -1489,17 +1488,14 @@ def _bars(s):
     b = s.get("bars")
     if not b:
         return ""
-    rows = "\n        ".join(
-        '<div class="brow%s"><span class="bwho">%s</span><span class="btrack"><i class="bfill" data-w="%d"></i></span><span class="bval">%s</span></div>'
-        % ((" now" if i == len(b["rows"]) - 1 else ""), w, pct, v) for i, (w, pct, v) in enumerate(b["rows"]))
     blink = ('        <a class="zalink" href="%s">%s</a>\n' % b["link"]) if b.get("link") else ""
     solo = "" if s.get("tell") else " barsblock--solo"
     return ('      <div class="barsblock%s">\n'
             '        <span class="label bt">%s</span>\n'
-            '        <div class="bacmp">\n        %s\n        </div>\n'
-            '        <p class="bnote">%s</p>\n'
+            '%s\n'
+            '        <p class="dotnote">%s</p>\n'
             '%s'
-            '      </div>\n') % (solo, b["label"], rows, b["note"], blink)
+            '      </div>\n') % (solo, b["label"], kpi_dotrows(b["rows"]), b["note"], blink)
 
 def _crew(s):
     c = s.get("crew")
@@ -1797,6 +1793,8 @@ def render_service(s):
 
     # Dramaturgie v2: eine Grafik direkt unter dem Beweis-Kopf statt zwei in einer eigenen Strecke
     graphic_v2 = ('      <div class="proofone">\n' + channels_sec + '      </div>\n') if (v2 and s.get("v2_graphic") and channels_sec) else ""
+    # Drei Mandate, drei Spruenge: nach den Stationen (ein Projekt in der Tiefe) die Breite, jede Karte fuehrt in ihren Case
+    kpi_sec = kpi_board(SERVICE_KPI[s["slug"]], bg="cream") if s["slug"] in SERVICE_KPI else ""
     proof_head = PROOF_HEAD.format(
         proof_label=s.get("proof_label", "Ergebnisse"), h0=s["proof_h"][0], h1=s["proof_h"][1],
         rest=nums_sec + lead_sec + pq_sec + bars_here + graphic_v2)
@@ -1808,10 +1806,10 @@ def render_service(s):
         # Echtes Mandatsmaterial bleibt im Beweisteil, wo es etwas belegt. Auf der ChatGPT-Seite
         # zeigt das Laufband schon dieselben Studiobilder, dort waere es eine Wiederholung.
         content_v2 = content_sec if s.get("v2_content") else ""
-        mid_sec = (visual + content_v2 + proof_head + tell_sec + _dotsec(s) + cases_sec
+        mid_sec = (visual + content_v2 + proof_head + tell_sec + kpi_sec + _dotsec(s) + cases_sec
                    + voice_sec + crew_sec + logos_sec + fit_sec)
     else:
-        mid_sec = (proof_head + tell_sec + content_before + proofsplit_sec + visual + wall_sec
+        mid_sec = (proof_head + tell_sec + kpi_sec + content_before + proofsplit_sec + visual + wall_sec
                    + crew_sec + voice_sec + cases_sec + logos_sec + content_after + fit_sec)
 
     faq_sec = ('  <!-- 08, FAQ -->\n'

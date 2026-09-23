@@ -2,6 +2,8 @@
 # Alle Zahlen aus uploads/AdBoutique_Referenzen_9Cases_Erweiterungsbriefing.md (bindend, anonymisiert)
 # -*- coding: utf-8 -*-
 
+from _kpi import board as kpi_board, mini as kpi_mini, CASE_KPI
+
 HEAD = '''<!doctype html>
 <html lang="de">
 <head>
@@ -12,11 +14,11 @@ HEAD = '''<!doctype html>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 
-<link rel="stylesheet" href="assets/master.css?v=118">
+<link rel="stylesheet" href="assets/master.css?v=120">
 <link rel="stylesheet" href="https://use.typekit.net/udf8wjj.css">
-<link rel="stylesheet" href="assets/brand.css?v=118">
-<script src="assets/brand.js?v=118" defer></script>
-<script src="assets/master.js?v=118" defer></script>
+<link rel="stylesheet" href="assets/brand.css?v=120">
+<script src="assets/brand.js?v=120" defer></script>
+<script src="assets/master.js?v=120" defer></script>
 </head>
 <body style="background-color:{bodybg}" class="on-light brand">
 
@@ -532,9 +534,8 @@ def _chapters(c):
                      + "".join('          <a class="zalink" href="%s">%s</a>\n' % l for l in k["links"]) + '        </div>\n')
         nums = ""
         if k.get("nums"):
-            nums = ('    <div class="wrap" style="margin-top:clamp(44px,5.5vw,80px)">\n      <div class="cnums" data-stagger>\n'
-                    + "\n".join('        <div class="n" data-fade><div class="l">%s</div><div class="v num serif">%s</div></div>' % (l, v) for l, v in k["nums"])
-                    + '\n      </div>\n' + ('      <p class="cfoot-note" data-fade>%s</p>\n' % k["note"] if k.get("note") else "") + '    </div>\n')
+            # Kapitel-Zahlen in der Grammatik des KPI-Boards: kleine Karten statt Zahlenreihe
+            nums = '    <div class="wrap">\n' + kpi_mini(k["nums"], k.get("note")) + '    </div>\n'
         out.append('  <!-- KAPITEL: %s -->\n'
                    '  <section class="sec fg-light %s" data-bg="%s" data-fg="dark">\n'
                    '    <div class="wrap lchap">\n'
@@ -640,6 +641,14 @@ def case_page(c, nxt):
         else:
             nxt_media = '<span style="display:flex;align-items:flex-end;aspect-ratio:4/3;background:%s;color:%s;padding:24px;border-radius:3px"><span style="font-family:var(--f-disp);font-weight:680;font-size:clamp(40px,4vw,64px);font-variant-numeric:tabular-nums">%s</span></span>' % (nxt.get("clr", "#22382C"), nxt.get("fg", "#EDF2EC"), nxt.get("big") or nxt["nav_title"])
     nxt_href = nxt["slug"] + ".html"
+    # KPI-Board direkt nach dem Intro: die alte Ergebnis-Zahlenreihe faellt dafuer weg, ihre Fussnote wandert mit
+    has_kpi = c["slug"] in CASE_KPI
+    kpi_sec = ""
+    if has_kpi:
+        b = dict(CASE_KPI[c["slug"]])
+        if not b.get("note") and c.get("note"):
+            b["note"] = c["note"]
+        kpi_sec = kpi_board(b)
     page = HEAD.format(title="Case, " + c["nav_title"], bodybg=world) + menu("work.html", back=True) + """<main>
 
   <!-- HERO: Vollbild in der Case-Farbwelt -->
@@ -669,7 +678,7 @@ def case_page(c, nxt):
     </div>
   </section>
 
-  <!-- STATEMENT in der Farbwelt -->
+""" + kpi_sec + """  <!-- STATEMENT in der Farbwelt -->
   <section class="cstate fg-dark" data-bg="""" + world + """" data-fg="light" style="--case-clr:""" + world + """">
     <div class="inner">
       <span class="label" style="color:var(--champ)">So denken wir</span>
@@ -700,7 +709,7 @@ def case_page(c, nxt):
     </div>
   </section>
 
-""") if c.get("nums") else "") + _chapters(c) + _cquote(c) + phones_sec + """  <!-- LEARNINGS -->
+""") if (c.get("nums") and not has_kpi) else "") + _chapters(c) + _cquote(c) + phones_sec + """  <!-- LEARNINGS -->
   <section class="sec fg-dark" data-bg="""" + world + """" data-fg="light" style="background:""" + world + """">
     <div class="wrap" style="max-width:900px">
       <span class="label" style="color:var(--champ);display:block;margin-bottom:26px">Learnings</span>

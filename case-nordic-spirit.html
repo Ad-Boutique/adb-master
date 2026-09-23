@@ -8,11 +8,11 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 
-<link rel="stylesheet" href="assets/master.css?v=118">
+<link rel="stylesheet" href="assets/master.css?v=120">
 <link rel="stylesheet" href="https://use.typekit.net/udf8wjj.css">
-<link rel="stylesheet" href="assets/brand.css?v=118">
-<script src="assets/brand.js?v=118" defer></script>
-<script src="assets/master.js?v=118" defer></script>
+<link rel="stylesheet" href="assets/brand.css?v=120">
+<script src="assets/brand.js?v=120" defer></script>
+<script src="assets/master.js?v=120" defer></script>
 </head>
 <body style="background-color:#0F2A44" class="on-light brand">
 
@@ -126,6 +126,44 @@
     </div>
   </section>
 
+  <!-- AUF EINEN BLICK: drei Karten, vorher, nachher, der Sprung in Lime -->
+  <section class="sec fg-light bg-paper kpisec" data-bg="#F3EDE1" data-fg="dark" style="padding-top:clamp(60px,7vw,110px);padding-bottom:clamp(50px,6vw,90px)">
+    <div class="wrap">
+      <div class="kpihead">
+        <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:16px">Auf einen Blick</span>
+        <h2 class="dispn" data-lines style="font-size:clamp(30px,3.6vw,58px)"><span class="rl"><span>Was besser wurde,</span></span><span class="rl"><span><i>in drei Zahlen.</i></span></span></h2>
+      </div>
+      <div class="kpiboard" data-stagger>
+        <div class="kpi kpi--jump" data-fade>
+          <div class="khead"><span class="kl">Bestellungen je Monat</span><span class="kpill">Faktor 9,75</span></div>
+          <div class="kvals"><span class="kfrom">800</span><span class="karrow" aria-hidden="true">&rarr;</span><span class="kto" data-from="800" data-to="7800" data-decimals="0" data-prefix="" data-suffix="">7.800</span></div>
+          <div class="kdots" aria-hidden="true">
+            <div class="row"><span class="rl">Vorher</span><span class="dots" data-n="39" data-on="4"></span></div>
+            <div class="row hi"><span class="rl">Am Peak</span><span class="dots" data-n="39" data-on="39"></span></div>
+          </div>
+          <p class="kcap">Eine neue Marke in einer regulierten Kategorie, gewonnen über das Angebot. Ein Punkt sind 200 Bestellungen.</p>
+        </div>
+        <div class="kpi kpi--jump" data-fade>
+          <div class="khead"><span class="kl">Preis je Abschluss, Meta</span><span class="kpill">−36 %</span></div>
+          <div class="kvals"><span class="kfrom">€ 13,01</span><span class="karrow" aria-hidden="true">&rarr;</span><span class="kto" data-from="13.01" data-to="8.36" data-decimals="2" data-prefix="€ " data-suffix="">€ 8,36</span></div>
+          <div class="kdots" aria-hidden="true">
+            <div class="row"><span class="rl">Meta vorher</span><span class="dots" data-n="26" data-on="26"></span></div>
+            <div class="row hi"><span class="rl">Meta danach</span><span class="dots" data-n="26" data-on="17"></span></div>
+            <div class="row"><span class="rl">Google</span><span class="dots" data-n="26" data-on="14"></span></div>
+          </div>
+          <p class="kcap">Google lag bei € 7,18, Search always-on bei € 4,80. Ein Punkt sind 50 Cent.</p>
+        </div>
+        <div class="kpi kpi--count" data-fade>
+          <div class="khead"><span class="kl">Abschlüsse in zwölf Monaten</span><span class="kpill">€ 11,70 je Abschluss</span></div>
+          <div class="kvals"><span class="kto" data-from="0" data-to="23579" data-decimals="0" data-prefix="" data-suffix="">23.579</span></div>
+          <div class="dotgraph kwaffle" data-total="100" data-value="73" style="--cols:20" aria-hidden="true"></div>
+          <p class="kcap">73 Prozent des Budgets liefen auf Meta für Volumen, 27 auf Google für Effizienz. Jeder Punkt ein Prozent Budget.</p>
+        </div>
+      </div>
+      <p class="cfoot-note knote" data-fade>Mediabudget 275.906 Euro, davon 202.221 Euro Meta und 73.685 Euro Google, 46,1 Millionen Impressionen. Peak von September bis Dezember 2025 mit über 6.000 Abschlüssen im Monat. Werte aus dem Performance Review an den Kunden. Die Kampagnen liefen bis 30. Juni 2026 im damals gültigen rechtlichen Rahmen, danach griff die neue Gesetzeslage für die Kategorie und die Bewerbung wurde planmäßig beendet.</p>
+    </div>
+  </section>
+
   <!-- STATEMENT in der Farbwelt -->
   <section class="cstate fg-dark" data-bg= + world +  data-fg="light" style="--case-clr:#0F2A44">
     <div class="inner">
@@ -152,20 +190,6 @@
     </div>
   </section>
 
-  <!-- ERGEBNIS -->
-  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:0">
-    <div class="wrap">
-      <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:clamp(30px,4vw,50px)">Ergebnis</span>
-      <div class="cnums" data-stagger>
-        <div class="n" data-fade><div class="l">(Abschlüsse)</div><div class="v num serif">23.579</div></div>
-        <div class="n" data-fade><div class="l">(je Abschluss, gesamt)</div><div class="v num serif">€ 11,70</div></div>
-        <div class="n" data-fade><div class="l">(Bestellungen je Monat, Peak)</div><div class="v num serif">7.800</div></div>
-        <div class="n" data-fade><div class="l">(Reichweite Meta)</div><div class="v num serif">2,8 Mio.</div></div>
-      </div>
-      <p class="cfoot-note" data-fade>Mediabudget 275.906 Euro, davon 202.221 Euro Meta und 73.685 Euro Google, 46,1 Millionen Impressionen. Peak von September bis Dezember 2025 mit über 6.000 Abschlüssen im Monat. Werte aus dem Performance Review an den Kunden. Die Kampagnen liefen bis 30. Juni 2026 im damals gültigen rechtlichen Rahmen, danach griff die neue Gesetzeslage für die Kategorie und die Bewerbung wurde planmäßig beendet.</p>
-    </div>
-  </section>
-
   <!-- KAPITEL: ZWEITES KAPITEL, DIE ÜBERGABE -->
   <section class="sec fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark">
     <div class="wrap lchap">
@@ -182,14 +206,14 @@
         </div>
       </div>
     </div>
-    <div class="wrap" style="margin-top:clamp(44px,5.5vw,80px)">
-      <div class="cnums" data-stagger>
-        <div class="n" data-fade><div class="l">(Gewinnspiel-Kooperationen)</div><div class="v num serif">20+</div></div>
-        <div class="n" data-fade><div class="l">(Interaktionen daraus)</div><div class="v num serif">65.000</div></div>
-        <div class="n" data-fade><div class="l">(je Interaktion, maximal)</div><div class="v num serif">€ 0,52</div></div>
-        <div class="n" data-fade><div class="l">(Loyalty-Anmeldungen)</div><div class="v num serif">142</div></div>
+    <div class="wrap">
+      <div class="kpiboard kpiboard--mini" data-stagger>
+        <div class="kpi kpi--mini" data-fade><span class="kl">Gewinnspiel-Kooperationen</span><div class="kvals"><span class="kto">20+</span></div></div>
+        <div class="kpi kpi--mini" data-fade><span class="kl">Interaktionen daraus</span><div class="kvals"><span class="kto">65.000</span></div></div>
+        <div class="kpi kpi--mini" data-fade><span class="kl">je Interaktion, maximal</span><div class="kvals"><span class="kto">€ 0,52</span></div></div>
+        <div class="kpi kpi--mini" data-fade><span class="kl">Loyalty-Anmeldungen</span><div class="kvals"><span class="kto">142</span></div></div>
       </div>
-      <p class="cfoot-note" data-fade>Werte aus dem Performance Review zum Abschluss der Zusammenarbeit im Juni 2026.</p>
+      <p class="cfoot-note knote" data-fade>Werte aus dem Performance Review zum Abschluss der Zusammenarbeit im Juni 2026.</p>
     </div>
   </section>
 

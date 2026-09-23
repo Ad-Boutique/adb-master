@@ -377,7 +377,7 @@
         k.classList.add("lit");
         if (line) { var pth = line.querySelector(".kpath"); if (pth) pth.style.strokeDashoffset = 0; }
         kd.forEach(function (dts) { var on = parseInt(dts.getAttribute("data-on"), 10) || 0; Array.prototype.forEach.call(dts.children, function (d, i) { if (i < on) setTimeout(function () { d.classList.add("on"); }, reduced ? 0 : 200 + i * 30); }); });
-        if (to && !reduced) {
+        if (to && !reduced && to.hasAttribute("data-to")) {
           var from = parseFloat(to.getAttribute("data-from")), end = parseFloat(to.getAttribute("data-to"));
           var dec = parseInt(to.getAttribute("data-decimals"), 10) || 0, pre = to.getAttribute("data-prefix") || "", suf = to.getAttribute("data-suffix") || "";
           var t0 = performance.now();

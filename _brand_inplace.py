@@ -6,7 +6,52 @@ Reihenfolge: nach den Generatoren, vor _bump.py."""
 import glob
 import re
 
+from _kpi import board as kpi_board, mini as kpi_mini, HAND_KPI
+
 SKIP = ("_qa_template.html",)
+
+
+def cut_section(h, needle, what):
+    """Schneidet die Sektion heraus, die den Anker enthaelt (vom oeffnenden <section bis </section>)."""
+    i = h.find(needle)
+    assert i >= 0, "%s: Anker fehlt" % what
+    a = h.rfind("  <section", 0, i)
+    b = h.find("</section>", i) + len("</section>")
+    while b < len(h) and h[b] == "\n":
+        b += 1
+    # Kommentarzeile davor mitnehmen
+    c = h.rfind("  <!--", 0, a)
+    if c >= 0 and "\n" not in h[c:a].strip("\n"):
+        a = c
+    return h[:a] + h[b:]
+
+
+def cnums_to_mini(h):
+    """Zahlenreihen der Kapitel in kleine KPI-Karten drehen."""
+    def one(m):
+        nums = re.findall(r'<div class="l">(.*?)</div><div class="v num serif">(.*?)</div>', m.group(0))
+        return kpi_mini(nums).rstrip("\n")
+    return re.sub(r'<div class="cnums" data-stagger>.*?\n      </div>', one, h, flags=re.S)
+
+
+def funkhaus(h):
+    """Original-Funkhaus: KPI-Board nach dem Intro, die alte Ergebnis-Zahlenreihe faellt weg."""
+    if 'class="kpiboard"' in h and 'class="khead"' not in h:
+        h = cut_section(h, 'class="kpiboard"', "Funkhaus altes Board")
+    if 'class="kpiboard"' not in h:
+        if '>Ergebnis</span>' in h:
+            h = cut_section(h, '>Ergebnis</span>', "Funkhaus Ergebnis")
+        h = rep(h, "  <!-- COLLAGE: Creatives", kpi_board(HAND_KPI["case-premium-neubau"]) + "  <!-- COLLAGE: Creatives", "Funkhaus Board")
+    return cnums_to_mini(h)
+
+
+def kommunalkredit(h):
+    """Sommergespraeche: Produktion und Stimme als Board nach dem Intro, Kapitel-Zahlen als Mini-Karten."""
+    if 'class="kpiboard"' in h and 'class="khead"' not in h:
+        h = cut_section(h, 'class="kpiboard"', "Kommunalkredit altes Board")
+    if 'class="kpiboard"' not in h:
+        h = rep(h, "  <!-- FILM: Recap", kpi_board(HAND_KPI["case-kommunalkredit"]) + "  <!-- FILM: Recap", "Kommunalkredit Board")
+    return cnums_to_mini(h)
 
 
 def head(h):
@@ -97,6 +142,10 @@ def main():
             out = index(out)
         elif f == "agentur.html":
             out = agentur(out)
+        elif f == "case-premium-neubau.html":
+            out = funkhaus(out)
+        elif f == "case-kommunalkredit.html":
+            out = kommunalkredit(out)
         if out != h:
             open(f, "w", encoding="utf-8").write(out)
             n += 1
