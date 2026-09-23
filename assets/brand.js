@@ -9,6 +9,18 @@
   var body = document.body;
   body.classList.add("brand");
 
+  /* Alte Palette auf die neue mappen, bevor master.js die Hintergruende liest.
+     Case-Farbwelten (Gruen, Slate usw.) bleiben, nur Papier, Creme und Schwarz wandern. */
+  var BG = { "#F3EDE1": "#f4f3ec", "#EFE7D6": "#e9e8df", "#0A0A0A": "#0f0f0f", "#0E0E10": "#0f0f0f", "#070708": "#0f0f0f", "#08080A": "#0f0f0f", "#060607": "#0f0f0f" };
+  var RGB = { "rgb(243, 237, 225)": "#f4f3ec", "rgb(239, 231, 214)": "#e9e8df", "rgb(10, 10, 10)": "#0f0f0f", "rgb(14, 14, 16)": "#0f0f0f", "rgb(7, 7, 8)": "#0f0f0f", "rgb(8, 8, 10)": "#0f0f0f" };
+  Array.prototype.forEach.call(document.querySelectorAll("[data-bg]"), function (el) {
+    var v = (el.getAttribute("data-bg") || "").toUpperCase();
+    if (BG[v]) el.setAttribute("data-bg", BG[v]);
+    var inl = el.style.backgroundColor;
+    if (inl && RGB[inl]) el.style.backgroundColor = RGB[inl];
+  });
+  if (RGB[body.style.backgroundColor]) body.style.backgroundColor = RGB[body.style.backgroundColor];
+
   var dot = document.createElement("div");
   dot.className = "ptdot";
   dot.setAttribute("aria-hidden", "true");
@@ -326,6 +338,58 @@
       else txt.innerHTML = "<b>" + n + " von " + all + ".</b> Noch wenig Überschneidung. Ein Gespräch kostet trotzdem nichts.";
     }
     items.forEach(function (li) { li.addEventListener("click", function () { li.classList.toggle("hit"); update(); }); });
+  });
+
+  /* ---------- KPI-Sprung: Zahl zaehlt von vorher nach nachher, Linie zeichnet sich, Punkte springen ---------- */
+  function fmt(v, dec) {
+    var s = v.toFixed(dec).replace(".", ",");
+    if (dec === 0) s = s.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    return s;
+  }
+  Array.prototype.slice.call(document.querySelectorAll(".kpi")).forEach(function (k) {
+    var to = k.querySelector(".kto"), line = k.querySelector(".kline");
+    /* Linie aus data-points: Werte auf die Hoehe skaliert, Flaeche in Lime, letzter Punkt Lime */
+    if (line) {
+      var pts = (line.getAttribute("data-points") || "").split(",").map(parseFloat).filter(function (x) { return !isNaN(x); });
+      if (pts.length > 1) {
+        var W = 260, H = 90, pad = 10, mn = Math.min.apply(null, pts), mx = Math.max.apply(null, pts);
+        var xs = pts.map(function (v, i) { return pad + i * (W - 2 * pad) / (pts.length - 1); });
+        var ys = pts.map(function (v) { return pad + (mx - v) / ((mx - mn) || 1) * (H - 2 * pad - 14) + 6; });
+        var d = xs.map(function (x, i) { return (i ? "L" : "M") + x.toFixed(1) + "," + ys[i].toFixed(1); }).join(" ");
+        var area = d + " L" + xs[xs.length - 1].toFixed(1) + "," + (H - 2) + " L" + xs[0].toFixed(1) + "," + (H - 2) + " Z";
+        var html = '<path class="kfill" d="' + area + '"/><path class="kpath" d="' + d + '"/>';
+        xs.forEach(function (x, i) { html += '<circle class="kd' + (i === xs.length - 1 ? " end" : "") + '" cx="' + x.toFixed(1) + '" cy="' + ys[i].toFixed(1) + '" r="4.2"/>'; });
+        html += '<text class="kv" x="' + xs[0].toFixed(1) + '" y="' + (ys[0] - 10).toFixed(1) + '" text-anchor="start">' + fmt(pts[0], 2) + '</text>';
+        html += '<text class="kv" x="' + xs[xs.length - 1].toFixed(1) + '" y="' + (ys[ys.length - 1] + 18).toFixed(1) + '" text-anchor="end">' + fmt(pts[pts.length - 1], 2) + '</text>';
+        line.innerHTML = html;
+        var path = line.querySelector(".kpath"), L = path.getTotalLength();
+        path.style.strokeDasharray = L + " " + L; path.style.strokeDashoffset = L;
+        path.style.transition = "stroke-dashoffset 1.4s cubic-bezier(0.19, 1, 0.22, 1)";
+        line.querySelectorAll(".kd").forEach(function (c, i) { c.style.transitionDelay = (0.25 + i * 0.16) + "s"; });
+      }
+    }
+    var kd = k.querySelectorAll(".kdots .dots");
+    kd.forEach(function (dts) { var n = parseInt(dts.getAttribute("data-n"), 10) || 0; for (var i = 0; i < n; i++) dts.appendChild(document.createElement("i")); });
+    var ioK = new IntersectionObserver(function (en) {
+      en.forEach(function (x) {
+        if (!x.isIntersecting) return;
+        ioK.unobserve(k);
+        k.classList.add("lit");
+        if (line) { var pth = line.querySelector(".kpath"); if (pth) pth.style.strokeDashoffset = 0; }
+        kd.forEach(function (dts) { var on = parseInt(dts.getAttribute("data-on"), 10) || 0; Array.prototype.forEach.call(dts.children, function (d, i) { if (i < on) setTimeout(function () { d.classList.add("on"); }, reduced ? 0 : 200 + i * 30); }); });
+        if (to && !reduced) {
+          var from = parseFloat(to.getAttribute("data-from")), end = parseFloat(to.getAttribute("data-to"));
+          var dec = parseInt(to.getAttribute("data-decimals"), 10) || 0, pre = to.getAttribute("data-prefix") || "", suf = to.getAttribute("data-suffix") || "";
+          var t0 = performance.now();
+          (function step(now) {
+            var q = Math.min(1, (now - t0) / 1100), e = 1 - Math.pow(1 - q, 3);
+            to.textContent = pre + fmt(from + (end - from) * e, dec) + suf;
+            if (q < 1) requestAnimationFrame(step);
+          })(t0);
+        }
+      });
+    }, { rootMargin: "0px 0px -15% 0px" });
+    ioK.observe(k);
   });
 
   /* ---------- Stationen: Punktzeile unter der grossen Zahl folgt der aktiven Station ---------- */

@@ -215,7 +215,7 @@ SERVICES = [
   h1=["Jeder Euro.", "Zurechenbar."], ital=1,
   tags=["Meta, Google, TikTok", "Lead-Generierung", "Creative-Testing", "Ehrliche Attribution"],
   sub="Kampagnen, die Leads und Verkäufe bringen, nicht Reichweite. Mit Attribution, der Sie trauen können.",
-  flow="v2", v2_content=True, v2_graphic=True,
+  flow="v2", v2_content=True, v2_graphic=False,
   problem_label="Die Ausgangslage",
   problem_h=["Budget läuft.", "Zuordnen kann es niemand."],
   problem=["Budget läuft, Dashboards leuchten, aber niemand kann sagen, welcher Euro wirklich Umsatz gebracht hat. Doppelt gezählte Conversions feiern Erfolge, die es nie gab.",
@@ -249,6 +249,17 @@ SERVICES = [
     engine=dict(title="Testen, messen, umschichten", loop=["Hypothese", "Test", "Lesen", "Umschichten"]),
     touch="Jede Woche mit Ihnen",
     output=("Anfragen und Verkäufe", "Wöchentlicher Report,|jede Zahl mit Quelle", "Sie entscheiden, was läuft")),
+  dotline=["testen", "messen", "umschichten", "berichten"],
+  dotfield=dict(total=489, lime=262, form="262",
+                cap="<b>489 Anfragen</b> für ein Neubauprojekt in Wien aus € 5.755 Mediabudget, <b>262 davon aus einem einzigen Motiv</b>. Jeder Punkt eine Anfrage."),
+  tline=dict(seg="h1 b1 t4 e1", aria="Sieben Schritte als Punkte",
+             legend=[("h", "Heute: Anfrage"), ("b", "Unter 24 h: Ersteinschätzung"), ("t", "Tag 2 bis 5: Audit im Konto"), ("e", "Danach: klare Empfehlung")]),
+  dotsec=dict(h=["Die Strecke", "<i>entscheidet, in Punkten.</i>"],
+              t="Zwei Fälle aus dem Reporting. Dieselbe Zielgruppe, dieselbe Woche, drei Strecken: Der Preis je Anfrage hängt am Weg, nicht am Budget. Und eine Plattform, die mit gleichem Geld das Dreifache holte.",
+              blocks=[dict(rows=[("Instant Form, Eigennutzer", 30, 5, "€ 9,59", False), ("Instant Form, Anleger", 30, 4, "€ 8,43", False), ("Website-Formular", 30, 29, "€ 58,05", True)],
+                           note="Wohnbau-Projekt, ein Punkt sind zwei Euro je Anfrage."),
+                      dict(rows=[("Investments vorher", 50, 16, "16", False), ("Investments mit uns", 50, 50, "50", True)],
+                           note="Crowdinvesting-Plattform, gleiches Budget, ein Punkt ein Investment. ROAS 8,75 statt 2,14.")]),
   intro="<b>Meta, Google und TikTok</b> mit einer Regel: <b>Das Creative ist der Hebel</b>, nicht das Budget. Systematisch getestet, ehrlich gemessen, <b>wöchentlich</b> umgeschichtet.",
   acc=[("Kampagnen-Setup", "Strukturen, die skalieren können: nach Rolle getrennte Kampagnen, saubere Zielwerte, Budgets dort, wo der ehrliche CPL hinzeigt.",
         ["Meta, Google, TikTok", "Instant Forms & Lead-Strecken", "Kaufnahe Search-Intents", "Budget-Steuerung, wöchentlich"]),
@@ -727,6 +738,19 @@ SERVICES = [
     engine=dict(title="Antworten statt Anzeigen", loop=["Prüfen", "Schreiben", "Bauen", "Lesen"]),
     touch="Lesung mit Ihnen",
     output=("Ihr Angebot in der Antwort", "Vier Wochen Test,|jede Karte gemessen", "Sie entscheiden, was läuft")),
+  dotline=["prüfen", "schreiben", "bauen", "lesen"],
+  dotfield=dict(total=489, lime=262, form="262",
+                cap="<b>489 Anfragen</b> für ein Neubauprojekt in Wien, <b>262 davon aus einem einzigen Satz</b>. Der Satz entscheidet, im Feed wie in der Antwort. Jeder Punkt eine Anfrage."),
+  tline=dict(seg="h1 b9 g4 t28", aria="42 Tage als Punkte",
+             legend=[("h", "Heute: Anfrage und Einschätzung"), ("b", "Tag 2 bis 10: Konto, Karten, Seite"), ("t", "Woche 3 bis 6: der Test, jede Woche gelesen")]),
+  dotsec=dict(h=["Relevanz,", "<i>in Punkten gezählt.</i>"],
+              t="Zwei Marken, zwei Zahlen aus dem Reporting. Was in der Antwort zählt, hat dort schon gezählt: die richtige Botschaft im richtigen Moment, nicht mehr Budget.",
+              blocks=[dict(rows=[("Jahresumsatz vorher", 42, 26, "€ 520k", False), ("Jahresumsatz mit uns", 42, 41, "€ 817k", True)],
+                           note="D2C-Lifestyle-Marke, ein Punkt sind € 20.000. Plus 57 Prozent im besten Jahr der Firma, Blended ROAS 5,57."),
+                      dict(rows=[("Benchmark Black Friday", 42, 23, "2,3", False), ("Mit uns", 42, 40, "4,02", True)],
+                           note="Premium-Consumer-Brand, ein Punkt sind 0,1 ROAS. 75 Prozent über der Benchmark in der lautesten Woche des Jahres."),
+                      dict(rows=[("Investments vorher", 50, 16, "16", False), ("Investments mit uns", 50, 50, "50", True)],
+                           note="Crowdinvesting-Plattform, gleiches Budget, ein Punkt ein Investment. ROAS 8,75 statt 2,14: Struktur statt mehr Geld.")]),
   intro="Wer ChatGPT fragt, will entscheiden. Die Aufmerksamkeit ist hoch, und bis vor wenigen Wochen konnte dort <b>niemand werben</b>. Jetzt steht Ihr Angebot unter der Antwort, <b>als Empfehlung</b>, nicht als Banner.",
   acc=[("Wo der Fokus heute liegt", "Die Frage nach dem richtigen Produkt, dem richtigen Anbieter, dem richtigen nächsten Schritt wird immer öfter ChatGPT gestellt. Wer dort antwortet, erreicht Menschen in dem Moment, in dem sie wirklich zuhören.",
         ["Entscheidungen werden im Gespräch vorbereitet", "Volle Aufmerksamkeit, kein Scrollen, kein Lärm", "Eine Antwort statt einer Trefferliste", "Ihr Angebot als Teil dieser Antwort"]),
@@ -1004,6 +1028,7 @@ def _fit(s):
                 '    <div class="wrap">\n'
                 '      <div class="fithead fithead--v2">\n'
                 '        <div>\n'
+                '          <div class="actring" aria-hidden="true"></div>\n'
                 '          <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:clamp(16px,1.8vw,24px)">%s</span>\n'
                 '          <h2 class="dispn fitH" data-lines>' + head + '</h2>\n'
                 '        </div>\n'
@@ -1055,8 +1080,9 @@ def _next(s):
             '    </div>\n  </section>\n\n') % (n["h"], rows)
 
 PROOF_HEAD = """  <!-- 06, PROOF 2: ERGEBNISSE -->
-  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">
+  <section id="beweis" class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">
     <div class="wrap" style="max-width:1100px">
+      <div class="actring" aria-hidden="true" style="margin:0 auto 26px"></div>
       <span class="label" style="color:var(--champ-deep);display:block;text-align:center">{proof_label}</span>
       <h2 class="dispn" data-lines style="font-size:clamp(36px,4.6vw,78px);text-align:center;margin-top:22px">
         <span class="rl"><span>{h0}</span></span>
@@ -1111,10 +1137,11 @@ def _problem(s):
         return ""
     head = "".join('<span class="rl"><span>%s</span></span>' % x for x in s.get("problem_h", ["Das Problem"]))
     return ('  <!-- AKT 1: DAS PROBLEM -->\n'
-            '  <section class="sec fg-dark kapsec kapsec--dark" data-bg="#0E0E10" data-fg="light" style="background:#0E0E10">\n'
+            '  <section id="problem" class="dotzoom sec fg-dark kapsec kapsec--dark" data-bg="#0E0E10" data-fg="light" style="background:#0E0E10">\n'
             '    <div class="wrap">\n'
             '      <div class="lchap">\n'
             '        <div>\n'
+            '          <div class="actring" aria-hidden="true"></div>\n'
             '          <span class="label" style="color:var(--champ);display:block;margin-bottom:16px">%s</span>\n'
             '          <h2 class="dispn" data-lines style="font-size:clamp(30px,3.6vw,58px)">%s</h2>\n'
             '        </div>\n'
@@ -1135,7 +1162,7 @@ def _bene(s):
     cells = "\n        ".join(
         '<div class="bcell" data-fade><div class="bt">%s</div><p class="bd">%s</p></div>' % (t, d) for t, d in b)
     return ('  <!-- AKT 1: THESE UND NUTZEN -->\n'
-            '  <section class="sec fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark">\n'
+            '  <section id="nutzen" class="sec fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark">\n'
             '    <div class="wrap">\n'
             '      <div class="benehead">\n'
             '        <div>\n'
@@ -1340,6 +1367,69 @@ def _pmap(s):
             '      <div class="pmap">\n        ' + svg_d + '\n        ' + svg_m + '\n'
             '        <div class="pmap-legend" data-fade><span><i class="dot-sie"></i>Kommt von Ihnen</span><span><i class="dot-wir"></i>Machen wir</span><span><i class="dot-out"></i>Bekommen Sie</span></div>\n'
             '      </div>\n'
+            '    </div>\n  </section>\n\n')
+
+
+def _chapnav(s):
+    """Schwebende Kapitel-Leiste, erscheint nach dem Hero, springt per Klick (master.js/brand.js)."""
+    chap = s.get("chap", [("Problem", "problem"), ("Nutzen", "nutzen"), ("Beweis", "beweis"), ("Cases", "cases")])
+    links = "".join('    <a href="#%s">%s</a>\n' % (i, l) for l, i in chap)
+    return ('\n  <!-- KAPITEL-LEISTE -->\n  <nav class="chapnav" aria-label="Kapitel">\n    <span class="cn-title">' + s["nav"] + '</span>\n'
+            + links + '    <a class="cn-cta" href="#anfrage">Anfragen</a>\n  </nav>\n')
+
+
+def _dotline(s):
+    """Arbeitsweise als Punktzeile unter dem Hero-Text, im Duktus des Boards ("strategie. creative. digital. growth.")."""
+    words = s.get("dotline") or [w.lower() for w in s.get("pmap", {}).get("engine", {}).get("loop", [])]
+    if not words:
+        return ""
+    return '      <div class="dotline" data-fade style="--i:1">' + "".join("<span>%s</span>" % w for w in words) + "</div>\n"
+
+
+def _dotfield(s):
+    """Punktfeld im Hero: echte Einheiten, Lime-Anteil, antippbar zur Zahl."""
+    f = s.get("dotfield")
+    if not f:
+        return ""
+    return ('      <div class="dotfield-wrap" data-fade style="--i:3">\n'
+            '        <canvas class="dotfield" data-total="%d" data-lime="%d" data-form="%s" aria-label="%d Punkte, %d davon in Lime"></canvas>\n'
+            '        <p class="dotfield-cap">%s<span class="dothint">Antippen</span></p>\n'
+            '      </div>\n') % (f["total"], f["lime"], f.get("form", str(f["lime"])), f["total"], f["lime"], f["cap"])
+
+
+def _tline(s):
+    """Zeitleiste im Ablauf: Tage oder Schritte als Punkte, Abschnitte aus data-seg."""
+    t = s.get("tline")
+    if not t:
+        return ""
+    leg = "".join('<span><i class="tl-%s"></i>%s</span>' % (c, txt) for c, txt in t["legend"])
+    return ('      <div class="tline" data-fade>\n'
+            '        <div class="tldots" data-seg="%s" aria-label="%s"></div>\n'
+            '        <div class="tllegend">%s</div>\n'
+            '      </div>\n') % (t["seg"], t.get("aria", "Zeitleiste als Punkte"), leg)
+
+
+def _dotsec(s):
+    """Punkt-Graphen vor den Cases: jede Einheit ein Punkt."""
+    d = s.get("dotsec")
+    if not d:
+        return ""
+    rows = ""
+    for block in d["blocks"]:
+        rows += '        <div class="dotbars" data-fade>\n'
+        for label, n, on, val, hi in block["rows"]:
+            rows += '          <div class="row%s"><span class="rl">%s</span><span class="dots" data-n="%d" data-on="%d"></span><span class="rv">%s</span></div>\n' % (" hi" if hi else "", label, n, on, val)
+        rows += '        </div>\n        <p class="dotnote" data-fade>%s</p>\n' % block["note"]
+    head = "".join('<span class="rl"><span>%s</span></span>' % x for x in d["h"])
+    return ('  <!-- PUNKT-GRAPHEN: jede Einheit ein Punkt -->\n'
+            '  <section class="sec fg-light bg-paper dotsec" data-bg="#F3EDE1" data-fg="dark">\n'
+            '    <div class="wrap lchap">\n'
+            '      <div>\n'
+            '        <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:16px">Punkt für Punkt</span>\n'
+            '        <h2 class="dispn" data-lines style="font-size:clamp(30px,3.6vw,58px)">' + head + '</h2>\n'
+            '        <p class="lt3" data-fade style="margin-top:22px">' + d["t"] + '</p>\n'
+            '      </div>\n'
+            '      <div>\n' + rows + '      </div>\n'
             '    </div>\n  </section>\n\n')
 
 
@@ -1622,7 +1712,7 @@ def render_service(s):
         </a>''' % (h, i + 1, t, v, l) for i, (h, t, v, l) in enumerate(s["oplist"]))
     more = _more_cases(s)
     cases_sec = ("""  <!-- 07, CASES -->
-  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:clamp(60px,7vw,100px)">
+  <section id="cases" class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:clamp(60px,7vw,100px)">
     <div class="wrap">
       <span class="label" style="color:var(--grey-dark);display:block;margin-bottom:clamp(28px,3.4vw,48px)">Ausgewählte Ergebnisse</span>
       <div class="oplist" data-stagger>
@@ -1693,6 +1783,8 @@ def render_service(s):
     fit_sec = _fit(s)
     next_sec = _next(s) + ("" if v2 else _stoer(s))
     if v2:
+        next_sec = next_sec.replace('      <div class="oplist oplist--steps">', _tline(s) + '      <div class="oplist oplist--steps">', 1)
+    if v2:
         proofsplit_sec = ""
         wall_sec = ""
         content_before = ""
@@ -1716,7 +1808,7 @@ def render_service(s):
         # Echtes Mandatsmaterial bleibt im Beweisteil, wo es etwas belegt. Auf der ChatGPT-Seite
         # zeigt das Laufband schon dieselben Studiobilder, dort waere es eine Wiederholung.
         content_v2 = content_sec if s.get("v2_content") else ""
-        mid_sec = (visual + content_v2 + proof_head + tell_sec + cases_sec
+        mid_sec = (visual + content_v2 + proof_head + tell_sec + _dotsec(s) + cases_sec
                    + voice_sec + crew_sec + logos_sec + fit_sec)
     else:
         mid_sec = (proof_head + tell_sec + content_before + proofsplit_sec + visual + wall_sec
@@ -1738,13 +1830,14 @@ def render_service(s):
         after_mid = next_sec + (_detail(s, acc) if s.get("v2_content") else "") + faq_sec
     else:
         after_mid = faq_sec + next_sec
-    page = HEAD.format(title=s["nav"], bodybg="#F3EDE1") + menu("index.html#leistungen") + '''<main>
+    page = HEAD.format(title=s["nav"], bodybg="#F3EDE1") + menu("index.html#leistungen") + '''<main class="apl">
+''' + _chapnav(s) + '''
 
   <!-- 01, HERO -->
   <section class="svc-hero fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="position:relative">
     <a class="svc-back" href="index.html#leistungen">← Alle Leistungen</a>
     <div class="wrap">
-      <div class="svc-glyph" data-fade></div>
+      <div class="svc-glyph" data-fade></div><span class="bdot" aria-hidden="true" data-fade></span>
       <span class="label slabel" data-fade>''' + s["label"] + '''</span>
       <h1 data-lines>
         ''' + h1 + '''
@@ -1753,8 +1846,8 @@ def render_service(s):
         ''' + tags + '''
       </div>
       <p class="ssub" data-fade style="--i:1">''' + s["sub"] + '''</p>
-      <div data-fade style="--i:2;margin-top:28px"><a class="alink" href="#anfrage">Direkt anfragen ↓</a></div>
-''' + heronum_sec + '''
+''' + _dotline(s) + '''      <div data-fade style="--i:2;margin-top:28px"><a class="alink" href="#anfrage">Direkt anfragen ↓</a></div>
+''' + _dotfield(s) + '''''' + heronum_sec + '''
     </div>
   </section>
 

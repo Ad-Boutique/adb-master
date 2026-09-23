@@ -8,10 +8,13 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 
-<link rel="stylesheet" href="assets/master.css?v=113">
-<script src="assets/master.js?v=113" defer></script>
+<link rel="stylesheet" href="assets/master.css?v=117">
+<link rel="stylesheet" href="https://use.typekit.net/udf8wjj.css">
+<link rel="stylesheet" href="assets/brand.css?v=117">
+<script src="assets/brand.js?v=117" defer></script>
+<script src="assets/master.js?v=117" defer></script>
 </head>
-<body style="background-color:#F3EDE1" class="on-light">
+<body style="background-color:#F3EDE1" class="brand on-light">
 
 <div class="pt"><div class="ptw">ad<i>.</i>boutique</div></div>
 
@@ -81,16 +84,29 @@
 </nav>
 
 
-<main>
+<main class="apl">
+
+  <!-- KAPITEL-LEISTE -->
+  <nav class="chapnav" aria-label="Kapitel">
+    <span class="cn-title">Agentur</span>
+    <a href="#zahlen">Zahlen</a>
+    <a href="#koennen">Können</a>
+    <a href="#team">Team</a>
+    <a href="#jobs">Mitarbeiten</a>
+    <a class="cn-cta" href="kontakt.html">Kontakt</a>
+  </nav>
+
 
   <!-- 01, THESE + COLLAGE (Vorlage: About-Hero) -->
   <section class="sec fg-light ahero bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-bottom:clamp(60px,8vw,120px)">
     <div class="wrap">
+      <span class="bdot" aria-hidden="true"></span>
       <h1 class="dispn" data-lines>
         <span class="rl"><span>Wir bauen Marken und Kampagnen</span></span>
         <span class="rl"><span>die von Emotion getrieben und</span></span>
-        <span class="rl"><span>auf Zahlen gebaut sind.</span></span>
+        <span class="rl"><span><i>auf Zahlen gebaut sind.</i></span></span>
       </h1>
+      <div class="dotline" data-fade style="justify-content:flex-start;margin-top:22px"><span>strategen</span><span>kreative</span><span>performance-nerds</span></div>
       <a class="alink" href="work.html" data-fade style="margin-top:30px">Die Beweise ansehen →</a>
       <div class="acollage">
         <div data-drift="0.04"><span data-scale style="display:block;overflow:hidden;border-radius:3px"><img loading="lazy" decoding="async" src="assets/img/retreat-04.jpg" alt="Workshop: Prompt-Review am Screen" width="1920" height="1440"></span></div>
@@ -103,7 +119,7 @@
   </section>
 
   <!-- 02, ZAHLEN & FAKTEN -->
-  <section class="sec fg-light stats bg-paper" data-bg="#F3EDE1" data-fg="dark">
+  <section id="zahlen" class="sec fg-light stats bg-paper" data-bg="#F3EDE1" data-fg="dark">
     <div class="wrap">
       <span class="label sticky-l" style="color:var(--grey-dark)">Zahlen & Fakten</span>
       <div class="stat" data-fade><div class="sv num serif">25+</div><div class="sl">Kunden, von denen die meisten wiederkommen</div></div>
@@ -114,9 +130,9 @@
   </section>
 
   <!-- 03, CAPABILITIES (Creme) -->
-  <section class="sec fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark">
+  <section id="koennen" class="dotzoom sec fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark">
     <div class="wrap caps">
-      <div><span class="label" style="color:var(--grey-dark)">Was wir können</span></div>
+      <div><div class="actring" aria-hidden="true"></div><span class="label" style="color:var(--grey-dark)">Was wir können</span></div>
       <div class="col" data-fade>
         <div class="cl">Strategie</div>
         <div class="it">Digitale Strategie</div>
@@ -145,8 +161,9 @@
   </section>
 
   <!-- 04, TEAM-STATEMENT + GRID -->
-  <section class="sec fg-light ateam bg-paper" data-bg="#F3EDE1" data-fg="dark">
+  <section id="team" class="sec fg-light ateam bg-paper" data-bg="#F3EDE1" data-fg="dark">
     <div class="wrap">
+      <div class="actring" aria-hidden="true" style="margin:0 auto 26px"></div>
       <h2 class="dispn" data-lines>
         <span class="rl"><span>Ein Team aus Strategen, Kreativen</span></span>
         <span class="rl"><span>und Performance-Nerds in Wien.</span></span>
@@ -218,7 +235,7 @@
   </section>
 
   <!-- 05, JOIN / WORK (Vorlage: Join us, Work with us) -->
-  <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding:clamp(110px,14vw,200px) 0">
+  <section id="jobs" class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding:clamp(110px,14vw,200px) 0">
     <div class="wrap joincta">
       <div class="jc" data-fade>
         <div class="serif">Mit uns arbeiten</div>

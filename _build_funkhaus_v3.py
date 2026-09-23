@@ -39,6 +39,42 @@ main = '''<main class="apl">
     </div>
   </section>
 
+  <!-- AUF EINEN BLICK: was besser wurde, in drei Zahlen. Vorher, nachher, der Sprung in Lime -->
+  <section class="sec fg-light bg-paper kpisec" data-bg="#F3EDE1" data-fg="dark" style="padding-top:clamp(60px,7vw,110px);padding-bottom:clamp(50px,6vw,90px)">
+    <div class="wrap">
+      <div class="kpihead">
+        <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:16px">Auf einen Blick</span>
+        <h2 class="dispn" data-lines style="font-size:clamp(30px,3.6vw,58px)"><span class="rl"><span>Was besser wurde,</span></span><span class="rl"><span><i>in drei Zahlen.</i></span></span></h2>
+      </div>
+      <div class="kpiboard" data-stagger>
+        <div class="kpi" data-fade>
+          <span class="kl">Preis je Anfrage</span>
+          <div class="kvals"><span class="kfrom">€ 11,77</span><span class="karrow" aria-hidden="true">→</span><span class="kto" data-from="11.77" data-to="5.00" data-prefix="€ " data-decimals="2">€ 5,00</span></div>
+          <span class="kpill">−57 %</span>
+          <svg class="kline" viewBox="0 0 260 90" data-points="11.77,6.97,5.88,5.00,4.99,5.78" aria-hidden="true"></svg>
+          <p class="kcap">Vom Schnitt der ersten Kampagne zur ersten Welle. Dazwischen: Instant Form € 6,97, Februar € 5,88, danach € 4,99 und € 5,78.</p>
+        </div>
+        <div class="kpi" data-fade>
+          <span class="kl">Strecke zur Anfrage</span>
+          <div class="kvals"><span class="kfrom">€ 15,66</span><span class="karrow" aria-hidden="true">→</span><span class="kto" data-from="15.66" data-to="6.97" data-prefix="€ " data-decimals="2">€ 6,97</span></div>
+          <span class="kpill">−55 %</span>
+          <div class="kdots" aria-hidden="true">
+            <div class="row"><span class="rl">Website</span><span class="dots" data-n="32" data-on="31"></span></div>
+            <div class="row hi"><span class="rl">Instant Form</span><span class="dots" data-n="32" data-on="14"></span></div>
+          </div>
+          <p class="kcap">Dieselbe Kampagne, zwei Wege zur Anfrage. Das Formular im Feed kostet weniger als die Hälfte. Ein Punkt sind 50 Cent.</p>
+        </div>
+        <div class="kpi" data-fade>
+          <span class="kl">Anteil des stärksten Motivs</span>
+          <div class="kvals"><span class="kfrom">4 Motive</span><span class="karrow" aria-hidden="true">→</span><span class="kto" data-from="0" data-to="262" data-decimals="0" data-suffix=" von 489">262 von 489</span></div>
+          <span class="kpill">54 %</span>
+          <div class="dotgraph kwaffle" data-total="100" data-value="54" style="--cols:20" aria-hidden="true"></div>
+          <p class="kcap">Ein einziges Interior-Motiv trug mehr als die Hälfte aller Anfragen. Jeder Punkt ein Prozent.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- HIGHLIGHTS: das Mandat in fuenf Karten, Medium steht, Karten ziehen vorbei -->
   <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark">
     <div class="wrap">

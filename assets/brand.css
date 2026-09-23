@@ -39,6 +39,12 @@ body.brand { background: var(--paper); }
 .brand .fitlead, .brand .fit li, .brand .fitcards li, .brand .zoomsec .zaside .zasub, .brand .phonesec .phtxt .phsub, .brand .lt3.phsub,
 .brand .fcard p, .brand .dcell p, .brand .dcell li { font-family: var(--f-ui); }
 .brand section p[style*="f-serif"] { font-family: var(--f-ui) !important; }
+/* Grundregel: jeder Absatz ist Satoshi. Die Serife bleibt fuer Zitate und Bildzeilen ausdruecklich erlaubt. */
+.brand main p, .brand main .dd { font-family: var(--f-ui); }
+.brand main p.vq, .brand main .qbox p, .brand main blockquote p, .brand main p.serif[style*="font-size:clamp(24px"], .brand main p.serif[style*="font-size:clamp(19px"] { font-family: var(--f-serif); }
+/* Reste auf Cases, Kontakt und Studie: Lesetexte bleiben Satoshi */
+.brand p.body, .brand .klead, .brand .kt, .brand .ksumbody, .brand .ksum a, .brand .stdesc, .brand .inlinetext, .brand .pwbody, .brand .dd,
+.brand .studie p, .brand .stbody p, .brand .cfoot-note, .brand .lens .lt { font-family: var(--f-ui); }
 .brand .panelscroll .pstxt .psbody, .brand .panelscroll .pslead { font-family: var(--f-ui); }
 .brand .benegrid .bd, .brand .oplist--steps .odesc, .brand .cmpd, .brand .prole, .brand .hs .cap, .brand .vcap, .brand .okpi .l,
 .brand .chtxt, .brand .lens .lt, .brand .abody p, .brand .offer p, .brand .deliver li, .brand .npsub2 { font-family: var(--f-ui); }
@@ -280,6 +286,36 @@ body:not(.on-light) .sprog b { background: rgba(244,243,236,0.35); }
   /* Kein seitliches Wackeln am Telefon: clip statt hidden, damit sticky und Scroll-Ereignisse unberuehrt bleiben */
   html { overflow-x: clip; }
 }
+
+/* ============================================================
+   KPI-Sprung: vorher, nachher, die Verbesserung in Lime, auf einen Blick
+   ============================================================ */
+.kpihead { max-width: 760px; margin-bottom: clamp(30px, 4vw, 56px); }
+.kpiboard { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 1.8vw, 28px); }
+.kpi { background: rgba(255,255,255,0.45); border: 1px solid var(--line-l); border-radius: 4px; padding: clamp(22px, 2.4vw, 34px); display: flex; flex-direction: column; gap: 14px; position: relative; }
+.kpi .kl { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--grey-dark); }
+.kpi .kvals { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.kpi .kfrom { font-family: var(--f-serif); font-size: clamp(20px, 1.8vw, 28px); color: var(--grey); text-decoration: line-through; text-decoration-color: rgba(15,15,15,0.35); text-decoration-thickness: 1px; }
+.kpi .karrow { color: var(--grey-dark); font-size: 18px; }
+.kpi .kto { font-family: var(--f-serif); font-size: clamp(38px, 3.6vw, 60px); line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.kpi .kpill { position: absolute; top: clamp(18px, 2vw, 28px); right: clamp(18px, 2vw, 28px); background: var(--lime); color: var(--ink); font-family: var(--f-disp); font-weight: 700; font-size: 14px; letter-spacing: -0.01em; padding: 7px 12px; border-radius: 999px; box-shadow: 0 0 0 1px var(--ink); transform: scale(0.7); opacity: 0; transition: transform 0.6s var(--e-out), opacity 0.4s ease; }
+.kpi.lit .kpill { transform: none; opacity: 1; }
+.kpi .kline { width: 100%; height: auto; display: block; overflow: visible; margin-top: 6px; }
+.kpi .kline .kpath { fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.kpi .kline .kfill { fill: rgba(215,255,69,0.25); }
+.kpi .kline .kd { fill: var(--paper); stroke: var(--ink); stroke-width: 1.5; transform-box: fill-box; transform-origin: center; transform: scale(0); transition: transform 0.4s var(--e-out); }
+.kpi .kline .kd.end { fill: var(--lime); }
+.kpi.lit .kline .kd { transform: none; }
+.kpi .kline .kv { font-family: var(--f-ui); font-size: 9px; fill: var(--grey-dark); }
+.kpi .kdots .row { display: grid; grid-template-columns: 90px 1fr; gap: 12px; align-items: center; padding: 8px 0; }
+.kpi .kdots .rl { font-size: 12.5px; font-weight: 600; }
+.kpi .kdots .dots { display: flex; flex-wrap: wrap; gap: 5px; }
+.kpi .kdots .dots i { width: 8px; height: 8px; border-radius: 50%; background: rgba(15,15,15,0.1); transform: scale(0.5); transition: background-color 0.4s ease, transform 0.5s var(--e-out); }
+.kpi .kdots .dots i.on { background: var(--ink); transform: none; }
+.kpi .kdots .row.hi .dots i.on { background: var(--lime); box-shadow: inset 0 0 0 1px rgba(15,15,15,0.55); }
+.kpi .kwaffle { max-width: none; gap: 5px; margin-top: 6px; }
+.kpi .kcap { font-size: 13px; line-height: 1.5; color: var(--grey-dark); margin-top: auto; }
+@media (max-width: 1000px) { .kpiboard { grid-template-columns: 1fr; } }
 
 /* ---------- Punkt-Graphen: jede Einheit ein Punkt ---------- */
 .dotgraph { display: grid; grid-template-columns: repeat(var(--cols, 10), 1fr); gap: clamp(7px, 1vw, 13px); max-width: 440px; }

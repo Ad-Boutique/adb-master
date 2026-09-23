@@ -18,28 +18,8 @@ def rep(old, new, count=1):
 
 rep("<title>", "<title>Vorschau v3, ")
 
-# 0. Seitenklasse und Kapitel-Leiste
-rep("<main>", '''<main class="apl">
-
-  <!-- KAPITEL-LEISTE: schwebende Pille, erscheint nach dem Hero -->
-  <nav class="chapnav" aria-label="Kapitel">
-    <span class="cn-title">Performance Marketing</span>
-    <a href="#problem">Problem</a>
-    <a href="#nutzen">Nutzen</a>
-    <a href="#beweis">Beweis</a>
-    <a href="#vergleich">Vergleich</a>
-    <a class="cn-cta" href="#anfrage">Anfragen</a>
-  </nav>
-''')
-rep('''  <!-- AKT 1: DAS PROBLEM -->
-  <section class="sec fg-dark kapsec kapsec--dark"''', '''  <!-- AKT 1: DAS PROBLEM -->
-  <section id="problem" class="sec fg-dark kapsec kapsec--dark"''')
-rep('''  <!-- AKT 1: THESE UND NUTZEN -->
-  <section class="sec fg-light bg-cream"''', '''  <!-- AKT 1: THESE UND NUTZEN -->
-  <section id="nutzen" class="sec fg-light bg-cream"''')
-rep('''  <!-- 06, PROOF 2: ERGEBNISSE -->
-  <section class="sec fg-light bg-paper"''', '''  <!-- 06, PROOF 2: ERGEBNISSE -->
-  <section id="beweis" class="sec fg-light bg-paper"''')
+# 0. Kapitel-Leiste und IDs kommen jetzt aus dem Generator; nur das Case-Ziel zeigt hier auf den Vergleich
+rep('<a href="#cases">Cases</a>', '<a href="#vergleich">Vergleich</a>')
 
 # 1. Hero: Zahlen statt Schlagwoerter
 rep('''      <div class="tags" data-fade>
