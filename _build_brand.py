@@ -202,7 +202,91 @@ def service(slug, c):
     print(out, len(h))
 
 
+
+
+def agentur():
+    h = open("agentur.html", encoding="utf-8").read()
+    h = common(h, "Agentur, ad.boutique 2026")
+    h = rep(h, "<main>", '''<main class="apl">
+
+  <!-- KAPITEL-LEISTE -->
+  <nav class="chapnav" aria-label="Kapitel">
+    <span class="cn-title">Agentur</span>
+    <a href="#zahlen">Zahlen</a>
+    <a href="#koennen">Können</a>
+    <a href="#team">Team</a>
+    <a href="#jobs">Mitarbeiten</a>
+    <a class="cn-cta" href="kontakt.html">Kontakt</a>
+  </nav>
+''', "main")
+    h = rep(h, '<section class="sec fg-light stats bg-paper"', '<section id="zahlen" class="sec fg-light stats bg-paper"', "Zahlen-ID")
+    h = rep(h, '  <!-- 03, CAPABILITIES (Creme) -->\n  <section class="sec fg-light bg-cream"', '  <!-- 03, CAPABILITIES (Creme) -->\n  <section id="koennen" class="dotzoom sec fg-light bg-cream"', "Koennen-ID")
+    h = rep(h, '<section class="sec fg-light ateam bg-paper"', '<section id="team" class="sec fg-light ateam bg-paper"', "Team-ID")
+    h = rep(h, '  <!-- 05, JOIN / WORK (Vorlage: Join us, Work with us) -->\n  <section class="sec fg-light bg-paper"', '  <!-- 05, JOIN / WORK (Vorlage: Join us, Work with us) -->\n  <section id="jobs" class="sec fg-light bg-paper"', "Jobs-ID")
+    # Hero: Punkt, dritte Zeile als kursive Antwort, Punktzeile mit den drei Rollen
+    h = rep(h, '<h1 class="dispn" data-lines>\n        <span class="rl"><span>Wir bauen Marken und Kampagnen</span></span>',
+            '<span class="bdot" aria-hidden="true"></span>\n      <h1 class="dispn" data-lines>\n        <span class="rl"><span>Wir bauen Marken und Kampagnen</span></span>', "Hero-Punkt")
+    h = rep(h, '<span class="rl"><span>auf Zahlen gebaut sind.</span></span>', '<span class="rl"><span><i>auf Zahlen gebaut sind.</i></span></span>', "Hero-Kursiv")
+    h = rep(h, '<a class="alink" href="work.html" data-fade style="margin-top:30px">Die Beweise ansehen →</a>',
+            '<div class="dotline" data-fade style="justify-content:flex-start;margin-top:22px"><span>strategen</span><span>kreative</span><span>performance-nerds</span></div>\n      <a class="alink" href="work.html" data-fade style="margin-top:30px">Die Beweise ansehen →</a>', "Punktzeile")
+    # Akt-Ringe
+    h = rep(h, '<div><span class="label" style="color:var(--grey-dark)">Was wir können</span></div>',
+            '<div><div class="actring" aria-hidden="true"></div><span class="label" style="color:var(--grey-dark)">Was wir können</span></div>', "Ring Koennen")
+    h = rep(h, '<h2 class="dispn" data-lines>\n        <span class="rl"><span>Ein Team aus Strategen, Kreativen</span></span>',
+            '<div class="actring" aria-hidden="true" style="margin:0 auto 26px"></div>\n      <h2 class="dispn" data-lines>\n        <span class="rl"><span>Ein Team aus Strategen, Kreativen</span></span>', "Ring Team")
+    open("agentur-brand.html", "w", encoding="utf-8").write(h)
+    print("agentur-brand.html", len(h))
+
+
+def case():
+    """Projektseite: Basis ist die v3-Fassung des Funkhaus-Cases (schon mit Kapitel-Leiste und apl)."""
+    h = open("case-premium-neubau-v3.html", encoding="utf-8").read()
+    h = common(h, "Premium-Neubau, ad.boutique 2026")
+    for lab in ['<span class="label" style="color:var(--champ-deep);display:block;margin-bottom:16px">Die Kampagne</span>',
+                '<span class="label" style="color:var(--champ-deep);display:block;margin-bottom:16px">Die Seite</span>',
+                '<span class="label" style="color:var(--champ-deep);display:block;margin-bottom:16px">Die Wellen</span>',
+                '<span class="label" style="color:var(--champ-deep);display:block;margin-bottom:clamp(22px,3vw,40px)">Was der Kunde sagt</span>']:
+        h = rep(h, lab, '<div class="actring" aria-hidden="true"></div>\n        ' + lab, "Ring " + lab[-30:])
+    # Die These oeffnet sich aus einem Punkt
+    h = rep(h, '<section class="cstate fg-dark"', '<section class="dotzoom cstate fg-dark"', "Punkt-Zoom These")
+    # Punkt fuer Punkt: das Feld und die Strecken, vor dem Motiv-Viewer
+    sec = '''  <!-- PUNKT FUER PUNKT -->
+  <section class="sec fg-light bg-paper dotsec" data-bg="#f4f3ec" data-fg="dark" style="padding-top:clamp(30px,4vw,60px)">
+    <div class="wrap lchap">
+      <div>
+        <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:16px">Punkt für Punkt</span>
+        <h2 class="dispn" data-lines style="font-size:clamp(30px,3.6vw,58px)"><span class="rl"><span>Jede Anfrage</span></span><span class="rl"><span><i>ein Punkt.</i></span></span></h2>
+        <p class="lt3" data-fade style="margin-top:22px">489 Anfragen, 262 davon aus einem einzigen Motiv. Darunter die Strecken: Das Formular im Feed brachte die Anfrage für weniger als die Hälfte des Preises der Website.</p>
+      </div>
+      <div>
+        <div class="dotfield-wrap" data-fade style="margin:0 0 30px;max-width:none">
+          <canvas class="dotfield" data-total="489" data-lime="262" data-form="262" aria-label="489 Punkte, 262 davon in Lime"></canvas>
+          <p class="dotfield-cap"><b>Jeder Punkt eine Anfrage</b>, die Lime-Punkte aus dem Interior-Motiv.<span class="dothint">Antippen</span></p>
+        </div>
+        <div class="dotbars" data-fade>
+          <div class="row"><span class="rl">Instant Form</span><span class="dots" data-n="32" data-on="14"></span><span class="rv">€ 6,97</span></div>
+          <div class="row hi"><span class="rl">Website-Formular</span><span class="dots" data-n="32" data-on="31"></span><span class="rv">€ 15,66</span></div>
+        </div>
+        <p class="dotnote" data-fade>Ein Punkt sind 50 Cent je Anfrage.</p>
+        <div class="dotbars" data-fade>
+          <div class="row hi"><span class="rl">Erste Welle, zehn Tage</span><span class="dots" data-n="20" data-on="17"></span><span class="rv">84 zu € 5,00</span></div>
+          <div class="row hi"><span class="rl">Zweite Welle</span><span class="dots" data-n="20" data-on="13"></span><span class="rv">65 zu € 4,99</span></div>
+          <div class="row hi"><span class="rl">Dritte Welle</span><span class="dots" data-n="20" data-on="19"></span><span class="rv">94 zu € 5,78</span></div>
+        </div>
+        <p class="dotnote" data-fade>Ein Punkt sind fünf Anfragen.</p>
+      </div>
+    </div>
+  </section>
+
+'''
+    h = rep(h, "  <!-- VIEWER: die vier Motive, per Chip statt per Absatz -->", sec + "  <!-- VIEWER: die vier Motive, per Chip statt per Absatz -->", "Punkt-Sektion")
+    open("case-premium-neubau-brand.html", "w", encoding="utf-8").write(h)
+    print("case-premium-neubau-brand.html", len(h))
+
+
 if __name__ == "__main__":
     index()
+    agentur()
+    case()
     for slug, c in SERVICES.items():
         service(slug, c)
