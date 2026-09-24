@@ -41,7 +41,57 @@
   window.__brandLog = [];
   function log(step) { window.__brandLog.push((Date.now() - t0) + "ms " + step); }
 
+  /* Work <-> Case: die Kachel-Expansion bleibt die Transition, in beide Richtungen, ohne Punkt und Wolke */
+  var flipIn = false, unflip = null;
+  try { flipIn = !!sessionStorage.getItem("adbflip"); } catch (e) {}
+  try { unflip = JSON.parse(sessionStorage.getItem("adbunflip") || "null"); sessionStorage.removeItem("adbunflip"); } catch (e) {}
+  /* alle Kacheln auf Work expandieren, auch Farb- und Videokacheln (master.js bindet a[data-flip] nach uns) */
+  Array.prototype.forEach.call(document.querySelectorAll('a.wt.tile[href^="case-"]:not([data-flip])'), function (a) { a.setAttribute("data-flip", ""); });
+  if (unflip) {
+    var pt0 = document.querySelector(".pt");
+    if (pt0) { pt0.style.transition = "none"; pt0.classList.add("gone"); }
+    var tile = unflip.href ? document.querySelector('a.wt.tile[href="' + unflip.href + '"]') : null;
+    if (tile && unflip.rect) {
+      /* Deckel an der gemerkten Stelle, die Seite scrollt darunter so, dass die Kachel exakt dort liegt;
+         Bilder laden nach, also nach load und kurz danach noch einmal ausrichten, erst dann blendet der Deckel aus */
+      var lid = document.createElement("div"); lid.className = "flipx flipx--lid";
+      var timg = tile.querySelector("img"), tvid = tile.querySelector("video"), tsrc = timg ? (timg.currentSrc || timg.src) : (tvid && tvid.poster ? tvid.poster : "");
+      if (tsrc) lid.style.backgroundImage = "url('" + tsrc + "')"; else lid.style.background = getComputedStyle(tile.querySelector(".wclr") || tile).backgroundColor;
+      lid.style.top = unflip.rect.top + "px"; lid.style.left = unflip.rect.left + "px"; lid.style.width = unflip.rect.width + "px"; lid.style.height = unflip.rect.height + "px";
+      body.appendChild(lid);
+      function align() { var tr = tile.getBoundingClientRect(); var dy = tr.top - unflip.rect.top; if (Math.abs(dy) > 0.5) window.scrollTo(0, Math.max(0, window.pageYOffset + dy)); }
+      align();
+      window.addEventListener("load", align);
+      setTimeout(align, 250);
+      setTimeout(function () { align(); lid.style.opacity = "0"; setTimeout(function () { lid.remove(); }, 500); }, 700);
+    }
+  }
+  var bk = document.querySelector(".bkbtn");
+  if (bk && !reduced) bk.addEventListener("click", function (e) {
+    e.preventDefault(); e.stopPropagation();
+    var href = bk.getAttribute("href") || "work.html", me = location.pathname.split("/").pop() || "index.html";
+    var saved = null; try { saved = JSON.parse(sessionStorage.getItem("adbflipFrom") || "null"); } catch (err) {}
+    var rect = (saved && saved.href === me && saved.rect) ? saved.rect : null;
+    var hero = document.querySelector(".chero"), img = hero && hero.querySelector("img");
+    var bg = document.createElement("div"); bg.className = "flipbg"; body.appendChild(bg);
+    var x = document.createElement("div"); x.className = "flipx";
+    if (img) x.style.backgroundImage = "url('" + (img.currentSrc || img.src) + "')"; else x.style.background = getComputedStyle(hero || body).backgroundColor;
+    x.style.top = "0px"; x.style.left = "0px"; x.style.width = "100vw"; x.style.height = "100vh"; x.style.borderRadius = "0";
+    body.appendChild(x);
+    var W = window.innerWidth, H = window.innerHeight, cw = Math.min(420, W * 0.7), ch = cw * 0.75;
+    var t = rect || { top: (H - ch) / 2, left: (W - cw) / 2, width: cw, height: ch };
+    requestAnimationFrame(function () { requestAnimationFrame(function () {
+      bg.classList.add("on");
+      x.style.top = t.top + "px"; x.style.left = t.left + "px"; x.style.width = t.width + "px"; x.style.height = t.height + "px"; x.style.borderRadius = "3px";
+      setTimeout(function () {
+        try { sessionStorage.setItem("adbunflip", JSON.stringify({ href: me, rect: rect })); } catch (err) {}
+        location.href = href;
+      }, 720);
+    }); });
+  });
+
   window.ADB_ENTER = function (pt, done) {
+    if (flipIn || unflip) { pt.classList.add("gone"); body.classList.add("mready"); done(); log("Kachel-Transition, kein Punkt"); return; }
     if (reduced) { pt.classList.add("gone"); body.classList.add("mready"); done(); setTimeout(coach, 500); return; }
     /* Punkt */
     dot.style.transition = "transform 0.45s " + OUT + ", opacity 0.3s ease";
@@ -255,6 +305,18 @@
     }
     if (variant === 2) press(); else if (variant === 3) iris(); else if (variant === 4) write(); else if (variant === 5) trail(0); else if (variant === 6) combo(); else fan();
   }
+
+  /* ---------- Work: aktiver Filter (nicht Alle) markiert seinen Kreis ---------- */
+  (function () {
+    var pairs = [[".fbtn", ".fpop"], [".bbtn", ".bpop"]];
+    function mark() {
+      pairs.forEach(function (pr) {
+        var b = document.querySelector(pr[0]), on = document.querySelector(pr[1] + " .fchip.on");
+        if (b) b.classList.toggle("has", !!(on && (on.getAttribute("data-cat") || on.getAttribute("data-branch") || "").toLowerCase() !== "alle"));
+      });
+    }
+    if (document.querySelector(".fbtn, .bbtn")) { document.addEventListener("click", function () { setTimeout(mark, 0); }); mark(); }
+  })();
 
   /* ---------- Kopfzeile: gelernter Menue-Knopf rechts neben Kontakt, klickt den Punkt ---------- */
   (function () {

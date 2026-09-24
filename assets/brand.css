@@ -357,6 +357,27 @@ body:not(.on-light) .sprog b { background: rgba(244,243,236,0.35); }
   .brand .apl .tell .tfix { top: 64px; }
 }
 
+/* ---------- Work <-> Case: Deckel ueber der Kachel nach dem Rueckweg, blendet aus ---------- */
+.flipx--lid { transition: opacity 0.45s ease; z-index: 150; }
+
+/* ---------- Work: Filter-Kreise mit eigenem Grund und Wort im Kreis, damit sie ueber Bildern sichtbar bleiben ---------- */
+.brand .fbtn, .brand .bbtn { background: var(--paper); border: 1px solid var(--ink); box-shadow: 0 8px 26px rgba(15,15,15,0.22); transition: transform 0.5s var(--e-out), background-color 0.35s ease; }
+.brand .fbtn::after, .brand .bbtn::after { display: none; }
+.brand .fbtn::before, .brand .bbtn::before {
+  content: "Filter"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-family: var(--f-ui); font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink);
+}
+.brand .bbtn::before { content: "Branche"; font-size: 8.5px; letter-spacing: 0.08em; }
+.brand .fbtn:hover, .brand .bbtn:hover { background: var(--lime); }
+body.brand.filteropen .fbtn, body.brand.branchopen .bbtn { background: var(--lime); border-color: var(--ink); }
+/* ein aktiver Filter (nicht Alle) markiert den Kreis mit einem Lime-Punkt am Rand */
+.brand .fbtn.has, .brand .bbtn.has { box-shadow: 0 8px 26px rgba(15,15,15,0.22), inset 0 0 0 2px var(--lime); }
+.brand .forbit, .brand .borbit { display: none; }
+/* Chips in der Markenpalette */
+.brand .fpop .fchip, .brand .bpop .fchip { background: var(--ink); border-color: rgba(244,243,236,0.2); color: var(--paper); }
+.brand .fpop .fchip.on, .brand .bpop .fchip.on { background: var(--lime); color: var(--ink); border-color: var(--lime); }
+.brand .fpop .fchip:hover, .brand .bpop .fchip:hover { border-color: var(--lime); }
+
 /* ---------- Kopfzeile: gelernter Menue-Knopf rechts neben Kontakt, oeffnet dasselbe Menue wie der Punkt ---------- */
 .chrome .chr { display: flex; align-items: center; gap: clamp(18px, 2.4vw, 36px); pointer-events: auto; }
 .chrome .hmenu { display: inline-flex; align-items: center; gap: 9px; background: none; border: 0; padding: 0; cursor: pointer; font-family: var(--f-ui); font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #fff; opacity: 0.9; pointer-events: auto; }

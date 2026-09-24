@@ -875,11 +875,15 @@
       e.preventDefault();
       var href = a.getAttribute("href");
       if (reduced) { location.href = href; return; }
-      var img = a.querySelector("img");
-      var r = (img || a).getBoundingClientRect();
+      var img = a.querySelector("img"), vid = a.querySelector("video");
+      var r = a.getBoundingClientRect();
       var x = document.createElement("div");
       x.className = "flipx";
-      x.style.backgroundImage = "url('" + (img ? img.currentSrc || img.src : "") + "')";
+      var src = img ? (img.currentSrc || img.src) : (vid && vid.poster ? vid.poster : "");
+      if (src) x.style.backgroundImage = "url('" + src + "')";
+      else x.style.background = getComputedStyle(a.querySelector(".wclr") || a).backgroundColor;
+      /* Rueckweg: die Case-Seite kennt so ihre Kachel und schrumpft dorthin zurueck */
+      try { sessionStorage.setItem("adbflipFrom", JSON.stringify({ href: href, rect: { top: r.top, left: r.left, width: r.width, height: r.height } })); } catch (err) {}
       x.style.top = r.top + "px"; x.style.left = r.left + "px";
       x.style.width = r.width + "px"; x.style.height = r.height + "px";
       document.body.appendChild(x);
