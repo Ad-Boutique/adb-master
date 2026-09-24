@@ -95,9 +95,9 @@
   }
 
   /* ---------- Erster Besuch: der Menue-Kreis erklaert sich selbst, vier Choreografien zum Vergleich.
-     ?coach=1 erzwingt, &cv=1..4 waehlt (1 Punkt zerfaellt in fuenf, 2 Kreis drueckt sich selbst und oeffnet das Menue, 3 Iris, 4 Wort schreibt sich, 5 Spur zum Menue-Knopf oben),
+     ?coach=1 erzwingt, &cv=1..4 waehlt (1 Punkt zerfaellt in fuenf, 2 Kreis drueckt sich selbst und oeffnet das Menue, 3 Iris, 4 Wort schreibt sich, 5 Spur zum Menue-Knopf oben, 6 = 2 dann 5, Standard),
      &hold=1 haelt im sprechendsten Moment. Einmal je Browser (localStorage adb_coach), endet bei der ersten Handlung. ---------- */
-  var COACH_DEFAULT = 1;
+  var COACH_DEFAULT = 6;
   function coach() {
     if (reduced) return;
     var q = location.search, force = /coach=1/.test(q), hold = /hold=1/.test(q);
@@ -106,7 +106,7 @@
     if (!mb || !sheet || body.classList.contains("menuopen")) return;
     try { if (!force && localStorage.getItem("adb_coach")) return; localStorage.setItem("adb_coach", "1"); } catch (e) { if (!force) return; }
     var els = [], timers = [], over = false, y0 = window.pageYOffset;
-    var STATES = ["menupeek", "mpress", "miris", "mwriting", "mblink", "mpop"];
+    var STATES = ["menupeek", "menuopen", "mdemo", "mpress", "miris", "mwriting", "mblink", "mpop"];
     function mk(cls) { var el = document.createElement("div"); el.className = cls; el.setAttribute("aria-hidden", "true"); body.appendChild(el); els.push(el); return el; }
     function at(ms, fn) { timers.push(setTimeout(fn, ms)); }
     function center() { var r = mb.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; }
@@ -152,18 +152,40 @@
         at(3800, end);
       }
     }
-    /* 2: der Kreis macht die Geste vor: drueckt sich, ein Ring, das ganze Menue faehrt hoch, drueckt noch einmal, zu */
-    function press() {
-      ring(0); body.classList.add("mpress");
-      at(260, function () { body.classList.remove("mpress"); body.classList.add("menupeek"); log("Coach: Menue offen"); });
-      if (!hold) {
-        at(2900, function () { ring(0); body.classList.add("mpress"); });
-        at(3160, function () { body.classList.remove("mpress"); body.classList.remove("menupeek"); });
-        at(4100, end);
-      }
+    /* Reihe des Menues weich scrollen (wenn nicht alle Reiter Platz haben) */
+    function scrollRow(el, target, dur) {
+      var from = el.scrollLeft, t0 = performance.now();
+      (function step(now) {
+        if (over) return;
+        var q = Math.min(1, (now - t0) / dur), e = q < 0.5 ? 2 * q * q : 1 - Math.pow(-2 * q + 2, 2) / 2;
+        el.scrollLeft = from + (target - from) * e;
+        if (q < 1) requestAnimationFrame(step);
+      })(t0);
     }
+    /* 2: der Kreis macht die Geste vor: drueckt sich, ein Ring, das ganze Menue oeffnet sich echt (body.menuopen, Vorschaubilder kommen wie beim Klick),
+       die Reihe faehrt einmal nach rechts und zurueck, falls nicht alle Reiter Platz haben, zweiter Druck, zu. Gibt zurueck, wann das Menue wieder zu ist. */
+    function openDemo(t) {
+      Array.prototype.forEach.call(sheet.querySelectorAll("img[loading=lazy]"), function (im) { im.loading = "eager"; });
+      var mrow = sheet.querySelector(".mrow");
+      at(t, function () { ring(0); body.classList.add("mpress"); });
+      at(t + 260, function () { body.classList.remove("mpress"); body.classList.add("menuopen"); body.classList.add("mdemo"); log("Coach: Menue offen"); });
+      var t2 = t + 2900;
+      var wide = mrow && mrow.scrollWidth > mrow.clientWidth + 8;
+      if (wide) {
+        at(t + 1300, function () { scrollRow(mrow, mrow.scrollWidth - mrow.clientWidth, 1500); log("Coach: Reihe faehrt"); });
+        at(t + 3100, function () { scrollRow(mrow, 0, 1100); });
+        t2 = t + 4400;
+      }
+      if (!hold) {
+        at(t2, function () { ring(0); body.classList.add("mpress"); });
+        at(t2 + 260, function () { body.classList.remove("mpress"); body.classList.remove("menuopen"); body.classList.remove("mdemo"); log("Coach: Menue zu"); });
+      }
+      return t2 + 1000;
+    }
+    function press() { var tEnd = openDemo(0); if (!hold) at(tEnd, end); }
     /* 5: eine Spur aus Punkten laeuft vom Kreis zum Menue-Knopf rechts oben, ein Punkt reist mit, oben leuchtet es auf: beide Wege oeffnen dasselbe */
-    function trail() {
+    function trail(t) {
+      t = t || 0;
       var hm = document.querySelector(".chrome .hmenu i"); if (!hm) { fan(); return; }
       var c = center(), hr = hm.getBoundingClientRect(), h = { x: hr.left + hr.width / 2, y: hr.top + hr.height / 2 };
       var W = window.innerWidth, H = window.innerHeight, ns = "http://www.w3.org/2000/svg";
@@ -180,10 +202,10 @@
         svg.appendChild(ci); dots.push(ci);
       }
       var trv = document.createElementNS(ns, "circle"); trv.setAttribute("r", "6"); trv.setAttribute("class", "trv"); trv.setAttribute("opacity", "0"); svg.appendChild(trv);
-      ring(0);
-      dots.forEach(function (d, i) { at(300 + i * 22, function () { d.classList.add("on"); }); });
+      at(t, function () { ring(0); log("Coach: Spur startet"); });
+      dots.forEach(function (d, i) { at(t + 300 + i * 22, function () { d.classList.add("on"); }); });
       var dur = 1100;
-      at(300, function () {
+      at(t + 300, function () {
         trv.setAttribute("opacity", "1"); var t0 = performance.now();
         (function step(now) {
           if (over) return;
@@ -193,9 +215,14 @@
         })(t0);
       });
       if (!hold) {
-        at(2700, function () { dots.forEach(function (d) { d.classList.remove("on"); }); hm.classList.remove("lit"); });
-        at(3400, end);
+        at(t + 2700, function () { dots.forEach(function (d) { d.classList.remove("on"); }); hm.classList.remove("lit"); });
+        at(t + 3400, end);
       }
+    }
+    /* 6: Kombination: erst drueckt sich der Kreis und zeigt das Menue, dann laeuft die Spur zum zweiten Eingang oben */
+    function combo() {
+      var tEnd = openDemo(0);
+      if (!hold) trail(tEnd + 200);
     }
     /* 3: Iris: der Kreis waechst auf das Dreifache, innen ein Ring aus fuenf Punkten, die Worte laufen in der Mitte durch */
     function iris() {
@@ -226,7 +253,7 @@
         at(3500, end);
       }
     }
-    if (variant === 2) press(); else if (variant === 3) iris(); else if (variant === 4) write(); else if (variant === 5) trail(); else fan();
+    if (variant === 2) press(); else if (variant === 3) iris(); else if (variant === 4) write(); else if (variant === 5) trail(0); else if (variant === 6) combo(); else fan();
   }
 
   /* ---------- Kopfzeile: gelernter Menue-Knopf rechts neben Kontakt, klickt den Punkt ---------- */

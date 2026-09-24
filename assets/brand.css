@@ -380,9 +380,8 @@ body.mpress .mbtn { transform: translateX(-50%) scale(0.84); transition: transfo
 .cdot.go i { transform: scale(1); }
 .cdot span { position: absolute; left: 50%; bottom: 20px; transform: translate(-50%, 6px); white-space: nowrap; font-family: var(--f-ui); font-size: 11px; line-height: 1; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--paper); background: rgba(15,15,15,0.9); padding: 7px 10px 6px; border-radius: 999px; opacity: 0; transition: opacity 0.35s ease, transform 0.4s var(--e-out); }
 .cdot.say span { opacity: 1; transform: translate(-50%, 0); }
-/* 2: das ganze Menue faehrt hoch, wie beim echten Oeffnen */
-body.menupeek .msheet { transform: none; transition: transform 0.8s var(--e-snap); }
-body.menupeek .mdim { opacity: 0.55; }
+/* 2: das Menue oeffnet sich echt (body.menuopen), waehrend der Demo ohne Hand-Cursor auf der Reihe */
+body.mdemo .mrow { cursor: default; scroll-behavior: auto; }
 /* 5: Spur aus Punkten zum Menue-Knopf oben */
 .ctrail { position: fixed; inset: 0; z-index: 91; pointer-events: none; }
 .ctrail svg { display: block; width: 100%; height: 100%; }
