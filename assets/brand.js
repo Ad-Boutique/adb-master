@@ -94,44 +94,104 @@
     })(t0);
   }
 
-  /* ---------- Erster Besuch: der Punkt erklaert sich. Einmal je Browser, endet bei der ersten Handlung. ?coach=1 erzwingt, &hold=1 haelt fuer Screenshots ---------- */
+  /* ---------- Erster Besuch: der Menue-Kreis erklaert sich selbst, vier Choreografien zum Vergleich.
+     ?coach=1 erzwingt, &cv=1..4 waehlt (1 Punkt zerfaellt in fuenf, 2 Kreis drueckt sich selbst, 3 Iris, 4 Wort schreibt sich),
+     &hold=1 haelt im sprechendsten Moment. Einmal je Browser (localStorage adb_coach), endet bei der ersten Handlung. ---------- */
+  var COACH_DEFAULT = 1;
   function coach() {
+    if (reduced) return;
     var q = location.search, force = /coach=1/.test(q), hold = /hold=1/.test(q);
+    var mv = q.match(/[?&]cv=(\d)/), variant = mv ? parseInt(mv[1], 10) : COACH_DEFAULT;
     var mb = document.querySelector(".mbtn"), sheet = document.querySelector(".msheet");
     if (!mb || !sheet || body.classList.contains("menuopen")) return;
     try { if (!force && localStorage.getItem("adb_coach")) return; localStorage.setItem("adb_coach", "1"); } catch (e) { if (!force) return; }
-    var coarse = window.matchMedia("(pointer: coarse)").matches;
-    var box = document.createElement("div"); box.className = "coach"; box.setAttribute("aria-hidden", "true");
-    box.innerHTML = '<span class="cbox"><span class="c1">Der <b>Punkt</b> ist Ihr Menü.</span><span class="c2">' + (coarse ? "Tippen Sie ihn" : "Klicken Sie ihn") + ', oder oben rechts auf Menü.</span></span><span class="c3"></span>';
-    body.appendChild(box);
-    var r1 = document.createElement("i"), r2 = document.createElement("i");
-    r1.className = "coach-ring"; r2.className = "coach-ring two"; body.appendChild(r1); body.appendChild(r2);
-    function place() {
-      var r = mb.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
-      [r1, r2].forEach(function (el) { el.style.left = cx + "px"; el.style.top = cy + "px"; });
-      box.style.bottom = (window.innerHeight - r.top + 14) + "px";
+    var els = [], timers = [], over = false, y0 = window.pageYOffset;
+    var STATES = ["menupeek", "mpress", "miris", "mwriting", "mblink", "mpop"];
+    function mk(cls) { var el = document.createElement("div"); el.className = cls; el.setAttribute("aria-hidden", "true"); body.appendChild(el); els.push(el); return el; }
+    function at(ms, fn) { timers.push(setTimeout(fn, ms)); }
+    function center() { var r = mb.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; }
+    function ring(delay) { var c = center(), r = mk("coach-ring"); r.style.left = c.x + "px"; r.style.top = c.y + "px"; at(delay || 0, function () { r.classList.add("burst"); }); }
+    function words() {
+      return Array.prototype.map.call(sheet.querySelectorAll(".mitem .mt"), function (e) { var r = e.getBoundingClientRect(); return { t: e.textContent.trim(), x: r.left + r.width / 2 }; }).slice(0, 5);
     }
-    place();
-    var timers = [], over = false;
     function end() {
       if (over) return; over = true;
       timers.forEach(clearTimeout);
-      box.classList.remove("on"); r1.classList.remove("go"); r2.classList.remove("go");
-      body.classList.remove("menupeek");
-      setTimeout(function () { box.remove(); r1.remove(); r2.remove(); }, 600);
+      STATES.forEach(function (k) { body.classList.remove(k); });
+      els.forEach(function (e) { e.style.transition = "opacity 0.3s ease"; e.style.opacity = "0"; });
+      setTimeout(function () { els.forEach(function (e) { e.remove(); }); }, 350);
       window.removeEventListener("pointerdown", end, true); window.removeEventListener("keydown", end, true);
-      window.removeEventListener("scroll", onScroll, true); window.removeEventListener("resize", place);
+      window.removeEventListener("scroll", onScroll, true);
+      log("Coach Ende");
     }
-    var y0 = window.pageYOffset;
     function onScroll() { if (Math.abs(window.pageYOffset - y0) > 40) end(); }
     window.addEventListener("pointerdown", end, true); window.addEventListener("keydown", end, true);
-    window.addEventListener("scroll", onScroll, true); window.addEventListener("resize", place);
-    timers.push(setTimeout(function () { box.classList.add("on"); r1.classList.add("go"); r2.classList.add("go"); log("Coach: Label und Ringe"); }, 60));
-    timers.push(setTimeout(function () { body.classList.add("menupeek"); log("Coach: Menue lugt hervor"); }, 1500));
-    if (!hold) {
-      timers.push(setTimeout(function () { body.classList.remove("menupeek"); }, 3300));
-      timers.push(setTimeout(end, 4600));
+    window.addEventListener("scroll", onScroll, true);
+    log("Coach Variante " + variant);
+
+    /* 1: der Punkt springt auf und entlaesst fuenf Punkte, die sich dorthin legen, wo die Reiter des Menues liegen; jeder traegt kurz sein Wort */
+    function fan() {
+      var ws = words(), c = center(), narrow = window.innerWidth < 760;
+      var dots = ws.map(function (w) { var d = mk("cdot"); d.innerHTML = "<i></i><span>" + w.t + "</span>"; d.style.left = c.x + "px"; d.style.top = c.y + "px"; return d; });
+      body.classList.add("mpop");
+      at(220, function () {
+        body.classList.remove("mpop");
+        dots.forEach(function (d, i) {
+          var tx, ty;
+          if (narrow) { var a = Math.PI * (1.1 + 0.8 * i / (ws.length - 1)); tx = Math.cos(a) * 132; ty = Math.sin(a) * 132 + 20; }
+          else { tx = ws[i].x - c.x; ty = -28; }
+          d.style.transitionDelay = (i * 60) + "ms"; d.classList.add("go"); d.style.transform = "translate(" + tx.toFixed(1) + "px," + ty.toFixed(1) + "px)";
+        });
+        log("Coach: fuenf Punkte fliegen");
+      });
+      at(1000, function () { dots.forEach(function (d) { d.classList.add("say"); }); log("Coach: Worte"); });
+      if (!hold) {
+        at(2700, function () { dots.forEach(function (d) { d.classList.remove("say"); d.style.transitionDelay = "0ms"; d.style.transform = "translate(0,0)"; }); });
+        at(3400, function () { body.classList.add("mpop"); dots.forEach(function (d) { d.classList.remove("go"); }); });
+        at(3620, function () { body.classList.remove("mpop"); });
+        at(3800, end);
+      }
     }
+    /* 2: der Kreis macht die Geste vor: drueckt sich, ein Ring, das Menue faehrt zur Haelfte hoch, drueckt noch einmal, zu */
+    function press() {
+      ring(0); body.classList.add("mpress");
+      at(260, function () { body.classList.remove("mpress"); body.classList.add("menupeek"); log("Coach: Menue halb offen"); });
+      if (!hold) {
+        at(2100, function () { ring(0); body.classList.add("mpress"); });
+        at(2360, function () { body.classList.remove("mpress"); body.classList.remove("menupeek"); });
+        at(3300, end);
+      }
+    }
+    /* 3: Iris: der Kreis waechst auf das Dreifache, innen ein Ring aus fuenf Punkten, die Worte laufen in der Mitte durch */
+    function iris() {
+      var ws = words(), c = center(), ir = mk("iris");
+      ir.style.left = c.x + "px"; ir.style.top = c.y + "px";
+      ir.innerHTML = '<div class="iring">' + ws.map(function (w, i) { return '<i style="--a:' + (i * 72) + 'deg"></i>'; }).join("") + '</div><span class="iword"></span>';
+      var word = ir.querySelector(".iword"), pins = ir.querySelectorAll(".iring i");
+      body.classList.add("miris");
+      at(450, function () { ir.classList.add("on"); log("Coach: Iris offen"); });
+      ws.forEach(function (w, i) { at(700 + i * 520, function () { word.textContent = w.t; word.classList.remove("in"); void word.offsetWidth; word.classList.add("in"); pins[i].classList.add("lit"); }); });
+      var done = 700 + ws.length * 520 + 400;
+      if (!hold) {
+        at(done, function () { ir.classList.remove("on"); body.classList.remove("miris"); });
+        at(done + 800, end);
+      }
+    }
+    /* 4: das Wort schreibt sich Buchstabe fuer Buchstabe in den Kreis, dann blinkt der Kern zweimal */
+    function write() {
+      var c = center(), wr = mk("mwrite");
+      wr.style.left = c.x + "px"; wr.style.top = c.y + "px";
+      wr.innerHTML = "Menü".split("").map(function (ch) { return "<b>" + ch + "</b>"; }).join("");
+      ring(0); body.classList.add("mwriting");
+      Array.prototype.forEach.call(wr.querySelectorAll("b"), function (bb, i) { at(500 + i * 150, function () { bb.classList.add("in"); }); });
+      at(1100, function () { log("Coach: Wort steht"); });
+      if (!hold) {
+        at(2400, function () { wr.classList.add("out"); body.classList.remove("mwriting"); body.classList.add("mblink"); });
+        at(3400, function () { body.classList.remove("mblink"); });
+        at(3500, end);
+      }
+    }
+    if (variant === 2) press(); else if (variant === 3) iris(); else if (variant === 4) write(); else fan();
   }
 
   /* ---------- Kopfzeile: gelernter Menue-Knopf rechts neben Kontakt, klickt den Punkt ---------- */

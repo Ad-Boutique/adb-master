@@ -92,7 +92,7 @@ body.mword .mbtn::after { display: none; }
 body.mword .mbtn::before {
   content: "Menü"; position: absolute; inset: 0; width: auto; height: auto; margin: 0; display: flex; align-items: center; justify-content: center;
   font-family: var(--f-ui); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--ink); background: none; box-shadow: none; border-radius: 0; opacity: 1; animation: none; transform: none; transition: color 0.4s ease;
+  color: var(--ink); background: none; box-shadow: none; border-radius: 0; opacity: 1; animation: none; transform: none; transition: color 0.4s ease, opacity 0.25s ease;
 }
 body.mword .mbtn:hover::before { animation: none; opacity: 1; }
 body.mword.menuopen .mbtn::before { content: "Schließen"; font-size: 8.5px; letter-spacing: 0.06em; color: var(--lime); }
@@ -367,22 +367,44 @@ body.menuopen .chrome .hmenu .hm-open { display: none; }
 body.menuopen .chrome .hmenu .hm-close { display: inline; }
 @media (max-width: 520px) { .chrome .hmenu { letter-spacing: 0.12em; font-size: 11px; } .chrome .ctc { font-size: 11px; } }
 
-/* ---------- Erster Besuch: der Punkt erklaert sich (Label, Ringe, das Menue lugt kurz hervor) ---------- */
-.coach { position: fixed; left: 50%; z-index: 95; transform: translate(-50%, 8px); text-align: center; pointer-events: none; opacity: 0; transition: opacity 0.5s ease, transform 0.6s var(--e-out); width: min(86vw, 400px); }
-.coach.on { opacity: 1; transform: translate(-50%, 0); }
-/* eigene dunkle Pille, damit das Label auf jedem Grund lesbar bleibt: Bild, Creme, Text */
-.coach .cbox { display: block; background: rgba(15,15,15,0.94); color: var(--paper); border-radius: 8px; padding: 18px 22px 20px; box-shadow: 0 14px 40px rgba(10,10,10,0.25); }
-.coach .c1 { display: block; font-family: var(--f-serif); font-style: italic; font-size: clamp(22px, 2.4vw, 28px); line-height: 1.15; letter-spacing: -0.01em; color: var(--paper); }
-.coach .c1 b { font-style: normal; color: var(--lime); font-weight: 400; }
-.coach .c2 { display: block; margin-top: 8px; font-size: 13px; font-weight: 600; color: var(--grey); font-family: var(--f-ui); }
-.coach .c3 { display: block; width: 2px; height: 26px; margin: 10px auto 0; background-image: radial-gradient(circle, var(--lime) 1px, transparent 1.3px); background-size: 2px 6px; }
+/* ---------- Erster Besuch: der Menue-Kreis erklaert sich selbst (brand.js coach(), vier Varianten) ---------- */
 .coach-ring { position: fixed; z-index: 89; width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50%; border: 1.5px solid var(--lime); pointer-events: none; opacity: 0; }
-.coach-ring.go { animation: coachring 1.5s ease-out infinite; }
-.coach-ring.go.two { animation-delay: 0.5s; }
-@keyframes coachring { 0% { transform: scale(1); opacity: 0.9; } 100% { transform: scale(2.4); opacity: 0; } }
-body.menupeek .msheet { transform: translateY(calc(100% - 92px)); transition: transform 0.9s var(--e-snap); }
-body.menupeek .mdim { opacity: 0.25; }
-@media (prefers-reduced-motion: reduce) { .coach-ring { display: none; } }
+.coach-ring.burst { animation: coachring 0.9s ease-out forwards; }
+@keyframes coachring { 0% { transform: scale(1); opacity: 0.9; } 100% { transform: scale(2.6); opacity: 0; } }
+/* gemeinsame Zustaende des Kreises */
+body.mpop .mbtn { transform: translateX(-50%) scale(1.18); transition: transform 0.22s var(--e-out); }
+body.mpress .mbtn { transform: translateX(-50%) scale(0.84); transition: transform 0.2s ease; }
+/* 1: fuenf Punkte mit Wort, Wort in dunkler Pille, damit es auf Bild, Creme und Schwarz lesbar bleibt */
+.cdot { position: fixed; z-index: 92; width: 12px; height: 12px; margin: -6px 0 0 -6px; pointer-events: none; transition: transform 0.75s var(--e-snap); }
+.cdot i { display: block; width: 12px; height: 12px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 1px var(--ink); transform: scale(0); transition: transform 0.3s var(--e-out); }
+.cdot.go i { transform: scale(1); }
+.cdot span { position: absolute; left: 50%; bottom: 20px; transform: translate(-50%, 6px); white-space: nowrap; font-family: var(--f-ui); font-size: 11px; line-height: 1; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--paper); background: rgba(15,15,15,0.9); padding: 7px 10px 6px; border-radius: 999px; opacity: 0; transition: opacity 0.35s ease, transform 0.4s var(--e-out); }
+.cdot.say span { opacity: 1; transform: translate(-50%, 0); }
+/* 2: das Menue faehrt zur Haelfte hoch */
+body.menupeek .msheet { transform: translateY(50%); transition: transform 0.8s var(--e-snap); }
+body.menupeek .mdim { opacity: 0.3; }
+/* 3: Iris */
+body.miris .mbtn { transform: translateX(-50%) scale(3); transition: transform 0.7s var(--e-snap); }
+body.miris .mbtn::after, body.miris .mbtn::before { opacity: 0; transition: opacity 0.3s ease; }
+body.miris .morbit { opacity: 0; transition: opacity 0.3s ease; }
+.iris { position: fixed; z-index: 92; width: 150px; height: 150px; margin: -75px 0 0 -75px; pointer-events: none; opacity: 0; transition: opacity 0.4s ease; }
+.iris.on { opacity: 1; }
+.iris .iring { position: absolute; inset: 0; animation: irisspin 16s linear infinite; }
+.iris .iring i { position: absolute; left: 50%; top: 50%; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px; border-radius: 50%; background: rgba(15,15,15,0.22); transform: rotate(var(--a)) translateY(-62px); transition: background-color 0.3s ease; }
+.iris .iring i.lit { background: var(--ink); }
+.iris .iword { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-family: var(--f-ui); font-size: 12px; line-height: 1; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); opacity: 0; white-space: nowrap; }
+.iris .iword.in { animation: iword 0.5s ease forwards; }
+@keyframes irisspin { to { transform: rotate(360deg); } }
+@keyframes iword { 0% { opacity: 0; transform: translate(-50%, calc(-50% + 5px)); } 100% { opacity: 1; transform: translate(-50%, -50%); } }
+/* 4: das Wort schreibt sich, danach blinkt der Kern */
+body.mwriting .mbtn::after, body.mwriting .mbtn::before { opacity: 0; transition: opacity 0.25s ease; }
+.mwrite { position: fixed; z-index: 92; transform: translate(-50%, -50%); display: flex; padding-left: 0.14em; font-family: var(--f-ui); font-size: 11px; line-height: 1; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); pointer-events: none; transition: opacity 0.4s ease; }
+.mwrite b { font-weight: 700; opacity: 0; transform: translateY(5px); transition: opacity 0.25s ease, transform 0.3s var(--e-out); }
+.mwrite b.in { opacity: 1; transform: none; }
+.mwrite.out { opacity: 0; }
+body.mblink .mbtn::after { animation: mblink 0.45s ease 2; }
+@keyframes mblink { 0%, 100% { opacity: 1; } 50% { opacity: 0.15; } }
+@media (prefers-reduced-motion: reduce) { .coach-ring, .cdot, .iris, .mwrite { display: none; } }
 
 /* ---------- Punkt-Graphen: jede Einheit ein Punkt ---------- */
 .dotgraph { display: grid; grid-template-columns: repeat(var(--cols, 10), 1fr); gap: clamp(7px, 1vw, 13px); max-width: 440px; }
