@@ -95,7 +95,7 @@
   }
 
   /* ---------- Erster Besuch: der Menue-Kreis erklaert sich selbst, vier Choreografien zum Vergleich.
-     ?coach=1 erzwingt, &cv=1..4 waehlt (1 Punkt zerfaellt in fuenf, 2 Kreis drueckt sich selbst, 3 Iris, 4 Wort schreibt sich),
+     ?coach=1 erzwingt, &cv=1..4 waehlt (1 Punkt zerfaellt in fuenf, 2 Kreis drueckt sich selbst und oeffnet das Menue, 3 Iris, 4 Wort schreibt sich, 5 Spur zum Menue-Knopf oben),
      &hold=1 haelt im sprechendsten Moment. Einmal je Browser (localStorage adb_coach), endet bei der ersten Handlung. ---------- */
   var COACH_DEFAULT = 1;
   function coach() {
@@ -110,7 +110,7 @@
     function mk(cls) { var el = document.createElement("div"); el.className = cls; el.setAttribute("aria-hidden", "true"); body.appendChild(el); els.push(el); return el; }
     function at(ms, fn) { timers.push(setTimeout(fn, ms)); }
     function center() { var r = mb.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; }
-    function ring(delay) { var c = center(), r = mk("coach-ring"); r.style.left = c.x + "px"; r.style.top = c.y + "px"; at(delay || 0, function () { r.classList.add("burst"); }); }
+    function ring(delay, pt, cls) { var c = pt || center(), r = mk("coach-ring" + (cls ? " " + cls : "")); r.style.left = c.x + "px"; r.style.top = c.y + "px"; at(delay || 0, function () { r.classList.add("burst"); }); }
     function words() {
       return Array.prototype.map.call(sheet.querySelectorAll(".mitem .mt"), function (e) { var r = e.getBoundingClientRect(); return { t: e.textContent.trim(), x: r.left + r.width / 2 }; }).slice(0, 5);
     }
@@ -152,14 +152,49 @@
         at(3800, end);
       }
     }
-    /* 2: der Kreis macht die Geste vor: drueckt sich, ein Ring, das Menue faehrt zur Haelfte hoch, drueckt noch einmal, zu */
+    /* 2: der Kreis macht die Geste vor: drueckt sich, ein Ring, das ganze Menue faehrt hoch, drueckt noch einmal, zu */
     function press() {
       ring(0); body.classList.add("mpress");
-      at(260, function () { body.classList.remove("mpress"); body.classList.add("menupeek"); log("Coach: Menue halb offen"); });
+      at(260, function () { body.classList.remove("mpress"); body.classList.add("menupeek"); log("Coach: Menue offen"); });
       if (!hold) {
-        at(2100, function () { ring(0); body.classList.add("mpress"); });
-        at(2360, function () { body.classList.remove("mpress"); body.classList.remove("menupeek"); });
-        at(3300, end);
+        at(2900, function () { ring(0); body.classList.add("mpress"); });
+        at(3160, function () { body.classList.remove("mpress"); body.classList.remove("menupeek"); });
+        at(4100, end);
+      }
+    }
+    /* 5: eine Spur aus Punkten laeuft vom Kreis zum Menue-Knopf rechts oben, ein Punkt reist mit, oben leuchtet es auf: beide Wege oeffnen dasselbe */
+    function trail() {
+      var hm = document.querySelector(".chrome .hmenu i"); if (!hm) { fan(); return; }
+      var c = center(), hr = hm.getBoundingClientRect(), h = { x: hr.left + hr.width / 2, y: hr.top + hr.height / 2 };
+      var W = window.innerWidth, H = window.innerHeight, ns = "http://www.w3.org/2000/svg";
+      var box = mk("ctrail"), svg = document.createElementNS(ns, "svg");
+      svg.setAttribute("viewBox", "0 0 " + W + " " + H); svg.setAttribute("width", W); svg.setAttribute("height", H); box.appendChild(svg);
+      var path = document.createElementNS(ns, "path");
+      var dy = c.y - h.y;
+      path.setAttribute("d", "M" + c.x + "," + (c.y - 40) + " C" + c.x + "," + (c.y - dy * 0.55) + " " + h.x + "," + (h.y + dy * 0.4) + " " + h.x + "," + (h.y + 22));
+      path.setAttribute("fill", "none"); path.setAttribute("stroke", "none"); svg.appendChild(path);
+      var L = path.getTotalLength(), n = Math.max(12, Math.floor(L / 16)), dots = [];
+      for (var i = 0; i <= n; i++) {
+        var pt = path.getPointAtLength(L * i / n), ci = document.createElementNS(ns, "circle");
+        ci.setAttribute("cx", pt.x.toFixed(1)); ci.setAttribute("cy", pt.y.toFixed(1)); ci.setAttribute("r", "2.4"); ci.setAttribute("class", "td");
+        svg.appendChild(ci); dots.push(ci);
+      }
+      var trv = document.createElementNS(ns, "circle"); trv.setAttribute("r", "6"); trv.setAttribute("class", "trv"); trv.setAttribute("opacity", "0"); svg.appendChild(trv);
+      ring(0);
+      dots.forEach(function (d, i) { at(300 + i * 22, function () { d.classList.add("on"); }); });
+      var dur = 1100;
+      at(300, function () {
+        trv.setAttribute("opacity", "1"); var t0 = performance.now();
+        (function step(now) {
+          if (over) return;
+          var q = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - q, 3), pt = path.getPointAtLength(L * e);
+          trv.setAttribute("cx", pt.x.toFixed(1)); trv.setAttribute("cy", pt.y.toFixed(1));
+          if (q < 1) requestAnimationFrame(step); else { trv.setAttribute("opacity", "0"); hm.classList.add("lit"); ring(0, h, "small"); log("Coach: oben angekommen"); }
+        })(t0);
+      });
+      if (!hold) {
+        at(2700, function () { dots.forEach(function (d) { d.classList.remove("on"); }); hm.classList.remove("lit"); });
+        at(3400, end);
       }
     }
     /* 3: Iris: der Kreis waechst auf das Dreifache, innen ein Ring aus fuenf Punkten, die Worte laufen in der Mitte durch */
@@ -191,7 +226,7 @@
         at(3500, end);
       }
     }
-    if (variant === 2) press(); else if (variant === 3) iris(); else if (variant === 4) write(); else fan();
+    if (variant === 2) press(); else if (variant === 3) iris(); else if (variant === 4) write(); else if (variant === 5) trail(); else fan();
   }
 
   /* ---------- Kopfzeile: gelernter Menue-Knopf rechts neben Kontakt, klickt den Punkt ---------- */

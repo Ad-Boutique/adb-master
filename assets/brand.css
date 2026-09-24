@@ -380,9 +380,17 @@ body.mpress .mbtn { transform: translateX(-50%) scale(0.84); transition: transfo
 .cdot.go i { transform: scale(1); }
 .cdot span { position: absolute; left: 50%; bottom: 20px; transform: translate(-50%, 6px); white-space: nowrap; font-family: var(--f-ui); font-size: 11px; line-height: 1; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--paper); background: rgba(15,15,15,0.9); padding: 7px 10px 6px; border-radius: 999px; opacity: 0; transition: opacity 0.35s ease, transform 0.4s var(--e-out); }
 .cdot.say span { opacity: 1; transform: translate(-50%, 0); }
-/* 2: das Menue faehrt zur Haelfte hoch */
-body.menupeek .msheet { transform: translateY(50%); transition: transform 0.8s var(--e-snap); }
-body.menupeek .mdim { opacity: 0.3; }
+/* 2: das ganze Menue faehrt hoch, wie beim echten Oeffnen */
+body.menupeek .msheet { transform: none; transition: transform 0.8s var(--e-snap); }
+body.menupeek .mdim { opacity: 0.55; }
+/* 5: Spur aus Punkten zum Menue-Knopf oben */
+.ctrail { position: fixed; inset: 0; z-index: 91; pointer-events: none; }
+.ctrail svg { display: block; width: 100%; height: 100%; }
+.ctrail .td { fill: var(--lime); stroke: var(--ink); stroke-width: 1; opacity: 0; transform-box: fill-box; transform-origin: center; transform: scale(0.3); transition: opacity 0.25s ease, transform 0.35s var(--e-out); }
+.ctrail .td.on { opacity: 1; transform: scale(1); }
+.ctrail .trv { fill: var(--lime); stroke: var(--ink); stroke-width: 1; }
+.coach-ring.small { width: 30px; height: 30px; margin: -15px 0 0 -15px; z-index: 96; }
+.chrome .hmenu i.lit { transform: scale(2.1); }
 /* 3: Iris */
 body.miris .mbtn { transform: translateX(-50%) scale(3); transition: transform 0.7s var(--e-snap); }
 body.miris .mbtn::after, body.miris .mbtn::before { opacity: 0; transition: opacity 0.3s ease; }
