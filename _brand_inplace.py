@@ -124,9 +124,8 @@ def main():
         out = strip_chapnav(head(h))
         if f == "index.html":
             out = index(out)
-            # Startseite: der Schriftzug steht im Menue-Punkt statt auf der Umlaufbahn (brand.css: body.mword)
-            if "mword" not in out.split("<body", 1)[1].split(">", 1)[0]:
-                out = out.replace('class="brand', 'class="mword brand', 1)
+            # das Wort im Menue-Punkt gilt seit 24.9.2026 ueberall (brand.css body.brand), die alte Klasse faellt weg
+            out = out.replace('class="mword brand', 'class="brand', 1)
         elif f == "agentur.html":
             out = agentur(out)
         elif f == "case-premium-neubau.html":

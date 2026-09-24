@@ -14,11 +14,11 @@ HEAD = '''<!doctype html>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 
-<link rel="stylesheet" href="assets/master.css?v=131">
+<link rel="stylesheet" href="assets/master.css?v=133">
 <link rel="stylesheet" href="https://use.typekit.net/udf8wjj.css">
-<link rel="stylesheet" href="assets/brand.css?v=131">
-<script src="assets/brand.js?v=131" defer></script>
-<script src="assets/master.js?v=131" defer></script>
+<link rel="stylesheet" href="assets/brand.css?v=133">
+<script src="assets/brand.js?v=133" defer></script>
+<script src="assets/master.js?v=133" defer></script>
 </head>
 <body style="background-color:{bodybg}" class="on-light brand">
 
