@@ -73,23 +73,18 @@ def rep(h, old, new, what):
     return h.replace(old, new)
 
 
+def strip_chapnav(h):
+    """Kapitel-Leiste abgeschafft (24.9.2026): aus jeder Seite entfernen, auch aus aelteren Staenden."""
+    return re.sub(r'\n?  <!-- KAPITEL-LEISTE[^\n]*\n  <nav class="chapnav".*?</nav>\n', '\n', h, flags=re.S)
+
+
 def index(h):
-    if 'class="chapnav"' in h:
+    if 'class="bdot"' in h:
         return h
     h = rep(h, '<span class="rl"><span>Kein Zufall.</span></span>', '<span class="rl"><span><i>Kein Zufall.</i></span></span>', "Hero-Zeile")
     h = rep(h, '<div class="hpitch">\n      <span class="label">', '<div class="hpitch">\n      <span class="bdot" aria-hidden="true"></span>\n      <span class="label">', "Hero-Punkt")
     h = rep(h, '<section class="sec fg-light stats bg-paper"', '<section class="sec fg-light stats bg-paper dotzoom dotzoom--dark"', "Punkt-Zoom Zahlen")
-    h = rep(h, "<main>", '''<main class="apl">
-
-  <!-- KAPITEL-LEISTE -->
-  <nav class="chapnav" aria-label="Kapitel">
-    <span class="cn-title">ad.boutique</span>
-    <a href="#work">Work</a>
-    <a href="#leistungen">Leistungen</a>
-    <a href="#team">Team</a>
-    <a class="cn-cta" href="#kontakt">Kontakt</a>
-  </nav>
-''', "main")
+    h = rep(h, "<main>", '<main class="apl">', "main")
     h = rep(h, '  <!-- 04, WORK-TEASER -->\n  <section class="sec fg-light bg-paper"', '  <!-- 04, WORK-TEASER -->\n  <section id="work" class="sec fg-light bg-paper"', "Work-ID")
     h = rep(h, '<section class="sec fg-light team-int bg-paper"', '<section id="team" class="sec fg-light team-int bg-paper"', "Team-ID")
     h = rep(h, 'Wir gewinnen nur, wenn Sie gewinnen.</p>\n      <div class="hbtns"',
@@ -101,20 +96,9 @@ def index(h):
 
 
 def agentur(h):
-    if 'class="chapnav"' in h:
+    if 'class="bdot"' in h:
         return h
-    h = rep(h, "<main>", '''<main class="apl">
-
-  <!-- KAPITEL-LEISTE -->
-  <nav class="chapnav" aria-label="Kapitel">
-    <span class="cn-title">Agentur</span>
-    <a href="#zahlen">Zahlen</a>
-    <a href="#koennen">Können</a>
-    <a href="#team">Team</a>
-    <a href="#jobs">Mitarbeiten</a>
-    <a class="cn-cta" href="kontakt.html">Kontakt</a>
-  </nav>
-''', "main")
+    h = rep(h, "<main>", '<main class="apl">', "main")
     h = rep(h, '<section class="sec fg-light stats bg-paper"', '<section id="zahlen" class="sec fg-light stats bg-paper"', "Zahlen-ID")
     h = rep(h, '  <!-- 03, CAPABILITIES (Creme) -->\n  <section class="sec fg-light bg-cream"', '  <!-- 03, CAPABILITIES (Creme) -->\n  <section id="koennen" class="dotzoom sec fg-light bg-cream"', "Koennen-ID")
     h = rep(h, '<section class="sec fg-light ateam bg-paper"', '<section id="team" class="sec fg-light ateam bg-paper"', "Team-ID")
@@ -137,7 +121,7 @@ def main():
         if f in SKIP or f.endswith("-brand.html"):
             continue
         h = open(f, encoding="utf-8").read()
-        out = head(h)
+        out = strip_chapnav(head(h))
         if f == "index.html":
             out = index(out)
             # Startseite: der Schriftzug steht im Menue-Punkt statt auf der Umlaufbahn (brand.css: body.mword)

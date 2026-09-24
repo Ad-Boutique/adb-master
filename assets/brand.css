@@ -144,16 +144,15 @@ body.mword.menuopen .mbtn::before { content: "Schließen"; font-size: 8.5px; let
    Punkt (Standard), Expand (ueber Links: waechst, ein Satellit kreist), Fokus (ueber Bildern: Ring),
    Target (beim Klick: Ringe laufen aus) */
 .brand .cur { border: 0; background: var(--lime); width: 14px; height: 14px; margin: -7px 0 0 -7px; mix-blend-mode: normal; box-shadow: 0 0 0 1px rgba(15,15,15,0.5); transition: scale 0.28s var(--e-out), background-color 0.25s ease, box-shadow 0.25s ease, opacity 0.3s ease; }
-.brand .cur::before { content: ""; position: absolute; left: 50%; top: -7px; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: var(--ink); opacity: 0; transform-origin: 2px 14px; animation: orbit 1.4s linear infinite; animation-play-state: paused; transition: opacity 0.25s ease; }
+/* Kein Satellit um den Zeiger: Expand ist nur der groessere Punkt */
+.brand .cur::before { display: none; }
 .brand .cur::after { display: none; }
 .brand.cur-hov .cur { scale: 2; }
-.brand.cur-hov .cur::before { opacity: 1; animation-play-state: running; }
 .brand.cur-media .cur { scale: 3; background: transparent; box-shadow: inset 0 0 0 1.5px var(--lime), 0 0 0 1px rgba(15,15,15,0.35); }
 .brand.cur-tap .cur::after { display: block; content: ""; position: absolute; inset: -3px; border-radius: 50%; border: 1.5px solid var(--lime); animation: bring 0.55s ease-out forwards; }
 @keyframes orbit { to { transform: rotate(360deg); } }
 /* Menue-Kreis: beim Hover kreist ein Satellit, der Expand-Zustand aus dem Board */
-.brand .mbtn::before { content: ""; position: absolute; left: 50%; top: -14px; width: 8px; height: 8px; margin-left: -4px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 1px var(--ink); transform-origin: 4px 46px; opacity: 0; animation: orbit 2.4s linear infinite; animation-play-state: paused; transition: opacity 0.3s ease; }
-.brand .mbtn:hover::before { opacity: 1; animation-play-state: running; }
+/* Auch der Menue-Kreis hat keinen Satelliten mehr; das Wort im Punkt (body.mword) nutzt ::before */
 /* Punkt-Zoom: die naechste Sektion oeffnet sich aus einem Punkt (Cover mit wachsendem Loch) */
 .dotzoom { position: relative; }
 .dotzoom::after {
@@ -350,13 +349,40 @@ body:not(.on-light) .sprog b { background: rgba(244,243,236,0.35); }
 .dotbars--ch .row { grid-template-columns: minmax(120px, 0.55fr) 1fr auto; padding: 12px 0; }
 @media (max-width: 1000px) { .kpiboard--mini { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 520px) { .kpi--mini .kto { font-size: 28px; } .kpi .kto--txt { font-size: 24px; } }
-/* Kapitel-Leiste auf einer Hoehe mit Logo und Kontakt, mit Luft zu beiden; mobil kostet sie nur Platz */
-.brand .chapnav { top: 18px; max-width: min(calc(100vw - 2 * clamp(24px, 3.5vw, 56px) - 380px), 900px); }
+/* Kapitel-Leiste abgeschafft (verwirrte in der Nutzung); die Sticky-Abstaende, die ihr Platz liessen, gehen zurueck */
+.brand .chapnav { display: none; }
+.brand .apl .hlxsticky { top: clamp(84px, 12vh, 130px); }
 @media (max-width: 860px) {
-  .brand .chapnav { display: none; }
   .brand .apl .hlxsticky { top: 64px; }
   .brand .apl .tell .tfix { top: 64px; }
 }
+
+/* ---------- Kopfzeile: gelernter Menue-Knopf rechts neben Kontakt, oeffnet dasselbe Menue wie der Punkt ---------- */
+.chrome .chr { display: flex; align-items: center; gap: clamp(18px, 2.4vw, 36px); pointer-events: auto; }
+.chrome .hmenu { display: inline-flex; align-items: center; gap: 9px; background: none; border: 0; padding: 0; cursor: pointer; font-family: var(--f-ui); font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #fff; opacity: 0.9; pointer-events: auto; }
+.chrome .hmenu i { width: 9px; height: 9px; border-radius: 50%; background: #fff; transition: transform 0.4s var(--e-out); }
+.chrome .hmenu:hover i { transform: scale(1.35); }
+.chrome .hmenu .hm-close { display: none; }
+body.menuopen .chrome .hmenu .hm-open { display: none; }
+body.menuopen .chrome .hmenu .hm-close { display: inline; }
+@media (max-width: 520px) { .chrome .hmenu { letter-spacing: 0.12em; font-size: 11px; } .chrome .ctc { font-size: 11px; } }
+
+/* ---------- Erster Besuch: der Punkt erklaert sich (Label, Ringe, das Menue lugt kurz hervor) ---------- */
+.coach { position: fixed; left: 50%; z-index: 95; transform: translate(-50%, 8px); text-align: center; pointer-events: none; opacity: 0; transition: opacity 0.5s ease, transform 0.6s var(--e-out); width: min(86vw, 400px); }
+.coach.on { opacity: 1; transform: translate(-50%, 0); }
+/* eigene dunkle Pille, damit das Label auf jedem Grund lesbar bleibt: Bild, Creme, Text */
+.coach .cbox { display: block; background: rgba(15,15,15,0.94); color: var(--paper); border-radius: 8px; padding: 18px 22px 20px; box-shadow: 0 14px 40px rgba(10,10,10,0.25); }
+.coach .c1 { display: block; font-family: var(--f-serif); font-style: italic; font-size: clamp(22px, 2.4vw, 28px); line-height: 1.15; letter-spacing: -0.01em; color: var(--paper); }
+.coach .c1 b { font-style: normal; color: var(--lime); font-weight: 400; }
+.coach .c2 { display: block; margin-top: 8px; font-size: 13px; font-weight: 600; color: var(--grey); font-family: var(--f-ui); }
+.coach .c3 { display: block; width: 2px; height: 26px; margin: 10px auto 0; background-image: radial-gradient(circle, var(--lime) 1px, transparent 1.3px); background-size: 2px 6px; }
+.coach-ring { position: fixed; z-index: 89; width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50%; border: 1.5px solid var(--lime); pointer-events: none; opacity: 0; }
+.coach-ring.go { animation: coachring 1.5s ease-out infinite; }
+.coach-ring.go.two { animation-delay: 0.5s; }
+@keyframes coachring { 0% { transform: scale(1); opacity: 0.9; } 100% { transform: scale(2.4); opacity: 0; } }
+body.menupeek .msheet { transform: translateY(calc(100% - 92px)); transition: transform 0.9s var(--e-snap); }
+body.menupeek .mdim { opacity: 0.25; }
+@media (prefers-reduced-motion: reduce) { .coach-ring { display: none; } }
 
 /* ---------- Punkt-Graphen: jede Einheit ein Punkt ---------- */
 .dotgraph { display: grid; grid-template-columns: repeat(var(--cols, 10), 1fr); gap: clamp(7px, 1vw, 13px); max-width: 440px; }

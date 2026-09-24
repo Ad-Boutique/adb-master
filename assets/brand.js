@@ -42,7 +42,7 @@
   function log(step) { window.__brandLog.push((Date.now() - t0) + "ms " + step); }
 
   window.ADB_ENTER = function (pt, done) {
-    if (reduced) { pt.classList.add("gone"); body.classList.add("mready"); done(); return; }
+    if (reduced) { pt.classList.add("gone"); body.classList.add("mready"); done(); setTimeout(coach, 500); return; }
     /* Punkt */
     dot.style.transition = "transform 0.45s " + OUT + ", opacity 0.3s ease";
     requestAnimationFrame(function () { dot.style.opacity = "1"; dot.style.transform = "scale(1)"; log("Punkt erscheint"); });
@@ -58,6 +58,7 @@
       setTimeout(function () {
         body.classList.add("mready");
         log("Menue-Kreis uebernimmt");
+        setTimeout(coach, 500);
         dot.classList.remove("pulse");
         dot.style.transition = "opacity 0.25s ease";
         dot.style.opacity = "0";
@@ -92,6 +93,57 @@
       if (alive) requestAnimationFrame(draw); else setTimeout(function () { cv.remove(); }, 200);
     })(t0);
   }
+
+  /* ---------- Erster Besuch: der Punkt erklaert sich. Einmal je Browser, endet bei der ersten Handlung. ?coach=1 erzwingt, &hold=1 haelt fuer Screenshots ---------- */
+  function coach() {
+    var q = location.search, force = /coach=1/.test(q), hold = /hold=1/.test(q);
+    var mb = document.querySelector(".mbtn"), sheet = document.querySelector(".msheet");
+    if (!mb || !sheet || body.classList.contains("menuopen")) return;
+    try { if (!force && localStorage.getItem("adb_coach")) return; localStorage.setItem("adb_coach", "1"); } catch (e) { if (!force) return; }
+    var coarse = window.matchMedia("(pointer: coarse)").matches;
+    var box = document.createElement("div"); box.className = "coach"; box.setAttribute("aria-hidden", "true");
+    box.innerHTML = '<span class="cbox"><span class="c1">Der <b>Punkt</b> ist Ihr Menü.</span><span class="c2">' + (coarse ? "Tippen Sie ihn" : "Klicken Sie ihn") + ', oder oben rechts auf Menü.</span></span><span class="c3"></span>';
+    body.appendChild(box);
+    var r1 = document.createElement("i"), r2 = document.createElement("i");
+    r1.className = "coach-ring"; r2.className = "coach-ring two"; body.appendChild(r1); body.appendChild(r2);
+    function place() {
+      var r = mb.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+      [r1, r2].forEach(function (el) { el.style.left = cx + "px"; el.style.top = cy + "px"; });
+      box.style.bottom = (window.innerHeight - r.top + 14) + "px";
+    }
+    place();
+    var timers = [], over = false;
+    function end() {
+      if (over) return; over = true;
+      timers.forEach(clearTimeout);
+      box.classList.remove("on"); r1.classList.remove("go"); r2.classList.remove("go");
+      body.classList.remove("menupeek");
+      setTimeout(function () { box.remove(); r1.remove(); r2.remove(); }, 600);
+      window.removeEventListener("pointerdown", end, true); window.removeEventListener("keydown", end, true);
+      window.removeEventListener("scroll", onScroll, true); window.removeEventListener("resize", place);
+    }
+    var y0 = window.pageYOffset;
+    function onScroll() { if (Math.abs(window.pageYOffset - y0) > 40) end(); }
+    window.addEventListener("pointerdown", end, true); window.addEventListener("keydown", end, true);
+    window.addEventListener("scroll", onScroll, true); window.addEventListener("resize", place);
+    timers.push(setTimeout(function () { box.classList.add("on"); r1.classList.add("go"); r2.classList.add("go"); log("Coach: Label und Ringe"); }, 60));
+    timers.push(setTimeout(function () { body.classList.add("menupeek"); log("Coach: Menue lugt hervor"); }, 1500));
+    if (!hold) {
+      timers.push(setTimeout(function () { body.classList.remove("menupeek"); }, 3300));
+      timers.push(setTimeout(end, 4600));
+    }
+  }
+
+  /* ---------- Kopfzeile: gelernter Menue-Knopf rechts neben Kontakt, klickt den Punkt ---------- */
+  (function () {
+    var chrome = document.querySelector(".chrome"), ctc = chrome && chrome.querySelector(".ctc"), mb = document.querySelector(".mbtn");
+    if (!chrome || !ctc || !mb) return;
+    var wrap = document.createElement("div"); wrap.className = "chr";
+    var btn = document.createElement("button"); btn.className = "hmenu"; btn.type = "button"; btn.setAttribute("aria-label", "Menü öffnen");
+    btn.innerHTML = '<i aria-hidden="true"></i><span class="hm-open">Menü</span><span class="hm-close">Schließen</span>';
+    btn.addEventListener("click", function () { mb.click(); });
+    ctc.parentNode.insertBefore(wrap, ctc); wrap.appendChild(ctc); wrap.appendChild(btn);
+  })();
 
   window.ADB_LEAVE = function (pt, href) {
     var t = target();
@@ -406,8 +458,7 @@
   var prog = document.createElement("div"); prog.className = "sprog"; prog.setAttribute("aria-hidden", "true");
   var pdot = document.createElement("i"); prog.appendChild(pdot); body.appendChild(prog);
   /* Kapitel-Marken auf der Bahn: die Ziele der Kapitel-Leiste, gelesen werden sie Lime */
-  var marks = Array.prototype.slice.call(document.querySelectorAll(".chapnav a[href^='#']:not(.cn-cta)")).map(function (a) {
-    var t = document.getElementById(a.getAttribute("href").slice(1));
+  var marks = Array.prototype.slice.call(document.querySelectorAll("main section[id]:not(#anfrage):not(#kontakt)")).map(function (t) {
     if (!t) return null;
     var b = document.createElement("b"); prog.appendChild(b);
     return { t: t, el: b, f: 0 };

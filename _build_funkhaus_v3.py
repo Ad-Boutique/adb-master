@@ -16,15 +16,6 @@ foot = "  <footer" + src.split("  <footer", 1)[1]
 
 main = '''<main class="apl">
 
-  <!-- KAPITEL-LEISTE: schwebende Pille wie Apples Produktnavigation, erscheint nach dem Hero -->
-  <nav class="chapnav" aria-label="Kapitel">
-    <span class="cn-title">Premium-Neubau</span>
-    <a href="#kampagne">Kampagne</a>
-    <a href="#seite">Seite</a>
-    <a href="#wellen">Wellen</a>
-    <a href="#learnings">Learnings</a>
-    <a class="cn-cta" href="kontakt.html?from=case-premium-neubau"><span class="cn-long">Projekt anfragen</span><span class="cn-short">Anfragen</span></a>
-  </nav>
 
   <!-- HERO: Vollbild in der Case-Farbwelt, darunter die Stat-Group statt Kennzahl-Ecke -->
   <section class="chero chero--stats" data-bg="#22382C" data-fg="light">

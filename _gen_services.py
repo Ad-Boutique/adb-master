@@ -1370,7 +1370,8 @@ def _pmap(s):
 
 
 def _chapnav(s):
-    """Schwebende Kapitel-Leiste, erscheint nach dem Hero, springt per Klick (master.js/brand.js)."""
+    """Kapitel-Leiste abgeschafft (24.9.2026, verwirrte in der Nutzung). Die Sektions-IDs bleiben fuer die Marken auf der Scroll-Bahn."""
+    return ""
     chap = s.get("chap", [("Problem", "problem"), ("Nutzen", "nutzen"), ("Beweis", "beweis"), ("Cases", "cases")])
     links = "".join('    <a href="#%s">%s</a>\n' % (i, l) for l, i in chap)
     return ('\n  <!-- KAPITEL-LEISTE -->\n  <nav class="chapnav" aria-label="Kapitel">\n    <span class="cn-title">' + s["nav"] + '</span>\n'

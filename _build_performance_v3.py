@@ -18,8 +18,7 @@ def rep(old, new, count=1):
 
 rep("<title>", "<title>Vorschau v3, ")
 
-# 0. Kapitel-Leiste und IDs kommen jetzt aus dem Generator; nur das Case-Ziel zeigt hier auf den Vergleich
-rep('<a href="#cases">Cases</a>', '<a href="#vergleich">Vergleich</a>')
+# 0. Kapitel-Leiste gibt es nicht mehr (24.9.2026); die Sektions-IDs kommen aus dem Generator
 
 # 1. Hero: Zahlen statt Schlagwoerter
 rep('''      <div class="tags" data-fade>
