@@ -144,7 +144,7 @@ def gallery_html(entry, title, bg="#0E0E10"):
             if m.endswith(".mp4"):
                 items.append('<video data-auto muted loop playsinline preload="none" src="%s"></video>' % m)
             else:
-                items.append('<img loading="lazy" decoding="async" src="%s" alt="">' % m)
+                items.append('<img loading="lazy" decoding="async" src="%s" alt="Material aus dem Mandat">' % m)
         parts.append('      <div class="cpcol" data-drift="%s">\n        %s\n      </div>' % (speeds[i], "\n        ".join(items)))
     return ('  <!-- CONTENT AUS DEM MANDAT -->\n'
             '  <section class="collage collage--tight" data-bg="%s" data-fg="light">\n'

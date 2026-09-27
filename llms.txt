@@ -1,0 +1,46 @@
+# ad.boutique
+
+> ad.boutique ist eine Performance-Marketing-Agentur in Wien. Die Agentur plant und steuert Kampagnen auf Meta, Google, TikTok, Pinterest und in ChatGPT, produziert die Creatives dafür (UGC, Foto, Film, Social Content) und baut die Landingpages und Websites, auf die sie führen. Schwerpunkte sind Immobilien und Wohnbau, Finance und Investment, Consumer und D2C sowie Health. Die Vergütung ist an messbare Ergebnisse gekoppelt.
+
+Standort: 1030 Wien, Österreich. Kontakt: hello@ad.boutique. Sprache der Seite: Deutsch (Sie-Form).
+
+## Leistungen
+
+- [E-Commerce Growth](https://www.ad.boutique/services/e-commerce): Ads, Creatives, Shop und Tracking aus einer Hand, vergütet am Ergebnis.
+- [Performance Marketing](https://www.ad.boutique/services/performance-marketing): Kampagnen, die Leads und Verkäufe bringen, nicht Reichweite. Mit Attribution, der Sie trauen können.
+- [Content Creation](https://www.ad.boutique/services/content-creation): Foto, Film und UGC, produziert für Performance: gemessen am CPA, nicht am Applaus.
+- [Websites & Landingpages](https://www.ad.boutique/services/websites): Landingpages, Shops und interaktive Lead-Magnete: gebaut auf Conversion, gemessen am Abschluss.
+- [Strategie & Funnel](https://www.ad.boutique/services/digitale-strategie): Vom Einzelprojekt zur Plattform: Funnel, KPI-Logik und Attribution, die Entscheidungen tragen.
+- [ChatGPT Ads](https://www.ad.boutique/services/chatgpt-ads): Ihre Kunden fragen ChatGPT, bevor sie entscheiden. Wir haben Kampagnen aufgesetzt, bevor der Self-Service für Europa geöffnet wurde. Der Kanal ist noch leer. Das ist Ihr Vorteil, wenn Sie jetzt starten.
+
+## Referenzen (Zahlen aus dem Reporting, Kunden teils anonymisiert)
+
+- [Immobilien-Investment](https://www.ad.boutique/referenzen/immobilien-investment): Aus 36.000 Euro wurden 4,65 Millionen. Zurechenbar. Wir haben einen Investoren-Funnel gebaut, der Vertrauen Schritt für Schritt aufbaut, von der.
+- [D2C-Lifestyle-Marke](https://www.ad.boutique/referenzen/d2c-lifestyle): Das beste Jahr der Firma. Aus demselben Traffic. Erst gemessen, dann gehandelt: serverseitiges Tracking und saubere Produkt-Feeds als Fundament, Checkout.
+- [Premium-Neubau, Wien](https://www.ad.boutique/referenzen/premium-neubau): 489 Kaufinteressenten aus 5.755 Euro Spend, 11,77 Euro je Anfrage, Instant Form 6,97 statt 15,66 Euro über die Website. Ein Motiv trug 54 Prozent.
+- [Crowdinvesting-Plattform](https://www.ad.boutique/referenzen/crowdinvesting): Gleiches Budget. Viermal mehr Kapital. Wir haben von Einzelkampagnen auf eine plattformbasierte Struktur umgestellt: gemeinsame Daten, klare KPI-Logik mit.
+- [Wohnbau, Floridsdorf](https://www.ad.boutique/referenzen/wohnbau-floridsdorf): Zwei Märkte, ein Projekt. Sauber getrennt gewonnen. Vier Kampagnen, Eigennutzer und Anleger sauber getrennt, Schwerpunkt auf Meta Instant Forms.
+- [Premium-Consumer-Brand](https://www.ad.boutique/referenzen/consumer-brand): Wenn alle schreien, gewinnt Relevanz. Wir haben die Saison als getaktete Architektur gebaut: effiziente Awareness im Vorlauf, Sales-Druck im Peak.
+- [Bauträger-Portfolio, Wien](https://www.ad.boutique/referenzen/bautraeger-portfolio): Ein System. Drei Projekte. Der beste Preis im Portfolio. Wir haben ein wiederholbares Lead-System über alle Projekte ausgerollt: gleiche Test-Mechanik.
+- [Dental-/Health-Marke](https://www.ad.boutique/referenzen/health-brand): Ehrlich gerechnet. Und trotzdem gewachsen. Wir haben über € 200k Mediabudget systematisch gesteuert: Kampagnen nach Rolle getrennt, Creatives nach CPA.
+- [Photovoltaik-Anbieter](https://www.ad.boutique/referenzen/photovoltaik): Der Konfigurator ist das Creative. Wir haben Google Search auf kaufnahe Intents ausgerichtet und einen PV-Konfigurator als Lead-Magnet gebaut: Der.
+- [Seeresidenz Gmunden](https://www.ad.boutique/referenzen/seeresidenz): Ein Projekt am See. Anfragen aus dem ganzen Land. Wir haben Meta und Google Search als Paar gebaut: Meta erzeugt die Nachfrage mit Sujets vom See, Google.
+- [Nordic Spirit, JTI](https://www.ad.boutique/referenzen/nordic-spirit): Von 800 auf 7.800 Bestellungen im Monat. Wir haben den Funnel als Sampling-Maschine gebaut: Meta für Volumen mit Angeboten wie vier Dosen gratis, Google.
+- [MedCenter 1030](https://www.ad.boutique/referenzen/medcenter): Ein Arztzentrum. Sichtbar in einer Woche. Innerhalb einer Woche standen Website und Kampagnen-Setup: eine Seite, die Fachrichtungen, Team und Termine ohne.
+- [Juwel Wien](https://www.ad.boutique/referenzen/juwel): Eine Location im 15. Stock. Sichtbar in der ganzen Stadt. Wir führen die Kanäle als verlängertes Team der Location: zwölf Beiträge und Stories im Monat.
+- [Bella Vita, Hero Group](https://www.ad.boutique/referenzen/bella-vita): Fertig gebaut. Jetzt wird verkauft. Wir haben in drei Wochen Setup, Sujets und Funnel gebaut und im Mai mit Meta gestartet: 21 Anfragen in der ersten.
+- [Noma Wien](https://www.ad.boutique/referenzen/web-noma): 13 von 26 verkauft. In wenigen Monaten.
+- [Trattner & Söhne](https://www.ad.boutique/referenzen/web-trattner): So souverän wie im persönlichen Gespräch.
+- [UNIO](https://www.ad.boutique/referenzen/web-unio): Real Estate, endlich einfach.
+- [Havenstone](https://www.ad.boutique/referenzen/web-havenstone): Größe zeigen, ohne laut zu werden.
+- [Northpoint Advisors](https://www.ad.boutique/referenzen/web-northpoint): Vertrauen, in zwei Sprachen erzählt.
+- [Pharmacom](https://www.ad.boutique/referenzen/web-pharmacom): Ein B2B-Modell, das man versteht.
+- [DaPhi](https://www.ad.boutique/referenzen/web-daphi): Vom Kick-off zum Go-live in zwölf Wochen.
+- [IB-7](https://www.ad.boutique/referenzen/web-ib7): Website und Marke: Wo Jahrtausende auf den Moment treffen.
+- [Twist'n Sparkle, isi](https://www.ad.boutique/referenzen/web-twistnsparkle): Ein Produkt. Ein Versprechen. Eine Seite.
+
+## Weitere Seiten
+
+- [Agentur](https://www.ad.boutique/agentur)
+- [Referenzen](https://www.ad.boutique/referenzen)
+- [Anfrage](https://www.ad.boutique/kontakt)

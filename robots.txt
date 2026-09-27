@@ -1,2 +1,3 @@
+# Master-Vorschau: nicht indexieren. Live-Fassung entsteht mit ADB_LIVE=1 (siehe _seo.py)
 User-agent: *
 Disallow: /

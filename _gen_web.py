@@ -130,7 +130,7 @@ def page(c, nxt):
     if len(mobs) >= 3:
         colA = mobs[0::2][:3]; colB = mobs[1::2][:3]
         def _col(items, speed):
-            fr = "\n          ".join('<div class="phframe"><img loading="lazy" decoding="async" src="%s" alt=""></div>' % i for i in items)
+            fr = "\n          ".join('<div class="phframe"><img loading="lazy" decoding="async" src="%s" alt="Website %s, mobile Ansicht"></div>' % (i, c["name"]) for i in items)
             return '<div class="phcol" data-drift="%s">\n          %s\n        </div>' % (speed, fr)
         phones = """  <!-- MOBILE -->
   <section class="sec fg-light bg-paper phonesec" data-bg="#F3EDE1" data-fg="dark">
@@ -156,8 +156,8 @@ def page(c, nxt):
         cells = []
         speeds = ["0.05", "0.11", "0.07"]
         for i, g in enumerate(gal_imgs):
-            cells.append('<div data-drift="%s"%s><span data-scale style="display:block;overflow:hidden;border-radius:3px"><img loading="lazy" decoding="async" src="%s" alt=""></span></div>' % (
-                speeds[i % 3], ' style="margin-top:44px"' if i == 1 else (' style="margin-top:14px"' if i == 2 else ""), g))
+            cells.append('<div data-drift="%s"%s><span data-scale style="display:block;overflow:hidden;border-radius:3px"><img loading="lazy" decoding="async" src="%s" alt="Website %s, Unterseite"></span></div>' % (
+                speeds[i % 3], ' style="margin-top:44px"' if i == 1 else (' style="margin-top:14px"' if i == 2 else ""), g, c["name"]))
         gal = """  <!-- UNTERSEITEN -->
   <section class="sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-top:0;padding-bottom:clamp(160px,20vw,280px)">
     <div class="wrap">
@@ -236,7 +236,7 @@ def page(c, nxt):
     <img src=\"""" + hero_img + """\" alt=\"""" + c["name"] + """\" style="object-position: top">
     <div class="hcap">
       <div class="cl" style="font-size:15px">""" + c["name"] + """ <span>""" + c["branche"] + """</span></div>
-      <div class="dispn" style="--n:""" + str(len(c["line"])) + """">""" + c["line"] + """</div>
+      <h1 class="dispn" style="--n:""" + str(len(c["line"])) + """">""" + c["line"] + """</h1>
     </div>
     <div class="scrollhint">Scrollen</div>
   </section>
@@ -273,7 +273,7 @@ def page(c, nxt):
           <span class="npsub2" style="display:block">""" + nxt["line"] + """</span>
           <span class="npgo">Case ansehen</span>
         </span>
-        <span class="npim2" data-scale><img loading="lazy" decoding="async" src=\"""" + nxt_img + """\" alt=""></span>
+        <span class="npim2" data-scale><img loading="lazy" decoding="async" src=\"""" + nxt_img + """\" alt="Nächste Website: """ + nxt["name"] + """"></span>
       </a>
     </div>
   </section>

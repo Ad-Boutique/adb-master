@@ -893,6 +893,64 @@ for _slug, _e in _MF.items():
     for _v in _e.get("vids", []):
         _ORIENT[_v["src"]] = True
 
+# ---------------------------------------------------------------- SEO-Schicht (Masterplan Phase 0): Suchbegriff, Title, Description, Antwortabsatz, FAQ
+SEO = {
+ "service-performance-marketing": dict(
+  label="Performance Marketing Agentur Wien",
+  title="Performance Marketing Agentur Wien | ad.boutique",
+  desc="Performance Marketing Agentur Wien: Meta und Google Ads mit ehrlicher Attribution. 489 Anfragen zu 11,77 Euro, ROAS von 2,14 auf 8,75. Vergütung am Ergebnis.",
+  answer="ad.boutique ist eine Performance-Marketing-Agentur in Wien. Wir planen und steuern Kampagnen auf Meta, Google, TikTok und Pinterest für Immobilien, Finance, E-Commerce und Health, produzieren die Creatives dazu und messen bis zur Anfrage oder zum Kauf. Beispiel: 489 Kaufinteressenten für ein Wiener Neubauprojekt zu 11,77 Euro je Anfrage, ein einziges Motiv trug 54 Prozent davon.",
+  faq_first=("Was ist Performance Marketing?", "Performance Marketing bezeichnet bezahlte Kampagnen, die an einem messbaren Ergebnis gesteuert werden: Anfragen, Verkäufe, Kapital, nicht Reichweite oder Klicks. Jeder Euro Mediabudget ist einer Aktion zurechenbar, und das Budget wandert laufend dorthin, wo diese Aktion am günstigsten entsteht."),
+  faq_last=[("Was kostet eine Performance Marketing Agentur in Wien?", "Bei uns gibt es zwei Teile: ein Basis-Fixum für die laufende Arbeit und eine Beteiligung am messbaren Ergebnis. Wächst das Ergebnis nicht, verdienen wir weniger. Der Einstieg ist ein Account- und Tracking-Audit ohne Vertrag, den ein Gründer innerhalb von fünf Tagen prüft. Das Mediabudget muss zur Marge passen, nicht zu einer Mindestsumme."),
+            ("Wie schnell kommen die ersten Anfragen?", "Oft in der ersten Woche: Bei einem fertiggestellten Wohnbauprojekt waren es 21 Anfragen in den ersten sieben Tagen. Belastbare Preise je Anfrage brauchen sechs bis acht Wochen Testing, weil erst dann mehrere Motive und Zielgruppen sauber verglichen sind.")]),
+ "service-ecommerce": dict(
+  label="E-Commerce Growth Agentur Wien",
+  title="E-Commerce Growth Agentur Wien | ad.boutique",
+  desc="E-Commerce Agentur Wien für Ads, Creatives, Shop und Tracking: Jahresumsatz einer D2C-Marke von 520.000 auf 817.000 Euro, Blended ROAS 5,57.",
+  answer="ad.boutique ist eine E-Commerce-Growth-Agentur in Wien. Wir führen Meta, Google, Pinterest und TikTok, testen Creatives, optimieren Produktseiten und Checkout und messen serverseitig, damit jede Bestellung einmal zählt. Beispiel: Eine D2C-Lifestyle-Marke wuchs in zwölf Monaten von 520.000 auf 817.000 Euro Jahresumsatz, aus 56.000 Euro Mediabudget wurden 312.000 Euro Umsatz.",
+  faq_first=("Was ist E-Commerce Growth?", "E-Commerce Growth heißt: mehr Umsatz aus demselben Traffic, nicht nur mehr Klicks. Dazu gehören Kampagnen auf Meta, Google, Pinterest und TikTok, Creatives im Test, Produktseite und Checkout, saubere Produkt-Feeds und ein Tracking, das jede Bestellung einmal zählt. Gemessen wird am Blended ROAS inklusive Agentur-Fee."),
+  faq_last=[("Was kostet E-Commerce Growth bei ad.boutique?", "Basis-Fixum plus Beteiligung am messbaren Umsatz. Sinnvoll ist das ab einem Mediabudget von etwa 5.000 Euro im Monat und wenn der Shop angefasst werden darf: Produktseite, Checkout, Angebotslogik. Der Einstieg ist ein Shop- und Account-Audit in zwei Wochen, ohne Vertrag."),
+            ("Welche Kanäle bringen im E-Commerce den besten Return?", "Das hängt vom Produkt ab, deshalb testen wir statt zu raten. Bei einer D2C-Lifestyle-Marke führte Pinterest mit einem ROAS von 6,99, Google folgte mit 5,98, inklusive Agentur-Fee blieb der Blend bei 4,17. Kanäle, die nicht tragen, werden gestoppt und stehen so im Report.")]),
+ "service-content-creation": dict(
+  label="Content Creation Agentur Wien",
+  title="Content Creation und UGC Agentur Wien | ad.boutique",
+  desc="Content Creation Agentur Wien: UGC, Foto und Film für Ads, gemessen am Preis je Kauf. Creator-Video 82 Euro je Kauf statt 215 Euro mit Produktvideo.",
+  answer="ad.boutique produziert in Wien Content für Performance-Kampagnen: UGC mit Creatorn, Foto und Film im Hochformat, Social Content und Ads-Varianten, die gegeneinander getestet werden. Gemessen wird am Preis je Anfrage oder Kauf, nicht am Applaus. Beispiel: Ein Creator-Video kostete 82 Euro je Kauf, das Studio-Produktvideo 215 Euro; im Wohnbau trug ein Interior-Motiv 262 von 489 Anfragen.",
+  faq_first=("Was ist UGC?", "UGC steht für User Generated Content: Videos und Bilder, die Creator oder Kundinnen und Kunden im eigenen Stil drehen, nicht im Studio. Im Feed sieht das nicht nach Werbung aus und wird deshalb oft günstiger geklickt und gekauft. Bei einer Health-Marke schlug das Creator-Video das Produktvideo beim Preis je Kauf um mehr als die Hälfte."),
+  faq_last=[("Was kostet Content Creation bei ad.boutique?", "Der Preis hängt an Drehtagen, Formaten und Varianten, nicht an einer Pauschale. Der Einstieg ist ein Creative-Audit und ein Erstdreh ohne Vertrag. Material und Nutzungsrechte bleiben unbefristet bei Ihnen. Wir produzieren laufend statt einmal, weil Kampagnen wöchentlich neue Varianten brauchen."),
+            ("Wie viele Varianten braucht eine Kampagne?", "Aus einem Drehtag entstehen bei uns vier Varianten je Idee, die gegeneinander laufen. Nach zwei Wochen steht meist der Sieger fest, danach fließt das Budget dorthin. Im Wohnbau trug am Ende ein Motiv 54 Prozent aller Anfragen, bei zwei Bauträger-Projekten sogar über 90 Prozent.")]),
+ "service-websites": dict(
+  label="Webflow und Landingpage Agentur Wien",
+  title="Webflow und Landingpage Agentur Wien | ad.boutique",
+  desc="Landingpages, Websites und Konfiguratoren aus Wien, gebaut auf Conversion: Noma Wien 13 von 26 Wohnungen verkauft, Photovoltaik plus 487 Prozent Besucher.",
+  answer="ad.boutique baut in Wien Websites und Landingpages, die Anfragen bringen: Projektwebsites mit Wohnungsfinder, Landingpages je Kampagne, Konfiguratoren als Lead-Magnet, umgesetzt in Webflow und gemessen am Abschluss. Beispiel: Für Noma Wien entstanden Name, Marke, Website und Kampagne aus einer Hand, ein halbes Jahr nach Go-live waren 13 von 26 Wohnungen verkauft.",
+  faq_first=("Was unterscheidet eine Landingpage von einer Website?", "Eine Landingpage hat ein Versprechen, eine Zielgruppe und ein Formular, und sie ist der Ort, auf den eine Kampagne führt. Eine Website muss ein ganzes Unternehmen erklären. Bei einem Wiener Bauträger konvertierte die eigene Projekt-Landingpage deutlich besser als die Portfolio-Website, deshalb bekam das Projekt eine eigene Seite."),
+  faq_last=[("Warum bauen wir in Webflow?", "Weil Code und Inhalte bei Ihnen bleiben, ohne Lizenzbindung an eine Agentur, mit einem CMS, das Ihr Team selbst bedienen kann, und schnell genug für Kampagnen-Traffic. Der Einstieg ist ein Seiten-Audit oder Struktur-Entwurf innerhalb einer Woche, ohne Vertrag."),
+            ("Wie lange dauert eine Website?", "Vier bis zwölf Wochen, je nach Umfang: Havenstone vom Briefing bis zur Go-live-Freigabe in vier Wochen, Pharmacom mit sechs Seiten in zwei Sprachen in fünf Wochen, DaPhi mit Sprint-Plan in zwölf Wochen. Landingpages je Kampagne gehen schneller.")]),
+ "service-strategie": dict(
+  label="Strategie und Funnel Agentur Wien",
+  title="Strategie und Funnel Agentur Wien | ad.boutique",
+  desc="Funnel, KPI-Logik und Attribution aus Wien: aus 36.043 Euro Google-Budget wurden 4,65 Millionen Euro Kapital, Crowdinvesting von 16 auf 50 Investments.",
+  answer="ad.boutique entwickelt in Wien Strategien, die sich in Zahlen messen lassen: Funnel vom ersten Kontakt bis zur Zeichnung, KPI-Definition vorab, Attribution über alle Kanäle, und die Umsetzung mit derselben Hand. Beispiel: Ein Immobilien-Investment-Mandat brachte aus 36.043 Euro Google-Budget 4,65 Millionen Euro zurechenbares Kapital, das 129-Fache des Budgets.",
+  faq_first=("Was ist ein Funnel im Performance Marketing?", "Ein Funnel ist die Strecke vom ersten Kontakt bis zum Abschluss, in Stufen mit je einer Kennzahl: Kontakt, Anfrage, Gespräch, Zeichnung oder Kauf. Erst wenn jede Stufe gemessen wird, lässt sich sagen, wo Budget verdampft. Im Finance-Mandat wurden aus 446 Leads 43 Zeichnungen, und genau diese Quote steuert die Kampagne."),
+  faq_last=[("Was kostet eine Strategie-Session?", "Die Session selbst läuft ohne Vertrag, das Ergebnis bleibt bei Ihnen, die Umsetzung ist optional. Zwischen Tag 2 und 14 nach der Anfrage sitzen wir zusammen, danach steht der Fahrplan auf einer Seite: Ziel in Zahlen, Stufen, Kanäle, Kennzahlen, Reihenfolge."),
+            ("Für wen ist Strategie und Funnel gedacht?", "Für Unternehmen mit einem Ziel in Zahlen, Kapital, Einheiten oder Anfragen, mehreren Zielgruppen mit unterschiedlichen Botschaften und einem Vertrieb, der Anfragen zeitnah bearbeitet. Wer nur bessere Anzeigen braucht, ist beim Performance-Audit besser aufgehoben.")]),
+ "service-chatgpt-ads": dict(
+  label="ChatGPT Ads Agentur Wien",
+  title="ChatGPT Ads Agentur Wien: Werbung in ChatGPT | ad.boutique",
+  desc="ChatGPT Ads aus Wien: Kampagnen in ChatGPT, aufgesetzt vor der Öffnung des Self-Service für Europa. Eignungs-Check kostenlos, vier Wochen Test.",
+  answer="ad.boutique schaltet Werbung in ChatGPT für Unternehmen aus Österreich und Deutschland: Anzeigen dort, wo Menschen vor einer Entscheidung fragen. Wir haben Kampagnen aufgesetzt, bevor der Self-Service für Europa geöffnet wurde. Der Einstieg ist ein Eignungs-Check ohne Kosten, danach vier Wochen Test mit einer klaren Antwort, ob der Kanal für Sie trägt.",
+  faq_first=("Was sind ChatGPT Ads?", "Anzeigen, die ChatGPT in passende Antworten einblendet, als gesponsert gekennzeichnet. Ausgespielt wird nach dem Inhalt der Frage, also dort, wo jemand gerade nach einem Angebot wie Ihrem sucht. Für Werbetreibende ist es ein neuer Kanal mit wenig Wettbewerb, für Nutzer eine Empfehlung im Moment der Entscheidung."),
+  faq_last=[]),
+}
+for _s in SERVICES:
+    _seo = SEO.get(_s["slug"])
+    if not _seo:
+        continue
+    _s["seo"] = _seo
+    _s["faq"] = [_seo["faq_first"]] + [q for q in _s["faq"] if q[0] != _seo["faq_first"][0]] + [q for q in _seo["faq_last"] if q[0] not in [x[0] for x in _s["faq"]]]
+
+
 def _wall(s):
     w = s.get("wall")
     cols = SVC_WALL.get(s["slug"], [])
@@ -906,7 +964,7 @@ def _wall(s):
         for j, m in enumerate(col):
             cls = ratios[(i * 3 + j) % len(ratios)]
             inner = ('<video data-auto muted loop playsinline preload="none" src="%s"></video>' % m) if m.endswith(".mp4") \
-                    else ('<img loading="lazy" decoding="async" src="%s" alt="">' % m)
+                    else ('<img loading="lazy" decoding="async" src="%s" alt="Material aus laufenden Mandaten">' % m)
             cells.append('<span class="cwt %s">%s</span>' % (cls, inner))
         parts.append('        <div class="cwcol" data-drift="%s">\n          %s\n        </div>'
                      % (speeds[i % len(speeds)], "\n          ".join(cells)))
@@ -941,7 +999,7 @@ def _content_section(slug, label="Aus laufenden Mandaten"):
             if m.endswith(".mp4"):
                 cells.append('<video data-auto muted loop playsinline preload="none" src="%s"></video>' % m)
             else:
-                cells.append('<img loading="lazy" decoding="async" src="%s" alt="">' % m)
+                cells.append('<img loading="lazy" decoding="async" src="%s" alt="Material aus laufenden Mandaten">' % m)
         parts.append('      <div class="cpcol" data-drift="%s">\n        %s\n      </div>' % (speeds[i], "\n        ".join(cells)))
     return ('  <!-- CONTENT AUS DEM MANDAT -->\n'
             '  <section class="collage collage--tight" data-bg="#08080A" data-fg="light" style="background:#08080A">\n'
@@ -1438,7 +1496,7 @@ def _svcband(s):
     b = s.get("band")
     if not b:
         return ""
-    items = "".join('<img loading="lazy" decoding="async" src="%s" alt="">' % x for x in b["imgs"])
+    items = "".join('<img loading="lazy" decoding="async" src="%s" alt="Material, das läuft: Sujet aus einem Mandat">' % x for x in b["imgs"])
     return ('  <!-- BILDBAND -->\n'
             '  <section class="svcband fg-dark" data-bg="#0E0E10" data-fg="light" style="background:#0E0E10">\n'
             '    <div class="wrap"><span class="label" style="color:var(--champ)">%s</span></div>\n'
@@ -1504,10 +1562,10 @@ def _crew(s):
         return ""
     cells = "\n        ".join(
         '<div class="pcell" data-fade style="--i:%d">\n'
-        '          <div class="pportrait" data-scale><img loading="lazy" decoding="async" src="%s" alt=""></div>\n'
+        '          <div class="pportrait" data-scale><img loading="lazy" decoding="async" src="%s" alt="%s"></div>\n'
         '          <div class="pname"><b>%s</b><span>%s</span></div>\n'
         '          <p class="prole">%s</p>\n'
-        '        </div>' % (i, img, name, role, txt)
+        '        </div>' % (i, img, name, name, role, txt)
         for i, (name, role, txt, img) in enumerate(c["people"]))
     head = "\n        ".join('<span class="rl"><span>%s</span></span>' % x for x in c["h"])
     return ('  <!-- WER DARAN ARBEITET -->\n'
@@ -1537,7 +1595,7 @@ def _voice(s):
                  '        </div>\n'
                  '      </div>\n') % (v["video"].replace(".mp4", "-poster.jpg"), v["video"])
     else:
-        media = ('      <div class="vmedia" data-fade><span data-scale><img loading="lazy" decoding="async" src="%s" alt=""></span></div>\n'
+        media = ('      <div class="vmedia" data-fade><span data-scale><img loading="lazy" decoding="async" src="%s" alt="Kundenstimme"></span></div>\n'
                  % v["img"])
     quote = ('        <p class="vq" data-fade>&bdquo;%s&ldquo;</p>\n' % v["q"]) if v.get("q") else \
             ('        <p class="vq vq--lead" data-fade>%s</p>\n' % v.get("lead", ""))
@@ -1610,7 +1668,7 @@ def render_service(s):
         </div>''' % (t, p, li))
     acc = "\n        ".join(acc_items)
     dimgs = "\n            ".join(
-        '<img loading="lazy" decoding="async" src="%s" alt="" class="%s">' % (img, "on" if i == 0 else "")
+        '<img loading="lazy" decoding="async" src="%s" alt="Aus der Agentur" class="%s">' % (img, "on" if i == 0 else "")
         for i, (k, t, p, img) in enumerate(s["diff"]))
     dblocks = "\n          ".join('''<div class="dblock" data-fade>
             <div class="pk2">%s, 0%d</div>
@@ -1630,8 +1688,8 @@ def render_service(s):
     vkind, vd = s["visual"]
     if vkind == "panels":
         imgs = vd["imgs"]
-        col1 = "\n          ".join('<img loading="lazy" decoding="async" src="%s" alt="">' % i for i in imgs[0::2])
-        col2 = "\n          ".join('<img loading="lazy" decoding="async" src="%s" alt="">' % i for i in imgs[1::2])
+        col1 = "\n          ".join('<img loading="lazy" decoding="async" src="%s" alt="Gebauter Auftritt aus einem Mandat">' % i for i in imgs[0::2])
+        col2 = "\n          ".join('<img loading="lazy" decoding="async" src="%s" alt="Gebauter Auftritt aus einem Mandat">' % i for i in imgs[1::2])
         visual = '''  <!-- PROOF, PANELS (Editorial, Screens scrollen vorbei) -->
   <section class="panelscroll" data-bg="#0A0A0A" data-fg="light">
     <div class="wrap pswrap">
@@ -1672,7 +1730,7 @@ def render_service(s):
             def _pf(src):
                 if src.endswith(".mp4"):
                     return '<div class="phframe"><video data-auto muted loop playsinline preload="none" src="%s"></video></div>' % src
-                return '<div class="phframe"><img loading="lazy" decoding="async" src="%s" alt=""></div>' % src
+                return '<div class="phframe"><img loading="lazy" decoding="async" src="%s" alt="Sujet aus einem Mandat, mobil"></div>' % src
             fr = "\n          ".join(_pf(i) for i in items)
             return '<div class="phcol" data-drift="%s">\n          %s\n        </div>' % (speed, fr)
         phh_lines = "".join('<span class="rl"><span>%s</span></span>' % x
@@ -1696,7 +1754,7 @@ def render_service(s):
         visual = '''  <!-- PROOF, STAGE -->
   <section class="fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding: 0 0 clamp(110px,14vw,200px)">
     <div class="wrap">
-      <div class="stage" data-fade><img loading="lazy" decoding="async" src="%s" alt=""></div>
+      <div class="stage" data-fade><img loading="lazy" decoding="async" src="%s" alt="Aus dem Mandat"></div>
       <p data-fade style="font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--grey-dark);margin-top:16px">%s</p>
     </div>
   </section>
@@ -1859,7 +1917,7 @@ def render_service(s):
         <p class="zasub">''' + z["aside"] + '''</p>
         ''' + zalink + '''
       </div>
-      <div class="zmedia"><img src="''' + z["img"] + '''" alt=""></div>
+      <div class="zmedia"><img src="''' + z["img"] + '''" alt="''' + z["zl"] + '''"></div>
       <div class="zcap">
         <span class="zl">''' + z["zl"] + '''</span>
         <div class="zt">''' + z["zt"] + '''</div>
@@ -1905,7 +1963,8 @@ def render_service(s):
 ''' + FOOTER
     return page
 
-for s in SERVICES:
-    open(s["slug"] + ".html", "w", encoding="utf-8").write(render_service(s))
-    print("service", s["slug"])
-print("services done")
+if __name__ == "__main__":
+    for s in SERVICES:
+        open(s["slug"] + ".html", "w", encoding="utf-8").write(render_service(s))
+        print("service", s["slug"])
+    print("services done")

@@ -62,7 +62,7 @@ def card(c):
     if c.get("imgs"):
         imgs = [i for i in c["imgs"] if os.path.exists(i)][:3]
         if imgs:
-            out.append('          <div class="kstrip">%s</div>' % "".join('<img loading="lazy" decoding="async" src="%s" alt="">' % i for i in imgs))
+            out.append('          <div class="kstrip">%s</div>' % "".join('<img loading="lazy" decoding="async" src="%s" alt="%s">' % (i, c["l"]) for i in imgs))
     if c.get("cap"):
         out.append('          <p class="kcap">%s</p>' % c["cap"])
     if c.get("link"):

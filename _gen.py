@@ -14,11 +14,11 @@ HEAD = '''<!doctype html>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 
-<link rel="stylesheet" href="assets/master.css?v=133">
+<link rel="stylesheet" href="assets/master.css?v=135">
 <link rel="stylesheet" href="https://use.typekit.net/udf8wjj.css">
-<link rel="stylesheet" href="assets/brand.css?v=133">
-<script src="assets/brand.js?v=133" defer></script>
-<script src="assets/master.js?v=133" defer></script>
+<link rel="stylesheet" href="assets/brand.css?v=135">
+<script src="assets/brand.js?v=135" defer></script>
+<script src="assets/master.js?v=135" defer></script>
 </head>
 <body style="background-color:{bodybg}" class="on-light brand">
 
@@ -576,7 +576,7 @@ def case_page(c, nxt):
     <img src="%s" alt="%s">
     <div class="hcap">
       <div class="cl" style="font-size:15px">%s <span>%s</span></div>
-      <div class="dispn" style="--n:%d">%s</div>
+      <h1 class="dispn" style="--n:%d">%s</h1>
     </div>
     <div class="hkpi"><div class="kv">%s</div><div class="kl">(%s)</div></div>
     <div class="scrollhint">Scrollen</div>
@@ -585,7 +585,7 @@ def case_page(c, nxt):
         hero = """<section class="chero" data-bg="%s" data-fg="light" style="background:%s;color:%s">
     <div class="hcap">
       <div class="cl" style="font-size:15px">%s <span style="opacity:.65">%s</span></div>
-      <div class="dispn" style="--n:%d">%s</div>
+      <h1 class="dispn" style="--n:%d">%s</h1>
     </div>
 %s
     <div class="scrollhint">Scrollen</div>
@@ -610,7 +610,7 @@ def case_page(c, nxt):
                 seen.add(x); flat.append(x)
         colA = flat[0::2]; colB = flat[1::2]
         def _col(items, speed):
-            fr = "\n          ".join('<div class="phframe"><img loading="lazy" decoding="async" src="%s" alt=""></div>' % i for i in items)
+            fr = "\n          ".join('<div class="phframe"><img loading="lazy" decoding="async" src="%s" alt="Sujet aus der Kampagne, %s"></div>' % (i, c["nav_title"]) for i in items)
             return '<div class="phcol" data-drift="%s">\n          %s\n        </div>' % (speed, fr)
         phones_sec = """  <!-- MOBILE: Screens ziehen vorbei -->
   <section class="sec fg-light bg-paper phonesec" data-bg="#F3EDE1" data-fg="dark">
@@ -630,14 +630,14 @@ def case_page(c, nxt):
 
 """
     if nxt.get("handmade"):
-        nxt_media = '<img loading="lazy" decoding="async" src="assets/img/funkhaus.jpg" alt="">'
+        nxt_media = '<img loading="lazy" decoding="async" src="assets/img/funkhaus.jpg" alt="Nächster Case: Premium-Neubau, Wien">'
         nxt_sub = "489 Leads zu € 11,77. Ein Motiv trug 54 %."
         nxt_name = "Premium-Neubau, Wien."
     else:
         nxt_name = " ".join(nxt["title"])
         nxt_sub = nxt["sub"]
         if nxt.get("img"):
-            nxt_media = '<img loading="lazy" decoding="async" src="%s" alt="">' % nxt["img"]
+            nxt_media = '<img loading="lazy" decoding="async" src="%s" alt="Nächster Case: %s">' % (nxt["img"], nxt["nav_title"])
         else:
             nxt_media = '<span style="display:flex;align-items:flex-end;aspect-ratio:4/3;background:%s;color:%s;padding:24px;border-radius:3px"><span style="font-family:var(--f-disp);font-weight:680;font-size:clamp(40px,4vw,64px);font-variant-numeric:tabular-nums">%s</span></span>' % (nxt.get("clr", "#22382C"), nxt.get("fg", "#EDF2EC"), nxt.get("big") or nxt["nav_title"])
     nxt_href = nxt["slug"] + ".html"

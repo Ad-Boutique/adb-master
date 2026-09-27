@@ -1,0 +1,41 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/referenzen", "destination": "/work.html" },
+    { "source": "/referenzen/:slug", "destination": "/case-:slug.html" },
+    { "source": "/services/digitale-strategie", "destination": "/service-strategie.html" },
+    { "source": "/services/e-commerce", "destination": "/service-ecommerce.html" },
+    { "source": "/services/:slug", "destination": "/service-:slug.html" },
+    { "source": "/agentur", "destination": "/agentur.html" },
+    { "source": "/kontakt", "destination": "/kontakt.html" }
+  ],
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/services", "destination": "/#leistungen", "permanent": true },
+    { "source": "/services/webshops", "destination": "/services/e-commerce", "permanent": true },
+    { "source": "/services/social-media", "destination": "/services/content-creation", "permanent": true },
+    { "source": "/services/creator-launch", "destination": "/services/content-creation", "permanent": true },
+    { "source": "/expertise", "destination": "/agentur", "permanent": true },
+    { "source": "/termin", "destination": "/kontakt", "permanent": true },
+    { "source": "/work", "destination": "/referenzen", "permanent": true },
+    { "source": "/work.html", "destination": "/referenzen", "permanent": true },
+    { "source": "/agentur.html", "destination": "/agentur", "permanent": true },
+    { "source": "/kontakt.html", "destination": "/kontakt", "permanent": true },
+    { "source": "/service-strategie.html", "destination": "/services/digitale-strategie", "permanent": true },
+    { "source": "/service-ecommerce.html", "destination": "/services/e-commerce", "permanent": true },
+    { "source": "/service-:slug.html", "destination": "/services/:slug", "permanent": true },
+    { "source": "/case-:slug.html", "destination": "/referenzen/:slug", "permanent": true },
+    { "source": "/checkout", "destination": "/kontakt", "permanent": true },
+    { "source": "/paypal-checkout", "destination": "/kontakt", "permanent": true },
+    { "source": "/order-confirmation", "destination": "/kontakt", "permanent": true },
+    { "source": "/product/:slug", "destination": "/", "permanent": true },
+    { "source": "/en/services/webshops", "destination": "/services/e-commerce", "permanent": true },
+    { "source": "/en/services/:slug", "destination": "/services/:slug", "permanent": true },
+    { "source": "/en/:path*", "destination": "/", "permanent": false }
+  ],
+  "headers": [
+    { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
+    { "source": "/(.*)\\.html", "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }] }
+  ]
+}
