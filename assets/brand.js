@@ -154,7 +154,9 @@
     var mv = q.match(/[?&]cv=(\d)/), variant = mv ? parseInt(mv[1], 10) : COACH_DEFAULT;
     var mb = document.querySelector(".mbtn"), sheet = document.querySelector(".msheet");
     if (!mb || !sheet || body.classList.contains("menuopen")) return;
-    try { if (!force && localStorage.getItem("adb_coach")) return; localStorage.setItem("adb_coach", "1"); } catch (e) { if (!force) return; }
+    /* Sperre je Browser, versioniert: wer eine aeltere Choreografie gesehen hat, sieht die aktuelle einmal */
+    var KEY = "adb_coach_v" + variant;
+    try { if (!force && localStorage.getItem(KEY)) return; localStorage.setItem(KEY, "1"); } catch (e) { if (!force) return; }
     var els = [], timers = [], over = false, y0 = window.pageYOffset;
     var STATES = ["menupeek", "menuopen", "mdemo", "mpress", "miris", "mwriting", "mblink", "mpop"];
     function mk(cls) { var el = document.createElement("div"); el.className = cls; el.setAttribute("aria-hidden", "true"); body.appendChild(el); els.push(el); return el; }
