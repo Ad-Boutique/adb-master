@@ -25,9 +25,11 @@ body.brand { background: var(--paper); }
 
 /* ---------- Typografie: Sans traegt, die Serife antwortet kursiv ---------- */
 .brand .disp { text-transform: none; letter-spacing: -0.03em; line-height: 0.98; }
-.brand .disp i, .brand .dispn i, .brand .dispn em, .brand h1 i, .brand .lh i {
+/* Headline-Regel (28.9.2026): jede Headline traegt einen Teil Satoshi und einen Teil Amandine kursiv, gesetzt von _headlines.py */
+.brand .disp i, .brand .dispn i, .brand .dispn em, .brand h1 i, .brand h2 i, .brand h3 i, .brand .lh i, .brand .phh i, .brand .zah i, .brand .pwh i, .brand .kh i, .brand .nptit i {
   font-family: var(--f-serif); font-style: italic; font-weight: 400; letter-spacing: -0.005em;
 }
+.brand .kh i { font-size: 1.08em; }
 .brand .serif { line-height: 1.22; }
 /* Lesekopie bleibt Satoshi. Die Serife ist fuer Zahlen, Zitate und kursive Akzente da, nicht fuer Absaetze. */
 .brand p.serif, .brand .sub, .brand .ssub, .brand .cap, .brand .benelead, .brand .zasub, .brand .tell .ts p,
