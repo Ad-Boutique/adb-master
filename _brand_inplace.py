@@ -54,9 +54,24 @@ def kommunalkredit(h):
     return cnums_to_mini(h)
 
 
+DEPT_CSS = ("brand-type", "brand-ui", "brand-layout", "brand-motion")
+
+
+def dept_css(h):
+    """Die vier Abteilungs-Stylesheets (Fonts, Design, Layout, Animation) direkt nach brand.css, einmalig."""
+    if "brand-ui.css" in h:
+        return h
+    m = re.search(r'<link rel="stylesheet" href="assets/brand\.css\?v=(\d+)">', h)
+    if not m:
+        return h
+    v = m.group(1)
+    links = "".join('\n<link rel="stylesheet" href="assets/%s.css?v=%s">' % (n, v) for n in DEPT_CSS)
+    return h.replace(m.group(0), m.group(0) + links, 1)
+
+
 def head(h):
     if "brand.css" in h:
-        return h
+        return dept_css(h)
     m = re.search(r'<link rel="stylesheet" href="assets/master\.css\?v=(\d+)">', h)
     if not m:
         return h
@@ -64,6 +79,7 @@ def head(h):
     h = h.replace(m.group(0), m.group(0) + '\n<link rel="stylesheet" href="https://use.typekit.net/udf8wjj.css">\n<link rel="stylesheet" href="assets/brand.css?v=%s">' % v, 1)
     h = h.replace('<script src="assets/master.js?v=%s" defer></script>' % v,
                   '<script src="assets/brand.js?v=%s" defer></script>\n<script src="assets/master.js?v=%s" defer></script>' % (v, v), 1)
+    h = dept_css(h)
     h = re.sub(r"<body([^>]*)>", lambda mm: ("<body%s class=\"brand\">" % mm.group(1)) if "class=" not in mm.group(1) else ("<body%s>" % mm.group(1).replace('class="', 'class="brand ')), h, count=1)
     return h
 
@@ -118,7 +134,8 @@ def agentur(h):
 def main():
     n = 0
     for f in sorted(glob.glob("*.html")):
-        if f in SKIP or f.endswith("-brand.html"):
+        # alte Testseiten hiessen *-brand.html; echte Cases wie case-consumer-brand.html gehoeren dazu
+        if f in SKIP or (f.endswith("-brand.html") and not f.startswith("case-")):
             continue
         h = open(f, encoding="utf-8").read()
         out = strip_chapnav(head(h))

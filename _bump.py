@@ -2,7 +2,7 @@
 # Aufruf: python3 _bump.py [neue Nummer]  (ohne Argument: aktuelle + 1)
 import glob, re, sys
 
-pat = re.compile(r'(?:master|brand)\.(css|js)\?v=(\d+)')
+pat = re.compile(r'(?:master|brand(?:-[a-z]+)?)\.(css|js)\?v=(\d+)')
 files = sorted(set(glob.glob("*.html") + glob.glob("_gen*.py")))
 cur = max((int(m.group(2)) for f in files for m in pat.finditer(open(f, encoding="utf-8").read())), default=0)
 new = int(sys.argv[1]) if len(sys.argv) > 1 else cur + 1
