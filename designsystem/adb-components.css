@@ -1,0 +1,275 @@
+/* ============================================================
+   ad.boutique Brand 2026 · Komponenten
+   Braucht adb-tokens.css (und adb-fonts.css). Alle Klassen tragen das Praefix adb-,
+   damit nichts mit bestehenden Styles im Agency Hub kollidiert.
+   Grundidee: Der Punkt ist das Element (Aufmerksamkeit, Fokus, Ziel).
+   Lime ist Licht: Flaeche, Punkt oder Ring, auf hellem Grund nie Text.
+   ============================================================ */
+
+/* ---------- Basis ---------- */
+.adb {
+  background: var(--adb-bg); color: var(--adb-fg);
+  font-family: var(--adb-font-sans); font-size: 16px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.adb ::selection { background: var(--adb-lime); color: var(--adb-ink); }
+.adb-wrap { width: min(var(--adb-wrap-max), calc(100% - 2 * var(--adb-gutter))); margin: 0 auto; }
+.adb-section { padding-block: var(--adb-section); background: var(--adb-bg); color: var(--adb-fg); }
+.adb-muted { color: var(--adb-fg-muted); }
+.adb :focus-visible { outline: 2px solid var(--adb-fg); outline-offset: 3px; }
+
+/* ---------- Typografie: die Sans stellt fest, die Serife antwortet kursiv ---------- */
+.adb-h {
+  font-family: var(--adb-font-sans); font-weight: 700;
+  letter-spacing: -0.03em; line-height: 0.98; text-wrap: balance; margin: 0;
+}
+.adb-h i, .adb-h em {
+  font-family: var(--adb-font-serif); font-style: italic; font-weight: 400; letter-spacing: -0.005em;
+}
+.adb-h--hero { font-size: clamp(44px, 4.6vw, 82px); }
+.adb-h--xl { font-size: clamp(52px, 7.6vw, 132px); font-weight: 760; letter-spacing: -0.035em; line-height: 1; }
+.adb-h--section { font-size: clamp(38px, 4.4vw, 76px); font-weight: 740; line-height: 1.02; }
+.adb-h--m { font-size: clamp(24px, 2.4vw, 38px); letter-spacing: -0.02em; line-height: 1.12; }
+.adb-h--s { font-size: clamp(17px, 1.4vw, 21px); letter-spacing: -0.014em; line-height: 1.2; }
+.adb-label {
+  display: block; font-family: var(--adb-font-sans); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase; line-height: 1.4; color: var(--adb-fg-muted);
+}
+.adb-body { font-size: 16px; line-height: 1.6; max-width: 62ch; }
+.adb-lead { font-size: 15px; line-height: 1.65; color: var(--adb-fg-muted); max-width: 62ch; }
+.adb-caption { font-size: 13px; line-height: 1.5; color: var(--adb-fg-muted); }
+.adb-caption b { color: var(--adb-fg); font-weight: 600; }
+.adb-num { font-family: var(--adb-font-serif); font-weight: 400; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; line-height: 1; }
+.adb-quote { font-family: var(--adb-font-serif); font-size: clamp(20px, 1.9vw, 30px); line-height: 1.3; letter-spacing: -0.01em; }
+
+/* ---------- Knoepfe ---------- */
+.adb-btn {
+  display: inline-block; font-family: var(--adb-font-sans); font-size: 14px; font-weight: 700;
+  letter-spacing: 0.02em; line-height: 1.2; padding: 17px 30px; border: 0; border-radius: var(--adb-radius-xs);
+  cursor: pointer; text-decoration: none;
+  transition: transform 0.4s var(--adb-e-out), background-color var(--adb-t-fast) ease, color var(--adb-t-fast) ease;
+}
+.adb-btn:hover { transform: translateY(-2px); }
+.adb-btn--ink { background: var(--adb-ink); color: var(--adb-paper); }
+.adb-btn--ink:hover { background: var(--adb-lime); color: var(--adb-ink); }
+.adb-btn--paper { background: var(--adb-paper); color: var(--adb-ink); }
+.adb-btn--paper:hover { background: var(--adb-lime); color: var(--adb-ink); }
+.adb-btn--outline { background: transparent; color: var(--adb-fg); border: 1px solid currentColor; padding: 16px 29px; }
+/* Der Punkt wird zum Knopf: Weiter-Knopf in Formularen */
+.adb-btn--go { background: var(--adb-lime); color: var(--adb-ink); border-radius: var(--adb-radius-pill); box-shadow: 0 0 0 1px var(--adb-ink); }
+
+/* ---------- Textlinks ---------- */
+.adb-link {
+  font-size: 12.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  display: inline-flex; gap: 10px; align-items: baseline; position: relative; padding-bottom: 4px;
+  color: var(--adb-fg); text-decoration: none;
+}
+.adb-link::after {
+  content: ""; position: absolute; left: 0; bottom: 0; height: 1px; width: 100%;
+  background: currentColor; transform-origin: right; transform: scaleX(0.35);
+  transition: transform var(--adb-t-med) var(--adb-e-out);
+}
+.adb-link:hover::after { transform: scaleX(1); transform-origin: left; }
+.adb-link--line {
+  display: inline-block; font-size: 12px; letter-spacing: 0.16em; padding-bottom: 6px;
+  border-bottom: 1px solid var(--adb-fg);
+}
+.adb-link--line::after { display: none; }
+.adb-ink .adb-link--line, [data-theme="dark"] .adb-link--line { border-bottom-color: rgba(244, 243, 236, 0.42); }
+.adb-ink .adb-link--line:hover, [data-theme="dark"] .adb-link--line:hover { color: var(--adb-lime); border-bottom-color: var(--adb-lime); }
+
+/* ---------- Der Punkt ---------- */
+.adb-dot {
+  position: relative; display: inline-block; flex: 0 0 auto; border-radius: 50%; background: var(--adb-lime);
+  width: clamp(30px, 3.4vw, 52px); height: clamp(30px, 3.4vw, 52px);
+  animation: adb-pulse 3.6s ease-in-out infinite;
+}
+.adb-dot::after {
+  content: ""; position: absolute; inset: -10px; border-radius: 50%;
+  border: 1.5px solid var(--adb-lime); opacity: 0; animation: adb-focus 3.6s ease-out infinite;
+}
+.adb-dot--s { width: 8px; height: 8px; animation: none; box-shadow: var(--adb-ring); }
+.adb-dot--s::after { display: none; }
+.adb-dot--m { width: 18px; height: 18px; }
+@keyframes adb-pulse { 0%, 100% { transform: scale(1); } 45% { transform: scale(1.1); } }
+@keyframes adb-focus { 0% { transform: scale(0.7); opacity: 0; } 40% { opacity: 0.8; } 100% { transform: scale(1.7); opacity: 0; } }
+@keyframes adb-ring-out { 0% { transform: scale(0.6); opacity: 0.9; } 100% { transform: scale(2.8); opacity: 0; } }
+
+/* ---------- Menue-Kreis ---------- */
+.adb-menu {
+  position: relative; width: 64px; height: 64px; border-radius: 50%; border: 0; cursor: pointer;
+  background: var(--adb-lime); color: var(--adb-ink); box-shadow: var(--adb-shadow-float);
+  font-family: var(--adb-font-sans); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  display: inline-flex; align-items: center; justify-content: center; padding: 0 0 0 0.14em;
+  transition: transform var(--adb-t-med) var(--adb-e-out), background-color 0.45s ease, color 0.4s ease;
+}
+.adb-menu:hover { transform: scale(1.12); }
+.adb-menu[aria-expanded="true"] { background: var(--adb-ink); color: var(--adb-lime); font-size: 8.5px; letter-spacing: 0.06em; }
+.adb-menu--fixed { position: fixed; left: 50%; bottom: calc(34px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 90; }
+.adb-menu--fixed:hover { transform: translateX(-50%) scale(1.12); }
+
+/* ---------- Kopfzeile ---------- */
+.adb-header {
+  display: flex; justify-content: space-between; align-items: center; gap: 24px;
+  padding: 26px clamp(24px, 3.5vw, 56px); color: var(--adb-fg);
+}
+.adb-logo { font-family: var(--adb-font-sans); font-weight: 740; font-size: 19px; letter-spacing: -0.01em; color: inherit; text-decoration: none; }
+.adb-logo i { font-style: normal; opacity: 0.55; }
+.adb-header nav { display: flex; align-items: center; gap: clamp(18px, 2.4vw, 36px); }
+.adb-header nav a, .adb-header nav button {
+  display: inline-flex; align-items: center; gap: 9px; background: none; border: 0; padding: 0; cursor: pointer;
+  font-family: var(--adb-font-sans); font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+  color: inherit; text-decoration: none;
+}
+.adb-header nav i { width: 9px; height: 9px; border-radius: 50%; background: currentColor; transition: transform 0.4s var(--adb-e-out); }
+.adb-header nav button:hover i { transform: scale(1.35); }
+.adb-header--overlay { position: fixed; inset: 0 0 auto 0; z-index: 60; color: #fff; mix-blend-mode: difference; }
+
+/* ---------- Wortmarke ---------- */
+.adb-wordmark {
+  font-family: var(--adb-font-sans); font-weight: 780; letter-spacing: -0.04em; line-height: 0.95;
+  font-size: clamp(76px, 17.5vw, 300px); white-space: nowrap; color: var(--adb-fg);
+}
+/* der Punkt ist Lime auf Ink; auf Paper bleibt er Ink, weil Lime dort nie Text ist */
+.adb-wordmark i { font-style: normal; color: var(--adb-accent-text); }
+
+/* ---------- Kennzahl-Karte ---------- */
+.adb-kpi {
+  background: var(--adb-surface); border: 1px solid var(--adb-line); border-radius: var(--adb-radius-m);
+  padding: var(--adb-card-pad); display: flex; flex-direction: column; gap: 14px; position: relative; color: var(--adb-fg);
+}
+.adb-kpi__head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.adb-kpi__label { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--adb-fg-muted); padding-top: 6px; }
+.adb-kpi__pill {
+  flex: 0 0 auto; background: var(--adb-lime); color: var(--adb-ink); font-weight: 700; font-size: 14px; letter-spacing: -0.01em;
+  padding: 7px 12px; border-radius: var(--adb-radius-pill); box-shadow: 0 0 0 1px var(--adb-ink);
+}
+.adb-kpi__vals { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.adb-kpi__from {
+  font-family: var(--adb-font-serif); font-size: clamp(20px, 1.8vw, 28px); color: var(--adb-fg-muted);
+  text-decoration: line-through; text-decoration-thickness: 1px;
+}
+.adb-kpi__arrow { color: var(--adb-fg-muted); font-size: 18px; }
+.adb-kpi__to { font-family: var(--adb-font-serif); font-size: clamp(38px, 3.6vw, 60px); line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.adb-kpi__cap { font-size: 13px; line-height: 1.5; color: var(--adb-fg-muted); margin-top: auto; }
+.adb-kpigrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--adb-grid-gap); }
+@media (max-width: 1000px) { .adb-kpigrid { grid-template-columns: 1fr; } }
+
+/* ---------- Kennzahlen-Reihe: ein Punkt markiert die Zahl ---------- */
+.adb-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(18px, 2.4vw, 40px); }
+.adb-stat { position: relative; padding-left: 20px; }
+.adb-stat::before {
+  content: ""; position: absolute; left: 0; top: 0.35em; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--adb-lime); box-shadow: var(--adb-ring);
+}
+.adb-stat__v { font-family: var(--adb-font-serif); font-size: clamp(30px, 3.2vw, 52px); line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.adb-stat__c { font-size: 13px; font-weight: 500; color: var(--adb-fg-muted); margin-top: 8px; line-height: 1.45; }
+@media (max-width: 640px) { .adb-stats { grid-template-columns: 1fr; } }
+
+/* ---------- Punkt-Graphen: jede Einheit ein Punkt ---------- */
+.adb-dotgraph { display: grid; grid-template-columns: repeat(var(--cols, 10), 1fr); gap: clamp(7px, 1vw, 13px); max-width: 440px; }
+.adb-dotgraph i { display: block; aspect-ratio: 1; border-radius: 50%; background: var(--adb-dot-off); transform: scale(0.55); transition: background-color 0.45s ease, transform 0.6s var(--adb-e-out); }
+.adb-dotgraph i.on { background: var(--adb-lime); transform: scale(1); box-shadow: inset 0 0 0 1px rgba(15, 15, 15, 0.55); }
+.adb-dotbars .row { display: grid; grid-template-columns: minmax(150px, 0.6fr) 1fr auto; gap: 18px; align-items: center; padding: 14px 0; border-top: 2px dotted var(--adb-line-dotted); }
+.adb-dotbars .row:last-child { border-bottom: 2px dotted var(--adb-line-dotted); }
+.adb-dotbars .rl { font-size: 13.5px; font-weight: 600; }
+.adb-dotbars .rv { font-family: var(--adb-font-serif); font-size: clamp(20px, 1.8vw, 28px); font-variant-numeric: tabular-nums; }
+.adb-dotbars .dots { display: flex; flex-wrap: wrap; gap: 6px; }
+.adb-dotbars .dots i { width: 10px; height: 10px; border-radius: 50%; background: var(--adb-dot-off); transform: scale(0.5); }
+.adb-dotbars .dots i.on { background: var(--adb-fg); transform: none; }
+.adb-dotbars .row.hi .dots i.on { background: var(--adb-lime); box-shadow: inset 0 0 0 1px rgba(15, 15, 15, 0.55); }
+@media (max-width: 860px) { .adb-dotbars .row { grid-template-columns: 1fr auto; } .adb-dotbars .dots { grid-column: 1 / -1; } }
+
+/* ---------- Punktzeile: Arbeitsweise als Satz mit Punkten ---------- */
+.adb-dotline { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13px; font-weight: 600; letter-spacing: 0.02em; color: var(--adb-fg-muted); }
+.adb-dotline span { position: relative; padding-left: 14px; }
+.adb-dotline span::before {
+  content: ""; position: absolute; left: 0; top: 0.5em; width: 7px; height: 7px; border-radius: 50%;
+  border: 1.5px solid var(--adb-fg); box-sizing: border-box; transition: background-color 0.35s ease, box-shadow 0.35s ease;
+}
+.adb-dotline span.on::before { background: var(--adb-lime); border-color: var(--adb-ink); box-shadow: 0 0 0 3px var(--adb-halo); }
+
+/* ---------- Liste (Cases, Leistungen): Nummer mit Punkt, Titel unterstreicht sich ---------- */
+.adb-list { list-style: none; margin: 0; padding: 0; }
+.adb-list__row {
+  display: grid; grid-template-columns: 52px 1fr auto; gap: clamp(18px, 2.6vw, 44px); align-items: baseline;
+  padding: clamp(22px, 2.6vw, 36px) 0; border-top: 1px solid var(--adb-line); color: inherit; text-decoration: none;
+}
+.adb-list__row:last-child { border-bottom: 1px solid var(--adb-line); }
+.adb-list__num { position: relative; padding-left: 16px; font-size: 12px; font-weight: 700; color: var(--adb-fg-muted); font-variant-numeric: tabular-nums; }
+.adb-list__num::before {
+  content: ""; position: absolute; left: 0; top: 0.45em; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--adb-fg); transition: background-color var(--adb-t-fast) ease, transform 0.4s var(--adb-e-out);
+}
+.adb-list__row:hover .adb-list__num::before { background: var(--adb-lime); transform: scale(1.5); box-shadow: var(--adb-ring); }
+.adb-list__title {
+  font-weight: 680; font-size: clamp(20px, 2.4vw, 38px); letter-spacing: -0.022em; line-height: 1.1; display: inline;
+  background-image: linear-gradient(currentColor, currentColor); background-repeat: no-repeat;
+  background-position: left 96%; background-size: 0% 2px; transition: background-size 0.6s var(--adb-e-out);
+}
+.adb-list__row:hover .adb-list__title { background-size: 100% 2px; }
+.adb-list__kpi { text-align: right; white-space: nowrap; }
+.adb-list__kpi .v { display: block; font-family: var(--adb-font-serif); font-size: clamp(20px, 2vw, 32px); font-variant-numeric: tabular-nums; }
+.adb-list__kpi .l { display: block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--adb-fg-muted); margin-top: 4px; }
+
+/* ---------- Akkordeon (FAQ): gepunktete Trennlinie statt Haarlinie ---------- */
+.adb-faq__item { border-top: 2px dotted var(--adb-line-dotted); }
+.adb-faq__item:last-child { border-bottom: 2px dotted var(--adb-line-dotted); }
+.adb-faq__q {
+  display: flex; align-items: center; justify-content: space-between; gap: 22px; width: 100%; padding: 21px 0;
+  background: none; border: 0; text-align: left; font-family: inherit; font-weight: 700; font-size: 16.5px;
+  color: var(--adb-fg); cursor: pointer;
+}
+.adb-faq__q .plus { font-weight: 400; font-size: 24px; line-height: 1; color: var(--adb-fg-muted); transition: transform 0.45s var(--adb-e-out); }
+.adb-faq__item.open .adb-faq__q .plus { transform: rotate(45deg); color: var(--adb-fg); }
+.adb-faq__a { overflow: hidden; max-height: 0; transition: max-height 0.6s var(--adb-e-snap); }
+.adb-faq__item.open .adb-faq__a { max-height: 40em; }
+.adb-faq__a p { margin: 0; padding: 0 0 24px; font-size: 14.5px; color: var(--adb-fg-muted); line-height: 1.65; max-width: 62ch; }
+
+/* ---------- Chips ---------- */
+/* Filter-Chip: Ink, die Wahl in Paper */
+.adb-chip {
+  display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: var(--adb-radius-pill);
+  background: var(--adb-ink); color: var(--adb-paper); border: 1px solid rgba(244, 243, 236, 0.2);
+  font-family: var(--adb-font-sans); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;
+}
+.adb-chip:hover { border-color: var(--adb-paper); }
+.adb-chip.on { background: var(--adb-paper); color: var(--adb-ink); border-color: var(--adb-paper); }
+/* Auswahl-Chip im Formular: der Punkt fuellt sich */
+.adb-option {
+  display: inline-flex; align-items: center; gap: 10px; padding: 11px 16px; border-radius: var(--adb-radius-pill);
+  background: transparent; color: var(--adb-fg); border: 1px solid var(--adb-line); cursor: pointer;
+  font-family: var(--adb-font-sans); font-size: 14px; font-weight: 600;
+}
+.adb-option .o { width: 11px; height: 11px; border-radius: 50%; border: 1.5px solid var(--adb-fg); transition: background-color var(--adb-t-fast) ease, box-shadow var(--adb-t-fast) ease; }
+.adb-option.sel { border-color: var(--adb-fg); }
+.adb-option.sel .o { background: var(--adb-lime); border-color: var(--adb-ink); box-shadow: 0 0 0 4px var(--adb-halo); }
+
+/* ---------- Regler: der Griff ist der Punkt ---------- */
+.adb-range { -webkit-appearance: none; appearance: none; width: 100%; height: 2px; background: var(--adb-line-dotted); border-radius: 2px; outline: none; margin: 10px 0 22px; }
+.adb-range::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--adb-lime); border: 1.5px solid var(--adb-ink); cursor: grab; box-shadow: 0 0 0 5px rgba(215, 255, 69, 0.25); }
+.adb-range::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: var(--adb-lime); border: 1.5px solid var(--adb-ink); cursor: grab; }
+.adb-range:focus-visible { outline: 2px solid var(--adb-fg); outline-offset: 8px; }
+
+/* ---------- Fit-Karte: Ja-Liste und Nein-Liste ---------- */
+.adb-fit { border-radius: var(--adb-radius-m); padding: clamp(26px, 3vw, 44px); }
+.adb-fit--yes { background: var(--adb-cream); color: var(--adb-ink); }
+.adb-fit--no { background: var(--adb-ink); color: var(--adb-paper); }
+.adb-fit h4 { margin: 0 0 clamp(18px, 2.2vw, 30px); font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.8; }
+.adb-fit ul { list-style: none; margin: 0; padding: 0; }
+.adb-fit li { display: grid; grid-template-columns: 14px 1fr; gap: 14px; align-items: start; padding: 13px 0; border-top: 1px solid rgba(15, 15, 15, 0.16); font-size: clamp(15px, 1.15vw, 17px); line-height: 1.5; }
+.adb-fit--no li { border-top-color: rgba(244, 243, 236, 0.16); }
+.adb-fit li:first-child { border-top: 0; padding-top: 0; }
+.adb-fit .d { width: 10px; height: 10px; border-radius: 50%; margin-top: 0.42em; box-sizing: border-box; border: 1.5px solid var(--adb-ink); }
+.adb-fit li.hit .d { background: var(--adb-lime); box-shadow: 0 0 0 4px var(--adb-halo); }
+.adb-fit--no .d { border-color: var(--adb-lime); }
+
+/* ---------- Bilder: eigene Bilder schwarzweiss, Kundenarbeit farbig ---------- */
+.adb-mono { filter: grayscale(1) contrast(1.04); transition: filter 0.6s ease; }
+.adb-mono:hover { filter: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .adb-dot, .adb-dot::after { animation: none; }
+  .adb-dot::after { display: none; }
+  .adb-btn, .adb-menu, .adb-link::after, .adb-list__title, .adb-faq__a { transition: none; }
+}

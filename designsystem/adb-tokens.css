@@ -1,0 +1,84 @@
+/* ============================================================
+   ad.boutique Brand 2026 · Tokens
+   Stand: brand.css ueber master.css (alle Seiten mit body.brand), 30.9.2026
+   Zwei Farbwelten: Paper (hell, Standard) und Ink (dunkel).
+   Umschalten je Bereich mit class="adb-ink" oder data-theme="dark".
+   ============================================================ */
+:root, .adb-paper, [data-theme="light"] {
+  /* Palette: fest, in beiden Welten gleich */
+  --adb-lime: #d7ff45;
+  --adb-ink: #0f0f0f;
+  --adb-ink-soft: #161616;
+  --adb-night: #070708;
+  --adb-paper: #f4f3ec;
+  --adb-cream: #e9e8df;
+  --adb-card: #fbfaf5;
+  --adb-stone: #b7b7b3;
+  --adb-graphite: #66665f;
+
+  /* Rollen: wechseln mit der Farbwelt */
+  --adb-bg: var(--adb-paper);
+  --adb-bg-alt: var(--adb-cream);
+  --adb-surface: rgba(255, 255, 255, 0.45);
+  --adb-fg: var(--adb-ink);
+  --adb-fg-muted: var(--adb-graphite);
+  --adb-line: rgba(15, 15, 15, 0.16);
+  --adb-line-dotted: rgba(15, 15, 15, 0.28);
+  --adb-accent: var(--adb-lime);
+  --adb-on-accent: var(--adb-ink);
+  --adb-accent-text: var(--adb-ink);   /* Lime ist auf hellem Grund nie Text */
+  --adb-halo: rgba(215, 255, 69, 0.3);
+  --adb-dot-off: rgba(15, 15, 15, 0.1);
+  --adb-ring-color: var(--adb-ink);
+
+  /* Schrift */
+  --adb-font-sans: "Satoshi", "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --adb-font-serif: "amandine", "Reckless", Georgia, "Times New Roman", serif;
+
+  /* Abstaende (feste Stufen, wie im Code verwendet) */
+  --adb-space-6: 6px;
+  --adb-space-8: 8px;
+  --adb-space-14: 14px;
+  --adb-space-18: 18px;
+  --adb-space-22: 22px;
+  --adb-space-26: 26px;
+  --adb-space-44: 44px;
+  --adb-space-70: 70px;
+  /* fluide Masse der Website */
+  --adb-gutter: clamp(26px, 6.4vw, 130px);
+  --adb-section: clamp(78px, 14vw, 210px);
+  --adb-card-pad: clamp(22px, 2.4vw, 34px);
+  --adb-grid-gap: clamp(14px, 1.8vw, 28px);
+  --adb-wrap-max: 1560px;
+
+  /* Radien: fast eckig, der Kreis ist die Ausnahme */
+  --adb-radius-xs: 2px;
+  --adb-radius-s: 3px;
+  --adb-radius-m: 4px;
+  --adb-radius-pill: 999px;
+
+  /* Schatten und Ringe */
+  --adb-shadow-float: 0 8px 30px rgba(15, 15, 15, 0.22);
+  --adb-shadow-filter: 0 8px 26px rgba(15, 15, 15, 0.22);
+  --adb-ring: 0 0 0 1px var(--adb-ring-color);
+  --adb-halo-ring: 0 0 0 4px var(--adb-halo);
+
+  /* Bewegung */
+  --adb-e-out: cubic-bezier(0.19, 1, 0.22, 1);
+  --adb-e-snap: cubic-bezier(0.76, 0, 0.24, 1);
+  --adb-t-fast: 0.3s;
+  --adb-t-med: 0.5s;
+}
+
+.adb-ink, [data-theme="dark"] {
+  --adb-bg: var(--adb-ink);
+  --adb-bg-alt: var(--adb-ink-soft);
+  --adb-surface: var(--adb-ink-soft);
+  --adb-fg: var(--adb-paper);
+  --adb-fg-muted: var(--adb-stone);
+  --adb-line: rgba(244, 243, 236, 0.16);
+  --adb-line-dotted: rgba(244, 243, 236, 0.3);
+  --adb-accent-text: var(--adb-lime);
+  --adb-dot-off: rgba(244, 243, 236, 0.14);
+  --adb-ring-color: var(--adb-ink);
+}
