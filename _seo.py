@@ -78,10 +78,10 @@ def first_sentence(s):
 # ---------------------------------------------------------------- Seitenregister: Title, Description, Typ
 HAND = {
     "index.html": dict(title="Digitale Marketing Agentur Wien | ad.boutique",
-                       desc="Performance-Marketing-Agentur in Wien: Meta, Google, TikTok, Pinterest und ChatGPT Ads, Creatives und Landingpages aus einer Hand. 26 Cases mit echten Zahlen.",
+                       desc="Performance-Marketing-Agentur in Wien: Meta, Google, TikTok, Pinterest und ChatGPT Ads, Creatives und Landingpages aus einer Hand. 24 Cases mit echten Zahlen.",
                        kind="home", h1label="Digitale Marketing Agentur Wien"),
-    "work.html": dict(title="Referenzen: 26 Cases mit echten Zahlen | ad.boutique",
-                      desc="26 Cases aus Immobilien, Finance, E-Commerce und Health, belegt mit Zahlen aus dem Reporting: Anfragen, Preis je Anfrage, ROAS, Umsatz.",
+    "work.html": dict(title="Referenzen: 24 Cases mit echten Zahlen | ad.boutique",
+                      desc="24 Cases aus Immobilien, Finance, E-Commerce und Health, belegt mit Zahlen aus dem Reporting: Anfragen, Preis je Anfrage, ROAS, Umsatz.",
                       kind="collection"),
     "agentur.html": dict(title="Agentur: Team, Zahlen, Arbeitsweise | ad.boutique",
                          desc="Wer bei ad.boutique in Wien an Kampagnen, Creatives und Websites arbeitet, wie wir vergütet werden und warum Zahlen bei uns im Report stehen.",
