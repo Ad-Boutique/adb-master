@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """KPI-Board "Auf einen Blick": ein Baustein fuer Cases, Web-Cases, handgebaute Seiten und Leistungen.
 
-Drei Kartentypen, eine Grammatik (Label, grosse Zahl in Amandine, Lime-Pille, Punkt-Grafik, Satz):
-  jump   Zahlen-Sprung: vorher durchgestrichen, nachher zaehlt hoch, Delta in der Pille
+Drei Kartentypen, eine Grammatik (Label, grosse Zahl in Amandine, Badge in der Ecke, Punkt-Grafik, Satz):
+  jump   Zahlen-Sprung: vorher durchgestrichen, nachher zaehlt hoch, Delta im Badge (.kpill, Figma 99:137)
   count  Produktion oder Volumen: eine Zahl zaehlt von null, jeder Punkt eine Einheit
   text   Qualitatives Ergebnis: kurzer Satz in Amandine, optional Stationen als Punktzeile
   quote  Kundenstimme als Ergebnis
@@ -75,15 +75,16 @@ def board(b, bg="paper", sec_id=None, style=None):
     """Sektion mit Label, Headline (zweite Zeile kursiv) und drei Karten."""
     label = b.get("label", "Auf einen Blick")
     h0, h1 = b.get("h", ("Was besser wurde,", "in drei Zahlen."))
-    bgc = "#EFE7D6" if bg == "cream" else "#F3EDE1"
+    # Eine Cream-Flaeche fuer alle (BRAND-RULES Abschnitt 1): kein zweiter Cream-Ton mehr
+    bgc = "#F4F3EB"
     note = ('      <p class="cfoot-note knote" data-fade>%s</p>\n' % b["note"]) if b.get("note") else ""
     st = style if style is not None else "padding-top:clamp(60px,7vw,110px);padding-bottom:clamp(50px,6vw,90px)"
     idattr = (' id="%s"' % sec_id) if sec_id else ""
-    return ('  <!-- AUF EINEN BLICK: drei Karten, vorher, nachher, der Sprung in Lime -->\n'
+    return ('  <!-- AUF EINEN BLICK: drei Karten, vorher, nachher, der Sprung im Badge -->\n'
             '  <section%s class="sec fg-light bg-%s kpisec" data-bg="%s" data-fg="dark" style="%s">\n'
             '    <div class="wrap">\n'
             '      <div class="kpihead">\n'
-            '        <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:16px">%s</span>\n'
+            '        <span class="label" style="display:block;margin-bottom:16px">%s</span>\n'
             '        <h2 class="dispn" data-lines style="font-size:clamp(30px,3.6vw,58px)"><span class="rl"><span>%s</span></span><span class="rl"><span><i>%s</i></span></span></h2>\n'
             '      </div>\n'
             '      <div class="kpiboard" data-stagger>\n%s\n      </div>\n'
@@ -103,7 +104,7 @@ def mini(nums, note=None):
 
 
 def dotrows(rows, per=25):
-    """Balken in Punktreihen: (Name, Prozent, Wert) -> 25 Punkte, der Bestwert Lime."""
+    """Balken in Punktreihen: (Name, Prozent, Wert) -> 25 Punkte. Der Bestwert ist der eine hervorgehobene Wert (Lime auf Cream, BRAND-RULES Abschnitt 7)."""
     hi = max(range(len(rows)), key=lambda i: rows[i][1])
     out = ['        <div class="dotbars dotbars--ch" data-fade>']
     for i, (name, pct, val) in enumerate(rows):

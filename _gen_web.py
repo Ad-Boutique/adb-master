@@ -231,8 +231,8 @@ def page(c, nxt):
     kpi_sec = kpi_board(WEB_KPI[c["slug"]]) if c["slug"] in WEB_KPI else ""
     body = HEAD.format(title="Case, " + c["name"], bodybg="#0E0E10") + menu("work.html", back=True) + """<main>
 
-  <!-- HERO: Vollbild-Screenshot -->
-  <section class="chero" data-bg="#0E0E10" data-fg="light">
+  <!-- HERO: Screenshot oben, Bildzeile darunter auf Schwarz (Text nie auf Gesichtern oder auf dem Text der Kundenseite) -->
+  <section class="chero chero--shot" data-bg="#0E0E10" data-fg="light">
     <img src=\"""" + hero_img + """\" alt=\"""" + c["name"] + """\" style="object-position: top">
     <div class="hcap">
       <div class="cl" style="font-size:15px">""" + c["name"] + """ <span>""" + c["branche"] + """</span></div>

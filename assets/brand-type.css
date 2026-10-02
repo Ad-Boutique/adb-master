@@ -1,1 +1,284 @@
-/* ad.boutique Brand 2026, Abteilung type. Regeln: _intern/BRAND-RULES.md */
+/* ad.boutique Brand 2026, Abteilung type. Regeln: _intern/BRAND-RULES.md (Abschnitt 2 Typografie)
+   Figma: Rules / Typography 121:85, Rules / Amandine 122:85, Layouts 124:85, Footer 84:69.
+
+   Zwei Schriften, klare Aufgaben:
+   - Satoshi (Bold 700, Medium 500, Regular 400) fuer alles.
+   - Amandine nur an zwei Stellen: Zeile 2 einer Display-Headline (Italic) und grosse Zahlen ab 48 px (Medium).
+   Amandine Medium: das Adobe-Kit udf8wjj liefert Amandine nur in 400 und 700 (je normal und italic).
+   Figma setzt fuer Amandine Medium den Platzhalter Instrument Serif Regular, der naechste Schnitt ist also 400.
+   Deshalb laufen alle grossen Zahlen in Amandine 400 normal.
+
+   Aufbau dieser Datei: 1 Variablen, 2 Grundsatz (alles Satoshi, normale Schreibung, keine Sperrung),
+   3 Headlines, 4 Display-Muster, 5 Fliesstext und Zitate, 6 Labels und Bedienelemente, 7 Wortmarke,
+   8 grosse Zahlen, 9 Mobile.
+   Die Display-Entscheidung trifft _headlines.py (data-hd, --hn, --h1n). Von Hand gesetzte Amandine-Zeilen
+   ausserhalb von _headlines.py tragen die Klasse "am" (z. B. im Footer). */
+
+/* ---------- 1 Variablen: Schriften und Typo-Skala ---------- */
+body.brand {
+  --f-sans: "Satoshi", "Helvetica Neue", Arial, sans-serif;
+  --f-amandine: "amandine", Georgia, "Times New Roman", serif;
+  /* Altlasten: alles, was bisher --f-serif (Reckless, Amandine) oder --f-disp nahm, ist jetzt Satoshi.
+     Amandine gibt es nur noch ueber --f-amandine in dieser Datei. */
+  --f-ui: var(--f-sans);
+  --f-disp: var(--f-sans);
+  --f-serif: var(--f-sans);
+
+  /* Skala (Werte bei 1440 / 390). H1 nach Figma Website 80 / Mobile 39, Split 62, H2 42, H3 = H2 / 1,55 */
+  --fs-h1: clamp(39px, 5.56vw, 80px);      /* Hero, Vollbild, Footer */
+  --fs-h1-xl: clamp(44px, 7.6vw, 110px);   /* zentrierter Hero der Leistungsseiten (Figma color centered 132) */
+  --fs-display: clamp(34px, 4.3vw, 62px);  /* Display-Headline in Sektionen und Splits */
+  --fs-h2: clamp(28px, 2.92vw, 42px);
+  --fs-h3: calc(var(--fs-h2) / 1.55);      /* 27,1 px bei 1440 */
+  --fs-body: 17px;
+  --fs-ui: 15px;                           /* Buttons, Chips, Nav: 15 bis 17 px */
+  --fs-small: 15px;
+  --fs-cap: 13px;                          /* Badges, Captions */
+  --fs-num: clamp(40px, 3.6vw, 56px);      /* grosse Zahl, ab 1334 px Breite mindestens 48 px */
+  --lh-head: 1.1;
+  --lh-h3: 1.2;
+  --lh-body: 1.4;
+  --lh-ui: 1.2;
+  --lh-num: 1.1;
+  /* Amandine-Zeile: Figma setzt sie 0,88 der Satoshi-Zeile (80 / 70,5, 39 / 34, 84 / 73,5) */
+  --am-scale: 0.88;
+  /* --hn liefert _headlines.py als Breite der Amandine-Zeile in Einheiten zu 0,5 em (gemessene Zeichenbreiten).
+     0,52 statt 0,5 laesst 4 Prozent Reserve fuer Kerning und Rundung. */
+  --am-cw: 0.52;
+}
+
+/* ---------- 2 Grundsatz ---------- */
+/* Normale Schreibung, keine gesperrte Laufweite: gilt fuer jede Rolle (Figma kennt keinen Versalsatz). */
+body.brand, body.brand *, body.brand *::before, body.brand *::after {
+  text-transform: none !important;
+  letter-spacing: normal !important;
+}
+/* Formularelemente erben die Schrift (sonst system-ui) */
+body.brand :where(button, input, select, textarea, optgroup) { font-family: inherit; }
+body.brand { font-family: var(--f-sans); }
+/* b/strong: Satoshi Bold, nie Amandine */
+body.brand :is(b, strong) { font-family: inherit; font-weight: 700 !important; }
+
+/* ---------- 3 Headlines: reines Satoshi Bold (H2, H3, Kartentitel, Akkordeon, FAQ, .kh, .lh, Next Project) ---------- */
+body.brand :is(h1, h2, h3, h4, .disp, .dispn, .phh, .zah, .pwh, .kh, .lh, .nptit, .nptitle, .nt, .otitle, .hst, .jc .serif) {
+  font-family: var(--f-sans) !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
+  line-height: var(--lh-head) !important;
+}
+/* vorhandene i/em in Ueberschriften: Satoshi, nicht kursiv (die Display-Zeile ueberschreibt das unter 4) */
+body.brand :is(h1, h2, h3, h4, .disp, .dispn, .phh, .zah, .pwh, .kh, .lh, .nptit, .nptitle, .nt, .otitle, .hst) :is(i, em) {
+  font-family: var(--f-sans) !important;
+  font-style: normal !important;
+  font-weight: inherit !important;
+  font-size: inherit !important;
+}
+/* H2-Ebene: alle Ueberschriften unter 48 px, die eine Sektion oder ein Kapitel eroeffnen */
+body.brand :is(h2, .kh, .pwh, .lchap .lh, .lh):not([data-hd]) { font-size: var(--fs-h2) !important; }
+/* H3-Ebene: Kartentitel, Listen- und Akkordeon-Titel */
+body.brand :is(h3:not([data-hd]), .otitle, .svcard .st, .faq .ahead) {
+  font-family: var(--f-sans) !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
+  line-height: var(--lh-h3) !important;
+}
+body.brand :is(h3:not([data-hd]), .otitle, .svcard .st) { font-size: var(--fs-h3) !important; }
+/* Next-Project-Titel: ein Name, keine Headline zum Teilen. Er bleibt unter 48 px (H2-Stufe), sonst waere er
+   nach Regelwerk eine Display-Headline mit Amandine-Zeile (gemessen vorher 75 px bei 1440) */
+body.brand :is(.npro .nptit, .nextproj .nptitle, .nextcase .nt) { font-size: var(--fs-h2) !important; line-height: var(--lh-head) !important; }
+
+/* ---------- 4 Display-Headline: Zeile 1 Satoshi Bold, Zeile 2 Amandine Italic ---------- */
+body.brand [data-hd] {
+  font-family: var(--f-sans) !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
+  line-height: var(--lh-head) !important;
+}
+/* die Amandine-Zeile misst sich an der Breite des Rahmens um die Headline (100cqi). Der Rahmen, nicht die
+   Headline selbst, weil Headlines mit Inhaltsbreite (Flex, max-width in ch) sonst auf 0 zusammenfallen */
+body.brand :has(> [data-hd]) { container-type: inline-size; }
+/* Statement-Sektion: der Rahmen ist ein zentriertes Flex-Kind mit Inhaltsbreite, er braucht die volle Breite,
+   die Headline bleibt mittig */
+body.brand .cstate .inner:has(> [data-hd]) { width: 100%; }
+body.brand .cstate .inner > [data-hd] { margin-left: auto; margin-right: auto; }
+/* Groesse nach Rolle: Sektion und Split (auch Agentur- und Studien-Hero), Vollbild-Hero, zentrierter Hero.
+   --hd-max ist die Rollengroesse. In schmalen Spalten wird die ganze Headline kleiner, bis die Amandine-Zeile
+   in 0,88 passt, aber nie unter 48 px (Display-Schwelle), darunter wird nur die Amandine-Zeile kleiner. */
+body.brand [data-hd] {
+  --hd-max: var(--fs-display);
+  --hd-fit: calc(100cqi / (var(--hn, 12) * var(--am-cw) * var(--am-scale)));
+  /* Untergrenze 36 px: lieber die ganze Headline etwas kleiner als eine geschrumpfte Amandine-Zeile (Brand-Check 2) */
+  font-size: clamp(min(36px, var(--hd-max)), var(--hd-fit), var(--hd-max)) !important;
+}
+body.brand :is(.hpitch, .khead, .help, footer) [data-hd] { --hd-max: var(--fs-h1); }
+body.brand .svc-hero h1[data-hd] { --hd-max: var(--fs-h1-xl); }
+/* die Amandine-Zeile: eigene Zeile, genau eine Zeile auf Desktop, 0,88 der Satoshi-Zeile, eingepasst */
+body.brand [data-hd][data-hd] :is(i, em), body.brand .am.am.am {
+  display: block;
+  font-family: var(--f-amandine) !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  line-height: var(--lh-head) !important;
+  white-space: nowrap;
+  /* Untergrenze 0,84 em: die Amandine-Zeile bleibt sichtbar im Verhaeltnis zur Satoshi-Zeile (auch wenn der Rahmen kurz 0 misst) */
+  font-size: clamp(calc(0.84 * 1em), calc(100cqi / (var(--hn, 12) * var(--am-cw))), calc(var(--am-scale) * 1em)) !important;
+  /* Amandine hat eine kleinere Versalhoehe, sie sitzt optisch sonst zu tief */
+  padding-bottom: 0.04em;
+}
+/* Footer (Figma 84:69): "We make" Satoshi Bold / "attention perform." Amandine Italic, Markup von _footer.py */
+body.brand .ftr .ftr-h { font-family: var(--f-sans) !important; font-weight: 700 !important; line-height: var(--lh-head) !important; }
+body.brand .ftr .ftr-h > :is(i, em) {
+  display: block;
+  font-family: var(--f-amandine) !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  font-size: calc(var(--am-scale) * 1em) !important;
+  line-height: var(--lh-head) !important;
+  white-space: nowrap;
+}
+/* Case-Hero: zwei Zeilen statt einer, die Groesse richtet sich nach der laengeren Zeile */
+body.brand .chero .hcap h1[data-hd] {
+  white-space: normal;
+  font-size: min(var(--fs-display), calc((100vw - 2 * clamp(26px, 6.4vw, 130px)) / max(var(--h1n, 24) * 0.56, var(--hn, 24) * var(--am-scale) * var(--am-cw)))) !important;
+}
+body.brand .chero .hcap h1[data-hd] > :is(i, em) { font-size: calc(var(--am-scale) * 1em) !important; }
+
+/* ---------- 5 Fliesstext und Zitate: Satoshi Regular, Zeilenhoehe 140 % ---------- */
+body.brand :is(p, li, dd, blockquote, figcaption, .dd, .sub, .ssub, .cap, .lead, .benelead, .zasub, .fint, .pslead, .psbody, .chtxt, .lt, .body, .sanswer) {
+  font-family: var(--f-sans) !important;
+  font-style: normal;
+  line-height: var(--lh-body) !important;
+}
+body.brand :is(p, li, dd, blockquote, .dd, .sub, .ssub, .lead, .benelead, .zasub, .fint, .pslead, .psbody, .chtxt, .lt, .body) { font-weight: 400; }
+body.brand :is(p, li) :is(i, em) { font-family: var(--f-sans) !important; }
+/* Grosse Lead-Saetze (Scrub): Satoshi Regular, markierte Worte Bold */
+body.brand p.serif { font-weight: 400 !important; }
+body.brand p.serif :is(b, strong) { font-weight: 700 !important; }
+body.brand p.serif .w { font-weight: inherit !important; }
+/* Kundenzitate: Satoshi Medium, Quelle Satoshi Regular, nicht kursiv */
+body.brand :is(.vq, .kquote, .qbox p, blockquote, blockquote p, .proofcase .quote, .voice .lead) {
+  font-family: var(--f-sans) !important;
+  font-style: normal !important;
+  font-weight: 500 !important;
+  line-height: var(--lh-body) !important;
+}
+body.brand :is(.vq, .kquote, .qbox p, blockquote, .voice .lead) :is(i, em, b) { font-family: var(--f-sans) !important; font-style: normal !important; }
+body.brand :is(.kqa, .vsrc, .qsrc, cite) { font-family: var(--f-sans) !important; font-weight: 400 !important; font-style: normal !important; }
+/* Dienstleistungsliste (Agentur) und Tabellenwerte: Satoshi */
+body.brand .caps .col .it { font-family: var(--f-sans) !important; font-weight: 500 !important; line-height: var(--lh-h3) !important; }
+body.brand :is(table, th, td) { font-family: var(--f-sans) !important; }
+
+/* ---------- 6 Labels, Eyebrows, Captions, Buttons, Chips, Badges, Nav: Satoshi, normale Schreibung ---------- */
+body.brand :is(.label, .h1-seo, .slabel, .cl, .kl, .sn, .see, .alink, .svc-back, .npgo, .filterlab, .kp, .dothint, .dotline,
+  .hkpi .kl, .kpi .kl, .kpi .kqa, .wlab, .pname, .soc, .mfoot .fl, .scrollhint, .chr .ctc, .ctc, .hmenu, .mitem .mt,
+  .cdot span, .iris .iword, .mwrite, .bbtn, .mbtn, label) {
+  font-family: var(--f-sans) !important;
+  font-style: normal !important;
+}
+/* Buttons, Chips, Nav, Badges, Eyebrow-Labels: Satoshi Medium */
+body.brand :is(.btn, button, .fchip, .chip, .badge, .alink, .svc-back, .npgo, .ctc, .hmenu, .mitem .mt, .mbtn, .bbtn,
+  .cdot span, .iris .iword, .mwrite, .label, .h1-seo, .slabel, .kp, .filterlab, .dothint, .kpill, .see, .fh) {
+  font-family: var(--f-sans) !important;
+  font-weight: 500 !important;
+  font-style: normal !important;
+}
+body.brand :is(.btn, button, .fchip, .chip) { line-height: var(--lh-ui); }
+/* Akkordeon-Titel sind Buttons, bleiben aber H3: Satoshi Bold */
+body.brand .faq .ahead, body.brand .faq .ahead :not(.plus) { font-weight: 700 !important; }
+body.brand :is(.kp, .kp i) { font-style: normal !important; font-family: var(--f-sans) !important; }
+/* Captions und Kennzahl-Labels: Satoshi Regular */
+body.brand :is(.kl, .sl, .dl, .kqa, .cap, .hkpi .kl, .stat .sl, .dotcap .dl, .wkpi .kl, .cl span, .npsub2, .fbase, .fbase *) {
+  font-family: var(--f-sans) !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+}
+/* Restliche Schnitte auf die drei Satoshi-Schnitte bringen (gemessen: 600, 680, 730, 800 kamen noch vor) */
+body.brand :is(.soc a, .m .ml, .mv2, .mv2 a, .pmap-legend span, svg text, .capt span, .row .who, .r .n2) { font-weight: 500 !important; }
+body.brand :is(.lrow .ll, .lens .ll, .ts .tt, .wclr > span:not(.label), .sttitle, .sttitle span, .st .t3) { font-family: var(--f-sans) !important; font-weight: 700 !important; }
+/* Bildzeile im Case-Hero und Kartenbeschriftung: Name Satoshi Bold, Zeile darunter Regular */
+body.brand :is(.hcap .cl, .wlab b, .pname b) { font-weight: 700 !important; }
+
+/* ---------- 7 Wortmarke ad.boutique: immer Satoshi Bold, auch der Punkt ---------- */
+body.brand :is(.logo, .ptw, .fword, .fword div, .fmark, .wordmark, .ftr-mark) {
+  font-family: var(--f-sans) !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
+}
+body.brand :is(.logo, .ptw, .fword, .fmark, .wordmark, .ftr-mark) i {
+  font-family: var(--f-sans) !important;
+  font-style: normal !important;
+  font-weight: inherit !important;
+}
+/* Navbar (Figma 84:35): Wortmarke 25 px, mobil 23 px wie im Footer. Schutzraum: der Kopf hat 24 bis 56 px Rand,
+   mehr als die Hoehe des d (rund 18 px) */
+body.brand .chrome .logo { font-size: 25px; line-height: 1; }
+@media (max-width: 720px) { body.brand .chrome .logo { font-size: 23px; } }
+/* Wortmarke in der Prozess-Karte (SVG-Text): Bold, auch gegen die 500 fuer svg text aus Abschnitt 6 */
+body.brand .pmap .ptw, body.brand .pmap .ptw * { font-weight: 700 !important; }
+
+/* ---------- 8 Zahlen ---------- */
+/* Grosse Zahlen ab 48 px (Stats, KPI-Werte, Ergebnisse, Preise): Amandine Medium (Kit-Schnitt 400) */
+body.brand :is(.stat .sv, .kpi .kto:not(.kto--txt), .tfix .tv, .sthead .stnum, .inner .big2, .fixin .fv, .arctxt .v,
+  .cnums .n .v, .wnums .n .v, .dotcap .dv, .statg .sv, .npro .npim2 span[style*="font-size"]:not([data-npn]), .bigno, .c > .v) {
+  font-family: var(--f-amandine) !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  line-height: var(--lh-num) !important;
+  font-variant-numeric: lining-nums;
+}
+/* KPI-Werte einheitlich gross, damit sie auf Desktop immer ueber 48 px liegen */
+body.brand :is(.kpi .kto:not(.kto--txt), .statg .sv, .cnums .n .v, .wnums .n .v) { font-size: var(--fs-num) !important; }
+/* Eine grosse Zahl ist ein Wert: nie umbrechen ("€" allein in Zeile 1 war der Fehler). data-nw setzt _headlines.py */
+body.brand :is(.stat .sv, .kpi .kto:not(.kto--txt), .tfix .tv, .sthead .stnum, .inner .big2, .fixin .fv, .arctxt .v,
+  .cnums .n .v, .wnums .n .v, .dotcap .dv, .statg .sv, .npro .npim2 span[style*="font-size"], .bigno, .c > .v) { white-space: nowrap !important; }
+/* KPI-Karten: der Wert passt sich auf jeder Breite in seine Karte ein (.kvals ist in der Karte gestreckt, seine
+   Breite kommt von aussen). Gemessen: "€ 1,26 Mio." lief in zwei Spalten bei 768 px aus der Karte */
+body.brand .kpi .kvals:has(> [data-nw]) { container-type: inline-size; }
+body.brand .kpi .kto:not(.kto--txt)[data-nw] { font-size: min(var(--nmax, var(--fs-num)), calc(100cqi / var(--nw))) !important; }
+/* Platzhalter im Next-Project-Bild mit einem Namen statt einer Zahl (data-npn von _headlines.py): Satoshi Bold */
+body.brand .npro .npim2 span[data-npn] {
+  font-family: var(--f-sans) !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
+  font-size: var(--fs-h2) !important;
+  line-height: var(--lh-head) !important;
+}
+/* Kleine Zahlen in Text, Tabellen, Vorher-Werten, Seitenzahlen und Kacheln: Satoshi */
+body.brand :is(.kpi .kfrom, .okpi .v, .row .rv, .row .val, .r .v2, .cmprow .cmpv, .ratehead .ratev, .ratehead .raten b,
+  .dotbars .rv, .hkpi .kv, .tile .kpi .kv, .wt .wkpi .kv, .tclr .big, .wclr .big, .proofside .pv, .num:not(.sv), .kpi .kto--txt,
+  .zcap .zt, .sn, .mono) {
+  font-family: var(--f-sans) !important;
+  font-style: normal !important;
+}
+body.brand :is(.hkpi .kv, .tile .kpi .kv, .wt .wkpi .kv, .tclr .big, .wclr .big, .proofside .pv) { font-weight: 700 !important; }
+body.brand :is(.kpi .kfrom, .okpi .v, .row .rv, .row .val, .r .v2, .cmprow .cmpv, .ratehead .ratev, .dotbars .rv, .kpi .kto--txt, .zcap .zt) { font-weight: 500 !important; }
+
+/* ---------- 9 Mobile ---------- */
+@media (max-width: 720px) {
+  /* die Amandine-Zeile darf umbrechen, bevor sie kleiner als 0,72 der Satoshi-Zeile wuerde */
+  body.brand [data-hd][data-hd] :is(i, em), body.brand .am.am.am {
+    white-space: normal;
+    font-size: max(calc(0.72 * 1em), min(calc(var(--am-scale) * 1em), calc(100cqi / (var(--hn, 12) * var(--am-cw))))) !important;
+  }
+  body.brand .chero .hcap h1[data-hd] { font-size: clamp(28px, 8vw, 39px) !important; }
+
+  /* Grosse Zahlen in schmalen Spalten: Groesse an die Spaltenbreite --ncol koppeln (geteilt durch --nw, die Breite
+     des laengsten Werts der Reihe in em), nie groesser als die Rollengroesse --nmax.
+     --ncol ist 100cqi des Rahmens, wo seine Breite von aussen kommt (Block oder gestreckt). Wo der Rahmen seine
+     Breite aus dem Inhalt nimmt (Raster in Flex-Spalten, .stat), fiele ein Container auf 0 zusammen (gemessen:
+     Case-Hero .statg 0 px), dort rechnet --ncol aus der Viewport-Breite (Seitenrand 24, Spaltenabstand 14) */
+  body.brand :is(.scrub .inner, .stack .fixin):has(> [data-nw]) { container-type: inline-size; }
+  body.brand :is(.kpi .kto:not(.kto--txt), .statg .sv, .stats .stat .sv, .scrub .inner .big2, .stack .fixin .fv)[data-nw] {
+    font-size: min(var(--nmax, var(--fs-num)), calc(var(--ncol, 100cqi) / var(--nw))) !important;
+  }
+  body.brand .kpi--mini .kto { --nmax: 36px; }              /* zwei Spalten: 32 bis 36 px */
+  body.brand .statg .sv { --ncol: calc((100vw - 76px) / 3 - 20px); }      /* .st hat links 20 px fuer die Linie */
+  body.brand .statg--2 .sv { --ncol: calc((100vw - 62px) / 2 - 20px); }
+  body.brand .stats .stat .sv { --nmax: clamp(96px, 15vw, 240px); --ncol: calc(100vw - 48px); }
+  body.brand .scrub .inner .big2 { --nmax: clamp(64px, 9vw, 150px); }
+  body.brand .stack .fixin .fv { --nmax: clamp(52px, 7vw, 118px); flex-shrink: 0; }
+}
+
+/* Brand-Check 2: CTA-Grosszeilen ohne moegliches H1-Muster (Agentur "Mit uns arbeiten", Startseite CTA) sind H2-Groesse, Satoshi */
+body.brand .joincta .jc .serif, body.brand .ctarows .cr { font-family: var(--f-sans) !important; font-style: normal !important; font-weight: 700 !important; font-size: var(--fs-h2) !important; line-height: var(--lh-head) !important; }
+body.brand .ctarows .cr { font-weight: 500 !important; }

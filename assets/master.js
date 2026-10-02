@@ -6,6 +6,8 @@
   "use strict";
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var docEl = document.documentElement;
+  /* Bewegungswerte aus brand-motion.css, bereitgestellt von brand.js; Rueckfall auf dieselbe Skala */
+  var MO = window.ADB_MOTION || { fast: 200, base: 400, slow: 700, chor: 1200, stagger: 80, ease: "cubic-bezier(0.16, 1, 0.3, 1)" };
 
   /* ---------- Page-Transition ---------- */
   var pt = document.querySelector(".pt");
@@ -530,7 +532,7 @@
         t.tv.textContent = act.getAttribute("data-v");
         t.tl.textContent = act.getAttribute("data-l");
         t.tv.style.opacity = 1; t.tl.style.opacity = 1;
-      }, 200);
+      }, MO.fast);
     });
   }
 
@@ -652,7 +654,7 @@
       if (r.top > vh * 0.85 || r.bottom < 0) return;
       c.done = true;
       c.el.querySelectorAll(".cf").forEach(function (f, i) {
-        setTimeout(function () { f.style.width = f.getAttribute("data-w") + "%"; }, 90 + i * 150);
+        setTimeout(function () { f.style.width = f.getAttribute("data-w") + "%"; }, i * MO.stagger);
       });
     });
   }
@@ -669,7 +671,7 @@
       if (r.top > vh * 0.85 || r.bottom < 0) return;
       b.done = true;
       b.el.querySelectorAll(".bfill").forEach(function (f, i) {
-        setTimeout(function () { f.style.width = f.getAttribute("data-w") + "%"; }, 120 + i * 260);
+        setTimeout(function () { f.style.width = f.getAttribute("data-w") + "%"; }, i * MO.stagger * 2);
       });
     });
   }
@@ -843,14 +845,15 @@
         if (t.classList.contains("fout")) return;
         var f = first.get(t), l = t.getBoundingClientRect();
         if (!f) {
-          t.animate([{ opacity: 0, transform: "translateY(20px)" }, { opacity: 1, transform: "none" }],
-            { duration: 500, easing: "cubic-bezier(0.19,1,0.22,1)" });
+          /* neu dazukommende Kachel: dasselbe Einblenden wie ueberall */
+          t.animate([{ opacity: 0, transform: "translateY(24px)" }, { opacity: 1, transform: "none" }],
+            { duration: MO.base, easing: MO.ease });
           return;
         }
         var dx = f.left - l.left, dy = f.top - l.top;
         if (dx || dy) t.animate(
           [{ transform: "translate(" + dx + "px," + dy + "px)" }, { transform: "none" }],
-          { duration: 600, easing: "cubic-bezier(0.76,0,0.24,1)" }
+          { duration: MO.slow, easing: MO.ease }
         );
       });
     }
@@ -883,7 +886,9 @@
       if (src) x.style.backgroundImage = "url('" + src + "')";
       else x.style.background = getComputedStyle(a.querySelector(".wclr") || a).backgroundColor;
       /* Rueckweg: die Case-Seite kennt so ihre Kachel und schrumpft dorthin zurueck */
-      try { sessionStorage.setItem("adbflipFrom", JSON.stringify({ href: href, rect: { top: r.top, left: r.left, width: r.width, height: r.height } })); } catch (err) {}
+      var rad = getComputedStyle(a).borderRadius;
+      try { sessionStorage.setItem("adbflipFrom", JSON.stringify({ href: href, radius: rad, rect: { top: r.top, left: r.left, width: r.width, height: r.height } })); } catch (err) {}
+      x.style.borderRadius = rad;
       x.style.top = r.top + "px"; x.style.left = r.left + "px";
       x.style.width = r.width + "px"; x.style.height = r.height + "px";
       document.body.appendChild(x);
@@ -895,7 +900,7 @@
           setTimeout(function () {
             sessionStorage.setItem("adbflip", "1");
             location.href = href;
-          }, 700);
+          }, MO.slow);
         });
       });
     });

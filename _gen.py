@@ -14,11 +14,11 @@ HEAD = '''<!doctype html>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 
-<link rel="stylesheet" href="assets/master.css?v=143">
+<link rel="stylesheet" href="assets/master.css?v=157">
 <link rel="stylesheet" href="https://use.typekit.net/udf8wjj.css">
-<link rel="stylesheet" href="assets/brand.css?v=143">
-<script src="assets/brand.js?v=143" defer></script>
-<script src="assets/master.js?v=143" defer></script>
+<link rel="stylesheet" href="assets/brand.css?v=157">
+<script src="assets/brand.js?v=157" defer></script>
+<script src="assets/master.js?v=157" defer></script>
 </head>
 <body style="background-color:{bodybg}" class="on-light brand">
 
@@ -95,15 +95,9 @@ def menu(active, back=False):
 
 '''
 
-FOOTER = '''  <footer data-bg="#070708" data-fg="light" style="padding-top:20px">
-    <div class="wrap">
-      <div class="fbase" style="margin-top:0">
-        <span>© 2026 ad.boutique, Tuchlauben 13, 1010 Wien. Zürich in Vorbereitung</span>
-        <span style="display:flex;gap:22px"><a href="index.html">Start</a><a href="work.html">Work</a><a href="agentur.html">Agentur</a><a href="index.html#kontakt">Kontakt</a></span>
-      </div>
-    </div>
-    <div class="fword"><div>ad<i>.</i>boutique</div></div>
-  </footer>
+# der eine Footer kommt aus _footer.py (Figma 84:69), damit Generator und Nachlauf dasselbe Markup setzen
+from _footer import FOOTER as _FOOTER
+FOOTER = _FOOTER + '''
 </main>
 </body>
 </html>
@@ -679,7 +673,7 @@ def case_page(c, nxt):
   </section>
 
 """ + kpi_sec + """  <!-- STATEMENT in der Farbwelt -->
-  <section class="cstate fg-dark" data-bg="""" + world + """" data-fg="light" style="--case-clr:""" + world + """">
+  <section class="cstate fg-dark" data-bg=\"""" + world + """\" data-fg="light" style="--case-clr:""" + world + """">
     <div class="inner">
       <span class="label" style="color:var(--champ)">So denken wir</span>
       <h2 class="dispn" data-lines>
@@ -710,7 +704,7 @@ def case_page(c, nxt):
   </section>
 
 """) if (c.get("nums") and not has_kpi) else "") + _chapters(c) + _cquote(c) + phones_sec + """  <!-- LEARNINGS -->
-  <section class="sec fg-dark" data-bg="""" + world + """" data-fg="light" style="background:""" + world + """">
+  <section class="sec fg-dark" data-bg=\"""" + world + """\" data-fg="light" style="background:""" + world + """">
     <div class="wrap" style="max-width:900px">
       <span class="label" style="color:var(--champ);display:block;margin-bottom:26px">Learnings</span>
       <div data-stagger>
@@ -723,7 +717,7 @@ def case_page(c, nxt):
   <section class="sec npro-sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-bottom:0">
     <div class="wrap">
       <div class="npbar2"><span>Nächster Case</span><a href="work.html">Alle ansehen</a></div>
-      <a class="npro" href="""" + nxt_href + """">
+      <a class="npro" href=\"""" + nxt_href + """\">
         <span>
           <span class="nptit">""" + nxt_name + """</span>
           <span class="npsub2" style="display:block">""" + nxt_sub + """</span>

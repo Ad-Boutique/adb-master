@@ -9,33 +9,46 @@
   var body = document.body;
   body.classList.add("brand");
 
-  /* Alte Palette auf die neue mappen, bevor master.js die Hintergruende liest.
-     Case-Farbwelten (Gruen, Slate usw.) bleiben, nur Papier, Creme und Schwarz wandern. */
-  var BG = { "#F3EDE1": "#f4f3ec", "#EFE7D6": "#e9e8df", "#0A0A0A": "#0f0f0f", "#0E0E10": "#0f0f0f", "#070708": "#0f0f0f", "#08080A": "#0f0f0f", "#060607": "#0f0f0f" };
-  var RGB = { "rgb(243, 237, 225)": "#f4f3ec", "rgb(239, 231, 214)": "#e9e8df", "rgb(10, 10, 10)": "#0f0f0f", "rgb(14, 14, 16)": "#0f0f0f", "rgb(7, 7, 8)": "#0f0f0f", "rgb(8, 8, 10)": "#0f0f0f" };
-  Array.prototype.forEach.call(document.querySelectorAll("[data-bg]"), function (el) {
-    var v = (el.getAttribute("data-bg") || "").toUpperCase();
-    if (BG[v]) el.setAttribute("data-bg", BG[v]);
-    var inl = el.style.backgroundColor;
-    if (inl && RGB[inl]) el.style.backgroundColor = RGB[inl];
-  });
-  if (RGB[body.style.backgroundColor]) body.style.backgroundColor = RGB[body.style.backgroundColor];
+  /* Hintergruende: _ui_markup.py setzt data-bg schon auf die Tokens (Cream #F4F3EB, Black #101010), keine Umrechnung mehr im JS. */
 
   var dot = document.createElement("div");
   dot.className = "ptdot";
   dot.setAttribute("aria-hidden", "true");
   body.appendChild(dot);
 
-  var SNAP = "cubic-bezier(0.76, 0, 0.24, 1)", OUT = "cubic-bezier(0.19, 1, 0.22, 1)";
+  /* Eine Bewegungssprache: Kurve und Dauern kommen aus brand-motion.css (--e-out, --d-fast/base/slow/chor, --stagger).
+     window.ADB_MOTION gibt sie an master.js weiter; eOut ist dieselbe Kurve fuer Bewegungen im Frame-Loop. */
+  var M = (function () {
+    var cs = getComputedStyle(document.documentElement);
+    function ms(name, fb) { var v = (cs.getPropertyValue(name) || "").trim(), n = parseFloat(v); if (isNaN(n)) return fb; return /ms$/.test(v) ? n : (/s$/.test(v) ? n * 1000 : n); }
+    var d = { fast: ms("--d-fast", 200), base: ms("--d-base", 400), slow: ms("--d-slow", 700), chor: ms("--d-chor", 1200), stagger: ms("--stagger", 80) };
+    /* cubic-bezier(.16,1,.3,1) als Funktion: x(t) per Newton loesen, dann y(t) */
+    var X1 = 0.16, Y1 = 1, X2 = 0.3, Y2 = 1;
+    function bz(t, a, b) { return 3 * a * t * (1 - t) * (1 - t) + 3 * b * t * t * (1 - t) + t * t * t; }
+    function dbz(t, a, b) { return 3 * a * (1 - t) * (1 - t) + 6 * (b - a) * t * (1 - t) + 3 * (1 - b) * t * t; }
+    d.eOut = function (x) {
+      if (x <= 0) return 0; if (x >= 1) return 1;
+      var t = x;
+      for (var i = 0; i < 8; i++) { var dx = bz(t, X1, X2) - x, der = dbz(t, X1, X2); if (Math.abs(dx) < 1e-5 || !der) break; t -= dx / der; }
+      return bz(Math.max(0, Math.min(1, t)), Y1, Y2);
+    };
+    d.ease = "cubic-bezier(0.16, 1, 0.3, 1)";
+    d.t = function (prop, dur) { return prop + " var(" + dur + ") var(--e-out)"; };
+    return d;
+  })();
+  window.ADB_MOTION = M;
 
   /* Wo sitzt der Menue-Kreis, relativ zur Bildschirmmitte, und wie gross ist er im Verhaeltnis zum Punkt */
   function target() {
     var b = document.querySelector(".mbtn");
     if (!b) return null;
     var r = b.getBoundingClientRect();
-    return { x: r.left + r.width / 2 - window.innerWidth / 2, y: r.top + r.height / 2 - window.innerHeight / 2, s: r.width / 18 };
+    /* Groesse gemessen, nicht angenommen: Menue-Kreis (brand-ui.css --mbtn-size) geteilt durch den Punkt */
+    return { x: r.left + r.width / 2 - window.innerWidth / 2, y: r.top + r.height / 2 - window.innerHeight / 2, s: r.width / (dot.offsetWidth || 18) };
   }
   function at(t) { return "translate(" + t.x.toFixed(1) + "px," + t.y.toFixed(1) + "px) scale(" + t.s.toFixed(2) + ")"; }
+  /* Farbe des Menue-Kreises (brand-ui.css: Lime auf hellem Grund, Cream auf dunklem und auf Fotos), damit der Punkt nahtlos in ihm aufgeht */
+  function mcolor() { var b = document.querySelector(".mbtn"); return b ? getComputedStyle(b).backgroundColor : ""; }
   /* Protokoll der Choreografie, damit sie sich ohne Zuschauer pruefen laesst */
   var t0 = Date.now();
   window.__brandLog = [];
@@ -57,13 +70,14 @@
       var lid = document.createElement("div"); lid.className = "flipx flipx--lid";
       var timg = tile.querySelector("img"), tvid = tile.querySelector("video"), tsrc = timg ? (timg.currentSrc || timg.src) : (tvid && tvid.poster ? tvid.poster : "");
       if (tsrc) lid.style.backgroundImage = "url('" + tsrc + "')"; else lid.style.background = getComputedStyle(tile.querySelector(".wclr") || tile).backgroundColor;
+      lid.style.borderRadius = getComputedStyle(tile).borderRadius;
       lid.style.top = unflip.rect.top + "px"; lid.style.left = unflip.rect.left + "px"; lid.style.width = unflip.rect.width + "px"; lid.style.height = unflip.rect.height + "px";
       body.appendChild(lid);
       function align() { var tr = tile.getBoundingClientRect(); var dy = tr.top - unflip.rect.top; if (Math.abs(dy) > 0.5) window.scrollTo(0, Math.max(0, window.pageYOffset + dy)); }
       align();
       window.addEventListener("load", align);
       setTimeout(align, 250);
-      setTimeout(function () { align(); lid.style.opacity = "0"; setTimeout(function () { lid.remove(); }, 500); }, 700);
+      setTimeout(function () { align(); lid.style.opacity = "0"; setTimeout(function () { lid.remove(); }, M.base + 100); }, M.slow);
     }
   }
   var bk = document.querySelector(".bkbtn");
@@ -82,39 +96,42 @@
     var t = rect || { top: (H - ch) / 2, left: (W - cw) / 2, width: cw, height: ch };
     requestAnimationFrame(function () { requestAnimationFrame(function () {
       bg.classList.add("on");
-      x.style.top = t.top + "px"; x.style.left = t.left + "px"; x.style.width = t.width + "px"; x.style.height = t.height + "px"; x.style.borderRadius = "3px";
+      x.style.top = t.top + "px"; x.style.left = t.left + "px"; x.style.width = t.width + "px"; x.style.height = t.height + "px"; x.style.borderRadius = (saved && saved.radius) || "20px";
       setTimeout(function () {
         try { sessionStorage.setItem("adbunflip", JSON.stringify({ href: me, rect: rect })); } catch (err) {}
         location.href = href;
-      }, 720);
+      }, M.slow + 20);
     }); });
   });
 
   window.ADB_ENTER = function (pt, done) {
     if (flipIn || unflip) { pt.classList.add("gone"); body.classList.add("mready"); done(); log("Kachel-Transition, kein Punkt"); return; }
     if (reduced) { pt.classList.add("gone"); body.classList.add("mready"); done(); setTimeout(coach, 500); return; }
-    /* Punkt */
-    dot.style.transition = "transform 0.45s " + OUT + ", opacity 0.3s ease";
-    requestAnimationFrame(function () { dot.style.opacity = "1"; dot.style.transform = "scale(1)"; log("Punkt erscheint"); });
+    /* Punkt erscheint (Einblenden) */
+    dot.style.transition = M.t("transform", "--d-base") + ", " + M.t("opacity", "--d-fast");
+    /* Phase merken: ein verspaeteter Frame (Hintergrund-Tab drosselt requestAnimationFrame) darf den Punkt nicht wieder einschalten */
+    var phase = "in";
+    requestAnimationFrame(function () { if (phase !== "in") return; dot.style.opacity = "1"; dot.style.transform = "scale(1)"; log("Punkt erscheint"); });
     /* Fokus: kurzer Atemzug, zwei Ringe */
-    setTimeout(function () { dot.classList.add("pulse"); dot.style.transform = "scale(1.3)"; log("Fokus, Ringe"); }, 420);
-    setTimeout(function () { dot.style.transform = "scale(1)"; }, 720);
-    /* Ziel: die Seite kommt, der Punkt wandert in den Menue-Kreis */
+    setTimeout(function () { phase = "focus"; dot.style.opacity = "1"; dot.classList.add("pulse"); dot.style.transition = M.t("transform", "--d-fast"); dot.style.transform = "scale(1.3)"; log("Fokus, Ringe"); }, M.base);
+    setTimeout(function () { dot.style.transform = "scale(1)"; }, M.base + M.fast);
+    /* Ziel: die Seite kommt, der Punkt wandert in den Menue-Kreis (Uebergang), Start nach einer Choreografie-Einheit */
     setTimeout(function () {
       done();
       pt.classList.add("gone");
+      mbTick(true);
       var t = target();
-      if (t) { dot.style.transition = "transform 0.85s " + SNAP; dot.style.transform = at(t); log("wandert zum Menue " + at(t)); }
+      if (t) { dot.style.transition = M.t("transform", "--d-slow") + ", " + M.t("background-color", "--d-slow"); dot.style.transform = at(t); dot.style.backgroundColor = mcolor(); log("wandert zum Menue " + at(t)); }
       setTimeout(function () {
         body.classList.add("mready");
         log("Menue-Kreis uebernimmt");
-        setTimeout(coach, 500);
+        setTimeout(coach, M.base);
         dot.classList.remove("pulse");
-        dot.style.transition = "opacity 0.25s ease";
+        dot.style.transition = M.t("opacity", "--d-fast");
         dot.style.opacity = "0";
-        setTimeout(function () { dot.style.transition = "none"; dot.style.transform = "scale(0)"; }, 300);
-      }, 880);
-    }, 1050);
+        setTimeout(function () { dot.style.transition = "none"; dot.style.transform = "scale(0)"; dot.style.backgroundColor = ""; }, M.fast + 50);
+      }, M.slow);
+    }, M.chor);
   };
 
   /* Beim Verlassen: eine Wolke aus Punkten sammelt sich zur Mitte, wo der Punkt wartet */
@@ -126,6 +143,8 @@
     cv.width = W * dpr; cv.height = H * dpr; body.appendChild(cv);
     var c = cv.getContext("2d"); c.setTransform(dpr, 0, 0, dpr, 0, 0);
     var ps = [];
+    /* Punkte in Textfarbe der Flaeche, kein Lime in Bewegung (Abschnitt 9) */
+    var ink = body.classList.contains("on-light"), fillC = ink ? "#101010" : "#F4F3EB";
     for (var i = 0; i < 140; i++) {
       var ang = Math.random() * Math.PI * 2, rad = Math.max(W, H) * (0.35 + Math.random() * 0.6);
       ps.push({ x: W / 2 + Math.cos(ang) * rad, y: H / 2 + Math.sin(ang) * rad, r: 2 + Math.random() * 3.5, d: Math.random() * 0.25 });
@@ -135,12 +154,12 @@
       var t = (now - t0) / 1000; c.clearRect(0, 0, W, H);
       var alive = false;
       ps.forEach(function (p) {
-        var q = Math.max(0, Math.min(1, (t - p.d) / 0.6)); if (q < 1) alive = true;
-        var e = q * q * (3 - 2 * q), x = p.x + (W / 2 - p.x) * e, y = p.y + (H / 2 - p.y) * e;
+        var q = Math.max(0, Math.min(1, (t - p.d) / (M.slow / 1000))); if (q < 1) alive = true;
+        var e = M.eOut(q), x = p.x + (W / 2 - p.x) * e, y = p.y + (H / 2 - p.y) * e;
         c.beginPath(); c.arc(x, y, p.r * (1 - e * 0.6), 0, Math.PI * 2);
-        c.fillStyle = "#d7ff45"; c.fill(); c.lineWidth = 1; c.strokeStyle = "rgba(15,15,15,0.7)"; c.stroke();
+        c.fillStyle = fillC; c.fill();
       });
-      if (alive) requestAnimationFrame(draw); else setTimeout(function () { cv.remove(); }, 200);
+      if (alive) requestAnimationFrame(draw); else setTimeout(function () { cv.remove(); }, M.fast);
     })(t0);
   }
 
@@ -151,6 +170,7 @@
   function coach() {
     if (reduced) return;
     var q = location.search, force = /coach=1/.test(q), hold = /hold=1/.test(q);
+    if (/coach=0/.test(q)) return; /* fuer Pruefungen und Screenshots: kein Coach */
     var mv = q.match(/[?&]cv=(\d)/), variant = mv ? parseInt(mv[1], 10) : COACH_DEFAULT;
     var mb = document.querySelector(".mbtn"), sheet = document.querySelector(".msheet");
     if (!mb || !sheet || body.classList.contains("menuopen")) return;
@@ -161,8 +181,14 @@
     var STATES = ["menupeek", "menuopen", "mdemo", "mpress", "miris", "mwriting", "mblink", "mpop"];
     function mk(cls) { var el = document.createElement("div"); el.className = cls; el.setAttribute("aria-hidden", "true"); body.appendChild(el); els.push(el); return el; }
     function at(ms, fn) { timers.push(setTimeout(fn, ms)); }
-    function center() { var r = mb.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; }
-    function ring(delay, pt, cls) { var c = pt || center(), r = mk("coach-ring" + (cls ? " " + cls : "")); r.style.left = c.x + "px"; r.style.top = c.y + "px"; at(delay || 0, function () { r.classList.add("burst"); }); }
+    /* alles gemessen: Mitte und Radius des Menue-Kreises, egal wie gross brand-ui.css ihn macht */
+    function center() { var r = mb.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2, w: r.width, h: r.height }; }
+    function ring(delay, pt, cls) {
+      var c = pt || center(), r = mk("coach-ring" + (cls ? " " + cls : "")), s = c.w || 64;
+      r.style.left = c.x + "px"; r.style.top = c.y + "px";
+      r.style.width = s + "px"; r.style.height = s + "px"; r.style.margin = (-s / 2) + "px 0 0 " + (-s / 2) + "px";
+      at(delay || 0, function () { r.classList.add("burst"); });
+    }
     function words() {
       return Array.prototype.map.call(sheet.querySelectorAll(".mitem .mt"), function (e) { var r = e.getBoundingClientRect(); return { t: e.textContent.trim(), x: r.left + r.width / 2 }; }).slice(0, 5);
     }
@@ -170,8 +196,8 @@
       if (over) return; over = true;
       timers.forEach(clearTimeout);
       STATES.forEach(function (k) { body.classList.remove(k); });
-      els.forEach(function (e) { e.style.transition = "opacity 0.3s ease"; e.style.opacity = "0"; });
-      setTimeout(function () { els.forEach(function (e) { e.remove(); }); }, 350);
+      els.forEach(function (e) { e.style.transition = M.t("opacity", "--d-fast"); e.style.opacity = "0"; });
+      setTimeout(function () { els.forEach(function (e) { e.remove(); }); }, M.fast + 50);
       window.removeEventListener("pointerdown", end, true); window.removeEventListener("keydown", end, true);
       window.removeEventListener("scroll", onScroll, true);
       log("Coach Ende");
@@ -190,9 +216,9 @@
         body.classList.remove("mpop");
         dots.forEach(function (d, i) {
           var tx, ty;
-          if (narrow) { var a = Math.PI * (1.1 + 0.8 * i / (ws.length - 1)); tx = Math.cos(a) * 132; ty = Math.sin(a) * 132 + 20; }
+          if (narrow) { var a = Math.PI * (1.1 + 0.8 * i / (ws.length - 1)), rr = Math.max(132, c.w * 1.6); tx = Math.cos(a) * rr; ty = Math.sin(a) * rr + 20; }
           else { tx = ws[i].x - c.x; ty = -28; }
-          d.style.transitionDelay = (i * 60) + "ms"; d.classList.add("go"); d.style.transform = "translate(" + tx.toFixed(1) + "px," + ty.toFixed(1) + "px)";
+          d.style.transitionDelay = (i * M.stagger) + "ms"; d.classList.add("go"); d.style.transform = "translate(" + tx.toFixed(1) + "px," + ty.toFixed(1) + "px)";
         });
         log("Coach: fuenf Punkte fliegen");
       });
@@ -209,7 +235,7 @@
       var from = el.scrollLeft, t0 = performance.now();
       (function step(now) {
         if (over) return;
-        var q = Math.min(1, (now - t0) / dur), e = q < 0.5 ? 2 * q * q : 1 - Math.pow(-2 * q + 2, 2) / 2;
+        var q = Math.min(1, (now - t0) / dur), e = M.eOut(q);
         el.scrollLeft = from + (target - from) * e;
         if (q < 1) requestAnimationFrame(step);
       })(t0);
@@ -220,17 +246,17 @@
       Array.prototype.forEach.call(sheet.querySelectorAll("img[loading=lazy]"), function (im) { im.loading = "eager"; });
       var mrow = sheet.querySelector(".mrow");
       at(t, function () { ring(0); body.classList.add("mpress"); });
-      at(t + 260, function () { body.classList.remove("mpress"); body.classList.add("menuopen"); body.classList.add("mdemo"); log("Coach: Menue offen"); });
+      at(t + M.fast + 60, function () { body.classList.remove("mpress"); body.classList.add("menuopen"); body.classList.add("mdemo"); log("Coach: Menue offen"); });
       var t2 = t + 2900;
       var wide = mrow && mrow.scrollWidth > mrow.clientWidth + 8;
       if (wide) {
-        at(t + 1300, function () { scrollRow(mrow, mrow.scrollWidth - mrow.clientWidth, 1500); log("Coach: Reihe faehrt"); });
-        at(t + 3100, function () { scrollRow(mrow, 0, 1100); });
+        at(t + 1300, function () { scrollRow(mrow, mrow.scrollWidth - mrow.clientWidth, M.chor + M.base); log("Coach: Reihe faehrt"); });
+        at(t + 3100, function () { scrollRow(mrow, 0, M.chor); });
         t2 = t + 4400;
       }
       if (!hold) {
         at(t2, function () { ring(0); body.classList.add("mpress"); });
-        at(t2 + 260, function () { body.classList.remove("mpress"); body.classList.remove("menuopen"); body.classList.remove("mdemo"); log("Coach: Menue zu"); });
+        at(t2 + M.fast + 60, function () { body.classList.remove("mpress"); body.classList.remove("menuopen"); body.classList.remove("mdemo"); log("Coach: Menue zu"); });
       }
       return t2 + 1000;
     }
@@ -245,7 +271,8 @@
       svg.setAttribute("viewBox", "0 0 " + W + " " + H); svg.setAttribute("width", W); svg.setAttribute("height", H); box.appendChild(svg);
       var path = document.createElementNS(ns, "path");
       var dy = c.y - h.y;
-      path.setAttribute("d", "M" + c.x + "," + (c.y - 40) + " C" + c.x + "," + (c.y - dy * 0.55) + " " + h.x + "," + (h.y + dy * 0.4) + " " + h.x + "," + (h.y + 22));
+      /* Start knapp ueber dem gemessenen Rand des Menue-Kreises */
+      path.setAttribute("d", "M" + c.x + "," + (c.y - c.h / 2 - 8) + " C" + c.x + "," + (c.y - dy * 0.55) + " " + h.x + "," + (h.y + dy * 0.4) + " " + h.x + "," + (h.y + 22));
       path.setAttribute("fill", "none"); path.setAttribute("stroke", "none"); svg.appendChild(path);
       var L = path.getTotalLength(), n = Math.max(12, Math.floor(L / 16)), dots = [];
       for (var i = 0; i <= n; i++) {
@@ -255,20 +282,20 @@
       }
       var trv = document.createElementNS(ns, "circle"); trv.setAttribute("r", "6"); trv.setAttribute("class", "trv"); trv.setAttribute("opacity", "0"); svg.appendChild(trv);
       at(t, function () { ring(0); log("Coach: Spur startet"); });
-      dots.forEach(function (d, i) { at(t + 300 + i * 22, function () { d.classList.add("on"); }); });
-      var dur = 1100;
-      at(t + 300, function () {
+      var dur = M.chor, step = dur / Math.max(1, dots.length);
+      dots.forEach(function (d, i) { at(t + M.base + i * step * 0.8, function () { d.classList.add("on"); }); });
+      at(t + M.base, function () {
         trv.setAttribute("opacity", "1"); var t0 = performance.now();
         (function step(now) {
           if (over) return;
-          var q = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - q, 3), pt = path.getPointAtLength(L * e);
+          var q = Math.min(1, (now - t0) / dur), e = M.eOut(q), pt = path.getPointAtLength(L * e);
           trv.setAttribute("cx", pt.x.toFixed(1)); trv.setAttribute("cy", pt.y.toFixed(1));
-          if (q < 1) requestAnimationFrame(step); else { trv.setAttribute("opacity", "0"); hm.classList.add("lit"); ring(0, h, "small"); log("Coach: oben angekommen"); }
+          if (q < 1) requestAnimationFrame(step); else { trv.setAttribute("opacity", "0"); hm.classList.add("lit"); var hs = Math.max(24, hr.width * 3); ring(0, { x: h.x, y: h.y, w: hs, h: hs }, "small"); log("Coach: oben angekommen"); }
         })(t0);
       });
       if (!hold) {
-        at(t + 2700, function () { dots.forEach(function (d) { d.classList.remove("on"); }); hm.classList.remove("lit"); });
-        at(t + 3400, end);
+        at(t + M.base + dur + 1200, function () { dots.forEach(function (d) { d.classList.remove("on"); }); hm.classList.remove("lit"); });
+        at(t + M.base + dur + 1200 + M.slow, end);
       }
     }
     /* 6: Kombination: erst drueckt sich der Kreis und zeigt das Menue, dann laeuft die Spur zum zweiten Eingang oben */
@@ -314,7 +341,7 @@
     function mark() {
       pairs.forEach(function (pr) {
         var b = document.querySelector(pr[0]), on = document.querySelector(pr[1] + " .fchip.on");
-        if (b) b.classList.toggle("has", !!(on && (on.getAttribute("data-cat") || on.getAttribute("data-branch") || "").toLowerCase() !== "alle"));
+        if (b) b.classList.toggle("has", !!(on && (on.getAttribute("data-cat") || on.getAttribute("data-branche") || "").toLowerCase() !== "alle"));
       });
     }
     if (document.querySelector(".fbtn, .bbtn")) { document.addEventListener("click", function () { setTimeout(mark, 0); }); mark(); }
@@ -332,6 +359,7 @@
   })();
 
   window.ADB_LEAVE = function (pt, href) {
+    mbTick(true);
     var t = target();
     body.classList.remove("mready");
     cloud();
@@ -339,17 +367,20 @@
     dot.style.transition = "none";
     dot.style.opacity = "1";
     dot.style.transform = t ? at(t) : "scale(1)";
+    dot.style.backgroundColor = mcolor();
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
-        dot.style.transition = "transform 0.55s " + SNAP;
+        /* der Menue-Kreis wird wieder Punkt und geht in die Mitte (Einblenden-Dauer), dann faellt die Blende */
+        dot.style.transition = M.t("transform", "--d-base") + ", " + M.t("background-color", "--d-base");
         dot.style.transform = "scale(1)";
+        dot.style.backgroundColor = "";
         setTimeout(function () {
           dot.classList.add("pulse");
           pt.classList.remove("gone");
           pt.classList.add("enter");
           requestAnimationFrame(function () { pt.classList.add("cover"); });
-        }, 480);
-        setTimeout(function () { location.href = href; }, 1000);
+        }, M.base);
+        setTimeout(function () { location.href = href; }, M.base * 2 + M.fast);
         /* Netz: ist die Seite nach vier Sekunden noch da, geht alles wieder auf */
         setTimeout(function () {
           pt.classList.remove("cover", "enter"); pt.classList.add("gone");
@@ -376,11 +407,15 @@
       d.appendChild(frag);
     });
   }
-  function fill(el, count, step) {
-    var dots = el.querySelectorAll("i");
+  /* Fuellung ueber Klassen, Farben in brand-motion.css: .is-on gefuellt, .is-best bester/aktueller Wert.
+     best "last": nur der letzte gefuellte Punkt ist .is-best (der eine Lime-Punkt, Stat 84:59), "all" gibt es nicht mehr.
+     (.on bleibt zusaetzlich gesetzt, damit aeltere Selektoren in brand.css/brand-ui.css weiter greifen).
+     Die ganze Fuellung dauert hoechstens eine Choreografie-Einheit, egal wie viele Punkte. */
+  function fill(el, count, best, delay) {
+    var dots = el.querySelectorAll("i"), step = Math.min(40, M.chor / Math.max(1, count));
     for (var i = 0; i < dots.length; i++) {
       (function (d, k) {
-        if (k < count) setTimeout(function () { d.classList.add("on"); }, reduced ? 0 : k * step);
+        if (k < count) setTimeout(function () { d.classList.add("is-on", "on"); if (best === "last" && k === count - 1) d.classList.add("is-best"); }, reduced ? 0 : (delay || 0) + k * step);
       })(dots[i], i);
     }
   }
@@ -392,7 +427,9 @@
         if (!en.isIntersecting) return;
         var el = en.target;
         var count = parseInt(el.getAttribute("data-value") || el.getAttribute("data-on"), 10) || 0;
-        fill(el, count, el.classList.contains("dotgraph") ? 22 : 40);
+        /* Punkt-Graph: der letzte gefuellte Punkt ist der Wert; Balken: die hervorgehobene Zeile (.hi) ist der beste Wert */
+        var hiRow = el.closest(".row.hi");
+        fill(el, count, el.classList.contains("dotgraph") ? "last" : (hiRow ? "last" : ""), 0);
         io.unobserve(el);
       });
     }, { rootMargin: "0px 0px -18% 0px" });
@@ -405,9 +442,9 @@
   var ico = document.querySelector('link[rel="icon"]');
   function icon(kind) {
     var inner = kind === "ring"
-      ? '<circle cx="32" cy="32" r="12" fill="none" stroke="#d7ff45" stroke-width="5"/>'
-      : '<circle cx="32" cy="32" r="13" fill="#d7ff45"/><circle cx="32" cy="32" r="5" fill="#0f0f0f"/>';
-    return "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#0f0f0f"/>' + inner + '</svg>');
+      ? '<circle cx="32" cy="32" r="12" fill="none" stroke="#CDFF00" stroke-width="5"/>'
+      : '<circle cx="32" cy="32" r="13" fill="#CDFF00"/><circle cx="32" cy="32" r="5" fill="#101010"/>';
+    return "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#101010"/>' + inner + '</svg>');
   }
   if (ico) {
     ico.setAttribute("href", icon("ring"));
@@ -420,7 +457,7 @@
     if (!go) return;
     go.classList.remove("fired");
     requestAnimationFrame(function () { go.classList.add("fired"); });
-    setTimeout(function () { go.classList.remove("fired"); }, 800);
+    setTimeout(function () { go.classList.remove("fired"); }, M.slow + M.stagger + 20);
   });
 
   /* ---------- Punktfeld: echte Einheiten als Punkte. Beim Laden sammeln sie sich ins Raster,
@@ -429,6 +466,9 @@
     var total = parseInt(cv.getAttribute("data-total"), 10) || 100;
     var lime = parseInt(cv.getAttribute("data-lime"), 10) || 0;
     var ctx = cv.getContext("2d"), dots = [], W = 0, H = 0, dpr = Math.min(2, window.devicePixelRatio || 1);
+    /* Farben aus brand-motion.css (Abschnitt 7): Anteil gefuellt, der letzte Anteilspunkt ist der Wert, der Rest Umriss */
+    var ccs = getComputedStyle(cv);
+    var C_ON = (ccs.getPropertyValue("--g-on") || "").trim() || "#101010", C_BEST = (ccs.getPropertyValue("--g-best") || "").trim() || "#CDFF00", C_LINE = (ccs.getPropertyValue("--g-line") || "").trim() || "rgba(16,16,16,0.45)";
     var mx = -9999, my = -9999, start = 0, seen = false, running = false, fine = window.matchMedia("(pointer: fine)").matches;
     /* Antippen: die Lime-Punkte sammeln sich zur Zahl (data-form), zweites Antippen loest sie wieder */
     var formText = cv.getAttribute("data-form"), formed = false, form = 0, formT = 0;
@@ -437,7 +477,7 @@
       var oc = document.createElement("canvas"); oc.width = Math.round(W); oc.height = Math.round(H);
       var o = oc.getContext("2d");
       o.font = "400 " + Math.round(H * 0.92) + 'px "amandine", Georgia, serif';
-      o.textAlign = "center"; o.textBaseline = "middle"; o.fillStyle = "#000";
+      o.textAlign = "center"; o.textBaseline = "middle"; o.fillStyle = "#101010";
       o.fillText(formText, W / 2, H / 2 + H * 0.04);
       var img = o.getImageData(0, 0, oc.width, oc.height).data, pts = [];
       for (var y = 0; y < oc.height; y += 3) for (var x = 0; x < oc.width; x += 3) if (img[(y * oc.width + x) * 4 + 3] > 128) pts.push([x, y]);
@@ -456,10 +496,9 @@
       dots = [];
       for (var i = 0; i < total; i++) {
         var c = i % cols, rw = Math.floor(i / cols);
-        dots.push({ x: gx * (c + 0.5), y: gy * (rw + 0.5), sx: W / 2 + (Math.random() - 0.5) * W * 1.8, sy: H / 2 + (Math.random() - 0.5) * H * 1.8, r: rad, lime: i < lime, d: Math.random() * 0.4 });
+        dots.push({ x: gx * (c + 0.5), y: gy * (rw + 0.5), sx: W / 2 + (Math.random() - 0.5) * W * 1.8, sy: H / 2 + (Math.random() - 0.5) * H * 1.8, r: rad, lime: i < lime, best: i === lime - 1, d: Math.random() * 0.4 });
       }
     }
-    function ease(t) { return 1 - Math.pow(1 - t, 3); }
     /* Am Telefon gibt es keinen Cursor: dort sammeln sich die Punkte mit dem Scroll (vor und zurueck)
        und die Lime-Punkte atmen in einer langsamen Welle, solange das Feld im Bild ist */
     var coarse = !fine || /coarse/.test(location.search), inView = false;  /* ?coarse erzwingt den Telefon-Pfad fuer Pruefungen */
@@ -473,17 +512,17 @@
       var t = (now - start) / 1000, sp = coarse ? scrollP() : 1;
       ctx.clearRect(0, 0, W, H);
       var settled = true;
-      /* Formfortschritt: hin zur Zahl oder zurueck ins Raster, je 0,8 s */
-      var target = formed ? 1 : 0, fdt = Math.min(1, (now - formT) / 800);
+      /* Formfortschritt: hin zur Zahl oder zurueck ins Raster, je ein Uebergang */
+      var target = formed ? 1 : 0, fdt = Math.min(1, (now - formT) / M.slow);
       var formNow = formed ? fdt : 1 - fdt;
       if (Math.abs(formNow - target) > 0.001) settled = false;
       form = formNow;
-      var ef = ease(form);
+      var ef = M.eOut(form);
       for (var i = 0; i < dots.length; i++) {
         var d = dots[i];
-        var p = reduced ? 1 : (coarse ? Math.max(0, Math.min(1, (sp * 1.4 - d.d) / 0.6)) : Math.max(0, Math.min(1, (t - d.d) / 1.1)));
+        var p = reduced ? 1 : (coarse ? Math.max(0, Math.min(1, (sp * 1.4 - d.d) / 0.6)) : Math.max(0, Math.min(1, (t - d.d) / (M.chor / 1000))));
         if (p < 1) settled = false;
-        var e = ease(p), x = d.sx + (d.x - d.sx) * e, y = d.sy + (d.y - d.sy) * e, r = d.r;
+        var e = M.eOut(p), x = d.sx + (d.x - d.sx) * e, y = d.sy + (d.y - d.sy) * e, r = d.r;
         if (coarse && d.lime && p >= 1 && form === 0 && !reduced) { r = d.r * (1 + 0.32 * Math.sin(t * 1.6 + (d.x + d.y) / 55)); settled = false; }
         if (d.lime && d.tx != null && form > 0) { x += (d.tx - x) * ef; y += (d.ty - y) * ef; r = d.r * (1 + ef * 0.25); }
         if (fine && p >= 1 && form === 0) {
@@ -491,8 +530,8 @@
           if (dist < R) { var f = 1 - dist / R; x += dx / (dist || 1) * f * 12; y += dy / (dist || 1) * f * 12; r = d.r * (1 + f * 0.9); }
         }
         ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
-        if (d.lime) { ctx.fillStyle = "#d7ff45"; ctx.fill(); ctx.lineWidth = 1; ctx.strokeStyle = "rgba(15,15,15,0.6)"; ctx.stroke(); }
-        else { ctx.fillStyle = "rgba(15,15,15," + (0.16 * (1 - ef * 0.7)).toFixed(3) + ")"; ctx.fill(); }
+        if (d.lime) { ctx.fillStyle = d.best ? C_BEST : C_ON; ctx.fill(); if (d.best) { ctx.lineWidth = 1; ctx.strokeStyle = C_ON; ctx.stroke(); } }
+        else { ctx.globalAlpha = 1 - ef * 0.7; ctx.lineWidth = 1; ctx.strokeStyle = C_LINE; ctx.beginPath(); ctx.arc(x, y, Math.max(0.5, r - 0.5), 0, Math.PI * 2); ctx.stroke(); ctx.globalAlpha = 1; }
       }
       /* nach dem Sammeln nur weiterzeichnen, wenn ein Cursor da ist oder das Feld am Telefon im Bild atmet */
       if ((!settled && (fine || inView)) || (fine && mx > -9000 && form === 0)) requestAnimationFrame(frame); else running = false;
@@ -531,7 +570,7 @@
       nEl.innerHTML = "<b>" + n + "</b>Anfragen";
       if (n === cur) return;
       cur = n;
-      for (var k = 0; k < cells.length; k++) cells[k].classList.toggle("on", k < n);
+      for (var k = 0; k < cells.length; k++) { cells[k].classList.toggle("is-on", k < n); cells[k].classList.toggle("on", k < n); cells[k].classList.toggle("is-best", k === n - 1); }
     }
     slider.addEventListener("input", render);
     var io2 = new IntersectionObserver(function (en) { en.forEach(function (x) { if (x.isIntersecting) { render(); io2.unobserve(box); } }); }, { rootMargin: "0px 0px -15% 0px" });
@@ -551,7 +590,8 @@
     var io3 = new IntersectionObserver(function (en) {
       en.forEach(function (x) {
         if (!x.isIntersecting) return;
-        Array.prototype.forEach.call(row.children, function (d, k) { setTimeout(function () { d.classList.add("on"); }, reduced ? 0 : k * 45); });
+        var st = Math.min(80, M.chor / Math.max(1, row.children.length));
+        Array.prototype.forEach.call(row.children, function (d, k) { setTimeout(function () { d.classList.add("is-on", "on"); if (d.classList.contains("e")) d.classList.add("is-best"); }, reduced ? 0 : k * st); });
         io3.unobserve(row);
       });
     }, { rootMargin: "0px 0px -15% 0px" });
@@ -602,8 +642,9 @@
         line.innerHTML = html;
         var path = line.querySelector(".kpath"), L = path.getTotalLength();
         path.style.strokeDasharray = L + " " + L; path.style.strokeDashoffset = L;
-        path.style.transition = "stroke-dashoffset 1.4s cubic-bezier(0.19, 1, 0.22, 1)";
-        line.querySelectorAll(".kd").forEach(function (c, i) { c.style.transitionDelay = (0.25 + i * 0.16) + "s"; });
+        path.style.transition = M.t("stroke-dashoffset", "--d-chor");
+        var kds = line.querySelectorAll(".kd"), kst = (M.chor - M.fast) / Math.max(1, kds.length);
+        kds.forEach(function (c, i) { c.style.transitionDelay = Math.round(M.fast + i * kst) + "ms"; });
       }
     }
     var kd = k.querySelectorAll(".kdots .dots");
@@ -613,14 +654,18 @@
         if (!x.isIntersecting) return;
         ioK.unobserve(k);
         k.classList.add("lit");
-        if (line) { var pth = line.querySelector(".kpath"); if (pth) pth.style.strokeDashoffset = 0; }
-        kd.forEach(function (dts) { var on = parseInt(dts.getAttribute("data-on"), 10) || 0; Array.prototype.forEach.call(dts.children, function (d, i) { if (i < on) setTimeout(function () { d.classList.add("on"); }, reduced ? 0 : 200 + i * 30); }); });
+        if (line) {
+          var pth = line.querySelector(".kpath"); if (pth) pth.style.strokeDashoffset = 0;
+          var kc = line.querySelectorAll(".kd");
+          Array.prototype.forEach.call(kc, function (c, i) { c.classList.add(i === kc.length - 1 ? "is-best" : "is-on"); });
+        }
+        kd.forEach(function (dts) { var on = parseInt(dts.getAttribute("data-on"), 10) || 0; fill(dts, on, dts.closest(".row.hi") ? "last" : "", M.fast); });
         if (to && !reduced && to.hasAttribute("data-to")) {
           var from = parseFloat(to.getAttribute("data-from")), end = parseFloat(to.getAttribute("data-to"));
           var dec = parseInt(to.getAttribute("data-decimals"), 10) || 0, pre = to.getAttribute("data-prefix") || "", suf = to.getAttribute("data-suffix") || "";
           var t0 = performance.now();
           (function step(now) {
-            var q = Math.min(1, (now - t0) / 1100), e = 1 - Math.pow(1 - q, 3);
+            var q = Math.min(1, (now - t0) / M.chor), e = M.eOut(q);
             to.textContent = pre + fmt(from + (end - from) * e, dec) + suf;
             if (q < 1) requestAnimationFrame(step);
           })(t0);
@@ -667,7 +712,7 @@
     document.addEventListener("pointerdown", function () {
       body.classList.remove("cur-tap");
       requestAnimationFrame(function () { body.classList.add("cur-tap"); });
-      setTimeout(function () { body.classList.remove("cur-tap"); }, 600);
+      setTimeout(function () { body.classList.remove("cur-tap"); }, M.base + 100);
     });
   }
 
@@ -710,14 +755,117 @@
     var ioL = new IntersectionObserver(function (en) {
       en.forEach(function (x) {
         if (!x.isIntersecting) return;
-        Array.prototype.forEach.call(line.children, function (sp, k) { setTimeout(function () { sp.classList.add("on"); }, reduced ? 0 : 300 + k * 220); });
+        Array.prototype.forEach.call(line.children, function (sp, k) { setTimeout(function () { sp.classList.add("on"); }, reduced ? 0 : M.base + k * M.fast); });
         ioL.unobserve(line);
       });
     });
     ioL.observe(line);
   });
 
+  /* ---------- Menue-Knopf: Untergrund messen (Abschnitt 1 und 9: Lime nie auf Schwarz, nie an Fotos).
+       Je Frame (gedrosselt) 9 Punkte im Feld Knopf plus 40 px Rand: was liegt dort unter der festen UI?
+       Genau eine Klasse am body: mb-photo (IMG, VIDEO, CANVAS, Hintergrundbild), mb-dark (dunkle Flaeche), sonst mb-light.
+       Gemischt gilt Cream: ein Foto-Treffer macht mb-photo, ein dunkler Treffer mb-dark. Lime nur bei mb-light (brand-ui.css). ---------- */
+  var mbEl = document.querySelector(".mbtn"), mbState = "", mbY = -1, mbT = 0, MB_PAD = 40;
+  var uiCache = typeof WeakMap === "function" ? new WeakMap() : null;
+  var MB_CLS = { light: "mb-light", dark: "mb-dark", photo: "mb-photo" };
+  /* feste UI (Knopf, Satelliten, Kopfzeile, Blende, Cursor, Coach) ist nie Untergrund: alles mit position fixed in der Ahnenreihe */
+  function isUi(el) {
+    if (uiCache && uiCache.has(el)) return uiCache.get(el);
+    var r = false, e = el;
+    while (e && e !== body && e.nodeType === 1) { if (getComputedStyle(e).position === "fixed") { r = true; break; } e = e.parentElement; }
+    if (uiCache) uiCache.set(el, r);
+    return r;
+  }
+  function rgba(str) { var m = (str || "").match(/rgba?\(([^)]+)\)/); if (!m) return null; var p = m[1].split(/[\s,\/]+/).filter(Boolean).map(parseFloat); return [p[0], p[1], p[2], p.length > 3 ? p[3] : 1]; }
+  function dark(c) { return (0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]) / 255 < 0.45; }
+  function media(el) { var t = el.tagName; return t === "IMG" || t === "VIDEO" || t === "CANVAS" || t === "PICTURE" || t === "image" || t === "IFRAME"; }
+  /* wirksame Deckkraft: ein noch nicht eingeblendeter Vorfahre (data-fade, opacity 0) macht das Element unsichtbar */
+  function faded(el) {
+    for (var e = el; e && e !== body && e.nodeType === 1; e = e.parentElement) if (parseFloat(getComputedStyle(e).opacity) < 0.05) return true;
+    return false;
+  }
+  function under(x, y) {
+    var st = document.elementsFromPoint(x, y);
+    for (var i = 0; i < st.length; i++) {
+      var el = st[i];
+      if (el === body || el === document.documentElement) break;
+      if (isUi(el)) continue;
+      var cs = getComputedStyle(el);
+      if (cs.visibility === "hidden" || faded(el)) continue;
+      if (media(el) || /url\(/.test(cs.backgroundImage)) return "photo";
+      var c = rgba(cs.backgroundColor);
+      if (c && c[3] > 0.5) return dark(c) ? "dark" : "light";
+    }
+    var bc = rgba(getComputedStyle(body).backgroundColor);
+    return bc && bc[3] > 0.5 && dark(bc) ? "dark" : "light";
+  }
+  /* Fotos auch geometrisch: Medien, die das Feld schneiden (auch mit pointer-events none, die elementsFromPoint uebergeht) */
+  var mbMedia = [], mbMediaT = 0;
+  function photoNear(z) {
+    var now = performance.now();
+    if (now - mbMediaT > 2000) { mbMediaT = now; mbMedia = Array.prototype.slice.call(document.querySelectorAll("main img, main video, main canvas, main iframe, main picture")); }
+    for (var i = 0; i < mbMedia.length; i++) {
+      var m = mbMedia[i], r = m.getBoundingClientRect();
+      if (!r.width || !r.height || r.right < z.l || r.left > z.r || r.bottom < z.t || r.top > z.b) continue;
+      if (isUi(m)) continue;
+      var e = m, vis = true;
+      while (e && e !== body) { var cs = getComputedStyle(e); if (cs.visibility === "hidden" || cs.display === "none" || parseFloat(cs.opacity) < 0.05) { vis = false; break; } e = e.parentElement; }
+      if (vis) return true;
+    }
+    return false;
+  }
+  function mbTick(force) {
+    if (!mbEl) return;
+    var now = performance.now(), y = window.pageYOffset;
+    if (!force && y === mbY && now - mbT < 300) return;
+    mbY = y; mbT = now;
+    var r = mbEl.getBoundingClientRect(); if (!r.width) return;
+    var W = window.innerWidth, H = window.innerHeight;
+    var z = { l: Math.max(1, r.left - MB_PAD), r: Math.min(W - 2, r.right + MB_PAD), t: Math.max(1, r.top - MB_PAD), b: Math.min(H - 2, r.bottom + MB_PAD) };
+    var mx = (z.l + z.r) / 2, my = (z.t + z.b) / 2;
+    var pts = [[z.l, z.t], [z.r, z.t], [z.l, z.b], [z.r, z.b], [mx, z.t], [mx, z.b], [z.l, my], [z.r, my], [mx, my]];
+    var seen = { light: 0, dark: 0, photo: 0 };
+    for (var i = 0; i < pts.length; i++) seen[under(pts[i][0], pts[i][1])]++;
+    var st = (seen.photo || photoNear(z)) ? "photo" : (seen.dark ? "dark" : "light");
+    if (st === mbState) return;
+    if (mbState) body.classList.remove(MB_CLS[mbState]);
+    body.classList.add(MB_CLS[st]);
+    mbState = st;
+    window.__mbState = st;
+  }
+  /* Kopfzeile: jedes Element (Logo, Kontakt, Menue) misst seinen eigenen Untergrund an drei Punkten und traegt ihn als
+     data-ug (light, dark, photo). brand-motion.css faerbt danach: Schwarz auf Cream und Lime, Cream auf Schwarz und Foto. */
+  var chEls = Array.prototype.slice.call(document.querySelectorAll(".chrome .logo, .chrome .ctc, .chrome .hmenu")), chY = -1;
+  function chTick(force) {
+    var y = window.pageYOffset;
+    if (!force && y === chY) return;
+    chY = y;
+    chEls.forEach(function (el) {
+      var r = el.getBoundingClientRect(); if (!r.width) return;
+      var my = r.top + r.height / 2, seen = { light: 0, dark: 0, photo: 0 };
+      [r.left + 2, r.left + r.width / 2, r.right - 2].forEach(function (x) { seen[under(Math.max(1, x), Math.max(1, my))]++; });
+      var st = seen.photo ? "photo" : (seen.dark >= 2 ? "dark" : (seen.light >= 2 ? "light" : "dark"));
+      if (el.getAttribute("data-ug") !== st) el.setAttribute("data-ug", st);
+    });
+  }
+  /* ohne Scroll aendert sich der Untergrund auch (Einblenden, Slider, Menue): spaetestens alle 500 ms neu messen */
+  var uiT = 0;
+  function uiTick(force) {
+    var now = performance.now(), again = force || now - uiT > 500;
+    if (again) uiT = now;
+    mbTick(again); chTick(again);
+  }
+  uiTick(true);
+  window.ADB_MBTICK = uiTick;
+  /* Sicherheitsnetz, falls Frames gedrosselt sind (Hintergrund, Energiesparen): alle 500 ms nachmessen */
+  setInterval(function () { uiTick(true); }, 500);
+  /* zusaetzlich am Scroll-Ereignis: gedrosselte Frames (Hintergrund-Tab, Energiesparen) duerfen den Knopf nicht auf altem Untergrund lassen */
+  window.addEventListener("scroll", function () { uiTick(); }, { passive: true });
+  window.addEventListener("resize", function () { uiTick(true); });
+
   function brandTick() {
+    uiTick();
     zoomTick();
     spotTick();
     tellBoxes.forEach(function (t) {

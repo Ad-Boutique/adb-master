@@ -257,7 +257,7 @@ SERVICES = [
              legend=[("h", "Heute: Anfrage"), ("b", "Unter 24 h: Ersteinschätzung"), ("t", "Tag 2 bis 5: Audit im Konto"), ("e", "Danach: klare Empfehlung")]),
   dotsec=dict(h=["Die Strecke", "<i>entscheidet, in Punkten.</i>"],
               t="Zwei Fälle aus dem Reporting. Dieselbe Zielgruppe, dieselbe Woche, drei Strecken: Der Preis je Anfrage hängt am Weg, nicht am Budget. Und eine Plattform, die mit gleichem Geld das Dreifache holte.",
-              blocks=[dict(rows=[("Instant Form, Eigennutzer", 30, 5, "€ 9,59", False), ("Instant Form, Anleger", 30, 4, "€ 8,43", False), ("Website-Formular", 30, 29, "€ 58,05", True)],
+              blocks=[dict(rows=[("Instant Form, Eigennutzer", 30, 5, "€ 9,59", False), ("Instant Form, Anleger", 30, 4, "€ 8,43", True), ("Website-Formular", 30, 29, "€ 58,05", False)],
                            note="Wohnbau-Projekt, ein Punkt sind zwei Euro je Anfrage."),
                       dict(rows=[("Investments vorher", 50, 16, "16", False), ("Investments mit uns", 50, 50, "50", True)],
                            note="Crowdinvesting-Plattform, gleiches Budget, ein Punkt ein Investment. ROAS 8,75 statt 2,14.")]),
@@ -1894,7 +1894,6 @@ def render_service(s):
   <section class="svc-hero fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="position:relative">
     <a class="svc-back" href="index.html#leistungen">← Alle Leistungen</a>
     <div class="wrap">
-      <div class="svc-glyph" data-fade></div><span class="bdot" aria-hidden="true" data-fade></span>
       <span class="label slabel" data-fade>''' + s["label"] + '''</span>
       <h1 data-lines>
         ''' + h1 + '''
@@ -1903,7 +1902,7 @@ def render_service(s):
         ''' + tags + '''
       </div>
       <p class="ssub" data-fade style="--i:1">''' + s["sub"] + '''</p>
-''' + _dotline(s) + '''      <div data-fade style="--i:2;margin-top:28px"><a class="alink" href="#anfrage">Direkt anfragen ↓</a></div>
+''' + _dotline(s) + '''      <div data-fade style="--i:2;margin-top:28px"><a class="alink btn-i" href="#anfrage">Direkt anfragen ↓</a></div>
 ''' + _dotfield(s) + '''''' + heronum_sec + '''
     </div>
   </section>

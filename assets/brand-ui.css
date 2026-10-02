@@ -1,1 +1,581 @@
-/* ad.boutique Brand 2026, Abteilung ui. Regeln: _intern/BRAND-RULES.md */
+/* ad.boutique Brand 2026, Abteilung ui (Design). Regeln: _intern/BRAND-RULES.md, Abschnitte 1, 4, 5, 6, 7.
+   Liegt nach master.css und brand.css. master.css wird nicht angefasst, hier wird ueberschrieben.
+   Aufbau:
+   0  Kontext: Grautoene und Linien je Untergrund
+   1  Farben: Literal-Farben aus master.css auf die Tokens abgebildet
+   2  Buttons (Figma 84:13), acht Varianten, Klassen setzt _ui_markup.py
+   3  Textlinks
+   4  Badges (99:137) und Eyebrows
+   5  Chips (84:21)
+   6  Schwebende Kreise: Menue (--mbtn-size), Filter, Branche, Uebersicht
+   7  Karten: Service Card (84:45), Case Card (84:50), KPI, Zitat, Formularfelder
+   8  Graphen aus Punkten (Abschnitt 7)
+   9  Punkt-Signatur (Abschnitt 6): keine grosse Dekoration */
+/* Spezifitaet: :not(#_) hebt die Knopf-Regeln ueber alte Link-Regeln aus master.css (z. B. ".panelscroll .pstxt .pslinks a"),
+   damit jeder Knopf wirklich genau wie seine Variante aussieht. */
+
+/* ============================================================
+   0  Kontext: Grautoene sind Transparenzen der Textfarbe. Auf dunklen Flaechen Cream statt Schwarz.
+   data-fg="light" heisst: heller Text, also dunkle Flaeche.
+   ============================================================ */
+.brand .fg-dark, .brand [data-fg="light"], .brand .msheet, .brand footer, .brand .fcard--no, .brand .stdemo.dk {
+  --grey: rgba(244,243,235,0.6);
+  --grey-dark: rgba(244,243,235,0.7);
+  --line-l: rgba(244,243,235,0.25);
+}
+.brand .fg-light, .brand [data-fg="dark"], .brand .hpitch {
+  --grey: rgba(16,16,16,0.5);
+  --grey-dark: rgba(16,16,16,0.64);
+  --line-l: rgba(16,16,16,0.16);
+}
+/* --champ und --champ-deep sind in brand.css currentColor (Textfarbe des Untergrunds). Die Markierung nutzte Champagne
+   mit Schwarz darauf; currentColor waere dort Schwarz auf Schwarz. Markierung: Schwarz auf Lime (erlaubtes Paar). */
+body.brand ::selection { background: var(--lime); color: var(--ink); }
+body.brand { background-color: var(--paper); color: var(--ink); }
+/* Studie: die Demo-Boxen sind Karten (Radius 20, 1-px-Linie), die dunkle Box ist eine schwarze Flaeche mit Cream-Text */
+.brand .stdemo { border-radius: 20px; border-color: rgba(16,16,16,0.16); }
+.brand .stdemo.dk { background: var(--ink); color: var(--paper); border-color: rgba(244,243,235,0.25); }
+.brand .stdemo.dk .op { border-color: rgba(244,243,235,0.25) !important; }
+.brand .stdemo.dk .onum, .brand .stdemo.dk .okpi .l { color: var(--grey) !important; }
+/* Helle Sektionen malen ihre Flaeche selbst (wie die dunklen, brand.css), damit ihr Inhalt lesbar bleibt,
+   wenn master.js den Seitengrund beim Scrollen schon auf die naechste, dunkle Flaeche stellt */
+.brand [data-bg="#F4F3EB"] { background-color: var(--paper); }
+
+/* ============================================================
+   1  Farben: jede Literal-Farbe aus master.css, abgebildet auf Cream #F4F3EB, Black #101010, Lime #CDFF00
+   (plus Transparenzen). Schwarz-Transparenzen fuer Schatten und Bildverlaeufe bleiben.
+   Gleiche Selektoren wie in master.css, damit nur die Farbe wechselt.
+   ============================================================ */
+.logo { color: #F4F3EB; }
+.logo i { color: #F4F3EB; }
+.chrome .ctc { color: #F4F3EB; }
+.morbit text { fill: #F4F3EB; }
+.forbit text { fill: #F4F3EB; }
+.msheet { background: #101010; }
+.mdim { background: #101010; }
+.mthumb { background: #101010; }
+.mitem:hover .mthumb { outline: 1px solid rgba(244,243,235,0.5); }
+.pt { background: #101010; }
+/* Die Klasse pt traegt auch SVG-Text (Prozess-Schema): dort ist sie keine Ladeblende und hat keine Flaeche */
+.brand svg .pt { background: none; }
+.cur { border: 1px solid #F4F3EB; }
+.cur::after { background: #F4F3EB; }
+.hshow { background: #101010; }
+.hcap { color: #F4F3EB; }
+.hkpi { color: #F4F3EB; }
+.hdots i { background: rgba(244,243,235,0.35); }
+.hdots i::after { background: #F4F3EB; }
+.tile .tmed { background: #101010; }
+.tile .kpi { color: #F4F3EB; }
+.tp .ti { background: #101010; }
+footer { background: #101010; }
+.wt { background: #101010; }
+.wt .wlab { color: #F4F3EB; }
+.wt .wkpi { color: #F4F3EB; }
+.wt.has-media::before { background: linear-gradient(to bottom, rgba(16,16,16,0.42), rgba(16,16,16,0)); }
+.wt.has-media::after { background: linear-gradient(to top, rgba(16,16,16,0.55), rgba(16,16,16,0)); }
+.chero .scrollhint { color: rgba(244,243,235,0.75); }
+.proofcase .ptile { color: #F4F3EB; }
+.chapnav { background: rgba(244,243,235,0.86); box-shadow: 0 12px 34px rgba(16,16,16,0.09); }
+.chapnav.dark { background: rgba(16,16,16,0.78); border-color: rgba(244,243,235,0.14); }
+@media (max-width: 860px) { .apl .hlxnav .hn { border-color: rgba(16,16,16,0.25); } }
+.fg-dark .statg .st, .chero .statg .st { border-color: rgba(244,243,235,0.25); }
+.fg-dark .statg .sc, .chero .statg .sc { color: rgba(244,243,235,0.78); }
+.hlxmedia { background: #101010; }
+.pmap .pill { fill: #F4F3EB; stroke: rgba(16,16,16,0.22); } /* deckend Cream: auf der Cream-Sektion gleich, aber nie durchscheinend */
+.pmap .card { fill: #F4F3EB; stroke: rgba(16,16,16,0.3); }
+.pmap .pl { stroke: rgba(16,16,16,0.55); }
+.pmap .pl.thin { stroke: rgba(16,16,16,0.14); }
+.zoomsec .zcap { color: #F4F3EB; }
+.procsvg .pbase { stroke: rgba(16,16,16,0.3); }
+.pnode.on { box-shadow: 0 0 0 10px rgba(244,243,235,0.28); }
+.svc-hero .tags span { background: transparent; }
+.needbar { background: transparent; }
+.oplist--steps .op.on .owhen::before { box-shadow: none; }
+.fg-dark .oplist--steps .op { border-top-color: rgba(244,243,235,0.25); }
+.fg-dark .oplist--steps .op:last-child { border-bottom-color: rgba(244,243,235,0.25); }
+.stage { background: #F4F3EB; }
+.stage img { box-shadow: 0 30px 80px rgba(16,16,16,0.18); }
+.chapter .chtxt { color: rgba(244,243,235,0.78); }
+.flipbg { background: #101010; }
+.panelscroll { background: #101010; }
+.panelscroll .pstxt .psbody + .psbody { color: rgba(244,243,235,0.72); }
+.panelscroll .pstxt .pslinks a { border-bottom: 1px solid rgba(244,243,235,0.4); }
+.panelscroll .pstxt .psdisc .dd { color: rgba(244,243,235,0.6); }
+.phframe { border: 9px solid #101010; background: #101010; box-shadow: 0 26px 70px rgba(16,16,16,0.22); }
+.hproc .hline { background-image: repeating-linear-gradient(to right, rgba(16,16,16,0.3) 0 2px, transparent 2px 11px); }
+.hproc .hcard.on .hnode { box-shadow: 0 0 0 9px rgba(244,243,235,0.3); }
+.borbit text { fill: #F4F3EB; }
+.filmwrap { background: #101010; }
+.filmwrap video { background: #101010; }
+.filmwrap .fplay { background: linear-gradient(to top, rgba(16,16,16,0.5), rgba(16,16,16,0.1)); }
+.cmix figure { background: #101010; }
+.fit .no li::before { background: rgba(16,16,16,0.22); }
+.chrow .ct { background: rgba(16,16,16,0.12); }
+.bacmp .btrack { background: rgba(16,16,16,0.1); }
+.fg-dark .bacmp .btrack { background: rgba(244,243,235,0.16); }
+.cwall { background: #101010; }
+.cwall .cwt { background: #101010; }
+.cwall .cwveil { background: linear-gradient(to top, #101010 26%, rgba(16,16,16,0.92) 52%, rgba(16,16,16,0) 100%); }
+.bkorbit text { fill: #F4F3EB; }
+.photowall .pwstage { background: #F4F3EB; }
+.photowall .pwtrack video { background: #101010; }
+.photowall .pwiv video { background: #101010; }
+.ivid .ivframe { background: #101010; box-shadow: 0 34px 90px rgba(16,16,16,0.2); }
+.vsplit .vmedia--video .pwiv { background: #101010; }
+/* Kopfzeile: ohne mix-blend-mode (difference rechnete ueber Fotos Fremdfarben und auf Cream #000).
+   Farbe je Untergrund wie beim Menue-Knopf: Cream auf Schwarz und Foto, Schwarz auf Cream.
+   Grundlage ist on-light (master.js, Sektion auf 55 % Hoehe); genauer sind ch-light, ch-dark, ch-photo,
+   wenn brand.js den Streifen unter der Kopfzeile misst (wie mb-* beim Menue-Knopf). */
+.brand .chrome { mix-blend-mode: normal; }
+.brand .chrome .logo, .brand .chrome .logo i, .brand .chrome .ctc, .brand .chrome .hmenu { color: var(--paper); transition: color 0.2s var(--e-out); }
+.brand .chrome .logo i { opacity: 1; }
+.brand .chrome .hmenu i { background: var(--paper); transition: background-color 0.2s var(--e-out), transform 0.4s var(--e-out); }
+body.brand.on-light:not(.ch-dark):not(.ch-photo) .chrome :is(.logo, .logo i, .ctc, .hmenu), body.brand.ch-light .chrome :is(.logo, .logo i, .ctc, .hmenu) { color: var(--ink); }
+body.brand.on-light:not(.ch-dark):not(.ch-photo) .chrome .hmenu i, body.brand.ch-light .chrome .hmenu i { background: var(--ink); }
+/* Cream-Kopfzeile ueber Fotos: weicher Schatten aus Schwarz-Transparenz, damit sie auch auf hellen Bildstellen lesbar bleibt */
+body.brand:not(.on-light) .chrome :is(.logo, .ctc, .hmenu), body.brand.ch-photo .chrome :is(.logo, .ctc, .hmenu) { text-shadow: 0 1px 12px rgba(16,16,16,0.35); }
+body.brand.on-light:not(.ch-dark):not(.ch-photo) .chrome :is(.logo, .ctc, .hmenu), body.brand.ch-light .chrome :is(.logo, .ctc, .hmenu) { text-shadow: none; }
+/* Offenes Menue: schwarzes Sheet, die Kopfzeile ist Cream */
+body.brand.menuopen .chrome :is(.logo, .logo i, .ctc, .hmenu) { color: var(--paper); }
+body.brand.menuopen .chrome .hmenu i { background: var(--paper); }
+/* Wortmarke in der Figma-Groesse (Navbar 84:35: 25 px, Mobile 23 px) */
+.brand .chrome .logo { font-size: 25px; line-height: 1.2; }
+@media (max-width: 767px) { .brand .chrome .logo { font-size: 23px; } }
+/* Web-Case-Hero: oben liegt die Navigation der Kundenseite im Screenshot. Ein Schleier aus Schwarz dahinter,
+   damit Wortmarke, Kontakt und Menue nie auf dem Logo oder den Links der Kundenseite stehen */
+.brand .chero--shot::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 160px; z-index: 2; pointer-events: none;
+  /* bis 96 px deckend (dort liegt die Kundennavigation, bei 0,92 schien das Kundenlogo noch durch), dann auslaufend */
+  background: linear-gradient(to bottom, #101010 0%, #101010 60%, rgba(16,16,16,0) 100%);
+}
+@media (max-width: 767px) { .brand .chero--shot::before { height: 120px; } }
+/* Menue-Vorschaubilder: alte Platzhalterfarben */
+.brand .mthumb .mv, .brand .mv .grid4 span { background: var(--ink); }
+.brand .mv .grid4 { background: var(--paper); }
+.brand .mv .grid4, .brand .mv .grid4 span { border-radius: 0; }
+/* Farbige Kacheln (alte Case-Farbwelten) sind Schwarz, der Text darauf Cream */
+.brand .tile .tclr, .brand .tile .tclr * { color: var(--paper); }
+.brand .wt .wclr { background: var(--ink); }
+/* Hover-Farbwechsel in Champagne/Lime entfallen: Textfarbe bleibt, nur Deckkraft */
+.brand .nextproj a:hover .nptitle { color: inherit; }
+
+/* ============================================================
+   2  Buttons (Figma 84:13). Ein Grundmass fuer alle: Padding 16/24 (hier 15/23 plus 1 px Rand,
+   damit alle Varianten gleich hoch sind), Pill, Satoshi Medium 17 px, Zeilenhoehe 1,2.
+   Varianten als Klassen, gesetzt von _ui_markup.py je Untergrund:
+     .btn--primary          Schwarz, Text Cream        Hauptaktion auf Cream (und Lime)
+     .btn--secondary        transparent, Rand Schwarz  selten, auf Cream
+     .btn--accent           Lime, Rand Schwarz         nur auf hellem Grund
+     .btn--inverse          Cream, Text Schwarz        Hauptaktion auf Schwarz und Fotos
+     .btn--outline-inverse  transparent, Rand Cream    zweite Aktion auf Schwarz und Fotos
+     .btn--soft-cream       Cream + Schatten           zweite Aktion auf Cream
+     .btn--soft-black       Schwarz + heller Schatten  zweite Aktion auf Schwarz
+     .btn--soft-lime        Lime + Schatten            zweite Aktion auf Lime
+   Hover: dezent, 6 % Schleier in der Gegenfarbe (bleibt eine Transparenz der Tokens) oder tieferer Schatten.
+   ============================================================ */
+.brand .btn:not(#_) {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-size: 17px; font-weight: 500; line-height: 1.2;
+  padding: 15px 23px; border: 1px solid transparent; border-radius: 999px;
+  background: var(--ink); color: var(--paper); box-shadow: none;
+  white-space: nowrap; cursor: pointer; text-decoration: none; transform: none;
+  transition: background-color 0.2s var(--e-out), box-shadow 0.2s var(--e-out), color 0.2s var(--e-out), opacity 0.2s var(--e-out);
+}
+.brand .btn:not(#_)::after { content: none; }
+.brand .btn:not(#_):hover { transform: none; }
+.brand .btn:not(#_) i { font-style: normal; }
+.brand .btn:not(#_)[disabled] { opacity: 1; cursor: not-allowed; }
+/* Deaktiviert: bleibt seine Variante in voller Deckkraft (keine Grauflaeche), kein Hover;
+   nur der Pfeil im Knopf tritt zurueck (Transparenz der Textfarbe) */
+.brand .btn:not(#_)[disabled]:is(.btn--primary, .btn--secondary, .btn--accent, .btn--inverse, .btn--outline-inverse):hover { box-shadow: none; }
+.brand .btn:not(#_)[disabled]:is(.btn--soft-cream, .btn--soft-lime):hover { box-shadow: 0 4px 11px rgba(0,0,0,0.25); }
+.brand .btn:not(#_)[disabled].btn--soft-black:hover { box-shadow: 0 4px 11px rgba(244,243,235,0.14); }
+.brand .btn:not(#_)[disabled] i { opacity: 0.4; }
+.brand .btn:not(#_).btn--primary { background: var(--ink); color: var(--paper); border-color: var(--ink); box-shadow: none; }
+.brand .btn:not(#_).btn--primary:hover { box-shadow: inset 0 0 0 999px rgba(244,243,235,0.06); }
+.brand .btn:not(#_).btn--secondary { background: transparent; color: var(--ink); border-color: var(--ink); box-shadow: none; }
+.brand .btn:not(#_).btn--secondary:hover { box-shadow: inset 0 0 0 999px rgba(16,16,16,0.06); }
+.brand .btn:not(#_).btn--accent { background: var(--lime); color: var(--ink); border-color: var(--ink); box-shadow: none; }
+.brand .btn:not(#_).btn--accent:hover { box-shadow: inset 0 0 0 999px rgba(16,16,16,0.06); }
+.brand .btn:not(#_).btn--inverse { background: var(--paper); color: var(--ink); border-color: var(--paper); box-shadow: none; }
+.brand .btn:not(#_).btn--inverse:hover { background: var(--paper); color: var(--ink); box-shadow: inset 0 0 0 999px rgba(16,16,16,0.06); }
+.brand .btn:not(#_).btn--outline-inverse { background: transparent; color: var(--paper); border-color: var(--paper); box-shadow: none; padding: 15px 23px; }
+.brand .btn:not(#_).btn--outline-inverse:hover { background: transparent; color: var(--paper); box-shadow: inset 0 0 0 999px rgba(244,243,235,0.06); }
+.brand .btn:not(#_).btn--soft-cream { background: var(--paper); color: var(--ink); border-color: var(--paper); box-shadow: 0 4px 11px rgba(0,0,0,0.25); }
+.brand .btn:not(#_).btn--soft-cream:hover { box-shadow: 0 6px 16px rgba(0,0,0,0.3); }
+.brand .btn:not(#_).btn--soft-black { background: var(--ink); color: var(--paper); border-color: var(--ink); box-shadow: 0 4px 11px rgba(244,243,235,0.14); }
+.brand .btn:not(#_).btn--soft-black:hover { box-shadow: 0 6px 16px rgba(244,243,235,0.2); }
+.brand .btn:not(#_).btn--soft-lime { background: var(--lime); color: var(--ink); border-color: var(--lime); box-shadow: 0 4px 11px rgba(0,0,0,0.25); }
+.brand .btn:not(#_).btn--soft-lime:hover { box-shadow: 0 6px 16px rgba(0,0,0,0.3); }
+/* Paare nebeneinander: 8 px Abstand */
+.brand .hpitch .hbtns, .brand .ctabtns, .brand .knav, .brand .ftr-btns { gap: 8px; }
+/* Der Weiter-Knopf im Anfrage-Feld (Figma Input Bar): Accent in voller Deckkraft (keine gedaempfte Lime-Flaeche),
+   bis zur Auswahl nicht klickbar, wie ein deaktivierter Knopf */
+.brand .needbar .ngo.btn:not(#_) { box-shadow: none; opacity: 1; pointer-events: none; cursor: not-allowed; }
+.brand .needbar.ready .ngo.btn:not(#_) { pointer-events: auto; cursor: pointer; }
+.brand .ngo::before, .brand .ngo::after { border-color: var(--ink); }
+/* Kontakt: Weiter, Senden, Zurueck. Pfeile bleiben, die Knoepfe folgen dem System */
+.brand .kbtn.btn:not(#_):hover i { transform: translateX(4px); }
+.brand .kback.btn:not(#_):hover i { transform: translateX(-4px); }
+.brand .kbtn.btn:not(#_)[disabled]:hover i { transform: none; }
+@media (max-width: 760px) { .brand .knav .btn:not(#_) { justify-content: center; } }
+/* Ton-Schalter auf Videos: Outline Inverse (zweite Aktion auf Fotos), der Pegel in Cream */
+.brand .ivsound.btn:not(#_) { background: transparent; border-color: var(--paper); color: var(--paper); gap: 8px; }
+.brand .ivsound .ivbars i { background: var(--paper); }
+/* Play auf dem Film: Inverse als Kreis */
+.brand .filmwrap .fplay span { background: var(--paper); color: var(--ink); box-shadow: none; border: 0; }
+.brand .filmwrap .fplay span svg, .brand .filmwrap .fplay span path { fill: var(--ink); }
+
+/* ============================================================
+   3  Textlinks: im Fliesstext und in Karten bleiben Links Text, ueberall gleich:
+   Satoshi Medium, Textfarbe, 1 px Unterstrich. Keine Versalien, kein Farbwechsel beim Hover.
+   ============================================================ */
+.brand .see, .brand .npro .npgo, .brand main p a:not(.btn), .brand .tlink, .brand .mv2 a, .brand .npbar2 a, .brand .npbar a, .brand .cmprow a {
+ font-size: 15px; font-weight: 500;
+  color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.22em;
+  border-bottom: 0; padding-bottom: 0;
+  transition: opacity 0.2s var(--e-out);
+}
+.brand main p a:not(.btn) { font-size: inherit; font-weight: inherit; }
+.brand .see:hover, .brand .npro .npgo:hover, .brand main p a:not(.btn):hover, .brand .tlink:hover, .brand .mv2 a:hover, .brand .npbar2 a:hover, .brand .npbar a:hover, .brand .cmprow a:hover { opacity: 0.6; }
+.brand .mv2 a, .brand .cmprow a { font-size: inherit; }
+/* Link-Paare in Fotowand und Panel: Buttons (Klassen von _ui_markup.py), nebeneinander mit 8 px */
+.brand .pwlinks, .brand .pslinks { display: flex; flex-wrap: wrap; gap: 8px; }
+.brand .pwlinks a.btn, .brand .pslinks a.btn { border-bottom-width: 1px; margin: 0; }
+.brand .svcard .see { color: var(--ink); }
+/* Ruecksprung oben links (Leistungen, Kontakt): Soft-Button, Klasse von _ui_markup.py.
+   Hier nur das Aussehen (Abschnitt 2); die Lage (oben var(--back-top), links var(--gut)) setzt brand-layout.css. */
+
+/* ============================================================
+   4  Badges (Figma 99:137, Rules/Badge 114:55): keine Fuellung, 1 px Rand 25 %, Satoshi Medium 13 px,
+   Padding 8/16 (hier 7/15 plus Rand), Pill, normale Schreibung, kein Punkt, kein Lime.
+   Platz: Ecke oder Meta-Zeile. Eyebrows direkt ueber Headlines gibt es nicht (Klasse lbl-x, weg).
+   ============================================================ */
+.brand .bdg, .brand .kpi .kpill, .brand .ktrust span, .brand .trust span, .brand .svc-hero .tags span, .brand .wt .wpill, .brand .tile .badge {
+  display: inline-flex; align-items: center; width: fit-content; max-width: 100%;
+ font-size: 13px; font-weight: 500; line-height: 1.2; font-style: normal;
+  padding: 7px 15px; border: 1px solid rgba(16,16,16,0.25); border-radius: 999px;
+  background: transparent; color: var(--ink); box-shadow: none; text-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none;
+}
+.brand .bdg::before, .brand .bdg::after, .brand .kpi .kpill::before, .brand .kpi .kpill::after { content: none; }
+.brand :is(.fg-dark, [data-fg="light"], .tclr, .wclr, .fcard--no, .msheet, .cwall, .panelscroll) .bdg, .brand :is(.fg-dark, [data-fg="light"]) .kpi .kpill {
+  border-color: rgba(244,243,235,0.3); color: var(--paper);
+}
+/* Badge in der Bildecke und auf Fotos: Cream-Text, Rand Cream 30 %, keine Fuellung (Figma 99:137).
+   Lesbar durch den Bildverlauf darunter (Work-Kacheln) bzw. die schwarze Flaeche (Case-Hero). */
+.brand .wt .wpill, .brand .tile .badge, .brand .collage .bdg, .brand .chero .bdg {
+  color: var(--paper); border-color: rgba(244,243,235,0.3); background: transparent;
+  -webkit-backdrop-filter: none; backdrop-filter: none;
+}
+/* Kunden- und Branchenzeile im Case-Hero: nicht mehr ueber der H1 (verbotenes Eyebrow), sondern als Meta-Zeile
+   aus zwei Badges darunter. _ui_markup.py setzt die beiden Teile als span.bdg. */
+.brand .chero .hcap { display: flex; flex-direction: column; align-items: flex-start; }
+.brand .chero .hcap .cl { order: 2; display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 0; font-size: 13px; } /* Meta-Zeile: 8 px unter dem Inhalt (Badge 99:137) */
+.brand .chero .hcap .cl .bdg { display: inline-flex; margin: 0; opacity: 1; font-size: 13px; text-shadow: 0 1px 12px rgba(0,0,0,0.45); }
+.brand .chero--shot .hcap .cl .bdg { text-shadow: none; }
+/* Lesbarkeit auf hellen Hero-Fotos (z. B. Kommunalkredit, Holz): Bildverlauf aus Schwarz-Transparenz unten,
+   hinter Headline und Meta-Zeile. Desktop; am Telefon steht der Text unter dem Bild auf Schwarz. */
+@media (min-width: 768px) {
+  .brand .chero:not(.chero--shot)::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 60%; z-index: 1; pointer-events: none;
+    background: linear-gradient(to top, rgba(16,16,16,0.62) 0%, rgba(16,16,16,0.3) 45%, rgba(16,16,16,0) 100%);
+  }
+  .brand .chero .hcap, .brand .chero .hkpi { z-index: 2; }
+}
+@media (max-width: 767px) { .brand .chero .hcap .cl { margin-top: 8px; } .brand .chero .hcap .cl .bdg { font-size: 11px; padding: 3px 11px; } }
+/* Die frueheren Lime-Pillen der KPI-Karten: Badge in der Kartenecke, sofort sichtbar */
+.brand .kpi .kpill { transform: none; opacity: 1; margin: 0; transition: none; }
+.brand .kpi .khead .kpill { position: static; flex: 0 0 auto; }
+/* Eyebrow direkt ueber einer Headline: entfaellt (Figma: nie knapp ueber einer Headline) */
+.brand .lbl-x { display: none !important; }
+/* SEO-Zeile in der H1 (Suchbegriff ueber der Headline, sah aus wie ein Eyebrow): bleibt im Dokument fuer Suche und Screenreader, ist aber nicht sichtbar */
+.brand .h1-seo {
+  position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+/* Label in der Collage ("Aus dem Mandat"): ohne Fuellung auf den Fotos nicht lesbar, ein Platz neben den Bildern fehlt.
+   Es entfaellt (Abschnitt 5: Eyebrow weg oder Badge), die Klasse lbl-x setzt _ui_markup.py. */
+/* Label, das als Badge bleibt (vor Collage, Galerie, Logo-Wand, Zahlen): kein Versal, Abstand aus der Skala */
+.brand .label.bdg { margin-bottom: 16px; }
+.brand .sticky-l.bdg { margin-bottom: 0; }
+/* Zitat-Absender und Karten-Label: Satoshi Regular, normale Schreibung */
+.brand .kpi .kl, .brand .kpi .kqa, .brand .qbox .qa, .brand .kpi .kunit {
+ font-size: 15px; font-weight: 400; color: var(--grey-dark);
+}
+.brand .kpi .kqa, .brand .qbox .qa { font-size: 13px; }
+
+/* ============================================================
+   5  Chips (Figma 84:21), fuer Filter und Auswahl: Padding 8/24 (7/23 plus Rand), Pill, Gap 8,
+   Label Satoshi Medium 15 px, Zeichen Satoshi Regular 17 px. Default: Rand Schwarz, Zeichen "+".
+   Selected: Flaeche Schwarz, Text Cream, Zeichen "x". Kein Lime.
+   ============================================================ */
+.brand .kchip, .brand .kopt, .brand .needgrid .nopt, .brand .hlxnav .hn, .brand .vchips .vc, .brand .needbar .nsel .schip, .brand .chip,
+.brand .fpop .fchip, .brand .bpop .fchip {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+ font-size: 15px; font-weight: 500; line-height: 1.2;
+  padding: 7px 23px; border: 1px solid var(--ink); border-radius: 999px;
+  background: transparent; color: var(--ink); box-shadow: none;
+  cursor: pointer; white-space: nowrap;
+}
+/* Uebergang nur fuer die Chips ausserhalb der Work-Filter: .fpop/.bpop .fchip blendet brand-motion.css ein und aus
+   (opacity, transform), hier weder opacity noch transition, damit die Chips ohne Klick verborgen bleiben */
+.brand :is(.kchip, .kopt, .needgrid .nopt, .hlxnav .hn, .vchips .vc, .needbar .nsel .schip, .chip) {
+  transition: background-color 0.2s var(--e-out), color 0.2s var(--e-out), box-shadow 0.2s var(--e-out);
+}
+.brand :is(.kchip, .kopt, .needgrid .nopt, .hlxnav .hn, .vchips .vc, .chip):hover { box-shadow: inset 0 0 0 999px rgba(16,16,16,0.06); border-color: var(--ink); color: var(--ink); }
+.brand :is(.kchip.sel, .kopt.sel, .hlxnav .hn.on, .vchips .vc.on, .chip.on, .needbar .nsel .schip) { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.brand :is(.kchip.sel, .kopt.sel, .hlxnav .hn.on, .vchips .vc.on, .chip.on):hover { color: var(--paper); box-shadow: inset 0 0 0 999px rgba(244,243,235,0.06); }
+/* Zeichen: vorhandene Kinder werden Satoshi Regular 17, sonst setzt CSS "+" und "x" */
+.brand .kchip .kx, .brand .needgrid .nopt .plus, .brand .needbar .nsel .schip i {
+ font-size: 17px; font-weight: 400; line-height: 1; color: inherit; opacity: 1; font-style: normal;
+  width: auto; height: auto; border: 0; border-radius: 0; background: none; box-shadow: none; display: inline;
+}
+.brand .kchip.sel .kx { color: inherit; }
+.brand .kopt::after, .brand .fpop .fchip::after, .brand .bpop .fchip::after { content: "+"; font-size: 17px; font-weight: 400; line-height: 1; }
+.brand .kopt.sel::after, .brand .fpop .fchip.on::after, .brand .bpop .fchip.on::after { content: "\00d7"; }
+/* Auswahl im Leistungs-Formular: die Optionen werden Chips in einer Zeile, die gewaehlte wandert in die Leiste */
+.brand .needgrid { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.brand .needgrid .nopt.sel { opacity: 0.35; }
+.brand .needgrid .nopt:hover { color: var(--ink); }
+.brand .vchips .vc { flex-direction: row; }
+.brand .vchips .vc .vcn { font-size: 13px; font-weight: 400; color: inherit; opacity: 0.64; }
+.brand .vchips .vc.on .vcn { color: inherit; }
+/* Work-Filter: die Chips erscheinen ueber Bildern, deshalb invers auf eigener Flaeche.
+   Default: Flaeche Schwarz, Rand Cream 25 %, Text Cream, "+". Gewaehlt: Flaeche Cream, Text Schwarz, "x". */
+.brand .fpop .fchip, .brand .bpop .fchip { background: var(--ink); color: var(--paper); border-color: rgba(244,243,235,0.25); }
+.brand .fpop .fchip:hover, .brand .bpop .fchip:hover { color: var(--paper); border-color: var(--paper); }
+.brand .fpop .fchip.on, .brand .bpop .fchip.on, .brand .fpop .fchip.on:hover, .brand .bpop .fchip.on:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+/* Mobile: dieselben Masse wie Desktop (Figma 84:21, 8/24), die Chips brechen in Zeilen um */
+/* Chips auf dunklem Grund */
+.brand :is(.fg-dark, [data-fg="light"]) :is(.kchip, .kopt, .hlxnav .hn, .vchips .vc, .chip) { border-color: var(--paper); color: var(--paper); }
+.brand :is(.fg-dark, [data-fg="light"]) :is(.kchip.sel, .kopt.sel, .hlxnav .hn.on, .vchips .vc.on, .chip.on) { background: var(--paper); color: var(--ink); }
+@media (max-width: 860px) {
+  /* Kapitel-Punkte am Telefon bleiben Punkte (Zustand), gefuellt = aktiv */
+  .brand .apl .hlxnav .hn { font-size: 0; width: 10px; height: 10px; padding: 0; gap: 0; border: 1px solid var(--ink); background: transparent; }
+  .brand .apl .hlxnav .hn.on { background: var(--ink); }
+}
+
+/* ============================================================
+   6  Schwebende Kreise unten Mitte. Groesse ueber --mbtn-size (Desktop 88, Mobile 76).
+   Die Animations-Abteilung misst die Groesse aus, hier nur Groesse und Aussehen.
+   Farbe: Lime (Accent: Lime mit 1 px Schwarz) auf Cream. Auf dunklen Flaechen und ueber der Bilderwand
+   von Work Cream (Inverse): ein 88-px-Kreis in Lime auf Schwarz waere eine grosse Lime-Flaeche auf Schwarz,
+   auf Work laege er dauernd auf Fotos. Offenes Menue (schwarzes Sheet darunter): Cream.
+   Filter, Branche und Uebersicht sind kleinere Kreise mit Wort, alle identisch: Cream, 1 px Schwarz, Soft-Schatten.
+   ============================================================ */
+body.brand { --mbtn-size: 88px; --mbtn-bottom: 32px; --sat-size: 64px; --sat-gap: 24px; }
+@media (max-width: 767px) { body.brand { --mbtn-size: 76px; --mbtn-bottom: 24px; --sat-size: 56px; --sat-gap: 16px; } }
+body.brand .mbtn {
+  width: var(--mbtn-size); height: var(--mbtn-size); bottom: var(--mbtn-bottom);
+  background: var(--lime); border: 1px solid var(--ink); box-shadow: 0 4px 11px rgba(0,0,0,0.25);
+}
+body.brand .mbtn::before {
+  content: "Menü"; font-size: calc(var(--mbtn-size) * 0.17); font-weight: 500;
+ line-height: 1; color: var(--ink);
+  display: flex; align-items: center; justify-content: center; text-align: center; padding: 0;
+}
+body.brand:not(.on-light) .mbtn { background: var(--paper); border-color: var(--paper); }
+/* Genauer als on-light (Sektion auf 55 % Hoehe): was direkt unter dem Knopf liegt. Die Klassen setzt brand.js
+   (mb-light, mb-dark, mb-photo), solange es sie nicht gibt, gilt on-light. */
+body.brand.mb-light .mbtn { background: var(--lime); border-color: var(--ink); }
+body.brand.mb-dark .mbtn, body.brand.mb-photo .mbtn, body.brand:has(.fbtn) .mbtn { background: var(--paper); border-color: var(--paper); }
+body.brand.menuopen .mbtn { background: var(--paper); border-color: var(--paper); box-shadow: none; }
+body.brand.menuopen .mbtn::before { content: "Schließen"; font-size: calc(var(--mbtn-size) * 0.145); color: var(--ink); }
+/* Satelliten: Filter und Branche (Work), Uebersicht (Cases). Gleiche Groesse, Flaeche, Rand, Schrift, Hover, Zustand. */
+.brand .fbtn, .brand .bbtn, .brand .bkbtn {
+  width: var(--sat-size); height: var(--sat-size); bottom: calc(var(--mbtn-bottom) + (var(--mbtn-size) - var(--sat-size)) / 2);
+  border-radius: 50%; background: var(--paper); border: 1px solid var(--ink); color: var(--ink);
+  box-shadow: 0 4px 11px rgba(0,0,0,0.25); font-size: 0; line-height: 1; padding: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.2s var(--e-out), background-color 0.2s var(--e-out), box-shadow 0.2s var(--e-out);
+}
+.brand .fbtn { margin-left: calc(var(--mbtn-size) / -2 - var(--sat-gap) - var(--sat-size)); }
+.brand .bkbtn { margin-left: calc(var(--mbtn-size) / -2 - var(--sat-gap) - var(--sat-size)); }
+.brand .bbtn { margin-left: calc(var(--mbtn-size) / 2 + var(--sat-gap)); }
+.brand .fbtn::after, .brand .bbtn::after, .brand .bkbtn::after { display: none; }
+.brand .fbtn::before, .brand .bbtn::before, .brand .bkbtn::before {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 0;
+ font-size: calc(var(--sat-size) * 0.17); font-weight: 500; line-height: 1;
+  color: var(--ink); transition: color 0.2s var(--e-out);
+}
+.brand .fbtn::before { content: "Filter"; }
+.brand .bbtn::before { content: "Branche"; font-size: calc(var(--sat-size) * 0.17); }
+.brand .bkbtn::before { content: "Übersicht"; font-size: calc(var(--sat-size) * 0.155); }
+.brand .fbtn:hover, .brand .bbtn:hover, .brand .bkbtn:hover { transform: none; background: var(--paper); color: var(--ink); border-color: var(--ink); box-shadow: 0 6px 16px rgba(0,0,0,0.3); }
+.brand .fbtn:hover::before, .brand .bbtn:hover::before, .brand .bkbtn:hover::before { color: var(--ink); }
+/* Offen: Schwarz mit Cream-Wort (Chip-Logik "selected"), fuer beide Filter gleich */
+body.brand.filteropen .fbtn, body.brand.branchopen .bbtn { background: var(--ink); border-color: var(--ink); }
+body.brand.filteropen .fbtn::before, body.brand.branchopen .bbtn::before { color: var(--paper); }
+/* Aktiver Filter (nicht "Alle"): derselbe zweite Ring an beiden Kreisen. Direkt am gewaehlten Chip abgelesen,
+   nicht an .has (brand.js liest bei Branche data-branch statt data-branche und markiert sonst immer) */
+.brand .fbtn.has, .brand .bbtn.has { box-shadow: 0 4px 11px rgba(0,0,0,0.25); }
+body.brand:has(.fpop .fchip.on:not([data-cat="alle"])) .fbtn,
+body.brand:has(.bpop .fchip.on:not([data-branche="alle"])) .bbtn { box-shadow: 0 4px 11px rgba(0,0,0,0.25), 0 0 0 3px var(--paper), 0 0 0 4px var(--ink); }
+.brand .forbit, .brand .borbit, .brand .bkorbit { display: none; }
+@media (max-width: 720px) {
+  .brand .fbtn, .brand .bkbtn { margin-left: calc(var(--mbtn-size) / -2 - var(--sat-gap) - var(--sat-size)); }
+  .brand .bbtn { margin-left: calc(var(--mbtn-size) / 2 + var(--sat-gap)); }
+}
+/* Filter-Chips schweben ueber dem jeweiligen Kreis */
+.brand .fpop { bottom: calc(var(--mbtn-bottom) + var(--mbtn-size) + 16px); }
+.brand .bpop { bottom: calc(var(--mbtn-bottom) + var(--mbtn-size) + 16px); }
+
+/* Kopfzeile: Kontakt und Menue als Navigation, Satoshi Medium 15 px, normale Schreibung */
+.brand .chrome .ctc, .brand .chrome .hmenu {
+ font-size: 15px; font-weight: 500; line-height: 1.2; opacity: 1;
+}
+@media (max-width: 520px) { .brand .chrome .ctc, .brand .chrome .hmenu { font-size: 15px; } }
+
+/* ============================================================
+   7  Karten. Service Card (84:45): 1 px Rand Schwarz, Radius 20, Padding 32, Gap 16.
+   Dieselbe Karte fuer KPI, Detail, Fit, Prozess und Zitat. Mobile Padding 24.
+   ============================================================ */
+.brand .svcard, .brand .kpiboard .kpi, .brand .dcell, .brand .fcard, .brand .pcard, .brand .hproc .hcard, .brand .proofcase .ptile, .brand .qcard {
+  border: 1px solid var(--ink); border-radius: 20px; padding: 32px; gap: 16px;
+  background: transparent; box-shadow: none;
+}
+.brand :is(.fg-dark, [data-fg="light"]) :is(.svcard, .kpiboard .kpi, .dcell, .fcard, .pcard, .qcard) { border-color: rgba(244,243,235,0.25); }
+.brand .fcard--no, .brand .proofcase .ptile { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.brand .fcard--yes { background: transparent; }
+.brand .svcard:hover { background: transparent; box-shadow: inset 0 0 0 999px rgba(16,16,16,0.035); transform: none; }
+.brand .svcard { display: flex; flex-direction: column; }
+.brand .svcard .sn { font-family: var(--f-ui); font-size: 15px; font-weight: 400; color: var(--ink); }
+.brand .svcard .st { font-family: var(--f-ui); font-weight: 700; font-size: 28.5px; line-height: 1.15; margin-top: 0; }
+.brand .svcard ul { margin-top: 0; gap: 8px; }
+.brand .svcard li { font-family: var(--f-ui); font-size: 16px; line-height: 1.4; color: var(--grey-dark); }
+.brand .svcard .see { padding-top: 16px; }
+.brand .kpi .kstrip img { border-radius: 20px; }
+/* Zitat-Boxen: freistehende Zitate bekommen keine Flaeche; die Zitat-Karte im KPI-Board ist eine Karte wie die anderen */
+.brand .proofsplit .qbox { border-left-color: var(--line-l); }
+@media (max-width: 767px) {
+  .brand .svcard, .brand .kpiboard .kpi, .brand .dcell, .brand .fcard, .brand .pcard, .brand .hproc .hcard, .brand .proofcase .ptile, .brand .qcard { padding: 24px; }
+}
+/* Kennzahl auf der Kachel der Startseite: reiner Text im Bild, keine Karte (brand.css .kpi gilt nur im Board) */
+.brand .tile .kpi { background: none; border: 0; border-radius: 0; padding: 0; display: block; gap: 0; top: 16px; right: 16px; }
+/* Case Card und Work-Kacheln (84:50): Radius 20, Beschriftung mit Abstaenden aus der Skala */
+.brand .wt, .brand .tile .tmed { border-radius: 20px; }
+.brand .wt .wpill, .brand .tile .badge { top: 16px; right: 16px; }
+.brand .tile .tlab { margin-top: 16px; gap: 8px; }
+/* Formularfelder: Radius 20, 1-px-Linie, Innenabstand 16/24 */
+.brand .kinput {
+  border: 1px solid rgba(16,16,16,0.25); border-radius: 20px; padding: 15px 23px; background: transparent; color: var(--ink);
+  font-family: var(--f-ui); font-size: 17px; line-height: 1.4;
+}
+.brand .kinput:focus { border-color: var(--ink); outline: none; }
+.brand .kinput::placeholder { color: rgba(16,16,16,0.45); }
+.brand .kfield label, .brand .kcustom label, .brand .kgroup .kglab, .brand .ksum .kslab {
+  font-family: var(--f-ui); font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 8px;
+}
+.brand .ksum { border-color: var(--line-l); }
+/* Anfrage-Leiste (Figma Input Bar): Linie statt Flaeche, Pill */
+.brand .needbar { border: 1px solid var(--ink); border-radius: 999px; box-shadow: none; }
+/* Linien: 1 px, durchgezogen (Style 10), keine gepunkteten 2-px-Linien mehr */
+.brand .kapsec .kaprule, .brand .cmprow, .brand .faq .qa, .brand .benegrid .bcell {
+  border-top-style: solid; border-top-width: 1px; border-top-color: var(--line-l);
+}
+.brand .fg-dark .kapsec .kaprule { border-top-color: rgba(244,243,235,0.25); }
+.brand .dotbars .row { border-top: 1px solid var(--line-l); }
+.brand .dotbars .row:last-child { border-bottom: 1px solid var(--line-l); }
+
+/* ============================================================
+   8  Graphen aus Punkten (Abschnitt 7). Ein Punkt: 10 px, Abstand 6 px, ueberall.
+   Auf Cream: gefuellt Schwarz, der eine hervorgehobene Wert Lime (mit 1 px Schwarz), Rest Umriss Schwarz 1 px.
+   Auf Schwarz: gefuellt Cream, Rest Umriss Cream 1 px, Lime hoechstens ein einzelner Status-Punkt.
+   Farben der Fuellung fuer .dotgraph, .dotbars, .kdots, .ratedots und .kline: eine Quelle, brand-motion.css
+   (Abschnitt Graph-Fuellung, Klassen .is-on und .is-best aus brand.js, Variablen --g-on, --g-best, --g-line).
+   Hier nur Groesse, Abstand und Form. .tldots, .tllegend, .tdots, .dotline und .sprog farbig hier.
+   ============================================================ */
+.brand .dotgraph { display: grid; grid-template-columns: repeat(var(--cols, 10), 10px); gap: 6px; max-width: none; justify-content: start; }
+.brand .stat .dotgraph { justify-content: center; margin-left: auto; margin-right: auto; }
+.brand .dotgraph i, .brand .dotbars .dots i, .brand .kpi .kdots .dots i, .brand .ratedots i, .brand .tldots i {
+  display: block; width: 10px; height: 10px; aspect-ratio: auto; border-radius: 50%; box-sizing: border-box;
+  transform: none;
+}
+.brand .dotbars .dots, .brand .kpi .kdots .dots, .brand .tldots { gap: 6px; }
+.brand .ratedots { grid-template-columns: repeat(auto-fill, 10px); gap: 6px; }
+/* Tldots: Grundform (Typfarben folgen unten) */
+.brand .tldots i { background: transparent; }
+/* Zeitleiste auf der dunklen Ablauf-Sektion: heute gefuellt mit Fokus-Ring, Aufbau gefuellt, Test als Umriss,
+   Warten als schwacher Umriss, das Ziel als einzelner kleiner Lime-Status-Punkt */
+.brand .tldots i { box-shadow: inset 0 0 0 1px rgba(244,243,235,0.25); }
+.brand .tldots i.h.on { background: var(--paper); box-shadow: 0 0 0 2px var(--ink), 0 0 0 3px var(--paper); }
+.brand .tldots i.b.on { background: var(--paper); box-shadow: none; }
+.brand .tldots i.t.on { background: transparent; box-shadow: inset 0 0 0 1px var(--paper); }
+.brand .tldots i.g.on { background: transparent; box-shadow: inset 0 0 0 1px rgba(244,243,235,0.4); }
+.brand .tldots i.e.on { background: var(--lime); box-shadow: none; }
+.brand .tllegend { font-family: var(--f-ui); font-size: 13px; color: var(--grey-dark); }
+.brand .tllegend i { width: 10px; height: 10px; box-sizing: border-box; }
+.brand .tllegend .tl-h { border: 0; background: var(--paper); box-shadow: 0 0 0 2px var(--ink), 0 0 0 3px var(--paper); }
+.brand .tllegend .tl-b { background: var(--paper); }
+.brand .tllegend .tl-t { background: transparent; border: 1px solid var(--paper); }
+.brand .tllegend .tl-e { background: var(--lime); box-shadow: none; }
+/* Linien-Graph in der KPI-Karte: Linie 1 px Schwarz, keine Flaeche; Punkt-Fuellung in brand-motion.css */
+.brand .kpi .kline .kpath { stroke: var(--ink); stroke-width: 1; }
+.brand .kpi .kline .kfill { fill: none; }
+.brand .kpi .kline .kv { font-family: var(--f-ui); font-size: 13px; fill: var(--grey-dark); }
+/* Graph-Beschriftungen: Satoshi Regular 13 bis 15 */
+.brand .dotbars .rl, .brand .kpi .kdots .rl { font-family: var(--f-ui); font-size: 15px; font-weight: 400; }
+.brand .dotcap .dl, .brand .dotnote, .brand .dotfield-cap, .brand .stat .dotcapmini, .brand .kpi .kcap { font-family: var(--f-ui); font-size: 13px; color: var(--grey-dark); }
+.brand .kpi .kfrom { color: var(--grey); text-decoration-color: var(--grey); }
+.brand .kpi .karrow { color: var(--grey-dark); }
+/* Budget-Regler: Knopf Lime mit 1 px Schwarz, ohne Schein */
+.brand .rateslider { height: 1px; background: var(--ink); }
+.brand .rateslider::-webkit-slider-thumb { background: var(--lime); border: 1px solid var(--ink); box-shadow: none; }
+.brand .rateslider::-moz-range-thumb { background: var(--lime); border: 1px solid var(--ink); box-shadow: none; }
+/* Kleine Zustands-Punkte (Stationen, Fit-Test, Fortschritt): gefuellt Schwarz, sonst Umriss. Kein Lime-Schein. */
+.brand .tdots i { width: 10px; height: 10px; background: transparent; box-shadow: inset 0 0 0 1px var(--ink); transform: none; }
+.brand .tdots i.on { background: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); transform: none; }
+.brand .fg-dark .tdots i, .brand [data-fg="light"] .tdots i { box-shadow: inset 0 0 0 1px var(--paper); background: transparent; }
+.brand .fg-dark .tdots i.on, .brand [data-fg="light"] .tdots i.on { background: var(--paper); }
+.brand .fitres .frdots i { width: 10px; height: 10px; border: 1px solid var(--ink); }
+.brand .fitres .frdots i.on { background: var(--ink); }
+.brand .fcard--yes li .fdot { width: 10px; height: 10px; border: 1px solid var(--ink); background: transparent; }
+.brand .fcard--yes li.hit .fdot { background: var(--ink); box-shadow: none; }
+.brand .fcard .fdot { width: 10px; height: 10px; box-sizing: border-box; background: var(--ink); }
+.brand .fcard .fdot--no { background: transparent; border: 1px solid var(--paper); }
+.brand .fitcards .fcard--yes .fh::after { content: none; }
+/* Scroll-Bahn rechts: Kapitelmarken als Umriss, die aktuelle gefuellt; der laufende Punkt bleibt der eine Lime-Status-Punkt */
+.brand .sprog b { width: 6px; height: 6px; background: transparent; box-shadow: inset 0 0 0 1px var(--ink); transform: none; }
+.brand .sprog b.on { background: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); transform: none; }
+body.brand:not(.on-light) .sprog b { box-shadow: inset 0 0 0 1px var(--paper); }
+body.brand:not(.on-light) .sprog b.on { background: var(--paper); }
+/* Der laufende Punkt: kein Lime mehr, er liegt oft auf Vollbild-Fotos (Abschnitt 1 und 8).
+   Schwarz auf Cream, Cream auf Schwarz und Foto, mit 1 px Gegenring fuer die Lesbarkeit auf Bildern */
+.brand .sprog i { background: var(--paper); box-shadow: 0 0 0 1px rgba(16,16,16,0.5); }
+body.brand.on-light .sprog i { background: var(--ink); box-shadow: 0 0 0 1px rgba(244,243,235,0.6); }
+/* Aufzaehlungspunkte: Schwarz auf Cream, Cream auf Schwarz */
+.brand .statg .st::before, .brand .pname b::before, .brand .dotline span::before, .brand .dothint::before {
+  width: 8px; height: 8px; background: var(--ink); border: 0; box-shadow: none;
+}
+.brand :is(.fg-dark, [data-fg="light"], .chero) :is(.statg .st::before, .pname b::before, .dotline span::before) { background: var(--paper); }
+.brand .dotline span::before { background: transparent; box-shadow: inset 0 0 0 1px var(--ink); }
+.brand .dotline span.on::before { background: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.brand .dotline { font-family: var(--f-ui); font-size: 13px; font-weight: 400; color: var(--grey-dark); }
+.brand .dothint { font-size: 13px; font-weight: 500; }
+.brand .oplist--steps .owhen::before { border-color: currentColor; background-color: transparent; border-width: 1px; }
+.brand .oplist--steps .op.on .owhen::before { background-color: currentColor; box-shadow: none; }
+.brand .oplist:not(.oplist--steps) .op:hover .onum::before { background: var(--ink); box-shadow: none; }
+/* Prozess-Schema: die Lime-Punkte fuer "von Ihnen" bleiben Grafik auf Cream, Linien 1 px */
+.brand .pmap .dot-sie, .brand .pmap .pp { stroke-width: 1; }
+
+/* ============================================================
+   9  Punkt-Signatur: kein grosser dekorativer Punkt. Der Hero-Punkt (.bdot) und die Akt-Marke (.actring)
+   entfallen, ebenso der Lime-Punkt in der alten Footer-Wortmarke.
+   ============================================================ */
+.brand .bdot, .brand .actring { display: none !important; }
+.brand .fword i, .brand .pt .ptw i { color: inherit; }
+/* Zeiger ueber Bildern und Videos (Fokus-Zustand): Ring in Cream statt Lime, kein Lime an Fotos */
+.brand.cur-media .cur { background: transparent; box-shadow: inset 0 0 0 1.5px var(--paper), 0 0 0 1px rgba(16,16,16,0.35); }
+/* Punkt-Zoom-Uebergang: der oeffnende Punkt ist Schwarz auf Cream, Cream auf Schwarz, kein Lime-Kreis */
+.brand .dotzoom::before { background: var(--ink); box-shadow: none; }
+.brand .dotzoom--dark::before { background: var(--paper); }
+
+/* Brand-Check 2, Restpunkte */
+/* Legende: "ausserhalb" als Umriss 1 px durchgezogen, nie gestrichelt (Style 10 Lines) */
+.brand .pmap-legend span i.dot-out { border-style: solid !important; border-width: 1px !important; }
+/* Balken der Studie: Linien 1 px */
+.brand .row .track i.fill, .brand .r .t2 i.f2 { height: 1px !important; }
+.brand .row .track, .brand .r .t2 { height: 1px !important; }
+/* leere Portraitplaetze (Agentur): Bildplatzhalter-Ton, Initiale Schwarz; Anordnung unveraendert */
+.brand .pportrait > span { background: #DEDDD4 !important; color: var(--ink) !important; }

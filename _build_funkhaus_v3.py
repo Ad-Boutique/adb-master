@@ -5,6 +5,7 @@ Eyebrow, These, ein Absatz, Stat-Group, ein Medium je Kapitel, Fett-Lead-Caption
 Highlights-Stapel vorne, Viewer statt Erklaerung, Learnings als Fragen, Kapitel-Leiste."""
 import re
 from _kpi import board as kpi_board, HAND_KPI
+from _brand_inplace import layout
 
 SRC = "case-premium-neubau.html"
 OUT = "case-premium-neubau-v3.html"
@@ -300,5 +301,7 @@ __KPI__
 '''
 
 main = main.replace("__KPI__\n", kpi_board(HAND_KPI["case-premium-neubau"]))
+# Sektionsabstaende und Seitenrand wie auf allen Seiten (Layout-Abteilung)
+main = layout(main, OUT)
 open(OUT, "w", encoding="utf-8").write(head + main + foot)
 print("geschrieben:", OUT, len(head + main + foot), "Zeichen, Sektionen:", (head + main + foot).count("<section"))

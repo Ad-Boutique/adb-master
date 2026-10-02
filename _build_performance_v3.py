@@ -4,6 +4,7 @@ Ableitung aus der generierten Seite: Stat-Group statt Pillen im Hero, ein Beispi
 mit Fett-Lead im Problem, Chips ueber den Stationen, Vergleich statt Liste, Kapitel-Leiste.
 Nach jedem Lauf von _gen_services.py neu ausfuehren."""
 import re
+from _brand_inplace import layout
 
 SRC = "service-performance-marketing.html"
 OUT = "service-performance-marketing-v3.html"
@@ -107,5 +108,7 @@ compare = '''  <!-- 07, VERGLEICH: drei Wohnbau-Projekte nebeneinander -->
 '''
 h = h[:start] + compare + h[end:]
 
+# Sektionsabstaende und Seitenrand wie auf allen Seiten (Layout-Abteilung)
+h = layout(h, OUT)
 open(OUT, "w", encoding="utf-8").write(h)
 print("geschrieben:", OUT, "Sektionen:", h.count("<section"))
