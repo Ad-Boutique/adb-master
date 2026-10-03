@@ -1,0 +1,16 @@
+name: IndexNow nach Deploy
+# Bleibt inaktiv, bis die Repository-Variable ADB_LIVE=1 gesetzt ist (siehe docs/GITHUB-EINSTELLUNGEN.md).
+# Meldet die Sitemap-URLs an Bing, sobald die Seite live ist (Repository-Variable ADB_LIVE=1 und Secret INDEXNOW_KEY).
+on:
+  push:
+    branches: [main]
+jobs:
+  indexnow:
+    if: ${{ vars.ADB_LIVE == '1' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: URLs melden
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+        run: python3 _indexnow.py

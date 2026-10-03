@@ -1,8 +1,11 @@
+# macOS
+.DS_Store
 _qa_run.html
 _tools/enc
 _tools/dense
 _tools/probe
 _tools/scrollshot
+# Interne Unterlagen liegen im privaten Repo Ad-Boutique/adb-intern; die lokale Kopie bleibt ignoriert
 _intern/
 
 # lokale Claude-Arbeitskopien und Einstellungen

@@ -10,7 +10,6 @@ die Nachlaeufe (_imgdim, _brand_inplace, _footer, _ui_markup, _headlines, _seo) 
 import json
 import os
 import re
-import subprocess
 
 from _cases import bausteine, board, leistungen, naechster, rahmen, teaser
 from _kpi import board as kpi_board, mini as kpi_mini
@@ -82,7 +81,7 @@ _DIMS = None
 
 
 def _ratio(p):
-    """Hoehe je Breiteneinheit, aus den echten Dateimassen (assets/imgdim.json, sonst sips)."""
+    """Hoehe je Breiteneinheit, aus den echten Dateimassen (assets/imgdim.json, sonst per PIL, laeuft auch auf Linux)."""
     global _DIMS
     if _DIMS is None:
         _DIMS = json.load(open("assets/imgdim.json")) if os.path.exists("assets/imgdim.json") else {}
@@ -90,12 +89,12 @@ def _ratio(p):
         return 16 / 9.0
     if p in _DIMS and _DIMS[p]:
         return _DIMS[p][1] / float(_DIMS[p][0])
-    out = subprocess.run(["sips", "-g", "pixelWidth", "-g", "pixelHeight", p], capture_output=True, text=True).stdout
-    mw = re.search(r"pixelWidth:\s*(\d+)", out)
-    mh = re.search(r"pixelHeight:\s*(\d+)", out)
-    if not (mw and mh):
+    try:
+        from PIL import Image
+        with Image.open(p) as im:
+            _DIMS[p] = [im.width, im.height]
+    except Exception:
         return 1.0
-    _DIMS[p] = [int(mw.group(1)), int(mh.group(1))]
     return _DIMS[p][1] / float(_DIMS[p][0])
 
 

@@ -1,0 +1,64 @@
+name: Pruefung
+# Laeuft bei jedem Pull Request und bei jedem Push auf main. Die drei Jobs build, links und secrets
+# sind im Ruleset fuer main als Pflicht-Checks eingetragen (docs/GITHUB-EINSTELLUNGEN.md).
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pruefung-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    # Linux: der Build braucht nur Python und Pillow (Bildmasse per PIL, keine Swift-Programme)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # _seo.py liest lastmod aus git log
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Pakete
+        run: pip install pillow
+      - name: Ganze Build-Kette in der verbindlichen Reihenfolge
+        run: sh _build.sh
+      - name: Ist das erzeugte HTML im PR aktuell?
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "::warning::Der Build aendert Dateien. Bitte lokal 'sh _build.sh' laufen lassen und das Ergebnis mitcommitten:"
+            git status --porcelain | head -40
+          else
+            echo "Erzeugte Dateien sind aktuell."
+          fi
+
+  links:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Interne Links, eingebundene Dateien, HTML-Struktur
+        run: python3 _tools/linkcheck.py
+      - name: assets-Referenzen gegen .vercelignore
+        run: python3 _check.py
+
+  secrets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Secret-Scan (TruffleHog)
+        uses: trufflesecurity/trufflehog@main
+        with:
+          extra_args: --results=verified,unknown
