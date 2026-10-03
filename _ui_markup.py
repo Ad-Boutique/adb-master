@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Markup-Vereinheitlichung fuer Farben und Komponenten (Regelwerk _intern/BRAND-RULES.md, Abschnitte 1, 5, 6).
+"""Markup-Vereinheitlichung fuer Farben und Komponenten (Regelwerk docs/BRAND-RULES.md, Abschnitte 1, 5, 6).
 Gehoert der Design-Abteilung. Reihenfolge: nach _footer.py, vor _headlines.py. Laeuft ueber alle Seiten.
 
 Was dieser Schritt tut:

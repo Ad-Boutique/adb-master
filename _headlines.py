@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Headline-Muster nach Figma (Rules / Typography 121:85, Rules / Amandine 122:85), Regelwerk _intern/BRAND-RULES.md Abschnitt 2.
+"""Headline-Muster nach Figma (Rules / Typography 121:85, Rules / Amandine 122:85), Regelwerk docs/BRAND-RULES.md Abschnitt 2.
 
 Display-Headlines (eroeffnen eine Sektion, bei 1440 px mindestens 48 px) bekommen das H1-Muster:
   Zeile 1 Satoshi Bold, Zeile 2 Amandine Italic als eigene Zeile (genau eine Zeile auf Desktop).

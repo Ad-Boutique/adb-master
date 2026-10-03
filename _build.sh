@@ -7,7 +7,7 @@
 # Letzter Schritt _check.py: jede assets/-Referenz muss existieren und darf nicht von .vercelignore ausgeschlossen sein.
 set -e
 cd "$(dirname "$0")"
-LOG=$(mktemp -t adbbuild); WARN=$(mktemp -t adbwarn)
+LOG=$(mktemp "${TMPDIR:-/tmp}/adbbuild.XXXXXX"); WARN=$(mktemp "${TMPDIR:-/tmp}/adbwarn.XXXXXX")  # Form fuer macOS und Linux
 trap 'rm -f "$LOG" "$WARN"' EXIT
 for s in _cases.py _gen.py _gen_web.py _gen_services.py _gen_kontakt.py _apply_content.py _imgdim.py _poster.py \
          _css.py _brand_inplace.py _build_funkhaus_v3.py _build_performance_v3.py _footer.py _ui_markup.py _headlines.py _webp.py _perf.py _seo.py \
@@ -22,4 +22,11 @@ if [ -s "$WARN" ]; then
 else
   echo "Warnungen: keine"
 fi
-if [ -n "$1" ]; then rsync -a --delete --exclude .git --exclude .claude --exclude _intern ./ "$1"/; echo "Vorschau: $1"; fi
+if [ -n "$1" ]; then
+  # rsync --delete loescht im Ziel: nur temporaere Vorschau-Ordner zulassen, damit ein Tippfehler nichts zerstoert
+  case "$1" in
+    /tmp/*|/private/tmp/*|"${TMPDIR%/}"/*) ;;
+    *) echo "Vorschau-Ziel muss unter /tmp oder \$TMPDIR liegen: $1"; exit 1 ;;
+  esac
+  rsync -a --delete --exclude .git --exclude .claude --exclude _intern ./ "$1"/; echo "Vorschau: $1"
+fi

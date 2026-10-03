@@ -3,7 +3,7 @@
 
 Eine Datei je Case. Die Generatoren (_gen.py, _gen_web.py, _kpi.py, _apply_content.py, _gen_services.py, _seo.py)
 lesen die Inhalte nur noch ueber dieses Modul. Dateien, deren Name mit "_" beginnt (z. B. _vorlage.json), werden
-nicht gebaut. Anleitung, Felder und Baustein-Typen: _intern/CMS-CASES.md.
+nicht gebaut. Anleitung, Felder und Baustein-Typen: docs/CMS-CASES.md.
 
 Aufbau einer Datei (Vorlagen "dossier" und "web"): Rahmen aus meta, hero, intro, kennzahlen und naechster,
 dazwischen die Liste bausteine, die in ihrer Reihenfolge auf die Seite kommt.

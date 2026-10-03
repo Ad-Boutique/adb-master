@@ -88,7 +88,9 @@
     e.preventDefault(); e.stopPropagation();
     var href = bk.getAttribute("href") || "work.html", me = location.pathname.split("/").pop() || "index.html";
     var saved = null; try { saved = JSON.parse(sessionStorage.getItem("adbflipFrom") || "null"); } catch (err) {}
-    var rect = (saved && saved.href === me && saved.rect) ? saved.rect : null;
+    /* Vergleich ueber den aufgeloesten Pfad: gilt fuer case-x.html (Vorschau) und /referenzen/x (live) */
+    var same = false; try { same = !!saved && new URL(saved.href, location.href).pathname === location.pathname; } catch (err) {}
+    var rect = (same || (saved && saved.href === me)) && saved.rect ? saved.rect : null;
     var hero = document.querySelector(".chero"), img = hero && hero.querySelector("img");
     var bg = document.createElement("div"); bg.className = "flipbg"; body.appendChild(bg);
     var x = document.createElement("div"); x.className = "flipx";
@@ -1386,7 +1388,8 @@
     ngo.addEventListener("click", function () {
       var picked = syncNeed();
       if (!picked.length) return;
-      var slug = (location.pathname.split("/").pop() || "index.html").replace(/\.html$/, "");
+      /* Seitenname aus data-page (setzt _seo.py), damit er auch unter sauberen Live-Pfaden stimmt */
+      var slug = document.body.getAttribute("data-page") || (location.pathname.split("/").pop() || "index.html").replace(/\.html$/, "");
       /* Ziel aus dem Kontakt-Link der Kopfzeile: live schreibt _seo.py ihn auf /kontakt um (saubere Pfade) */
       var ctcEl = document.querySelector(".chrome .ctc"), kurl = (ctcEl && ctcEl.getAttribute("href")) || "kontakt.html";
       location.href = kurl + "?w=" + encodeURIComponent(picked.join(",")) +
@@ -1440,7 +1443,8 @@
       var names = (slot.getAttribute("data-set") || "").split(",").filter(Boolean);
       names.forEach(function (n, i) {
         var im = document.createElement("img");
-        im.src = "assets/logos/" + n + ".png"; im.alt = n; im.loading = "lazy";
+        /* relativ zur Lage von site.js, damit der Pfad auch unter /services/... (live) und /adb-master/ (Vorschau) stimmt */
+        im.src = new URL("logos/" + n + ".png", (document.querySelector('script[src*="site.js"]') || {}).src || location.href.replace(/[^/]*$/, "assets/")).href; im.alt = n; im.loading = "lazy";
         if (i === 0) im.classList.add("on");
         slot.appendChild(im);
       });
@@ -2150,8 +2154,9 @@
     if (!window.fetch || location.protocol === "file:") { mailto(); return; }
     sending = true; sendBtn.disabled = true;
     var ctl = window.AbortController ? new AbortController() : null;
-    /* kurz halten: das Mailprogramm darf der Browser nur kurz nach dem Klick oeffnen (Nutzergeste) */
-    var to = setTimeout(function () { if (ctl) ctl.abort(); }, 4000);
+    /* 8 s: genug fuer einen kalten Start der Function, damit nicht Mail und Mailprogramm doppelt kommen.
+       Danach Rueckfall aufs Mailprogramm (manche Browser oeffnen es so spaet nicht mehr, die Bestaetigung nennt die Adresse) */
+    var to = setTimeout(function () { if (ctl) ctl.abort(); }, 8000);
     fetch("/api/anfrage", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data), signal: ctl ? ctl.signal : undefined })
       .then(function (r) { return r.ok ? r.json() : { ok: false }; })
       .catch(function () { return { ok: false }; })
