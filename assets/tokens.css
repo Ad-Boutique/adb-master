@@ -148,6 +148,8 @@
   --d-fast: 200ms;        /* Hover und Rueckmeldung */
   --d-base: 400ms;        /* Einblenden */
   --d-slow: 700ms;        /* Uebergaenge */
+  --d-btn: 700ms;         /* Kreis-Hover der Buttons: eine Spur langsamer, damit man ihn sieht (Kundenwunsch 3.10.2026) */
+  --e-btn: cubic-bezier(.33, 1, .68, 1); /* weicher als --e-out, der Kreis waechst sichtbar */
   --d-chor: 1200ms;       /* Choreografie */
   --fade-y: 24px;         /* Versatz beim Einblenden, aus der 8er-Skala */
   --stagger: 80ms;        /* Staffelung beim Einblenden */

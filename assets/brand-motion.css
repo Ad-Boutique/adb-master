@@ -252,11 +252,11 @@ body.brand.menuopen .chrome .hmenu i { background: var(--paper) !important; }
    Je Variante eine Kreisfarbe (--hv), Textfarbe (--hc) und Randfarbe (--hb), alles Brand-Paare:
    nie Lime-Text auf Schwarz, Lime-Kreis nur auf hellem Grund. Die Werte stehen in tokens.css (Abschnitt 10, --btn-*-hv/-hc/-hb). ---------- */
 body.brand .btn:not(#_) { position: relative; isolation: isolate; overflow: hidden; --hv: var(--btn-primary-hv); --hc: var(--btn-primary-hc); --hb: var(--btn-primary-hb);
-  transition: color calc(var(--d-base) * 0.5) var(--e-out) calc(var(--d-base) * 0.3), border-color var(--d-base) var(--e-out), box-shadow var(--d-fast) var(--e-out), opacity var(--d-fast) var(--e-out); }
+  transition: color calc(var(--d-btn) * 0.45) var(--e-btn) calc(var(--d-btn) * 0.3), border-color var(--d-btn) var(--e-btn), box-shadow var(--d-fast) var(--e-out), opacity var(--d-fast) var(--e-out); }
 body.brand .btn:not(#_)::before {
   content: ""; position: absolute; z-index: -1; left: var(--mx, 50%); top: var(--my, 50%);
   width: 300%; aspect-ratio: 1; border-radius: var(--r-round); background: var(--hv); pointer-events: none;
-  transform: translate(-50%, -50%) scale(0); transition: transform var(--d-base) var(--e-out);
+  transform: translate(-50%, -50%) scale(0); transition: transform var(--d-btn) var(--e-btn);
 }
 body.brand .btn:not(#_):is(:hover, :focus-visible):not([disabled])::before { transform: translate(-50%, -50%) scale(1); }
 body.brand .btn:not(#_):is(:hover, :focus-visible):not([disabled]) { color: var(--hc) !important; border-color: var(--hb) !important; }
