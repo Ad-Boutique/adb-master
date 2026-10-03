@@ -468,7 +468,8 @@
     var ctx = cv.getContext("2d"), dots = [], W = 0, H = 0, dpr = Math.min(2, window.devicePixelRatio || 1);
     /* Farben aus brand-motion.css (Abschnitt 7): Anteil gefuellt, der letzte Anteilspunkt ist der Wert, der Rest Umriss */
     var ccs = getComputedStyle(cv);
-    var C_ON = (ccs.getPropertyValue("--g-on") || "").trim() || "#101010", C_BEST = (ccs.getPropertyValue("--g-best") || "").trim() || "#CDFF00", C_LINE = (ccs.getPropertyValue("--g-line") || "").trim() || "rgba(16,16,16,0.45)";
+    /* Farben wie auf der alten Seite (Kundenentscheidung 3.10.2026, Werte in brand-keep.css): gezaehlt Lime mit Ring, Rest grau */
+    var C_ON = (ccs.getPropertyValue("--g-on") || "").trim() || "#CDFF00", C_RING = (ccs.getPropertyValue("--g-ring") || "").trim() || "rgba(16,16,16,0.6)", C_OFF = (ccs.getPropertyValue("--g-off") || "").trim() || "rgba(16,16,16,0.16)";
     var mx = -9999, my = -9999, start = 0, seen = false, running = false, fine = window.matchMedia("(pointer: fine)").matches;
     /* Antippen: die Lime-Punkte sammeln sich zur Zahl (data-form), zweites Antippen loest sie wieder */
     var formText = cv.getAttribute("data-form"), formed = false, form = 0, formT = 0;
@@ -530,8 +531,8 @@
           if (dist < R) { var f = 1 - dist / R; x += dx / (dist || 1) * f * 12; y += dy / (dist || 1) * f * 12; r = d.r * (1 + f * 0.9); }
         }
         ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
-        if (d.lime) { ctx.fillStyle = d.best ? C_BEST : C_ON; ctx.fill(); if (d.best) { ctx.lineWidth = 1; ctx.strokeStyle = C_ON; ctx.stroke(); } }
-        else { ctx.globalAlpha = 1 - ef * 0.7; ctx.lineWidth = 1; ctx.strokeStyle = C_LINE; ctx.beginPath(); ctx.arc(x, y, Math.max(0.5, r - 0.5), 0, Math.PI * 2); ctx.stroke(); ctx.globalAlpha = 1; }
+        if (d.lime) { ctx.fillStyle = C_ON; ctx.fill(); ctx.lineWidth = 1; ctx.strokeStyle = C_RING; ctx.stroke(); }
+        else { ctx.globalAlpha = 1 - ef * 0.7; ctx.fillStyle = C_OFF; ctx.fill(); ctx.globalAlpha = 1; }
       }
       /* nach dem Sammeln nur weiterzeichnen, wenn ein Cursor da ist oder das Feld am Telefon im Bild atmet */
       if ((!settled && (fine || inView)) || (fine && mx > -9000 && form === 0)) requestAnimationFrame(frame); else running = false;
@@ -730,6 +731,12 @@
       z.el.style.setProperty("--zd", zd.toFixed(3));
       z.el.style.setProperty("--zr", zr.toFixed(0) + "px");
       z.el.classList.toggle("zdone", p >= 1);
+      /* Kundenentscheidung 3.10.2026: der helle Kreis bleibt rund und waechst ueber die Sektion darueber hinaus.
+         Innerhalb der Sektion zeigt das Loch im Deckel den Inhalt, oberhalb der Kante zeichnet .zcircle den Kreis weiter. */
+      if (!z.c) { z.c = document.createElement("span"); z.c.className = "zcircle"; z.c.setAttribute("aria-hidden", "true"); z.el.appendChild(z.c); }
+      var cy = r.height * 0.42, above = zr - cy;
+      if (reduced || above <= 0) { z.c.style.width = z.c.style.height = "0px"; }
+      else { var d = 2 * zr; z.c.style.width = z.c.style.height = d.toFixed(0) + "px"; z.c.style.clipPath = "inset(0 0 " + (zr + cy).toFixed(0) + "px 0)"; }
     });
   }
 
@@ -863,6 +870,17 @@
   /* zusaetzlich am Scroll-Ereignis: gedrosselte Frames (Hintergrund-Tab, Energiesparen) duerfen den Knopf nicht auf altem Untergrund lassen */
   window.addEventListener("scroll", function () { uiTick(); }, { passive: true });
   window.addEventListener("resize", function () { uiTick(true); });
+
+  /* Buttons: Ein- und Austrittsstelle der Maus fuer den Kreis-Hover (brand-motion.css, --mx/--my) */
+  function btnPoint(e) {
+    var b = e.target && e.target.closest ? e.target.closest(".btn") : null;
+    if (!b || (e.relatedTarget && b.contains(e.relatedTarget))) return;
+    var r = b.getBoundingClientRect();
+    b.style.setProperty("--mx", (e.clientX - r.left).toFixed(0) + "px");
+    b.style.setProperty("--my", (e.clientY - r.top).toFixed(0) + "px");
+  }
+  document.addEventListener("pointerover", btnPoint, { passive: true });
+  document.addEventListener("pointerout", btnPoint, { passive: true });
 
   function brandTick() {
     uiTick();

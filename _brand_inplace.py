@@ -74,17 +74,17 @@ def kommunalkredit(h):
     return cnums_to_mini(h)
 
 
-DEPT_CSS = ("brand-type", "brand-ui", "brand-layout", "brand-motion")
+DEPT_CSS = ("brand-type", "brand-ui", "brand-layout", "brand-motion", "brand-keep")
 
 
 def dept_css(h):
-    """Die vier Abteilungs-Stylesheets (Fonts, Design, Layout, Animation) direkt nach brand.css, einmalig."""
-    if "brand-ui.css" in h:
-        return h
+    """Die Abteilungs-Stylesheets (Fonts, Design, Layout, Animation) und brand-keep.css (bewusst beibehaltene
+    Elemente der alten Seite, Kundenentscheidung 3.10.2026) direkt nach brand.css, einmalig und in fester Reihenfolge."""
     m = re.search(r'<link rel="stylesheet" href="assets/brand\.css\?v=(\d+)">', h)
     if not m:
         return h
     v = m.group(1)
+    h = re.sub(r'\n<link rel="stylesheet" href="assets/brand-[a-z]+\.css\?v=\d+">', "", h)
     links = "".join('\n<link rel="stylesheet" href="assets/%s.css?v=%s">' % (n, v) for n in DEPT_CSS)
     return h.replace(m.group(0), m.group(0) + links, 1)
 

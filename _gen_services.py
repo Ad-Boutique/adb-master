@@ -1902,7 +1902,7 @@ def render_service(s):
         ''' + tags + '''
       </div>
       <p class="ssub" data-fade style="--i:1">''' + s["sub"] + '''</p>
-''' + _dotline(s) + '''      <div data-fade style="--i:2;margin-top:28px"><a class="alink btn-i" href="#anfrage">Direkt anfragen ↓</a></div>
+''' + _dotline(s) + '''      <div data-fade style="--i:2;margin-top:28px"><a class="alink" href="#anfrage">Direkt anfragen ↓</a></div>
 ''' + _dotfield(s) + '''''' + heronum_sec + '''
     </div>
   </section>

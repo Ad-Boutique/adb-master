@@ -1,0 +1,96 @@
+/* ============================================================
+   ad.boutique, bewusst beibehaltene Elemente der alten Seite
+   Kundenentscheidung 3.10.2026 (Screenshots "keep color", "keep button", "keep color 2",
+   "keep button 2", "keep button but not in color"). Gilt auf allen Seiten und schlaegt
+   brand-type, brand-ui, brand-layout und brand-motion. Regeln dazu: _intern/BRAND-RULES.md, Abschnitt 13.
+   ============================================================ */
+
+/* ---------- 1 Textlinks: Versalien, Sperrung, Unterstrich, kein Pill ---------- */
+html body.brand :is(.alink, .zalink, .svc-back, .pwlinks a, .pslinks a) {
+  background: transparent !important; border-radius: 0 !important; box-shadow: none !important;
+  font-family: var(--f-sans) !important; font-weight: 700 !important; text-transform: uppercase !important;
+  line-height: 1.3 !important; height: auto !important; min-height: 0 !important;
+}
+html body.brand .alink {
+  display: inline-flex !important; gap: 10px; align-items: baseline;
+  position: relative; padding: 0 0 4px !important; border: 0 !important;
+  font-size: 12.5px !important; letter-spacing: 0.14em !important; color: inherit;
+}
+html body.brand .alink::after {
+  content: ""; position: absolute; left: 0; bottom: 0; height: 1px; width: 100%;
+  background: currentColor; transform-origin: right; transform: scaleX(0.35);
+  transition: transform var(--d-slow, 0.7s) var(--e-out);
+}
+html body.brand .alink:hover::after { transform: scaleX(1); transform-origin: left; }
+html body.brand :is(.zalink, .pwlinks a, .pslinks a) {
+  display: inline-block !important; padding: 0 0 6px !important; border: 0 !important; border-bottom: 1px solid currentColor !important;
+  font-size: 12px !important; letter-spacing: 0.16em !important; color: var(--ink);
+  transition: color var(--d-fast, 0.2s) ease, border-color var(--d-fast, 0.2s) ease;
+}
+html body.brand :is(.fg-dark, [data-fg="light"], .panelscroll) :is(.zalink, .pwlinks a, .pslinks a, .alink) { color: var(--paper); }
+html body.brand :is(.fg-dark, [data-fg="light"], .panelscroll) :is(.zalink, .pwlinks a, .pslinks a) { border-bottom-color: rgba(244,243,235,0.42) !important; }
+/* Hover: nie Lime (Brand-Regel), sondern volle Deckkraft der Linie */
+html body.brand :is(.zalink, .pwlinks a, .pslinks a):hover { border-bottom-color: currentColor !important; }
+html body.brand .svc-back {
+  padding: 0 !important; border: 0 !important; font-size: 11px !important; letter-spacing: 0.18em !important;
+  color: var(--grey-dark) !important; width: auto !important;
+}
+html body.brand .svc-back:hover { color: var(--ink) !important; }
+@media (max-width: 860px) {
+  html body.brand .svc-back { padding: 12px 14px !important; margin: -12px -14px; }
+  html body.brand :is(.zalink, .alink) { padding-top: 6px !important; padding-bottom: 8px !important; }
+}
+
+/* ---------- 2 Punktzeile (strategen, kreative, performance-nerds): Lime-Punkte mit schwarzem Ring ---------- */
+html body.brand .dotline span::before {
+  background: transparent !important; box-shadow: inset 0 0 0 1.5px var(--ink) !important; width: 8px; height: 8px;
+}
+html body.brand .dotline span.on::before { background: var(--lime) !important; box-shadow: 0 0 0 1px var(--ink) !important; }
+html body.brand :is(.fg-dark, [data-fg="light"], .chero) .dotline span::before { box-shadow: inset 0 0 0 1.5px var(--paper) !important; }
+html body.brand :is(.fg-dark, [data-fg="light"], .chero) .dotline span.on::before { background: var(--lime) !important; box-shadow: none !important; }
+
+/* ---------- 3 Hinweis "Antippen" unter der Punktgrafik ---------- */
+html body.brand .dothint {
+  font-size: 11.5px !important; font-weight: 700 !important; letter-spacing: 0.12em !important; text-transform: uppercase !important;
+  color: var(--grey-dark);
+}
+html body.brand .dothint::before { background: var(--lime) !important; box-shadow: 0 0 0 1px var(--ink) !important; }
+
+/* ---------- 4 Punktgrafiken: gezaehlte Punkte Lime mit Ring, der Rest grau gefuellt ---------- */
+html body.brand :is(.dotgraph i, .ratedots i) {
+  background: rgba(16,16,16,0.1) !important; box-shadow: none !important; transform: scale(0.55) !important;
+}
+html body.brand :is(.dotgraph i.on, .ratedots i.on) {
+  background: var(--lime) !important; box-shadow: inset 0 0 0 1px rgba(16,16,16,0.55) !important; transform: none !important;
+}
+html body.brand :is(.dotbars .dots i, .kpi .kdots .dots i) {
+  background: rgba(16,16,16,0.1) !important; box-shadow: none !important; transform: scale(0.5) !important;
+}
+html body.brand :is(.dotbars .dots i.on, .kpi .kdots .dots i.on) { background: var(--ink) !important; box-shadow: none !important; transform: none !important; }
+html body.brand :is(.dotbars .row.hi .dots i.on, .kpi .kdots .row.hi .dots i.on) {
+  background: var(--lime) !important; box-shadow: inset 0 0 0 1px rgba(16,16,16,0.55) !important;
+}
+/* auf Schwarz: grau-transparent, gezaehlt Cream, hervorgehoben und Waffel Lime ohne Ring */
+html body.brand :is(.fg-dark, [data-fg="light"], .kapsec--dark) :is(.dotgraph i, .ratedots i, .dotbars .dots i, .kpi .kdots .dots i) { background: rgba(244,243,235,0.14) !important; }
+html body.brand :is(.fg-dark, [data-fg="light"], .kapsec--dark) :is(.dotbars .dots i.on, .kpi .kdots .dots i.on) { background: var(--paper) !important; }
+html body.brand :is(.fg-dark, [data-fg="light"], .kapsec--dark) :is(.dotgraph i.on, .ratedots i.on, .dotbars .row.hi .dots i.on, .kpi .kdots .row.hi .dots i.on) { background: var(--lime) !important; box-shadow: none !important; }
+/* Zeitleiste auf Schwarz wie frueher */
+html body.brand .tldots i { background: rgba(244,243,235,0.14) !important; box-shadow: none !important; transform: scale(0.5) !important; }
+html body.brand .tldots i.on { transform: none !important; }
+html body.brand .tldots i.h.on { background: transparent !important; box-shadow: inset 0 0 0 2px var(--lime) !important; }
+html body.brand .tldots i.b.on { background: var(--paper) !important; }
+html body.brand .tldots i.g.on { background: rgba(244,243,235,0.22) !important; }
+html body.brand .tldots i.t.on { background: var(--lime) !important; }
+/* Leinwand-Punktfeld (brand.js liest diese Werte) */
+html body.brand canvas.dotfield { --g-on: #CDFF00; --g-ring: rgba(16,16,16,0.6); --g-off: rgba(16,16,16,0.16); }
+
+/* ---------- 5 Startseite: der helle Kreis waechst ueber die Sektion darueber hinaus ---------- */
+html body.brand .dotzoom { z-index: 2; }
+html body.brand .dotzoom .zcircle {
+  position: absolute; left: 50%; top: 42%; z-index: 4; pointer-events: none; border-radius: 50%;
+  width: 0; height: 0; transform: translate(-50%, -50%); background: var(--paper);
+}
+html body.brand .dotzoom--dark .zcircle { background: var(--paper); }
+@media (prefers-reduced-motion: reduce) { html body.brand .dotzoom .zcircle { display: none; } }
+/* helle Haelfte im dunklen Startseiten-Hero: Ring wie auf Cream */
+html body.brand :is(.hpitch, .bg-paper, .fg-light) .dotline span.on::before { box-shadow: 0 0 0 1px var(--ink) !important; }

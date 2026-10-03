@@ -262,3 +262,30 @@ body.brand canvas.dotfield { --g-on: #101010; --g-best: #CDFF00; --g-line: rgba(
 .brand .chrome [data-ug="photo"] { text-shadow: 0 1px 12px rgba(16,16,16,0.35) !important; }
 body.brand.menuopen .chrome :is(.logo, .logo i, .ctc, .hmenu) { color: var(--paper) !important; text-shadow: none !important; }
 body.brand.menuopen .chrome .hmenu i { background: var(--paper) !important; }
+
+/* ---------- Buttons: Kreis-Hover (3.10.2026). Beim Ueberfahren waechst ein Kreis von der Eintrittsstelle der Maus
+   (brand.js setzt --mx/--my) und fuellt den Pill; beim Verlassen zieht er sich zur Austrittsstelle zurueck.
+   Je Variante eine Kreisfarbe (--hv), Textfarbe (--hc) und Randfarbe (--hb), alles Brand-Paare:
+   nie Lime-Text auf Schwarz, Lime-Kreis nur auf hellem Grund. ---------- */
+body.brand .btn:not(#_) { position: relative; isolation: isolate; overflow: hidden; --hv: var(--lime); --hc: var(--ink); --hb: var(--ink);
+  transition: color calc(var(--d-base) * 0.5) var(--e-out) calc(var(--d-base) * 0.3), border-color var(--d-base) var(--e-out), box-shadow var(--d-fast) var(--e-out), opacity var(--d-fast) var(--e-out); }
+body.brand .btn:not(#_)::before {
+  content: ""; position: absolute; z-index: -1; left: var(--mx, 50%); top: var(--my, 50%);
+  width: 300%; aspect-ratio: 1; border-radius: 50%; background: var(--hv); pointer-events: none;
+  transform: translate(-50%, -50%) scale(0); transition: transform var(--d-base) var(--e-out);
+}
+body.brand .btn:not(#_):is(:hover, :focus-visible):not([disabled])::before { transform: translate(-50%, -50%) scale(1); }
+body.brand .btn:not(#_):is(:hover, :focus-visible):not([disabled]) { color: var(--hc) !important; border-color: var(--hb) !important; }
+body.brand .btn:not(#_):is(.btn--primary, .btn--secondary, .btn--accent, .btn--inverse, .btn--outline-inverse):hover { box-shadow: none !important; }
+body.brand .btn:not(#_).btn--primary         { --hv: var(--lime);  --hc: var(--ink);   --hb: var(--ink); }
+body.brand .btn:not(#_).btn--secondary       { --hv: var(--ink);   --hc: var(--paper); --hb: var(--ink); }
+body.brand .btn:not(#_).btn--accent          { --hv: var(--ink);   --hc: var(--paper); --hb: var(--ink); }
+body.brand .btn:not(#_).btn--inverse         { --hv: var(--ink);   --hc: var(--paper); --hb: var(--paper); }
+body.brand .btn:not(#_).btn--outline-inverse { --hv: var(--paper); --hc: var(--ink);   --hb: var(--paper); }
+body.brand .btn:not(#_).btn--soft-cream      { --hv: var(--ink);   --hc: var(--paper); --hb: var(--ink); }
+body.brand .btn:not(#_).btn--soft-black      { --hv: var(--paper); --hc: var(--ink);   --hb: var(--paper); }
+body.brand .btn:not(#_).btn--soft-lime       { --hv: var(--ink);   --hc: var(--paper); --hb: var(--ink); }
+/* Primary auf Lime-Flaeche: Lime-Kreis waere unsichtbar, dort Cream */
+body.brand :is(.bg-lime, [data-surface="lime"], .lime-sec) .btn:not(#_).btn--primary { --hv: var(--paper); }
+@media (hover: none) { body.brand .btn:not(#_)::before { display: none; } }
+@media (prefers-reduced-motion: reduce) { body.brand .btn:not(#_)::before { transition: none; } body.brand .btn:not(#_) { transition: none; } }

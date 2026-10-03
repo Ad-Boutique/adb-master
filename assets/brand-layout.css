@@ -16,8 +16,8 @@
   --back-top: 96px;       /* Zurueck-Link oben links */
   --h2b: 16px;            /* Headline zu Body */
   --b2btn: 48px;          /* Body zu Buttons */
-  --r-img: 20px;          /* Bilder und Karten im Container */
-  --r-col: 12px;          /* Bilder in der schraegen Collage */
+  --r-img: 16px;          /* Bilder, Karten, Felder (3.10.2026: von 20 auf 16, eine Spur kleiner) */
+  --r-col: 10px;          /* Bilder in der schraegen Collage (3.10.2026: von 12 auf 10) */
 }
 @media (max-width: 767px) {
   :root { --gut: 24px; --sec: 64px; --sec-s: 48px; --sec-xs: 32px; --b2btn: 32px; --hero-in: 96px; --back-top: 80px; }

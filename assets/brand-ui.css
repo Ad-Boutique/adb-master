@@ -33,7 +33,7 @@
 body.brand ::selection { background: var(--lime); color: var(--ink); }
 body.brand { background-color: var(--paper); color: var(--ink); }
 /* Studie: die Demo-Boxen sind Karten (Radius 20, 1-px-Linie), die dunkle Box ist eine schwarze Flaeche mit Cream-Text */
-.brand .stdemo { border-radius: 20px; border-color: rgba(16,16,16,0.16); }
+.brand .stdemo { border-radius: var(--r-img); border-color: rgba(16,16,16,0.16); }
 .brand .stdemo.dk { background: var(--ink); color: var(--paper); border-color: rgba(244,243,235,0.25); }
 .brand .stdemo.dk .op { border-color: rgba(244,243,235,0.25) !important; }
 .brand .stdemo.dk .onum, .brand .stdemo.dk .okpi .l { color: var(--grey) !important; }
@@ -432,7 +432,7 @@ body.brand:has(.bpop .fchip.on:not([data-branche="alle"])) .bbtn { box-shadow: 0
    Dieselbe Karte fuer KPI, Detail, Fit, Prozess und Zitat. Mobile Padding 24.
    ============================================================ */
 .brand .svcard, .brand .kpiboard .kpi, .brand .dcell, .brand .fcard, .brand .pcard, .brand .hproc .hcard, .brand .proofcase .ptile, .brand .qcard {
-  border: 1px solid var(--ink); border-radius: 20px; padding: 32px; gap: 16px;
+  border: 1px solid var(--ink); border-radius: var(--r-img); padding: 32px; gap: 16px;
   background: transparent; box-shadow: none;
 }
 .brand :is(.fg-dark, [data-fg="light"]) :is(.svcard, .kpiboard .kpi, .dcell, .fcard, .pcard, .qcard) { border-color: rgba(244,243,235,0.25); }
@@ -445,7 +445,7 @@ body.brand:has(.bpop .fchip.on:not([data-branche="alle"])) .bbtn { box-shadow: 0
 .brand .svcard ul { margin-top: 0; gap: 8px; }
 .brand .svcard li { font-family: var(--f-ui); font-size: 16px; line-height: 1.4; color: var(--grey-dark); }
 .brand .svcard .see { padding-top: 16px; }
-.brand .kpi .kstrip img { border-radius: 20px; }
+.brand .kpi .kstrip img { border-radius: var(--r-img); }
 /* Zitat-Boxen: freistehende Zitate bekommen keine Flaeche; die Zitat-Karte im KPI-Board ist eine Karte wie die anderen */
 .brand .proofsplit .qbox { border-left-color: var(--line-l); }
 @media (max-width: 767px) {
@@ -454,12 +454,12 @@ body.brand:has(.bpop .fchip.on:not([data-branche="alle"])) .bbtn { box-shadow: 0
 /* Kennzahl auf der Kachel der Startseite: reiner Text im Bild, keine Karte (brand.css .kpi gilt nur im Board) */
 .brand .tile .kpi { background: none; border: 0; border-radius: 0; padding: 0; display: block; gap: 0; top: 16px; right: 16px; }
 /* Case Card und Work-Kacheln (84:50): Radius 20, Beschriftung mit Abstaenden aus der Skala */
-.brand .wt, .brand .tile .tmed { border-radius: 20px; }
+.brand .wt, .brand .tile .tmed { border-radius: var(--r-img); }
 .brand .wt .wpill, .brand .tile .badge { top: 16px; right: 16px; }
 .brand .tile .tlab { margin-top: 16px; gap: 8px; }
 /* Formularfelder: Radius 20, 1-px-Linie, Innenabstand 16/24 */
 .brand .kinput {
-  border: 1px solid rgba(16,16,16,0.25); border-radius: 20px; padding: 15px 23px; background: transparent; color: var(--ink);
+  border: 1px solid rgba(16,16,16,0.25); border-radius: var(--r-img); padding: 15px 23px; background: transparent; color: var(--ink);
   font-family: var(--f-ui); font-size: 17px; line-height: 1.4;
 }
 .brand .kinput:focus { border-color: var(--ink); outline: none; }
