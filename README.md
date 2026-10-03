@@ -75,7 +75,7 @@ Der Build zeigt je Schritt eine Zeile und am Ende alle Warnungen. `STRICT=1 sh _
 python3 _tools/linkcheck.py
 ```
 
-Dazu auf dem Mac `_tools/probe <url> 1440 900 _tools/qa2.js` je Seite (Overflow, Schriften, Overlays). Dieselben Prüfungen laufen in GitHub Actions bei jedem PR.
+Dazu je Seite die Darstellungsprüfung `_tools/qa2.js` (Overflow, Schriften, Overlays): auf dem Mac mit `_tools/probe <url> 1440 900 _tools/qa2.js`, in der Cloud mit `python3 _tools/pwprobe.py js <url> 1440 900 _tools/qa2.js`. In GitHub Actions laufen bei jedem PR der Build, `linkcheck.py`, `_check.py` und ein Secret-Scan; `qa2.js` läuft dort nicht.
 
 ## Deployment
 

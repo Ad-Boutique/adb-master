@@ -86,7 +86,9 @@ def main():
     if "--liste" in sys.argv:
         for p in shipped:
             print("    unreferenziert, ausgeliefert:", p)
+    # Fehlende oder nicht ausgelieferte Referenzen brechen den Build und den GitHub-Check ab
+    return 1 if (missing or hidden) else 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

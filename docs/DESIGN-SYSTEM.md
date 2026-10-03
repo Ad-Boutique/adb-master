@@ -84,8 +84,8 @@ Scripts, gebuendelt zu `site.js`, jede Datei in eigenem Block:
 
 - `assets/site.css` und `assets/site.js` schreibt `_css.py`. Jede Aenderung darin ist beim naechsten Build weg.
 - `_css.py` entfernt Kommentare und ueberfluessige Leerzeichen, laesst aber Reihenfolge, Strings und `url(...)` unangetastet. Die Kaskade bleibt gleich.
-- Der Build (`_build.sh`) ruft `_css.py` vor `_brand_inplace.py` auf. `_brand_inplace.py` stellt aeltere Seitenkoepfe auf die zwei Dateien um, `_bump.py` zaehlt die Cache-Version `?v=` hoch.
-- Jede Seite laedt im Kopf genau: `assets/site.css?v=N`, das Adobe-Fonts-Kit (`use.typekit.net/udf8wjj.css`) und `assets/site.js?v=N` (defer). Neue Seiten bekommen das ueber `HEAD` in `_gen.py`.
+- Der Build (`_build.sh`) ruft `_css.py` vor `_brand_inplace.py` auf. `_brand_inplace.py` stellt aeltere Seitenkoepfe auf die zwei Dateien um, `_bump.py` setzt die Cache-Version `?v=` als Inhalts-Hash (aendert sich nur, wenn sich CSS oder JS aendern).
+- Jede Seite laedt im Kopf genau: `assets/site.css?v=N`, das Adobe-Fonts-Kit (`use.typekit.net/udf8wjj.css`) und `assets/site.js?v=N` (defer), davor Preconnect zu Typekit und Preload fuer Satoshi. Neue Seiten bekommen das ueber `HEAD` in `_gen.py`.
 
 ## Neue Werte und neue Bausteine
 

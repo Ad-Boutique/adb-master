@@ -12,7 +12,7 @@ Stand 03.10.2026. **Entwurf zum Abstimmen zwischen Daniel und Florian.** Nichts 
 - Echte Zahlen aus Reportings, 24 Cases, sechs Leistungsseiten mit FAQ.
 
 **Technische Schulden**
-- 9 von 17 Build-Schritten schreiben fertiges HTML mit regulären Ausdrücken um, statt es aus Vorlagen zu erzeugen. Ändert jemand eine Zeile im Markup, kann ein Schritt still nicht mehr greifen.
+- 10 von 20 Build-Schritten schreiben fertiges HTML mit regulären Ausdrücken um, statt es aus Vorlagen zu erzeugen. Ändert jemand eine Zeile im Markup, kann ein Schritt still nicht mehr greifen.
 - `_gen_services.py` hat rund 2.000 Zeilen und mischt Inhalt, Markup und Logik.
 - Etwa ein Drittel der alten CSS-Regeln (`master.css`) trifft auf keiner Seite mehr etwas, viele Elemente werden zweimal gestylt.
 - Zwei Vorschau-Varianten (`*-v3.html`) und eine Weiterleitungsseite liegen weiter im Repo.
@@ -20,9 +20,9 @@ Stand 03.10.2026. **Entwurf zum Abstimmen zwischen Daniel und Florian.** Nichts 
 
 **Risiken**
 - **Konflikte:** Jeder Build ändert rund 40 HTML-Dateien (Cache-Version, Menü, Datum). Arbeiten zwei Personen parallel, kollidieren diese Dateien fast immer.
-- **Mac-Abhängigkeit:** Posterbilder und Prüfwerkzeuge sind Swift-Programme, laufen nur auf dem Mac (Ersatz siehe `docs/CLOUD-ANLEITUNG.md`).
+- **Mac-Abhängigkeit:** Der Build läuft inzwischen überall (nur Python und Pillow). Die Prüf- und Screenshot-Werkzeuge sind noch Swift-Programme; Ersatz mit Playwright siehe `docs/CLOUD-ANLEITUNG.md`.
 - **DSGVO:** Google Tag Manager und Meta-Pixel dürfen erst nach Einwilligung laden. Das Banner ist gebaut, muss aber vor dem Go-live geprüft und in der Datenschutzerklärung beschrieben werden (inkl. Adobe Fonts).
-- **Öffentliches Repo:** Code, Case-Daten (auch ältere, ausgeblendete Ergebniszahlen in `_content`) und die Git-Historie sind für jeden lesbar. Interne Unterlagen liegen deshalb im privaten Repo `adb-intern`.
+- **Öffentliches Repo:** Code, Case-Daten (auch ältere, ausgeblendete Ergebniszahlen in `_content`, z. B. beim Health-Case) und die Git-Historie sind für jeden lesbar. Der Health-Case steht außerdem schon in Sitemap und Work, obwohl seine Freigabe offen ist. Interne Unterlagen liegen deshalb im privaten Repo `adb-intern`.
 - **Performance:** große Videos (bis 37 MB), keine responsiven Bildgrößen (`srcset`). Die schlimmsten Fälle sind behoben (Videos laden erst bei Bedarf), der Rest steht unten.
 - **Barrierefreiheit:** Grundlagen umgesetzt (Sprunglink, Fokus, Menü), Alt-Texte sind teils sehr allgemein.
 - **Wartbarkeit ohne CMS:** Texte außerhalb der Cases ändert nur, wer Python-Generatoren lesen kann.
@@ -61,7 +61,7 @@ Priorität: **A** muss vor Go-live, **B** bald danach, **C** später. Verantwort
 
 | Aufgabe | Prio | Wer | Status |
 |---|---|---|---|
-| Impressum und Datenschutz als eigene Seiten (heute Links auf die Live-Seite) | A | Daniel | offen |
+| Impressum und Datenschutz als eigene Seiten (Banner und Footer verlinken auf `www.ad.boutique/datenschutz` und `/impressum`, die nach der Domain-Umstellung 404 wären): **Blocker vor dem Live-Schalter** | A | Daniel | offen |
 | Organisationsdaten im Schema: Adresse, Telefon, Gründungsjahr, Gründer | A | Daniel | offen |
 | Freigaben Logowand (Soravia, Raiffeisen, Nordic Spirit) und Soravia-Kachel auf Work | A | Daniel | offen |
 | Ad-Spend-Zahl auf der Startseite (16,7 oder 8,7 Mio. €) bestätigen | A | Daniel | offen |
@@ -81,6 +81,7 @@ Priorität: **A** muss vor Go-live, **B** bald danach, **C** später. Verantwort
 
 | Aufgabe | Prio | Wer | Status |
 |---|---|---|---|
+| Antwortabsatz für Google und KI-Suchen auf den Leistungsseiten wieder sichtbar platzieren (mit dem Wörterbuch-Hero entfallen, steht noch im JSON-LD und in der ersten FAQ) | B | offen | offen |
 | Content-Programm (zwölf Artikel, Benchmark-Report) laut SEO-Masterplan | B | offen | offen |
 | Einträge in Agenturverzeichnissen | B | offen | offen |
 | Generatoren entflechten (Vorlagen statt Nachbearbeitung) | C | offen | offen |

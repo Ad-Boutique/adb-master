@@ -5,7 +5,7 @@ Zwei Vorlagen, ein Rahmen:
   dossier  Performance-Cases (_gen.py):  Hero, Intro, Kennzahlen, [Bausteine], Next-Case
   web      Website-Cases (_gen_web.py):   Hero, Intro, Kennzahlen, [Bausteine], Next-Website
 Die Bausteine dazwischen kommen in der Reihenfolge der Liste "bausteine" der Inhaltsdatei auf die Seite.
-Felder und Beispiele: _intern/CMS-CASES.md. Das Markup ist das der bisherigen Generatoren, Zeichen fuer Zeichen;
+Felder und Beispiele: docs/CMS-CASES.md. Das Markup ist das der bisherigen Generatoren, Zeichen fuer Zeichen;
 die Nachlaeufe (_imgdim, _brand_inplace, _footer, _ui_markup, _headlines, _seo) setzen darauf auf."""
 import json
 import os

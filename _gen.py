@@ -17,9 +17,9 @@ HEAD = '''<!doctype html>
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="preconnect" href="https://p.typekit.net" crossorigin>
 <link rel="preload" href="assets/fonts/Satoshi-Variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/site.css?v=41326722">
+<link rel="stylesheet" href="assets/site.css?v=64467214">
 <link rel="stylesheet" href="https://use.typekit.net/udf8wjj.css">
-<script src="assets/site.js?v=41326722" defer></script>
+<script src="assets/site.js?v=64467214" defer></script>
 </head>
 <body style="background-color:{bodybg}" class="on-light brand">
 
@@ -146,7 +146,7 @@ def logocycle(names, slots=3):
 
 # ============================================================
 # CASES: Inhalte in _content/cases/<slug>.json (Vorlage "dossier"), Bausteine in _bausteine.py,
-# Laden und Pruefen in _cases.py. Anleitung fuer neue Cases: _intern/CMS-CASES.md.
+# Laden und Pruefen in _cases.py. Anleitung fuer neue Cases: docs/CMS-CASES.md.
 # Die Reihenfolge der Kette "performance" (Feld reihenfolge) ist die Staerke laut Briefing.
 # ============================================================
 from _cases import PERFORMANCE

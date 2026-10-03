@@ -14,7 +14,7 @@ Alle Punkt-Grafiken fuellen sich beim Ankommen (brand.js: .kpi, .dotgraph, .dotb
 
 Die Karten der Cases stehen in _content/cases/<slug>.json (Feld kennzahlen). Dort heissen die Arten sprung, zaehler,
 text, medien und zitat und die Felder deutsch (label, vorher, wert, badge, reihen, waffel, ...); _cases.py uebersetzt
-sie in die Kurzform, die card() hier rendert. Felder: _intern/CMS-CASES.md, Abschnitt 5."""
+sie in die Kurzform, die card() hier rendert. Felder: docs/CMS-CASES.md, Abschnitt 5."""
 import os
 
 HTML_ARROW = '<span class="karrow" aria-hidden="true">&rarr;</span>'
@@ -127,7 +127,7 @@ def L(c, href, text="Case ansehen"):
 
 # ---------------------------------------------------------------- Daten
 # Die Karten der Cases stehen in den Inhaltsdateien _content/cases/<slug>.json (Feld "kennzahlen"), siehe _cases.py
-# und _intern/CMS-CASES.md. Karten, die mehrfach gebraucht werden (Leistungsseiten, Web-Case Twist'n Sparkle),
+# und docs/CMS-CASES.md. Karten, die mehrfach gebraucht werden (Leistungsseiten, Web-Case Twist'n Sparkle),
 # tragen dort eine id und werden hier mit K("id") geholt.
 from _cases import HAND as _HAND, board as _case_board, karte as K
 

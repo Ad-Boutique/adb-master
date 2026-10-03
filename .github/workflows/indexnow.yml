@@ -4,6 +4,8 @@ name: IndexNow nach Deploy
 on:
   push:
     branches: [main]
+permissions:
+  contents: read
 jobs:
   indexnow:
     if: ${{ vars.ADB_LIVE == '1' }}

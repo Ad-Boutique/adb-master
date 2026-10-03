@@ -45,5 +45,6 @@ Settings, General, Pull Requests:
 
 ## 6. Später, beim Go-live
 
-- [ ] Repository-Variable `ADB_LIVE=1` und Secret `INDEXNOW_KEY` setzen (aktiviert den IndexNow-Workflow).
+- [ ] IndexNow: einen Schlüssel erzeugen, die Datei `<schluessel>.txt` (Inhalt: der Schlüssel) im Repo-Root committen, damit Vercel sie ausliefert; dann Repository-Variable `ADB_LIVE=1` und Secret `INDEXNOW_KEY` setzen (aktiviert den IndexNow-Workflow).
 - [ ] In Vercel: Umgebungsvariablen `RESEND_API_KEY` und `ANFRAGE_TO` für das Kontaktformular.
+- [ ] In Vercel, Firewall: Mengenbegrenzung für `/api/anfrage` (z. B. 10 Anfragen je IP und Stunde), damit niemand das Postfach und das Resend-Kontingent flutet.

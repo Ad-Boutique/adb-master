@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""SEO-Schicht fuer den Master (Phase 0 des Masterplans, siehe _intern/SEO-MASTERPLAN.md).
+"""SEO-Schicht fuer den Master (Phase 0 des Masterplans, siehe SEO-MASTERPLAN.md im privaten Repo adb-intern).
 
 Laeuft als vorletzter Schritt (vor _bump.py) ueber alle HTML-Seiten und setzt je Seite:
 Title, Meta Description, Robots, Canonical, Open Graph, Twitter Card, JSON-LD (Organization,
@@ -27,7 +27,8 @@ LIVE = os.environ.get("ADB_LIVE") == "1"
 BASE = "https://www.ad.boutique"
 TODAY = datetime.date.today()
 MONTHS = ["Jänner", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"]
-STAND = "%d. %s %d" % (TODAY.day, MONTHS[TODAY.month - 1], TODAY.year)
+# Stand im Footer nur mit Monat: so aendert ein Build an einem anderen Tag nicht alle Seiten (CI-Pruefung "HTML aktuell")
+STAND = "%s %d" % (MONTHS[TODAY.month - 1], TODAY.year)
 GTM = "GTM-KNJKF4D5"
 PIXEL = "371950892334202"
 
@@ -298,6 +299,9 @@ def apply(f, r, live):
     # kein GTM-noscript-iframe mehr: es wuerde GTM ohne Einwilligung laden (auch aus aelteren Live-Staenden entfernen)
     h = re.sub(r"\n?<!-- GTM noscript --><noscript>.*?</noscript>", "", h, flags=re.S)
 
+    # Seitenname fuer Skripte (Herkunft im Anfrage-Funnel): unabhaengig vom Pfad, der live sauber ist (/services/...)
+    if not re.search(r'<body[^>]*\sdata-page=', h):
+        h = re.sub(r'<body\b', '<body data-page="%s"' % f[:-5], h, count=1)
     # H1-Regel
     if r.get("h1label") and 'class="label h1-seo"' not in h:
         lab = H.escape(r["h1label"], quote=False)

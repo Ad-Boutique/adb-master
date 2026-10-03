@@ -1,6 +1,6 @@
 /* ============================================================
    ad.boutique Design-Tokens: die eine Quelle fuer jeden Gestaltungswert der Seite.
-   Regeln: _intern/BRAND-RULES.md. Anleitung in einfachem Deutsch: _intern/DESIGN-SYSTEM.md.
+   Regeln: docs/BRAND-RULES.md. Anleitung in einfachem Deutsch: docs/DESIGN-SYSTEM.md.
    Aendern: Wert hier anpassen, dann "sh _build.sh" laufen lassen (buendelt alles nach assets/site.css).
    Diese Datei steht in site.css ganz vorne (_css.py). master.css und die brand-*.css verweisen nur auf diese Namen.
    Aufbau: 1 Farben, 2 Transparenzstufen, 3 Linien und Grautoene, 4 Schriften und Typo-Skala, 5 Zeilenhoehen,

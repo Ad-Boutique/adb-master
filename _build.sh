@@ -22,4 +22,11 @@ if [ -s "$WARN" ]; then
 else
   echo "Warnungen: keine"
 fi
-if [ -n "$1" ]; then rsync -a --delete --exclude .git --exclude .claude --exclude _intern ./ "$1"/; echo "Vorschau: $1"; fi
+if [ -n "$1" ]; then
+  # rsync --delete loescht im Ziel: nur temporaere Vorschau-Ordner zulassen, damit ein Tippfehler nichts zerstoert
+  case "$1" in
+    /tmp/*|/private/tmp/*|"${TMPDIR%/}"/*) ;;
+    *) echo "Vorschau-Ziel muss unter /tmp oder \$TMPDIR liegen: $1"; exit 1 ;;
+  esac
+  rsync -a --delete --exclude .git --exclude .claude --exclude _intern ./ "$1"/; echo "Vorschau: $1"
+fi

@@ -85,7 +85,9 @@
     e.preventDefault(); e.stopPropagation();
     var href = bk.getAttribute("href") || "work.html", me = location.pathname.split("/").pop() || "index.html";
     var saved = null; try { saved = JSON.parse(sessionStorage.getItem("adbflipFrom") || "null"); } catch (err) {}
-    var rect = (saved && saved.href === me && saved.rect) ? saved.rect : null;
+    /* Vergleich ueber den aufgeloesten Pfad: gilt fuer case-x.html (Vorschau) und /referenzen/x (live) */
+    var same = false; try { same = !!saved && new URL(saved.href, location.href).pathname === location.pathname; } catch (err) {}
+    var rect = (same || (saved && saved.href === me)) && saved.rect ? saved.rect : null;
     var hero = document.querySelector(".chero"), img = hero && hero.querySelector("img");
     var bg = document.createElement("div"); bg.className = "flipbg"; body.appendChild(bg);
     var x = document.createElement("div"); x.className = "flipx";

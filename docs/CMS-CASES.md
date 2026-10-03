@@ -235,7 +235,7 @@ python3 _cases.py                                  # nur prüfen
 sh _build.sh /private/tmp/adb-master-preview       # ganze Kette, danach Vorschau auf http://localhost:8743
 ```
 
-`_build.sh` prüft als ersten Schritt die Inhaltsdateien und bricht bei einem Fehler mit Datei und Feld ab. Der Build läuft auf dem Mac (`sips` für Bildmaße). Alle Schritte sind mehrfach ausführbar.
+`_build.sh` prüft als ersten Schritt die Inhaltsdateien und bricht bei einem Fehler mit Datei und Feld ab. Der Build braucht nur Python und Pillow und läuft auf dem Mac, unter Linux und in der Cloud. Alle Schritte sind mehrfach ausführbar.
 
 ## 8. Handgebaute Cases: Prüfung und Entscheidung
 
@@ -268,7 +268,7 @@ Was zum Aktivieren fehlt:
 
 1. Login-Anbieter. Das GitHub-Backend braucht einen OAuth-Dienst, der den GitHub-Login für Decap abwickelt. Netlify Identity und Git Gateway gibt es nur auf Netlify; die Seite läuft auf GitHub Pages bzw. Vercel. Optionen: eine GitHub-OAuth-App plus ein kleiner OAuth-Proxy (z. B. als Vercel-Function oder Cloudflare Worker, fertige Vorlagen gibt es für Decap), oder ein gehosteter Dienst. Danach in `config.yml` `base_url` (heute Platzhalter `https://OAUTH-DIENST.example`) und gegebenenfalls `auth_endpoint` eintragen. Zugang bekommt, wer Schreibrechte auf `Ad-Boutique/adb-master` hat.
 2. Ablage: `index.html` und `config.yml` nach `admin/` im Repo kopieren (ausgeliefert unter `/admin`), dort mit `noindex`.
-3. Build nach dem Speichern: Decap schreibt nur die JSON-Dateien und Bilder. Die HTML-Seiten entstehen durch `_build.sh`, das heute lokal auf dem Mac läuft (`sips`). Entweder nach jeder Freigabe lokal bauen und die Seiten committen, oder eine GitHub Action einrichten, die baut und committet; dafür müssten `_imgdim.py` und `_bausteine.py` (Bildmaße der Galerie) statt `sips` Pillow nutzen.
+3. Build nach dem Speichern: Decap schreibt nur die JSON-Dateien und Bilder. Die HTML-Seiten entstehen durch `_build.sh` (nur Python und Pillow, läuft auch in GitHub Actions). Entweder nach jeder Freigabe bauen und die Seiten committen, oder eine GitHub Action einrichten, die baut und committet.
 4. Bild-Ordner je Case: Decap legt Uploads in `assets/case/` ab. Wer je Case einen Unterordner will, stellt `media_folder` der Sammlungen auf einen Pfad mit dem Slug um.
 5. Decap schreibt die JSON-Dateien mit eigener Formatierung (alles ausgeklappt). Das ist für den Build gleichgültig.
 

@@ -30,11 +30,20 @@ module.exports = async function handler(req, res) {
 
   if (req.method !== "POST") return send(405, { ok: false, error: "method" });
 
+  // Nur Anfragen von der eigenen Seite (Live-Domain, Vercel-Vorschauen, lokal). Kein Ersatz fuer eine
+  // Mengenbegrenzung pro IP: die gehoert als Firewall-Regel in Vercel (docs/GITHUB-EINSTELLUNGEN.md, Abschnitt 6).
+  const origin = String(req.headers.origin || req.headers.referer || "");
+  if (origin && !/^https?:\/\/(([a-z0-9-]+\.)*ad\.boutique|[a-z0-9-]+\.vercel\.app|localhost(:\d+)?|127\.0\.0\.1(:\d+)?)(\/|$)/i.test(origin)) {
+    return send(403, { ok: false, error: "herkunft" });
+  }
+
   let b;
   try { b = await readBody(req); } catch (e) { return send(400, { ok: false, error: "json" }); }
+  if (!b || typeof b !== "object") return send(400, { ok: false, error: "json" });
 
-  // Honeypot: echte Besucher sehen das Feld nicht. Gefuellt heisst Bot; still "ok" melden, nichts senden.
-  if (clean(b.website, MAX.short)) return send(200, { ok: true });
+  // Honeypot: echte Besucher sehen das Feld nicht. Gefuellt heisst vermutlich Bot. Trotzdem senden, aber mit
+  // Kennzeichnung im Betreff, damit eine echte Anfrage (z. B. durch Autofill) nicht verloren geht.
+  const spam = !!clean(b.website, MAX.short);
 
   const d = {
     wahl: clean(b.wahl, MAX.text),
@@ -71,7 +80,7 @@ module.exports = async function handler(req, res) {
         from: process.env.ANFRAGE_FROM || "Anfrage <anfrage@ad.boutique>",
         to,
         reply_to: d.mail,
-        subject: "Anfrage: " + (d.wahl || d.projekt || "Projekt").slice(0, 120),
+        subject: (spam ? "[Spamverdacht] " : "") + "Anfrage: " + (d.wahl || d.projekt || "Projekt").replace(/\s+/g, " ").slice(0, 120),
         text,
         html,
       }),
