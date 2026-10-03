@@ -25,6 +25,7 @@ FOOTER = '''  <footer class="ftr" data-bg="#101010" data-fg="light">
         <nav class="ftr-links" aria-label="Rechtliches und Social Media">
           <a href="https://www.ad.boutique/impressum" target="_blank" rel="noopener">Impressum</a>
           <a href="https://www.ad.boutique/datenschutz" target="_blank" rel="noopener">Datenschutz</a>
+          <a href="#cookie-einstellungen" data-consent-open>Cookie-Einstellungen</a>
           <a href="https://www.instagram.com/ad.boutique.vienna/" target="_blank" rel="noopener">Instagram</a>
           <a href="https://www.linkedin.com/company/ad-boutique/" target="_blank" rel="noopener">LinkedIn</a>
         </nav>

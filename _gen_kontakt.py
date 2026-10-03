@@ -128,6 +128,10 @@ body = '''<main class="kmain">
             <label for="kphone">Telefon, wenn ein Anruf schneller geht</label>
             <input id="kphone" class="kinput" type="tel" placeholder="optional">
           </div>
+          <div class="khp" aria-hidden="true">
+            <label for="kweb">Website (bitte leer lassen)</label>
+            <input id="kweb" type="text" name="website" tabindex="-1" autocomplete="off">
+          </div>
         </div>
         <div class="ksum">
           <span class="kslab">Das schicken Sie ab</span>
@@ -143,7 +147,7 @@ body = '''<main class="kmain">
       </div>
 
       <!-- Bestaetigung -->
-      <div class="kstep kdone" data-s="4">
+      <div class="kstep kdone" data-s="4" data-ok-h="Danke, Ihre Anfrage ist da." data-ok-t="Ein Gründer sieht sie sich an und antwortet unter 24 Stunden, auch wenn es ein Nein wird. Eilt es, schreiben Sie direkt an hello@ad.boutique.">
         <div class="kq">
           <h2 class="kh">Ihr Mailprogramm ist offen.</h2>
           <p class="kt">Die Anfrage ist vorformuliert, Sie müssen nur noch senden. Kommt nichts an, schreiben Sie direkt an <a href="mailto:hello@ad.boutique">hello@ad.boutique</a>.</p>

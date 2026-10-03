@@ -25,6 +25,8 @@
     { "source": "/service-strategie.html", "destination": "/services/digitale-strategie", "permanent": true },
     { "source": "/service-ecommerce.html", "destination": "/services/e-commerce", "permanent": true },
     { "source": "/service-:slug.html", "destination": "/services/:slug", "permanent": true },
+    { "source": "/case-web-funkhausliving.html", "destination": "/referenzen/premium-neubau", "permanent": true },
+    { "source": "/referenzen/web-funkhausliving", "destination": "/referenzen/premium-neubau", "permanent": true },
     { "source": "/case-:slug.html", "destination": "/referenzen/:slug", "permanent": true },
     { "source": "/checkout", "destination": "/kontakt", "permanent": true },
     { "source": "/paypal-checkout", "destination": "/kontakt", "permanent": true },
@@ -35,6 +37,13 @@
     { "source": "/en/:path*", "destination": "/", "permanent": false }
   ],
   "headers": [
+    { "source": "/(.*)", "headers": [
+      { "key": "X-Content-Type-Options", "value": "nosniff" },
+      { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+      { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
+      { "key": "Content-Security-Policy", "value": "frame-ancestors 'self'" },
+      { "key": "Content-Security-Policy-Report-Only", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.googletagmanager.com https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://use.typekit.net https://p.typekit.net; font-src 'self' data: https://use.typekit.net; img-src 'self' data: https://p.typekit.net https://www.googletagmanager.com https://*.google-analytics.com https://*.googletagmanager.com https://www.facebook.com; media-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://www.facebook.com https://connect.facebook.net; frame-src https://www.googletagmanager.com https://www.facebook.com; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; frame-ancestors 'self'" }
+    ] },
     { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
     { "source": "/(.*)\\.html", "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }] }
   ]

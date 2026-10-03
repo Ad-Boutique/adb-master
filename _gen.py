@@ -14,9 +14,12 @@ HEAD = '''<!doctype html>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 
-<link rel="stylesheet" href="assets/site.css?v=188">
+<link rel="preconnect" href="https://use.typekit.net" crossorigin>
+<link rel="preconnect" href="https://p.typekit.net" crossorigin>
+<link rel="preload" href="assets/fonts/Satoshi-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/site.css?v=41326722">
 <link rel="stylesheet" href="https://use.typekit.net/udf8wjj.css">
-<script src="assets/site.js?v=188" defer></script>
+<script src="assets/site.js?v=41326722" defer></script>
 </head>
 <body style="background-color:{bodybg}" class="on-light brand">
 
@@ -29,28 +32,31 @@ HEAD = '''<!doctype html>
 
 '''
 
+# Vorschaubilder im Menue: kleine Fassungen (300 px) aus assets/img/menu/, erst beim Oeffnen geladen (data-src, _perf.py, master.js)
+from _perf import menu_tag as _mimg
+
 MENU_ITEMS = [
     ("index.html", "Start", '''<span class="mv">
-        <span class="half-d"><img loading="lazy" decoding="async" src="assets/img/funkhaus.jpg" alt=""></span>
+        <span class="half-d">''' + _mimg("funkhaus") + '''</span>
         <span class="half-p"></span>
         <span class="bars" style="left:56%;top:26%;width:34%"><i style="width:92%"></i><i style="width:76%"></i><i style="width:84%"></i><i style="width:30%;height:8px;margin-top:5px"></i></span>
       </span>'''),
     ("work.html", "Work", '''<span class="mv">
         <span class="grid4">
-          <span><img loading="lazy" decoding="async" src="assets/img/isi.jpg" alt=""></span>
-          <span><img loading="lazy" decoding="async" src="assets/img/a_funk2.jpg" alt=""></span>
+          <span>''' + _mimg("isi") + '''</span>
+          <span>''' + _mimg("a_funk2") + '''</span>
           <span style="background:#1C2530"></span>
-          <span><img loading="lazy" decoding="async" src="assets/img/a_otta1.jpg" alt=""></span>
+          <span>''' + _mimg("a_otta1") + '''</span>
         </span>
       </span>'''),
     ("index.html#leistungen", "Leistungen", '''<span class="mv" style="background:#F3EDE1">
         <span class="bars" style="left:8%;top:22%;width:40%"><i style="width:95%;height:9px"></i><i style="width:70%;height:9px"></i><i style="width:50%;margin-top:6px"></i><i style="width:26%;height:10px;margin-top:8px"></i></span>
-        <img loading="lazy" decoding="async" src="assets/img/isi.jpg" alt="" style="position:absolute;right:6%;top:18%;width:36%;height:64%;border-radius:2px">
+        ''' + _mimg("isi", ' style="position:absolute;right:6%;top:18%;width:36%;height:64%;border-radius:2px"') + '''
       </span>'''),
     ("agentur.html", "Agentur", '''<span class="mv">
         <span class="grid4" style="grid-template-columns:1fr 1fr">
-          <span><img loading="lazy" decoding="async" src="assets/img/retreat-08.jpg" alt=""></span>
-          <span><img loading="lazy" decoding="async" src="assets/img/retreat-01.jpg" alt=""></span>
+          <span>''' + _mimg("retreat-08") + '''</span>
+          <span>''' + _mimg("retreat-01") + '''</span>
         </span>
       </span>'''),
     ("kontakt.html", "Kontakt", '''<span class="mv" style="background:#EFE7D6">

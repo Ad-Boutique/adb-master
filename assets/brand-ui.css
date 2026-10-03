@@ -569,3 +569,50 @@ body.brand.on-light .sprog i { background: var(--ink); box-shadow: 0 0 0 1px var
 .brand .row .track, .brand .r .t2 { height: 1px !important; }
 /* leere Portraitplaetze (Agentur): Bildplatzhalter-Ton, Initiale Schwarz; Anordnung unveraendert */
 .brand .pportrait > span { background: var(--ph) !important; color: var(--ink) !important; }
+
+/* ============================================================
+   10 Einwilligungs-Banner (J4, master.js "Einwilligung"): Karte unten links, Schwarz mit Cream-Text, zwei gleichwertige
+   Knoepfe (beide Inverse), Textlink "Datenschutz". Unter 1024 px ueber dem Menue-Knopf, damit er frei bleibt.
+   ============================================================ */
+.brand .consent {
+  position: fixed; left: var(--gut); bottom: var(--sp-4); z-index: var(--z-consent);
+  width: min(400px, calc(100% - 2 * var(--gut))); box-sizing: border-box;
+  padding: var(--sp-3); border-radius: var(--r-img); border: 1px solid var(--line-on-black);
+  background: var(--ink); color: var(--paper); box-shadow: var(--sh-soft);
+  font-family: var(--f-ui); font-size: var(--fs-small); line-height: var(--lh-body);
+  opacity: 0; visibility: hidden; transform: translateY(var(--sp-2));
+  transition: opacity var(--d-base) var(--e-out), transform var(--d-base) var(--e-out), visibility 0s var(--d-base);
+}
+.brand .consent.on { opacity: 1; visibility: visible; transform: none; transition: opacity var(--d-base) var(--e-out), transform var(--d-base) var(--e-out), visibility 0s 0s; }
+.brand .consent .consent-t { margin: 0; font-weight: 400; color: var(--paper); }
+.brand .consent .consent-t a { color: var(--paper); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.brand .consent .consent-b { display: flex; flex-wrap: wrap; gap: var(--sp-1); margin-top: var(--sp-3); }
+.brand .consent .consent-b .btn:not(#_) { flex: 1 1 0; min-width: max-content; justify-content: center; }
+@media (max-width: 1023px) {
+  .brand .consent { bottom: calc(var(--mbtn-bottom) + var(--mbtn-size) + var(--sp-2)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand .consent, .brand .consent.on { transition: none; transform: none; }
+}
+
+/* ============================================================
+   11 Formular-Schutz und Barrierefreiheit (J5, B5)
+   ============================================================ */
+/* Honeypot im Kontakt-Funnel: fuer Menschen unsichtbar und nicht erreichbar, ausserhalb des Rasters */
+.brand .khp { position: absolute !important; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+/* Sprunglink "Zum Inhalt" (Markup von _perf.py): unsichtbar, bis er per Tastatur den Fokus bekommt */
+.brand .skip {
+  position: fixed; left: var(--gut); top: var(--sp-2); z-index: var(--z-skip);
+  padding: var(--btn-pad); border-radius: var(--r-pill); background: var(--ink); color: var(--paper);
+  font-family: var(--f-ui); font-size: var(--fs-ui); font-weight: 500; line-height: var(--lh-ui); text-decoration: none;
+  transform: translateY(-200%); opacity: 0; pointer-events: none;
+}
+.brand .skip:focus, .brand .skip:focus-visible { transform: none; opacity: 1; pointer-events: auto; outline: 2px solid var(--lime); outline-offset: 2px; }
+.brand main:focus { outline: none; }
+/* Sichtbarer Tastaturfokus fuer Links, Knoepfe ohne Kreis-Hover und Formularfelder (statt outline: none) */
+body.brand a:focus-visible, body.brand button:not(.btn):focus-visible, body.brand [tabindex]:not(main):focus-visible {
+  outline: 2px solid currentColor; outline-offset: 3px;
+}
+body.brand .kinput:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+/* Kontakt: Schrittnamen, Hinweis und Platzhalter in Schwarz 64 % statt 50 % (Kontrast etwa 5,4 : 1 statt 3,5 : 1 auf Cream) */
+.brand .kprog .kp:not(.on):not(.done), .brand .knav .khint, .brand .ksumbody .kempty { color: var(--ink-a64); }

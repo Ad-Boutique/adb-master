@@ -9,6 +9,15 @@
   /* Bewegungswerte aus brand-motion.css, bereitgestellt von brand.js; Rueckfall auf dieselbe Skala */
   var MO = window.ADB_MOTION || { fast: 200, base: 400, slow: 700, chor: 1200, stagger: 80, ease: "cubic-bezier(0.16, 1, 0.3, 1)" };
 
+  /* ---------- Spaete Quellen: Videos und Menue-Bilder tragen data-src (_perf.py), die Quelle kommt erst bei Bedarf ---------- */
+  function vsrc(el) {
+    var s = el.getAttribute("data-src");
+    if (s) { el.removeAttribute("data-src"); el.setAttribute("src", s); }
+    return el;
+  }
+  function vplay(v) { vsrc(v); var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+  window.ADB_VSRC = vsrc;
+
   /* ---------- Page-Transition ---------- */
   var pt = document.querySelector(".pt");
   /* Kam die Navigation aus der Tile-Expansion, sofort ohne schwarze Blende starten */
@@ -30,8 +39,12 @@
       requestAnimationFrame(function () { pt.classList.add("gone"); });
     });
   }
+  /* Start, sobald das HTML steht und ein Frame gezeichnet ist (nicht erst bei load: Bilder und Videos halten load auf) */
+  function enterSoon() { requestAnimationFrame(function () { enterPage(); }); }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", enterSoon);
+  else enterSoon();
   window.addEventListener("load", enterPage);
-  setTimeout(enterPage, 1400); /* Fallback, falls load haengt */
+  setTimeout(enterPage, 600); /* Rueckfall, falls kein Frame kommt (Hintergrund-Tab) */
 
   function leaveTo(href) {
     if (reduced || !pt) { location.href = href; return; }
@@ -107,13 +120,44 @@
   /* ---------- Menue ---------- */
   var mbtn = document.querySelector(".mbtn");
   var mdim = document.querySelector(".mdim");
-  function toggleMenu() { document.body.classList.toggle("menuopen"); }
+  /* Vorschaubilder im Menue (J2): erst beim ersten Oeffnen oder wenn der Knopf angesteuert wird (Maus, Fokus, Antippen) */
+  var menuImgs = false;
+  function loadMenuImgs() {
+    if (menuImgs) return;
+    menuImgs = true;
+    Array.prototype.forEach.call(document.querySelectorAll(".msheet img[data-src]"), vsrc);
+  }
+  window.ADB_MENUIMG = loadMenuImgs;
+  function toggleMenu() { loadMenuImgs(); document.body.classList.toggle("menuopen"); }
   function closeMenu() { document.body.classList.remove("menuopen"); }
   if (mbtn) mbtn.addEventListener("click", function () {
     document.body.classList.remove("filteropen");
     toggleMenu();
   });
+  ["mouseenter", "focus", "pointerdown", "touchstart"].forEach(function (ev) {
+    if (mbtn) mbtn.addEventListener(ev, loadMenuImgs, { passive: true });
+  });
+  /* der Knopf in der Kopfzeile (brand.js .hmenu) entsteht vor diesem Script */
+  document.addEventListener("mouseover", function (e) { if (e.target.closest && e.target.closest(".hmenu")) loadMenuImgs(); }, { passive: true });
+  document.addEventListener("focusin", function (e) { if (e.target.closest && e.target.closest(".hmenu, .msheet")) loadMenuImgs(); });
   if (mdim) mdim.addEventListener("click", closeMenu);
+  /* Barrierefreiheit (B5): geschlossenes Menue ist inert (nicht per Tab erreichbar, fuer Screenreader weg),
+     die Knoepfe tragen aria-expanded und aria-controls. Folgt body.menuopen, egal wer es setzt (Klick, Esc, Coach). */
+  var msheet = document.querySelector(".msheet");
+  if (msheet) {
+    if (!msheet.id) msheet.id = "hauptmenue";
+    var syncMenuA11y = function () {
+      var open = document.body.classList.contains("menuopen");
+      if (open) msheet.removeAttribute("inert"); else msheet.setAttribute("inert", "");
+      document.querySelectorAll(".mbtn, .chrome .hmenu").forEach(function (b) {
+        b.setAttribute("aria-controls", msheet.id);
+        b.setAttribute("aria-expanded", open ? "true" : "false");
+        b.setAttribute("aria-label", open ? "Menü schließen" : "Menü öffnen");
+      });
+    };
+    syncMenuA11y();
+    new MutationObserver(syncMenuA11y).observe(document.body, { attributes: true, attributeFilter: ["class"] });
+  }
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") { closeMenu(); document.body.classList.remove("filteropen"); document.body.classList.remove("branchopen"); }
   });
@@ -362,7 +406,9 @@
       var picked = syncNeed();
       if (!picked.length) return;
       var slug = (location.pathname.split("/").pop() || "index.html").replace(/\.html$/, "");
-      location.href = "kontakt.html?w=" + encodeURIComponent(picked.join(",")) +
+      /* Ziel aus dem Kontakt-Link der Kopfzeile: live schreibt _seo.py ihn auf /kontakt um (saubere Pfade) */
+      var ctcEl = document.querySelector(".chrome .ctc"), kurl = (ctcEl && ctcEl.getAttribute("href")) || "kontakt.html";
+      location.href = kurl + "?w=" + encodeURIComponent(picked.join(",")) +
                       "&from=" + encodeURIComponent(slug);
     });
   }
@@ -422,6 +468,7 @@
     if (reduced) return;
     var turn = 0;
     setInterval(function () {
+      if (document.hidden) return;   /* im Hintergrund-Tab steht der Wechsel (S3) */
       var slot = slots[turn % slots.length];
       turn++;
       var imgs = slot.querySelectorAll("img");
@@ -464,13 +511,20 @@
   }
 
 
-  /* ---------- Videos: nur im Viewport abspielen ---------- */
+  /* ---------- Videos: nur im Viewport abspielen ----------
+     Quelle erst beim Sichtbarwerden (data-src setzt _perf.py), bei reduzierter Bewegung kein Autoplay, das Poster bleibt.
+     Folien des Hero-Sliders startet die Hero-Rotation selbst, nur die aktive Folie spielt. */
   var vids = document.querySelectorAll("video[data-auto]");
   if (vids.length) {
     var vio = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
         var v = en.target;
-        if (en.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        if (en.isIntersecting) {
+          if (reduced) return;
+          var sl = v.closest(".hslide");
+          if (sl && !sl.classList.contains("on")) return;
+          vplay(v);
+        }
         else v.pause();
       });
     }, { threshold: 0.15 });
@@ -569,7 +623,7 @@
       s.media.forEach(function (m, i) {
         var on = i === best;
         m.classList.toggle("on", on);
-        if (m.tagName === "VIDEO") { if (on) { m.play().catch(function () {}); } else { m.pause(); } }
+        if (m.tagName === "VIDEO") { if (on) { vplay(m); } else { m.pause(); } }
       });
     });
   }
@@ -613,6 +667,18 @@
     }
     return { box: box, paths: paths, nodes: Array.prototype.slice.call(box.querySelectorAll(".pn[data-at]")), p: -1 };
   });
+  /* SVG-Animationen (animateMotion, animate) laufen nur im Bild (S3): ausserhalb pausiert, bei reduzierter Bewegung nie */
+  if ("IntersectionObserver" in window) {
+    var smil = Array.prototype.filter.call(document.querySelectorAll("main svg"), function (sv) {
+      return sv.pauseAnimations && sv.querySelector("animateMotion, animate, animateTransform");
+    });
+    if (smil.length && !reduced) {
+      var sio = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) e.target.unpauseAnimations(); else e.target.pauseAnimations(); });
+      }, { rootMargin: "100px 0px" });
+      smil.forEach(function (sv) { sv.pauseAnimations(); sio.observe(sv); });
+    }
+  }
   function pmapTick() {
     pmaps.forEach(function (m) {
       var r = m.box.getBoundingClientRect();
@@ -816,9 +882,16 @@
   if (show) {
     var slides = show.querySelectorAll(".hslide");
     var dots = show.querySelectorAll(".hdots i");
-    var idx = 0, HOLD = 4200;
+    var idx = 0, HOLD = 4200, PRE = 1500, preT = 0;
     show.style.setProperty("--hd", HOLD + "ms");
+    function svid(i) { return slides[i] ? slides[i].querySelector("video") : null; }
+    /* naechste Folie: Quelle kurz vor dem Einsatz setzen und puffern lassen */
+    function preload(i) {
+      var v = svid(i);
+      if (v && v.getAttribute("data-src")) { vsrc(v); v.preload = "auto"; }
+    }
     function go(n) {
+      var prev = idx;
       slides[idx].classList.remove("on");
       if (dots[idx]) dots[idx].classList.remove("on");
       idx = n % slides.length;
@@ -828,10 +901,19 @@
         void dots[idx].offsetWidth;
         dots[idx].classList.add("on");
       }
+      var v = svid(idx), pv = svid(prev);
+      var hr = show.getBoundingClientRect();
+      if (v && !reduced && hr.bottom > 0 && hr.top < window.innerHeight) vplay(v);
+      /* die alte Folie haelt erst nach der Ueberblendung an */
+      if (pv && pv !== v) setTimeout(function () { if (!slides[prev].classList.contains("on")) pv.pause(); }, MO.chor);
+      clearTimeout(preT);
+      if (!reduced && slides.length > 1) preT = setTimeout(function () { preload((idx + 1) % slides.length); }, Math.max(0, HOLD - PRE));
+      if (window.ADB_MBTICK_POKE) window.ADB_MBTICK_POKE();
     }
     go(0);
-    if (!reduced && slides.length > 1) setInterval(function () { go(idx + 1); }, HOLD);
-    dots.forEach(function (d, i) { d.addEventListener("click", function () { go(i); }); });
+    /* im Hintergrund-Tab steht die Rotation (S3) */
+    if (!reduced && slides.length > 1) setInterval(function () { if (!document.hidden) go(idx + 1); }, HOLD);
+    dots.forEach(function (d, i) { d.addEventListener("click", function () { preload(i); go(i); }); });
   }
 
   /* ---------- Work-Filter (FLIP) ---------- */
@@ -993,17 +1075,29 @@
     if (sendBtn) sendBtn.disabled = !/.+@.+\..+/.test(val("#kmail"));
     if (!sumBody) return;
     var w = picked(); var extra = val("#kfree");
+    /* Eingaben nur als Text einsetzen (textContent), nie als HTML */
     var lines = [];
-    lines.push("<b>Womit:</b> " + (w.length ? w.join(", ") : '<span class="kempty">noch offen</span>') +
-               (extra ? ", " + extra : ""));
+    lines.push(["Womit:", w.length ? w.join(", ") + (extra ? ", " + extra : "") : null, extra]);
     var firm = val("#kfirm"), goal = val("#kgoal"), b = opt("budget"), wn = opt("when");
-    if (firm) lines.push("<b>Projekt:</b> " + firm);
-    if (goal) lines.push("<b>Ziel:</b> " + goal);
-    if (b) lines.push("<b>Mediabudget:</b> " + b);
-    if (wn) lines.push("<b>Zeitpunkt:</b> " + wn);
+    if (firm) lines.push(["Projekt:", firm]);
+    if (goal) lines.push(["Ziel:", goal]);
+    if (b) lines.push(["Mediabudget:", b]);
+    if (wn) lines.push(["Zeitpunkt:", wn]);
     var nm = val("#kname"), ml = val("#kmail"), ph = val("#kphone");
-    if (nm || ml || ph) lines.push("<b>Kontakt:</b> " + [nm, ml, ph].filter(Boolean).join(", "));
-    sumBody.innerHTML = lines.join("<br>");
+    if (nm || ml || ph) lines.push(["Kontakt:", [nm, ml, ph].filter(Boolean).join(", ")]);
+    sumBody.textContent = "";
+    lines.forEach(function (ln, i) {
+      if (i) sumBody.appendChild(document.createElement("br"));
+      var bb = document.createElement("b"); bb.textContent = ln[0];
+      sumBody.appendChild(bb);
+      sumBody.appendChild(document.createTextNode(" "));
+      if (ln[1] === null) {
+        /* noch keine Auswahl: Platzhalter wie bisher, ein frei getippter Wunsch steht dahinter */
+        var em = document.createElement("span"); em.className = "kempty"; em.textContent = "noch offen";
+        sumBody.appendChild(em);
+        if (ln[2]) sumBody.appendChild(document.createTextNode(", " + ln[2]));
+      } else sumBody.appendChild(document.createTextNode(ln[1]));
+    });
   }
   root.querySelectorAll(".kinput").forEach(function (i) { i.addEventListener("input", sync); });
 
@@ -1025,8 +1119,15 @@
     b.addEventListener("click", function () { go(parseInt(b.getAttribute("data-to"), 10)); });
   });
 
-  /* ---- Absenden ---- */
-  if (sendBtn) sendBtn.addEventListener("click", function () {
+  /* ---- Absenden ----
+     Zuerst POST an /api/anfrage (Vercel Function, Versand ueber Resend). Antwortet der Endpunkt nicht mit ok
+     (Fehler, keine Konfiguration, GitHub-Pages-Vorschau ohne Endpunkt), oeffnet sich wie bisher das Mailprogramm.
+     Danach ein dataLayer-Ereignis "lead" (nur wenn GTM nach Einwilligung geladen ist). */
+  var sending = false;
+  function leadEvent(via) {
+    if (window.dataLayer && window.__adbTrack) window.dataLayer.push({ event: "lead", lead_via: via, lead_from: (from && SEITEN[from]) || "" });
+  }
+  function mailto() {
     var w = picked(); var extra = val("#kfree");
     var subject = "Anfrage: " + (w.length ? w.join(", ") : (extra || "Projekt"));
     var t = [];
@@ -1042,7 +1143,41 @@
     t.push([val("#kname"), val("#kmail"), val("#kphone")].filter(Boolean).join(", "));
     location.href = "mailto:hello@ad.boutique?subject=" + encodeURIComponent(subject) +
                     "&body=" + encodeURIComponent(t.join("\n"));
+    leadEvent("mailto");
     setTimeout(function () { go(4); }, 400);
+  }
+  function sent() {
+    /* Bestaetigung fuer den Versand ueber den Endpunkt: Texte stehen im Markup (data-ok-h, data-ok-t, _gen_kontakt.py) */
+    var done = root.querySelector('.kstep[data-s="4"]');
+    if (done && done.getAttribute("data-ok-h")) {
+      var hh = done.querySelector(".kh"), tt = done.querySelector(".kt");
+      if (hh) hh.textContent = done.getAttribute("data-ok-h");
+      if (tt) tt.textContent = done.getAttribute("data-ok-t") || "";
+    }
+    leadEvent("api");
+    go(4);
+  }
+  if (sendBtn) sendBtn.addEventListener("click", function () {
+    if (sending) return;
+    var w = picked(); var extra = val("#kfree");
+    var data = {
+      wahl: (w.length ? w.join(", ") : "") + (extra ? (w.length ? ", " : "") + extra : ""),
+      projekt: val("#kfirm"), ziel: val("#kgoal"), budget: opt("budget"), zeitpunkt: opt("when"),
+      herkunft: (from && SEITEN[from]) || "", name: val("#kname"), mail: val("#kmail"), telefon: val("#kphone"),
+      website: val("#kweb")
+    };
+    if (!window.fetch || location.protocol === "file:") { mailto(); return; }
+    sending = true; sendBtn.disabled = true;
+    var ctl = window.AbortController ? new AbortController() : null;
+    /* kurz halten: das Mailprogramm darf der Browser nur kurz nach dem Klick oeffnen (Nutzergeste) */
+    var to = setTimeout(function () { if (ctl) ctl.abort(); }, 4000);
+    fetch("/api/anfrage", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data), signal: ctl ? ctl.signal : undefined })
+      .then(function (r) { return r.ok ? r.json() : { ok: false }; })
+      .catch(function () { return { ok: false }; })
+      .then(function (res) {
+        clearTimeout(to); sending = false; sync();
+        if (res && res.ok) sent(); else mailto();
+      });
   });
 
   sync();
@@ -1069,6 +1204,7 @@
       });
       document.querySelectorAll(".filmwrap.playing").forEach(function (w) { w.classList.remove("playing"); });
       v.muted = false;
+      if (window.ADB_VSRC) window.ADB_VSRC(v);
       v.play().catch(function () {});
     } else {
       v.muted = true;
@@ -1092,5 +1228,80 @@
         }
       });
     }, { threshold: 0.25 }).observe(frame);
+  }
+})();
+
+/* ============================================================
+   Einwilligung (J4): schlankes Banner unten links, zwei gleichwertige Knoepfe.
+   Live (window.ADB_TRACK kommt aus dem Kopf, gesetzt von _seo.py mit ADB_LIVE=1): erscheint, solange keine Wahl
+   gespeichert ist. Vorschau: nur mit ?consent=1. Erneut oeffnen: Footer-Link "Cookie-Einstellungen" (data-consent-open).
+   Wahl in localStorage "adb_consent": "all" laedt GTM und Meta-Pixel (ADB_TRACK), "necessary" laedt nichts.
+   ============================================================ */
+(function () {
+  var KEY = "adb_consent";
+  var live = typeof window.ADB_TRACK === "function";
+  var stored = null;
+  try { stored = localStorage.getItem(KEY); } catch (e) {}
+  var box = null, opener = null;
+
+  function build() {
+    box = document.createElement("div");
+    box.className = "consent";
+    box.setAttribute("role", "dialog");
+    box.setAttribute("aria-modal", "false");
+    box.setAttribute("aria-labelledby", "consent-t");
+    var p = document.createElement("p");
+    p.className = "consent-t"; p.id = "consent-t";
+    p.appendChild(document.createTextNode("Darf ad.boutique messen? Mit Ihrer Zustimmung laden wir Google Tag Manager und das Meta-Pixel, um zu sehen, welche Kampagnen wirken. Ohne Zustimmung speichern wir nur Ihre Auswahl. "));
+    var a = document.createElement("a");
+    a.href = "https://www.ad.boutique/datenschutz"; a.target = "_blank"; a.rel = "noopener"; a.textContent = "Datenschutz";
+    p.appendChild(a);
+    var row = document.createElement("div");
+    row.className = "consent-b";
+    [["all", "Alle akzeptieren"], ["necessary", "Nur notwendige"]].forEach(function (b) {
+      var btn = document.createElement("button");
+      btn.type = "button"; btn.className = "btn btn--inverse"; btn.setAttribute("data-consent", b[0]); btn.textContent = b[1];
+      btn.addEventListener("click", function () { decide(b[0]); });
+      row.appendChild(btn);
+    });
+    box.appendChild(p); box.appendChild(row);
+    document.body.appendChild(box);
+  }
+  function open(focus) {
+    if (!box) build();
+    box.classList.add("on");
+    window.ADB_CONSENT_OPEN = true;
+    if (focus) { var f = box.querySelector("button"); if (f) f.focus(); }
+  }
+  function close() {
+    if (!box) return;
+    box.classList.remove("on");
+    window.ADB_CONSENT_OPEN = false;
+    try { document.dispatchEvent(new CustomEvent("adbconsent")); } catch (e) {}
+    if (opener && opener.focus) opener.focus();
+    opener = null;
+  }
+  function decide(v) {
+    try { localStorage.setItem(KEY, v); localStorage.setItem(KEY + "_t", new Date().toISOString().slice(0, 10)); } catch (e) {}
+    if (v === "all" && window.ADB_TRACK) window.ADB_TRACK();
+    if (v !== "all" && stored === "all" && window.ADB_UNTRACK) window.ADB_UNTRACK();
+    stored = v;
+    close();
+  }
+  document.addEventListener("click", function (e) {
+    var t = e.target.closest && e.target.closest("[data-consent-open]");
+    if (!t) return;
+    e.preventDefault();
+    opener = t;
+    open(true);
+  });
+  if ((live && !stored) || /[?&]consent=1(&|$)/.test(location.search)) {
+    /* erst nach der Ladeblende, damit es nicht hinter ihr aufgeht */
+    var show = function () { open(false); };
+    if (document.body.classList.contains("loaded")) show();
+    else {
+      var mo = new MutationObserver(function () { if (document.body.classList.contains("loaded")) { mo.disconnect(); show(); } });
+      mo.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+    }
   }
 })();

@@ -11,7 +11,7 @@ SRC = "case-premium-neubau.html"
 OUT = "case-premium-neubau-v3.html"
 
 src = open(SRC, encoding="utf-8").read()
-head = src.split("<main>", 1)[0]
+head = re.split(r"<main\b[^>]*>", src, 1)[0]   # <main> kann Attribute tragen (Sprunglink-Ziel, _perf.py)
 head = re.sub(r"<title>.*?</title>", "<title>Premium-Neubau, Wien, Vorschau v3 | ad.boutique</title>", head, count=1, flags=re.S)
 foot = "  <footer" + src.split("  <footer", 1)[1]
 

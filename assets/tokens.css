@@ -87,7 +87,7 @@
   /* Satoshi fuer alles. Amandine nur fuer Zeile 2 einer Display-Headline und grosse Zahlen (ueber --f-amandine). */
   --f-sans: "Satoshi", "Helvetica Neue", Arial, sans-serif;
   --f-amandine: "amandine", Georgia, "Times New Roman", serif;
-  /* Altlasten: alles, was bisher --f-serif (Reckless, Amandine) oder --f-disp nahm, ist Satoshi */
+  /* Altlasten: alles, was bisher --f-serif (frueher Serife, dann Amandine) oder --f-disp nahm, ist Satoshi */
   --f-ui: var(--f-sans);
   --f-disp: var(--f-sans);
   --f-serif: var(--f-sans);
@@ -210,6 +210,8 @@
   --z-coach-trail: 91;    /* Coach: Spur */
   --z-coach: 92;          /* Coach: Punkte, Iris, Schrift */
   --z-coach-top: 96;      /* Coach: kleiner Ring */
+  --z-consent: 100;       /* Einwilligungs-Banner, ueber Menue und Coach, unter Tile-Flip und Ladeblende */
+  --z-skip: 310;          /* Sprunglink "Zum Inhalt", sichtbar nur mit Tastaturfokus */
   --z-flipbg: 140;        /* Tile-Flip: Grund */
   --z-flip: 150;          /* Tile-Flip: Kachel und Deckel */
   --z-pt: 200;            /* Ladeblende (brand.js zeichnet die Punkt-Leinwand inline auf 205) */

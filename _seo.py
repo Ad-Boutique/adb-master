@@ -18,6 +18,7 @@ import html as H
 import json
 import os
 import re
+import subprocess
 
 from _cases import HAND as CASES_HAND, PERFORMANCE, WEB
 from _gen_services import SERVICES
@@ -38,7 +39,7 @@ ORG_DESC = ("ad.boutique ist eine Performance-Marketing-Agentur in Wien. Die Age
 ORG = dict(name="ad.boutique", legal="Ad Boutique Agency GmbH", email="hello@ad.boutique", plz="1030", city="Wien", country="AT",
            same_as=["https://www.linkedin.com/company/ad-boutique/", "https://www.instagram.com/ad.boutique.vienna/"],
            logo=BASE + "/assets/img/og-default.jpg")
-DEFAULT_OG = "assets/img/funkhaus.jpg"
+DEFAULT_OG = "assets/img/og-default.jpg"
 
 NOINDEX = {"_qa_template.html", "studie-performance.html", "case-web-funkhausliving.html"}
 
@@ -88,8 +89,8 @@ HAND = {
     "kontakt.html": dict(title="Anfrage: Performance Marketing Agentur Wien | ad.boutique",
                          desc="Anfrage in zwei Minuten, ehrliche Ersteinschätzung unter 24 Stunden, ein Gründer prüft. Der Einstieg ist ein Audit ohne Vertrag.",
                          kind="contact"),
-    "case-premium-neubau-v3.html": dict(title="Vorschau v3: Premium-Neubau Wien | ad.boutique", desc="Vorschau-Variante, nicht indexiert.", kind="case"),
-    "service-performance-marketing-v3.html": dict(title="Vorschau v3: Performance Marketing | ad.boutique", desc="Vorschau-Variante, nicht indexiert.", kind="service"),
+    "case-premium-neubau-v3.html": dict(title="Vorschau v3: Premium-Neubau Wien | ad.boutique", desc="Vorschau-Variante, nicht indexiert.", kind="case", name="Premium-Neubau Wien"),
+    "service-performance-marketing-v3.html": dict(title="Vorschau v3: Performance Marketing | ad.boutique", desc="Vorschau-Variante, nicht indexiert.", kind="service", name="Performance Marketing"),
     "studie-performance.html": dict(title="Studie: Performance-Grafiken | ad.boutique", desc="Interne Studie, nicht indexiert.", kind="other"),
     "case-web-funkhausliving.html": dict(title="Weiterleitung | ad.boutique", desc="Weiterleitung.", kind="other"),
     "_qa_template.html": dict(title="QA | ad.boutique", desc="Intern.", kind="other"),
@@ -103,7 +104,7 @@ def registry():
     for c in CASES_HAND:
         seo = c["meta"].get("seo")
         if seo:
-            reg[c["seite"]] = dict(title=seo["titel"], desc=seo["beschreibung"], kind="case")
+            reg[c["seite"]] = dict(title=seo["titel"], desc=seo["beschreibung"], kind="case", name=c["meta"]["name"])
     for c in PERFORMANCE:
         f = c["slug"] + ".html"
         if c["vorlage"] == "handgebaut" or f in reg:
@@ -138,6 +139,7 @@ def org_graph():
 
 def page_graph(f, r, url, og_image):
     kind = r["kind"]
+    mod = git_date(f)
     crumbs = [{"@type": "ListItem", "position": 1, "name": "Start", "item": BASE + "/"}]
     if kind == "service":
         crumbs.append({"@type": "ListItem", "position": 2, "name": "Leistungen", "item": BASE + "/#leistungen"})
@@ -149,7 +151,7 @@ def page_graph(f, r, url, og_image):
         crumbs.append({"@type": "ListItem", "position": 2, "name": r["title"].split(":")[0].split("|")[0].strip(), "item": url})
     page_type = {"home": "WebPage", "service": "WebPage", "case": "WebPage", "about": "AboutPage", "contact": "ContactPage", "collection": "CollectionPage"}.get(kind, "WebPage")
     g = [{"@type": page_type, "@id": url + "#page", "url": url, "name": r["title"].split(" | ")[0], "description": r["desc"], "inLanguage": "de-AT",
-          "isPartOf": {"@id": BASE + "/#site"}, "about": {"@id": BASE + "/#org"}, "dateModified": TODAY.isoformat(),
+          "isPartOf": {"@id": BASE + "/#site"}, "about": {"@id": BASE + "/#org"}, "dateModified": mod,
           "primaryImageOfPage": {"@type": "ImageObject", "url": og_image},
           "breadcrumb": {"@type": "BreadcrumbList", "itemListElement": crumbs}}]
     if kind == "service":
@@ -158,19 +160,105 @@ def page_graph(f, r, url, og_image):
                   "description": strip_tags(r.get("answer") or r["desc"])})
     elif kind == "case":
         g.append({"@type": "Article", "@id": url + "#article", "headline": r["title"].split(" | ")[0], "description": r["desc"], "url": url,
-                  "image": og_image, "dateModified": TODAY.isoformat(), "inLanguage": "de-AT",
+                  "image": og_image, "dateModified": mod, "inLanguage": "de-AT",
                   "author": {"@id": BASE + "/#org"}, "publisher": {"@id": BASE + "/#org"}, "mainEntityOfPage": {"@id": url + "#page"}})
     return g
 
 
-# ---------------------------------------------------------------- Seite bearbeiten
+# ---------------------------------------------------------------- Einwilligung (nur Live-Modus)
+# Google Consent Mode v2: alles verweigert, bis der Besucher im Banner (site.js, master.js "Einwilligung") zustimmt.
+# GTM und Meta-Pixel werden erst mit window.ADB_TRACK() geladen. Gespeichert wird die Wahl in localStorage "adb_consent"
+# ("all" oder "necessary"); das Banner erscheint, solange keine Wahl gespeichert ist, und wieder ueber den Footer-Link.
+CONSENT_JS = (
+    "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}"
+    "gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',"
+    "functionality_storage:'granted',security_storage:'granted',wait_for_update:500});"
+    "window.ADB_TRACK=function(){if(window.__adbTrack)return;window.__adbTrack=1;"
+    "gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});"
+    "(function(w,d,s,l,i){w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);"
+    "j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','@GTM@');"
+    "!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};"
+    "if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;"
+    "s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');"
+    "fbq('init','@PIXEL@');fbq('track','PageView');};"
+    "window.ADB_UNTRACK=function(){gtag('consent','update',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied'});"
+    "if(window.fbq)fbq('consent','revoke');};"
+    "try{if(localStorage.getItem('adb_consent')==='all')window.ADB_TRACK();}catch(e){}")
+
+
+def consent_js():
+    return CONSENT_JS.replace("@GTM@", GTM).replace("@PIXEL@", PIXEL)
+
+
+# ---------------------------------------------------------------- Open-Graph-Bilder (J7)
+# Je Seite das erste Bild (oder Videoposter) innerhalb von <main>, nie das Menue. Daraus entsteht beim Build ein
+# Zuschnitt 1200 x 630 (JPG, Qualitaet 80) unter assets/img/og/<quelle>.jpg, neu nur wenn die Quelle neuer ist.
+# Ohne Bild: assets/img/og-default.jpg (Wortmarke auf Cream, auch Logo im JSON-LD).
+OG_DIR = "assets/img/og"
+OG_W, OG_H = 1200, 630
+CREAM, INK = (244, 243, 235), (16, 16, 16)
+
+
+def og_default():
+    """Wortmarke ad.boutique in Satoshi Bold, Schwarz auf Cream. Neu nur, wenn die Datei fehlt."""
+    from PIL import Image, ImageDraw, ImageFont
+    if os.path.exists(DEFAULT_OG):
+        return
+    im = Image.new("RGB", (OG_W, OG_H), CREAM)
+    f = ImageFont.truetype("assets/fonts/Satoshi-Variable.woff2", 150)
+    try:
+        f.set_variation_by_name("Bold")
+    except Exception:
+        pass
+    d = ImageDraw.Draw(im)
+    x0, y0, x1, y1 = d.textbbox((0, 0), "ad.boutique", font=f)
+    d.text(((OG_W - (x1 - x0)) / 2 - x0, (OG_H - (y1 - y0)) / 2 - y0), "ad.boutique", font=f, fill=INK)
+    im.save(DEFAULT_OG, "JPEG", quality=85, optimize=True, progressive=True)
+
+
+def og_crop(src):
+    """Zuschnitt 1200 x 630 aus src (bevorzugt das JPG-Original neben der WebP-Datei). Gibt den Pfad zurueck."""
+    from PIL import Image
+    base = os.path.splitext(src)[0]
+    orig = next((p for p in (base + ".jpg", base + ".png", src) if os.path.exists(p)), None)
+    if not orig:
+        print("  ! Open-Graph-Quelle fehlt:", src)
+        return DEFAULT_OG
+    out = "%s/%s.jpg" % (OG_DIR, base[len("assets/"):].replace("/", "_"))
+    if os.path.exists(out) and os.path.getmtime(out) >= os.path.getmtime(orig):
+        return out
+    os.makedirs(OG_DIR, exist_ok=True)
+    im = Image.open(orig)
+    if im.mode != "RGB":
+        im = im.convert("RGB")
+    # Bild deckend auf 1200 x 630 skalieren, waagrecht mittig, senkrecht etwas ueber der Mitte (Gesichter, Headlines)
+    s = max(OG_W / im.width, OG_H / im.height)
+    w, hh = round(im.width * s), round(im.height * s)
+    im = im.resize((w, hh), Image.LANCZOS)
+    left = (w - OG_W) // 2
+    top = max(0, min(hh - OG_H, int((hh - OG_H) * 0.4)))
+    im.crop((left, top, left + OG_W, top + OG_H)).save(out, "JPEG", quality=80, optimize=True, progressive=True)
+    return out
+
+
 def og_image_for(h):
-    m = re.search(r'<img[^>]+src="(assets/[^"]+\.(?:jpg|webp|png))"', h) or re.search(r'poster="(assets/[^"]+\.(?:jpg|webp))"', h)
-    p = m.group(1) if m else DEFAULT_OG
-    jpg = re.sub(r"\.webp$", ".jpg", p)
-    if os.path.exists(jpg):
-        p = jpg
+    mi = h.find("<main")
+    body = h[mi:] if mi >= 0 else ""
+    m = re.search(r'<img\b[^>]*?\ssrc="(assets/[^"]+\.(?:jpg|webp|png))"|<video\b[^>]*?\sposter="(assets/[^"]+\.(?:jpg|webp))"', body)
+    p = og_crop(m.group(1) or m.group(2)) if m else DEFAULT_OG
     return BASE + "/" + p
+
+
+def git_date(f):
+    """Tag des letzten Commits der Datei (lastmod, dateModified). Ohne Git oder ohne Commit: heute."""
+    try:
+        out = subprocess.run(["git", "log", "-1", "--format=%cs", "--", f], capture_output=True, text=True, timeout=10).stdout.strip()
+        return out or TODAY.isoformat()
+    except Exception:
+        return TODAY.isoformat()
+
+
+# ---------------------------------------------------------------- Seite bearbeiten
 
 
 def apply(f, r, live):
@@ -201,15 +289,14 @@ def apply(f, r, live):
              '<meta name="twitter:card" content="summary_large_image">',
              '<script type="application/ld+json">%s</script>' % ld.replace("</", "<\\/")]
     if live:
-        block.append("<!-- Google Tag Manager -->\n<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','%s');</script>\n<!-- End Google Tag Manager -->" % GTM)
-        block.append("<!-- Meta Pixel -->\n<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','%s');fbq('track','PageView');</script>\n<!-- End Meta Pixel -->" % PIXEL)
+        block.append("<!-- Einwilligung (J4): Consent Mode v2, GTM und Meta-Pixel erst nach Zustimmung, Banner in site.js -->\n<script>%s</script>" % consent_js())
     block.append('<!-- seo:end -->')
     anchor = re.search(r'<meta name="viewport"[^>]*>', h)
     if not anchor:
         return False
     h = h[:anchor.end()] + "\n" + "\n".join(block) + h[anchor.end():]
-    if live and "<!-- GTM noscript -->" not in h:
-        h = re.sub(r"(<body[^>]*>)", r'\1\n<!-- GTM noscript --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=%s" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>' % GTM, h, count=1)
+    # kein GTM-noscript-iframe mehr: es wuerde GTM ohne Einwilligung laden (auch aus aelteren Live-Staenden entfernen)
+    h = re.sub(r"\n?<!-- GTM noscript --><noscript>.*?</noscript>", "", h, flags=re.S)
 
     # H1-Regel
     if r.get("h1label") and 'class="label h1-seo"' not in h:
@@ -225,19 +312,27 @@ def apply(f, r, live):
     # Antwortabsatz unter dem Hero-Text der Leistungsseiten
     if r.get("answer") and 'class="sanswer"' not in h:
         h = re.sub(r'(<p class="ssub"[^>]*>.*?</p>\n)', lambda m: m.group(1) + '      <p class="sanswer" data-fade>%s</p>\n' % r["answer"], h, count=1, flags=re.S)
-    # Menue-Vorschaubilder: kurzer Alt-Text statt leerem
+    # Menue-Vorschaubilder sind Dekoration: alt="" (Barrierefreiheit B5, Screenreader lesen sie nicht siebenmal vor)
     def _menu_alt(m):
-        return re.sub(r'alt=""', 'alt="Menüvorschau"', m.group(0))
+        return re.sub(r'(<img\b[^>]*?)alt="[^"]*"', r'\1alt=""', m.group(0))
     h = re.sub(r'<nav class="msheet".*?</nav>', _menu_alt, h, count=1, flags=re.S)
-    # restliche Bilder ohne Alt-Text: Projektname als Fallback
+    # restliche Bilder ohne Alt-Text (ausserhalb des Menues): Seitenname als Fallback
     pname = r.get("name") or r["title"].split(":")[0].split("|")[0].strip()
-    h = re.sub(r'(<img\b[^>]*?)alt=""', lambda m: m.group(1) + 'alt="%s, Bild aus dem Projekt"' % H.escape(pname, quote=True), h)
+    def _alt_fb(s):
+        s = re.sub(r'(<img\b[^>]*?)alt=""', lambda m: m.group(1) + 'alt="%s, Bild aus dem Projekt"' % H.escape(pname, quote=True), s)
+        # aeltere Laeufe schrieben das Titel-Praefix ("Case", "Vorschau v3") statt des Namens in handgebaute Seiten
+        return re.sub(r'alt="(?:Case|Vorschau v3), Bild aus dem Projekt"', 'alt="%s, Bild aus dem Projekt"' % H.escape(pname, quote=True), s)
+    nav = re.search(r'<nav class="msheet".*?</nav>', h, flags=re.S)
+    h = (_alt_fb(h[:nav.start()]) + nav.group(0) + _alt_fb(h[nav.end():])) if nav else _alt_fb(h)
     # Footer: Stand und Firmierung
     h = re.sub(r"© 2026 ad\.boutique[^<]*", "© 2026 %s, %s. Stand: %s" % (ORG["legal"], ORG["city"], STAND), h)
     if live:
         h = h.replace('<span class="fl">ad.boutique Master-Preview</span>', '<span class="fl">ad.boutique</span>')
         # interne Links auf die sauberen Pfade
         h = re.sub(r'href="([a-z0-9_-]+\.html)(#[^"]*)?"', lambda m: 'href="%s%s"' % (path_for(m.group(1)), m.group(2) or ""), h)
+        # Dateien absolut ab der Wurzel: unter sauberen Pfaden wie /services/e-commerce wuerde "assets/..." sonst
+        # als /services/assets/... aufgeloest (Stylesheet, Script, Bilder, Videos, Schrift-Preload, Favicon)
+        h = re.sub(r'((?:src|href|poster|data-src)=")(assets/|favicon\.)', r'\1/\2', h)
     if h != orig:
         open(f, "w", encoding="utf-8").write(h)
         return True
@@ -247,7 +342,7 @@ def apply(f, r, live):
 # ---------------------------------------------------------------- Dateien: sitemap, robots, llms.txt
 def write_files(reg, live):
     pages = [f for f in sorted(glob.glob("*.html")) if f in reg and f not in NOINDEX and not f.endswith("-v3.html")]
-    urls = "".join("  <url><loc>%s</loc><lastmod>%s</lastmod></url>\n" % (BASE + path_for(f), TODAY.isoformat()) for f in pages)
+    urls = "".join("  <url><loc>%s</loc><lastmod>%s</lastmod></url>\n" % (BASE + path_for(f), git_date(f)) for f in pages)
     open("sitemap.xml", "w", encoding="utf-8").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls + "</urlset>\n")
     if live:
         bots = ["Googlebot", "Bingbot", "OAI-SearchBot", "ChatGPT-User", "GPTBot", "PerplexityBot", "Perplexity-User", "Claude-SearchBot", "Claude-User", "ClaudeBot", "Google-Extended", "CCBot"]
@@ -273,6 +368,7 @@ def write_files(reg, live):
 
 
 def main():
+    og_default()
     reg = registry()
     n = 0
     for f in sorted(glob.glob("*.html")):

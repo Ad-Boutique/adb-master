@@ -14,6 +14,9 @@ QUALITY = 82
 def convert():
     made = 0
     for jpg in glob.glob("assets/**/*.jpg", recursive=True):
+        # Open-Graph-Bilder (_seo.py) bleiben JPG, eine WebP-Fassung braucht dort niemand
+        if jpg.startswith(("assets/img/og/", "assets/img/og-default")):
+            continue
         webp = jpg[:-4] + ".webp"
         if os.path.exists(webp) and os.path.getmtime(webp) >= os.path.getmtime(jpg):
             continue

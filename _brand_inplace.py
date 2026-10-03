@@ -103,9 +103,23 @@ def site_assets(h):
     return h
 
 
+# Schrift-Hinweise (Technik B2): Verbindung zu Adobe Fonts frueh aufbauen (Kit-CSS plus Zaehl-CSS auf p.typekit.net),
+# Satoshi vorladen, statt erst nach dem Lesen von site.css zu entdecken. Stehen direkt vor site.css, jede Zeile genau einmal.
+FONT_HINTS = ('<link rel="preconnect" href="https://use.typekit.net" crossorigin>\n'
+              '<link rel="preconnect" href="https://p.typekit.net" crossorigin>\n'
+              '<link rel="preload" href="assets/fonts/Satoshi-Variable.woff2" as="font" type="font/woff2" crossorigin>\n')
+FONT_HINT_RX = re.compile(r'<link rel="(?:preconnect" href="https://(?:use|p)\.typekit\.net"|preload" href="assets/fonts/[^"]+"[^>]*?) crossorigin>\n')
+
+
+def font_hints(h):
+    h = FONT_HINT_RX.sub("", h)
+    m = re.search(r'<link rel="stylesheet" href="assets/site\.css', h)
+    return h[:m.start()] + FONT_HINTS + h[m.start():] if m else h
+
+
 def head(h):
     if "assets/site.css" in h or "brand.css" in h:
-        return site_assets(h)
+        return font_hints(site_assets(h))
     if not re.search(r'<link rel="stylesheet" href="assets/master\.css\?v=\d+">', h):
         return h
     h = site_assets(h)

@@ -5,41 +5,10 @@
   font-style: normal;
   font-display: swap;
 }
-@font-face {
-  font-family: "Satoshi";
-  src: url("fonts/Satoshi-VariableItalic.woff2") format("woff2");
-  font-weight: 300 900;
-  font-style: italic;
-  font-display: swap;
-}
-/* Reckless Standard (Trial-Lizenz, nur Preview-Umgebung) ersetzt Newsreader */
-/* size-adjust gleicht die x-Hoehe an Newsreader an: Reckless setzt bei
-   gleicher em-Groesse rund 16 Prozent groesser, dadurch wirkte der Text
-   groesser als vorher. 87 Prozent bringt die reale Textgroesse zurueck. */
-@font-face {
-  font-family: "Reckless";
-  src: url("fonts/Reckless-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  size-adjust: 87%;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Reckless";
-  src: url("fonts/Reckless-Italic.woff2") format("woff2");
-  font-weight: 400;
-  font-style: italic;
-  size-adjust: 87%;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Reckless";
-  src: url("fonts/Reckless-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  size-adjust: 87%;
-  font-display: swap;
-}
+/* Satoshi kursiv entfaellt (3.10.2026): auf keiner Seite wird Satoshi kursiv gesetzt (gemessen per getComputedStyle,
+   alle Seiten bei 1440 und 390), kursiv ist immer Amandine. Spart 44 KB je erstem Seitenaufruf. */
+/* Reckless (Trial-Lizenz) ist entfernt (3.10.2026): keine Variable zeigt mehr darauf, die Dateien liefert
+   .vercelignore nicht aus. Serifen-Rollen nehmen Satoshi bzw. Amandine (tokens.css). */
 
 /* ============================================================
    ad.boutique · Master-Version

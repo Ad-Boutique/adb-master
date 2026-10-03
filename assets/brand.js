@@ -104,6 +104,10 @@
     }); });
   });
 
+  /* Lange Choreografie (Punkt, Fokus mit Ringen, dann die Seite) nur beim ersten Seitenaufruf je Sitzung,
+     danach die kurze: der Punkt erscheint, die Seite kommt nach einer Hover-Einheit, der Punkt wandert in den Menue-Kreis. */
+  var introSeen = false;
+  try { introSeen = !!sessionStorage.getItem("adb_intro"); sessionStorage.setItem("adb_intro", "1"); } catch (e) {}
   window.ADB_ENTER = function (pt, done) {
     if (flipIn || unflip) { pt.classList.add("gone"); body.classList.add("mready"); done(); log("Kachel-Transition, kein Punkt"); return; }
     if (reduced) { pt.classList.add("gone"); body.classList.add("mready"); done(); setTimeout(coach, 500); return; }
@@ -112,11 +116,15 @@
     /* Phase merken: ein verspaeteter Frame (Hintergrund-Tab drosselt requestAnimationFrame) darf den Punkt nicht wieder einschalten */
     var phase = "in";
     requestAnimationFrame(function () { if (phase !== "in") return; dot.style.opacity = "1"; dot.style.transform = "scale(1)"; log("Punkt erscheint"); });
-    /* Fokus: kurzer Atemzug, zwei Ringe */
-    setTimeout(function () { phase = "focus"; dot.style.opacity = "1"; dot.classList.add("pulse"); dot.style.transition = M.t("transform", "--d-fast"); dot.style.transform = "scale(1.3)"; log("Fokus, Ringe"); }, M.base);
-    setTimeout(function () { dot.style.transform = "scale(1)"; }, M.base + M.fast);
-    /* Ziel: die Seite kommt, der Punkt wandert in den Menue-Kreis (Uebergang), Start nach einer Choreografie-Einheit */
+    var reveal = introSeen ? M.fast : M.chor;
+    if (!introSeen) {
+      /* Fokus: kurzer Atemzug, zwei Ringe */
+      setTimeout(function () { phase = "focus"; dot.style.opacity = "1"; dot.classList.add("pulse"); dot.style.transition = M.t("transform", "--d-fast"); dot.style.transform = "scale(1.3)"; log("Fokus, Ringe"); }, M.base);
+      setTimeout(function () { dot.style.transform = "scale(1)"; }, M.base + M.fast);
+    }
+    /* Ziel: die Seite kommt, der Punkt wandert in den Menue-Kreis (Uebergang), Start nach einer Choreografie-Einheit (kurz: Hover-Einheit) */
     setTimeout(function () {
+      phase = "go";
       done();
       pt.classList.add("gone");
       mbTick(true);
@@ -131,11 +139,12 @@
         dot.style.opacity = "0";
         setTimeout(function () { dot.style.transition = "none"; dot.style.transform = "scale(0)"; dot.style.backgroundColor = ""; }, M.fast + 50);
       }, M.slow);
-    }, M.chor);
+    }, reveal);
   };
 
-  /* Beim Verlassen: eine Wolke aus Punkten sammelt sich zur Mitte, wo der Punkt wartet */
-  function cloud() {
+  /* Beim Verlassen: eine Wolke aus Punkten sammelt sich zur Mitte, wo der Punkt wartet (dur: Dauer bis zur Mitte in ms) */
+  function cloud(dur) {
+    dur = dur || M.slow;
     if (reduced) return;
     var cv = document.createElement("canvas");
     cv.style.cssText = "position:fixed;inset:0;width:100%;height:100%;z-index:205;pointer-events:none";
@@ -147,14 +156,14 @@
     var ink = body.classList.contains("on-light"), fillC = ink ? "#101010" : "#F4F3EB";
     for (var i = 0; i < 140; i++) {
       var ang = Math.random() * Math.PI * 2, rad = Math.max(W, H) * (0.35 + Math.random() * 0.6);
-      ps.push({ x: W / 2 + Math.cos(ang) * rad, y: H / 2 + Math.sin(ang) * rad, r: 2 + Math.random() * 3.5, d: Math.random() * 0.25 });
+      ps.push({ x: W / 2 + Math.cos(ang) * rad, y: H / 2 + Math.sin(ang) * rad, r: 2 + Math.random() * 3.5, d: Math.random() * 0.25 * dur / M.slow });
     }
     var t0 = performance.now();
     (function draw(now) {
       var t = (now - t0) / 1000; c.clearRect(0, 0, W, H);
       var alive = false;
       ps.forEach(function (p) {
-        var q = Math.max(0, Math.min(1, (t - p.d) / (M.slow / 1000))); if (q < 1) alive = true;
+        var q = Math.max(0, Math.min(1, (t - p.d) / (dur / 1000))); if (q < 1) alive = true;
         var e = M.eOut(q), x = p.x + (W / 2 - p.x) * e, y = p.y + (H / 2 - p.y) * e;
         c.beginPath(); c.arc(x, y, p.r * (1 - e * 0.6), 0, Math.PI * 2);
         c.fillStyle = fillC; c.fill();
@@ -174,6 +183,8 @@
     var mv = q.match(/[?&]cv=(\d)/), variant = mv ? parseInt(mv[1], 10) : COACH_DEFAULT;
     var mb = document.querySelector(".mbtn"), sheet = document.querySelector(".msheet");
     if (!mb || !sheet || body.classList.contains("menuopen")) return;
+    /* offenes Einwilligungs-Banner (master.js): der Coach wartet, bis entschieden ist */
+    if (window.ADB_CONSENT_OPEN) { document.addEventListener("adbconsent", function () { setTimeout(coach, M.slow); }, { once: true }); return; }
     /* Sperre je Browser, versioniert: wer eine aeltere Choreografie gesehen hat, sieht die aktuelle einmal */
     var KEY = "adb_coach_v" + variant;
     try { if (!force && localStorage.getItem(KEY)) return; localStorage.setItem(KEY, "1"); } catch (e) { if (!force) return; }
@@ -244,6 +255,8 @@
        die Reihe faehrt einmal nach rechts und zurueck, falls nicht alle Reiter Platz haben, zweiter Druck, zu. Gibt zurueck, wann das Menue wieder zu ist. */
     function openDemo(t) {
       Array.prototype.forEach.call(sheet.querySelectorAll("img[loading=lazy]"), function (im) { im.loading = "eager"; });
+      /* Vorschaubilder kommen erst bei Bedarf (master.js, data-src): jetzt laden, bevor das Menue aufgeht */
+      if (window.ADB_MENUIMG) window.ADB_MENUIMG();
       var mrow = sheet.querySelector(".mrow");
       at(t, function () { ring(0); body.classList.add("mpress"); });
       at(t + M.fast + 60, function () { body.classList.remove("mpress"); body.classList.add("menuopen"); body.classList.add("mdemo"); log("Coach: Menue offen"); });
@@ -378,7 +391,8 @@
     mbTick(true);
     var t = target();
     body.classList.remove("mready");
-    cloud();
+    /* Verlassen in einer Einblenden-Einheit (400 ms statt 1000): Punkt, Wolke und Blende laufen gleichzeitig */
+    cloud(M.base);
     dot.classList.remove("pulse");
     dot.style.transition = "none";
     dot.style.opacity = "1";
@@ -386,17 +400,15 @@
     dot.style.backgroundColor = mcolor();
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
-        /* der Menue-Kreis wird wieder Punkt und geht in die Mitte (Einblenden-Dauer), dann faellt die Blende */
+        /* der Menue-Kreis wird wieder Punkt und geht in die Mitte, die Blende faellt dabei */
         dot.style.transition = M.t("transform", "--d-base") + ", " + M.t("background-color", "--d-base");
         dot.style.transform = "scale(1)";
         dot.style.backgroundColor = "";
-        setTimeout(function () {
-          dot.classList.add("pulse");
-          pt.classList.remove("gone");
-          pt.classList.add("enter");
-          requestAnimationFrame(function () { pt.classList.add("cover"); });
-        }, M.base);
-        setTimeout(function () { location.href = href; }, M.base * 2 + M.fast);
+        dot.classList.add("pulse");
+        pt.classList.remove("gone");
+        pt.classList.add("enter");
+        requestAnimationFrame(function () { pt.classList.add("cover"); });
+        setTimeout(function () { location.href = href; }, M.base);
         /* Netz: ist die Seite nach vier Sekunden noch da, geht alles wieder auf */
         setTimeout(function () {
           pt.classList.remove("cover", "enter"); pt.classList.add("gone");
@@ -897,20 +909,39 @@
       if (el.getAttribute("data-ug") !== st) el.setAttribute("data-ug", st);
     });
   }
-  /* ohne Scroll aendert sich der Untergrund auch (Einblenden, Slider, Menue): spaetestens alle 500 ms neu messen */
-  var uiT = 0;
+  /* ohne Scroll aendert sich der Untergrund auch (Einblenden, Slider, Menue): spaetestens alle 500 ms neu messen.
+     Technik B4: das Nachmessen laeuft nur, solange sich etwas tun kann, also bis UI_BUSY ms nach dem letzten Anlass
+     (Laden, Scroll, Resize, Eingabe, Klassen- oder Farbwechsel am body, Folienwechsel), und nie im Hintergrund-Tab.
+     Ohne Anlass bleibt der gemessene Zustand stehen, wie bisher auch: dann aendert sich unter dem Knopf nichts. */
+  var uiT = 0, uiBusy = 0, uiIv = 0, UI_BUSY = 3000;
   function uiTick(force) {
-    var now = performance.now(), again = force || now - uiT > 500;
+    var now = performance.now(), again = force || (now < uiBusy && now - uiT > 500);
     if (again) uiT = now;
+    else if (window.pageYOffset === mbY && window.pageYOffset === chY) return;
     mbTick(again); chTick(again);
   }
+  function uiPoke(ms) {
+    if (document.hidden) return;
+    uiBusy = Math.max(uiBusy, performance.now() + (ms || UI_BUSY));
+    if (!uiIv) uiIv = setInterval(function () {
+      /* Sicherheitsnetz, falls Frames gedrosselt sind (Energiesparen): alle 500 ms nachmessen, solange Anlass besteht */
+      if (document.hidden || performance.now() > uiBusy) { clearInterval(uiIv); uiIv = 0; return; }
+      uiTick(true);
+    }, 500);
+  }
   uiTick(true);
+  uiPoke(4000);
   window.ADB_MBTICK = uiTick;
-  /* Sicherheitsnetz, falls Frames gedrosselt sind (Hintergrund, Energiesparen): alle 500 ms nachmessen */
-  setInterval(function () { uiTick(true); }, 500);
-  /* zusaetzlich am Scroll-Ereignis: gedrosselte Frames (Hintergrund-Tab, Energiesparen) duerfen den Knopf nicht auf altem Untergrund lassen */
-  window.addEventListener("scroll", function () { uiTick(); }, { passive: true });
-  window.addEventListener("resize", function () { uiTick(true); });
+  window.ADB_MBTICK_POKE = uiPoke;
+  /* zusaetzlich am Scroll-Ereignis: gedrosselte Frames (Energiesparen) duerfen den Knopf nicht auf altem Untergrund lassen */
+  window.addEventListener("scroll", function () { uiPoke(); uiTick(); }, { passive: true });
+  window.addEventListener("resize", function () { uiPoke(); uiTick(true); });
+  window.addEventListener("load", function () { uiPoke(); });
+  window.addEventListener("pageshow", function () { uiPoke(); uiTick(true); });
+  ["pointerdown", "keydown", "click", "touchstart"].forEach(function (ev) { document.addEventListener(ev, function () { uiPoke(); }, { passive: true, capture: true }); });
+  document.addEventListener("visibilitychange", function () { if (!document.hidden) { uiPoke(); uiTick(true); } });
+  /* Klassen am body (menuopen, loaded, on-light, Coach) und die Hintergrundfarbe (data-bg beim Scrollen) */
+  if (window.MutationObserver) new MutationObserver(function () { uiPoke(); }).observe(body, { attributes: true, attributeFilter: ["class", "style"] });
 
   /* Buttons: Ein- und Austrittsstelle der Maus fuer den Kreis-Hover (brand-motion.css, --mx/--my) */
   function btnPoint(e) {
