@@ -7,6 +7,20 @@
 
 const MAX = { text: 2000, short: 200 };
 
+// Einfache Bremse je IP: hoechstens 5 Anfragen in 10 Minuten. Gilt nur innerhalb einer laufenden
+// Instanz der Function (Speicher), faengt also Serien aus einem Skript ab, ersetzt aber nicht die
+// Firewall-Regel in Vercel (docs/GITHUB-EINSTELLUNGEN.md, Abschnitt 6).
+const LIMIT = { max: 5, ms: 10 * 60 * 1000 };
+const hits = new Map();
+function tooMany(ip) {
+  const now = Date.now();
+  const list = (hits.get(ip) || []).filter((t) => now - t < LIMIT.ms);
+  list.push(now);
+  hits.set(ip, list);
+  if (hits.size > 5000) hits.clear();
+  return list.length > LIMIT.max;
+}
+
 function clean(v, n) {
   return String(v == null ? "" : v).replace(/\r/g, "").trim().slice(0, n);
 }
@@ -36,6 +50,9 @@ module.exports = async function handler(req, res) {
   if (origin && !/^https?:\/\/(([a-z0-9-]+\.)*ad\.boutique|[a-z0-9-]+\.vercel\.app|localhost(:\d+)?|127\.0\.0\.1(:\d+)?)(\/|$)/i.test(origin)) {
     return send(403, { ok: false, error: "herkunft" });
   }
+
+  const ip = String(req.headers["x-forwarded-for"] || (req.socket && req.socket.remoteAddress) || "").split(",")[0].trim();
+  if (ip && tooMany(ip)) return send(429, { ok: false, error: "zu-viele" });
 
   let b;
   try { b = await readBody(req); } catch (e) { return send(400, { ok: false, error: "json" }); }

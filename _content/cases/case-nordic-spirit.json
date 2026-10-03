@@ -84,16 +84,6 @@
       ]
     },
     {
-      "typ": "ergebnis",
-      "ausgeblendet": true,
-      "zahlen": [
-        {"label": "(Abschlüsse)", "wert": "23.579"},
-        {"label": "(je Abschluss, gesamt)", "wert": "€ 11,70"},
-        {"label": "(Bestellungen je Monat, Peak)", "wert": "7.800"},
-        {"label": "(Reichweite Meta)", "wert": "2,8 Mio."}
-      ]
-    },
-    {
       "typ": "kapitel",
       "label": "Zweites Kapitel, die Übergabe",
       "headline": ["Aufbauen, skalieren,", "sauber übergeben."],

@@ -84,17 +84,6 @@
       ]
     },
     {
-      "typ": "ergebnis",
-      "ausgeblendet": true,
-      "zahlen": [
-        {"label": "(Leads gesamt)", "wert": "460"},
-        {"label": "(gewichteter CPL)", "wert": "€ 12,77"},
-        {"label": "(Instant Form Eigennutzer)", "wert": "€ 9,59"},
-        {"label": "(bester Anleger-Angle)", "wert": "€ 8,43"}
-      ],
-      "kurzfassung": ["<em>460</em> Leads", "<em>€ 12,77</em> gewichteter CPL", "<em>€ 9,59</em> CPL Instant Form Eigennutzer"]
-    },
-    {
       "typ": "kapitel",
       "label": "Zweites Kapitel, das zweite Quartal",
       "headline": ["Volumen war da.", "Verbindlichkeit fehlte."],

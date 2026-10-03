@@ -79,16 +79,6 @@
       ]
     },
     {
-      "typ": "ergebnis",
-      "ausgeblendet": true,
-      "zahlen": [
-        {"label": "(Anfragen, 18 Monate)", "wert": "1.761"},
-        {"label": "(Impressionen Google)", "wert": "4,6 Mio."},
-        {"label": "(Klicks Meta und Google)", "wert": "119.000"},
-        {"label": "(je Anfrage, 2024)", "wert": "€ 8"}
-      ]
-    },
-    {
       "typ": "kapitel",
       "label": "Zweites Kapitel, die Gruppe",
       "headline": ["Sechs Projekte,", "eine Lead-Logik."],

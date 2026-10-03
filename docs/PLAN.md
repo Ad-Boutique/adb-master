@@ -61,13 +61,13 @@ Priorität: **A** muss vor Go-live, **B** bald danach, **C** später. Verantwort
 
 | Aufgabe | Prio | Wer | Status |
 |---|---|---|---|
-| Impressum und Datenschutz als eigene Seiten (Banner und Footer verlinken auf `www.ad.boutique/datenschutz` und `/impressum`, die nach der Domain-Umstellung 404 wären): **Blocker vor dem Live-Schalter** | A | Daniel | offen |
-| Organisationsdaten im Schema: Adresse, Telefon, Gründungsjahr, Gründer | A | Daniel | offen |
+| Impressum und Datenschutz als eigene Seiten | A | Daniel (Claude) | umgesetzt (`_gen_legal.py`, PR); Datenschutz-Text vor dem Live-Schalter rechtlich prüfen lassen |
+| Organisationsdaten im Schema: Adresse, Firmenbuch, UID, Geschäftsführung (aus dem Impressum) | A | Daniel (Claude) | umgesetzt; Telefon und Gründungsjahr fehlen noch |
 | Freigaben Logowand (Soravia, Raiffeisen, Nordic Spirit) und Soravia-Kachel auf Work | A | Daniel | offen |
 | Ad-Spend-Zahl auf der Startseite (16,7 oder 8,7 Mio. €) bestätigen | A | Daniel | offen |
 | Blog-Artikel der Live-Seite (15 URLs) übernehmen oder weiterleiten | A | offen | offen |
 | Portrait Fabi | B | Daniel | offen |
-| Health-Case nur nach Freigabe | B | Daniel | offen |
+| Health-Case: bleibt sichtbar (Entscheidung Daniel 04.10.2026); ausgeblendete Altzahlen aus allen Case-Dateien entfernt | B | Daniel | erledigt |
 
 ### Phase D: Go-live
 

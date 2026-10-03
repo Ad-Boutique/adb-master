@@ -79,21 +79,6 @@
       ]
     },
     {
-      "typ": "ergebnis",
-      "ausgeblendet": true,
-      "zahlen": [
-        {"label": "(Return on Ad Spend)", "wert": "129×"},
-        {"label": "(zurechenbares Kapital)", "wert": "€ 4,65 Mio."},
-        {"label": "(Cost per Investor)", "wert": "€ 3.004"},
-        {"label": "(Zeichnungen im Funnel)", "wert": "43"}
-      ],
-      "kurzfassung": [
-        "<em>129×</em> Return auf Google-Spend",
-        "<em>€ 4,65 Mio.</em> zurechenbares Kapital",
-        "<em>€ 3.004</em> Cost per Investor"
-      ]
-    },
-    {
       "typ": "kapitel",
       "label": "Zweites Kapitel, Bewegtbild",
       "headline": ["Ein komplexes Produkt,", "erklärt vom Vorstand."],

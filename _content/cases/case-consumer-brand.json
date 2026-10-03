@@ -86,21 +86,6 @@
       ]
     },
     {
-      "typ": "ergebnis",
-      "ausgeblendet": true,
-      "zahlen": [
-        {"label": "(BFCM-ROAS, Benchmark 2,3)", "wert": "4,02"},
-        {"label": "(Awareness-CPM, Benchmark € 3,50)", "wert": "€ 0,99"},
-        {"label": "(Always-On-Sales)", "wert": "295"},
-        {"label": "(Impressions)", "wert": "7,26 Mio."}
-      ],
-      "kurzfassung": [
-        "<em>4,02</em> BFCM-ROAS, Benchmark 2,3",
-        "<em>€ 0,99</em> Awareness-CPM, −72 %",
-        "<em>7,26 Mio.</em> Impressions"
-      ]
-    },
-    {
       "typ": "kapitel",
       "label": "Zweites Kapitel, der Produktlaunch",
       "headline": ["Eine Seite, drei Sprachen,", "vier Termine."],

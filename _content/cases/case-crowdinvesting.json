@@ -83,17 +83,6 @@
       ]
     },
     {
-      "typ": "ergebnis",
-      "ausgeblendet": true,
-      "zahlen": [
-        {"label": "(Kapital, vorher € 43.740)", "wert": "€ 172.117"},
-        {"label": "(ROAS, vorher 2,14)", "wert": "8,75"},
-        {"label": "(Investments, vorher 16)", "wert": "50"},
-        {"label": "(Kosten je Investor, vorher € 1.277)", "wert": "€ 393"}
-      ],
-      "kurzfassung": ["<em>€ 172.117</em> Kapital, +293 %", "<em>8,75</em> ROAS, +309 %", "<em>−69 %</em> Kosten je Investor"]
-    },
-    {
       "typ": "kapitel",
       "label": "Zweites Kapitel, die Skalierung",
       "headline": ["Vom Beweis", "zur Maschine."],

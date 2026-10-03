@@ -87,17 +87,6 @@
       ]
     },
     {
-      "typ": "ergebnis",
-      "ausgeblendet": true,
-      "zahlen": [
-        {"label": "(Jahresumsatz)", "wert": "+57 %"},
-        {"label": "(Blended ROAS, Ziel 3,5)", "wert": "5,57"},
-        {"label": "(Bestellungen)", "wert": "+56 %"},
-        {"label": "(Umsatz aus € 56k Budget)", "wert": "€ 312k"}
-      ],
-      "kurzfassung": ["<em>+57 %</em> Jahresumsatz", "<em>5,57</em> Blended ROAS, Ziel 3,5", "<em>+56 %</em> Bestellungen"]
-    },
-    {
       "typ": "kapitel",
       "label": "Zweites Kapitel, das Fundament",
       "headline": ["Erst messen,", "dann kaufen."],

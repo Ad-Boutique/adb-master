@@ -82,17 +82,6 @@
       ]
     },
     {
-      "typ": "ergebnis",
-      "ausgeblendet": true,
-      "zahlen": [
-        {"label": "(Verkäufe)", "wert": "1.385"},
-        {"label": "(Spend, gesteuert)", "wert": "€ 200,5k"},
-        {"label": "(Retargeting-CPA)", "wert": "€ 60"},
-        {"label": "(Blended ROAS, Ziel 1,50)", "wert": "1,07"}
-      ],
-      "kurzfassung": ["<em>1.385</em> Verkäufe", "<em>€ 60</em> Retargeting-CPA", "<em>−58 %</em> CPA durch UGC"]
-    },
-    {
       "typ": "kapitel",
       "label": "Zweites Kapitel, der Weg zum Ziel",
       "headline": ["Ein Ziel-Gap ist", "ein Arbeitsauftrag."],

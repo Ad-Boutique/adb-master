@@ -2240,7 +2240,9 @@
     p.className = "consent-t"; p.id = "consent-t";
     p.appendChild(document.createTextNode("Darf ad.boutique messen? Mit Ihrer Zustimmung laden wir Google Tag Manager und das Meta-Pixel, um zu sehen, welche Kampagnen wirken. Ohne Zustimmung speichern wir nur Ihre Auswahl. "));
     var a = document.createElement("a");
-    a.href = "https://www.ad.boutique/datenschutz"; a.target = "_blank"; a.rel = "noopener"; a.textContent = "Datenschutz";
+    /* Ziel wie der Footer-Link (live schreibt _seo.py ihn auf /datenschutz um) */
+    var dsl = document.querySelector('.ftr a[href*="datenschutz"]');
+    a.href = (dsl && dsl.getAttribute("href")) || "datenschutz.html"; a.textContent = "Datenschutz";
     p.appendChild(a);
     var row = document.createElement("div");
     row.className = "consent-b";

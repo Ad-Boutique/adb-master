@@ -10,6 +10,19 @@ Wichtigste Datei für die Zusammenarbeit. Zu Beginn jeder Sitzung lesen, vor Arb
 
 ## Log
 
+### 04.10.2026, Daniel (Claude), `claude/golive-rechtliches`
+
+**Gemacht**
+- Impressum (1:1 von www.ad.boutique) und Datenschutzerklärung (angepasst: Verantwortlicher Ad Boutique Agency GmbH, Vercel statt Webflow, Einwilligung vor Tracking, Adobe Fonts, Resend; veraltete Teile wie Privacy Shield, Google Fonts, YouTube, Newsletter und der Name "digitalwerk" aus einer fremden Vorlage entfernt) als eigene Seiten (`_gen_legal.py`). Footer und Cookie-Banner verlinken darauf.
+- Firmendaten aus dem Impressum ins Schema (Adresse, Firmenbuch, UID, Geschäftsführung).
+- Ausgeblendete alte Ergebnisblöcke aus 11 Case-Dateien entfernt (Seiten unverändert). Health-Case bleibt sichtbar.
+- Formular-Endpunkt: Bremse je IP (5 Anfragen in 10 Minuten je Instanz).
+
+**Offen**
+- Datenschutz-Text rechtlich prüfen lassen, Widerspruch OÜ (alte Seite) und GmbH (Impressum) klären.
+- Antwortabsatz auf den Leistungsseiten: drei Varianten als Vorschau, Entscheidung Daniel.
+- Generator-Umbau und Aufräumen des CSS laufen parallel in eigenen Arbeitskopien.
+
 ### 03.10.2026, Daniel (Claude), `daniel/sicherung-aktueller-stand` und `daniel/setup-workflow`
 
 **Gemacht**

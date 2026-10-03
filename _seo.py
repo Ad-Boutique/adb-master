@@ -37,7 +37,9 @@ ORG_DESC = ("ad.boutique ist eine Performance-Marketing-Agentur in Wien. Die Age
             "TikTok, Pinterest und in ChatGPT, produziert die Creatives dafür (UGC, Foto, Film, Social Content) und baut die Landingpages "
             "und Websites, auf die sie führen. Schwerpunkte sind Immobilien und Wohnbau, Finance und Investment, Consumer und D2C sowie Health. "
             "Die Vergütung ist an messbare Ergebnisse gekoppelt.")
-ORG = dict(name="ad.boutique", legal="Ad Boutique Agency GmbH", email="hello@ad.boutique", plz="1030", city="Wien", country="AT",
+# Firmendaten laut Impressum (www.ad.boutique/impressum, Stand 4.10.2026): Firmensitz, Firmenbuch, UID
+ORG = dict(name="ad.boutique", legal="Ad Boutique Agency GmbH", email="hello@ad.boutique", street="Tuchlauben 13/OG 4", plz="1010", city="Wien", country="AT",
+           fn="FN633351z", vat="ATU81022714", gf=["Florian Hörmann", "Daniel Hayden"],
            same_as=["https://www.linkedin.com/company/ad-boutique/", "https://www.instagram.com/ad.boutique.vienna/"],
            logo=BASE + "/assets/img/og-default.jpg")
 DEFAULT_OG = "assets/img/og-default.jpg"
@@ -95,6 +97,8 @@ HAND = {
     "studie-performance.html": dict(title="Studie: Performance-Grafiken | ad.boutique", desc="Interne Studie, nicht indexiert.", kind="other"),
     "case-web-funkhausliving.html": dict(title="Weiterleitung | ad.boutique", desc="Weiterleitung.", kind="other"),
     "_qa_template.html": dict(title="QA | ad.boutique", desc="Intern.", kind="other"),
+    "impressum.html": dict(title="Impressum | ad.boutique", desc="Impressum der Ad Boutique Agency GmbH, Tuchlauben 13, 1010 Wien: Geschäftsführung, Firmenbuch, UID, Kontakt.", kind="other"),
+    "datenschutz.html": dict(title="Datenschutz | ad.boutique", desc="Datenschutzerklärung von ad.boutique: Verantwortlicher, Hosting, Einwilligung, Google, Meta, Adobe Fonts, Anfrageformular, Ihre Rechte.", kind="other"),
 }
 
 
@@ -131,7 +135,9 @@ def org_graph():
     return [
         {"@type": ["Organization", "ProfessionalService"], "@id": BASE + "/#org", "name": ORG["name"], "legalName": ORG["legal"],
          "url": BASE + "/", "logo": ORG["logo"], "image": ORG["logo"], "description": ORG_DESC, "email": ORG["email"],
-         "address": {"@type": "PostalAddress", "postalCode": ORG["plz"], "addressLocality": ORG["city"], "addressCountry": ORG["country"]},
+         "address": {"@type": "PostalAddress", "streetAddress": ORG["street"], "postalCode": ORG["plz"], "addressLocality": ORG["city"], "addressCountry": ORG["country"]},
+         "vatID": ORG["vat"], "identifier": {"@type": "PropertyValue", "propertyID": "Firmenbuchnummer", "value": ORG["fn"]},
+         "employee": [{"@type": "Person", "name": n, "jobTitle": "Geschäftsführer"} for n in ORG["gf"]],
          "areaServed": ["Wien", "Österreich", "Deutschland"], "sameAs": ORG["same_as"],
          "knowsAbout": ["Performance Marketing", "Meta Ads", "Google Ads", "TikTok Ads", "Pinterest Ads", "ChatGPT Ads", "UGC", "Content Creation", "Landingpages", "Webflow", "Immobilienmarketing", "E-Commerce Growth"]},
         {"@type": "WebSite", "@id": BASE + "/#site", "url": BASE + "/", "name": ORG["name"], "inLanguage": "de-AT", "publisher": {"@id": BASE + "/#org"}},
