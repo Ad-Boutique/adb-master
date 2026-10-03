@@ -1,0 +1,70 @@
+{
+  "slug": "case-web-trattner",
+  "vorlage": "web",
+  "kette": "web",
+  "reihenfolge": 220,
+  "naechster": "case-web-unio",
+  "meta": {
+    "name": "Trattner & Söhne",
+    "branche": "Immobilien, Makler-Traditionsbetrieb",
+    "url": "https://www.trattner-soehne.at",
+    "umfang": ["Strategie & Struktur", "Design & Copy", "Umsetzung"],
+    "leistungen": [{"titel": "Websites & Landingpages", "seite": "service-websites.html"}]
+  },
+  "hero": {"headline": "So souverän wie im persönlichen Gespräch.", "bild": "assets/img/web_trattner_d.jpg"},
+  "intro": {"text": "Ein Traditionsbetrieb, der digital so souverän auftreten soll wie im persönlichen Gespräch: klare Objektsuche, ruhige Typografie und eine Struktur, die Suchende und Eigentümer getrennt abholt."},
+  "kennzahlen": {
+    "headline": ["Was das Projekt ausmacht,", "in drei Punkten."],
+    "karten": [
+      {
+        "art": "text",
+        "label": "Zwei Zielgruppen",
+        "wert": "Suchende und Eigentümer, getrennt abgeholt.",
+        "badge": "1 Auftritt",
+        "stationen": ["Objektsuche", "Suchende", "Eigentümer", "Kontakt"],
+        "text": "Klare Objektsuche, ruhige Typografie, eine Struktur, die zwei Gruppen führt."
+      },
+      {
+        "art": "medien",
+        "label": "Die Seite",
+        "wert": "So souverän wie im Gespräch.",
+        "badge": "Traditionsbetrieb",
+        "bilder": [
+          "assets/img/web_trattner_ds0.jpg",
+          "assets/img/web_trattner_d1.jpg",
+          "assets/img/web_trattner_ds1.jpg",
+          "assets/img/web_trattner_m0.jpg",
+          "assets/img/web_trattner_d2.jpg"
+        ],
+        "text": "Ein Makler-Traditionsbetrieb, der digital so auftritt wie im persönlichen Gespräch."
+      },
+      {"art": "text", "label": "Was wir gemacht haben", "wert": "Strategie, Struktur, Design, Copy, Umsetzung.", "badge": "Aus einer Hand", "text": "Ein Auftritt, der Seriosität zeigt, ohne laut zu werden."}
+    ]
+  },
+  "bausteine": [
+    {"typ": "buehne", "bild": "assets/img/web_trattner_d1.jpg"},
+    {
+      "typ": "mobil",
+      "headline": "Mobil zuerst gedacht.",
+      "text": "Der Auftritt, wie ihn die meisten Besucher sehen: am Telefon, Seite für Seite.",
+      "bilder": [
+        "assets/img/web_trattner_m0.jpg",
+        "assets/img/web_trattner_m1.jpg",
+        "assets/img/web_trattner_m2.jpg",
+        "assets/img/web_trattner_ms0.jpg",
+        "assets/img/web_trattner_ms1.jpg"
+      ]
+    },
+    {
+      "typ": "unterseiten",
+      "label": "Aus dem Projekt",
+      "bilder": ["assets/img/web_trattner_ds0.jpg", "assets/img/web_trattner_ds1.jpg", "assets/img/web_trattner_ds2.jpg"]
+    },
+    {
+      "typ": "galerie",
+      "label": "Aus dem Mandat",
+      "hintergrund": "#0E0E10",
+      "medien": ["assets/case/case-web-trattner/g0.jpg", "assets/case/case-web-trattner/g1.jpg"]
+    }
+  ]
+}

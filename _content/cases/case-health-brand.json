@@ -1,0 +1,137 @@
+{
+  "slug": "case-health-brand",
+  "vorlage": "dossier",
+  "kette": "performance",
+  "reihenfolge": 80,
+  "naechster": "case-photovoltaik",
+  "meta": {
+    "name": "Dental-/Health-Marke",
+    "titel": ["Dental-/", "Health-Marke."],
+    "ziel": "Profitable Skalierung",
+    "branche": "E-Commerce, Health",
+    "zeitraum": "Seit Herbst 2025, laufend",
+    "kanaele": "Meta, Google, Creator, Workshop",
+    "farbwelt": "#1F3833",
+    "farbwelt_text": "#EAF1EE",
+    "leistungen": [
+      {"titel": "E-Commerce Growth", "seite": "service-ecommerce.html"},
+      {"titel": "Performance Marketing", "seite": "service-performance-marketing.html"},
+      {"titel": "Content Creation", "seite": "service-content-creation.html"},
+      {"titel": "Strategie & Funnel", "seite": "service-strategie.html"}
+    ]
+  },
+  "hero": {
+    "headline": "Ehrlich gerechnet. Und trotzdem gewachsen.",
+    "bild": "assets/prev/case-health-brand.jpg",
+    "kennzahl": {"wert": "1.385", "label": "Verkäufe in 7 Monaten"}
+  },
+  "intro": {"these": "Wachstum bei steigendem Spend, aber die <b>Profitabilität blieb unter Zielwert</b>: ein klassischer <b>Skalierungs-Konflikt</b>.", "text": "Wir haben über € 200k Mediabudget systematisch gesteuert: Kampagnen nach Rolle getrennt, Creatives nach CPA getestet, Budget auf die effizientesten Hebel verschoben. Und offen reportet, wo das Ziel noch nicht erreicht wurde: Blended ROAS 1,07 bei Ziel 1,50. Der effizienteste Hebel war Retargeting mit € 60 CPA."},
+  "kennzahlen": {
+    "headline": ["Was besser wurde,", "in drei Zahlen."],
+    "karten": [
+      {
+        "id": "health-creator",
+        "art": "sprung",
+        "label": "Preis je Kauf",
+        "vorher": "€ 215 Produktvideo",
+        "wert": "€ 82",
+        "einheit": "Creator",
+        "zaehlen": {"von": 215, "bis": 82, "dezimalen": 0, "vor": "€ ", "nach": ""},
+        "badge": "Faktor 2,6",
+        "reihen": [
+          {"label": "Produktvideo", "punkte": 22, "an": 22, "hervorgehoben": false},
+          {"label": "Creator", "punkte": 22, "an": 8, "hervorgehoben": true}
+        ],
+        "text": "Der Creator schlug das Produktvideo beim Preis je Kauf um mehr als die Hälfte. Ein Punkt sind 10 Euro."
+      },
+      {
+        "art": "sprung",
+        "label": "Blended ROAS",
+        "vorher": "Ziel 1,50",
+        "wert": "1,07",
+        "zaehlen": {"von": 0, "bis": 1.07, "dezimalen": 2, "vor": "", "nach": ""},
+        "badge": "Ziel-Gap offen",
+        "reihen": [
+          {"label": "Ziel", "punkte": 15, "an": 15, "hervorgehoben": true},
+          {"label": "Erreicht", "punkte": 15, "an": 11, "hervorgehoben": false}
+        ],
+        "text": "Steht so im Report. Die Stufen dorthin: 1,4, 1,6, über 1,8, jede mit Hebel und Datum. Ein Punkt sind 0,1 ROAS."
+      },
+      {
+        "art": "zaehler",
+        "label": "Verkäufe in sieben Monaten",
+        "wert": "1.385",
+        "zaehlen": {"von": 0, "bis": 1385, "dezimalen": 0, "vor": "", "nach": ""},
+        "badge": "€ 200,5k gesteuert",
+        "reihen": [{"label": "Verkäufe", "punkte": 28, "an": 28, "hervorgehoben": true}],
+        "text": "Ein Punkt sind 50 Verkäufe. Retargeting blieb mit € 60 je Kauf der effizienteste Euro."
+      }
+    ],
+    "fussnote": "Ein Ziel-Gap gehört offen ins Reporting: Der Blended ROAS lag mit 1,07 unter dem Ziel von 1,50, der Weg dorthin steht im Report, nicht im Kleingedruckten."
+  },
+  "bausteine": [
+    {"typ": "statement", "zeilen": ["Ehrlichkeit schlägt", "Schönfärben."]},
+    {
+      "typ": "perspektiven",
+      "zeilen": [
+        {"titel": "Effizienz", "text": "Retargeting mit € 60 CPA und UGC trugen die Wirtschaftlichkeit."},
+        {"titel": "Zielgruppe", "text": "Warme Retargeting-Audiences waren am profitabelsten."},
+        {"titel": "Message", "text": "Nutzen vor Produktdetails."},
+        {"titel": "Creative", "text": "UGC schlug klassische Produkt-Videos beim CPA um rund 58 Prozent: € 82 bis 99 statt € 200."},
+        {"titel": "Kanal", "text": "Eine Haupt-Kampagne trug den Großteil des Spends, mit klarer Skalierungs-Empfehlung."}
+      ]
+    },
+    {
+      "typ": "ergebnis",
+      "ausgeblendet": true,
+      "zahlen": [
+        {"label": "(Verkäufe)", "wert": "1.385"},
+        {"label": "(Spend, gesteuert)", "wert": "€ 200,5k"},
+        {"label": "(Retargeting-CPA)", "wert": "€ 60"},
+        {"label": "(Blended ROAS, Ziel 1,50)", "wert": "1,07"}
+      ],
+      "kurzfassung": ["<em>1.385</em> Verkäufe", "<em>€ 60</em> Retargeting-CPA", "<em>−58 %</em> CPA durch UGC"]
+    },
+    {
+      "typ": "kapitel",
+      "label": "Zweites Kapitel, der Weg zum Ziel",
+      "headline": ["Ein Ziel-Gap ist", "ein Arbeitsauftrag."],
+      "absatz1": "Der Report zeigte 1,07 bei Ziel 1,50. Statt die Zahl zu erklären, haben wir den Weg gebaut: Der Creator schlug das Produktvideo beim Preis je Kauf um mehr als die Hälfte, 82 Euro gegen 215 bis 232 Euro, die Rabatt-Statics brachten den besten Return, Retargeting blieb der effizienteste Euro.",
+      "absatz2": "<b>Daraus wurde die Roadmap für das Jahr:</b> Advertorial-Landingpage, Video Sales Letter, Newsletter, Split-Tests auf der Produktseite, Ziel-Return in Stufen von 1,4 über 1,6 auf über 1,8. Begonnen hat alles mit einem Strategie-Workshop, in dem Produkt, Zielgruppe und Zahlenlogik auf einen Tisch kamen.",
+      "zahlen": [
+        {"label": "(Creator, Preis je Kauf)", "wert": "€ 82"},
+        {"label": "(Produktvideo, Preis je Kauf)", "wert": "€ 215"},
+        {"label": "(bester Return, Rabatt-Static)", "wert": "1,37"},
+        {"label": "(Zielstufen im Jahr)", "wert": "3"}
+      ],
+      "fussnote": "Die Stufen: 1,4 im Mai, 1,6 im Juni, über 1,8 ab Juli. Jede Stufe hat einen Hebel, der sie tragen soll, und ein Datum, an dem sie gemessen wird.",
+      "links": [
+        {"href": "service-strategie.html", "text": "Strategie & Funnel"},
+        {"href": "service-content-creation.html", "text": "Content Creation"}
+      ]
+    },
+    {"typ": "zitat", "text": "Wir wollten uns nur kurz für den produktiven und inspirierenden Workshop gestern bedanken, es hat uns viel Freude gemacht.", "wer": "Geschäftsführer, Health-Marke"},
+    {
+      "typ": "learnings",
+      "saetze": [
+        "Ehrlichkeit schlägt Schönfärben: Ein Ziel-Gap gehört offen ins Reporting.",
+        "Der größte Hebel war das Creative, nicht das Budget.",
+        "Retargeting ist der effizienteste Euro."
+      ]
+    },
+    {
+      "typ": "galerie",
+      "label": "Aus dem Mandat",
+      "hintergrund": "#1F3833",
+      "medien": [
+        "assets/case/case-health-brand/g0.jpg",
+        "assets/case/case-health-brand/g1.jpg",
+        "assets/case/case-health-brand/g2.jpg",
+        "assets/case/case-health-brand/g3.jpg",
+        "assets/case/case-health-brand/v0.mp4",
+        "assets/case/case-health-brand/v1.mp4",
+        "assets/case/case-health-brand/v2.mp4"
+      ]
+    }
+  ]
+}

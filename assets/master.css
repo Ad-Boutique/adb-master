@@ -46,30 +46,7 @@
    Fusion: BiA-Struktur/Motion + ad.boutique DNA (Schwarz, Champagne)
    ============================================================ */
 
-:root {
-  --ink: #0A0A0A;
-  --ink-soft: #131315;
-  --paper: #F3EDE1;
-  --cream: #EFE7D6;
-  --champ: #E9D8BC;
-  --champ-deep: #C9AE7C;
-  --grey: #9B9BA1;
-  --grey-dark: #57575D;
-  --line-l: rgba(10,10,10,0.14);
-  --line-d: rgba(243,237,225,0.16);
-  --green: #22382C;
-  --brown: #4A3328;
-  --slate: #1C2530;
-  --moss: #2E3A2F;
-  --steel: #33383E;
-  --teal: #1F3833;
-  --olive: #3A3A2E;
-  --e-snap: cubic-bezier(0.76, 0, 0.24, 1);
-  --e-out: cubic-bezier(0.19, 1, 0.22, 1);
-  --f-disp: "Satoshi", "Archivo", "Helvetica Neue", Arial, sans-serif;
-  --f-serif: "Reckless", "Newsreader", Georgia, "Times New Roman", serif;
-  --f-ui: "Satoshi", "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
-}
+/* Design-Tokens (Farben, Schriften, Kurven) stehen in tokens.css */
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: auto; }
@@ -142,7 +119,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------- Fixed Chrome: Logo + CTA ---------- */
 .chrome {
-  position: fixed; inset: 0 0 auto 0; z-index: 60;
+  position: fixed; inset: 0 0 auto 0; z-index: var(--z-chrome);
   display: flex; justify-content: space-between; align-items: center;
   padding: 26px clamp(24px, 3.5vw, 56px);
   pointer-events: none;
@@ -161,9 +138,9 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------- Menü-Kreis (fix, unten mittig) ---------- */
 .mbtn {
-  position: fixed; left: 50%; bottom: 34px; z-index: 90;
+  position: fixed; left: 50%; bottom: 34px; z-index: var(--z-float);
   transform: translateX(-50%);
-  width: 64px; height: 64px; border-radius: 50%;
+  width: 64px; height: 64px; border-radius: var(--r-round);
   background: var(--champ); border: 0; cursor: pointer;
   transition: transform 0.5s var(--e-out), background-color 0.45s ease;
   box-shadow: 0 6px 30px rgba(0,0,0,0.28);
@@ -171,12 +148,12 @@ a { color: inherit; text-decoration: none; }
 .mbtn:hover { transform: translateX(-50%) scale(1.12); }
 .mbtn::after {
   content: ""; position: absolute; inset: 26px;
-  border-radius: 50%; background: var(--ink); opacity: 0.85;
+  border-radius: var(--r-round); background: var(--ink); opacity: 0.85;
   transition: opacity 0.4s ease;
 }
 /* Label orbitiert um den Kreis (wie in der Vorlage) */
 .morbit {
-  position: fixed; left: 50%; bottom: 4px; z-index: 90;
+  position: fixed; left: 50%; bottom: 4px; z-index: var(--z-float);
   width: 124px; height: 124px; margin-left: -62px;
   pointer-events: none; mix-blend-mode: difference;
   animation: orbitspin 16s linear infinite;
@@ -195,21 +172,21 @@ body.menuopen .mbtn::after { opacity: 1; }
 
 /* Filter-Kreis (Work-Seite), links neben dem Menü-Kreis */
 .fbtn {
-  position: fixed; left: 50%; bottom: 42px; z-index: 90;
+  position: fixed; left: 50%; bottom: 42px; z-index: var(--z-float);
   margin-left: -178px;
-  width: 52px; height: 52px; border-radius: 50%; cursor: pointer;
+  width: 52px; height: 52px; border-radius: var(--r-round); cursor: pointer;
   background: transparent; border: 1px solid var(--champ-deep);
   transition: transform 0.5s var(--e-out), background-color 0.4s ease;
 }
 .fbtn::after {
-  content: ""; position: absolute; inset: 22px; border-radius: 50%;
+  content: ""; position: absolute; inset: 22px; border-radius: var(--r-round);
   background: var(--champ-deep); transition: background 0.3s ease;
 }
 .fbtn:hover { transform: scale(1.1); }
 body.filteropen .fbtn { background: var(--champ); border-color: var(--champ); }
 body.filteropen .fbtn::after { background: var(--ink); }
 .forbit {
-  position: fixed; left: 50%; bottom: 18px; z-index: 90;
+  position: fixed; left: 50%; bottom: 18px; z-index: var(--z-float);
   width: 100px; height: 100px; margin-left: -202px;
   pointer-events: none; mix-blend-mode: difference;
   animation: orbitspin 18s linear infinite reverse;
@@ -219,7 +196,7 @@ body.filteropen .fbtn::after { background: var(--ink); }
   letter-spacing: 0.3em; text-transform: uppercase; fill: #fff;
 }
 .fpop {
-  position: fixed; left: 50%; bottom: 112px; z-index: 89;
+  position: fixed; left: 50%; bottom: 112px; z-index: var(--z-pop);
   margin-left: -230px; display: flex; flex-direction: column; gap: 8px;
   align-items: flex-start; pointer-events: none;
 }
@@ -250,7 +227,7 @@ body.branchopen .bpop .fchip { opacity: 1; transform: none; }
 
 /* ---------- Menü-Sheet (Bottom-Sheet mit Seiten-Vorschauen) ---------- */
 .msheet {
-  position: fixed; left: 0; right: 0; bottom: 0; z-index: 80;
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: var(--z-msheet);
   max-width: 100vw; overflow: clip;
   background: #0B0B0D;
   transform: translateY(102%);
@@ -260,7 +237,7 @@ body.branchopen .bpop .fchip { opacity: 1; transform: none; }
 }
 body.menuopen .msheet { transform: none; }
 .mdim {
-  position: fixed; inset: 0; z-index: 70; background: #000;
+  position: fixed; inset: 0; z-index: var(--z-mdim); background: #000;
   opacity: 0; pointer-events: none; transition: opacity 0.6s ease;
 }
 body.menuopen .mdim { opacity: 0.55; pointer-events: auto; }
@@ -279,7 +256,7 @@ body.menuopen .mdim { opacity: 0.55; pointer-events: auto; }
   text-transform: uppercase; margin-bottom: 12px; color: var(--paper);
 }
 .mitem .mt::before {
-  content: ""; width: 7px; height: 7px; border-radius: 50%;
+  content: ""; width: 7px; height: 7px; border-radius: var(--r-round);
   background: transparent; transition: background 0.3s ease;
 }
 .mitem.act .mt::before { background: var(--champ); }
@@ -324,7 +301,7 @@ body.menuopen .mitem:nth-child(5) .mthumb { transition-delay: 0.24s; }
 
 /* ---------- Page-Transition-Overlay ---------- */
 .pt {
-  position: fixed; inset: 0; z-index: 200; background: #060607;
+  position: fixed; inset: 0; z-index: var(--z-pt); background: #060607;
   transform: translateY(0); pointer-events: none;
   transition: transform 0.65s var(--e-snap);
   display: flex; align-items: center; justify-content: center;
@@ -337,9 +314,9 @@ body.menuopen .mitem:nth-child(5) .mthumb { transition-delay: 0.24s; }
 
 /* ---------- Cursor ---------- */
 .cur {
-  position: fixed; top: 0; left: 0; z-index: 300; pointer-events: none;
+  position: fixed; top: 0; left: 0; z-index: var(--z-cur); pointer-events: none;
   width: 30px; height: 30px; margin: -15px 0 0 -15px;
-  border: 1px solid #fff; border-radius: 50%;
+  border: 1px solid #fff; border-radius: var(--r-round);
   mix-blend-mode: difference;
   translate: -100px -100px;
   /* nur die Skalierung wird weich, die Bewegung kommt aus dem Frame-Loop */
@@ -349,7 +326,7 @@ body.menuopen .mitem:nth-child(5) .mthumb { transition-delay: 0.24s; }
 .cur::after {
   content: ""; position: absolute; left: 50%; top: 50%;
   width: 4px; height: 4px; margin: -2px 0 0 -2px;
-  border-radius: 50%; background: #fff;
+  border-radius: var(--r-round); background: #fff;
 }
 body.cur-hov .cur { scale: 1.85; }
 @media (pointer: coarse) { .cur { display: none; } }
@@ -595,7 +572,7 @@ footer { background: #070708; color: var(--paper); padding: clamp(70px, 8vw, 120
 .fchip:hover { color: var(--ink); }
 .tile.fout { display: none; }
 .filterlab {
-  position: fixed; right: 18px; top: 50%; z-index: 40;
+  position: fixed; right: 18px; top: 50%; z-index: var(--z-filterlab);
   transform: rotate(90deg) translateX(-50%); transform-origin: right top;
   font-size: 10px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase;
   color: var(--grey-dark); pointer-events: none;
@@ -689,7 +666,7 @@ footer { background: #070708; color: var(--paper); padding: clamp(70px, 8vw, 120
 
 /* FLIP-Expansion Overlay */
 .flipx {
-  position: fixed; z-index: 150; overflow: hidden; border-radius: 3px;
+  position: fixed; z-index: var(--z-flip); overflow: hidden; border-radius: 3px;
   background-size: cover; background-position: center;
   transition: all 0.68s var(--e-snap); will-change: top, left, width, height;
 }
@@ -900,9 +877,9 @@ body.loaded .chero img { transform: scale(1); }
 .apl .hlxsticky { top: clamp(118px, 14vh, 150px); }
 /* Kapitel-Leiste: schwebende Pille unter dem Kopf, wie Apples Produktnavigation mit Kaufknopf */
 .chapnav {
-  position: fixed; top: 62px; left: 50%; z-index: 60;
+  position: fixed; top: 62px; left: 50%; z-index: var(--z-chrome);
   display: flex; align-items: center; gap: 2px;
-  padding: 5px 6px 5px 14px; border-radius: 999px;
+  padding: 5px 6px 5px 14px; border-radius: var(--r-pill);
   background: rgba(243,237,225,0.86); border: 1px solid var(--line-l);
   -webkit-backdrop-filter: blur(18px) saturate(1.15); backdrop-filter: blur(18px) saturate(1.15);
   box-shadow: 0 12px 34px rgba(10,10,10,0.09);
@@ -913,7 +890,7 @@ body.loaded .chero img { transform: scale(1); }
 .chapnav::-webkit-scrollbar { display: none; }
 .chapnav.show { transform: translate(-50%, 0); opacity: 1; pointer-events: auto; }
 .chapnav .cn-title { font-size: 12.5px; font-weight: 700; letter-spacing: 0.01em; color: var(--ink); margin-right: 10px; white-space: nowrap; }
-.chapnav a { font-size: 12px; font-weight: 600; color: var(--grey-dark); padding: 7px 11px; border-radius: 999px; white-space: nowrap; flex: 0 0 auto; transition: background 0.3s ease, color 0.3s ease; }
+.chapnav a { font-size: 12px; font-weight: 600; color: var(--grey-dark); padding: 7px 11px; border-radius: var(--r-pill); white-space: nowrap; flex: 0 0 auto; transition: background 0.3s ease, color 0.3s ease; }
 .chapnav a:hover { color: var(--ink); }
 .chapnav a.on { background: var(--ink); color: var(--paper); }
 .chapnav a.cn-cta { background: var(--champ-deep); color: var(--paper); margin-left: 6px; }
@@ -930,7 +907,7 @@ body.loaded .chero img { transform: scale(1); }
   .apl .hlxsticky { top: 108px; }
   /* Am Telefon zeigt Apple Punkte statt Tabs: die Kapitel-Leiste darueber uebernimmt das Benennen */
   .apl .hlxnav { justify-content: center; gap: 8px; margin: 0 0 10px; padding: 0; overflow: visible; }
-  .apl .hlxnav .hn { font-size: 0; width: 8px; height: 8px; padding: 0; border-radius: 50%; border-color: rgba(10,10,10,0.25); background: transparent; }
+  .apl .hlxnav .hn { font-size: 0; width: 8px; height: 8px; padding: 0; border-radius: var(--r-round); border-color: rgba(10,10,10,0.25); background: transparent; }
   .apl .hlxnav .hn.on { background: var(--ink); border-color: var(--ink); }
 }
 .fg-dark .statg .st, .chero .statg .st { border-color: rgba(255,255,255,0.28); }
@@ -952,7 +929,7 @@ body.loaded .chero img { transform: scale(1); }
 .hlxnav { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
 .hlxnav .hn {
   font: inherit; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; color: var(--grey-dark);
-  background: transparent; border: 1px solid var(--line-l); border-radius: 999px; padding: 8px 14px; cursor: pointer;
+  background: transparent; border: 1px solid var(--line-l); border-radius: var(--r-pill); padding: 8px 14px; cursor: pointer;
   transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 .hlxnav .hn.on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
@@ -1062,7 +1039,7 @@ body.loaded .chero img { transform: scale(1); }
 .pmap .pp { fill: var(--champ-deep); opacity: 0; transition: opacity 0.6s ease; }
 .pmap.live .pp { opacity: 1; }
 .pmap-legend { display: flex; gap: clamp(16px, 2.4vw, 36px); flex-wrap: wrap; margin-top: clamp(18px, 2vw, 30px); font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: var(--grey-dark); }
-.pmap-legend i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; vertical-align: middle; box-sizing: border-box; }
+.pmap-legend i { display: inline-block; width: 8px; height: 8px; border-radius: var(--r-round); margin-right: 8px; vertical-align: middle; box-sizing: border-box; }
 .pmap-legend .dot-sie { background: var(--champ-deep); }
 .pmap-legend .dot-wir { background: var(--ink); }
 .pmap-legend .dot-out { border: 1px dashed var(--champ-deep); }
@@ -1090,7 +1067,7 @@ body.loaded .chero img { transform: scale(1); }
 .fcard li { display: grid; grid-template-columns: 14px 1fr; gap: 14px; align-items: start; padding: 13px 0; border-top: 1px solid var(--line-l); font-size: clamp(15px, 1.15vw, 17px); line-height: 1.5; }
 .fcard--no li { border-top-color: var(--line-d); }
 .fcard li:first-child { border-top: 0; padding-top: 0; }
-.fcard .fdot { width: 10px; height: 10px; border-radius: 50%; background: var(--champ-deep); margin-top: 0.42em; }
+.fcard .fdot { width: 10px; height: 10px; border-radius: var(--r-round); background: var(--champ-deep); margin-top: 0.42em; }
 .fcard .fdot--no { background: transparent; border: 1.5px solid var(--champ); }
 .dethead { max-width: 760px; margin-bottom: clamp(30px, 4vw, 56px); }
 .detgrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(14px, 1.8vw, 28px); }
@@ -1100,7 +1077,7 @@ body.loaded .chero img { transform: scale(1); }
 .dcell p { font-size: 14.5px; line-height: 1.55; color: var(--grey-dark); margin-top: 12px; }
 .dcell ul { list-style: none; margin: auto 0 0; padding: 18px 0 0; }
 .dcell li { font-size: 13.5px; line-height: 1.45; padding: 8px 0 8px 16px; border-top: 1px solid var(--line-l); position: relative; }
-.dcell li::before { content: ""; position: absolute; left: 0; top: 0.95em; width: 6px; height: 6px; border-radius: 50%; background: var(--champ-deep); }
+.dcell li::before { content: ""; position: absolute; left: 0; top: 0.95em; width: 6px; height: 6px; border-radius: var(--r-round); background: var(--champ-deep); }
 @media (max-width: 1100px) { .detgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 860px) {
   .fithead--v2 { grid-template-columns: 1fr; gap: 16px; align-items: start; }
@@ -1271,7 +1248,7 @@ body.loaded .chero img { transform: scale(1); }
 .pnode {
   grid-column: 2; justify-self: center; align-self: center;
   width: 52px; height: 52px;
-  border-radius: 50%; background: var(--ink); border: 1px solid var(--ink);
+  border-radius: var(--r-round); background: var(--ink); border: 1px solid var(--ink);
   display: flex; align-items: center; justify-content: center;
   font-family: var(--f-ui); font-weight: 800; font-size: 13px; color: var(--paper);
   transition: background-color 0.45s ease, border-color 0.45s ease, color 0.45s ease, box-shadow 0.45s ease;
@@ -1327,7 +1304,7 @@ body.loaded .chero img { transform: scale(1); }
 .acc .abody p { font-family: var(--f-serif); font-size: 16px; color: var(--grey-dark); line-height: 1.65; max-width: 58ch; }
 .acc .abody ul { list-style: none; margin-top: 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 28px; }
 .acc .abody li { font-size: 14.5px; color: var(--ink); padding-left: 16px; position: relative; }
-.acc .abody li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 5px; height: 5px; border-radius: 50%; background: var(--champ-deep); }
+.acc .abody li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 5px; height: 5px; border-radius: var(--r-round); background: var(--champ-deep); }
 @media (max-width: 900px) { .svc-split { grid-template-columns: 1fr; } .svc-split .intro { position: static; } .acc .abody ul { grid-template-columns: 1fr; } }
 
 /* Anfrage-Mechanik */
@@ -1443,7 +1420,7 @@ body.loaded .chero img { transform: scale(1); }
 }
 .oplist--steps .op.on { opacity: 1; transform: none; }
 .oplist--steps .owhen::before {
-  content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+  content: ""; display: inline-block; width: 8px; height: 8px; border-radius: var(--r-round);
   border: 1px solid currentColor; margin-right: 10px; vertical-align: 1px;
   transition: background-color 0.45s ease, box-shadow 0.45s ease;
 }
@@ -1511,10 +1488,10 @@ body.loaded .chero img { transform: scale(1); }
   .zalink, .alink { padding-top: 6px; padding-bottom: 8px; }
 }
 .svc-glyph {
-  width: 34px; height: 34px; border: 1px solid var(--champ-deep); border-radius: 50%;
+  width: 34px; height: 34px; border: 1px solid var(--champ-deep); border-radius: var(--r-round);
   margin: 0 auto 22px; position: relative;
 }
-.svc-glyph::after { content: ""; position: absolute; inset: 12px; border-radius: 50%; background: var(--champ-deep); }
+.svc-glyph::after { content: ""; position: absolute; inset: 12px; border-radius: var(--r-round); background: var(--champ-deep); }
 
 
 /* ============================================================
@@ -1555,7 +1532,7 @@ body.loaded .chero img { transform: scale(1); }
 
 /* FLIP: dunkler Grund + zentriertes Bild (Outpost-Uebergang) */
 .flipbg {
-  position: fixed; inset: 0; z-index: 140; background: #0A0A0A;
+  position: fixed; inset: 0; z-index: var(--z-flipbg); background: #0A0A0A;
   opacity: 0; transition: opacity 0.55s ease; pointer-events: none;
 }
 .flipbg.on { opacity: 1; }
@@ -1689,7 +1666,7 @@ body.loaded .chero img { transform: scale(1); }
   padding: 26px; box-shadow: 0 14px 44px rgba(10,10,10,0.06);
 }
 .hproc .hnode {
-  width: 46px; height: 46px; border-radius: 50%; background: var(--ink); color: var(--paper);
+  width: 46px; height: 46px; border-radius: var(--r-round); background: var(--ink); color: var(--paper);
   display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px;
   margin-bottom: 18px; transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
 }
@@ -1813,21 +1790,21 @@ body.loaded .chero img { transform: scale(1); }
 
 /* Zweiter Filter-Kreis rechts: Branche */
 .bbtn {
-  position: fixed; left: 50%; bottom: 42px; z-index: 90;
+  position: fixed; left: 50%; bottom: 42px; z-index: var(--z-float);
   margin-left: 126px;
-  width: 52px; height: 52px; border-radius: 50%; cursor: pointer;
+  width: 52px; height: 52px; border-radius: var(--r-round); cursor: pointer;
   background: transparent; border: 1px solid var(--champ-deep);
   transition: transform 0.5s var(--e-out), background-color 0.4s ease;
 }
 .bbtn::after {
-  content: ""; position: absolute; inset: 22px; border-radius: 50%;
+  content: ""; position: absolute; inset: 22px; border-radius: var(--r-round);
   background: var(--champ-deep); transition: background 0.3s ease;
 }
 .bbtn:hover { transform: scale(1.1); }
 body.branchopen .bbtn { background: var(--champ); border-color: var(--champ); }
 body.branchopen .bbtn::after { background: var(--ink); }
 .borbit {
-  position: fixed; left: 50%; bottom: 18px; z-index: 90;
+  position: fixed; left: 50%; bottom: 18px; z-index: var(--z-float);
   width: 100px; height: 100px; margin-left: 102px;
   pointer-events: none; mix-blend-mode: difference;
   animation: orbitspin 18s linear infinite;
@@ -1837,7 +1814,7 @@ body.branchopen .bbtn::after { background: var(--ink); }
   letter-spacing: 0.3em; text-transform: uppercase; fill: #fff;
 }
 .bpop {
-  position: fixed; left: 50%; bottom: 112px; z-index: 89;
+  position: fixed; left: 50%; bottom: 112px; z-index: var(--z-pop);
   margin-left: 102px; display: flex; flex-direction: column; gap: 8px;
   align-items: flex-start; pointer-events: none;
 }
@@ -1895,7 +1872,7 @@ body.branchopen .bbtn::after { background: var(--ink); }
 }
 .filmwrap.playing .fplay { opacity: 0; pointer-events: none; }
 .filmwrap .fplay span {
-  width: 76px; height: 76px; border-radius: 50%; background: var(--champ);
+  width: 76px; height: 76px; border-radius: var(--r-round); background: var(--champ);
   display: flex; align-items: center; justify-content: center;
   color: var(--ink); font-size: 20px; padding-left: 4px;
   transition: transform 0.5s var(--e-out);
@@ -2149,9 +2126,9 @@ body.branchopen .bbtn::after { background: var(--ink); }
 /* Zurueck-Kreis auf Case-Seiten, links neben dem Menue-Kreis
    (gleiche Sprache wie die Filter-Kreise auf der Work-Seite) */
 .bkbtn {
-  position: fixed; left: 50%; bottom: 42px; z-index: 90;
+  position: fixed; left: 50%; bottom: 42px; z-index: var(--z-float);
   margin-left: -196px;
-  width: 52px; height: 52px; border-radius: 50%;
+  width: 52px; height: 52px; border-radius: var(--r-round);
   display: flex; align-items: center; justify-content: center;
   background: transparent; border: 1px solid var(--champ-deep);
   color: var(--champ-deep); font-size: 17px; line-height: 1;
@@ -2159,7 +2136,7 @@ body.branchopen .bbtn::after { background: var(--ink); }
 }
 .bkbtn:hover { transform: scale(1.1); background: var(--champ); color: var(--ink); border-color: var(--champ); }
 .bkorbit {
-  position: fixed; left: 50%; bottom: 18px; z-index: 90;
+  position: fixed; left: 50%; bottom: 18px; z-index: var(--z-float);
   width: 100px; height: 100px; margin-left: -220px;
   pointer-events: none; mix-blend-mode: difference;
   animation: orbitspin 18s linear infinite reverse;

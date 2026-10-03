@@ -1,0 +1,80 @@
+{
+  "slug": "case-premium-neubau",
+  "vorlage": "handgebaut",
+  "kette": "performance",
+  "reihenfolge": 30,
+  "seite": "case-premium-neubau.html",
+  "meta": {
+    "name": "Premium-Neubau, Wien",
+    "leistungen": [
+      {"titel": "Performance Marketing", "seite": "service-performance-marketing.html"},
+      {"titel": "Content Creation", "seite": "service-content-creation.html"},
+      {"titel": "Websites & Landingpages", "seite": "service-websites.html"}
+    ],
+    "seo": {"titel": "Case: Premium-Neubau Wien, 489 Anfragen zu 11,77 Euro | ad.boutique", "beschreibung": "489 Kaufinteressenten aus 5.755 Euro Spend, 11,77 Euro je Anfrage, Instant Form 6,97 statt 15,66 Euro über die Website. Ein Motiv trug 54 Prozent."}
+  },
+  "teaser": {
+    "titel": ["Premium-Neubau,", "Wien."],
+    "zeile": "489 Leads zu € 11,77. Ein Motiv trug 54 %.",
+    "bild": "assets/img/funkhaus.jpg"
+  },
+  "kennzahlen": {
+    "headline": ["Was besser wurde,", "in drei Zahlen."],
+    "karten": [
+      {
+        "id": "funkhaus-cpl",
+        "art": "sprung",
+        "label": "Preis je Anfrage",
+        "vorher": "€ 11,77",
+        "wert": "€ 5,00",
+        "zaehlen": {"von": 11.77, "bis": 5.0, "dezimalen": 2, "vor": "€ ", "nach": ""},
+        "badge": "−57 %",
+        "linie": [11.77, 6.97, 5.88, 5.0, 4.99, 5.78],
+        "text": "Vom Schnitt der ersten Kampagne zur ersten Welle. Dazwischen: Instant Form € 6,97, Februar € 5,88, danach € 4,99 und € 5,78."
+      },
+      {
+        "id": "funkhaus-strecke",
+        "art": "sprung",
+        "label": "Strecke zur Anfrage",
+        "vorher": "€ 15,66",
+        "wert": "€ 6,97",
+        "zaehlen": {"von": 15.66, "bis": 6.97, "dezimalen": 2, "vor": "€ ", "nach": ""},
+        "badge": "−55 %",
+        "reihen": [
+          {"label": "Website", "punkte": 32, "an": 31, "hervorgehoben": false},
+          {"label": "Instant Form", "punkte": 32, "an": 14, "hervorgehoben": true}
+        ],
+        "text": "Dieselbe Kampagne, zwei Wege zur Anfrage. Das Formular im Feed kostet weniger als die Hälfte. Ein Punkt sind 50 Cent."
+      },
+      {
+        "id": "funkhaus-motiv",
+        "art": "sprung",
+        "label": "Anteil des stärksten Motivs",
+        "vorher": "4 Motive",
+        "wert": "262 von 489",
+        "zaehlen": {"von": 0, "bis": 262, "dezimalen": 0, "vor": "", "nach": " von 489"},
+        "badge": "54 %",
+        "waffel": {"gesamt": 100, "wert": 54, "spalten": 20},
+        "text": "Ein einziges Interior-Motiv trug mehr als die Hälfte aller Anfragen. Jeder Punkt ein Prozent."
+      }
+    ]
+  },
+  "bausteine": [
+    {
+      "typ": "galerie",
+      "label": "Aus dem Mandat",
+      "hintergrund": "#22382C",
+      "medien": [
+        "assets/case/case-premium-neubau/g0.jpg",
+        "assets/case/case-premium-neubau/g1.jpg",
+        "assets/case/case-premium-neubau/g2.jpg",
+        "assets/case/case-premium-neubau/g3.jpg",
+        "assets/case/case-premium-neubau/g4.jpg",
+        "assets/case/case-premium-neubau/g5.jpg",
+        "assets/case/case-premium-neubau/v0.mp4",
+        "assets/case/case-premium-neubau/v1.mp4",
+        "assets/case/case-premium-neubau/v2.mp4"
+      ]
+    }
+  ]
+}

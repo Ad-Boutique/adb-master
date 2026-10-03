@@ -1,0 +1,245 @@
+/* ============================================================
+   ad.boutique Design-Tokens: die eine Quelle fuer jeden Gestaltungswert der Seite.
+   Regeln: _intern/BRAND-RULES.md. Anleitung in einfachem Deutsch: _intern/DESIGN-SYSTEM.md.
+   Aendern: Wert hier anpassen, dann "sh _build.sh" laufen lassen (buendelt alles nach assets/site.css).
+   Diese Datei steht in site.css ganz vorne (_css.py). master.css und die brand-*.css verweisen nur auf diese Namen.
+   Aufbau: 1 Farben, 2 Transparenzstufen, 3 Linien und Grautoene, 4 Schriften und Typo-Skala, 5 Zeilenhoehen,
+   6 Abstaende, 7 Radien, 8 Schatten, 9 Bewegung, 10 Buttons, 11 Chips und Badges, 12 Menue-Knopf,
+   13 Punkt-Graphen, 14 z-Index-Ebenen, 15 Mobile, 16 Varianten je Untergrund.
+   ============================================================ */
+:root {
+  /* ---------- 1 Farben (Figma Style 01, BRAND-RULES Abschnitt 1). Nur diese Werte plus Transparenzen davon. ---------- */
+  --ink: #101010;            /* Black (Charcoal): Text auf Cream, tragende Flaeche */
+  --paper: #F4F3EB;          /* Cream: Hauptflaeche, Text und Buttons auf Schwarz */
+  --lime: #CDFF00;           /* Akzent: Aktionen, Highlights, Grafiken. Nie als Text auf Schwarz, nie an Fotos */
+  --stone: #B7B7B3;          /* nur Hintergrund hinter Mockups, nie Markenflaeche */
+  --ph: #DEDDD4;             /* Bildplatzhalter: nur leere Bildcontainer */
+  /* Namen aus aelteren Staenden, zeigen auf die Markenfarben (kein zweiter Cream-Ton, alte Case-Farbwelten sind Schwarz) */
+  --cream: var(--paper);
+  --ink-soft: var(--ink);
+  --green: var(--ink); --brown: var(--ink); --slate: var(--ink); --moss: var(--ink); --steel: var(--ink); --teal: var(--ink); --olive: var(--ink);
+  /* Frueherer Akzent (Champagne): folgt der Textfarbe des Untergrunds. currentColor wird erst am verwendenden
+     Element aufgeloest, also Schwarz auf Cream und Lime, Cream auf Schwarz. */
+  --champ: currentColor;
+  --champ-deep: currentColor;
+
+  /* ---------- 2 Transparenzstufen: Name = Farbe plus Deckkraft in Prozent (a035 = 3,5 %) ---------- */
+  --ink-a00: rgba(16,16,16,0);
+  --ink-a035: rgba(16,16,16,0.035);
+  --ink-a06: rgba(16,16,16,0.06);
+  --ink-a09: rgba(16,16,16,0.09);
+  --ink-a10: rgba(16,16,16,0.1);
+  --ink-a12: rgba(16,16,16,0.12);
+  --ink-a14: rgba(16,16,16,0.14);
+  --ink-a16: rgba(16,16,16,0.16);
+  --ink-a18: rgba(16,16,16,0.18);
+  --ink-a20: rgba(16,16,16,0.2);
+  --ink-a22: rgba(16,16,16,0.22);
+  --ink-a25: rgba(16,16,16,0.25);
+  --ink-a28: rgba(16,16,16,0.28);
+  --ink-a30: rgba(16,16,16,0.3);
+  --ink-a35: rgba(16,16,16,0.35);
+  --ink-a40: rgba(16,16,16,0.4);
+  --ink-a42: rgba(16,16,16,0.42);
+  --ink-a45: rgba(16,16,16,0.45);
+  --ink-a50: rgba(16,16,16,0.5);
+  --ink-a55: rgba(16,16,16,0.55);
+  --ink-a60: rgba(16,16,16,0.6);
+  --ink-a62: rgba(16,16,16,0.62);
+  --ink-a64: rgba(16,16,16,0.64);
+  --ink-a78: rgba(16,16,16,0.78);
+  --ink-a90: rgba(16,16,16,0.9);
+  --ink-a92: rgba(16,16,16,0.92);
+  --cream-a06: rgba(244,243,235,0.06);
+  --cream-a14: rgba(244,243,235,0.14);
+  --cream-a16: rgba(244,243,235,0.16);
+  --cream-a20: rgba(244,243,235,0.2);
+  --cream-a22: rgba(244,243,235,0.22);
+  --cream-a25: rgba(244,243,235,0.25);
+  --cream-a28: rgba(244,243,235,0.28);
+  --cream-a30: rgba(244,243,235,0.3);
+  --cream-a35: rgba(244,243,235,0.35);
+  --cream-a40: rgba(244,243,235,0.4);
+  --cream-a42: rgba(244,243,235,0.42);
+  --cream-a50: rgba(244,243,235,0.5);
+  --cream-a60: rgba(244,243,235,0.6);
+  --cream-a70: rgba(244,243,235,0.7);
+  --cream-a72: rgba(244,243,235,0.72);
+  --cream-a75: rgba(244,243,235,0.75);
+  --cream-a78: rgba(244,243,235,0.78);
+  --cream-a86: rgba(244,243,235,0.86);
+  --lime-a25: rgba(205,255,0,0.25);
+  --lime-a30: rgba(205,255,0,0.3);
+  --lime-a35: rgba(205,255,0,0.35);
+
+  /* ---------- 3 Linien und Grautoene. Alle Linien 1 px. ---------- */
+  --line-on-cream: var(--ink-a16);     /* Linie auf Cream */
+  --line-on-black: var(--cream-a25);   /* Linie auf Schwarz */
+  --line-badge: var(--ink-a25);        /* Badge- und Feldrand auf Cream */
+  --line-badge-d: var(--cream-a30);    /* Badge-Rand auf Schwarz und Fotos */
+  /* Grautoene und Kontext-Linie: Transparenzen der Textfarbe, auf dunklen Flaechen unten (16) auf Cream umgestellt */
+  --grey: var(--ink-a50);
+  --grey-dark: var(--ink-a64);
+  --line-l: var(--line-on-cream);
+  --line-d: var(--line-on-black);
+
+  /* ---------- 4 Schriften und Typo-Skala (BRAND-RULES Abschnitt 2) ---------- */
+  /* Satoshi fuer alles. Amandine nur fuer Zeile 2 einer Display-Headline und grosse Zahlen (ueber --f-amandine). */
+  --f-sans: "Satoshi", "Helvetica Neue", Arial, sans-serif;
+  --f-amandine: "amandine", Georgia, "Times New Roman", serif;
+  /* Altlasten: alles, was bisher --f-serif (Reckless, Amandine) oder --f-disp nahm, ist Satoshi */
+  --f-ui: var(--f-sans);
+  --f-disp: var(--f-sans);
+  --f-serif: var(--f-sans);
+  /* Skala (Werte bei 1440 / 390). H1 nach Figma Website 80 / Mobile 39, Split 62, H2 42, H3 = H2 / 1,55 */
+  --fs-h1: clamp(39px, 5.56vw, 80px);      /* Hero, Vollbild, Footer */
+  --fs-h1-xl: clamp(44px, 7.6vw, 110px);   /* zentrierter Hero der Leistungsseiten */
+  --fs-display: clamp(34px, 4.3vw, 62px);  /* Display-Headline in Sektionen und Splits */
+  --fs-h2: clamp(28px, 2.92vw, 42px);
+  --fs-h3: calc(var(--fs-h2) / 1.55);      /* 27,1 px bei 1440 */
+  --fs-body: 17px;
+  --fs-ui: 15px;                           /* Chips, Nav, Textlinks */
+  --fs-small: 15px;
+  --fs-cap: 13px;                          /* Badges, Captions, Graph-Beschriftung */
+  --fs-num: clamp(40px, 3.6vw, 56px);      /* grosse Zahl, ab 1334 px Breite mindestens 48 px */
+  --fs-logo: 25px;                         /* Wortmarke in der Kopfzeile (Figma Navbar 84:35), Mobile unten */
+  /* Amandine-Zeile: Figma setzt sie 0,88 der Satoshi-Zeile (80 / 70,5, 39 / 34, 84 / 73,5) */
+  --am-scale: 0.88;
+  /* --hn liefert _headlines.py als Breite der Amandine-Zeile in Einheiten zu 0,5 em (gemessene Zeichenbreiten).
+     0,52 statt 0,5 laesst 4 Prozent Reserve fuer Kerning und Rundung. */
+  --am-cw: 0.52;
+
+  /* ---------- 5 Zeilenhoehen ---------- */
+  --lh-head: 1.1;     /* H1, H2, Display */
+  --lh-h3: 1.2;       /* H3, Kartentitel */
+  --lh-body: 1.4;     /* Fliesstext */
+  --lh-ui: 1.2;       /* Buttons, Chips, Nav, Badges */
+  --lh-num: 1.1;      /* grosse Zahlen */
+
+  /* ---------- 6 Abstaende: 8er-Skala und Rhythmus (BRAND-RULES Abschnitt 3) ---------- */
+  --sp-1: 8px; --sp-2: 16px; --sp-3: 24px; --sp-4: 32px; --sp-6: 48px; --sp-8: 64px; --sp-12: 96px; --sp-16: 128px;
+  --gut: 64px;            /* Seitenrand */
+  --sec: 128px;           /* Standard-Abstand oben und unten je Sektion */
+  --sec-s: 64px;          /* kurzer Abstand: Fortsetzung, Kennzahlen, Logo-Wand */
+  --sec-xs: 48px;         /* knapper Anschluss an die vorige Sektion */
+  --hero-in: 64px;        /* Text-Heros: Abstand im Rahmen unter der Kopfzeile */
+  --hero-top: calc(var(--sec) + var(--hero-in)); /* Text-Heros: Inhalt beginnt bei 128 + 64 (Mobile 64 + 96, damit der Zurueck-Knopf frei steht) */
+  --back-top: 96px;       /* Zurueck-Link oben links */
+  --h2b: 16px;            /* Headline zu Body */
+  --b2btn: 48px;          /* Body zu Buttons */
+
+  /* ---------- 7 Radien (BRAND-RULES Abschnitt 4) ---------- */
+  --r-img: 16px;          /* Bilder, Karten, Felder (3.10.2026: von 20 auf 16, eine Spur kleiner) */
+  --r-col: 10px;          /* Bilder in der schraegen Collage (3.10.2026: von 12 auf 10) */
+  --r-pill: 999px;        /* Buttons, Chips, Badges */
+  --r-round: 50%;         /* Punkte und Kreise */
+
+  /* ---------- 8 Schatten ---------- */
+  --sh-soft: 0 4px 11px rgba(0,0,0,0.25);                 /* Soft-Buttons Cream und Lime, Menue-Knopf, Satelliten */
+  --sh-soft-hover: 0 6px 16px rgba(0,0,0,0.3);            /* dieselben beim Ueberfahren */
+  --sh-soft-black: 0 4px 11px var(--cream-a14);           /* Soft-Button Schwarz */
+  --sh-soft-black-hover: 0 6px 16px var(--cream-a20);
+  --sh-badge-text: 0 1px 12px rgba(0,0,0,0.45);           /* Badge-Text auf Case-Hero-Fotos */
+  --sh-text-photo: 0 1px 12px var(--ink-a35);             /* Cream-Kopfzeile ueber Fotos */
+
+  /* ---------- 9 Bewegung (BRAND-RULES Abschnitt 9): eine Kurve, vier Dauern. brand.js liest diese Werte. ---------- */
+  --e-out: cubic-bezier(.16, 1, .3, 1);
+  --e-snap: var(--e-out); /* alte zweite Kurve aus master.css zeigt auf die eine */
+  --d-fast: 200ms;        /* Hover und Rueckmeldung */
+  --d-base: 400ms;        /* Einblenden */
+  --d-slow: 700ms;        /* Uebergaenge */
+  --d-chor: 1200ms;       /* Choreografie */
+  --fade-y: 24px;         /* Versatz beim Einblenden, aus der 8er-Skala */
+  --stagger: 80ms;        /* Staffelung beim Einblenden */
+
+  /* ---------- 10 Buttons (Figma 84:13), acht Varianten. Masse: 16/24 Padding minus 1 px Rand, damit alle gleich hoch sind ---------- */
+  --btn-fs: 17px;
+  --btn-fw: 500;
+  --btn-lh: var(--lh-ui);
+  --btn-pad: 15px 23px;
+  --btn-gap: var(--sp-1);       /* Abstand im Knopf und zwischen Knopf-Paaren */
+  /* je Variante: Flaeche (bg), Text (fg), Rand (bd), Schatten (sh), Kreis-Hover: Kreisfarbe (hv), Text (hc), Rand (hb) */
+  --btn-primary-bg: var(--ink);         --btn-primary-fg: var(--paper);         --btn-primary-bd: var(--ink);         --btn-primary-sh: none;
+  --btn-primary-hv: var(--lime);        --btn-primary-hc: var(--ink);           --btn-primary-hb: var(--ink);
+  --btn-primary-hv-on-lime: var(--paper); /* Primary auf Lime-Flaeche: Lime-Kreis waere unsichtbar */
+  --btn-secondary-bg: transparent;      --btn-secondary-fg: var(--ink);         --btn-secondary-bd: var(--ink);       --btn-secondary-sh: none;
+  --btn-secondary-hv: var(--ink);       --btn-secondary-hc: var(--paper);       --btn-secondary-hb: var(--ink);
+  --btn-accent-bg: var(--lime);         --btn-accent-fg: var(--ink);            --btn-accent-bd: var(--ink);          --btn-accent-sh: none;
+  --btn-accent-hv: var(--ink);          --btn-accent-hc: var(--paper);          --btn-accent-hb: var(--ink);
+  --btn-inverse-bg: var(--paper);       --btn-inverse-fg: var(--ink);           --btn-inverse-bd: var(--paper);       --btn-inverse-sh: none;
+  --btn-inverse-hv: var(--ink);         --btn-inverse-hc: var(--paper);         --btn-inverse-hb: var(--paper);
+  --btn-outline-inverse-bg: transparent; --btn-outline-inverse-fg: var(--paper); --btn-outline-inverse-bd: var(--paper); --btn-outline-inverse-sh: none;
+  --btn-outline-inverse-hv: var(--paper); --btn-outline-inverse-hc: var(--ink);  --btn-outline-inverse-hb: var(--paper);
+  --btn-soft-cream-bg: var(--paper);    --btn-soft-cream-fg: var(--ink);        --btn-soft-cream-bd: var(--paper);    --btn-soft-cream-sh: var(--sh-soft);
+  --btn-soft-cream-hv: var(--ink);      --btn-soft-cream-hc: var(--paper);      --btn-soft-cream-hb: var(--ink);
+  --btn-soft-black-bg: var(--ink);      --btn-soft-black-fg: var(--paper);      --btn-soft-black-bd: var(--ink);      --btn-soft-black-sh: var(--sh-soft-black);
+  --btn-soft-black-hv: var(--paper);    --btn-soft-black-hc: var(--ink);        --btn-soft-black-hb: var(--paper);
+  --btn-soft-lime-bg: var(--lime);      --btn-soft-lime-fg: var(--ink);         --btn-soft-lime-bd: var(--lime);      --btn-soft-lime-sh: var(--sh-soft);
+  --btn-soft-lime-hv: var(--ink);       --btn-soft-lime-hc: var(--paper);       --btn-soft-lime-hb: var(--ink);
+
+  /* ---------- 11 Chips (Figma 84:21) und Badges (Figma 99:137) ---------- */
+  --chip-fs: var(--fs-ui);
+  --chip-pad: 7px 23px;         /* 8/24 minus 1 px Rand */
+  --chip-sign-fs: 17px;         /* Zeichen "+" und "x" */
+  --bdg-fs: var(--fs-cap);
+  --bdg-pad: 7px 15px;          /* 8/16 minus 1 px Rand */
+
+  /* ---------- 12 Menue-Knopf unten Mitte und seine Satelliten (Filter, Branche, Uebersicht), Mobile unten ---------- */
+  --mbtn-size: 88px;
+  --mbtn-bottom: 32px;
+  --sat-size: 64px;
+  --sat-gap: 24px;
+
+  /* ---------- 13 Punkt-Graphen (BRAND-RULES Abschnitt 7): ein Punkt 10 px, Abstand 6 px; Farben je Untergrund unten ---------- */
+  --dot: 10px;
+  --dot-gap: 6px;
+  --g-on: var(--ink);     /* gefuellt */
+  --g-best: var(--lime);  /* bester Wert */
+  --g-line: var(--ink);   /* Umriss */
+
+  /* ---------- 14 z-Index-Ebenen (von unten nach oben) ---------- */
+  --z-filterlab: 40;      /* Filter-Beschriftung auf Work */
+  --z-sprog: 55;          /* Scroll-Bahn rechts */
+  --z-chrome: 60;         /* Kopfzeile */
+  --z-mdim: 70;           /* Abdunklung hinter dem Menue */
+  --z-msheet: 80;         /* Menue-Sheet */
+  --z-pop: 89;            /* Filter-Chips ueber den Kreisen, Coach-Ring */
+  --z-float: 90;          /* Menue-Knopf und Satelliten */
+  --z-coach-trail: 91;    /* Coach: Spur */
+  --z-coach: 92;          /* Coach: Punkte, Iris, Schrift */
+  --z-coach-top: 96;      /* Coach: kleiner Ring */
+  --z-flipbg: 140;        /* Tile-Flip: Grund */
+  --z-flip: 150;          /* Tile-Flip: Kachel und Deckel */
+  --z-pt: 200;            /* Ladeblende (brand.js zeichnet die Punkt-Leinwand inline auf 205) */
+  --z-ptdot: 210;         /* Lade-Punkt */
+  --z-cur: 300;           /* Cursor */
+}
+
+/* ---------- 15 Mobile ---------- */
+@media (max-width: 767px) {
+  :root {
+    --gut: 24px; --sec: 64px; --sec-s: 48px; --sec-xs: 32px; --b2btn: 32px; --hero-in: 96px; --back-top: 80px;
+    --mbtn-size: 76px; --mbtn-bottom: 24px; --sat-size: 56px; --sat-gap: 16px;
+  }
+}
+@media (max-width: 720px) {
+  :root { --fs-logo: 23px; }
+}
+
+/* ---------- 16 Varianten je Untergrund ---------- */
+/* Grautoene und Kontext-Linie: data-fg="light" heisst heller Text, also dunkle Flaeche */
+.brand .fg-dark, .brand [data-fg="light"], .brand .msheet, .brand footer, .brand .fcard--no, .brand .stdemo.dk {
+  --grey: var(--cream-a60);
+  --grey-dark: var(--cream-a70);
+  --line-l: var(--line-on-black);
+}
+.brand .fg-light, .brand [data-fg="dark"], .brand .hpitch {
+  --grey: var(--ink-a50);
+  --grey-dark: var(--ink-a64);
+  --line-l: var(--line-on-cream);
+}
+/* Graph-Farben (Abschnitt 7): auf Schwarz Cream, auf Lime Schwarz */
+.fg-dark, [data-fg="light"], .kapsec--dark, .dotzoom--dark { --g-on: var(--paper); --g-best: var(--paper); --g-line: var(--paper); }
+.bg-lime, [data-surface="lime"] { --g-on: var(--ink); --g-best: var(--ink); --g-line: var(--ink); }
+/* Punktfeld (Canvas), Farben wie auf der alten Seite (BRAND-RULES 13): brand.js liest --g-on, --g-ring, --g-off */
+html body.brand canvas.dotfield { --g-on: var(--lime); --g-best: var(--lime); --g-line: var(--ink-a45); --g-ring: var(--ink-a60); --g-off: var(--ink-a16); }

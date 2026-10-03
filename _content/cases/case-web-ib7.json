@@ -1,0 +1,89 @@
+{
+  "slug": "case-web-ib7",
+  "vorlage": "web",
+  "kette": "web",
+  "reihenfolge": 280,
+  "naechster": "case-web-twistnsparkle",
+  "meta": {
+    "name": "IB-7",
+    "branche": "Beauty, D2C",
+    "url": "https://ib-7.com",
+    "umfang": ["Website & Markenauftritt", "Social Media & Content", "Grafik & Anzeigen", "Performance Marketing"],
+    "leistungen": [
+      {"titel": "Websites & Landingpages", "seite": "service-websites.html"},
+      {"titel": "Content Creation", "seite": "service-content-creation.html"},
+      {"titel": "Performance Marketing", "seite": "service-performance-marketing.html"}
+    ]
+  },
+  "hero": {"headline": "Website und Marke: Wo Jahrtausende auf den Moment treffen.", "bild": "assets/img/web_ib7_d.jpg"},
+  "intro": {"text": "Antikes Wissen über Hautpflege trifft moderne Wissenschaft: Der Auftritt erzählt die Marke, führt zu den Produkten und trägt die Kampagnen, die wir parallel in Performance und Content fahren."},
+  "kennzahlen": {
+    "headline": ["Was entstanden ist,", "in drei Zahlen."],
+    "karten": [
+      {
+        "art": "zaehler",
+        "label": "Was schon steht",
+        "wert": "4",
+        "einheit": "Bausteine",
+        "zaehlen": {"von": 0, "bis": 4, "dezimalen": 0, "vor": "", "nach": ""},
+        "badge": "Marke bis Performance",
+        "reihen": [{"label": "Bausteine", "punkte": 4, "an": 4, "hervorgehoben": true}],
+        "text": "Website mit Hero-Film, Founder-Reel, UGC-Anzeigen, Sampling-Formular für den Vertrieb."
+      },
+      {
+        "art": "medien",
+        "label": "Marke im Feed",
+        "wert": "Antikes Wissen, moderne Wissenschaft.",
+        "badge": "Social, Grafik, Foto, Film",
+        "bilder": ["assets/case/case-web-ib7/g0.jpg", "assets/case/case-web-ib7/g1.jpg", "assets/case/case-web-ib7/g2.jpg"],
+        "text": "Feed und Stories, Anzeigen, Sampling-Karten, Produktfotografie und Bewegtbild aus einer Hand."
+      },
+      {"art": "text", "label": "Die Zahlen", "wert": "Zeigen wir, wenn sie belastbar sind.", "badge": "Kampagnen gestartet", "text": "Nicht wenn sie gut aussehen. Wer die Seite baut, sitzt auch im Call, in dem die ersten Zahlen gelesen werden."}
+    ]
+  },
+  "bausteine": [
+    {"typ": "buehne", "bild": "assets/img/web_ib7_d1.jpg"},
+    {
+      "typ": "mobil",
+      "headline": "Mobil zuerst gedacht.",
+      "text": "Der Auftritt, wie ihn die meisten Besucher sehen: am Telefon, Seite für Seite.",
+      "bilder": [
+        "assets/img/web_ib7_m0.jpg",
+        "assets/img/web_ib7_m1.jpg",
+        "assets/img/web_ib7_m2.jpg",
+        "assets/img/web_ib7_ms0.jpg",
+        "assets/img/web_ib7_ms1.jpg"
+      ]
+    },
+    {
+      "typ": "unterseiten",
+      "label": "Aus dem Projekt",
+      "bilder": ["assets/img/web_ib7_ds0.jpg", "assets/img/web_ib7_ds1.jpg", "assets/img/web_ib7_ds2.jpg"]
+    },
+    {
+      "typ": "galerie",
+      "label": "Aus dem Mandat",
+      "hintergrund": "#0E0E10",
+      "medien": [
+        "assets/case/case-web-ib7/g0.jpg",
+        "assets/case/case-web-ib7/g1.jpg",
+        "assets/case/case-web-ib7/g2.jpg",
+        "assets/case/case-web-ib7/g3.jpg",
+        "assets/case/case-web-ib7/g4.jpg",
+        "assets/case/case-web-ib7/g5.jpg"
+      ]
+    },
+    {
+      "typ": "kapitel",
+      "label": "Zweites bis viertes Kapitel",
+      "headline": ["Marke, Social Media, Grafik, Kampagnen. Aus einer Hand."],
+      "absatz1": "Neben der Website betreuen wir die Marke dort, wo sie täglich stattfindet: Social Media mit Feed und Stories, Grafik für Anzeigen, Sampling-Karten und Beiträge, Produktfotografie und Bewegtbild, dazu die Performance-Kampagnen auf Meta und Google, die den Shop und den Direktvertrieb an Studios und Parfümerien tragen. Was schon steht: eine Website mit Hero-Film, ein Founder-Reel, UGC-Anzeigen und ein Sampling-Formular für den Vertrieb.",
+      "absatz2": "<b>Ergebnisse zeigen wir hier noch nicht.</b> Die Kampagnen sind gerade erst gestartet, und wir berichten Zahlen, wenn sie belastbar sind, nicht wenn sie gut aussehen. Wer die Seite baut, sitzt auch im Call, in dem die ersten Zahlen gelesen werden: Marke, Website, Content und Performance folgen so einer Linie, statt an drei Agenturen zu hängen.",
+      "links": [
+        {"href": "service-content-creation.html", "text": "Content Creation"},
+        {"href": "service-performance-marketing.html", "text": "Performance Marketing"}
+      ]
+    },
+    {"typ": "stimme", "label": "Was der Kunde sagt", "text": "Michael Rohrmeier, Gründer und CEO von IB-7, über die Zusammenarbeit mit ad.boutique: Marke, Website, Performance und Content aus einer Hand.", "wer": "Michael Rohrmeier, Gründer und CEO, IB-7", "video": "assets/video/kundenstimme-ib7.mp4", "notiz": "Kein Dashboard, das niemand liest. Wir gehen die Zahlen gemeinsam durch, auch die, die nicht funktioniert haben."}
+  ]
+}

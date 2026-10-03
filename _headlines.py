@@ -266,7 +266,7 @@ def serifize(inner):
 
 def mark(attrs, tail, lines):
     """Setzt data-hd und die Einpass-Variablen in den Start-Tag.
-    --hn: Breite der Amandine-Zeile in em / 0,5 (entspricht Zeichen zu je 0,5 em, brand-type.css --am-cw)
+    --hn: Breite der Amandine-Zeile in em / 0,5 (entspricht Zeichen zu je 0,5 em, tokens.css --am-cw)
     --h1n: Breite der laengsten Satoshi-Zeile in em / 0,56 (Case-Hero)"""
     hn = em_width(tail, W_AM) / 0.5
     h1n = max([em_width(x, W_SB) for x in lines] or [0.56]) / 0.56

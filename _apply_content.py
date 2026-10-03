@@ -1,9 +1,7 @@
-# Baut den Kunden-Content (assets/content.json) in Work-Kacheln und Case-Seiten ein.
+# Baut den Kunden-Content in Work-Kacheln (Vorschau-Medien aus assets/content.json) und in die handgebauten
+# Case-Seiten (Galerie aus _content/cases/<slug>.json) ein.
 # -*- coding: utf-8 -*-
-import json, os, re, subprocess
-
-# Bildmasse (Breite, Hoehe) je Datei, siehe assets/imgdim.json
-DIMS = json.load(open("assets/imgdim.json")) if os.path.exists("assets/imgdim.json") else {}
+import json, os, re
 
 M = json.load(open("assets/content.json", encoding="utf-8"))
 
@@ -98,69 +96,13 @@ open("work.html", "w", encoding="utf-8").write(w)
 print("Work-Kacheln mit Preview:", changed)
 
 
-# ---------- 2) CASE-SEITEN: Intro-Medium + Content-Galerie ----------
-NCOL = 6
+# ---------- 2) HANDGEBAUTE CASE-SEITEN: Content-Galerie ----------
+# Die generierten Cases (Vorlagen dossier und web) setzen ihre Galerie selbst als Baustein "galerie" ein
+# (_bausteine.py). Hier nur noch die handgebauten Seiten: Galerie aus dem Baustein "galerie" ihrer
+# Inhaltsdatei _content/cases/<slug>.json, eingesetzt vor dem Next-Case.
+from _cases import HAND, bausteine
+from _bausteine import galerie_html
 
-
-def _ratio(p):
-    """Hoehe je Breiteneinheit, aus den echten Dateimassen."""
-    if p.endswith(".mp4"):
-        return 16 / 9.0
-    if p in DIMS and DIMS[p]:
-        return DIMS[p][1] / float(DIMS[p][0])
-    out = subprocess.run(["sips", "-g", "pixelWidth", "-g", "pixelHeight", p],
-                         capture_output=True, text=True).stdout
-    mw = re.search(r"pixelWidth:\s*(\d+)", out)
-    mh = re.search(r"pixelHeight:\s*(\d+)", out)
-    if not (mw and mh):
-        return 1.0
-    DIMS[p] = [int(mw.group(1)), int(mh.group(1))]
-    return DIMS[p][1] / float(DIMS[p][0])
-
-
-def gallery_html(entry, title, bg="#0E0E10"):
-    media = [im["src"] for im in entry.get("imgs", [])] + [v["src"] for v in entry.get("vids", [])]
-    media = [m for m in media if os.path.exists(m)]
-    if not media:
-        return ""
-    # so oft wiederholen, dass jede der sechs Spalten den Rahmen ueberragt
-    while len(media) < NCOL * 4:
-        media = media + media
-    media = media[:NCOL * 5]
-    # jedes Motiv in die gerade kuerzeste Spalte, hohe zuerst
-    cols = [[] for _ in range(NCOL)]
-    hs = [0.0] * NCOL
-    for m, r in sorted(((m, _ratio(m)) for m in media), key=lambda x: -x[1]):
-        i = hs.index(min(hs))
-        cols[i].append(m)
-        hs[i] += r + 0.055
-    speeds = ["0.042", "0.068", "0.05", "0.075", "0.056", "0.072"]
-    parts = []
-    for i, col in enumerate(cols):
-        if not col:
-            continue
-        items = []
-        for m in col:
-            if m.endswith(".mp4"):
-                items.append('<video data-auto muted loop playsinline preload="none" src="%s"></video>' % m)
-            else:
-                items.append('<img loading="lazy" decoding="async" src="%s" alt="Material aus dem Mandat">' % m)
-        parts.append('      <div class="cpcol" data-drift="%s">\n        %s\n      </div>' % (speeds[i], "\n        ".join(items)))
-    return ('  <!-- CONTENT AUS DEM MANDAT -->\n'
-            '  <section class="collage collage--tight" data-bg="%s" data-fg="light">\n'
-            '    <div class="wrap" style="position:relative;z-index:2;margin-bottom:clamp(30px,4vw,60px)">\n'
-            '      <span class="label" style="color:var(--champ)">Aus dem Mandat</span>\n'
-            '    </div>\n'
-            '    <div class="cplane">\n%s\n    </div>\n  </section>\n\n') % (bg, "\n".join(parts))
-
-CASE_BG = {
-    "case-immobilien-investment": "#2E3A2F",
-    "case-crowdinvesting": "#1C2530",
-    "case-wohnbau-floridsdorf": "#33383E",
-    "case-health-brand": "#1F3833",
-    "case-consumer-brand": "#0E0E10",
-    "case-premium-neubau": "#22382C",
-}
 
 def film_html(entry, title, sub):
     if not entry.get("recap"):
@@ -182,33 +124,15 @@ def film_html(entry, title, sub):
 
 ''' % (title, entry["recap"], entry.get("prev_img_poster", ""), sub)
 
-CASE_FILES = {
-    "case-immobilien-investment": "case-immobilien-investment.html",
-    "case-crowdinvesting": "case-crowdinvesting.html",
-    "case-wohnbau-floridsdorf": "case-wohnbau-floridsdorf.html",
-    "case-health-brand": "case-health-brand.html",
-    "case-consumer-brand": "case-consumer-brand.html",
-    "case-premium-neubau": "case-premium-neubau.html",
-    "case-web-noma": "case-web-noma.html",
-    "case-web-trattner": "case-web-trattner.html",
-    "case-web-northpoint": "case-web-northpoint.html",
-    "case-web-pharmacom": "case-web-pharmacom.html",
-    "case-web-havenstone": "case-web-havenstone.html",
-    "case-web-daphi": "case-web-daphi.html",
-    "case-web-ib7": "case-web-ib7.html",
-    "juwel": "case-juwel.html",
-    "herogroup": "case-bella-vita.html",
-    "medcenter": "case-medcenter.html",
-    "grandgarden": "case-bautraeger-portfolio.html",
-}
-
 added = 0
-for slug, fname in CASE_FILES.items():
-    entry = M.get(slug)
-    if not entry or not os.path.exists(fname):
+for case in HAND:
+    fname = case["seite"]
+    gals = bausteine(case, "galerie")
+    if not gals or not os.path.exists(fname):
         continue
     s = open(fname, encoding="utf-8").read()
-    gal = gallery_html(entry, slug, CASE_BG.get(slug, '#0E0E10'))
+    g = gals[0]
+    gal = galerie_html(g["medien"], g.get("hintergrund", "#0E0E10"), g.get("label", "Aus dem Mandat"))
     if not gal:
         continue
     # bestehende Galerie herausschneiden, damit sie neu verteilt wird

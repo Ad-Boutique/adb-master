@@ -1,0 +1,109 @@
+{
+  "slug": "case-bella-vita",
+  "vorlage": "dossier",
+  "kette": "performance",
+  "reihenfolge": 140,
+  "naechster": "case-immobilien-investment",
+  "meta": {
+    "name": "Bella Vita, Hero Group",
+    "titel": ["Bella Vita,", "Wiener Neustadt."],
+    "ziel": "Kaufinteressenten für 49 fertige Wohnungen",
+    "branche": "Real Estate, Wohnbau",
+    "zeitraum": "Seit Mai 2026, laufend",
+    "kanaele": "Meta, Google, Makler-Übergabe",
+    "farbwelt": "#3B3A36",
+    "farbwelt_text": "#F1EEE8",
+    "leistungen": [
+      {"titel": "Performance Marketing", "seite": "service-performance-marketing.html"},
+      {"titel": "Content Creation", "seite": "service-content-creation.html"}
+    ]
+  },
+  "hero": {
+    "headline": "Fertig gebaut. Jetzt wird verkauft.",
+    "bild": "assets/prev/herogroup.jpg",
+    "kennzahl": {"wert": "21", "label": "Anfragen in der ersten Woche"}
+  },
+  "intro": {"these": "49 fertiggestellte Wohnungen in Wiener Neustadt, zwei Maklerhäuser im Vertrieb und eine Vorgänger-Agentur, bei der eine Google-Anfrage rund <b>80 Euro</b> kostete. Das Projekt brauchte <b>Volumen zu einem Preis, der trägt</b>, und Anfragen, die beim Makler ankommen.", "text": "Wir haben in drei Wochen Setup, Sujets und Funnel gebaut und im Mai mit Meta gestartet: 21 Anfragen in der ersten Woche, rund 57 bis Mitte Juli, überwiegend Eigennutzer mit drei bis vier Zimmern und einem Budget zwischen 280.000 und 450.000 Euro. Jede Anfrage geht automatisch an eines der beiden Maklerhäuser, mit einer Rückmeldeschleife zur Qualität. Seit August ergänzt Google die Suche nach dem Projekt."},
+  "kennzahlen": {
+    "headline": ["Was das Projekt ausmacht,", "in drei Punkten."],
+    "karten": [
+      {
+        "art": "zaehler",
+        "label": "Anfragen in der ersten Woche",
+        "wert": "21",
+        "zaehlen": {"von": 0, "bis": 21, "dezimalen": 0, "vor": "", "nach": ""},
+        "badge": "3 Wochen Setup",
+        "reihen": [
+          {"label": "Erste Woche", "punkte": 57, "an": 21, "hervorgehoben": true},
+          {"label": "Bis Mitte Juli", "punkte": 57, "an": 57, "hervorgehoben": false}
+        ],
+        "text": "Jeder Punkt eine Anfrage. Preis je Anfrage und Verkäufe folgen, sobald das Quartal geschlossen ist."
+      },
+      {"art": "text", "label": "Wer anfragt", "wert": "€ 280.000 bis 450.000", "badge": "3 bis 4 Zimmer", "text": "Überwiegend Eigennutzer aus der Region, Zeithorizont sechs bis zwölf Monate. Fertig, besichtigbar, sofort beziehbar."},
+      {
+        "art": "text",
+        "label": "Vom Lead zum Makler",
+        "wert": "Der Lead ist erst beim Makler ein Lead.",
+        "badge": "2 Maklerhäuser",
+        "stationen": ["Anfrage", "Makler", "Rückmeldung", "Kampagne lernt"],
+        "text": "Jede Anfrage geht automatisch an eines der beiden Maklerhäuser, jede Rückmeldung kommt zurück zu uns."
+      }
+    ],
+    "fussnote": "Werte aus der Lead-Liste an die Makler, Mai bis Juli 2026. Preis je Anfrage und Verkäufe reportieren wir, sobald das Quartal geschlossen ist."
+  },
+  "bausteine": [
+    {"typ": "statement", "zeilen": ["Der Lead ist erst", "beim Makler ein Lead."]},
+    {
+      "typ": "perspektiven",
+      "zeilen": [
+        {"titel": "Effizienz", "text": "Wenige Sujets, klare Zielgruppe, wöchentliche Umschichtung: Volumen ohne Streuverlust."},
+        {"titel": "Zielgruppe", "text": "Eigennutzer aus der Region mit konkretem Zeithorizont von sechs bis zwölf Monaten."},
+        {"titel": "Message", "text": "Fertig, besichtigbar, sofort beziehbar. Das Argument eines fertigen Projekts."},
+        {"titel": "Creative", "text": "Renderings und Bewegtbild aus dem Projekt, der Grundriss erst auf der Seite."},
+        {"titel": "Kanal", "text": "Meta für Volumen, Google seit August für die aktive Suche, Übergabe je zur Hälfte an zwei Makler."}
+      ]
+    },
+    {
+      "typ": "ergebnis",
+      "ausgeblendet": true,
+      "zahlen": [
+        {"label": "(Anfragen, erste Woche)", "wert": "21"},
+        {"label": "(Anfragen bis Mitte Juli)", "wert": "57"},
+        {"label": "(Zeithorizont der Interessenten)", "wert": "6 bis 12 Monate"},
+        {"label": "(Maklerhäuser im Vertrieb)", "wert": "2"}
+      ]
+    },
+    {
+      "typ": "kapitel",
+      "label": "Zweites Kapitel, nach dem Lead",
+      "headline": ["Zwei Makler,", "eine Rückmeldeschleife."],
+      "absatz1": "Jede Anfrage landet bei einem der beiden Maklerhäuser, und jede Rückmeldung landet wieder bei uns: Exposé verschickt, Telefonat geführt, nicht erreichbar, zu teuer, zu wenig zentral. Aus diesen Notizen lernen die Kampagnen, welche Botschaft die Menschen bringt, die dann auch besichtigen.",
+      "absatz2": "<b>Das wichtigste Learning kam vom Kunden selbst:</b> Social-Media-Anfragen müssen innerhalb von Stunden kontaktiert werden, sonst sind sie kalt. Deshalb ist die Erstkontakt-Zeit der Makler Teil unseres Reportings, nicht nur der Preis je Anfrage.",
+      "links": [
+        {"href": "service-performance-marketing.html", "text": "Performance Marketing"},
+        {"href": "case-web-noma.html", "text": "Noma Living, das zweite Projekt mit Hero Group"}
+      ]
+    },
+    {"typ": "zitat", "text": "Social-Media-Leads müssen sehr kurzfristig kontaktiert werden, um zum Erfolg zu kommen.", "wer": "Projektleitung, Hero Group, an die Maklerhäuser"},
+    {
+      "typ": "learnings",
+      "saetze": [
+        "Der Lead ist erst beim Makler ein Lead.",
+        "Ein fertiges Projekt verkauft sich über Verfügbarkeit, nicht über Visionen.",
+        "Die Erstkontakt-Zeit gehört ins Reporting."
+      ]
+    },
+    {
+      "typ": "galerie",
+      "label": "Aus dem Mandat",
+      "hintergrund": "#0E0E10",
+      "medien": [
+        "assets/case/herogroup/g0.jpg",
+        "assets/case/herogroup/g1.jpg",
+        "assets/case/herogroup/v0.mp4",
+        "assets/case/herogroup/v1.mp4",
+        "assets/case/herogroup/v2.mp4"
+      ]
+    }
+  ]
+}

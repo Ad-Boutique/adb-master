@@ -1,0 +1,120 @@
+{
+  "slug": "case-d2c-lifestyle",
+  "vorlage": "dossier",
+  "kette": "performance",
+  "reihenfolge": 20,
+  "naechster": "case-premium-neubau",
+  "meta": {
+    "name": "D2C-Lifestyle-Marke",
+    "titel": ["D2C-Lifestyle-", "Marke."],
+    "ziel": "Profitables Wachstum",
+    "branche": "D2C / Retail",
+    "zeitraum": "12 Monate",
+    "kanaele": "Google, Pinterest, Meta, CRO",
+    "farbwelt": "#4A3328",
+    "farbwelt_text": "#F4EEE8",
+    "leistungen": [
+      {"titel": "E-Commerce Growth", "seite": "service-ecommerce.html"},
+      {"titel": "Performance Marketing", "seite": "service-performance-marketing.html"},
+      {"titel": "Content Creation", "seite": "service-content-creation.html"}
+    ]
+  },
+  "hero": {
+    "headline": "Das beste Jahr der Firma. Aus demselben Traffic.",
+    "bild": "assets/img/c_candle.jpg",
+    "kennzahl": {"wert": "+57 %", "label": "Jahresumsatz"}
+  },
+  "intro": {"these": "Solide Reichweite, aber <b>Conversion unter Benchmark</b>: Steigende Klickpreise drückten die Marge, der <b>Checkout</b> verlor Käufer, das <b>Tracking</b> verschleierte mehr, als es zeigte.", "text": "Erst gemessen, dann gehandelt: serverseitiges Tracking und saubere Produkt-Feeds als Fundament, Checkout vereinfacht, Produktseiten auf Conversion getrimmt, Ad-Struktur nach Deckungsbeitrag, Creatives systematisch getestet. Und Pinterest als unterschätzten Effizienz-Kanal erschlossen: € 312k Umsatz aus € 56k Mediabudget."},
+  "kennzahlen": {
+    "headline": ["Was besser wurde,", "in drei Zahlen."],
+    "karten": [
+      {
+        "id": "d2c-umsatz",
+        "art": "sprung",
+        "label": "Jahresumsatz",
+        "vorher": "€ 520k",
+        "wert": "€ 817k",
+        "zaehlen": {"von": 520, "bis": 817, "dezimalen": 0, "vor": "€ ", "nach": "k"},
+        "badge": "+57 %",
+        "reihen": [
+          {"label": "Vorher", "punkte": 82, "an": 52, "hervorgehoben": false},
+          {"label": "Mit uns", "punkte": 82, "an": 82, "hervorgehoben": true}
+        ],
+        "text": "Aus demselben Traffic, anders geführt. Ein Punkt sind 10.000 Euro."
+      },
+      {
+        "id": "d2c-roas",
+        "art": "sprung",
+        "label": "Blended ROAS",
+        "vorher": "Ziel 3,5",
+        "wert": "5,57",
+        "zaehlen": {"von": 3.5, "bis": 5.57, "dezimalen": 2, "vor": "", "nach": ""},
+        "badge": "+59 % über Ziel",
+        "reihen": [
+          {"label": "Pinterest", "punkte": 70, "an": 70, "hervorgehoben": true},
+          {"label": "Google", "punkte": 70, "an": 60, "hervorgehoben": false},
+          {"label": "Blend inkl. Fee", "punkte": 70, "an": 42, "hervorgehoben": false}
+        ],
+        "text": "Pinterest 6,99, Google 5,98, inklusive Agentur-Fee 4,17. Ein Punkt sind 0,1 ROAS."
+      },
+      {
+        "id": "d2c-budget",
+        "art": "sprung",
+        "label": "Umsatz aus dem Mediabudget",
+        "vorher": "€ 56k Budget",
+        "wert": "€ 312k",
+        "zaehlen": {"von": 56, "bis": 312, "dezimalen": 0, "vor": "€ ", "nach": "k"},
+        "badge": "Faktor 5,6",
+        "reihen": [
+          {"label": "Mediabudget", "punkte": 31, "an": 6, "hervorgehoben": false},
+          {"label": "Umsatz", "punkte": 31, "an": 31, "hervorgehoben": true}
+        ],
+        "text": "Meta für Nachfrage, Google für Abverkauf, Pinterest als Effizienz-Kanal. Ein Punkt sind 10.000 Euro."
+      }
+    ],
+    "fussnote": "€ 520k auf € 817k Jahresumsatz in zwölf Monaten, aus demselben Traffic. Alle Werte aus den Accounts, anonymisierte Darstellung."
+  },
+  "bausteine": [
+    {"typ": "statement", "zeilen": ["Der unterschätzte Kanal", "liefert oft den", "besten ROAS."]},
+    {
+      "typ": "perspektiven",
+      "zeilen": [
+        {"titel": "Effizienz", "text": "Pinterest führte mit ROAS 6,99, Google folgte mit 5,98. Inklusive Agentur-Fee blieb der Blend bei 4,17."},
+        {"titel": "Zielgruppe", "text": "Kaufstärkste Kohorten isoliert, kalte Streuung gestoppt."},
+        {"titel": "Message", "text": "Weniger Rabatt-Sprache, mehr Produktwert: Das hob den durchschnittlichen Warenkorb."},
+        {"titel": "Creative", "text": "UGC schlug Studio-Content beim ROAS deutlich."},
+        {"titel": "Kanal", "text": "Meta für Demand-Gen, Google für Abverkauf, Pinterest für Effizienz, sauber zugerechnet."}
+      ]
+    },
+    {
+      "typ": "ergebnis",
+      "ausgeblendet": true,
+      "zahlen": [
+        {"label": "(Jahresumsatz)", "wert": "+57 %"},
+        {"label": "(Blended ROAS, Ziel 3,5)", "wert": "5,57"},
+        {"label": "(Bestellungen)", "wert": "+56 %"},
+        {"label": "(Umsatz aus € 56k Budget)", "wert": "€ 312k"}
+      ],
+      "kurzfassung": ["<em>+57 %</em> Jahresumsatz", "<em>5,57</em> Blended ROAS, Ziel 3,5", "<em>+56 %</em> Bestellungen"]
+    },
+    {
+      "typ": "kapitel",
+      "label": "Zweites Kapitel, das Fundament",
+      "headline": ["Erst messen,", "dann kaufen."],
+      "absatz1": "Bevor ein Euro mehr in Anzeigen floss, haben wir das Fundament gelegt: Tag Manager, Analytics und serverseitiges Tracking, damit jede Bestellung einmal gezählt wird, dazu saubere Produkt-Feeds über ein Feed-Management, das Meta, Google und Pinterest aus einer Quelle versorgt.",
+      "absatz2": "<b>Dann drei Kanäle mit klaren Rollen:</b> Meta für Nachfrage, Google für den Abverkauf, Pinterest als unterschätzter Effizienz-Kanal für eine Marke, deren Produkt von Bildern lebt. Saisonal getaktet auf Weihnachten und Valentinstag, wöchentlich gelesen, wöchentlich umgeschichtet.",
+      "links": [
+        {"href": "service-ecommerce.html", "text": "E-Commerce Growth"},
+        {"href": "service-performance-marketing.html", "text": "Performance Marketing"}
+      ]
+    },
+    {
+      "typ": "learnings",
+      "saetze": [
+        "Umsatzwachstum beginnt im Tracking und im Checkout, nicht im Ad-Account.",
+        "UGC hat den größten Conversion-Hebel.",
+        "Profitabilität schlägt Reichweite, jede Woche aufs Neue."
+      ]
+    }
+  ]
+}

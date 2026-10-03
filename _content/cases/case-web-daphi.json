@@ -1,0 +1,72 @@
+{
+  "slug": "case-web-daphi",
+  "vorlage": "web",
+  "kette": "web",
+  "reihenfolge": 270,
+  "naechster": "case-web-ib7",
+  "meta": {
+    "name": "DaPhi",
+    "branche": "IT-Dienstleistung, B2B",
+    "url": "https://www.daphi.de",
+    "umfang": ["Strategie, Sitemap & Wireframes", "Screendesign", "Umsetzung mit CMS"],
+    "leistungen": [{"titel": "Websites & Landingpages", "seite": "service-websites.html"}]
+  },
+  "hero": {"headline": "Vom Kick-off zum Go-live in zwölf Wochen.", "bild": "assets/img/web_daphi_d.jpg"},
+  "intro": {"text": "Vom Kick-off bis zum Go-live in einem strukturierten Sprint-Plan: Sitemap und Wireframes für Home und sieben Service-Landingpages, Screendesign in zwei Runden, Umsetzung mit CMS, danach Content und Launch."},
+  "kennzahlen": {
+    "headline": ["Was das Projekt ausmacht,", "in drei Punkten."],
+    "karten": [
+      {
+        "art": "text",
+        "label": "Vom Kick-off zur Übergabe",
+        "wert": "Zwölf Wochen.",
+        "badge": "Sprint-Plan in Kalenderwochen",
+        "stationen": ["Kick-off", "Sitemap", "Wireframes", "Screendesign", "Umsetzung", "Übergabe"],
+        "text": "Kick-off Mitte November, Übergabe Mitte Februar. Ein Plan mit Kalenderwochen statt einer Wunschliste."
+      },
+      {
+        "art": "zaehler",
+        "label": "Seiten in zwei Sprachen",
+        "wert": "6",
+        "einheit": "Seiten",
+        "zaehlen": {"von": 0, "bis": 6, "dezimalen": 0, "vor": "", "nach": ""},
+        "badge": "Webflow, Figma",
+        "reihen": [
+          {"label": "Seiten", "punkte": 6, "an": 6, "hervorgehoben": true},
+          {"label": "Blog, Karriere", "punkte": 6, "an": 2, "hervorgehoben": false}
+        ],
+        "text": "Gebaut in Webflow nach Wireframes und Screendesign in Figma."
+      },
+      {"art": "zitat", "label": "Was der Kunde sagt", "zitat": "Danke fürs schnelle Fixen! Ihr habt schon sehr viel für uns gemacht.", "wer": "Hendrik Walter, Projektleitung, DaPhi", "text": "Der Auftrag kam über einen Kunden: DaPhi ist das Schwesterprojekt von Pharmacom."}
+    ]
+  },
+  "bausteine": [
+    {"typ": "buehne", "bild": "assets/img/web_daphi_d1.jpg"},
+    {
+      "typ": "mobil",
+      "headline": "Mobil zuerst gedacht.",
+      "text": "Der Auftritt, wie ihn die meisten Besucher sehen: am Telefon, Seite für Seite.",
+      "bilder": [
+        "assets/img/web_daphi_m0.jpg",
+        "assets/img/web_daphi_m1.jpg",
+        "assets/img/web_daphi_m2.jpg",
+        "assets/img/web_daphi_ms0.jpg",
+        "assets/img/web_daphi_ms1.jpg"
+      ]
+    },
+    {
+      "typ": "unterseiten",
+      "label": "Aus dem Projekt",
+      "bilder": ["assets/img/web_daphi_ds0.jpg", "assets/img/web_daphi_ds1.jpg", "assets/img/web_daphi_ds2.jpg"]
+    },
+    {
+      "typ": "kapitel",
+      "label": "Zweites Kapitel, der Sprint",
+      "headline": ["Vom Kick-off zur Übergabe in zwölf Wochen."],
+      "absatz1": "Kick-off Mitte November, Übergabe Mitte Februar: sechs Seiten, Blog und Karrierebereich in zwei Sprachen, gebaut in Webflow nach Wireframes und Screendesign in Figma. Der Kunde bekam einen Sprint-Plan mit Kalenderwochen statt einer Wunschliste.",
+      "absatz2": "<b>Der Auftrag kam über einen Kunden:</b> Wer eine Website bei uns gebaut hat, empfiehlt uns weiter. DaPhi ist das Schwesterprojekt von Pharmacom, beide Auftritte entstanden nacheinander aus einer Hand.",
+      "links": [{"href": "case-web-pharmacom.html", "text": "Zum Schwesterprojekt Pharmacom"}]
+    },
+    {"typ": "zitat", "text": "Danke fürs schnelle Fixen! Ihr habt schon sehr viel für uns gemacht.", "wer": "Hendrik Walter, Projektleitung, DaPhi"}
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "slug": "case-juwel",
+  "vorlage": "dossier",
+  "kette": "performance",
+  "reihenfolge": 130,
+  "naechster": "case-bella-vita",
+  "meta": {
+    "name": "Juwel Wien",
+    "titel": ["Juwel", "Wien."],
+    "ziel": "Qualifizierte Eventanfragen",
+    "branche": "Event-Location, Gastronomie",
+    "zeitraum": "Seit November 2025, laufend",
+    "kanaele": "Instagram, Meta, Google, LinkedIn",
+    "farbwelt": "#2B2620",
+    "farbwelt_text": "#EFE6D6",
+    "leistungen": [
+      {"titel": "Content Creation", "seite": "service-content-creation.html"},
+      {"titel": "Performance Marketing", "seite": "service-performance-marketing.html"},
+      {"titel": "Websites & Landingpages", "seite": "service-websites.html"}
+    ]
+  },
+  "hero": {"headline": "Eine Location im 15. Stock. Sichtbar in der ganzen Stadt.", "bild": null, "kennzahl": null},
+  "intro": {"these": "Eine Rooftop-Location über den Dächern Wiens, die jeder kennt, der oben war, und zu wenige, die noch nicht oben waren. <b>Social Media lief nebenbei</b>, Anfragen kamen <b>über Umwege</b>.", "text": "Wir führen die Kanäle als verlängertes Team der Location: zwölf Beiträge und Stories im Monat, Content-Tage alle zwei Monate, Community-Management, dazu Kampagnen auf Meta, Google und LinkedIn für Firmenevents, Hochzeiten und private Feiern. Seit dem Sommer 2026 mit eigenen Landingpages je Anlass und einem Vergütungsmodell, das am Eventwert hängt: Wir verdienen mit, wenn gebucht wird."},
+  "kennzahlen": {
+    "headline": ["Was entstanden ist,", "in drei Zahlen."],
+    "karten": [
+      {
+        "art": "zaehler",
+        "label": "Beiträge und Stories im Monat",
+        "wert": "12",
+        "zaehlen": {"von": 0, "bis": 12, "dezimalen": 0, "vor": "", "nach": ""},
+        "badge": "Content-Tag alle 2 Monate",
+        "reihen": [{"label": "Beiträge im Monat", "punkte": 12, "an": 12, "hervorgehoben": true}],
+        "text": "Jeder Punkt ein Beitrag. Dazu Community-Management als verlängertes Team der Location."
+      },
+      {
+        "art": "medien",
+        "label": "Editorial statt Eventfoto",
+        "wert": "Eine Location wie eine Marke.",
+        "badge": "4 Kanäle",
+        "bilder": ["assets/img/a_silv1.jpg", "assets/case/juwel/g0.jpg", "assets/img/a_silv2.jpg"],
+        "text": "Shooting mit Models, damit die Location wie eine Marke aussieht. Instagram, Meta, Google, LinkedIn."
+      },
+      {"art": "zitat", "label": "Zum Vergütungsmodell", "zitat": "Passt perfekt!", "wer": "Geschäftsführung, Juwel Wien", "text": "Erfolgsbeteiligung statt Fixhonorar, gestaffelt nach Eventwert. Wir verdienen, wenn gebucht wird."}
+    ]
+  },
+  "bausteine": [
+    {"typ": "statement", "zeilen": ["Wir verdienen,", "wenn gebucht wird."]},
+    {
+      "typ": "perspektiven",
+      "zeilen": [
+        {"titel": "Effizienz", "text": "Erfolgsbeteiligung statt Fixhonorar für die Kampagnen, gestaffelt nach Eventwert."},
+        {"titel": "Zielgruppe", "text": "Firmen, die einen Ort für ihre Feier suchen, Paare vor der Hochzeit, Gastgeber privater Runden."},
+        {"titel": "Message", "text": "Der Blick ist das Versprechen, der Service das Argument."},
+        {"titel": "Creative", "text": "Editorial-Shooting mit Models statt Eventfotografie, damit die Location wie eine Marke aussieht."},
+        {"titel": "Kanal", "text": "Instagram als Bühne, Meta und Google für Anfragen, LinkedIn für Firmenevents."}
+      ]
+    },
+    {"typ": "zitat", "text": "Passt perfekt!", "wer": "Geschäftsführung, Juwel Wien, zum Vergütungsmodell nach Eventwert"},
+    {
+      "typ": "mobil",
+      "headline": "Silvester über der Stadt.",
+      "text": "Sujets und Stories aus der Kampagne zum Jahreswechsel.",
+      "bilder": ["assets/img/a_silv1.jpg", "assets/case/juwel/g0.jpg", "assets/img/a_silv2.jpg", "assets/case/juwel/g2.jpg"]
+    },
+    {
+      "typ": "learnings",
+      "saetze": [
+        "Eine Location ist eine Marke, wenn man sie so fotografiert.",
+        "Landingpages je Anlass schlagen die eine Kontaktseite.",
+        "Erfolgsbeteiligung macht aus Agentur und Kunde ein Team."
+      ]
+    },
+    {
+      "typ": "galerie",
+      "label": "Aus dem Mandat",
+      "hintergrund": "#0E0E10",
+      "medien": [
+        "assets/case/juwel/g0.jpg",
+        "assets/case/juwel/g1.jpg",
+        "assets/case/juwel/g2.jpg",
+        "assets/case/juwel/g3.jpg",
+        "assets/case/juwel/g4.jpg",
+        "assets/case/juwel/g5.jpg",
+        "assets/case/juwel/v0.mp4",
+        "assets/case/juwel/v1.mp4"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "slug": "case-nordic-spirit",
+  "vorlage": "dossier",
+  "kette": "performance",
+  "reihenfolge": 110,
+  "naechster": "case-medcenter",
+  "meta": {
+    "name": "Nordic Spirit, JTI",
+    "titel": ["Nordic Spirit,", "JTI."],
+    "ziel": "Markteinführung mit messbaren Abschlüssen",
+    "branche": "Consumer, Markteinführung",
+    "zeitraum": "Juli 2025 bis Juni 2026",
+    "kanaele": "Meta, Google, Sampling-Funnel",
+    "farbwelt": "#0F2A44",
+    "farbwelt_text": "#E6EEF6",
+    "leistungen": [
+      {"titel": "Performance Marketing", "seite": "service-performance-marketing.html"},
+      {"titel": "Strategie & Funnel", "seite": "service-strategie.html"},
+      {"titel": "E-Commerce Growth", "seite": "service-ecommerce.html"}
+    ]
+  },
+  "hero": {
+    "headline": "Von 800 auf 7.800 Bestellungen im Monat.",
+    "bild": null,
+    "kennzahl": {"wert": "23.579", "label": "Abschlüsse in zwölf Monaten"}
+  },
+  "intro": {"these": "Eine neue Marke in einer <b>regulierten Kategorie</b>, ohne Bekanntheit in Österreich, mit einem Ziel, das sich zählen lässt: <b>Gratis-Samples</b>, die zu Kunden werden. Und mit Regeln, die viele Werbemittel und Zielgruppen ausschließen.", "text": "Wir haben den Funnel als Sampling-Maschine gebaut: Meta für Volumen mit Angeboten wie vier Dosen gratis, Google für Effizienz auf der Suche, Ziel-CPA-Gebote als Steuerung, Gewinnspiele und Kooperationen bewusst getrennt vom Sales-Funnel. Aus 275.906 Euro Mediabudget wurden 23.579 Abschlüsse zu 11,70 Euro, die Bestellungen stiegen von 800 auf 7.800 im Monat."},
+  "kennzahlen": {
+    "headline": ["Was besser wurde,", "in drei Zahlen."],
+    "karten": [
+      {
+        "id": "nordic-orders",
+        "art": "sprung",
+        "label": "Bestellungen je Monat",
+        "vorher": "800",
+        "wert": "7.800",
+        "zaehlen": {"von": 800, "bis": 7800, "dezimalen": 0, "vor": "", "nach": ""},
+        "badge": "Faktor 9,75",
+        "reihen": [
+          {"label": "Vorher", "punkte": 39, "an": 4, "hervorgehoben": false},
+          {"label": "Am Peak", "punkte": 39, "an": 39, "hervorgehoben": true}
+        ],
+        "text": "Eine neue Marke in einer regulierten Kategorie, gewonnen über das Angebot. Ein Punkt sind 200 Bestellungen."
+      },
+      {
+        "art": "sprung",
+        "label": "Preis je Abschluss, Meta",
+        "vorher": "€ 13,01",
+        "wert": "€ 8,36",
+        "zaehlen": {"von": 13.01, "bis": 8.36, "dezimalen": 2, "vor": "€ ", "nach": ""},
+        "badge": "−36 %",
+        "reihen": [
+          {"label": "Meta vorher", "punkte": 26, "an": 26, "hervorgehoben": false},
+          {"label": "Meta danach", "punkte": 26, "an": 17, "hervorgehoben": true},
+          {"label": "Google", "punkte": 26, "an": 14, "hervorgehoben": false}
+        ],
+        "text": "Google lag bei € 7,18, Search always-on bei € 4,80. Ein Punkt sind 50 Cent."
+      },
+      {
+        "art": "zaehler",
+        "label": "Abschlüsse in zwölf Monaten",
+        "wert": "23.579",
+        "zaehlen": {"von": 0, "bis": 23579, "dezimalen": 0, "vor": "", "nach": ""},
+        "badge": "€ 11,70 je Abschluss",
+        "waffel": {"gesamt": 100, "wert": 73, "spalten": 20},
+        "text": "73 Prozent des Budgets liefen auf Meta für Volumen, 27 auf Google für Effizienz. Jeder Punkt ein Prozent Budget."
+      }
+    ],
+    "fussnote": "Mediabudget 275.906 Euro, davon 202.221 Euro Meta und 73.685 Euro Google, 46,1 Millionen Impressionen. Peak von September bis Dezember 2025 mit über 6.000 Abschlüssen im Monat. Werte aus dem Performance Review an den Kunden. Die Kampagnen liefen bis 30. Juni 2026 im damals gültigen rechtlichen Rahmen, danach griff die neue Gesetzeslage für die Kategorie und die Bewerbung wurde planmäßig beendet."
+  },
+  "bausteine": [
+    {
+      "typ": "statement",
+      "zeilen": ["Meta bringt Volumen.", "Google bringt Effizienz.", "Zusammen bringen sie Kunden."]
+    },
+    {
+      "typ": "perspektiven",
+      "zeilen": [
+        {"titel": "Effizienz", "text": "Google mit 7,18 Euro je Abschluss, Search Always-on bei 4,80 Euro. Meta-CPA in den Conversion-Kampagnen von 13,01 auf 8,36 Euro gesenkt."},
+        {"titel": "Zielgruppe", "text": "Erwachsene Umsteiger, geschärft über Signale aus dem Sampling, kein Streuverlust in gesperrte Segmente."},
+        {"titel": "Message", "text": "Gratis probieren schlägt jedes Markenversprechen: Hol dir das Discovery Kit."},
+        {"titel": "Creative", "text": "Angebots-Statics und ein Markenfilm, wöchentlich neue Varianten gegen die Ermüdung."},
+        {"titel": "Kanal", "text": "Meta mit 73 Prozent des Budgets für Reichweite und Abschlüsse, Google mit 27 Prozent als Effizienzkanal, dazu ein Loyalty-Programm für Wiederkäufer."}
+      ]
+    },
+    {
+      "typ": "ergebnis",
+      "ausgeblendet": true,
+      "zahlen": [
+        {"label": "(Abschlüsse)", "wert": "23.579"},
+        {"label": "(je Abschluss, gesamt)", "wert": "€ 11,70"},
+        {"label": "(Bestellungen je Monat, Peak)", "wert": "7.800"},
+        {"label": "(Reichweite Meta)", "wert": "2,8 Mio."}
+      ]
+    },
+    {
+      "typ": "kapitel",
+      "label": "Zweites Kapitel, die Übergabe",
+      "headline": ["Aufbauen, skalieren,", "sauber übergeben."],
+      "absatz1": "Neben dem Sales-Funnel liefen zwei Nebenschauplätze mit eigener Logik: über zwanzig Gewinnspiel-Kooperationen mit rund 65.000 Interaktionen zu höchstens 52 Cent je Interaktion, und ein Loyalty-Programm für Wiederkäufer, das mit 4.499 Euro 142 Anmeldungen brachte. Beides bewusst getrennt gemessen, damit keine Zahl die andere verfälscht.",
+      "absatz2": "<b>Zum 30. Juni 2026 haben wir das Konto übergeben:</b> mit Struktur, Dokumentation und den Learnings aus einem Jahr. Der Zeitpunkt war kein Zufall, sondern das Datum, an dem die neue Gesetzeslage für die Kategorie griff. Ein Mandat muss nicht ewig laufen, um ein gutes Mandat zu sein. Es muss sauber gebaut sein und zum richtigen Zeitpunkt enden.",
+      "zahlen": [
+        {"label": "(Gewinnspiel-Kooperationen)", "wert": "20+"},
+        {"label": "(Interaktionen daraus)", "wert": "65.000"},
+        {"label": "(je Interaktion, maximal)", "wert": "€ 0,52"},
+        {"label": "(Loyalty-Anmeldungen)", "wert": "142"}
+      ],
+      "fussnote": "Werte aus dem Performance Review zum Abschluss der Zusammenarbeit im Juni 2026.",
+      "links": [
+        {"href": "service-strategie.html", "text": "Strategie & Funnel"},
+        {"href": "service-ecommerce.html", "text": "E-Commerce Growth"}
+      ]
+    },
+    {
+      "typ": "learnings",
+      "saetze": [
+        "Ziel-CPA-Gebote waren der größte Hebel, nicht das Budget.",
+        "Gewinnspiele gehören getrennt vom Sales-Funnel, sonst verfälschen sie jede Zahl.",
+        "Eine Marke ohne Bekanntheit gewinnt über das Angebot, nicht über das Versprechen."
+      ]
+    }
+  ]
+}

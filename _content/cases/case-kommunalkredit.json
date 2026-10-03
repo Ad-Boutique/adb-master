@@ -1,0 +1,47 @@
+{
+  "slug": "case-kommunalkredit",
+  "vorlage": "handgebaut",
+  "kette": null,
+  "reihenfolge": 400,
+  "seite": "case-kommunalkredit.html",
+  "meta": {
+    "name": "Kommunalkredit, Sommergespräche",
+    "leistungen": [
+      {"titel": "Content Creation", "seite": "service-content-creation.html"},
+      {"titel": "Performance Marketing", "seite": "service-performance-marketing.html"},
+      {"titel": "Strategie & Funnel", "seite": "service-strategie.html"}
+    ],
+    "seo": {"titel": "Case: Kommunalkredit Sommergespräche, Film und Kampagne | ad.boutique", "beschreibung": "Sommergespräche in Bad Aussee: Recap-Film, Dokumentation und 19 Social Clips aus drei Drehtagen, dazu Kampagnen auf LinkedIn und Google."}
+  },
+  "kennzahlen": {
+    "headline": ["Was entstanden ist,", "in drei Zahlen."],
+    "karten": [
+      {
+        "id": "kk-clips",
+        "art": "zaehler",
+        "label": "Social Clips 2026",
+        "wert": "19",
+        "zaehlen": {"von": 0, "bis": 19, "dezimalen": 0, "vor": "", "nach": ""},
+        "badge": "3 Drehtage",
+        "reihen": [
+          {"label": "Social Clips", "punkte": 19, "an": 19, "hervorgehoben": true},
+          {"label": "Recap, Doku, Intro", "punkte": 3, "an": 3, "hervorgehoben": false}
+        ],
+        "text": "Jeder Punkt ein Film: 19 Clips im Hoch- und Querformat, ein Recap in zweieinhalb Minuten, eine zwölfminütige Dokumentation, ein Introfilm."
+      },
+      {
+        "art": "sprung",
+        "label": "Reichweite eines Beitrags",
+        "vorher": "€ 164 Budget",
+        "wert": "24.000",
+        "einheit": "Personen",
+        "zaehlen": {"von": 0, "bis": 24000, "dezimalen": 0, "vor": "", "nach": ""},
+        "badge": "vorzeitig gestoppt",
+        "reihen": [{"label": "Erreichte Personen", "punkte": 24, "an": 24, "hervorgehoben": true}],
+        "text": "Ein gesponserter LinkedIn-Beitrag zur Konferenz in Berlin, gestoppt, weil das Ziel erreicht war. Ein Punkt sind 1.000 Personen."
+      },
+      {"art": "zitat", "label": "Zum Introfilm", "zitat": "VO ist super. Musikwahl ist super. Tempo ist super.", "wer": "Leitung Kommunikation und Marketing", "text": "Freigabe nach dem ersten Schnitt. Rund 6.500 Klicks brachten die Kampagnen bis Ende August auf die Veranstaltungsseite."}
+    ]
+  },
+  "bausteine": []
+}

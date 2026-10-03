@@ -1,0 +1,106 @@
+{
+  "slug": "case-neuer-case",
+  "vorlage": "dossier",
+  "kette": "performance",
+  "reihenfolge": 145,
+  "naechster": "auto",
+  "meta": {
+    "name": "Kundenname oder Projekt, Ort",
+    "titel": ["Kundenname oder", "Projekt, Ort."],
+    "ziel": "Was der Kunde erreichen wollte",
+    "branche": "Real Estate, Wohnbau",
+    "zeitraum": "Seit Jänner 2026, laufend",
+    "kanaele": "Meta, Google, Landingpage",
+    "farbwelt": "#2E3A2F",
+    "farbwelt_text": "#EDF2EC",
+    "leistungen": [
+      {"titel": "Performance Marketing", "seite": "service-performance-marketing.html"},
+      {"titel": "Content Creation", "seite": "service-content-creation.html"}
+    ]
+  },
+  "hero": {
+    "headline": "Eine Zeile, die das Ergebnis als Headline sagt.",
+    "bild": "assets/case/case-neuer-case/hero.jpg",
+    "kennzahl": {"wert": "460", "label": "Anfragen im ersten Quartal"}
+  },
+  "intro": {
+    "these": "Die Ausgangslage in einem Satz, mit zwei <b>fetten Begriffen</b> für den Scrub-Effekt und einem <b>zweiten</b>.",
+    "text": "Was wir gemacht haben und was dabei herauskam, in drei bis vier Sätzen. Nur Zahlen, die im Reporting stehen."
+  },
+  "kennzahlen": {
+    "headline": ["Was besser wurde,", "in drei Zahlen."],
+    "karten": [
+      {
+        "art": "sprung",
+        "label": "Preis je Anfrage",
+        "vorher": "€ 11,77",
+        "wert": "€ 5,00",
+        "zaehlen": {"von": 11.77, "bis": 5.0, "dezimalen": 2, "vor": "€ ", "nach": ""},
+        "badge": "−57 %",
+        "linie": [11.77, 6.97, 5.88, 5.0],
+        "text": "Satz unter der Grafik: woher die Zahl kommt und was ein Punkt bedeutet."
+      },
+      {
+        "art": "zaehler",
+        "label": "Anfragen im ersten Quartal",
+        "wert": "460",
+        "zaehlen": {"von": 0, "bis": 460, "dezimalen": 0, "vor": "", "nach": ""},
+        "badge": "€ 12,77 je Anfrage",
+        "reihen": [
+          {"label": "Eigennutzer", "punkte": 43, "an": 43, "hervorgehoben": true},
+          {"label": "Anleger", "punkte": 43, "an": 4, "hervorgehoben": false}
+        ],
+        "text": "Ein Punkt sind zehn Anfragen."
+      },
+      {
+        "art": "text",
+        "label": "Der größte Hebel",
+        "wert": "Ein kurzer Satz als Ergebnis.",
+        "badge": "Kurzes Badge",
+        "stationen": ["Briefing", "Kampagne", "Anfrage", "Verkauf"],
+        "text": "Satz unter der Punktzeile."
+      }
+    ],
+    "fussnote": "Quelle der Zahlen, Zeitraum, Anonymisierung."
+  },
+  "bausteine": [
+    {"typ": "statement", "zeilen": ["Die These des Cases,", "in zwei oder drei", "kurzen Zeilen."]},
+    {
+      "typ": "perspektiven",
+      "zeilen": [
+        {"titel": "Effizienz", "text": "Ein Satz."},
+        {"titel": "Zielgruppe", "text": "Ein Satz."},
+        {"titel": "Message", "text": "Ein Satz."},
+        {"titel": "Creative", "text": "Ein Satz."},
+        {"titel": "Kanal", "text": "Ein Satz."}
+      ]
+    },
+    {
+      "typ": "kapitel",
+      "label": "Zweites Kapitel, der Name des Kapitels",
+      "headline": ["Erste Zeile der Headline,", "zweite Zeile."],
+      "absatz1": "Erster Absatz.",
+      "absatz2": "<b>Fetter Einstieg:</b> zweiter Absatz.",
+      "zahlen": [
+        {"label": "(Anfragen im zweiten Quartal)", "wert": "232"},
+        {"label": "(Preis je Anfrage)", "wert": "€ 16,60"}
+      ],
+      "fussnote": "Quelle der Kapitel-Zahlen.",
+      "links": [{"href": "service-performance-marketing.html", "text": "Performance Marketing"}]
+    },
+    {"typ": "zitat", "text": "Das Zitat ohne Anführungszeichen.", "wer": "Rolle, Firma"},
+    {
+      "typ": "mobil",
+      "headline": "Sujets, die im Feed bestehen.",
+      "text": "Ein Satz zu den Motiven.",
+      "bilder": ["assets/case/case-neuer-case/m0.jpg", "assets/case/case-neuer-case/m1.jpg", "assets/case/case-neuer-case/m2.jpg"]
+    },
+    {"typ": "learnings", "saetze": ["Erstes Learning.", "Zweites Learning.", "Drittes Learning."]},
+    {
+      "typ": "galerie",
+      "label": "Aus dem Mandat",
+      "hintergrund": "#0E0E10",
+      "medien": ["assets/case/case-neuer-case/g0.jpg", "assets/case/case-neuer-case/g1.jpg", "assets/case/case-neuer-case/v0.mp4"]
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "slug": "case-crowdinvesting",
+  "vorlage": "dossier",
+  "kette": "performance",
+  "reihenfolge": 40,
+  "naechster": "case-wohnbau-floridsdorf",
+  "meta": {
+    "name": "Crowdinvesting-Plattform",
+    "titel": ["Crowdinvesting-", "Plattform."],
+    "ziel": "Kapital je Projekt, planbar",
+    "branche": "Finance, Crowdinvesting",
+    "zeitraum": "Zwei POC-Phasen, laufend",
+    "kanaele": "Meta, Google, Funnel, UGC",
+    "farbwelt": "#1C2530",
+    "farbwelt_text": "#E8EDF2",
+    "leistungen": [
+      {"titel": "Strategie & Funnel", "seite": "service-strategie.html"},
+      {"titel": "Performance Marketing", "seite": "service-performance-marketing.html"},
+      {"titel": "Content Creation", "seite": "service-content-creation.html"}
+    ]
+  },
+  "hero": {
+    "headline": "Gleiches Budget. Viermal mehr Kapital.",
+    "bild": "assets/case/case-crowdinvesting/g0.jpg",
+    "kennzahl": {"wert": "8,75", "label": "ROAS, vorher 2,14"}
+  },
+  "intro": {"these": "Investoren-Kampagnen liefen <b>projektweise</b>ohne gemeinsame Datenbasis: Bei rund € 20k Budget kamen 16 Investments und € 43.740 Kapital zustande, <b>ROAS 2,14</b>Kosten je Investor € 1.277.", "text": "Wir haben von Einzelkampagnen auf eine plattformbasierte Struktur umgestellt: gemeinsame Daten, klare KPI-Logik mit Kosten je Investor, Ø Investment, Volumen und ROAS, projektübergreifendes Lernen. Bei nahezu gleichem Budget wurden daraus € 172.117 Kapital, 50 Investments und ein ROAS von 8,75."},
+  "kennzahlen": {
+    "headline": ["Was besser wurde,", "in drei Zahlen."],
+    "karten": [
+      {
+        "id": "crowd-kapital",
+        "art": "sprung",
+        "label": "Kapital je POC-Phase",
+        "vorher": "€ 43.740",
+        "wert": "€ 172.117",
+        "zaehlen": {"von": 43740, "bis": 172117, "dezimalen": 0, "vor": "€ ", "nach": ""},
+        "badge": "+293 %",
+        "reihen": [
+          {"label": "Vorher", "punkte": 34, "an": 9, "hervorgehoben": false},
+          {"label": "Mit uns", "punkte": 34, "an": 34, "hervorgehoben": true}
+        ],
+        "text": "Nahezu gleiches Budget, andere Struktur. Ein Punkt sind 5.000 Euro."
+      },
+      {
+        "id": "crowd-roas",
+        "art": "sprung",
+        "label": "Return on Ad Spend",
+        "vorher": "2,14",
+        "wert": "8,75",
+        "zaehlen": {"von": 2.14, "bis": 8.75, "dezimalen": 2, "vor": "", "nach": ""},
+        "badge": "+309 %",
+        "linie": [2.14, 8.75, 18.7],
+        "text": "Vorher, erste POC-Phase, zweite POC-Phase mit Plattform-Logik: 18,7 bei mehr als verdreifachtem Budget."
+      },
+      {
+        "id": "crowd-investor",
+        "art": "sprung",
+        "label": "Kosten je Investor",
+        "vorher": "€ 1.277",
+        "wert": "€ 393",
+        "zaehlen": {"von": 1277, "bis": 393, "dezimalen": 0, "vor": "€ ", "nach": ""},
+        "badge": "−69 %",
+        "reihen": [
+          {"label": "Vorher", "punkte": 26, "an": 26, "hervorgehoben": false},
+          {"label": "Mit uns", "punkte": 26, "an": 8, "hervorgehoben": true}
+        ],
+        "text": "Aus 16 Investments wurden 50, bei nahezu gleichem Spend. Ein Punkt sind 50 Euro."
+      }
+    ],
+    "fussnote": "Gleicher Spend, anderes Ergebnis: Der Beweis liegt im Vorher-Nachher der POC-Phase. Better selling through data."
+  },
+  "bausteine": [
+    {"typ": "statement", "zeilen": ["Struktur schlägt", "Einzelkampagne."]},
+    {
+      "typ": "perspektiven",
+      "zeilen": [
+        {"titel": "Effizienz", "text": "Das Top-Projekt erreichte ROAS 26,1: aus € 2.121 wurden € 55.400."},
+        {"titel": "Zielgruppe", "text": "Kapitalaffine Segmente projektübergreifend geschärft."},
+        {"titel": "Message", "text": "Rendite-Sicherheit vor Produktdetails."},
+        {"titel": "Creative", "text": "Projektspezifische Angles auf gemeinsamer Vorlage."},
+        {"titel": "Kanal", "text": "Plattform-Logik schlägt Projekt-Silo deutlich."}
+      ]
+    },
+    {
+      "typ": "ergebnis",
+      "ausgeblendet": true,
+      "zahlen": [
+        {"label": "(Kapital, vorher € 43.740)", "wert": "€ 172.117"},
+        {"label": "(ROAS, vorher 2,14)", "wert": "8,75"},
+        {"label": "(Investments, vorher 16)", "wert": "50"},
+        {"label": "(Kosten je Investor, vorher € 1.277)", "wert": "€ 393"}
+      ],
+      "kurzfassung": ["<em>€ 172.117</em> Kapital, +293 %", "<em>8,75</em> ROAS, +309 %", "<em>−69 %</em> Kosten je Investor"]
+    },
+    {
+      "typ": "kapitel",
+      "label": "Zweites Kapitel, die Skalierung",
+      "headline": ["Vom Beweis", "zur Maschine."],
+      "absatz1": "Nach dem ersten Proof of Concept kam der zweite, mit einer Hypothese: nicht mehr das einzelne Projekt bewerben, sondern die Plattform. Gemeinsame Daten über alle Emissionen, eine laufende Kampagne statt Stop-and-go, Google als Abschlusskanal für die Nachfrage, die Meta erzeugt. Dazu Talking-Head-Videos und UGC statt Stockbilder.",
+      "absatz2": "<b>Das Budget wurde mehr als verdreifacht, der Return stieg trotzdem:</b> 67.180 Euro Mediabudget brachten 114 Investments und 1,26 Millionen Euro Kapital, ein ROAS von 18,7. Die reine Plattform-Kampagne lag bei 42, die Markensuche bei Google über 100. Und das durchschnittliche Investment war fast dreimal so hoch wie geplant.",
+      "zahlen": [
+        {"label": "(ROAS, zweite POC-Phase)", "wert": "18,7"},
+        {"label": "(Kapital in drei Monaten)", "wert": "€ 1,26 Mio."},
+        {"label": "(Investments)", "wert": "114"},
+        {"label": "(Ø Investment, Ziel € 3.800)", "wert": "€ 11.039"}
+      ],
+      "fussnote": "Vergütung in dieser Phase: Selbstkosten plus Beteiligung am zurechenbaren Zeichnungsvolumen. Wir haben nur verdient, wenn gezeichnet wurde. Geschwister-Varianten desselben Motivs fielen durch, und die Markensuche erntet Nachfrage, sie erzeugt sie nicht.",
+      "links": [
+        {"href": "service-strategie.html", "text": "Strategie & Funnel"},
+        {"href": "service-content-creation.html", "text": "Content Creation"}
+      ]
+    },
+    {
+      "typ": "learnings",
+      "saetze": [
+        "Struktur schlägt Einzelkampagne.",
+        "Die KPI-Definition vorab ist die halbe Miete.",
+        "Eine laufende Plattform-Kampagne schlägt die Einzelkampagne beim Return um den Faktor 2,5.",
+        "Gleicher Spend, anderes Ergebnis: Der Beweis liegt im Vorher-Nachher."
+      ]
+    },
+    {
+      "typ": "galerie",
+      "label": "Aus dem Mandat",
+      "hintergrund": "#1C2530",
+      "medien": [
+        "assets/case/case-crowdinvesting/g0.jpg",
+        "assets/case/case-crowdinvesting/g1.jpg",
+        "assets/case/case-crowdinvesting/g2.jpg",
+        "assets/case/case-crowdinvesting/g3.jpg",
+        "assets/case/case-crowdinvesting/g4.jpg",
+        "assets/case/case-crowdinvesting/g5.jpg",
+        "assets/case/case-crowdinvesting/v0.mp4",
+        "assets/case/case-crowdinvesting/v1.mp4"
+      ]
+    }
+  ]
+}

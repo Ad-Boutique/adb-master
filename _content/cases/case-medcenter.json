@@ -1,0 +1,93 @@
+{
+  "slug": "case-medcenter",
+  "vorlage": "dossier",
+  "kette": "performance",
+  "reihenfolge": 120,
+  "naechster": "case-juwel",
+  "meta": {
+    "name": "MedCenter 1030",
+    "titel": ["MedCenter", "1030."],
+    "ziel": "Patientenanfragen für ein neues Zentrum",
+    "branche": "Health, Arztzentrum",
+    "zeitraum": "Seit März 2026, laufend",
+    "kanaele": "Website, Google, Meta",
+    "farbwelt": "#3E5A52",
+    "farbwelt_text": "#EEF3F1",
+    "leistungen": [
+      {"titel": "Websites & Landingpages", "seite": "service-websites.html"},
+      {"titel": "Performance Marketing", "seite": "service-performance-marketing.html"},
+      {"titel": "Content Creation", "seite": "service-content-creation.html"}
+    ]
+  },
+  "hero": {"headline": "Ein Arztzentrum. Sichtbar in einer Woche.", "bild": null, "kennzahl": null},
+  "intro": {"these": "Ein neues Arztzentrum im dritten Bezirk, mehrere Fachrichtungen unter einem Dach, aber <b>kein Auftritt</b>, keine Sichtbarkeit und ein Startdatum, das <b>nicht wartete</b>.", "text": "Innerhalb einer Woche standen Website und Kampagnen-Setup: eine Seite, die Fachrichtungen, Team und Termine ohne Umweg zeigt, dazu Google für die aktive Suche und Meta für die Nachbarschaft, mit Sujets, die das Zentrum als Ort zeigen, nicht als Leistungsverzeichnis. Die Kampagnen laufen seit dem Frühjahr, die Zahlen lesen wir vierteljährlich mit der Praxisleitung."},
+  "kennzahlen": {
+    "headline": ["Was das Projekt ausmacht,", "in drei Punkten."],
+    "karten": [
+      {
+        "art": "text",
+        "label": "Vom Briefing zum Start",
+        "wert": "Sichtbar in einer Woche.",
+        "badge": "1 Woche",
+        "stationen": ["Briefing", "Website", "Google", "Meta", "Live"],
+        "text": "Website und Kampagnen-Setup standen innerhalb einer Woche, ohne Agenturaufwand, der eine Ordination überfordert."
+      },
+      {
+        "art": "medien",
+        "label": "Sujets fürs Grätzel",
+        "wert": "Menschen statt Geräte.",
+        "badge": "2 Kanäle",
+        "bilder": ["assets/case/medcenter/g0.jpg", "assets/case/medcenter/g1.jpg", "assets/case/medcenter/g2.jpg"],
+        "text": "Ruhige Statics in der Farbwelt des Zentrums, gebaut für den Feed. Google für die Suche, Meta für die Nachbarschaft."
+      },
+      {"art": "zitat", "label": "Nach der ersten Abnahme", "zitat": "Die Seite sieht echt schon sehr gut aus.", "wer": "Marketing-Koordination, MedCenter 1030", "text": "Zahlen lesen wir vierteljährlich mit der Praxisleitung. Hier stehen sie, wenn sie belastbar sind."}
+    ]
+  },
+  "bausteine": [
+    {"typ": "statement", "zeilen": ["Gesundheit braucht Nähe.", "Auch online."]},
+    {
+      "typ": "perspektiven",
+      "zeilen": [
+        {"titel": "Effizienz", "text": "Ein Setup, zwei Kanäle, ein Reporting, ohne Agenturaufwand, der eine Ordination überfordert."},
+        {"titel": "Zielgruppe", "text": "Menschen im Grätzel und Suchende mit konkretem Anliegen."},
+        {"titel": "Message", "text": "Ein Zentrum, viele Fachrichtungen, kurze Wege."},
+        {"titel": "Creative", "text": "Ruhige Statics in der Farbwelt des Zentrums, Menschen statt Geräte."},
+        {"titel": "Kanal", "text": "Google für die Suche, Meta für die Nachbarschaft."}
+      ]
+    },
+    {"typ": "zitat", "text": "Die Seite sieht echt schon sehr gut aus.", "wer": "Marketing-Koordination, MedCenter 1030, nach der ersten Abnahme"},
+    {
+      "typ": "mobil",
+      "headline": "Sujets für das Grätzel.",
+      "text": "Kampagnen-Statics aus dem Setup, gebaut für den Feed.",
+      "bilder": [
+        "assets/case/medcenter/g0.jpg",
+        "assets/case/medcenter/g1.jpg",
+        "assets/case/medcenter/g2.jpg",
+        "assets/case/medcenter/g3.jpg",
+        "assets/case/medcenter/g4.jpg"
+      ]
+    },
+    {
+      "typ": "learnings",
+      "saetze": [
+        "Eine Ordination braucht keinen Konzern-Auftritt, sondern einen, der in einer Woche steht.",
+        "Empfehlungen entstehen aus Arbeit: Der Kontakt kam über eine Projektmanagerin aus dem Immobilienumfeld.",
+        "Gesundheit verkauft sich über Nähe, nicht über Rabatt."
+      ]
+    },
+    {
+      "typ": "galerie",
+      "label": "Aus dem Mandat",
+      "hintergrund": "#0E0E10",
+      "medien": [
+        "assets/case/medcenter/g0.jpg",
+        "assets/case/medcenter/g1.jpg",
+        "assets/case/medcenter/g2.jpg",
+        "assets/case/medcenter/g3.jpg",
+        "assets/case/medcenter/g4.jpg",
+        "assets/case/medcenter/g5.jpg"
+      ]
+    }
+  ]
+}

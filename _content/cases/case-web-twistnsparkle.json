@@ -1,0 +1,75 @@
+{
+  "slug": "case-web-twistnsparkle",
+  "vorlage": "web",
+  "kette": "web",
+  "reihenfolge": 290,
+  "naechster": "case-web-noma",
+  "meta": {
+    "name": "Twist'n Sparkle, isi",
+    "branche": "Consumer, Produkt-Kampagne",
+    "url": "https://www.twistnsparkle.isi.com/en",
+    "umfang": ["Struktur & Story", "Design", "Umsetzung", "Laufende Weiterentwicklung"],
+    "leistungen": [
+      {"titel": "Websites & Landingpages", "seite": "service-websites.html"},
+      {"titel": "Performance Marketing", "seite": "service-performance-marketing.html"}
+    ]
+  },
+  "hero": {"headline": "Ein Produkt. Ein Versprechen. Eine Seite.", "bild": "assets/img/web_twistnsparkle_d.jpg"},
+  "intro": {"text": "Ein Produkt, ein Versprechen, eine Seite: Die Kampagnen-Site macht aus dem Twist'n Sparkle ein Erlebnis, von Benefits über How-to bis zu Rezepten, gebaut für Kampagnen-Traffic."},
+  "kennzahlen": {
+    "headline": ["Was besser wurde,", "in drei Zahlen."],
+    "karten": [
+      {"ref": "consumer-roas", "link": {"href": "case-consumer-brand.html", "text": "Zum Performance-Case"}},
+      {"ref": "consumer-cpm"},
+      {
+        "art": "zaehler",
+        "label": "Launch-Termine",
+        "wert": "4",
+        "zaehlen": {"von": 0, "bis": 4, "dezimalen": 0, "vor": "", "nach": ""},
+        "badge": "3 Sprachen, 3 Länder",
+        "reihen": [
+          {"label": "Launch-Termine", "punkte": 4, "an": 4, "hervorgehoben": true},
+          {"label": "Länder", "punkte": 4, "an": 3, "hervorgehoben": false},
+          {"label": "Sprachen", "punkte": 4, "an": 3, "hervorgehoben": false}
+        ],
+        "text": "Frankfurt, US-Messen, Kanada, dann Österreich, Deutschland und die USA. Gebaut gegen die Zeit, mit Platzhaltern zuerst."
+      }
+    ]
+  },
+  "bausteine": [
+    {"typ": "buehne", "bild": "assets/img/web_twistnsparkle_d1.jpg"},
+    {
+      "typ": "mobil",
+      "headline": "Mobil zuerst gedacht.",
+      "text": "Der Auftritt, wie ihn die meisten Besucher sehen: am Telefon, Seite für Seite.",
+      "bilder": [
+        "assets/img/web_twistnsparkle_m0.jpg",
+        "assets/img/web_twistnsparkle_m1.jpg",
+        "assets/img/web_twistnsparkle_m2.jpg",
+        "assets/img/web_twistnsparkle_ms0.jpg",
+        "assets/img/web_twistnsparkle_ms1.jpg"
+      ]
+    },
+    {
+      "typ": "unterseiten",
+      "label": "Aus dem Projekt",
+      "bilder": [
+        "assets/img/web_twistnsparkle_ds0.jpg",
+        "assets/img/web_twistnsparkle_ds1.jpg",
+        "assets/img/web_twistnsparkle_ds2.jpg"
+      ]
+    },
+    {
+      "typ": "kapitel",
+      "label": "Zweites Kapitel, die Zahlen dahinter",
+      "headline": ["Die Seite trägt die Kampagne. Die Kampagne trägt die Marke."],
+      "absatz1": "Die Kampagnen-Site ist der Ort, auf den die Saison-Kampagnen der Marke führen. Am Black Friday lag der Return on Ad Spend bei 4,02, 75 Prozent über dem Benchmark des Kontos, die Awareness im Vorlauf kostete 0,99 Euro je tausend Kontakte statt 3,50.",
+      "absatz2": "<b>Gebaut wurde die Seite gegen die Zeit:</b> vier Launch-Termine in drei Ländern, Content der Kreativagentur, der spät kam, und ein Pitch gegen eine zweite Agentur, den wir gewonnen haben. Die ganze Geschichte steht im Consumer-Brand-Case.",
+      "links": [
+        {"href": "case-consumer-brand.html", "text": "Zum Performance-Case"},
+        {"href": "service-performance-marketing.html", "text": "Performance Marketing"}
+      ]
+    },
+    {"typ": "zitat", "text": "Mit der Zusammenarbeit im Performance-Bereich war und bin ich sehr zufrieden, und auch die Ergebnisse können sich sehen lassen.", "wer": "Teamlead E-Commerce, isi"}
+  ]
+}

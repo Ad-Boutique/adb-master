@@ -1,8 +1,8 @@
 # Service-LP-Generator: Schema Problem → Konsequenz → Lösung → Differenzierung →
 # Proof ×3 → Logos → Case-Liste → FAQ → No-Brainer + Risikoumkehr → CTA
 # -*- coding: utf-8 -*-
-from _gen import HEAD, FOOTER, menu, logocycle, logogrid, CASES
-from _gen_web import WEBCASES
+from _gen import HEAD, FOOTER, menu, logocycle, logogrid
+from _cases import PERFORMANCE, WEB, HAND, leistungen as case_leistungen
 from _kpi import board as kpi_board, dotrows as kpi_dotrows, SERVICE_KPI
 
 def logos_row(names, label):
@@ -1613,28 +1613,22 @@ def _voice(s):
             '  </section>\n\n') % (v["label"], v["a"], v["note"])
 
 
-# Handgebaute Cases und ihre Leistungen (stehen nicht in CASES/WEBCASES als Daten)
-HAND_CASES = {
-    "case-premium-neubau.html": ("Premium-Neubau, Wien", ["service-performance-marketing.html", "service-content-creation.html", "service-websites.html"]),
-    "case-kommunalkredit.html": ("Kommunalkredit, Sommergespräche", ["service-content-creation.html", "service-performance-marketing.html", "service-strategie.html"]),
-}
-
 def _all_cases_for(slug):
-    """(href, titel) aller Cases, die die Leistung <slug> als Leistung ausweisen"""
+    """(href, titel) aller Cases, die die Leistung <slug> als Leistung ausweisen (meta.leistungen der Inhaltsdateien
+    _content/cases/*.json): erst die Dossiers, dann die Website-Cases, dann die handgebauten Seiten"""
     href = slug + ".html"
     out = []
-    for c in CASES:
-        if c.get("handmade"):
+    for c in PERFORMANCE:
+        if c["vorlage"] == "handgebaut":
             continue
-        if any(h == href for _, h in c["disz"]):
-            out.append((c["slug"] + ".html", c["nav_title"]))
-    for c in WEBCASES:
-        disz = c.get("disz", [("Websites & Landingpages", "service-websites.html")])
-        if any(h == href for _, h in disz):
-            out.append((c["slug"] + ".html", c["name"]))
-    for h, (t, svcs) in HAND_CASES.items():
-        if href in svcs:
-            out.append((h, t))
+        if any(h == href for _, h in case_leistungen(c)):
+            out.append((c["slug"] + ".html", c["meta"]["name"]))
+    for c in WEB:
+        if any(h == href for _, h in case_leistungen(c)):
+            out.append((c["slug"] + ".html", c["meta"]["name"]))
+    for c in HAND:
+        if any(h == href for _, h in case_leistungen(c)):
+            out.append((c["seite"], c["meta"]["name"]))
     return out
 
 def _more_cases(s):

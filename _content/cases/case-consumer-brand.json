@@ -1,0 +1,141 @@
+{
+  "slug": "case-consumer-brand",
+  "vorlage": "dossier",
+  "kette": "performance",
+  "reihenfolge": 60,
+  "naechster": "case-bautraeger-portfolio",
+  "meta": {
+    "name": "Premium-Consumer-Brand",
+    "titel": ["Premium-", "Consumer-Brand."],
+    "ziel": "Profitabler Saison-Peak",
+    "branche": "Consumer, Beverage-Lifestyle",
+    "zeitraum": "Saison-Peaks, Produktlaunch",
+    "kanaele": "Meta, Kampagnen-Site",
+    "farbwelt": "#22382C",
+    "farbwelt_text": "#EDF2EC",
+    "leistungen": [
+      {"titel": "E-Commerce Growth", "seite": "service-ecommerce.html"},
+      {"titel": "Performance Marketing", "seite": "service-performance-marketing.html"},
+      {"titel": "Content Creation", "seite": "service-content-creation.html"},
+      {"titel": "Websites & Landingpages", "seite": "service-websites.html"}
+    ]
+  },
+  "hero": {
+    "headline": "Wenn alle schreien, gewinnt Relevanz.",
+    "bild": "assets/img/isi.jpg",
+    "kennzahl": {"wert": "4,02", "label": "BFCM-ROAS"}
+  },
+  "intro": {"these": "Eine starke Marke mit <b>saisonalen Spitzen</b> wie Black Friday und Weihnachten, aber Mediakosten und Sales-Effizienz schwankten ohne klare <b>Kampagnen-Architektur</b>.", "text": "Wir haben die Saison als getaktete Architektur gebaut: effiziente Awareness im Vorlauf, Sales-Druck im Peak, sauberes Audience-Layering und Retargeting. Der BFCM-ROAS lag mit 4,02 um 75 Prozent über dem Account-Benchmark von 2,3, die Awareness kostete mit € 0,99 CPM 72 Prozent weniger als der Benchmark."},
+  "kennzahlen": {
+    "headline": ["Was besser wurde,", "in drei Zahlen."],
+    "karten": [
+      {
+        "id": "consumer-roas",
+        "art": "sprung",
+        "label": "ROAS am Black Friday",
+        "vorher": "Benchmark 2,3",
+        "wert": "4,02",
+        "zaehlen": {"von": 2.3, "bis": 4.02, "dezimalen": 2, "vor": "", "nach": ""},
+        "badge": "+75 %",
+        "reihen": [
+          {"label": "Benchmark", "punkte": 40, "an": 23, "hervorgehoben": false},
+          {"label": "Mit uns", "punkte": 40, "an": 40, "hervorgehoben": true}
+        ],
+        "text": "Der Account-Benchmark gegen die lauteste Woche des Jahres. Ein Punkt sind 0,1 ROAS."
+      },
+      {
+        "id": "consumer-cpm",
+        "art": "sprung",
+        "label": "Awareness-CPM im Vorlauf",
+        "vorher": "€ 3,50",
+        "wert": "€ 0,99",
+        "zaehlen": {"von": 3.5, "bis": 0.99, "dezimalen": 2, "vor": "€ ", "nach": ""},
+        "badge": "−72 %",
+        "reihen": [
+          {"label": "Benchmark", "punkte": 35, "an": 35, "hervorgehoben": false},
+          {"label": "Mit uns", "punkte": 35, "an": 10, "hervorgehoben": true}
+        ],
+        "text": "Preis je tausend Kontakte. Günstige Awareness im Vorlauf macht den Peak profitabel. Ein Punkt sind 10 Cent."
+      },
+      {
+        "art": "medien",
+        "label": "Die Seite dahinter",
+        "wert": "Drei Sprachen, vier Termine.",
+        "badge": "3 Länder",
+        "bilder": [
+          "assets/img/web_twistnsparkle_m0.jpg",
+          "assets/img/web_twistnsparkle_m1.jpg",
+          "assets/img/web_twistnsparkle_m2.jpg"
+        ],
+        "text": "Die Kampagnen-Site trägt die Saison und den Produktlaunch, gebaut gegen die Zeit.",
+        "link": {"href": "case-web-twistnsparkle.html", "text": "Die Seite im Detail"}
+      }
+    ],
+    "fussnote": "Benchmark schlagen heißt: den eigenen Account kennen. Alle Werte aus dem Ad-Manager, anonymisierte Darstellung."
+  },
+  "bausteine": [
+    {"typ": "statement", "zeilen": ["Saison ist Architektur.", "Kein Zufall."]},
+    {
+      "typ": "perspektiven",
+      "zeilen": [
+        {"titel": "Effizienz", "text": "Peak-ROAS deutlich über Benchmark bei gleichzeitig günstigerer Awareness."},
+        {"titel": "Zielgruppe", "text": "Die Vorlauf-Awareness wärmt die spätere Sales-Audience."},
+        {"titel": "Message", "text": "Lifestyle im Vorlauf, klares Angebot im Peak."},
+        {"titel": "Creative", "text": "Saisonale Motive je Phase."},
+        {"titel": "Kanal", "text": "Meta, in Phasen orchestriert."}
+      ]
+    },
+    {
+      "typ": "ergebnis",
+      "ausgeblendet": true,
+      "zahlen": [
+        {"label": "(BFCM-ROAS, Benchmark 2,3)", "wert": "4,02"},
+        {"label": "(Awareness-CPM, Benchmark € 3,50)", "wert": "€ 0,99"},
+        {"label": "(Always-On-Sales)", "wert": "295"},
+        {"label": "(Impressions)", "wert": "7,26 Mio."}
+      ],
+      "kurzfassung": [
+        "<em>4,02</em> BFCM-ROAS, Benchmark 2,3",
+        "<em>€ 0,99</em> Awareness-CPM, −72 %",
+        "<em>7,26 Mio.</em> Impressions"
+      ]
+    },
+    {
+      "typ": "kapitel",
+      "label": "Zweites Kapitel, der Produktlaunch",
+      "headline": ["Eine Seite, drei Sprachen,", "vier Termine."],
+      "absatz1": "Für ein neues Produkt der Marke haben wir die Kampagnen-Site gebaut, an der die gesamte Einführung hing: Messe in Frankfurt im Februar, US-Messen Ende Februar, B2B-Start in Kanada im März, Launch in Österreich, Deutschland und den USA im April. Deutsch, Englisch, Französisch, ein Formular für Händler und Endkunden, Anbindung an das CRM des Kunden.",
+      "absatz2": "<b>Der Content der Kreativagentur kam spät, die Termine standen.</b> Also haben wir mit Platzhaltern gebaut, in Etappen live gestellt und die Seite bis heute weiterentwickelt: neue Produktfarben, Bewegtbild im Header, mobile Videos. Ein Learning aus der Performance-Zeit gilt auch hier: Ein Produkt, das nicht lieferbar ist, zerstört jede Lernphase der Kampagne.",
+      "links": [
+        {"href": "case-web-twistnsparkle.html", "text": "Die Kampagnen-Site im Detail"},
+        {"href": "service-websites.html", "text": "Websites & Landingpages"}
+      ]
+    },
+    {"typ": "zitat", "text": "Mit der Zusammenarbeit im Performance-Bereich war und bin ich sehr zufrieden, und auch die Ergebnisse können sich sehen lassen.", "wer": "Teamlead E-Commerce, Consumer-Marke"},
+    {
+      "typ": "mobil",
+      "headline": "Gebaut für den Daumen.",
+      "text": "Die Saison lebt mobil: Kampagnen-Site und Sujets, dort wo der Kauf beginnt.",
+      "bilder": [
+        "assets/img/web_twistnsparkle_m0.jpg",
+        "assets/img/web_twistnsparkle_m1.jpg",
+        "assets/img/web_twistnsparkle_m2.jpg",
+        "assets/img/web_twistnsparkle_ms0.jpg"
+      ]
+    },
+    {
+      "typ": "learnings",
+      "saetze": [
+        "Saison ist Architektur, kein Zufall.",
+        "Günstige Awareness im Vorlauf macht den Peak profitabel.",
+        "Benchmark schlagen heißt: den eigenen Account kennen."
+      ]
+    },
+    {
+      "typ": "galerie",
+      "label": "Aus dem Mandat",
+      "hintergrund": "#0E0E10",
+      "medien": ["assets/case/case-consumer-brand/g0.jpg", "assets/case/case-consumer-brand/v0.mp4"]
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "slug": "case-web-unio",
+  "vorlage": "web",
+  "kette": "web",
+  "reihenfolge": 230,
+  "naechster": "case-web-havenstone",
+  "meta": {
+    "name": "UNIO",
+    "branche": "PropTech, Venture",
+    "url": "https://www.unio.at",
+    "umfang": [
+      "Marke & Positionierung",
+      "Website & Produkt-Design",
+      "Film, Print & Beschilderung",
+      "Laufende Weiterentwicklung"
+    ],
+    "leistungen": [
+      {"titel": "Websites & Landingpages", "seite": "service-websites.html"},
+      {"titel": "Strategie & Funnel", "seite": "service-strategie.html"},
+      {"titel": "Content Creation", "seite": "service-content-creation.html"}
+    ]
+  },
+  "hero": {"headline": "Real Estate, endlich einfach.", "bild": "assets/img/web_unio_d.jpg"},
+  "intro": {"text": "Real Estate, endlich einfach: Für das Immobilien-Betriebssystem UNIO entstanden Marke, Website und Produkt-Oberflächen aus einem Guss, als Venture, an dem wir selbst beteiligt sind. Skin in the Game, wörtlich."},
+  "kennzahlen": {
+    "headline": ["Was entstanden ist,", "in drei Zahlen."],
+    "karten": [
+      {
+        "art": "zaehler",
+        "label": "Bausteine in unter zwölf Monaten",
+        "wert": "10",
+        "zaehlen": {"von": 0, "bis": 10, "dezimalen": 0, "vor": "", "nach": ""},
+        "badge": "12 Monate",
+        "reihen": [{"label": "Bausteine", "punkte": 10, "an": 10, "hervorgehoben": true}],
+        "text": "Brand Guide, drei Storylines, Trailer, Pitch-Decks, Faltschilder, Banner, Karten, Plakate, Beschilderung, Website."
+      },
+      {
+        "art": "zaehler",
+        "label": "Ausschreibungs-Framework",
+        "wert": "7",
+        "einheit": "Ausschlusskriterien",
+        "zaehlen": {"von": 0, "bis": 7, "dezimalen": 0, "vor": "", "nach": ""},
+        "badge": "2 Lose",
+        "reihen": [
+          {"label": "Ausschlusskriterien", "punkte": 7, "an": 7, "hervorgehoben": true},
+          {"label": "Lose", "punkte": 7, "an": 2, "hervorgehoben": false}
+        ],
+        "text": "Macht aus einer Agenturauswahl eine Entscheidung mit Kriterien: Marketing und Vermarktung getrennt."
+      },
+      {"art": "text", "label": "Unsere Rolle", "wert": "Skin in the Game, wörtlich.", "badge": "Beteiligt", "text": "Marketing-Engine von UNIO und Beteiligte am Venture, auf beiden Seiten des Tisches."}
+    ]
+  },
+  "bausteine": [
+    {"typ": "buehne", "bild": "assets/img/web_unio_d1.jpg"},
+    {
+      "typ": "mobil",
+      "headline": "Mobil zuerst gedacht.",
+      "text": "Der Auftritt, wie ihn die meisten Besucher sehen: am Telefon, Seite für Seite.",
+      "bilder": [
+        "assets/img/web_unio_m0.jpg",
+        "assets/img/web_unio_m1.jpg",
+        "assets/img/web_unio_m2.jpg",
+        "assets/img/web_unio_ms0.jpg",
+        "assets/img/web_unio_ms1.jpg"
+      ]
+    },
+    {
+      "typ": "unterseiten",
+      "label": "Aus dem Projekt",
+      "bilder": ["assets/img/web_unio_ds0.jpg", "assets/img/web_unio_ds1.jpg", "assets/img/web_unio_ds2.jpg"]
+    },
+    {
+      "typ": "kapitel",
+      "label": "Zweites Kapitel, die Marke",
+      "headline": ["Eine Kategorie braucht mehr als eine Website."],
+      "absatz1": "Für UNIO haben wir in unter zwölf Monaten alles gebaut, was eine neue Kategorie sichtbar macht: Brand Guide mit Farben und Schriften, drei Storylines für Makler, Bauträger und Partner, einen Trailer, Pitch-Decks, Faltschilder, Banner, Karten und Plakate für Events, die Beschilderung für den Standort und die Website mit Lead-Routing an die richtigen Teams.",
+      "absatz2": "<b>Dazu ein Ausschreibungs-Framework für Bauträger:</b> zwei Lose, Marketing und Vermarktung, sieben Ausschlusskriterien. Es macht aus einer Agenturauswahl eine Entscheidung mit Kriterien. Wir sitzen dabei auf beiden Seiten des Tisches, als Marketing-Engine von UNIO und als Beteiligte.",
+      "links": [
+        {"href": "service-strategie.html", "text": "Strategie & Funnel"},
+        {"href": "service-content-creation.html", "text": "Content Creation"}
+      ]
+    }
+  ]
+}

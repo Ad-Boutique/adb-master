@@ -19,22 +19,7 @@
    Ausnahmen mit Absicht: Hero-Fortschrittsbalken (.hdots, linear, laeuft genau so lang wie das Bild steht)
    und die Bildbaender (.pwtrack, .svcbandtrack, linear, Dauer aus der Bandbreite). Beide sind Zeitgeber, keine Animation.
    ============================================================ */
-:root {
-  --e-out: cubic-bezier(.16, 1, .3, 1);
-  --e-snap: var(--e-out); /* alte zweite Kurve aus master.css zeigt auf die eine */
-  --d-fast: 200ms;
-  --d-base: 400ms;
-  --d-slow: 700ms;
-  --d-chor: 1200ms;
-  --fade-y: 24px;    /* Versatz beim Einblenden, aus der 8er-Skala */
-  --stagger: 80ms;   /* Staffelung beim Einblenden */
-  --g-on: #101010;   /* Graph: gefuellt */
-  --g-best: #CDFF00; /* Graph: bester Wert */
-  --g-line: #101010; /* Graph: Umriss */
-}
-/* Graph-Farben je Flaeche (Abschnitt 7): auf Schwarz Cream, auf Lime Schwarz */
-.fg-dark, [data-fg="light"], .kapsec--dark, .dotzoom--dark { --g-on: #F4F3EB; --g-best: #F4F3EB; --g-line: #F4F3EB; }
-.bg-lime, [data-surface="lime"] { --g-on: #101010; --g-best: #101010; --g-line: #101010; }
+/* Kurve, Dauern, Versatz und Staffelung stehen in tokens.css (Abschnitt 9), Graph-Farben je Untergrund in Abschnitt 16 */
 
 @media (prefers-reduced-motion: no-preference) {
   /* ---------- Eine Kurve fuer alles ---------- */
@@ -126,7 +111,7 @@
   body.brand .stack .st, body.brand svg circle.dot { transition-duration: var(--d-base) !important; }
   body.brand.menuopen .bkorbit { transition-duration: var(--d-fast) !important; }
 
-  /* ---------- Menue-Knopf: Groesse kommt aus brand-ui.css (--mbtn-size), Bewegung nur ueber scale, nie ueber feste Masse.
+  /* ---------- Menue-Knopf: Groesse kommt aus tokens.css (--mbtn-size), Bewegung nur ueber scale, nie ueber feste Masse.
      transform bleibt die Zentrierung aus master.css (translateX(-50%)), ausgeschrieben: ueber eine Variable loest WebKit den Prozentwert zu 0 auf ---------- */
   /* transform (die Zentrierung) bekommt keine Transition: sonst kann WebKit beim ersten Aufbau von "none" aus animieren und der Knopf steht kurz 44 px daneben */
   body.brand .mbtn { transition: opacity var(--d-base) var(--e-out), scale var(--d-fast) var(--e-out), background-color var(--d-fast) var(--e-out), border-color var(--d-fast) var(--e-out), box-shadow var(--d-fast) var(--e-out) !important; }
@@ -180,17 +165,17 @@ body.brand.filteropen .fpop .fchip, body.brand.branchopen .bpop .fchip { opacity
    Kein Lime-Leuchten, kein Lime an Fotos (Abschnitt 1, 7, 9)
    ============================================================ */
 /* Ringe der Ladeblende laufen auf Schwarz: Cream, 1 px. Der Punkt selbst bleibt der kleine Lime-Punkt. */
-body.brand .ptdot::before, body.brand .ptdot::after { border: 1px solid rgba(244,243,235,0.6); }
+body.brand .ptdot::before, body.brand .ptdot::after { border: 1px solid var(--cream-a60); }
 /* Cursor: Punkt ohne Satellit; ueber Bildern ein Ring ohne Lime, beim Klick ein Ring in Textfarbe */
 body.brand .cur::before { display: none !important; }
-body.brand.cur-media .cur { background: transparent; box-shadow: inset 0 0 0 1px #F4F3EB, 0 0 0 1px rgba(16,16,16,0.35); }
-body.brand.cur-tap .cur::after { border: 1px solid #101010; }
-body.brand:not(.on-light).cur-tap .cur::after { border-color: #F4F3EB; }
+body.brand.cur-media .cur { background: transparent; box-shadow: inset 0 0 0 1px var(--paper), 0 0 0 1px var(--ink-a35); }
+body.brand.cur-tap .cur::after { border: 1px solid var(--ink); }
+body.brand:not(.on-light).cur-tap .cur::after { border-color: var(--paper); }
 /* Coach: Ringe und Spur in Textfarbe der Flaeche, nur der reisende Punkt ist Lime */
 /* Schwarz mit Cream-Haarlinie: lesbar auf Cream, Schwarz und Bild zugleich (die Spur quert oft beides) */
-body.brand .coach-ring { border: 1px solid #101010; box-shadow: 0 0 0 1px rgba(244,243,235,0.7); }
-body.brand .ctrail .td { fill: #101010; stroke: #F4F3EB; stroke-width: 1; }
-body.brand .ctrail .trv { fill: #CDFF00; stroke: #101010; stroke-width: 1; }
+body.brand .coach-ring { border: 1px solid var(--ink); box-shadow: 0 0 0 1px var(--cream-a70); }
+body.brand .ctrail .td { fill: var(--ink); stroke: var(--paper); stroke-width: 1; }
+body.brand .ctrail .trv { fill: var(--lime); stroke: var(--ink); stroke-width: 1; }
 /* Zustands-Punkte ohne Lime-Hof (Farben von .tdots und .dotline setzt brand-ui.css, hier nur die Bewegung) */
 body.brand .nopt.sel .plus, body.brand .fcard--yes li.hit .fdot { box-shadow: none; }
 /* Ablauf-Zeilen liegen auf Schwarz: der aktive Punkt wird Cream (Textfarbe), nicht Lime */
@@ -199,7 +184,7 @@ body.brand .oplist--steps .op.on .owhen::before { background-color: currentColor
 body.brand .oplist:not(.oplist--steps) .op:hover .onum::before { transform: scale(1.5); }
 body.brand .rateslider::-webkit-slider-thumb { box-shadow: none; }
 /* Akt-Marke auf Schwarz: kein Lime-Ring */
-body.brand .fg-dark .actring { border-color: rgba(244,243,235,0.6); }
+body.brand .fg-dark .actring { border-color: var(--cream-a60); }
 
 /* ============================================================
    Graph-Fuellung (Abschnitt 7): Klassen aus brand.js
@@ -230,12 +215,11 @@ body.brand .dotbars .row.hi .dots i.on.is-best, body.brand .kpi .kdots .row.hi .
 body.brand .tldots i { transition-property: background-color, box-shadow; }
 /* Linie in der KPI-Karte: Punkte als Umriss, gefuellt nach dem Zeichnen, der letzte ist der beste Wert; keine Tonflaeche */
 body.brand .kpi .kline .kfill { fill: none; }
-body.brand .kpi .kline .kd { fill: #F4F3EB; stroke: var(--g-line); stroke-width: 1; }
+body.brand .kpi .kline .kd { fill: var(--paper); stroke: var(--g-line); stroke-width: 1; }
 body.brand .kpi .kline .kd.is-on { fill: var(--g-on); }
 body.brand .kpi .kline .kd.is-best { fill: var(--g-best); }
 body.brand .kpi .kline .kpath { stroke-width: 1; }
-/* Punktfeld (Canvas): Farben liest brand.js aus diesen Variablen */
-body.brand canvas.dotfield { --g-on: #101010; --g-best: #CDFF00; --g-line: rgba(16,16,16,0.45); }
+/* Punktfeld (Canvas): Farben liest brand.js aus Variablen in tokens.css, Abschnitt 16 */
 
 /* ============================================================
    Reduced Motion: nichts bewegt sich, alles ist sofort da
@@ -259,33 +243,33 @@ body.brand canvas.dotfield { --g-on: #101010; --g-best: #CDFF00; --g-line: rgba(
 .brand .chrome [data-ug="dark"], .brand .chrome [data-ug="dark"] i, .brand .chrome [data-ug="photo"], .brand .chrome [data-ug="photo"] i { color: var(--paper) !important; }
 .brand .chrome .hmenu[data-ug="dark"] i, .brand .chrome .hmenu[data-ug="photo"] i { background: var(--paper) !important; }
 .brand .chrome [data-ug="dark"] { text-shadow: none !important; }
-.brand .chrome [data-ug="photo"] { text-shadow: 0 1px 12px rgba(16,16,16,0.35) !important; }
+.brand .chrome [data-ug="photo"] { text-shadow: var(--sh-text-photo) !important; }
 body.brand.menuopen .chrome :is(.logo, .logo i, .ctc, .hmenu) { color: var(--paper) !important; text-shadow: none !important; }
 body.brand.menuopen .chrome .hmenu i { background: var(--paper) !important; }
 
 /* ---------- Buttons: Kreis-Hover (3.10.2026). Beim Ueberfahren waechst ein Kreis von der Eintrittsstelle der Maus
    (brand.js setzt --mx/--my) und fuellt den Pill; beim Verlassen zieht er sich zur Austrittsstelle zurueck.
    Je Variante eine Kreisfarbe (--hv), Textfarbe (--hc) und Randfarbe (--hb), alles Brand-Paare:
-   nie Lime-Text auf Schwarz, Lime-Kreis nur auf hellem Grund. ---------- */
-body.brand .btn:not(#_) { position: relative; isolation: isolate; overflow: hidden; --hv: var(--lime); --hc: var(--ink); --hb: var(--ink);
+   nie Lime-Text auf Schwarz, Lime-Kreis nur auf hellem Grund. Die Werte stehen in tokens.css (Abschnitt 10, --btn-*-hv/-hc/-hb). ---------- */
+body.brand .btn:not(#_) { position: relative; isolation: isolate; overflow: hidden; --hv: var(--btn-primary-hv); --hc: var(--btn-primary-hc); --hb: var(--btn-primary-hb);
   transition: color calc(var(--d-base) * 0.5) var(--e-out) calc(var(--d-base) * 0.3), border-color var(--d-base) var(--e-out), box-shadow var(--d-fast) var(--e-out), opacity var(--d-fast) var(--e-out); }
 body.brand .btn:not(#_)::before {
   content: ""; position: absolute; z-index: -1; left: var(--mx, 50%); top: var(--my, 50%);
-  width: 300%; aspect-ratio: 1; border-radius: 50%; background: var(--hv); pointer-events: none;
+  width: 300%; aspect-ratio: 1; border-radius: var(--r-round); background: var(--hv); pointer-events: none;
   transform: translate(-50%, -50%) scale(0); transition: transform var(--d-base) var(--e-out);
 }
 body.brand .btn:not(#_):is(:hover, :focus-visible):not([disabled])::before { transform: translate(-50%, -50%) scale(1); }
 body.brand .btn:not(#_):is(:hover, :focus-visible):not([disabled]) { color: var(--hc) !important; border-color: var(--hb) !important; }
 body.brand .btn:not(#_):is(.btn--primary, .btn--secondary, .btn--accent, .btn--inverse, .btn--outline-inverse):hover { box-shadow: none !important; }
-body.brand .btn:not(#_).btn--primary         { --hv: var(--lime);  --hc: var(--ink);   --hb: var(--ink); }
-body.brand .btn:not(#_).btn--secondary       { --hv: var(--ink);   --hc: var(--paper); --hb: var(--ink); }
-body.brand .btn:not(#_).btn--accent          { --hv: var(--ink);   --hc: var(--paper); --hb: var(--ink); }
-body.brand .btn:not(#_).btn--inverse         { --hv: var(--ink);   --hc: var(--paper); --hb: var(--paper); }
-body.brand .btn:not(#_).btn--outline-inverse { --hv: var(--paper); --hc: var(--ink);   --hb: var(--paper); }
-body.brand .btn:not(#_).btn--soft-cream      { --hv: var(--ink);   --hc: var(--paper); --hb: var(--ink); }
-body.brand .btn:not(#_).btn--soft-black      { --hv: var(--paper); --hc: var(--ink);   --hb: var(--paper); }
-body.brand .btn:not(#_).btn--soft-lime       { --hv: var(--ink);   --hc: var(--paper); --hb: var(--ink); }
+body.brand .btn:not(#_).btn--primary         { --hv: var(--btn-primary-hv); --hc: var(--btn-primary-hc); --hb: var(--btn-primary-hb); }
+body.brand .btn:not(#_).btn--secondary       { --hv: var(--btn-secondary-hv); --hc: var(--btn-secondary-hc); --hb: var(--btn-secondary-hb); }
+body.brand .btn:not(#_).btn--accent          { --hv: var(--btn-accent-hv); --hc: var(--btn-accent-hc); --hb: var(--btn-accent-hb); }
+body.brand .btn:not(#_).btn--inverse         { --hv: var(--btn-inverse-hv); --hc: var(--btn-inverse-hc); --hb: var(--btn-inverse-hb); }
+body.brand .btn:not(#_).btn--outline-inverse { --hv: var(--btn-outline-inverse-hv); --hc: var(--btn-outline-inverse-hc); --hb: var(--btn-outline-inverse-hb); }
+body.brand .btn:not(#_).btn--soft-cream      { --hv: var(--btn-soft-cream-hv); --hc: var(--btn-soft-cream-hc); --hb: var(--btn-soft-cream-hb); }
+body.brand .btn:not(#_).btn--soft-black      { --hv: var(--btn-soft-black-hv); --hc: var(--btn-soft-black-hc); --hb: var(--btn-soft-black-hb); }
+body.brand .btn:not(#_).btn--soft-lime       { --hv: var(--btn-soft-lime-hv); --hc: var(--btn-soft-lime-hc); --hb: var(--btn-soft-lime-hb); }
 /* Primary auf Lime-Flaeche: Lime-Kreis waere unsichtbar, dort Cream */
-body.brand :is(.bg-lime, [data-surface="lime"], .lime-sec) .btn:not(#_).btn--primary { --hv: var(--paper); }
+body.brand :is(.bg-lime, [data-surface="lime"], .lime-sec) .btn:not(#_).btn--primary { --hv: var(--btn-primary-hv-on-lime); }
 @media (hover: none) { body.brand .btn:not(#_)::before { display: none; } }
 @media (prefers-reduced-motion: reduce) { body.brand .btn:not(#_)::before { transition: none; } body.brand .btn:not(#_) { transition: none; } }

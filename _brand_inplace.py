@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Brand 2026 fuer handgebaute Seiten: Adobe-Fonts-Kit, brand.css und brand.js in den Kopf,
+"""Brand 2026 fuer handgebaute Seiten: Adobe-Fonts-Kit, site.css und site.js in den Kopf,
 Seitenklasse, dazu auf Startseite und Agentur die Bausteine (Kapitel-Leiste, Punkt, Punktzeile,
 Akt-Ringe, Punkt-Zoom). Mehrfach ausfuehrbar: was da ist, wird nicht doppelt eingesetzt.
 Reihenfolge: nach den Generatoren, vor _bump.py."""
@@ -54,10 +54,12 @@ def collage_tight(h):
 
 
 def funkhaus(h):
-    """Original-Funkhaus: KPI-Board nach dem Intro, die alte Ergebnis-Zahlenreihe faellt weg."""
+    """Original-Funkhaus: KPI-Board nach dem Intro, die alte Ergebnis-Zahlenreihe faellt weg.
+    Das Board wird bei jedem Lauf aus der Inhaltsdatei _content/cases/case-premium-neubau.json neu gesetzt,
+    damit Aenderungen an den Kennzahlen dort auch auf der handgebauten Seite ankommen."""
     h = collage_tight(h)
-    if 'class="kpiboard"' in h and 'class="khead"' not in h:
-        h = cut_section(h, 'class="kpiboard"', "Funkhaus altes Board")
+    if 'class="kpiboard"' in h:
+        h = cut_section(h, 'class="kpiboard"', "Funkhaus Board")
     if 'class="kpiboard"' not in h:
         if '>Ergebnis</span>' in h:
             h = cut_section(h, '>Ergebnis</span>', "Funkhaus Ergebnis")
@@ -67,39 +69,46 @@ def funkhaus(h):
 
 def kommunalkredit(h):
     """Sommergespraeche: Produktion und Stimme als Board nach dem Intro, Kapitel-Zahlen als Mini-Karten."""
-    if 'class="kpiboard"' in h and 'class="khead"' not in h:
-        h = cut_section(h, 'class="kpiboard"', "Kommunalkredit altes Board")
+    # Board bei jedem Lauf neu aus _content/cases/case-kommunalkredit.json (wie beim Funkhaus)
+    if 'class="kpiboard"' in h:
+        h = cut_section(h, 'class="kpiboard"', "Kommunalkredit Board")
     if 'class="kpiboard"' not in h:
         h = rep(h, "  <!-- FILM: Recap", kpi_board(HAND_KPI["case-kommunalkredit"]) + "  <!-- FILM: Recap", "Kommunalkredit Board")
     return cnums_to_mini(h)
 
 
-DEPT_CSS = ("brand-type", "brand-ui", "brand-layout", "brand-motion", "brand-keep")
+# Die Seiten laden ein Stylesheet und ein Script: assets/site.css und assets/site.js (gebuendelt von _css.py aus
+# tokens.css, master.css, brand.css, brand-type/-ui/-layout/-motion/-keep.css bzw. brand.js und master.js).
+# Aeltere Staende mit den Einzeldateien werden umgestellt; das Adobe-Fonts-Kit bleibt direkt hinter site.css.
+TYPEKIT = '<link rel="stylesheet" href="https://use.typekit.net/udf8wjj.css">'
+OLD_CSS = re.compile(r'\n?<link rel="stylesheet" href="assets/(?:site|master|brand(?:-[a-z]+)?)\.css\?v=(\d+)">')
+OLD_JS = re.compile(r'\n?<script src="assets/(?:site|master|brand)\.js\?v=(\d+)" defer></script>')
 
 
-def dept_css(h):
-    """Die Abteilungs-Stylesheets (Fonts, Design, Layout, Animation) und brand-keep.css (bewusst beibehaltene
-    Elemente der alten Seite, Kundenentscheidung 3.10.2026) direkt nach brand.css, einmalig und in fester Reihenfolge."""
-    m = re.search(r'<link rel="stylesheet" href="assets/brand\.css\?v=(\d+)">', h)
-    if not m:
+def site_assets(h):
+    """Alle Stylesheet- und Script-Verweise auf assets/ zu je einem Verweis zusammenfassen, an der Stelle des ersten.
+    Mehrfach ausfuehrbar: ein schon umgestellter Kopf kommt unveraendert zurueck."""
+    ms = list(OLD_CSS.finditer(h))
+    if not ms:
         return h
-    v = m.group(1)
-    h = re.sub(r'\n<link rel="stylesheet" href="assets/brand-[a-z]+\.css\?v=\d+">', "", h)
-    links = "".join('\n<link rel="stylesheet" href="assets/%s.css?v=%s">' % (n, v) for n in DEPT_CSS)
-    return h.replace(m.group(0), m.group(0) + links, 1)
+    v = ms[0].group(1)
+    h = h[:ms[0].start()] + "\x00CSS\x00" + h[ms[0].end():]
+    h = OLD_CSS.sub("", h).replace("\n" + TYPEKIT, "").replace(TYPEKIT, "")
+    h = h.replace("\x00CSS\x00", '\n<link rel="stylesheet" href="assets/site.css?v=%s">\n%s' % (v, TYPEKIT), 1)
+    js = list(OLD_JS.finditer(h))
+    if js:
+        h = h[:js[0].start()] + "\x00JS\x00" + h[js[0].end():]
+        h = OLD_JS.sub("", h)
+        h = h.replace("\x00JS\x00", '\n<script src="assets/site.js?v=%s" defer></script>' % v, 1)
+    return h
 
 
 def head(h):
-    if "brand.css" in h:
-        return dept_css(h)
-    m = re.search(r'<link rel="stylesheet" href="assets/master\.css\?v=(\d+)">', h)
-    if not m:
+    if "assets/site.css" in h or "brand.css" in h:
+        return site_assets(h)
+    if not re.search(r'<link rel="stylesheet" href="assets/master\.css\?v=\d+">', h):
         return h
-    v = m.group(1)
-    h = h.replace(m.group(0), m.group(0) + '\n<link rel="stylesheet" href="https://use.typekit.net/udf8wjj.css">\n<link rel="stylesheet" href="assets/brand.css?v=%s">' % v, 1)
-    h = h.replace('<script src="assets/master.js?v=%s" defer></script>' % v,
-                  '<script src="assets/brand.js?v=%s" defer></script>\n<script src="assets/master.js?v=%s" defer></script>' % (v, v), 1)
-    h = dept_css(h)
+    h = site_assets(h)
     h = re.sub(r"<body([^>]*)>", lambda mm: ("<body%s class=\"brand\">" % mm.group(1)) if "class=" not in mm.group(1) else ("<body%s>" % mm.group(1).replace('class="', 'class="brand ')), h, count=1)
     return h
 

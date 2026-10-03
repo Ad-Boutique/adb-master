@@ -17,6 +17,6 @@
   if (/case-/.test(location.pathname) && !document.querySelector(".bkbtn") && !document.querySelector('meta[http-equiv="refresh"]')) iss.push("ZURUECK-KREIS-FEHLT");
   var pt = document.querySelector(".pt"); if (pt && !pt.classList.contains("gone")) iss.push("OVERLAY-HAENGT");
   var mp = (document.body.innerText || "").split("·").length - 1; if (mp) iss.push("MITTELPUNKTE " + mp);
-  var h = document.querySelector(".chero .hcap .dispn"); if (h && W > 720) { var lh = parseFloat(getComputedStyle(h).lineHeight); if (h.getBoundingClientRect().height > lh * 1.5) iss.push("HERO-ZEILE-UMBRUCH"); }
+  var h = document.querySelector(".chero .hcap .dispn"); if (h && W > 720) { var lh = parseFloat(getComputedStyle(h).lineHeight); var soll = h.querySelectorAll("br, .hs").length + 1; if (h.getBoundingClientRect().height > lh * (soll + 0.5)) iss.push("HERO-ZEILE-UMBRUCH"); }
   return (iss.length ? iss.join(" ;; ") : "OK") + " [" + secs + " Sektionen]";
 })();

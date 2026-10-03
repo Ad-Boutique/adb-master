@@ -16,7 +16,7 @@
   dot.setAttribute("aria-hidden", "true");
   body.appendChild(dot);
 
-  /* Eine Bewegungssprache: Kurve und Dauern kommen aus brand-motion.css (--e-out, --d-fast/base/slow/chor, --stagger).
+  /* Eine Bewegungssprache: Kurve und Dauern kommen aus tokens.css (--e-out, --d-fast/base/slow/chor, --stagger).
      window.ADB_MOTION gibt sie an master.js weiter; eOut ist dieselbe Kurve fuer Bewegungen im Frame-Loop. */
   var M = (function () {
     var cs = getComputedStyle(document.documentElement);
@@ -723,6 +723,8 @@
     zooms.forEach(function (z) {
       var r = z.el.getBoundingClientRect();
       var p = reduced ? 1 : Math.max(0, Math.min(1, (window.innerHeight * 0.95 - r.top) / (window.innerHeight * 0.62)));
+      /* die Schrift-Kopie folgt dem Original auch, wenn der Kreis steht (Wort-Scrub schaltet nach) */
+      if (z.k && z.k.style.display === "block" && z.k.innerHTML !== z.prev.innerHTML) z.k.innerHTML = z.prev.innerHTML;
       if (Math.abs(p - z.p) < 0.003) return;
       z.p = p;
       /* erst waechst der Punkt (0 bis 0,2), dann oeffnet sich aus ihm das Loch und der Punkt zieht sich zurueck */
@@ -733,10 +735,33 @@
       z.el.classList.toggle("zdone", p >= 1);
       /* Kundenentscheidung 3.10.2026: der helle Kreis bleibt rund und waechst ueber die Sektion darueber hinaus.
          Innerhalb der Sektion zeigt das Loch im Deckel den Inhalt, oberhalb der Kante zeichnet .zcircle den Kreis weiter. */
-      if (!z.c) { z.c = document.createElement("span"); z.c.className = "zcircle"; z.c.setAttribute("aria-hidden", "true"); z.el.appendChild(z.c); }
+      if (!z.c) {
+        var zcs = getComputedStyle(z.el);
+        z.c = document.createElement("span"); z.c.className = "zcircle"; z.c.setAttribute("aria-hidden", "true");
+        z.bg = zcs.backgroundColor; z.el.appendChild(z.c);
+        /* Schrift der Sektion darueber: wo der Kreis sie trifft, nimmt sie die Textfarbe der Kreis-Sektion an
+           (Startseite: weisse Schrift wird schwarz). Dafuer liegt eine Kopie des Inhalts, auf den Kreis zugeschnitten, darueber. */
+        var prev = z.el.previousElementSibling;
+        if (prev && prev.tagName === "SECTION" && prev.firstElementChild) {
+          /* gleiche Klassen wie die Sektion darueber, damit Schriftgroessen und Abstaende exakt passen (ohne data-bg) */
+          z.prev = prev; z.k = document.createElement("div"); z.k.className = "zink " + prev.className; z.k.setAttribute("aria-hidden", "true");
+          z.k.setAttribute("inert", ""); z.k.style.color = zcs.color; z.el.appendChild(z.k);
+        }
+      }
       var cy = r.height * 0.42, above = zr - cy;
-      if (reduced || above <= 0) { z.c.style.width = z.c.style.height = "0px"; }
-      else { var d = 2 * zr; z.c.style.width = z.c.style.height = d.toFixed(0) + "px"; z.c.style.clipPath = "inset(0 0 " + (zr + cy).toFixed(0) + "px 0)"; }
+      /* nur wo die Sektion es erlaubt (data-zover, Startseite); auf Unterseiten bleibt der Kreis in seiner Sektion */
+      if (reduced || above <= 0 || !z.el.hasAttribute("data-zover")) { z.c.style.width = z.c.style.height = "0px"; if (z.k) z.k.style.display = "none"; }
+      else {
+        var d = 2 * zr; z.c.style.background = z.bg; z.c.style.width = z.c.style.height = d.toFixed(0) + "px"; z.c.style.clipPath = "inset(0 0 " + (zr + cy).toFixed(0) + "px 0)";
+        if (z.k) {
+          var pr = z.prev.getBoundingClientRect(), left = pr.left - r.left, top = pr.top - r.top;
+          if (z.k.innerHTML !== z.prev.innerHTML) z.k.innerHTML = z.prev.innerHTML;
+          z.k.style.display = "block"; z.k.style.left = left.toFixed(0) + "px"; z.k.style.top = top.toFixed(0) + "px";
+          z.k.style.width = pr.width.toFixed(0) + "px"; z.k.style.height = pr.height.toFixed(0) + "px";
+          z.k.style.padding = getComputedStyle(z.prev).padding;
+          z.k.style.clipPath = "circle(" + zr.toFixed(0) + "px at " + (r.width / 2 - left).toFixed(0) + "px " + (cy - top).toFixed(0) + "px)";
+        }
+      }
     });
   }
 

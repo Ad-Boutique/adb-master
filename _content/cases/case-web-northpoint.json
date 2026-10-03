@@ -1,0 +1,64 @@
+{
+  "slug": "case-web-northpoint",
+  "vorlage": "web",
+  "kette": "web",
+  "reihenfolge": 250,
+  "naechster": "case-web-pharmacom",
+  "meta": {
+    "name": "Northpoint Advisors",
+    "branche": "Finance, Advisory",
+    "url": "https://northpoint-advisors.com",
+    "umfang": ["Strategie & Positionierung", "Design & Copy", "Umsetzung"],
+    "leistungen": [{"titel": "Websites & Landingpages", "seite": "service-websites.html"}]
+  },
+  "hero": {"headline": "Vertrauen, in zwei Sprachen erzählt.", "bild": "assets/img/web_northpoint_d.jpg"},
+  "intro": {"text": "Strategie, Struktur, Verantwortung: Der Auftritt übersetzt die Beratungsleistung in eine klare, vertrauensbildende Erzählung, mit ruhiger Bildwelt und präziser Sprache in zwei Sprachen."},
+  "kennzahlen": {
+    "headline": ["Was das Projekt ausmacht,", "in drei Punkten."],
+    "karten": [
+      {
+        "art": "text",
+        "label": "Die Erzählung",
+        "wert": "Vertrauen, in zwei Sprachen.",
+        "badge": "DE, EN",
+        "stationen": ["Strategie", "Struktur", "Verantwortung"],
+        "text": "Die Beratungsleistung übersetzt in eine klare, vertrauensbildende Erzählung."
+      },
+      {
+        "art": "medien",
+        "label": "Der Auftritt",
+        "wert": "Ruhige Bildwelt, präzise Sprache.",
+        "badge": "Advisory",
+        "bilder": [
+          "assets/img/web_northpoint_ds0.jpg",
+          "assets/img/web_northpoint_d1.jpg",
+          "assets/img/web_northpoint_ds1.jpg",
+          "assets/img/web_northpoint_m0.jpg",
+          "assets/img/web_northpoint_d2.jpg"
+        ],
+        "text": "Wenig Lärm, viel Klarheit: ein Auftritt, der Beratung wie Beratung aussehen lässt."
+      },
+      {"art": "text", "label": "Was wir gemacht haben", "wert": "Positionierung, Design, Copy, Umsetzung.", "badge": "Aus einer Hand", "text": "Von der Strategie bis zur zweisprachigen Umsetzung."}
+    ]
+  },
+  "bausteine": [
+    {"typ": "buehne", "bild": "assets/img/web_northpoint_d1.jpg"},
+    {
+      "typ": "mobil",
+      "headline": "Mobil zuerst gedacht.",
+      "text": "Der Auftritt, wie ihn die meisten Besucher sehen: am Telefon, Seite für Seite.",
+      "bilder": [
+        "assets/img/web_northpoint_m0.jpg",
+        "assets/img/web_northpoint_m1.jpg",
+        "assets/img/web_northpoint_m2.jpg",
+        "assets/img/web_northpoint_ms0.jpg",
+        "assets/img/web_northpoint_ms1.jpg"
+      ]
+    },
+    {
+      "typ": "unterseiten",
+      "label": "Aus dem Projekt",
+      "bilder": ["assets/img/web_northpoint_ds0.jpg", "assets/img/web_northpoint_ds1.jpg", "assets/img/web_northpoint_ds2.jpg"]
+    }
+  ]
+}

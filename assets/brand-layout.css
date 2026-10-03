@@ -5,66 +5,50 @@
 /* ============================================================
    Raster: Seitenrand 64 Desktop, 24 Mobile. Abstaende nur aus der 8er-Skala.
    ============================================================ */
-:root {
-  --gut: 64px;            /* Seitenrand */
-  --sp-1: 8px; --sp-2: 16px; --sp-3: 24px; --sp-4: 32px; --sp-6: 48px; --sp-8: 64px; --sp-12: 96px; --sp-16: 128px;
-  --sec: 128px;           /* Standard-Abstand oben und unten je Sektion */
-  --sec-s: 64px;          /* kurzer Abstand: Fortsetzung, Kennzahlen, Logo-Wand */
-  --sec-xs: 48px;         /* knapper Anschluss an die vorige Sektion */
-  --hero-in: 64px;        /* Text-Heros: Abstand im Rahmen unter der Kopfzeile */
-  --hero-top: calc(var(--sec) + var(--hero-in)); /* Text-Heros: Inhalt beginnt bei 128 + 64 (Mobile 64 + 96, damit der Zurueck-Knopf frei steht) */
-  --back-top: 96px;       /* Zurueck-Link oben links */
-  --h2b: 16px;            /* Headline zu Body */
-  --b2btn: 48px;          /* Body zu Buttons */
-  --r-img: 16px;          /* Bilder, Karten, Felder (3.10.2026: von 20 auf 16, eine Spur kleiner) */
-  --r-col: 10px;          /* Bilder in der schraegen Collage (3.10.2026: von 12 auf 10) */
-}
-@media (max-width: 767px) {
-  :root { --gut: 24px; --sec: 64px; --sec-s: 48px; --sec-xs: 32px; --b2btn: 32px; --hero-in: 96px; --back-top: 80px; }
-}
+/* Seitenrand, 8er-Skala, Rhythmus und Radien stehen in tokens.css (Abschnitte 6 und 7, Mobile in 15) */
 .brand .wrap { width: min(1560px, calc(100% - 2 * var(--gut))); margin-left: auto; margin-right: auto; }
 
 /* ============================================================
    Footer (Figma 84:69), auf jeder Seite identisch, Markup aus _footer.py
    ============================================================ */
 .brand footer.ftr {
-  background: #101010; color: #F4F3EB;
-  padding: 96px 0 48px; margin: 0; position: relative; z-index: 1;
+  background: var(--ink); color: var(--paper);
+  padding: var(--sp-12) 0 var(--sp-6); margin: 0; position: relative; z-index: 1;
 }
-.brand .ftr .ftr-in { display: flex; flex-direction: column; gap: 64px; }
-.brand .ftr .ftr-top { display: flex; align-items: flex-end; justify-content: space-between; gap: 48px; }
+.brand .ftr .ftr-in { display: flex; flex-direction: column; gap: var(--sp-8); }
+.brand .ftr .ftr-top { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--sp-6); }
 .brand .ftr .ftr-h {
-  font-family: var(--f-ui); font-weight: 700; color: #F4F3EB;
+  font-family: var(--f-ui); font-weight: 700; color: var(--paper);
   font-size: clamp(44px, 5.834vw, 84px); line-height: 1.1; letter-spacing: -0.02em; margin: 0;
 }
 .brand .ftr .ftr-h span { display: block; }
-.brand .ftr .ftr-btns { display: flex; gap: 8px; flex-wrap: wrap; flex: 0 0 auto; }
-.brand .ftr .ftr-rule { height: 1px; width: 100%; background: rgba(244,243,235,0.25); }
+.brand .ftr .ftr-btns { display: flex; gap: var(--sp-1); flex-wrap: wrap; flex: 0 0 auto; }
+.brand .ftr .ftr-rule { height: 1px; width: 100%; background: var(--line-on-black); }
 .brand .ftr .ftr-bot {
-  display: flex; align-items: center; justify-content: space-between; gap: 32px;
-  font-family: var(--f-ui); line-height: 1.2; color: #F4F3EB;
+  display: flex; align-items: center; justify-content: space-between; gap: var(--sp-4);
+  font-family: var(--f-ui); line-height: 1.2; color: var(--paper);
 }
-.brand .ftr .ftr-mark { font-family: var(--f-ui); font-weight: 700; font-size: 23px; letter-spacing: -0.01em; color: #F4F3EB; }
-.brand .ftr .ftr-links { display: flex; gap: 32px; flex-wrap: wrap; }
-.brand .ftr .ftr-links a, .brand .ftr .ftr-loc { font-size: 15px; font-weight: 400; color: #F4F3EB; opacity: 1; }
-.brand .ftr .ftr-links a { transition: opacity 0.2s var(--e-out); }
+.brand .ftr .ftr-mark { font-family: var(--f-ui); font-weight: 700; font-size: 23px; letter-spacing: -0.01em; color: var(--paper); }
+.brand .ftr .ftr-links { display: flex; gap: var(--sp-4); flex-wrap: wrap; }
+.brand .ftr .ftr-links a, .brand .ftr .ftr-loc { font-size: var(--fs-ui); font-weight: 400; color: var(--paper); opacity: 1; }
+.brand .ftr .ftr-links a { transition: opacity var(--d-fast) var(--e-out); }
 .brand .ftr .ftr-links a:hover, .brand .ftr .ftr-mark:hover { opacity: 0.6; }
 .brand .ftr .ftr-legal {
-  font-family: var(--f-ui); font-size: 13px; font-weight: 400; line-height: 1.4;
-  color: rgba(244,243,235,0.6); margin: 0; letter-spacing: 0;
+  font-family: var(--f-ui); font-size: var(--fs-cap); font-weight: 400; line-height: var(--lh-body);
+  color: var(--cream-a60); margin: 0; letter-spacing: 0;
 }
 /* Der schwebende Menue-Punkt sitzt unten Mitte: die Link-Zeile bleibt darueber frei, die rechtliche Zeile steht links daneben */
 @media (max-width: 1100px) {
-  .brand .ftr .ftr-top { flex-direction: column; align-items: flex-start; gap: 32px; }
-  .brand .ftr .ftr-bot { flex-wrap: wrap; justify-content: flex-start; gap: 16px 32px; }
+  .brand .ftr .ftr-top { flex-direction: column; align-items: flex-start; gap: var(--sp-4); }
+  .brand .ftr .ftr-bot { flex-wrap: wrap; justify-content: flex-start; gap: var(--sp-2) var(--sp-4); }
   .brand .ftr .ftr-mark { flex-basis: 100%; }
 }
 @media (max-width: 767px) {
-  .brand footer.ftr { padding: 64px 0 128px; }
-  .brand .ftr .ftr-in { gap: 48px; }
+  .brand footer.ftr { padding: var(--sp-8) 0 var(--sp-16); }
+  .brand .ftr .ftr-in { gap: var(--sp-6); }
   .brand .ftr .ftr-h { font-size: 44px; }
-  .brand .ftr .ftr-bot { flex-direction: column; align-items: flex-start; gap: 24px; }
-  .brand .ftr .ftr-links { gap: 8px 16px; }
+  .brand .ftr .ftr-bot { flex-direction: column; align-items: flex-start; gap: var(--sp-3); }
+  .brand .ftr .ftr-links { gap: var(--sp-1) var(--sp-2); }
   .brand .ftr .ftr-links a { padding: 4px 0; }
 }
 @media (max-width: 360px) { .brand .ftr .ftr-h { font-size: 38px; } }
@@ -157,18 +141,18 @@ body.brand:not(.pg-agentur) .svcband img:hover, body.brand:not(.pg-agentur) .tea
 .brand main :is(p, .sub, .ssub, .lt3, .body, .zasub, .dotline) + a.btn { margin-top: var(--b2btn) !important; }
 /* KPI-Karte: die Karte hat 16 px Spaltenabstand, der Link steht in Summe 48 (Mobile 32) unter der Bildzeile */
 .brand .kpi .kcap + .klink { margin-top: calc(var(--b2btn) - var(--sp-2)) !important; }
-.brand main :is(.hbtns, div:has(> .btn:first-child)) { gap: 8px !important; }
+.brand main :is(.hbtns, div:has(> .btn:first-child)) { gap: var(--sp-1) !important; }
 /* Punktzeile unter dem Hero-Text: eine Stufe unter dem Text */
 .brand main :is(.sub, .ssub, p) + .dotline { margin-top: var(--sp-3); }
 
 /* ============================================================
-   Bilder im Container: Radius 20. Vollbild (Hero, Zoom im Endzustand, Statement) ohne Radius.
+   Bilder im Container: Radius 16 (Token --r-img). Vollbild (Hero, Zoom im Endzustand, Statement) ohne Radius.
    agentur.html (pg-agentur) bleibt unveraendert (Regel 10).
    ============================================================ */
 body.brand:not(.pg-agentur) :is(.tmed, .tgrid .ti, .npro .npim2, .cgal span[data-scale], .filmwrap, .wt, .svcard .sim, .kpi .kstrip img, .hlxmedia, .viewer .vstage) { border-radius: var(--r-img); }
 body.brand:not(.pg-agentur) .npro .npim2 > span { border-radius: var(--r-img) !important; }
 body.brand:not(.pg-agentur) :is(.svcbandtrack img, .zoomsec .zmedia, .chapter .chpanel, .stage, .photowall .pwtrack img, .photowall .pwtrack video, .photowall .pwiv, .vsplit .pwiv, .pcell .pportrait) { border-radius: var(--r-img); }
-/* Screenshot im Buehnen-Container: Bild im Container, also ebenfalls Radius 20 */
+/* Screenshot im Buehnen-Container: Bild im Container, also ebenfalls Radius 16 (Token --r-img) */
 body.brand:not(.pg-agentur) .stage img { border-radius: var(--r-img); }
 /* Weitere Bildcontainer: Panel-Scroll, Studie, Galerie-Bilder (die Maske hat schon 20) */
 body.brand:not(.pg-agentur) :is(.panelscroll .pscol img, .stdemo, .cgal span[data-scale] > img) { border-radius: var(--r-img); }
@@ -199,7 +183,7 @@ body.brand:not(.pg-agentur) :is(.panelscroll .pscol img, .stdemo, .cgal span[dat
    die Bildzeile steht darunter auf der schwarzen Flaeche und ueber dem Menue-Punkt.
    ============================================================ */
 @media (max-width: 767px) {
-  .brand .chero { background: #101010; }
+  .brand .chero { background: var(--ink); }
   .brand .chero > img, .brand .chero > video { position: absolute; left: 0; top: 0; width: 100% !important; height: 58% !important; object-fit: cover; }
   .brand .chero .hcap { bottom: var(--sp-16); left: var(--gut); right: var(--gut); text-shadow: none; }
   .brand .chero .hcap .dispn { text-shadow: none; }
@@ -212,7 +196,7 @@ body.brand:not(.pg-agentur) :is(.panelscroll .pscol img, .stdemo, .cgal span[dat
 /* Web-Cases (Screenshot-Hero, _gen_web.py): auch am Desktop steht die Bildzeile unter dem Screenshot,
    nie auf dem Text der Kundenseite oder auf Gesichtern darin */
 @media (min-width: 768px) {
-  .brand .chero--shot { background: #101010; }
+  .brand .chero--shot { background: var(--ink); }
   .brand .chero--shot > img { position: absolute; left: 0; top: 0; width: 100%; height: calc(100% - 384px); object-fit: cover; }
   .brand .chero--shot .hcap, .brand .chero--shot .hcap .dispn { text-shadow: none; }
   .brand .chero--shot .scrollhint { display: none; }
@@ -231,5 +215,5 @@ body.brand:not(.pg-agentur) :is(.panelscroll .pscol img, .stdemo, .cgal span[dat
 
 /* Brand-Check 2: Hero-Kennzahl nicht auf dem hellen Himmel oben rechts, sondern unten rechts auf Hoehe der Headline
    (Text auf der freien, dunkleren Bildseite, Abschnitt 8) */
-.brand .chero .hkpi { top: auto !important; bottom: var(--sp-16); text-align: right; text-shadow: 0 1px 16px rgba(16,16,16,0.55); }
+.brand .chero .hkpi { top: auto !important; bottom: var(--sp-16); text-align: right; text-shadow: 0 1px 16px var(--ink-a55); }
 @media (max-width: 860px) { .brand .chero .hkpi { display: none; } }

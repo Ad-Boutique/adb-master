@@ -1,0 +1,146 @@
+{
+  "slug": "case-wohnbau-floridsdorf",
+  "vorlage": "dossier",
+  "kette": "performance",
+  "reihenfolge": 50,
+  "naechster": "case-consumer-brand",
+  "meta": {
+    "name": "Wohnbau, Floridsdorf",
+    "titel": ["Wohnbau,", "Floridsdorf."],
+    "ziel": "Qualifizierte Kaufinteressenten",
+    "branche": "Real Estate, Wohnbau",
+    "zeitraum": "Seit Jänner 2026, laufend",
+    "kanaele": "Meta Instant Forms, Website, Landingpage",
+    "farbwelt": "#33383E",
+    "farbwelt_text": "#EFF1F3",
+    "leistungen": [
+      {"titel": "Performance Marketing", "seite": "service-performance-marketing.html"},
+      {"titel": "Content Creation", "seite": "service-content-creation.html"},
+      {"titel": "Websites & Landingpages", "seite": "service-websites.html"}
+    ]
+  },
+  "hero": {
+    "headline": "Zwei Märkte, ein Projekt. Sauber getrennt gewonnen.",
+    "bild": "assets/prev/case-wohnbau-floridsdorf.jpg",
+    "kennzahl": {"wert": "460", "label": "Leads, € 12,77 CPL"}
+  },
+  "intro": {"these": "Neubau-Eigentumswohnungen ab € 247.800 mit <b>zwei sehr unterschiedlichen Zielgruppen</b>Eigennutzer und Anleger, und einem <b>unsteten Anfragefluss</b> über Website-Formulare.", "text": "Vier Kampagnen, Eigennutzer und Anleger sauber getrennt, Schwerpunkt auf Meta Instant Forms, Botschaften je Zielgruppe gegeneinander getestet. Das Ergebnis: 460 Leads aus € 5.874 Spend, ein gewichteter CPL von € 12,77, und Instant Forms, die das Website-Formular beim CPL um den Faktor 3 bis 6 schlugen."},
+  "kennzahlen": {
+    "headline": ["Was besser wurde,", "in drei Zahlen."],
+    "karten": [
+      {
+        "id": "floridsdorf-strecke",
+        "art": "sprung",
+        "label": "Preis je Anfrage, Eigennutzer",
+        "vorher": "€ 58,05 Website",
+        "wert": "€ 9,59",
+        "zaehlen": {"von": 58.05, "bis": 9.59, "dezimalen": 2, "vor": "€ ", "nach": ""},
+        "badge": "Faktor 6",
+        "reihen": [
+          {"label": "Website-Formular", "punkte": 58, "an": 58, "hervorgehoben": false},
+          {"label": "Instant Form", "punkte": 58, "an": 10, "hervorgehoben": true}
+        ],
+        "text": "Dieselbe Zielgruppe, zwei Wege zur Anfrage. Ein Punkt ist ein Euro."
+      },
+      {
+        "art": "zaehler",
+        "label": "Anfragen im ersten Quartal",
+        "wert": "460",
+        "zaehlen": {"von": 0, "bis": 460, "dezimalen": 0, "vor": "", "nach": ""},
+        "badge": "€ 12,77 je Anfrage",
+        "reihen": [
+          {"label": "Eigennutzer", "punkte": 43, "an": 43, "hervorgehoben": true},
+          {"label": "Anleger", "punkte": 43, "an": 4, "hervorgehoben": false}
+        ],
+        "text": "425 Eigennutzer, 35 Anleger, aus 5.874 Euro Spend. Ein Punkt sind zehn Anfragen."
+      },
+      {
+        "art": "sprung",
+        "label": "Gezählt gegen angekommen",
+        "vorher": "18 laut Meta",
+        "wert": "8",
+        "einheit": "im Postfach",
+        "zaehlen": {"von": 18, "bis": 8, "dezimalen": 0, "vor": "", "nach": ""},
+        "badge": "die wichtigste Zahl",
+        "reihen": [
+          {"label": "Meta zählte", "punkte": 18, "an": 18, "hervorgehoben": false},
+          {"label": "Im Postfach", "punkte": 18, "an": 8, "hervorgehoben": true}
+        ],
+        "text": "Drei Wochen im zweiten Quartal. Die Differenz klären wir, bevor wir optimieren. Jeder Punkt eine Anfrage."
+      }
+    ],
+    "fussnote": "Spend gesamt: € 5.874. Stärkster Eigennutzer-Angle: Ab-Preis plus Lage mit 331 Leads zu € 9,76."
+  },
+  "bausteine": [
+    {"typ": "statement", "zeilen": ["Eigennutzer und Anleger", "sind zwei Märkte.", "Kein gemeinsamer."]},
+    {
+      "typ": "perspektiven",
+      "zeilen": [
+        {"titel": "Effizienz", "text": "Instant Form schlug das Website-Formular beim CPL um Faktor 3 bis 6: € 9,59 statt € 58,05 bei Eigennutzern."},
+        {"titel": "Zielgruppe", "text": "Eigennutzer lieferten Volumen mit 425 Leads, Anleger Präzision mit 35."},
+        {"titel": "Message", "text": "Bei Anlegern schlug Service und Erstvermietung mit € 8,43 die Nachhaltigkeits-Story mit € 19,54 um das 2,3-Fache."},
+        {"titel": "Creative", "text": "Static für Eigennutzer, Video für Anleger."},
+        {"titel": "Kanal", "text": "Instant Form als Volumen-Hebel, die Website als Ort für Tiefe."}
+      ]
+    },
+    {
+      "typ": "ergebnis",
+      "ausgeblendet": true,
+      "zahlen": [
+        {"label": "(Leads gesamt)", "wert": "460"},
+        {"label": "(gewichteter CPL)", "wert": "€ 12,77"},
+        {"label": "(Instant Form Eigennutzer)", "wert": "€ 9,59"},
+        {"label": "(bester Anleger-Angle)", "wert": "€ 8,43"}
+      ],
+      "kurzfassung": ["<em>460</em> Leads", "<em>€ 12,77</em> gewichteter CPL", "<em>€ 9,59</em> CPL Instant Form Eigennutzer"]
+    },
+    {
+      "typ": "kapitel",
+      "label": "Zweites Kapitel, das zweite Quartal",
+      "headline": ["Volumen war da.", "Verbindlichkeit fehlte."],
+      "absatz1": "Im zweiten Quartal kamen weitere 232 Anfragen zu 16,60 Euro. Die Auswertung mit dem Vertrieb zeigte den Engpass hinter der Zahl: Viele Interessenten waren nach dem Formular schwer erreichbar, der Erstkontakt kam zu spät, und was Meta als Anfrage zählte, war nicht immer das, was im Postfach des Kunden ankam.",
+      "absatz2": "<b>Unsere Antwort war kein größeres Budget, sondern eine andere Strecke:</b> weg vom reinen Instant Form, hin zu Website-Anfragen mit eigener Projekt-Landingpage, Terminbuchung und einer Rückruf-Logik, die den Vertrieb schneller macht. Weniger Anfragen, dafür bessere. Genau das, was ein Bauträger braucht, um zu verkaufen.",
+      "zahlen": [
+        {"label": "(Anfragen im zweiten Quartal)", "wert": "232"},
+        {"label": "(gewichteter CPL Q2)", "wert": "€ 16,60"},
+        {"label": "(Meta zählte in drei Wochen)", "wert": "18"},
+        {"label": "(im Postfach ankamen)", "wert": "8"}
+      ],
+      "fussnote": "Die Differenz zwischen Plattform-Zählung und echten Anfragen ist kein Schönheitsfehler, sondern die wichtigste Zahl im Report. Wir klären sie, bevor wir optimieren."
+    },
+    {
+      "typ": "kapitel",
+      "label": "Drittes Kapitel, die Landingpage",
+      "headline": ["Eine eigene Seite", "für das Projekt."],
+      "absatz1": "Die Bauträger-Website war für das Portfolio gebaut, nicht für eine Kampagne. Deshalb bekam das Projekt eine eigene Landingpage: ein Versprechen, eine Preisspanne, ein Formular, eine Terminbuchung, alles in der Bildsprache der Sujets, die darauf führen.",
+      "absatz2": "Seit August laufen die Kampagnen auf diese Seite. Damit ist die Strecke vom ersten Kontakt bis zum Beratungstermin durchgehend in unserer Hand und messbar.",
+      "links": [
+        {"href": "service-websites.html", "text": "Websites & Landingpages"},
+        {"href": "service-performance-marketing.html", "text": "Performance Marketing"}
+      ]
+    },
+    {"typ": "zitat", "text": "Vielen lieben Dank zunächst für die tollen Creatives. Ausführung und Umsetzung gefallen uns bereits sehr gut!", "wer": "Marketing, Wiener Bauträger"},
+    {
+      "typ": "learnings",
+      "saetze": [
+        "Eigennutzer und Anleger sind zwei Märkte, kein gemeinsamer.",
+        "Anleger wollen Rendite-Sicherheit, keine Zertifikate.",
+        "Was die Plattform zählt und was im Postfach ankommt, sind zwei Zahlen. Wir berichten beide.",
+        "Ehrlicher CPL entsteht durch Testing."
+      ]
+    },
+    {
+      "typ": "galerie",
+      "label": "Aus dem Mandat",
+      "hintergrund": "#33383E",
+      "medien": [
+        "assets/case/case-wohnbau-floridsdorf/g0.jpg",
+        "assets/case/case-wohnbau-floridsdorf/g1.jpg",
+        "assets/case/case-wohnbau-floridsdorf/g2.jpg",
+        "assets/case/case-wohnbau-floridsdorf/g3.jpg",
+        "assets/case/case-wohnbau-floridsdorf/g4.jpg",
+        "assets/case/case-wohnbau-floridsdorf/g5.jpg"
+      ]
+    }
+  ]
+}

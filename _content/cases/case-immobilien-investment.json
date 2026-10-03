@@ -1,0 +1,133 @@
+{
+  "slug": "case-immobilien-investment",
+  "vorlage": "dossier",
+  "kette": "performance",
+  "reihenfolge": 10,
+  "naechster": "case-d2c-lifestyle",
+  "meta": {
+    "name": "Immobilien-Investment",
+    "titel": ["Immobilien-", "Investment."],
+    "ziel": "Zurechenbares Kapital",
+    "branche": "Finance, Immobilien-Investment",
+    "zeitraum": "Seit 2023, laufend",
+    "kanaele": "Google, LinkedIn, Funnel, CRM, Video",
+    "farbwelt": "#2E3A2F",
+    "farbwelt_text": "#EDF2EC",
+    "leistungen": [
+      {"titel": "Strategie & Funnel", "seite": "service-strategie.html"},
+      {"titel": "Performance Marketing", "seite": "service-performance-marketing.html"},
+      {"titel": "Websites & Landingpages", "seite": "service-websites.html"},
+      {"titel": "Content Creation", "seite": "service-content-creation.html"}
+    ]
+  },
+  "hero": {
+    "headline": "Aus 36.000 Euro wurden 4,65 Millionen. Zurechenbar.",
+    "bild": "assets/prev/case-immobilien-investment.jpg",
+    "kennzahl": {"wert": "129×", "label": "zurechenbares Kapital"}
+  },
+  "intro": {"these": "Ein hochwertiges Investment-Angebot ohne planbaren Zufluss <b>qualifizierter Investoren</b>: Vertrauen, Regulatorik und ein komplexer Entscheidungsweg machten reine <b>Reichweiten-Logik</b> wirkungslos.", "text": "Wir haben einen Investoren-Funnel gebaut, der Vertrauen Schritt für Schritt aufbaut, von der Aufklärung bis zur Zeichnung. Sauberes Tracking machte jeden Euro zurechenbar: € 4,65 Mio. Kapital aus € 36.043 Google-Budget, ein 129-facher Return. Über den gesamten Funnel wurden aus € 320k Spend € 12,8 Mio. Kapital, 446 Leads und 43 Zeichnungen."},
+  "kennzahlen": {
+    "headline": ["Was besser wurde,", "in drei Zahlen."],
+    "karten": [
+      {
+        "id": "invest-129",
+        "art": "sprung",
+        "label": "Aus Budget wird Kapital",
+        "vorher": "€ 36.043",
+        "wert": "€ 4,65 Mio.",
+        "zaehlen": {"von": 0, "bis": 4.65, "dezimalen": 2, "vor": "€ ", "nach": " Mio."},
+        "badge": "129×",
+        "reihen": [
+          {"label": "Google-Budget", "punkte": 1, "an": 1, "hervorgehoben": false},
+          {"label": "Zurechenbares Kapital", "punkte": 129, "an": 129, "hervorgehoben": true}
+        ],
+        "text": "Jeder Punkt ist einmal das eingesetzte Google-Budget: 129 Mal."
+      },
+      {
+        "art": "zaehler",
+        "label": "Online-Anteil der Anfragen 2024",
+        "wert": "80 %",
+        "zaehlen": {"von": 0, "bis": 80, "dezimalen": 0, "vor": "", "nach": " %"},
+        "badge": "−19 % je Anfrage",
+        "waffel": {"gesamt": 100, "wert": 80, "spalten": 20},
+        "text": "Vier von fünf Anfragen kamen 2024 online, der Preis je Online-Anfrage sank gegenüber 2023 um 19 Prozent. Jeder Punkt ein Prozent."
+      },
+      {
+        "art": "sprung",
+        "label": "Vom Lead zur Zeichnung",
+        "vorher": "446 Leads",
+        "wert": "43",
+        "einheit": "Zeichnungen",
+        "zaehlen": {"von": 0, "bis": 43, "dezimalen": 0, "vor": "", "nach": ""},
+        "badge": "€ 3.004 je Investor",
+        "waffel": {"gesamt": 100, "wert": 10, "spalten": 20},
+        "text": "Rund jeder zehnte Lead im Funnel zeichnet. Jeder Punkt ein Prozent der Leads."
+      }
+    ],
+    "fussnote": "Gesamt-Funnel: € 320k Spend, € 12,8 Mio. Kapital, 446 Leads. Ehrlich gemessen: Ein zweiter Paid-Kanal lief beim Kunden bereits, bevor wir kamen. Wir haben ihn messbar gemacht, parallel den zurechenbaren Kanal aufgebaut, und als sich bestätigte, dass er keine Zeichnungen bringt, geschlossen."
+  },
+  "bausteine": [
+    {"typ": "statement", "zeilen": ["Im Finance zählt der Cost per", "zugerechnetem Kapital.", "Nicht der CPL."]},
+    {
+      "typ": "perspektiven",
+      "zeilen": [
+        {"titel": "Effizienz", "text": "Cost per Investor von € 3.004, bei Zeichnungssummen weit darüber. Der Funnel rechnet sich ab der ersten Zeichnung."},
+        {"titel": "Zielgruppe", "text": "Kapitalstark und themenaffin: Qualität vor Quantität, konsequent bis in die Gebotsstrategie."},
+        {"titel": "Message", "text": "Investieren mit stabiler Planrendite: Aufklärung baut Vertrauen auf, Vertrauen führt zur Handlung."},
+        {"titel": "Creative", "text": "Bewegtbild für Vertrauen, Daten-Visuals für die Entscheidung."},
+        {"titel": "Kanal", "text": "Google sauber zurechenbar, CRM-Nurture für die Reife langer Entscheidungswege."}
+      ]
+    },
+    {
+      "typ": "ergebnis",
+      "ausgeblendet": true,
+      "zahlen": [
+        {"label": "(Return on Ad Spend)", "wert": "129×"},
+        {"label": "(zurechenbares Kapital)", "wert": "€ 4,65 Mio."},
+        {"label": "(Cost per Investor)", "wert": "€ 3.004"},
+        {"label": "(Zeichnungen im Funnel)", "wert": "43"}
+      ],
+      "kurzfassung": [
+        "<em>129×</em> Return auf Google-Spend",
+        "<em>€ 4,65 Mio.</em> zurechenbares Kapital",
+        "<em>€ 3.004</em> Cost per Investor"
+      ]
+    },
+    {
+      "typ": "kapitel",
+      "label": "Zweites Kapitel, Bewegtbild",
+      "headline": ["Ein komplexes Produkt,", "erklärt vom Vorstand."],
+      "absatz1": "Ein Bauherrenmodell versteht niemand aus einer Anzeige. Deshalb haben wir mit dem Vorstand gedreht: sechs Kurzvideos für Feed und Search-Begleitung, eine Langversion, ein Erklärvideo, das den Weg vom Investment bis zur Steuerwirkung in wenigen Minuten aufmacht, dazu Making-of für die eigenen Kanäle.",
+      "absatz2": "<b>Dahinter läuft seit 2023 die Maschine:</b> Always-on-Suche, Kampagnen je Objekt mit Learning-Transfer von Projekt zu Projekt, LinkedIn für die Anleihe, und ein Lead-Dashboard mit täglichem Datenfeed, das jede Anfrage bis zur Zeichnung mitführt. 2024 kamen 80 Prozent der Anfragen online, bei einem Preis je Online-Anfrage, der gegenüber dem Vorjahr um 19 Prozent sank.",
+      "zahlen": [
+        {"label": "(Kurzvideos aus einem Drehtag)", "wert": "6"},
+        {"label": "(Online-Anteil der Anfragen 2024)", "wert": "80 %"},
+        {"label": "(Preis je Online-Anfrage, zu 2023)", "wert": "−19 %"}
+      ],
+      "fussnote": "Werte aus dem Lead-Report des Kunden für 2023 und 2024. Das Erklärvideo läuft auf der Website, in Search-Begleitkampagnen und im Vertrieb.",
+      "links": [
+        {"href": "service-content-creation.html", "text": "Content Creation"},
+        {"href": "service-strategie.html", "text": "Strategie & Funnel"}
+      ]
+    },
+    {
+      "typ": "learnings",
+      "saetze": [
+        "Im Finance zählt der Cost per zugerechnetem Kapital, nicht der CPL.",
+        "Ehrlich, auch unbequem: Ein bestehender Kanal wurde messbar gemacht, die Hypothese bestätigt, dass er nichts bringt, und geschlossen.",
+        "Sauberes Tracking ist die Voraussetzung für jede ehrliche Aussage."
+      ]
+    },
+    {
+      "typ": "galerie",
+      "label": "Aus dem Mandat",
+      "hintergrund": "#2E3A2F",
+      "medien": [
+        "assets/case/case-immobilien-investment/g0.jpg",
+        "assets/case/case-immobilien-investment/g1.jpg",
+        "assets/case/case-immobilien-investment/v0.mp4",
+        "assets/case/case-immobilien-investment/v1.mp4"
+      ]
+    }
+  ]
+}

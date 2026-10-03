@@ -1,0 +1,62 @@
+{
+  "slug": "case-web-neue-website",
+  "vorlage": "web",
+  "kette": "web",
+  "reihenfolge": 295,
+  "naechster": "auto",
+  "meta": {
+    "name": "Kundenname",
+    "branche": "Real Estate, Development",
+    "url": "https://www.example.com",
+    "umfang": ["Strategie & Struktur", "Design & Copy", "Umsetzung"],
+    "leistungen": [{"titel": "Websites & Landingpages", "seite": "service-websites.html"}]
+  },
+  "hero": {
+    "headline": "Eine Zeile, die den Auftritt auf den Punkt bringt.",
+    "bild": "assets/img/web_neu_d.jpg"
+  },
+  "intro": {
+    "text": "Worum es bei der Website ging und wie wir es gelöst haben, in zwei bis drei Sätzen."
+  },
+  "kennzahlen": {
+    "headline": ["Was das Projekt ausmacht,", "in drei Punkten."],
+    "karten": [
+      {
+        "art": "text",
+        "label": "Vom Briefing bis Go-live",
+        "wert": "Vier Wochen.",
+        "badge": "Kurzes Badge",
+        "stationen": ["Briefing", "Design", "Umsetzung", "Live"],
+        "text": "Ein Satz."
+      },
+      {
+        "art": "medien",
+        "label": "Die Seite",
+        "wert": "Ein kurzer Satz.",
+        "badge": "Kurzes Badge",
+        "bilder": ["assets/img/web_neu_ds0.jpg", "assets/img/web_neu_d1.jpg", "assets/img/web_neu_ds1.jpg"],
+        "text": "Ein Satz."
+      },
+      {"art": "zitat", "label": "Was der Kunde sagt", "zitat": "Das Zitat ohne Anführungszeichen.", "wer": "Name, Rolle, Firma"}
+    ]
+  },
+  "bausteine": [
+    {"typ": "buehne", "bild": "assets/img/web_neu_d1.jpg"},
+    {
+      "typ": "mobil",
+      "headline": "Mobil zuerst gedacht.",
+      "text": "Der Auftritt, wie ihn die meisten Besucher sehen: am Telefon, Seite für Seite.",
+      "bilder": ["assets/img/web_neu_m0.jpg", "assets/img/web_neu_m1.jpg", "assets/img/web_neu_m2.jpg"]
+    },
+    {"typ": "unterseiten", "label": "Aus dem Projekt", "bilder": ["assets/img/web_neu_ds0.jpg", "assets/img/web_neu_ds1.jpg", "assets/img/web_neu_d2.jpg"]},
+    {
+      "typ": "kapitel",
+      "label": "Zweites Kapitel, der Name des Kapitels",
+      "headline": ["Eine Zeile als Headline."],
+      "absatz1": "Erster Absatz.",
+      "absatz2": "<b>Fetter Einstieg:</b> zweiter Absatz.",
+      "links": [{"href": "service-websites.html", "text": "Websites & Landingpages"}]
+    },
+    {"typ": "zitat", "text": "Das Zitat ohne Anführungszeichen.", "wer": "Name, Rolle, Firma"}
+  ]
+}

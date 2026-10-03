@@ -1,0 +1,78 @@
+{
+  "slug": "case-web-pharmacom",
+  "vorlage": "web",
+  "kette": "web",
+  "reihenfolge": 260,
+  "naechster": "case-web-daphi",
+  "meta": {
+    "name": "Pharmacom",
+    "branche": "Pharma, B2B",
+    "url": "https://www.pharmacom.at",
+    "umfang": ["Strategie & Struktur", "Design & Copy", "Umsetzung", "Fotoshooting"],
+    "leistungen": [{"titel": "Websites & Landingpages", "seite": "service-websites.html"}]
+  },
+  "hero": {"headline": "Ein B2B-Modell, das man versteht.", "bild": "assets/img/web_pharmacom_d.jpg"},
+  "intro": {"text": "Ein erklärungsbedürftiges B2B-Modell, verständlich gemacht: Die Website führt Hersteller und Apotheken durch Prozess, Nutzen und Team, seriös und ohne Fachjargon-Wände."},
+  "kennzahlen": {
+    "headline": ["Was das Projekt ausmacht,", "in drei Punkten."],
+    "karten": [
+      {
+        "art": "text",
+        "label": "Vom Angebot zur Unterschrift",
+        "wert": "Drei Stunden.",
+        "badge": "5 Wochen bis live",
+        "stationen": ["Angebot", "Unterschrift", "Design", "Dreh", "Live"],
+        "text": "Drei Stunden nach dem Angebot kam die Unterschrift zurück. Fünf Wochen später stand die Seite."
+      },
+      {
+        "art": "zaehler",
+        "label": "Seiten in zwei Sprachen",
+        "wert": "6",
+        "einheit": "Seiten",
+        "zaehlen": {"von": 0, "bis": 6, "dezimalen": 0, "vor": "", "nach": ""},
+        "badge": "plus Blog und Jobs",
+        "reihen": [
+          {"label": "Seiten", "punkte": 6, "an": 6, "hervorgehoben": true},
+          {"label": "Blog, Jobs", "punkte": 6, "an": 2, "hervorgehoben": false}
+        ],
+        "text": "Anfrageformular, CMS, ein halber Drehtag für Fotos und Screenrecordings der eigenen Software."
+      },
+      {"art": "zitat", "label": "Was der Kunde sagt", "zitat": "Unterschrieben anbei. Wir freuen uns auf die Zusammenarbeit.", "wer": "Christoph Siegesleuthner, Geschäftsführung, Pharmacom", "text": "Aus dem Projekt wurde ein zweites: die Website der Schwesterfirma DaPhi."}
+    ]
+  },
+  "bausteine": [
+    {"typ": "buehne", "bild": "assets/img/web_pharmacom_d1.jpg"},
+    {
+      "typ": "mobil",
+      "headline": "Mobil zuerst gedacht.",
+      "text": "Der Auftritt, wie ihn die meisten Besucher sehen: am Telefon, Seite für Seite.",
+      "bilder": [
+        "assets/img/web_pharmacom_m0.jpg",
+        "assets/img/web_pharmacom_m1.jpg",
+        "assets/img/web_pharmacom_m2.jpg",
+        "assets/img/web_pharmacom_ms0.jpg",
+        "assets/img/web_pharmacom_ms1.jpg"
+      ]
+    },
+    {
+      "typ": "unterseiten",
+      "label": "Aus dem Projekt",
+      "bilder": ["assets/img/web_pharmacom_ds0.jpg", "assets/img/web_pharmacom_ds1.jpg", "assets/img/web_pharmacom_ds2.jpg"]
+    },
+    {
+      "typ": "galerie",
+      "label": "Aus dem Mandat",
+      "hintergrund": "#0E0E10",
+      "medien": ["assets/case/case-web-pharmacom/g0.jpg"]
+    },
+    {
+      "typ": "kapitel",
+      "label": "Zweites Kapitel, fünf Wochen",
+      "headline": ["Angebot am Vormittag, Unterschrift am Nachmittag."],
+      "absatz1": "Drei Stunden nach dem Angebot kam die Unterschrift zurück. Fünf Wochen später stand die Seite: sechs Seiten plus Blog und Jobs in zwei Sprachen, Anfrageformular, CMS, ein halber Drehtag für die Fotos und Screenrecordings der eigenen Software, damit das B2B-Modell sichtbar wird statt erklärt.",
+      "absatz2": "<b>Aus dem Projekt wurde ein zweites:</b> Die Geschäftsführung brachte die Schwesterfirma DaPhi mit, deren Website wir direkt im Anschluss gebaut haben.",
+      "links": [{"href": "case-web-daphi.html", "text": "Zum Schwesterprojekt DaPhi"}]
+    },
+    {"typ": "zitat", "text": "Unterschrieben anbei. Wir freuen uns auf die Zusammenarbeit.", "wer": "Christoph Siegesleuthner, Geschäftsführung, Pharmacom, drei Stunden nach dem Angebot"}
+  ]
+}

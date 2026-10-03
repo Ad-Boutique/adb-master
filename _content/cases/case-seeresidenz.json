@@ -1,0 +1,125 @@
+{
+  "slug": "case-seeresidenz",
+  "vorlage": "dossier",
+  "kette": "performance",
+  "reihenfolge": 100,
+  "naechster": "case-nordic-spirit",
+  "meta": {
+    "name": "Seeresidenz Gmunden",
+    "titel": ["Seeresidenz", "Gmunden."],
+    "ziel": "Kaufinteressenten für ein Seeprojekt",
+    "branche": "Real Estate, Seeprojekt",
+    "zeitraum": "Juli 2024 bis Dezember 2025",
+    "kanaele": "Meta, Google Search, Landingpage",
+    "farbwelt": "#2A3D4A",
+    "farbwelt_text": "#E8EEF2",
+    "leistungen": [
+      {"titel": "Performance Marketing", "seite": "service-performance-marketing.html"},
+      {"titel": "Strategie & Funnel", "seite": "service-strategie.html"},
+      {"titel": "Content Creation", "seite": "service-content-creation.html"}
+    ]
+  },
+  "hero": {
+    "headline": "Ein Projekt am See. Anfragen aus dem ganzen Land.",
+    "bild": null,
+    "kennzahl": {"wert": "1.761", "label": "Anfragen über Meta"}
+  },
+  "intro": {"these": "Ein Premium-Projekt am Traunsee mit <b>österreichweiter Zielgruppe</b>: Wer hier kauft, wohnt selten um die Ecke. Reichweite gab es, aber die <b>Anfragen</b> kamen unstet und teuer.", "text": "Wir haben Meta und Google Search als Paar gebaut: Meta erzeugt die Nachfrage mit Sujets vom See, Google fängt sie, wenn gesucht wird. In eineinhalb Jahren: 3,4 Millionen Impressionen und 43.000 Klicks über Meta, 4,6 Millionen Impressionen und 76.000 Klicks über Google, 1.761 Anfragen. Im Jahr 2024 kostete eine Anfrage im Schnitt 8 Euro."},
+  "kennzahlen": {
+    "headline": ["Was besser wurde,", "in drei Zahlen."],
+    "karten": [
+      {
+        "art": "sprung",
+        "label": "Preis je Anfrage, Projektgruppe",
+        "vorher": "€ 405",
+        "wert": "€ 48",
+        "zaehlen": {"von": 405, "bis": 48, "dezimalen": 0, "vor": "€ ", "nach": ""},
+        "badge": "−88 %",
+        "reihen": [
+          {"label": "Vorher", "punkte": 41, "an": 41, "hervorgehoben": false},
+          {"label": "Ein Jahr später", "punkte": 41, "an": 5, "hervorgehoben": true}
+        ],
+        "text": "Über sechs Projekte der Gruppe, innerhalb eines Jahres. Ein Punkt sind 10 Euro."
+      },
+      {
+        "art": "sprung",
+        "label": "Online-Anteil der Anfragen",
+        "vorher": "rund die Hälfte",
+        "wert": "100 %",
+        "zaehlen": {"von": 50, "bis": 100, "dezimalen": 0, "vor": "", "nach": " %"},
+        "badge": "+50 Punkte",
+        "reihen": [
+          {"label": "Vorher", "punkte": 50, "an": 25, "hervorgehoben": false},
+          {"label": "Ende 2024", "punkte": 50, "an": 50, "hervorgehoben": true}
+        ],
+        "text": "Die Kennzahl, an der man eine Gruppe steuert. Ein Punkt sind zwei Prozent."
+      },
+      {
+        "art": "zaehler",
+        "label": "Anfragen für das Seeprojekt",
+        "wert": "1.761",
+        "zaehlen": {"von": 0, "bis": 1761, "dezimalen": 0, "vor": "", "nach": ""},
+        "badge": "18 Monate",
+        "reihen": [{"label": "Anfragen", "punkte": 35, "an": 35, "hervorgehoben": true}],
+        "text": "Meta erzeugt die Nachfrage, Google erntet sie. 2024 rund 8 Euro je Anfrage. Ein Punkt sind 50 Anfragen."
+      }
+    ],
+    "fussnote": "Werte aus den Konto-Exporten Juli 2024 bis Dezember 2025 und dem Lead-Report der Gruppe für 2024. Über die gesamte Projektgruppe des Kunden stieg der Online-Anteil der Anfragen innerhalb eines Jahres von rund der Hälfte auf hundert Prozent, der Preis je Anfrage fiel von 405 auf 48 Euro."
+  },
+  "bausteine": [
+    {"typ": "statement", "zeilen": ["Reichweite ist billig.", "Anfragen sind der Beweis."]},
+    {
+      "typ": "perspektiven",
+      "zeilen": [
+        {"titel": "Effizienz", "text": "1.460 Anfragen aus 9.540 Euro Mediabudget im Jahr 2024, rund 8 Euro je Anfrage."},
+        {"titel": "Zielgruppe", "text": "Zweitwohnsitz und Kapitalanlage, österreichweit statt regional."},
+        {"titel": "Message", "text": "Der See als Argument, der Preis als Filter."},
+        {"titel": "Creative", "text": "Stimmungsbilder vom Wasser im Hochformat, der Grundriss erst auf der Seite."},
+        {"titel": "Kanal", "text": "Meta erzeugt Nachfrage, Google Search erntet sie, beides zurechenbar bis zur Anfrage."}
+      ]
+    },
+    {
+      "typ": "ergebnis",
+      "ausgeblendet": true,
+      "zahlen": [
+        {"label": "(Anfragen, 18 Monate)", "wert": "1.761"},
+        {"label": "(Impressionen Google)", "wert": "4,6 Mio."},
+        {"label": "(Klicks Meta und Google)", "wert": "119.000"},
+        {"label": "(je Anfrage, 2024)", "wert": "€ 8"}
+      ]
+    },
+    {
+      "typ": "kapitel",
+      "label": "Zweites Kapitel, die Gruppe",
+      "headline": ["Sechs Projekte,", "eine Lead-Logik."],
+      "absatz1": "Das Seeprojekt war eines von sechs, die wir für die Gruppe parallel geführt haben: zwei Türme an der Donau, ein Schlosspark, ein Gewerbeprojekt im Süden Wiens, ein nachhaltiges Bürohaus. Jedes mit eigener Zielgruppe, alle mit derselben Zurechnungslogik bis zur Anfrage.",
+      "absatz2": "<b>Das Ergebnis über die Gruppe:</b> Binnen eines Jahres kamen die Anfragen nicht mehr zur Hälfte, sondern vollständig online, und der Preis je Anfrage fiel von 405 auf 48 Euro. Das Donau-Projekt brachte 172 Anfragen, das Gewerbeprojekt 162 Mietinteressenten über Google.",
+      "zahlen": [
+        {"label": "(Projekte parallel)", "wert": "6"},
+        {"label": "(Anfragen, Donau-Projekt)", "wert": "172"},
+        {"label": "(Gewerbe-Anfragen über Google)", "wert": "162"},
+        {"label": "(Online-Anteil, Ende 2024)", "wert": "100 %"}
+      ],
+      "fussnote": "Alle Werte aus dem monatlichen Lead-Report, den wir für die Gruppe geführt haben.",
+      "links": [
+        {"href": "service-strategie.html", "text": "Strategie & Funnel"},
+        {"href": "service-performance-marketing.html", "text": "Performance Marketing"}
+      ]
+    },
+    {"typ": "zitat", "text": "Eure professionelle und verlässliche Arbeitsweise hat wesentlich zum Erfolg unserer bisherigen Projekte beigetragen.", "wer": "Marketing Managerin, Soravia"},
+    {
+      "typ": "mobil",
+      "headline": "Der See im Hochformat.",
+      "text": "Sujets aus der Kampagne, gebaut für den Feed.",
+      "bilder": ["assets/img/a_gmund1.jpg", "assets/img/gmunden.jpg", "assets/img/a_gmund2.jpg"]
+    },
+    {
+      "typ": "learnings",
+      "saetze": [
+        "Reichweite ist billig, Anfragen sind der Beweis.",
+        "Meta und Google sind kein Entweder-oder, sondern ein Paar.",
+        "Der Online-Anteil der Anfragen ist die Kennzahl, an der man eine Gruppe steuert."
+      ]
+    }
+  ]
+}

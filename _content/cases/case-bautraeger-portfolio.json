@@ -1,0 +1,147 @@
+{
+  "slug": "case-bautraeger-portfolio",
+  "vorlage": "dossier",
+  "kette": "performance",
+  "reihenfolge": 70,
+  "naechster": "case-health-brand",
+  "meta": {
+    "name": "Bauträger-Portfolio, Wien",
+    "titel": ["Bauträger-", "Portfolio, Wien."],
+    "ziel": "Planbare Leads im Portfolio",
+    "branche": "Real Estate, Wohnbau",
+    "zeitraum": "Laufend, drei Projekte",
+    "kanaele": "Meta Instant Forms, Landingpages",
+    "farbwelt": "#22382C",
+    "farbwelt_text": "#EDF2EC",
+    "leistungen": [
+      {"titel": "Performance Marketing", "seite": "service-performance-marketing.html"},
+      {"titel": "Content Creation", "seite": "service-content-creation.html"},
+      {"titel": "Websites & Landingpages", "seite": "service-websites.html"}
+    ]
+  },
+  "hero": {
+    "headline": "Ein System. Drei Projekte. Der beste Preis im Portfolio.",
+    "bild": "assets/img/a_otta1.jpg",
+    "kennzahl": {"wert": "€ 4,72", "label": "Cost per Lead"}
+  },
+  "intro": {"these": "Ein Bauträger mit mehreren parallelen Wiener Projekten brauchte <b>planbare, vergleichbare Lead-Qualität</b> über das gesamte Portfolio, nicht projektweise <b>Bauchentscheidungen</b>.", "text": "Wir haben ein wiederholbares Lead-System über alle Projekte ausgerollt: gleiche Test-Mechanik, lagespezifische Lifestyle-Botschaften, konsequente Creative-Selektion nach CPL. Im Projekt im 7. Bezirk: 109 Leads aus € 515 Spend zu € 4,72, der niedrigste CPL im gesamten Wohnbau-Portfolio."},
+  "kennzahlen": {
+    "headline": ["Was besser wurde,", "in drei Zahlen."],
+    "karten": [
+      {
+        "art": "zaehler",
+        "label": "Preis je Anfrage, drei Projekte",
+        "wert": "€ 4,72",
+        "zaehlen": {"von": 0, "bis": 4.72, "dezimalen": 2, "vor": "€ ", "nach": ""},
+        "badge": "3 Projekte",
+        "reihen": [
+          {"label": "7. Bezirk", "punkte": 63, "an": 47, "hervorgehoben": true},
+          {"label": "Projekt A", "punkte": 63, "an": 63, "hervorgehoben": false},
+          {"label": "Projekt B", "punkte": 63, "an": 59, "hervorgehoben": false}
+        ],
+        "text": "€ 4,72, € 6,33 und € 5,93, dieselbe Mechanik in jedem Projekt. Ein Punkt sind 10 Cent."
+      },
+      {
+        "art": "zaehler",
+        "label": "Anfragen im zweiten Quartal",
+        "wert": "546",
+        "zaehlen": {"von": 0, "bis": 546, "dezimalen": 0, "vor": "", "nach": ""},
+        "badge": "€ 3.352 Spend",
+        "reihen": [
+          {"label": "Projekt A", "punkte": 29, "an": 29, "hervorgehoben": false},
+          {"label": "Projekt B", "punkte": 29, "an": 26, "hervorgehoben": true}
+        ],
+        "text": "287 und 259 Anfragen aus zwei Projekten parallel. Ein Punkt sind zehn Anfragen."
+      },
+      {
+        "art": "sprung",
+        "label": "Ein Sujet trägt",
+        "vorher": "wenige Sujets im Test",
+        "wert": "98 von 109",
+        "zaehlen": {"von": 0, "bis": 98, "dezimalen": 0, "vor": "", "nach": " von 109"},
+        "badge": "90 %",
+        "waffel": {"gesamt": 100, "wert": 90, "spalten": 20},
+        "text": "Im 7. Bezirk brachte das Winner-Creative 98 der 109 Anfragen. Jeder Punkt ein Prozent."
+      }
+    ],
+    "fussnote": "Spend: € 515, CTR 2,24 %. Der niedrigste CPL im gesamten Wohnbau-Portfolio, aus Disziplin, nicht aus Glück."
+  },
+  "bausteine": [
+    {"typ": "statement", "zeilen": ["Ein gutes System ist", "wiederholbar. Über", "Projekte hinweg."]},
+    {
+      "typ": "perspektiven",
+      "zeilen": [
+        {"titel": "Effizienz", "text": "Das Winner-Creative Puls des 7. brachte 98 Leads zu € 4,56."},
+        {"titel": "Zielgruppe", "text": "Eigennutzer mit Lagebezug."},
+        {"titel": "Message", "text": "Bezirks-Lebensgefühl schlägt generische Neubau-Sprache."},
+        {"titel": "Creative", "text": "Collage plus Grundriss als Effizienz-Variante mit € 3,01 CPL."},
+        {"titel": "Kanal", "text": "Instant Form, projektübergreifend standardisiert."}
+      ]
+    },
+    {
+      "typ": "ergebnis",
+      "ausgeblendet": true,
+      "zahlen": [
+        {"label": "(Leads, 7. Bezirk)", "wert": "109"},
+        {"label": "(Cost per Lead)", "wert": "€ 4,72"},
+        {"label": "(Winner-Creative)", "wert": "€ 4,56"},
+        {"label": "(Effizienz-Variante)", "wert": "€ 3,01"}
+      ],
+      "kurzfassung": ["<em>109</em> Leads aus € 515 Spend", "<em>€ 4,72</em> Cost per Lead", "<em>2,24 %</em> CTR"]
+    },
+    {
+      "typ": "kapitel",
+      "label": "Zweites Kapitel, zwei Projekte im zweiten Quartal",
+      "headline": ["Zwei Projekte,", "ein System, ein Quartal."],
+      "absatz1": "Im zweiten Quartal 2026 liefen zwei Projekte des Portfolios parallel mit derselben Mechanik: getrennte Zielgruppen, wenige Sujets im Test, wöchentliche Umschichtung auf den Sieger. Das eine Projekt brachte 287 Anfragen zu 6,33 Euro, das andere 259 Anfragen zu 5,93 Euro, dem besten Preis im gesamten Portfolio.",
+      "absatz2": "<b>In beiden Projekten trug ein einziges Sujet über 90 Prozent der Anfragen.</b> Das ist kein Zufall, sondern der Grund, warum wir testen, statt zu diskutieren: Der Sieger steht nach zwei Wochen fest, danach fließt jeder Euro dorthin.",
+      "zahlen": [
+        {"label": "(Anfragen, Projekt A)", "wert": "287"},
+        {"label": "(CPL, Projekt A)", "wert": "€ 6,33"},
+        {"label": "(Anfragen, Projekt B)", "wert": "259"},
+        {"label": "(CPL, Projekt B)", "wert": "€ 5,93"}
+      ],
+      "fussnote": "Spend im Quartal: 1.817 Euro und 1.535 Euro, Reichweite 79.648 und 59.250 Personen. Alle Werte aus dem Quartalsreport an den Kunden."
+    },
+    {
+      "typ": "kapitel",
+      "label": "Drittes Kapitel, nach dem Lead",
+      "headline": ["Der Engpass sitzt", "hinter dem Formular."],
+      "absatz1": "Die CRM-Auswertung zeigte, was Kampagnenzahlen nicht zeigen: 44 Prozent der Anfragen waren beim ersten Versuch nicht erreichbar, bei über 90 Prozent stand 'erneut kontaktieren' im System. Preis oder Lage waren fast nie der Einwand.",
+      "absatz2": "Deshalb bauen wir seit dem Sommer die Strecke um: eigene Projekt-Landingpages statt Portfolio-Website, Terminbuchung statt Rückruf-Lotterie, und ein Reporting, das die Erstkontakt-Zeit des Vertriebs genauso ausweist wie den CPL.",
+      "links": [
+        {"href": "service-websites.html", "text": "Websites & Landingpages"},
+        {"href": "service-performance-marketing.html", "text": "Performance Marketing"}
+      ]
+    },
+    {"typ": "zitat", "text": "Danke für den Start. Wir haben schon einige Leads seit gestern Abend hereinbekommen.", "wer": "Verkauf, Wiener Bauträger, am Morgen nach dem Kampagnenstart"},
+    {
+      "typ": "mobil",
+      "headline": "Sujets, die im Feed bestehen.",
+      "text": "Lage plus Lebensgefühl statt Floskeln: die Motive aus dem laufenden Portfolio.",
+      "bilder": ["assets/img/a_otta1.jpg", "assets/img/a_otta2.jpg", "assets/img/a_otta3.jpg"]
+    },
+    {
+      "typ": "learnings",
+      "saetze": [
+        "Ein gutes System ist wiederholbar, über Projekte hinweg.",
+        "Lage plus Lebensgefühl schlagen Floskeln.",
+        "Niedrige CPL kommt aus Disziplin, nicht aus Glück."
+      ]
+    },
+    {
+      "typ": "galerie",
+      "label": "Aus dem Mandat",
+      "hintergrund": "#0E0E10",
+      "medien": [
+        "assets/case/grandgarden/g0.jpg",
+        "assets/case/grandgarden/g1.jpg",
+        "assets/case/grandgarden/g2.jpg",
+        "assets/case/grandgarden/g3.jpg",
+        "assets/case/grandgarden/v0.mp4",
+        "assets/case/grandgarden/v1.mp4",
+        "assets/case/grandgarden/v2.mp4"
+      ]
+    }
+  ]
+}

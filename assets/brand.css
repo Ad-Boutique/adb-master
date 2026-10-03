@@ -4,29 +4,7 @@
    Der Punkt ist das Element: Aufmerksamkeit, Fokus, Ziel.
    Liegt ueber master.css, nur auf den Testseiten eingebunden.
    ============================================================ */
-:root {
-  /* Farben nach Figma Style 01 (_intern/BRAND-RULES.md, Abschnitt 1). Nur diese Werte plus Transparenzen davon. */
-  --ink: #101010;
-  --ink-soft: #101010;
-  --paper: #F4F3EB;
-  --cream: #F4F3EB;         /* kein zweiter Cream-Ton mehr, bg-cream ist dieselbe Flaeche */
-  --lime: #CDFF00;
-  --stone: #B7B7B3;         /* nur Hintergrund hinter Mockups, nie Markenflaeche */
-  --ph: #DEDDD4;            /* nur leere Bildcontainer */
-  /* Frueherer Akzent (Champagne, inline in Amandine-Zeilen, Zitat-Absendern, kleinen Strichen und Kurven):
-     folgt der Textfarbe des Untergrunds, also Schwarz auf Cream und Lime, Cream auf Schwarz. Nie Lime-Text auf Schwarz.
-     currentColor wird erst am verwendenden Element aufgeloest, damit gilt das ohne Kontext-Klasse. */
-  --champ: currentColor;
-  --champ-deep: currentColor;
-  /* Grautoene sind Transparenzen der Textfarbe, auf dunklen Flaechen in brand-ui.css umgestellt */
-  --grey: rgba(16,16,16,0.5);
-  --grey-dark: rgba(16,16,16,0.64);
-  --line-l: rgba(16,16,16,0.16);
-  --line-d: rgba(244,243,235,0.25);
-  /* Alte Case-Farbwelten sind keine Sektionsflaechen mehr: alles Schwarz */
-  --green: #101010; --brown: #101010; --slate: #101010; --moss: #101010; --steel: #101010; --teal: #101010; --olive: #101010;
-  --f-serif: "amandine", "Reckless", Georgia, "Times New Roman", serif;
-}
+/* Farben, Transparenzen und Schriften: tokens.css (Abschnitte 1 bis 4) */
 body.brand { background: var(--paper); }
 
 /* ---------- Typografie: Sans traegt, die Serife antwortet kursiv ---------- */
@@ -73,7 +51,7 @@ body.brand { background: var(--paper); }
 .brand .svc-glyph { display: none; }
 
 /* ---------- Menue-Kreis: Lime mit schwarzem Kern, das Ziel der Ladeanimation ---------- */
-.brand .mbtn { background: var(--lime); box-shadow: 0 8px 30px rgba(16,16,16,0.22); opacity: 0; transition: opacity 0.3s ease, transform 0.5s var(--e-out), background-color 0.45s ease; }
+.brand .mbtn { background: var(--lime); box-shadow: 0 8px 30px var(--ink-a22); opacity: 0; transition: opacity 0.3s ease, transform 0.5s var(--e-out), background-color 0.45s ease; }
 .brand .mbtn::after { background: var(--ink); opacity: 1; inset: 25px; }
 body.brand.mready .mbtn { opacity: 1; }
 body.brand.menuopen .mbtn { background: var(--ink); }
@@ -85,7 +63,7 @@ body.brand .mbtn::after { display: none; }
 body.brand .mbtn::before {
   content: "Menü"; position: absolute; inset: 0; width: auto; height: auto; margin: 0; display: flex; align-items: center; justify-content: center;
   font-family: var(--f-ui); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--ink); background: none; box-shadow: none; border-radius: 0; opacity: 1; animation: none; transform: none; transition: color 0.4s ease, opacity 0.25s ease;
+  color: var(--ink); background: none; box-shadow: none; border-radius: 0; opacity: 1; animation: none; transform: none; transition: color var(--d-base) ease, opacity 0.25s ease;
 }
 body.brand .mbtn:hover::before { animation: none; opacity: 1; }
 body.brand.menuopen .mbtn::before { content: "Schließen"; font-size: 8.5px; letter-spacing: 0.06em; color: var(--ink); }
@@ -97,12 +75,12 @@ body.brand.menuopen .mbtn::before { content: "Schließen"; font-size: 8.5px; let
 .brand .pt.enter { transform: none; opacity: 0; visibility: visible; transition: opacity 0.45s ease; }
 .brand .pt.enter.cover { opacity: 1; }
 .ptdot {
-  position: fixed; left: 50%; top: 50%; z-index: 210; pointer-events: none;
-  width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; background: var(--lime);
+  position: fixed; left: 50%; top: 50%; z-index: var(--z-ptdot); pointer-events: none;
+  width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: var(--r-round); background: var(--lime);
   opacity: 0; transform: scale(0); will-change: transform, opacity;
 }
 .ptdot::before, .ptdot::after {
-  content: ""; position: absolute; inset: -7px; border-radius: 50%;
+  content: ""; position: absolute; inset: -7px; border-radius: var(--r-round);
   border: 1.5px solid var(--lime); opacity: 0;
 }
 .ptdot.pulse::before { animation: bring 0.9s ease-out forwards; }
@@ -112,9 +90,9 @@ body.brand.menuopen .mbtn::before { content: "Schließen"; font-size: 8.5px; let
 
 /* ---------- Punkt als Linie: gepunktete Trennlinien statt Haarlinie ---------- */
 .brand .kapsec .kaprule, .brand .cmprow, .brand .faq .qa, .brand .benegrid .bcell {
-  border-top-style: dotted; border-top-width: 2px; border-top-color: rgba(16,16,16,0.28);
+  border-top-style: dotted; border-top-width: 2px; border-top-color: var(--ink-a28);
 }
-.brand .fg-dark .kapsec .kaprule { border-top-color: rgba(244,243,235,0.3); }
+.brand .fg-dark .kapsec .kaprule { border-top-color: var(--cream-a30); }
 .brand .hlxnav .hn.on, .brand .vchips .vc.on, .brand .chapnav a.on { background: var(--ink); color: var(--lime); }
 .brand .chapnav a.cn-cta { background: var(--lime); color: var(--ink); }
 .brand .chapnav a.cn-cta:hover { background: var(--ink); color: var(--lime); }
@@ -136,13 +114,13 @@ body.brand.menuopen .mbtn::before { content: "Schließen"; font-size: 8.5px; let
 /* Cursor: der Lime-Punkt aus dem Board, in den vier Zustaenden
    Punkt (Standard), Expand (ueber Links: waechst, ein Satellit kreist), Fokus (ueber Bildern: Ring),
    Target (beim Klick: Ringe laufen aus) */
-.brand .cur { border: 0; background: var(--lime); width: 14px; height: 14px; margin: -7px 0 0 -7px; mix-blend-mode: normal; box-shadow: 0 0 0 1px rgba(16,16,16,0.5); transition: scale 0.28s var(--e-out), background-color 0.25s ease, box-shadow 0.25s ease, opacity 0.3s ease; }
+.brand .cur { border: 0; background: var(--lime); width: 14px; height: 14px; margin: -7px 0 0 -7px; mix-blend-mode: normal; box-shadow: 0 0 0 1px var(--ink-a50); transition: scale 0.28s var(--e-out), background-color 0.25s ease, box-shadow 0.25s ease, opacity 0.3s ease; }
 /* Kein Satellit um den Zeiger: Expand ist nur der groessere Punkt */
 .brand .cur::before { display: none; }
 .brand .cur::after { display: none; }
 .brand.cur-hov .cur { scale: 2; }
-.brand.cur-media .cur { scale: 3; background: transparent; box-shadow: inset 0 0 0 1.5px var(--lime), 0 0 0 1px rgba(16,16,16,0.35); }
-.brand.cur-tap .cur::after { display: block; content: ""; position: absolute; inset: -3px; border-radius: 50%; border: 1.5px solid var(--lime); animation: bring 0.55s ease-out forwards; }
+.brand.cur-media .cur { scale: 3; background: transparent; box-shadow: inset 0 0 0 1.5px var(--lime), 0 0 0 1px var(--ink-a35); }
+.brand.cur-tap .cur::after { display: block; content: ""; position: absolute; inset: -3px; border-radius: var(--r-round); border: 1.5px solid var(--lime); animation: bring 0.55s ease-out forwards; }
 @keyframes orbit { to { transform: rotate(360deg); } }
 /* Menue-Kreis: beim Hover kreist ein Satellit, der Expand-Zustand aus dem Board */
 /* Auch der Menue-Kreis hat keinen Satelliten mehr; das Wort im Punkt nutzt ::before */
@@ -156,47 +134,47 @@ body.brand.menuopen .mbtn::before { content: "Schließen"; font-size: 8.5px; let
 .dotzoom--dark::after { background: var(--ink); }
 .dotzoom::before {
   content: ""; position: absolute; left: 50%; top: 42%; z-index: 6; pointer-events: none;
-  width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%; background: var(--lime);
-  box-shadow: 0 0 0 1px rgba(16,16,16,0.4); transform: scale(var(--zd, 0));
+  width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: var(--r-round); background: var(--lime);
+  box-shadow: 0 0 0 1px var(--ink-a40); transform: scale(var(--zd, 0));
 }
 .dotzoom.zdone::after, .dotzoom.zdone::before { display: none; }
 @media (prefers-reduced-motion: reduce) { .dotzoom::after, .dotzoom::before { display: none; } }
 /* Wortmarke: der Punkt ist Lime */
 .brand .fword i, .brand .pt .ptw i { color: var(--lime); }
 /* Akt-Marke: die gepunktete Ringform aus dem Board, dreht sich langsam */
-.actring { width: 26px; height: 26px; border-radius: 50%; border: 2px dotted var(--ink); margin-bottom: 26px; position: relative; animation: pspin 40s linear infinite; }
-.actring::after { content: ""; position: absolute; inset: 8px; border-radius: 50%; background: var(--lime); }
+.actring { width: 26px; height: 26px; border-radius: var(--r-round); border: 2px dotted var(--ink); margin-bottom: 26px; position: relative; animation: pspin 40s linear infinite; }
+.actring::after { content: ""; position: absolute; inset: 8px; border-radius: var(--r-round); background: var(--lime); }
 .fg-dark .actring { border-color: var(--lime); } .fg-dark .actring::after { background: var(--lime); }
 @keyframes pspin { to { transform: rotate(360deg); } }
 /* Stationen: Punktzeile zeigt, wo man ist */
-.tdots { display: flex; gap: 8px; justify-content: flex-end; margin-top: 18px; }
-.tdots i { width: 8px; height: 8px; border-radius: 50%; background: rgba(16,16,16,0.18); transition: background-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease; }
-.tdots i.on { background: var(--lime); box-shadow: 0 0 0 1px var(--ink), 0 0 0 4px rgba(205,255,0,0.35); transform: scale(1.15); }
-.fg-dark .tdots i { background: rgba(244,243,235,0.2); }
+.tdots { display: flex; gap: var(--sp-1); justify-content: flex-end; margin-top: 18px; }
+.tdots i { width: 8px; height: 8px; border-radius: var(--r-round); background: var(--ink-a18); transition: background-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease; }
+.tdots i.on { background: var(--lime); box-shadow: 0 0 0 1px var(--ink), 0 0 0 4px var(--lime-a35); transform: scale(1.15); }
+.fg-dark .tdots i { background: var(--cream-a20); }
 /* Zahlen als Ziel: ein Ring legt sich um die Kennzahl, wenn sie da ist */
 .brand .statg .st { border-top: 0; padding-top: 0; padding-left: 20px; position: relative; }
-.brand .statg .st::before { content: ""; position: absolute; left: 0; top: 0.35em; width: 8px; height: 8px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 1px var(--ink); }
+.brand .statg .st::before { content: ""; position: absolute; left: 0; top: 0.35em; width: 8px; height: 8px; border-radius: var(--r-round); background: var(--lime); box-shadow: 0 0 0 1px var(--ink); }
 .brand .chero .statg .st::before { box-shadow: none; }
 /* Ablauf: die Punkte der Zeitleiste werden Lime, wenn der Schritt aktiv ist */
 .brand .oplist--steps .owhen::before { border-color: var(--lime); background-color: transparent; }
-.brand .oplist--steps .op.on .owhen::before { background-color: var(--lime); box-shadow: 0 0 0 5px rgba(205,255,0,0.25); }
+.brand .oplist--steps .op.on .owhen::before { background-color: var(--lime); box-shadow: 0 0 0 5px var(--lime-a25); }
 /* Case-Liste: die Nummer bekommt einen Punkt, der beim Hover wandert */
-.brand .oplist:not(.oplist--steps) .op .onum { position: relative; padding-left: 16px; }
-.brand .oplist:not(.oplist--steps) .op .onum::before { content: ""; position: absolute; left: 0; top: 0.45em; width: 7px; height: 7px; border-radius: 50%; background: var(--ink); transition: background-color 0.3s ease, transform 0.4s var(--e-out); }
+.brand .oplist:not(.oplist--steps) .op .onum { position: relative; padding-left: var(--sp-2); }
+.brand .oplist:not(.oplist--steps) .op .onum::before { content: ""; position: absolute; left: 0; top: 0.45em; width: 7px; height: 7px; border-radius: var(--r-round); background: var(--ink); transition: background-color 0.3s ease, transform var(--d-base) var(--e-out); }
 .brand .oplist:not(.oplist--steps) .op:hover .onum::before { background: var(--lime); transform: scale(1.5); box-shadow: 0 0 0 1px var(--ink); }
 /* Team: Punkt vor dem Namen */
-.brand .pname b { position: relative; padding-left: 16px; }
-.brand .pname b::before { content: ""; position: absolute; left: 0; top: 0.42em; width: 8px; height: 8px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 1px var(--ink); }
+.brand .pname b { position: relative; padding-left: var(--sp-2); }
+.brand .pname b::before { content: ""; position: absolute; left: 0; top: 0.42em; width: 8px; height: 8px; border-radius: var(--r-round); background: var(--lime); box-shadow: 0 0 0 1px var(--ink); }
 /* Kleine Punkt-Zeile im Hero: die Arbeitsweise als Satz mit Punkten */
 .dotline { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 14px; margin-top: 22px; font-size: 13px; font-weight: 600; letter-spacing: 0.02em; color: var(--grey-dark); }
 .dotline span { position: relative; padding-left: 14px; }
-.dotline span::before { content: ""; position: absolute; left: 0; top: 0.5em; width: 7px; height: 7px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 1px var(--ink); }
+.dotline span::before { content: ""; position: absolute; left: 0; top: 0.5em; width: 7px; height: 7px; border-radius: var(--r-round); background: var(--lime); box-shadow: 0 0 0 1px var(--ink); }
 /* Scroll-Fortschritt: ein Punkt auf einer gepunkteten Bahn am rechten Rand (Loading) */
-.sprog { position: fixed; right: 18px; top: 18vh; height: 64vh; width: 2px; z-index: 55; pointer-events: none; opacity: 0; transition: opacity 0.4s ease;
-  background-image: radial-gradient(circle, rgba(16,16,16,0.3) 1px, transparent 1.3px); background-size: 2px 10px; }
+.sprog { position: fixed; right: 18px; top: 18vh; height: 64vh; width: 2px; z-index: var(--z-sprog); pointer-events: none; opacity: 0; transition: opacity var(--d-base) ease;
+  background-image: radial-gradient(circle, var(--ink-a30) 1px, transparent 1.3px); background-size: 2px 10px; }
 body.brand.mready .sprog { opacity: 1; }
-.sprog i { position: absolute; left: -5px; top: 0; width: 12px; height: 12px; border-radius: 50%; will-change: transform; } /* Farbe in brand-ui.css, kein Lime (liegt oft auf Fotos) */
-body:not(.on-light) .sprog { background-image: radial-gradient(circle, rgba(244,243,235,0.35) 1px, transparent 1.3px); }
+.sprog i { position: absolute; left: -5px; top: 0; width: 12px; height: 12px; border-radius: var(--r-round); will-change: transform; } /* Farbe in brand-ui.css, kein Lime (liegt oft auf Fotos) */
+body:not(.on-light) .sprog { background-image: radial-gradient(circle, var(--cream-a35) 1px, transparent 1.3px); }
 @media (max-width: 860px) { .sprog { display: none; } }
 
 /* ============================================================
@@ -210,22 +188,22 @@ body:not(.on-light) .sprog { background-image: radial-gradient(circle, rgba(244,
 .brand .acollage span:hover img { filter: none; }
 /* Punktzeile: die Punkte fuellen sich nacheinander */
 .dotline span::before { background: transparent; border: 1.5px solid var(--ink); box-sizing: border-box; box-shadow: none; transition: background-color 0.35s ease, box-shadow 0.35s ease; }
-.dotline span.on::before { background: var(--lime); box-shadow: 0 0 0 3px rgba(205,255,0,0.3); }
+.dotline span.on::before { background: var(--lime); box-shadow: 0 0 0 3px var(--lime-a30); }
 /* Zwei Stimmen: die Sans stellt fest, die Serife antwortet einen Atemzug spaeter */
 .brand .rl > span:has(> i) { transition-delay: 0.32s; }
 /* Punktfeld: jede Einheit ein Punkt, der Lime-Anteil in Leserichtung */
 .dotfield-wrap { margin: clamp(40px, 5vw, 70px) auto 0; max-width: 820px; text-align: left; }
 .dotfield { display: block; width: 100%; height: clamp(180px, 22vw, 300px); }
-.dotfield-cap { font-size: 13.5px; line-height: 1.55; color: var(--grey-dark); margin-top: 16px; max-width: 60ch; }
+.dotfield-cap { font-size: 13.5px; line-height: 1.55; color: var(--grey-dark); margin-top: var(--sp-2); max-width: 60ch; }
 .dotfield-cap b { color: var(--ink); font-weight: 600; }
 /* Der Punkt wird am Ende zum Knopf: der Weiter-Knopf im Anfrage-Feld */
-.brand .ngo { background: var(--lime); color: var(--ink); border: 0; border-radius: 999px; font-weight: 700; position: relative; box-shadow: 0 0 0 1px var(--ink); }
-.brand .ngo::before, .brand .ngo::after { content: ""; position: absolute; inset: -4px; border-radius: 999px; border: 1.5px solid var(--lime); opacity: 0; pointer-events: none; }
-.brand .ngo.fired::before { animation: bring 0.7s ease-out forwards; }
-.brand .ngo.fired::after { animation: bring 0.7s ease-out 0.15s forwards; }
+.brand .ngo { background: var(--lime); color: var(--ink); border: 0; border-radius: var(--r-pill); font-weight: 700; position: relative; box-shadow: 0 0 0 1px var(--ink); }
+.brand .ngo::before, .brand .ngo::after { content: ""; position: absolute; inset: -4px; border-radius: var(--r-pill); border: 1.5px solid var(--lime); opacity: 0; pointer-events: none; }
+.brand .ngo.fired::before { animation: bring var(--d-slow) ease-out forwards; }
+.brand .ngo.fired::after { animation: bring var(--d-slow) ease-out 0.15s forwards; }
 /* Auswahl-Chips: das Plus wird ein Punkt, der sich fuellt */
-.brand .nopt .plus { font-size: 0; width: 11px; height: 11px; border-radius: 50%; border: 1.5px solid var(--ink); display: inline-block; transition: background-color 0.3s ease, box-shadow 0.3s ease; }
-.brand .nopt.sel .plus { background: var(--lime); box-shadow: 0 0 0 4px rgba(205,255,0,0.3); }
+.brand .nopt .plus { font-size: 0; width: 11px; height: 11px; border-radius: var(--r-round); border: 1.5px solid var(--ink); display: inline-block; transition: background-color 0.3s ease, box-shadow 0.3s ease; }
+.brand .nopt.sel .plus { background: var(--lime); box-shadow: 0 0 0 4px var(--lime-a30); }
 @media (max-width: 860px) { .dotfield { height: 200px; } }
 
 /* ============================================================
@@ -234,27 +212,27 @@ body:not(.on-light) .sprog { background-image: radial-gradient(circle, rgba(244,
 /* Punktfeld: antippen sammelt die Lime-Punkte zur Zahl */
 canvas.dotfield { cursor: pointer; }
 .dothint { display: inline-block; margin-left: 10px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--grey-dark); }
-.dothint::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 1px var(--ink); margin-right: 8px; vertical-align: 1px; }
+.dothint::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: var(--r-round); background: var(--lime); box-shadow: 0 0 0 1px var(--ink); margin-right: var(--sp-1); vertical-align: 1px; }
 /* Budget-Regler: jeder Punkt eine Anfrage */
 .rate { max-width: 560px; }
 .ratehead { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; margin-bottom: 14px; }
 .ratehead .ratev { font-family: var(--f-serif); font-size: clamp(30px, 3vw, 46px); line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
 .ratehead .raten { font-size: 13px; font-weight: 700; letter-spacing: 0.04em; color: var(--ink); }
 .ratehead .raten b { font-family: var(--f-serif); font-weight: 400; font-size: clamp(22px, 2vw, 30px); letter-spacing: -0.01em; margin-right: 6px; }
-.rateslider { -webkit-appearance: none; appearance: none; width: 100%; height: 2px; background: rgba(16,16,16,0.25); border-radius: 2px; outline: none; margin: 10px 0 22px; }
-.rateslider::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--lime); border: 1.5px solid var(--ink); cursor: grab; box-shadow: 0 0 0 5px rgba(205,255,0,0.25); }
-.rateslider::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: var(--lime); border: 1.5px solid var(--ink); cursor: grab; }
+.rateslider { -webkit-appearance: none; appearance: none; width: 100%; height: 2px; background: var(--ink-a25); border-radius: 2px; outline: none; margin: 10px 0 22px; }
+.rateslider::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: var(--r-round); background: var(--lime); border: 1.5px solid var(--ink); cursor: grab; box-shadow: 0 0 0 5px var(--lime-a25); }
+.rateslider::-moz-range-thumb { width: 22px; height: 22px; border-radius: var(--r-round); background: var(--lime); border: 1.5px solid var(--ink); cursor: grab; }
 .ratedots { display: grid; grid-template-columns: repeat(auto-fill, 9px); gap: 5px; min-height: 120px; }
 /* Farben der Punkt-Graphen: nur brand-motion.css (Graph-Fuellung), Masse in brand-ui.css */
-.ratedots i { width: 9px; height: 9px; border-radius: 50%; }
+.ratedots i { width: 9px; height: 9px; border-radius: var(--r-round); }
 /* Zeitleiste: sechs Wochen als 42 Punkte, auf der dunklen Ablauf-Sektion */
 .tline { margin: 0 0 clamp(30px, 4vw, 50px); }
 .tldots { display: flex; flex-wrap: wrap; gap: 7px; }
-.tldots i { width: 10px; height: 10px; border-radius: 50%; background: rgba(244,243,235,0.14); transform: scale(0.5); transition: background-color 0.3s ease, transform 0.4s var(--e-out), box-shadow 0.3s ease; }
+.tldots i { width: 10px; height: 10px; border-radius: var(--r-round); background: var(--cream-a14); transform: scale(0.5); transition: background-color 0.3s ease, transform var(--d-base) var(--e-out), box-shadow 0.3s ease; }
 .tldots i.on { transform: none; }
 .tldots i.h.on { background: transparent; box-shadow: inset 0 0 0 2px var(--lime); }
 .tldots i.b.on { background: var(--paper); }
-.tldots i.g.on { background: rgba(244,243,235,0.22); }
+.tldots i.g.on { background: var(--cream-a22); }
 .tldots i.t.on { background: var(--lime); }
 .tldots i.e.on { background: var(--lime); box-shadow: 0 0 0 2px var(--ink), 0 0 0 4px var(--lime); }
 .tllegend .tl-e { background: var(--lime); box-shadow: 0 0 0 1.5px var(--ink), 0 0 0 3px var(--lime); }
@@ -263,23 +241,23 @@ canvas.dotfield { cursor: pointer; }
 .stat .dotgraph i { transform: scale(0.6); }
 .stat .dotcapmini { font-size: 12px; color: var(--grey-dark); margin-top: 12px; }
 .tllegend { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 14px; font-size: 12px; color: var(--grey); }
-.tllegend i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; vertical-align: 1px; box-sizing: border-box; }
+.tllegend i { display: inline-block; width: 8px; height: 8px; border-radius: var(--r-round); margin-right: var(--sp-1); vertical-align: 1px; box-sizing: border-box; }
 .tllegend .tl-h { border: 2px solid var(--lime); } .tllegend .tl-b { background: var(--paper); } .tllegend .tl-t { background: var(--lime); }
 /* Fit als Punktetest: Aussagen antippen, die Punkte fuellen sich, ein Satz antwortet */
 .brand .fcard--yes li { cursor: pointer; user-select: none; }
 .brand .fcard--yes li .fdot { background: transparent; border: 1.5px solid var(--ink); box-sizing: border-box; transition: background-color 0.3s ease, box-shadow 0.3s ease; }
-.brand .fcard--yes li.hit .fdot { background: var(--lime); box-shadow: 0 0 0 4px rgba(205,255,0,0.3); }
-.fitres { margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--line-l); display: flex; align-items: center; gap: 14px; font-size: 14px; line-height: 1.45; }
+.brand .fcard--yes li.hit .fdot { background: var(--lime); box-shadow: 0 0 0 4px var(--lime-a30); }
+.fitres { margin-top: 22px; padding-top: var(--sp-2); border-top: 1px solid var(--line-l); display: flex; align-items: center; gap: 14px; font-size: 14px; line-height: 1.45; }
 .fitres .frdots { display: flex; gap: 6px; flex: 0 0 auto; }
-.fitres .frdots i { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--ink); box-sizing: border-box; transition: background-color 0.3s ease; }
+.fitres .frdots i { width: 9px; height: 9px; border-radius: var(--r-round); border: 1.5px solid var(--ink); box-sizing: border-box; transition: background-color 0.3s ease; }
 .fitres .frdots i.on { background: var(--lime); }
 .fitres .frtxt { color: var(--grey-dark); }
 .fitres .frtxt b { color: var(--ink); font-weight: 600; }
 .brand .fitcards .fcard--yes .fh::after { content: "  ·  antippen"; text-transform: none; letter-spacing: 0.02em; opacity: 0.6; }
 /* Scroll-Marken: die Bahn rechts merkt sich die Kapitel */
-.sprog b { position: absolute; left: -2px; width: 6px; height: 6px; border-radius: 50%; background: rgba(16,16,16,0.28); transition: background-color 0.3s ease, transform 0.3s ease; }
+.sprog b { position: absolute; left: -2px; width: 6px; height: 6px; border-radius: var(--r-round); background: var(--ink-a28); transition: background-color 0.3s ease, transform 0.3s ease; }
 .sprog b.on { transform: none; }
-body:not(.on-light) .sprog b { background: rgba(244,243,235,0.35); }
+body:not(.on-light) .sprog b { background: var(--cream-a35); }
 @media (max-width: 860px) {
   .ratedots { min-height: 90px; }
   /* Kein seitliches Wackeln am Telefon: clip statt hidden, damit sticky und Scroll-Ereignisse unberuehrt bleiben */
@@ -294,21 +272,21 @@ body:not(.on-light) .sprog b { background: rgba(244,243,235,0.35); }
 .kpi { background: transparent; border: 1px solid var(--line-l); border-radius: var(--r-img); padding: clamp(22px, 2.4vw, 34px); display: flex; flex-direction: column; gap: 14px; position: relative; }
 .kpi .kl { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--grey-dark); }
 .kpi .kvals { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-.kpi .kfrom { font-family: var(--f-serif); font-size: clamp(20px, 1.8vw, 28px); color: var(--grey); text-decoration: line-through; text-decoration-color: rgba(16,16,16,0.35); text-decoration-thickness: 1px; }
+.kpi .kfrom { font-family: var(--f-serif); font-size: clamp(20px, 1.8vw, 28px); color: var(--grey); text-decoration: line-through; text-decoration-color: var(--ink-a35); text-decoration-thickness: 1px; }
 .kpi .karrow { color: var(--grey-dark); font-size: 18px; }
 .kpi .kto { font-family: var(--f-serif); font-size: clamp(38px, 3.6vw, 60px); line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
-.kpi .kpill { position: absolute; top: clamp(18px, 2vw, 28px); right: clamp(18px, 2vw, 28px); background: var(--lime); color: var(--ink); font-family: var(--f-disp); font-weight: 700; font-size: 14px; letter-spacing: -0.01em; padding: 7px 12px; border-radius: 999px; box-shadow: 0 0 0 1px var(--ink); transform: scale(0.7); opacity: 0; transition: transform 0.6s var(--e-out), opacity 0.4s ease; }
+.kpi .kpill { position: absolute; top: clamp(18px, 2vw, 28px); right: clamp(18px, 2vw, 28px); background: var(--lime); color: var(--ink); font-family: var(--f-disp); font-weight: 700; font-size: 14px; letter-spacing: -0.01em; padding: 7px 12px; border-radius: var(--r-pill); box-shadow: 0 0 0 1px var(--ink); transform: scale(0.7); opacity: 0; transition: transform 0.6s var(--e-out), opacity var(--d-base) ease; }
 .kpi.lit .kpill { transform: none; opacity: 1; }
 .kpi .kline { width: 100%; height: auto; display: block; overflow: visible; margin-top: 6px; }
 .kpi .kline .kpath { fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 .kpi .kline .kfill { fill: none; }
-.kpi .kline .kd { fill: var(--paper); stroke: var(--ink); stroke-width: 1.5; transform-box: fill-box; transform-origin: center; transform: scale(0); transition: transform 0.4s var(--e-out); }
+.kpi .kline .kd { fill: var(--paper); stroke: var(--ink); stroke-width: 1.5; transform-box: fill-box; transform-origin: center; transform: scale(0); transition: transform var(--d-base) var(--e-out); }
 .kpi.lit .kline .kd { transform: none; }
 .kpi .kline .kv { font-family: var(--f-ui); font-size: 9px; fill: var(--grey-dark); }
-.kpi .kdots .row { display: grid; grid-template-columns: 90px 1fr; gap: 12px; align-items: center; padding: 8px 0; }
+.kpi .kdots .row { display: grid; grid-template-columns: 90px 1fr; gap: 12px; align-items: center; padding: var(--sp-1) 0; }
 .kpi .kdots .rl { font-size: 12.5px; font-weight: 600; }
 .kpi .kdots .dots { display: flex; flex-wrap: wrap; gap: 5px; }
-.kpi .kdots .dots i { width: 8px; height: 8px; border-radius: 50%; }
+.kpi .kdots .dots i { width: 8px; height: 8px; border-radius: var(--r-round); }
 .kpi .kwaffle { max-width: none; gap: 5px; margin-top: 6px; }
 .kpi .kcap { font-size: 13px; line-height: 1.5; color: var(--grey-dark); margin-top: auto; }
 @media (max-width: 1000px) { .kpiboard { grid-template-columns: 1fr; } }
@@ -320,12 +298,12 @@ body:not(.on-light) .sprog b { background: rgba(244,243,235,0.35); }
 .kpi .kto--txt { font-family: var(--f-serif); font-style: italic; font-size: clamp(24px, 2.2vw, 36px); line-height: 1.15; letter-spacing: -0.01em; font-variant-numeric: normal; }
 .kpi .kquote { font-family: var(--f-serif); font-size: clamp(20px, 1.9vw, 30px); line-height: 1.3; letter-spacing: -0.01em; margin-top: 4px; }
 .kpi .kqa { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--grey-dark); }
-.kpi .kstrip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 6px; }
-.kpi .kstrip img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 3px; display: block; opacity: 0; transform: translateY(10px); transition: opacity 0.6s ease, transform 0.7s var(--e-out); }
+.kpi .kstrip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-1); margin-top: 6px; }
+.kpi .kstrip img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 3px; display: block; opacity: 0; transform: translateY(10px); transition: opacity 0.6s ease, transform var(--d-slow) var(--e-out); }
 .kpi.lit .kstrip img { opacity: 1; transform: none; }
 .kpi.lit .kstrip img:nth-child(2) { transition-delay: 0.12s; }
 .kpi.lit .kstrip img:nth-child(3) { transition-delay: 0.24s; }
-.kpi .dotline { justify-content: flex-start; margin-top: 6px; gap: 8px 14px; font-size: 12px; }
+.kpi .dotline { justify-content: flex-start; margin-top: 6px; gap: var(--sp-1) 14px; font-size: 12px; }
 .kpi .kdots .row { grid-template-columns: minmax(84px, 34%) 1fr; }
 .kpi .klink { margin-top: 4px; align-self: flex-start; }
 .kpiboard--mini { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(44px, 5.5vw, 80px); gap: 12px; }
@@ -345,7 +323,7 @@ body:not(.on-light) .sprog b { background: rgba(244,243,235,0.35); }
 }
 
 /* ---------- Work <-> Case: Deckel ueber der Kachel nach dem Rueckweg, blendet aus ---------- */
-.flipx--lid { transition: opacity 0.45s ease; z-index: 150; }
+.flipx--lid { transition: opacity 0.45s ease; z-index: var(--z-flip); }
 
 /* ---------- Work: Filter-Kreise und Filter-Chips stehen in brand-ui.css (Abschnitt 5 und 6), identisch fuer Filter und Branche ---------- */
 
@@ -358,7 +336,7 @@ body:not(.on-light) .sprog b { background: rgba(244,243,235,0.35); }
 /* ---------- Kopfzeile: gelernter Menue-Knopf rechts neben Kontakt, oeffnet dasselbe Menue wie der Punkt ---------- */
 .chrome .chr { display: flex; align-items: center; gap: clamp(18px, 2.4vw, 36px); pointer-events: auto; }
 .chrome .hmenu { display: inline-flex; align-items: center; gap: 9px; background: none; border: 0; padding: 0; cursor: pointer; font-family: var(--f-ui); font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--paper); opacity: 0.9; pointer-events: auto; }
-.chrome .hmenu i { width: 9px; height: 9px; border-radius: 50%; background: var(--paper); transition: transform 0.4s var(--e-out); }
+.chrome .hmenu i { width: 9px; height: 9px; border-radius: var(--r-round); background: var(--paper); transition: transform var(--d-base) var(--e-out); }
 .chrome .hmenu:hover i { transform: scale(1.35); }
 .chrome .hmenu .hm-close { display: none; }
 body.menuopen .chrome .hmenu .hm-open { display: none; }
@@ -366,36 +344,36 @@ body.menuopen .chrome .hmenu .hm-close { display: inline; }
 @media (max-width: 520px) { .chrome .hmenu { letter-spacing: 0.12em; font-size: 11px; } .chrome .ctc { font-size: 11px; } }
 
 /* ---------- Erster Besuch: der Menue-Kreis erklaert sich selbst (brand.js coach(), vier Varianten) ---------- */
-.coach-ring { position: fixed; z-index: 89; width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50%; border: 1.5px solid var(--lime); pointer-events: none; opacity: 0; }
+.coach-ring { position: fixed; z-index: var(--z-pop); width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: var(--r-round); border: 1.5px solid var(--lime); pointer-events: none; opacity: 0; }
 .coach-ring.burst { animation: coachring 0.9s ease-out forwards; }
 @keyframes coachring { 0% { transform: scale(1); opacity: 0.9; } 100% { transform: scale(2.6); opacity: 0; } }
 /* gemeinsame Zustaende des Kreises */
 body.mpop .mbtn { transform: translateX(-50%) scale(1.18); transition: transform 0.22s var(--e-out); }
-body.mpress .mbtn { transform: translateX(-50%) scale(0.84); transition: transform 0.2s ease; }
+body.mpress .mbtn { transform: translateX(-50%) scale(0.84); transition: transform var(--d-fast) ease; }
 /* 1: fuenf Punkte mit Wort, Wort in dunkler Pille, damit es auf Bild, Creme und Schwarz lesbar bleibt */
-.cdot { position: fixed; z-index: 92; width: 12px; height: 12px; margin: -6px 0 0 -6px; pointer-events: none; transition: transform 0.75s var(--e-snap); }
-.cdot i { display: block; width: 12px; height: 12px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 1px var(--ink); transform: scale(0); transition: transform 0.3s var(--e-out); }
+.cdot { position: fixed; z-index: var(--z-coach); width: 12px; height: 12px; margin: -6px 0 0 -6px; pointer-events: none; transition: transform 0.75s var(--e-snap); }
+.cdot i { display: block; width: 12px; height: 12px; border-radius: var(--r-round); background: var(--lime); box-shadow: 0 0 0 1px var(--ink); transform: scale(0); transition: transform 0.3s var(--e-out); }
 .cdot.go i { transform: scale(1); }
-.cdot span { position: absolute; left: 50%; bottom: 20px; transform: translate(-50%, 6px); white-space: nowrap; font-family: var(--f-ui); font-size: 11px; line-height: 1; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--paper); background: rgba(16,16,16,0.9); padding: 7px 10px 6px; border-radius: 999px; opacity: 0; transition: opacity 0.35s ease, transform 0.4s var(--e-out); }
+.cdot span { position: absolute; left: 50%; bottom: 20px; transform: translate(-50%, 6px); white-space: nowrap; font-family: var(--f-ui); font-size: 11px; line-height: 1; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--paper); background: var(--ink-a90); padding: 7px 10px 6px; border-radius: var(--r-pill); opacity: 0; transition: opacity 0.35s ease, transform var(--d-base) var(--e-out); }
 .cdot.say span { opacity: 1; transform: translate(-50%, 0); }
 /* 2: das Menue oeffnet sich echt (body.menuopen), waehrend der Demo ohne Hand-Cursor auf der Reihe */
 body.mdemo .mrow { cursor: default; scroll-behavior: auto; }
 /* 5: Spur aus Punkten zum Menue-Knopf oben */
-.ctrail { position: fixed; inset: 0; z-index: 91; pointer-events: none; }
+.ctrail { position: fixed; inset: 0; z-index: var(--z-coach-trail); pointer-events: none; }
 .ctrail svg { display: block; width: 100%; height: 100%; }
 .ctrail .td { fill: var(--lime); stroke: var(--ink); stroke-width: 1; opacity: 0; transform-box: fill-box; transform-origin: center; transform: scale(0.3); transition: opacity 0.25s ease, transform 0.35s var(--e-out); }
 .ctrail .td.on { opacity: 1; transform: scale(1); }
 .ctrail .trv { fill: var(--lime); stroke: var(--ink); stroke-width: 1; }
-.coach-ring.small { width: 30px; height: 30px; margin: -15px 0 0 -15px; z-index: 96; }
+.coach-ring.small { width: 30px; height: 30px; margin: -15px 0 0 -15px; z-index: var(--z-coach-top); }
 .chrome .hmenu i.lit { transform: scale(2.1); }
 /* 3: Iris */
-body.miris .mbtn { transform: translateX(-50%) scale(3); transition: transform 0.7s var(--e-snap); }
+body.miris .mbtn { transform: translateX(-50%) scale(3); transition: transform var(--d-slow) var(--e-snap); }
 body.miris .mbtn::after, body.miris .mbtn::before { opacity: 0; transition: opacity 0.3s ease; }
 body.miris .morbit { opacity: 0; transition: opacity 0.3s ease; }
-.iris { position: fixed; z-index: 92; width: 150px; height: 150px; margin: -75px 0 0 -75px; pointer-events: none; opacity: 0; transition: opacity 0.4s ease; }
+.iris { position: fixed; z-index: var(--z-coach); width: 150px; height: 150px; margin: -75px 0 0 -75px; pointer-events: none; opacity: 0; transition: opacity var(--d-base) ease; }
 .iris.on { opacity: 1; }
 .iris .iring { position: absolute; inset: 0; animation: irisspin 16s linear infinite; }
-.iris .iring i { position: absolute; left: 50%; top: 50%; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px; border-radius: 50%; background: rgba(16,16,16,0.22); transform: rotate(var(--a)) translateY(-62px); transition: background-color 0.3s ease; }
+.iris .iring i { position: absolute; left: 50%; top: 50%; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px; border-radius: var(--r-round); background: var(--ink-a22); transform: rotate(var(--a)) translateY(-62px); transition: background-color 0.3s ease; }
 .iris .iring i.lit { background: var(--ink); }
 .iris .iword { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-family: var(--f-ui); font-size: 12px; line-height: 1; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); opacity: 0; white-space: nowrap; }
 .iris .iword.in { animation: iword 0.5s ease forwards; }
@@ -403,7 +381,7 @@ body.miris .morbit { opacity: 0; transition: opacity 0.3s ease; }
 @keyframes iword { 0% { opacity: 0; transform: translate(-50%, calc(-50% + 5px)); } 100% { opacity: 1; transform: translate(-50%, -50%); } }
 /* 4: das Wort schreibt sich, danach blinkt der Kern */
 body.mwriting .mbtn::after, body.mwriting .mbtn::before { opacity: 0; transition: opacity 0.25s ease; }
-.mwrite { position: fixed; z-index: 92; transform: translate(-50%, -50%); display: flex; padding-left: 0.14em; font-family: var(--f-ui); font-size: 11px; line-height: 1; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); pointer-events: none; transition: opacity 0.4s ease; }
+.mwrite { position: fixed; z-index: var(--z-coach); transform: translate(-50%, -50%); display: flex; padding-left: 0.14em; font-family: var(--f-ui); font-size: 11px; line-height: 1; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); pointer-events: none; transition: opacity var(--d-base) ease; }
 .mwrite b { font-weight: 700; opacity: 0; transform: translateY(5px); transition: opacity 0.25s ease, transform 0.3s var(--e-out); }
 .mwrite b.in { opacity: 1; transform: none; }
 .mwrite.out { opacity: 0; }
@@ -413,7 +391,7 @@ body.mblink .mbtn::before { animation: mblink 0.45s ease 2; }
 
 /* ---------- Punkt-Graphen: jede Einheit ein Punkt ---------- */
 .dotgraph { display: grid; grid-template-columns: repeat(var(--cols, 10), 1fr); gap: clamp(7px, 1vw, 13px); max-width: 440px; }
-.dotgraph i { display: block; aspect-ratio: 1; border-radius: 50%; }
+.dotgraph i { display: block; aspect-ratio: 1; border-radius: var(--r-round); }
 .dotcap { display: flex; align-items: baseline; gap: 14px; margin-top: 22px; }
 .dotcap .dv { font-family: var(--f-serif); font-size: clamp(40px, 4.4vw, 72px); line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
 .dotcap .dl { font-size: 13px; color: var(--grey-dark); max-width: 22ch; line-height: 1.45; }
@@ -422,7 +400,7 @@ body.mblink .mbtn::before { animation: mblink 0.45s ease 2; }
 .dotbars .rl { font-size: 13.5px; font-weight: 600; }
 .dotbars .rv { font-family: var(--f-serif); font-size: clamp(20px, 1.8vw, 28px); font-variant-numeric: tabular-nums; }
 .dotbars .dots { display: flex; flex-wrap: wrap; gap: 6px; }
-.dotbars .dots i { width: 10px; height: 10px; border-radius: 50%; }
+.dotbars .dots i { width: 10px; height: 10px; border-radius: var(--r-round); }
 .dotnote { font-size: 12px; color: var(--grey-dark); margin-top: 14px; }
 @media (max-width: 860px) {
   .dotbars .row { grid-template-columns: 1fr auto; }

@@ -14,38 +14,7 @@
    Die Display-Entscheidung trifft _headlines.py (data-hd, --hn, --h1n). Von Hand gesetzte Amandine-Zeilen
    ausserhalb von _headlines.py tragen die Klasse "am" (z. B. im Footer). */
 
-/* ---------- 1 Variablen: Schriften und Typo-Skala ---------- */
-body.brand {
-  --f-sans: "Satoshi", "Helvetica Neue", Arial, sans-serif;
-  --f-amandine: "amandine", Georgia, "Times New Roman", serif;
-  /* Altlasten: alles, was bisher --f-serif (Reckless, Amandine) oder --f-disp nahm, ist jetzt Satoshi.
-     Amandine gibt es nur noch ueber --f-amandine in dieser Datei. */
-  --f-ui: var(--f-sans);
-  --f-disp: var(--f-sans);
-  --f-serif: var(--f-sans);
-
-  /* Skala (Werte bei 1440 / 390). H1 nach Figma Website 80 / Mobile 39, Split 62, H2 42, H3 = H2 / 1,55 */
-  --fs-h1: clamp(39px, 5.56vw, 80px);      /* Hero, Vollbild, Footer */
-  --fs-h1-xl: clamp(44px, 7.6vw, 110px);   /* zentrierter Hero der Leistungsseiten (Figma color centered 132) */
-  --fs-display: clamp(34px, 4.3vw, 62px);  /* Display-Headline in Sektionen und Splits */
-  --fs-h2: clamp(28px, 2.92vw, 42px);
-  --fs-h3: calc(var(--fs-h2) / 1.55);      /* 27,1 px bei 1440 */
-  --fs-body: 17px;
-  --fs-ui: 15px;                           /* Buttons, Chips, Nav: 15 bis 17 px */
-  --fs-small: 15px;
-  --fs-cap: 13px;                          /* Badges, Captions */
-  --fs-num: clamp(40px, 3.6vw, 56px);      /* grosse Zahl, ab 1334 px Breite mindestens 48 px */
-  --lh-head: 1.1;
-  --lh-h3: 1.2;
-  --lh-body: 1.4;
-  --lh-ui: 1.2;
-  --lh-num: 1.1;
-  /* Amandine-Zeile: Figma setzt sie 0,88 der Satoshi-Zeile (80 / 70,5, 39 / 34, 84 / 73,5) */
-  --am-scale: 0.88;
-  /* --hn liefert _headlines.py als Breite der Amandine-Zeile in Einheiten zu 0,5 em (gemessene Zeichenbreiten).
-     0,52 statt 0,5 laesst 4 Prozent Reserve fuer Kerning und Rundung. */
-  --am-cw: 0.52;
-}
+/* ---------- 1 Variablen: Schriften, Typo-Skala und Zeilenhoehen stehen in tokens.css (Abschnitte 4 und 5) ---------- */
 
 /* ---------- 2 Grundsatz ---------- */
 /* Normale Schreibung, keine gesperrte Laufweite: gilt fuer jede Rolle (Figma kennt keinen Versalsatz). */
@@ -211,8 +180,7 @@ body.brand :is(.logo, .ptw, .fword, .fmark, .wordmark, .ftr-mark) i {
 }
 /* Navbar (Figma 84:35): Wortmarke 25 px, mobil 23 px wie im Footer. Schutzraum: der Kopf hat 24 bis 56 px Rand,
    mehr als die Hoehe des d (rund 18 px) */
-body.brand .chrome .logo { font-size: 25px; line-height: 1; }
-@media (max-width: 720px) { body.brand .chrome .logo { font-size: 23px; } }
+body.brand .chrome .logo { font-size: var(--fs-logo); line-height: 1; } /* 25 px, ab 720 px Breite abwaerts 23 px (tokens.css) */
 /* Wortmarke in der Prozess-Karte (SVG-Text): Bold, auch gegen die 500 fuer svg text aus Abschnitt 6 */
 body.brand .pmap .ptw, body.brand .pmap .ptw * { font-weight: 700 !important; }
 

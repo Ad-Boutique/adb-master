@@ -19,8 +19,7 @@ import json
 import os
 import re
 
-from _gen import CASES
-from _gen_web import WEBCASES
+from _cases import HAND as CASES_HAND, PERFORMANCE, WEB
 from _gen_services import SERVICES
 
 LIVE = os.environ.get("ADB_LIVE") == "1"
@@ -89,13 +88,7 @@ HAND = {
     "kontakt.html": dict(title="Anfrage: Performance Marketing Agentur Wien | ad.boutique",
                          desc="Anfrage in zwei Minuten, ehrliche Ersteinschätzung unter 24 Stunden, ein Gründer prüft. Der Einstieg ist ein Audit ohne Vertrag.",
                          kind="contact"),
-    "case-premium-neubau.html": dict(title="Case: Premium-Neubau Wien, 489 Anfragen zu 11,77 Euro | ad.boutique",
-                                     desc="489 Kaufinteressenten aus 5.755 Euro Spend, 11,77 Euro je Anfrage, Instant Form 6,97 statt 15,66 Euro über die Website. Ein Motiv trug 54 Prozent.",
-                                     kind="case"),
     "case-premium-neubau-v3.html": dict(title="Vorschau v3: Premium-Neubau Wien | ad.boutique", desc="Vorschau-Variante, nicht indexiert.", kind="case"),
-    "case-kommunalkredit.html": dict(title="Case: Kommunalkredit Sommergespräche, Film und Kampagne | ad.boutique",
-                                     desc="Sommergespräche in Bad Aussee: Recap-Film, Dokumentation und 19 Social Clips aus drei Drehtagen, dazu Kampagnen auf LinkedIn und Google.",
-                                     kind="case"),
     "service-performance-marketing-v3.html": dict(title="Vorschau v3: Performance Marketing | ad.boutique", desc="Vorschau-Variante, nicht indexiert.", kind="service"),
     "studie-performance.html": dict(title="Studie: Performance-Grafiken | ad.boutique", desc="Interne Studie, nicht indexiert.", kind="other"),
     "case-web-funkhausliving.html": dict(title="Weiterleitung | ad.boutique", desc="Weiterleitung.", kind="other"),
@@ -105,16 +98,24 @@ HAND = {
 
 def registry():
     reg = dict(HAND)
-    for c in CASES:
+    # Cases aus den Inhaltsdateien _content/cases/*.json: handgebaute Seiten mit eigenem meta.seo,
+    # Dossiers und Website-Cases mit Title und Description aus Name, Kennzahl, Hero-Zeile und Intro
+    for c in CASES_HAND:
+        seo = c["meta"].get("seo")
+        if seo:
+            reg[c["seite"]] = dict(title=seo["titel"], desc=seo["beschreibung"], kind="case")
+    for c in PERFORMANCE:
         f = c["slug"] + ".html"
-        if c.get("handmade") or f in reg:
+        if c["vorlage"] == "handgebaut" or f in reg:
             continue
-        big = (c.get("big") or "").strip()
-        title = ("Case: %s, %s %s | ad.boutique" % (c["nav_title"], big, c.get("biglabel", ""))) if big else ("Case: %s | ad.boutique" % c["nav_title"])
-        reg[f] = dict(title=title.replace("  ", " "), desc=clip(c["sub"] + " " + first_sentence(c["body"])), kind="case", name=c["nav_title"])
-    for c in WEBCASES:
+        k = c["hero"].get("kennzahl") or {}
+        big = (k.get("wert") or "").strip()
+        name = c["meta"]["name"]
+        title = ("Case: %s, %s %s | ad.boutique" % (name, big, k.get("label", ""))) if big else ("Case: %s | ad.boutique" % name)
+        reg[f] = dict(title=title.replace("  ", " "), desc=clip(c["hero"]["headline"] + " " + first_sentence(c["intro"]["text"])), kind="case", name=name)
+    for c in WEB:
         f = c["slug"] + ".html"
-        reg[f] = dict(title="%s: %s | ad.boutique" % (c["name"], c["line"]), desc=clip(c["story"]), kind="case", name=c["name"])
+        reg[f] = dict(title="%s: %s | ad.boutique" % (c["meta"]["name"], c["hero"]["headline"]), desc=clip(c["intro"]["text"]), kind="case", name=c["meta"]["name"])
     for s in SERVICES:
         f = s["slug"] + ".html"
         seo = s.get("seo", {})
@@ -259,13 +260,13 @@ def write_files(reg, live):
     for s in SERVICES:
         lines.append("- [%s](%s%s): %s" % (s["nav"], BASE, path_for(s["slug"] + ".html"), strip_tags(s["sub"])))
     lines += ["", "## Referenzen (Zahlen aus dem Reporting, Kunden teils anonymisiert)", ""]
-    for c in CASES:
+    for c in PERFORMANCE:
         f = c["slug"] + ".html"
         if f in reg:
-            lines.append("- [%s](%s%s): %s" % (c["nav_title"], BASE, path_for(f), strip_tags(reg[f]["desc"])))
-    for c in WEBCASES:
+            lines.append("- [%s](%s%s): %s" % (c["meta"]["name"], BASE, path_for(f), strip_tags(reg[f]["desc"])))
+    for c in WEB:
         f = c["slug"] + ".html"
-        lines.append("- [%s](%s%s): %s" % (c["name"], BASE, path_for(f), strip_tags(c["line"])))
+        lines.append("- [%s](%s%s): %s" % (c["meta"]["name"], BASE, path_for(f), strip_tags(c["hero"]["headline"])))
     lines += ["", "## Weitere Seiten", "", "- [Agentur](%s/agentur)" % BASE, "- [Referenzen](%s/referenzen)" % BASE, "- [Anfrage](%s/kontakt)" % BASE, ""]
     open("llms.txt", "w", encoding="utf-8").write("\n".join(lines))
     return len(pages)

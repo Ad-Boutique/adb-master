@@ -1,0 +1,69 @@
+{
+  "slug": "case-web-havenstone",
+  "vorlage": "web",
+  "kette": "web",
+  "reihenfolge": 240,
+  "naechster": "case-web-northpoint",
+  "meta": {
+    "name": "Havenstone",
+    "branche": "Real Estate, Development",
+    "url": "https://www.havenstone.at",
+    "umfang": ["Strategie & Struktur", "Design", "Umsetzung", "Signaturen, Vorlagen, Workspace"],
+    "leistungen": [{"titel": "Websites & Landingpages", "seite": "service-websites.html"}]
+  },
+  "hero": {"headline": "Größe zeigen, ohne laut zu werden.", "bild": "assets/img/web_havenstone_d.jpg"},
+  "intro": {"text": "Internationale Projekte brauchen einen Auftritt, der Größe zeigt, ohne laut zu werden: großes Bewegtbild, wenige Worte, klare Wege zu den Projekten."},
+  "kennzahlen": {
+    "headline": ["Was das Projekt ausmacht,", "in drei Punkten."],
+    "karten": [
+      {
+        "id": "havenstone-wochen",
+        "art": "text",
+        "label": "Vom Briefing bis Go-live",
+        "wert": "Vier Wochen.",
+        "badge": "4 Partner, eine Meinung",
+        "stationen": ["Briefing", "5 Bildstile", "Header-Film", "Freigabe", "Live"],
+        "text": "Nicht diskutiert, sondern gezeigt: fünf Bildstile zur Auswahl, ein Bewegtbild im Header, wenige Worte."
+      },
+      {
+        "art": "zaehler",
+        "label": "Was ein neues Haus am ersten Tag braucht",
+        "wert": "5",
+        "einheit": "Bausteine",
+        "zaehlen": {"von": 0, "bis": 5, "dezimalen": 0, "vor": "", "nach": ""},
+        "badge": "Ein Auftritt, eine Sprache",
+        "reihen": [{"label": "Bausteine", "punkte": 5, "an": 5, "hervorgehoben": true}],
+        "text": "E-Mail-Signaturen, Präsentationsvorlage, LinkedIn-Design, Exposé-Vorlage, Arbeitsplatz in der Cloud."
+      },
+      {"art": "zitat", "label": "Was der Kunde sagt", "zitat": "Wir fühlen uns damit sehr wohl und möchten uns noch einmal herzlich für den persönlichen Einsatz in so kurzer Zeit bedanken.", "wer": "Robert Petrović, Partner und Co-Founder, Havenstone"}
+    ]
+  },
+  "bausteine": [
+    {"typ": "buehne", "bild": "assets/img/web_havenstone_d1.jpg"},
+    {
+      "typ": "mobil",
+      "headline": "Mobil zuerst gedacht.",
+      "text": "Der Auftritt, wie ihn die meisten Besucher sehen: am Telefon, Seite für Seite.",
+      "bilder": [
+        "assets/img/web_havenstone_m0.jpg",
+        "assets/img/web_havenstone_m1.jpg",
+        "assets/img/web_havenstone_m2.jpg",
+        "assets/img/web_havenstone_ms0.jpg",
+        "assets/img/web_havenstone_ms1.jpg"
+      ]
+    },
+    {
+      "typ": "unterseiten",
+      "label": "Aus dem Projekt",
+      "bilder": ["assets/img/web_havenstone_ds0.jpg", "assets/img/web_havenstone_ds1.jpg", "assets/img/web_havenstone_ds2.jpg"]
+    },
+    {
+      "typ": "kapitel",
+      "label": "Zweites Kapitel, vier Wochen",
+      "headline": ["Vier Partner, eine Meinung, vier Wochen."],
+      "absatz1": "Vier Gründer mit vier Vorstellungen davon, wie Seriosität aussieht. Wir haben nicht diskutiert, sondern gezeigt: fünf Bildstile zur Auswahl, ein Bewegtbild im Header, wenige Worte. Vom Briefing bis zur Go-live-Freigabe vergingen vier Wochen.",
+      "absatz2": "<b>Dazu alles, was ein neues Beratungshaus am ersten Tag braucht:</b> E-Mail-Signaturen, Präsentationsvorlage, LinkedIn-Design, Exposé-Vorlage für die Objekte und die Einrichtung des Arbeitsplatzes in der Cloud. Ein Auftritt, der von der Website bis zur Mail-Signatur dieselbe Sprache spricht."
+    },
+    {"typ": "zitat", "text": "Das Feedback des Teams zur Website ist durchweg positiv. Wir fühlen uns damit sehr wohl und möchten uns noch einmal herzlich für den persönlichen Einsatz in so kurzer Zeit bedanken.", "wer": "Robert Petrović, Partner und Co-Founder, Havenstone"}
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "slug": "case-photovoltaik",
+  "vorlage": "dossier",
+  "kette": "performance",
+  "reihenfolge": 90,
+  "naechster": "case-seeresidenz",
+  "meta": {
+    "name": "Photovoltaik-Anbieter",
+    "titel": ["Photovoltaik-", "Anbieter."],
+    "ziel": "Qualifizierte Anfragen",
+    "branche": "Energie, Photovoltaik",
+    "zeitraum": "Kampagnenphase",
+    "kanaele": "Google Search, Konfigurator",
+    "farbwelt": "#3A3A2E",
+    "farbwelt_text": "#F0F0E6",
+    "leistungen": [
+      {"titel": "Websites & Landingpages", "seite": "service-websites.html"},
+      {"titel": "Performance Marketing", "seite": "service-performance-marketing.html"}
+    ]
+  },
+  "hero": {
+    "headline": "Der Konfigurator ist das Creative.",
+    "bild": "assets/img/a_gmund1.jpg",
+    "kennzahl": {"wert": "+487 %", "label": "Website-Besucher"}
+  },
+  "intro": {"these": "Hohe Nachfrage im Markt, aber zu wenig <b>Sichtbarkeit</b> und kein Mechanismus, Interessenten in <b>qualifizierte Anfragen</b> zu verwandeln.", "text": "Wir haben Google Search auf kaufnahe Intents ausgerichtet und einen PV-Konfigurator als Lead-Magnet gebaut: Der Besucher rechnet seinen Bedarf und wird dabei zum Lead. 406 Leads zu € 30,83, und 487 Prozent mehr Website-Besucher."},
+  "kennzahlen": {
+    "headline": ["Was besser wurde,", "in drei Zahlen."],
+    "karten": [
+      {
+        "id": "pv-besucher",
+        "art": "sprung",
+        "label": "Website-Besucher, indexiert",
+        "vorher": "100",
+        "wert": "587",
+        "zaehlen": {"von": 100, "bis": 587, "dezimalen": 0, "vor": "", "nach": ""},
+        "badge": "+487 %",
+        "reihen": [
+          {"label": "Vorher", "punkte": 59, "an": 10, "hervorgehoben": false},
+          {"label": "Mit uns", "punkte": 59, "an": 59, "hervorgehoben": true}
+        ],
+        "text": "Google Search auf kaufnahe Suchbegriffe, der Konfigurator als Lead-Magnet. Ein Punkt sind zehn Indexpunkte."
+      },
+      {
+        "art": "zaehler",
+        "label": "Anfragen",
+        "wert": "406",
+        "zaehlen": {"von": 0, "bis": 406, "dezimalen": 0, "vor": "", "nach": ""},
+        "badge": "€ 30,83 je Anfrage",
+        "reihen": [{"label": "Anfragen", "punkte": 41, "an": 41, "hervorgehoben": true}],
+        "text": "Aus Google Search auf kaufnahe Suchbegriffe. Ein Punkt sind zehn Anfragen."
+      },
+      {
+        "art": "text",
+        "label": "Der Lead-Magnet",
+        "wert": "Der Konfigurator ist das Creative.",
+        "badge": "2 Minuten",
+        "stationen": ["Suche", "Konfigurator", "Bedarf", "Anfrage"],
+        "text": "Der Besucher rechnet seinen Bedarf und wird dabei zur Anfrage."
+      }
+    ],
+    "fussnote": "Sichtbarkeit und Conversion-Mechanik gehören zusammen: Search erntet Nachfrage, die schon da ist, der Konfigurator macht sie zur Anfrage."
+  },
+  "bausteine": [
+    {"typ": "statement", "zeilen": ["Der Konfigurator selbst", "ist das beste Creative."]},
+    {
+      "typ": "perspektiven",
+      "zeilen": [
+        {"titel": "Effizienz", "text": "Kaufnahe Search-Intents statt teurer Reichweite."},
+        {"titel": "Zielgruppe", "text": "Aktiv Suchende mit hoher Abschlussnähe."},
+        {"titel": "Message", "text": "Bedarf in zwei Minuten berechnen."},
+        {"titel": "Creative", "text": "Der Konfigurator selbst ist das beste Creative."},
+        {"titel": "Kanal", "text": "Search als Nachfrage-Erntemaschine."}
+      ]
+    },
+    {
+      "typ": "ergebnis",
+      "ausgeblendet": true,
+      "zahlen": [
+        {"label": "(Leads)", "wert": "406"},
+        {"label": "(Cost per Lead)", "wert": "€ 30,83"},
+        {"label": "(Website-Besucher)", "wert": "+487 %"},
+        {"label": "(Mechanik)", "wert": "Konfigurator"}
+      ],
+      "kurzfassung": ["<em>406</em> Leads", "<em>€ 30,83</em> pro Lead", "<em>+487 %</em> Website-Besucher"]
+    },
+    {
+      "typ": "learnings",
+      "saetze": [
+        "Ein interaktiver Lead-Magnet schlägt das Standard-Formular.",
+        "Search erntet Nachfrage, die schon da ist.",
+        "Sichtbarkeit und Conversion-Mechanik gehören zusammen."
+      ]
+    }
+  ]
+}
