@@ -1009,6 +1009,51 @@ def _content_section(slug, label="Aus laufenden Mandaten"):
             '    <div class="cplane">\n%s\n    </div>\n  </section>\n\n') % ("\n".join(parts))
 
 
+# Leistungs-Hero im Woerterbuch-Stil (Kundenfreigabe 3.10.2026): ein Wort ueber die ganze Breite,
+# darunter die Tags, dann die Definition mit Amandine-Woertern (<em>) und ein Foto ueber die volle Breite.
+# Suchbegriff fuer die H1 steht unsichtbar im sr-only-Teil (SEO-Label), das Wort selbst ist dekorativ gross.
+DHERO = {
+ "service-performance-marketing": dict(word="Performance", kicker="Performance Marketing",
+  text="die Fähigkeit, aus <em>Aufmerksamkeit</em> messbare <em>Anfragen</em>, <em>Verkäufe</em> und <em>Umsatz</em> zu machen, Euro für Euro <em>zurechenbar</em>",
+  img="assets/img/hero/performance-marketing.jpg", alt="Team der ad.boutique bei der Arbeit an Kampagnen im Büro in Wien"),
+ "service-content-creation": dict(word="Content", kicker="Content Creation",
+  text="das Handwerk, aus Foto, Film und UGC <em>Motive</em> zu machen, die im Feed <em>bestehen</em> und am <em>CPA</em> gemessen werden, nicht am <em>Applaus</em>",
+  img="assets/img/hero/content-creation.jpg", alt="Videodreh der ad.boutique mit Gimbal auf einer Baustelle in Wien"),
+ "service-ecommerce": dict(word="E-Commerce", kicker="E-Commerce Growth",
+  text="die Disziplin, aus <em>Ads</em>, <em>Creatives</em>, Shop und Tracking ein System zu machen, das <em>planbar</em> wächst, vergütet am <em>Ergebnis</em>",
+  img="assets/img/hero/ecommerce.jpg", alt="Team der ad.boutique im Besprechungsraum in Wien"),
+ "service-websites": dict(word="Websites", kicker="Websites & Landingpages",
+  text="die Kunst, aus einem <em>Besuch</em> eine <em>Anfrage</em> zu machen: Landingpages, Shops und Lead-Magnete, gebaut auf <em>Conversion</em> und gemessen am <em>Abschluss</em>",
+  img="assets/img/hero/websites.jpg", alt="Team der ad.boutique prüft eine Landingpage am Laptop"),
+ "service-strategie": dict(word="Strategie", kicker="Strategie & Funnel",
+  text="die Ordnung hinter dem Wachstum: <em>Funnel</em>, KPI-Logik und <em>Attribution</em>, die Entscheidungen tragen, damit <em>Struktur</em> das <em>Bauchgefühl</em> schlägt",
+  img="assets/img/hero/strategie.jpg", alt="Strategie-Session der ad.boutique am Vision Board"),
+ "service-chatgpt-ads": dict(word="ChatGPT Ads", kicker="ChatGPT Ads",
+  text="die Werbung im <em>Moment</em> der <em>Entscheidung</em>: Anzeigen in ChatGPT, dort, wo Ihre Kunden <em>fragen</em>, bevor sie <em>kaufen</em>",
+  img="assets/img/hero/chatgpt-ads.jpg", alt="Team der ad.boutique bespricht eine Kampagne am Laptop"),
+}
+
+
+def _dhero(s):
+    d = DHERO[s["slug"]]
+    seo = SEO.get(s["slug"], {}).get("label") or s["nav"]
+    tags = "".join('<span class="bdg">%s</span>' % t for t in s["tags"])
+    text = d["text"].replace("<em>", '<em class="dh-am">')
+    return ('''  <section class="dhero fg-light bg-paper" data-bg="#F4F3EB" data-fg="dark">
+    <a class="svc-back" href="index.html#leistungen">← Alle Leistungen</a>
+    <div class="dh-wrap">
+      <h1 class="dh-word"><span class="dh-fit" aria-hidden="true">%s</span><span class="sr-only">%s</span></h1>
+      <div class="dh-tags" data-fade>%s</div>
+      <div class="dh-def" data-fade>
+        <p class="dh-kicker">%s [Leistung]</p>
+        <p class="dh-text">%s</p>
+        <a class="alink" href="#anfrage">Direkt anfragen ↓</a>
+      </div>
+    </div>
+    <figure class="dh-photo"><img src="%s" alt="%s" width="2400" height="1371" fetchpriority="high"></figure>
+  </section>''') % (d["word"].upper(), seo, tags, d["kicker"], text, d["img"], d["alt"])
+
+
 def _heronum(s):
     hn = s.get("heronum")
     if not hn:
@@ -1884,23 +1929,8 @@ def render_service(s):
     page = HEAD.format(title=s["nav"], bodybg="#F3EDE1") + menu("index.html#leistungen") + '''<main class="apl">
 ''' + _chapnav(s) + '''
 
-  <!-- 01, HERO -->
-  <section class="svc-hero fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="position:relative">
-    <a class="svc-back" href="index.html#leistungen">← Alle Leistungen</a>
-    <div class="wrap">
-      <span class="label slabel" data-fade>''' + s["label"] + '''</span>
-      <h1 data-lines>
-        ''' + h1 + '''
-      </h1>
-      <div class="tags" data-fade>
-        ''' + tags + '''
-      </div>
-      <p class="ssub" data-fade style="--i:1">''' + s["sub"] + '''</p>
-''' + _dotline(s) + '''      <div data-fade style="--i:2;margin-top:28px"><a class="alink" href="#anfrage">Direkt anfragen ↓</a></div>
-''' + _dotfield(s) + '''''' + heronum_sec + '''
-    </div>
-  </section>
-
+  <!-- 01, HERO (Woerterbuch-Stil, Kundenfreigabe 3.10.2026) -->
+''' + _dhero(s) + '''
 ''' + sol_sec + '''  <!-- 05, PROOF 1: ZOOM -->
   <section class="zoomsec" data-side="''' + z["side"] + '''" data-bg="#F3EDE1" data-fg="dark">
     <div class="zsticky">

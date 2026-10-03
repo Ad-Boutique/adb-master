@@ -21,8 +21,8 @@ rep("<title>", "<title>Vorschau v3, ")
 
 # 0. Kapitel-Leiste gibt es nicht mehr (24.9.2026); die Sektions-IDs kommen aus dem Generator
 
-# 1. Hero: Zahlen statt Schlagwoerter
-rep('''      <div class="tags" data-fade>
+# 1. Hero: Zahlen statt Schlagwoerter (nur noch, wenn der alte Hero da ist; seit 3.10.2026 Woerterbuch-Hero)
+if '<div class="tags" data-fade>' in h: rep('''      <div class="tags" data-fade>
         <span>Meta, Google, TikTok</span>
         <span>Lead-Generierung</span>
         <span>Creative-Testing</span>

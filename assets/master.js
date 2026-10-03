@@ -774,9 +774,19 @@
     }
     /* Drift */
     drifts.forEach(function (d) {
-      var r3 = d.el.getBoundingClientRect();
-      var delta = (r3.top + r3.height / 2) - vh / 2;
-      d.el.style.transform = "translateY(" + (delta * d.s * -1) + "px)";
+      var r3 = d.el.getBoundingClientRect(), t0 = d.t || 0;
+      var top = r3.top - t0, bot = r3.bottom - t0;
+      var delta = (top + r3.height / 2) - vh / 2;
+      var t = delta * d.s * -1;
+      /* nie ueber die eigene Sektion hinaus: mindestens 48 px Luft zur Kante (Kundenhinweis 3.10.2026) */
+      var sec = d.sec !== undefined ? d.sec : (d.sec = d.el.classList.contains("phcol") ? d.el.closest("section") : null);
+      if (sec) {
+        var sr = sec.getBoundingClientRect(), gap = 48;
+        t = Math.max(t, sr.top + gap - top);
+        t = Math.min(t, sr.bottom - gap - bot);
+      }
+      d.t = t;
+      d.el.style.transform = "translateY(" + t + "px)";
     });
     zoomTick();
     procTick();

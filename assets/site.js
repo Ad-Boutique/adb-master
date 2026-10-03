@@ -338,6 +338,22 @@
     if (variant === 2) press(); else if (variant === 3) iris(); else if (variant === 4) write(); else if (variant === 5) trail(0); else if (variant === 6) combo(); else fan();
   }
 
+  /* ---------- Leistungs-Hero: das Wort fuellt die Zeile exakt (Schriftgroesse an die Rahmenbreite) ---------- */
+  (function () {
+    var w = document.querySelector(".dhero .dh-word"); if (!w) return;
+    var f = w.querySelector(".dh-fit"); if (!f) return;
+    function fit() {
+      f.style.display = "inline-block";
+      w.style.setProperty("font-size", "100px", "important");
+      var r = w.clientWidth / f.getBoundingClientRect().width;
+      w.style.setProperty("font-size", (100 * r * 0.995).toFixed(2) + "px", "important");
+      f.style.display = "";
+    }
+    fit();
+    addEventListener("load", fit); addEventListener("resize", fit);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  })();
+
   /* ---------- Work: aktiver Filter (nicht Alle) markiert seinen Kreis ---------- */
   (function () {
     var pairs = [[".fbtn", ".fpop"], [".bbtn", ".bpop"]];
@@ -1708,9 +1724,19 @@
     }
     /* Drift */
     drifts.forEach(function (d) {
-      var r3 = d.el.getBoundingClientRect();
-      var delta = (r3.top + r3.height / 2) - vh / 2;
-      d.el.style.transform = "translateY(" + (delta * d.s * -1) + "px)";
+      var r3 = d.el.getBoundingClientRect(), t0 = d.t || 0;
+      var top = r3.top - t0, bot = r3.bottom - t0;
+      var delta = (top + r3.height / 2) - vh / 2;
+      var t = delta * d.s * -1;
+      /* nie ueber die eigene Sektion hinaus: mindestens 48 px Luft zur Kante (Kundenhinweis 3.10.2026) */
+      var sec = d.sec !== undefined ? d.sec : (d.sec = d.el.classList.contains("phcol") ? d.el.closest("section") : null);
+      if (sec) {
+        var sr = sec.getBoundingClientRect(), gap = 48;
+        t = Math.max(t, sr.top + gap - top);
+        t = Math.min(t, sr.bottom - gap - bot);
+      }
+      d.t = t;
+      d.el.style.transform = "translateY(" + t + "px)";
     });
     zoomTick();
     procTick();

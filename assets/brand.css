@@ -183,7 +183,9 @@ body:not(.on-light) .sprog { background-image: radial-gradient(circle, var(--cre
 /* Bilder in natuerlichem Licht, keine Graustufen als Stilmittel (BRAND-RULES Abschnitt 8).
    Ausnahme Agentur (Abschnitt 10, Bilder und Bildaufbau bleiben): Collage und Team-Portraits behalten ihr Schwarzweiss. */
 .brand .svcband img, .brand .pportrait img, .brand .ivplayer, .brand .cstate .bgim img { filter: none; }
-.brand.pg-agentur .pportrait img { filter: grayscale(1) contrast(1.04); }
+.brand.pg-agentur .pportrait img { filter: grayscale(1) contrast(1.04); transition: filter 0.6s ease; }
+/* Hover auf die Person: von Schwarzweiss zu Farbe (Kundenwunsch 3.10.2026) */
+.brand.pg-agentur .pcell:hover .pportrait img, .brand.pg-agentur .pportrait:hover img { filter: none; }
 .brand .acollage img { filter: grayscale(1) contrast(1.04); transition: filter 0.6s ease; }
 .brand .acollage span:hover img { filter: none; }
 /* Punktzeile: die Punkte fuellen sich nacheinander */

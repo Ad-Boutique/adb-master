@@ -99,7 +99,7 @@ VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "met
 PHOTO = {"chero", "hshow", "cstate", "collage", "wt", "ivid", "vmedia", "filmwrap", "pwiv", "ivframe", "tmed"}
 # Link-Paare ohne eigene Klasse (Case-Fotowand, Panel-Scroll): Anfrage = Hauptaktion, alles andere = zweite Aktion
 PAIRS = {"pwlinks", "pslinks"}
-KEEP_TEXTLINK = {"alink", "zalink", "svc-back"}
+KEEP_TEXTLINK = {"svc-back", "keeplink"}
 # Klassen heller Flaechen innerhalb dunkler Sektionen (Startseiten-Hero: rechte Haelfte Cream)
 LIGHT = {"hpitch"}
 # Klassen dunkler Flaechen ohne eigenes data-fg
@@ -175,7 +175,7 @@ VARIANTS = ("btn--primary", "btn--secondary", "btn--accent", "btn--inverse", "bt
             "btn--soft-cream", "btn--soft-black", "btn--soft-lime")
 # Klasse -> Rolle. main = Hauptaktion, second = zweite Aktion, accent = Lime-Aktion auf hellem Grund, photo = immer Foto
 ROLES = [("btn-i", "main"), ("btn-p", "main"), ("kbtn", "main"), ("btn-o", "second"), ("kback", "second"),
-         ("ngo", "accent"), ("ivsound", "photo")]
+         ("alink", "second"), ("zalink", "second"), ("ngo", "accent"), ("ivsound", "photo")]
 
 
 def variant(cls, ground):
@@ -212,15 +212,21 @@ def fix_components(h):
         cls = (a.get("class") or "").split()
         end = h.index(">", off) + 1
         src = h[off:end]
-        # Textlinks der alten Seite bleiben Textlinks (Kundenentscheidung 3.10.2026: Versalien, Sperrung,
-        # Unterstrich; Aussehen in brand-keep.css): alink, zalink, svc-back und die Link-Paare unter Fotowand/Panel.
-        # Frueher gesetzte Button-Klassen werden hier wieder entfernt, damit der Schritt mehrfach laufen kann.
-        if tag == "a" and ((set(cls) & KEEP_TEXTLINK) or (pcls & PAIRS)):
-            new = set_class(src, lambda c: [x for x in c if x not in VARIANTS and x not in ("btn", "btn-i", "btn-o", "btn-p")]) if cls else src
-            new = new.replace(' class=""', "")
+        # Textlinks der alten Seite bleiben Textlinks, aber nur an den Stellen der Kunden-Screenshots
+        # (3.10.2026): "Alle Leistungen" (svc-back) und Links mit der Markierung keeplink (Leistungs-Links
+        # auf dem Premium-Neubau-Case). Frueher gesetzte Button-Klassen werden entfernt (mehrfach ausfuehrbar).
+        if tag == "a" and (set(cls) & KEEP_TEXTLINK):
+            new = set_class(src, lambda c: [x for x in c if x not in VARIANTS and x not in ("btn", "btn-i", "btn-o", "btn-p")])
             if new != src:
                 edits.append((off, end, new))
             continue
+        # Link-Paare ohne Klasse: bekommen eine Rolle (Anfrage = Hauptaktion), danach wie alle Buttons
+        if tag == "a" and (pcls & PAIRS) and not any(c for c, _ in ROLES if c in cls):
+            role = "btn-i" if ("kontakt" in a.get("href", "") or "anfrage" in a.get("href", "")) else "btn-o"
+            if 'class="' not in src:
+                src = src[:2] + ' class=""' + src[2:]
+            cls = cls + [role]
+            src = set_class(src, lambda c, role=role: c + [role] if role not in c else c)
         if not cls:
             continue
         # Buttons (die Footer-Knoepfe der Layout-Abteilung tragen nur ihre Variante, keine Rolle, und bleiben)

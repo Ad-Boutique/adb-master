@@ -5,40 +5,45 @@
    brand-type, brand-ui, brand-layout und brand-motion. Regeln dazu: _intern/BRAND-RULES.md, Abschnitt 13.
    ============================================================ */
 
-/* ---------- 1 Textlinks: Versalien, Sperrung, Unterstrich, kein Pill ---------- */
-html body.brand :is(.alink, .zalink, .svc-back, .pwlinks a, .pslinks a) {
+/* ---------- 1 Textlinks: nur an den Stellen der Kunden-Screenshots ("keep button", "keep button 2",
+   "keep button but not in color"): "Alle Leistungen" (.svc-back) und einzeln markierte Links (.keeplink,
+   Premium-Neubau-Case: Leistungs-Links als .zalink.keeplink, "Leistung: Landingpages" als .alink.keeplink). Alle anderen Links sind Buttons mit Kreis-Hover (brand-motion.css). */
+html body.brand :is(.svc-back, .keeplink) {
   background: transparent !important; border-radius: 0 !important; box-shadow: none !important;
   font-family: var(--f-sans) !important; font-weight: 700 !important; text-transform: uppercase !important;
   line-height: 1.3 !important; height: auto !important; min-height: 0 !important;
 }
-html body.brand .alink {
+html body.brand .alink.keeplink {
   display: inline-flex !important; gap: 10px; align-items: baseline;
   position: relative; padding: 0 0 4px !important; border: 0 !important;
   font-size: 12.5px !important; letter-spacing: 0.14em !important; color: inherit;
 }
-html body.brand .alink::after {
+html body.brand .keeplink::before { content: none !important; }
+html body.brand .alink.keeplink::after {
   content: ""; position: absolute; left: 0; bottom: 0; height: 1px; width: 100%;
   background: currentColor; transform-origin: right; transform: scaleX(0.35);
   transition: transform var(--d-slow, 0.7s) var(--e-out);
 }
-html body.brand .alink:hover::after { transform: scaleX(1); transform-origin: left; }
-html body.brand :is(.zalink, .pwlinks a, .pslinks a) {
+html body.brand .alink.keeplink:hover::after { transform: scaleX(1); transform-origin: left; }
+html body.brand .zalink.keeplink {
   display: inline-block !important; padding: 0 0 6px !important; border: 0 !important; border-bottom: 1px solid currentColor !important;
   font-size: 12px !important; letter-spacing: 0.16em !important; color: var(--ink);
   transition: color var(--d-fast, 0.2s) ease, border-color var(--d-fast, 0.2s) ease;
 }
-html body.brand :is(.fg-dark, [data-fg="light"], .panelscroll) :is(.zalink, .pwlinks a, .pslinks a, .alink) { color: var(--paper); }
-html body.brand :is(.fg-dark, [data-fg="light"], .panelscroll) :is(.zalink, .pwlinks a, .pslinks a) { border-bottom-color: var(--cream-a42) !important; }
+html body.brand .zalink.keeplink::before { content: none !important; }
+html body.brand :is(.fg-dark, [data-fg="light"], .panelscroll) .keeplink { color: var(--paper) !important; }
+html body.brand :is(.fg-dark, [data-fg="light"], .panelscroll) .zalink.keeplink { border-bottom-color: var(--cream-a42) !important; }
 /* Hover: nie Lime (Brand-Regel), sondern volle Deckkraft der Linie */
-html body.brand :is(.zalink, .pwlinks a, .pslinks a):hover { border-bottom-color: currentColor !important; }
+html body.brand .zalink.keeplink:hover { border-bottom-color: currentColor !important; }
 html body.brand .svc-back {
   padding: 0 !important; border: 0 !important; font-size: 11px !important; letter-spacing: 0.18em !important;
   color: var(--grey-dark) !important; width: auto !important;
 }
+html body.brand .svc-back::before { content: none !important; }
 html body.brand .svc-back:hover { color: var(--ink) !important; }
 @media (max-width: 860px) {
   html body.brand .svc-back { padding: 12px 14px !important; margin: -12px -14px; }
-  html body.brand :is(.zalink, .alink) { padding-top: 6px !important; padding-bottom: var(--sp-1) !important; }
+  html body.brand .keeplink { padding-top: 6px !important; padding-bottom: var(--sp-1) !important; }
 }
 
 /* ---------- 2 Punktzeile (strategen, kreative, performance-nerds): Lime-Punkte mit schwarzem Ring ---------- */

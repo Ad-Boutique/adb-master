@@ -4,3 +4,6 @@ _tools/dense
 _tools/probe
 _tools/scrollshot
 _intern/
+
+# lokale Claude-Arbeitskopien und Einstellungen
+.claude/

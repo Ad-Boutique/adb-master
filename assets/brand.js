@@ -335,6 +335,22 @@
     if (variant === 2) press(); else if (variant === 3) iris(); else if (variant === 4) write(); else if (variant === 5) trail(0); else if (variant === 6) combo(); else fan();
   }
 
+  /* ---------- Leistungs-Hero: das Wort fuellt die Zeile exakt (Schriftgroesse an die Rahmenbreite) ---------- */
+  (function () {
+    var w = document.querySelector(".dhero .dh-word"); if (!w) return;
+    var f = w.querySelector(".dh-fit"); if (!f) return;
+    function fit() {
+      f.style.display = "inline-block";
+      w.style.setProperty("font-size", "100px", "important");
+      var r = w.clientWidth / f.getBoundingClientRect().width;
+      w.style.setProperty("font-size", (100 * r * 0.995).toFixed(2) + "px", "important");
+      f.style.display = "";
+    }
+    fit();
+    addEventListener("load", fit); addEventListener("resize", fit);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  })();
+
   /* ---------- Work: aktiver Filter (nicht Alle) markiert seinen Kreis ---------- */
   (function () {
     var pairs = [[".fbtn", ".fpop"], [".bbtn", ".bpop"]];
