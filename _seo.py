@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
 """SEO-Schicht fuer den Master (Phase 0 des Masterplans, siehe SEO-MASTERPLAN.md im privaten Repo adb-intern).
 
-Laeuft als vorletzter Schritt (vor _bump.py) ueber alle HTML-Seiten und setzt je Seite:
+Regel "seo" des Nachlaufs (_nachlauf.py, vorletzte Regel vor "version") fuer alle HTML-Seiten, setzt je Seite:
 Title, Meta Description, Robots, Canonical, Open Graph, Twitter Card, JSON-LD (Organization,
 WebSite, WebPage mit Breadcrumb, je nach Seitentyp Service oder Article), lang de-AT, die H1-Regel
 (Suchbegriff als erste Zeile der H1 auf Startseite und Leistungsseiten, Hero-Zeile der Cases als H1),
 den Stand im Footer und, im Live-Modus, GTM und Meta-Pixel. Dazu sitemap.xml, robots.txt, llms.txt.
 
-Live-Schalter: Umgebungsvariable ADB_LIVE=1. Ohne Schalter bleibt alles noindex und robots sperrt,
+Live-Schalter: Umgebungsvariable ADB_LIVE=1 fuer den ganzen Build (ADB_LIVE=1 sh _build.sh), dann setzen die
+Generatoren und der Nachlauf die Live-Fassung; python3 _seo.py allein bearbeitet wie bisher alle Seiten.
+Ohne Schalter bleibt alles noindex und robots sperrt,
 damit die GitHub-Pages-Vorschau nicht als Dublette der Live-Seite indexiert wird. Im Live-Modus werden
 ausserdem die internen Links auf die sauberen Pfade (vercel.json) umgeschrieben.
 
@@ -21,7 +23,7 @@ import re
 import subprocess
 
 from _cases import HAND as CASES_HAND, PERFORMANCE, WEB
-from _gen_services import SERVICES
+from _leistungen import SERVICES
 
 LIVE = os.environ.get("ADB_LIVE") == "1"
 BASE = "https://www.ad.boutique"
@@ -262,8 +264,8 @@ def git_date(f):
 # ---------------------------------------------------------------- Seite bearbeiten
 
 
-def apply(f, r, live):
-    h = open(f, encoding="utf-8").read()
+def apply(f, h, r, live):
+    """Setzt den SEO-Kopf und die SEO-Regeln in das HTML der Seite f (r: Eintrag aus registry())."""
     orig = h
     h = re.sub(r"<!-- seo:start -->.*?<!-- seo:end -->\n?", "", h, flags=re.S)
     h = re.sub(r'\s*<meta name="robots" content="[^"]*">', "", h)
@@ -294,7 +296,10 @@ def apply(f, r, live):
     block.append('<!-- seo:end -->')
     anchor = re.search(r'<meta name="viewport"[^>]*>', h)
     if not anchor:
-        return False
+        # Weiterleitungen und interne Seiten (_qa_template.html) haben keinen; sonst ist es ein Fehler im Kopf
+        if not f.startswith("_") and 'http-equiv="refresh"' not in orig:
+            print('  ! %s: kein <meta name="viewport">, SEO-Kopf nicht gesetzt' % f)
+        return orig
     h = h[:anchor.end()] + "\n" + "\n".join(block) + h[anchor.end():]
     # kein GTM-noscript-iframe mehr: es wuerde GTM ohne Einwilligung laden (auch aus aelteren Live-Staenden entfernen)
     h = re.sub(r"\n?<!-- GTM noscript --><noscript>.*?</noscript>", "", h, flags=re.S)
@@ -306,8 +311,10 @@ def apply(f, r, live):
     if r.get("h1label") and 'class="label h1-seo"' not in h:
         lab = H.escape(r["h1label"], quote=False)
         if f == "index.html":
-            h = h.replace('<span class="label">Digitale Marketing Agentur, Wien</span>\n      <h1 class="disp" data-lines>',
-                          '<h1 class="disp" data-lines>\n        <span class="label h1-seo">%s</span>' % lab, 1)
+            alt = '<span class="label">Digitale Marketing Agentur, Wien</span>\n      <h1 class="disp" data-lines>'
+            if alt not in h:
+                print("  ! index.html: H1-Regel nicht angewandt, Anker fehlt: %r" % alt[:60])
+            h = h.replace(alt, '<h1 class="disp" data-lines>\n        <span class="label h1-seo">%s</span>' % lab, 1)
         else:
             h = re.sub(r'<span class="label slabel" data-fade>[^<]*</span>\n(\s*)<h1 data-lines>',
                        lambda m: '<h1 data-lines>\n%s  <span class="label slabel h1-seo" data-fade>%s</span>' % (m.group(1), lab), h, count=1)
@@ -337,10 +344,26 @@ def apply(f, r, live):
         # Dateien absolut ab der Wurzel: unter sauberen Pfaden wie /services/e-commerce wuerde "assets/..." sonst
         # als /services/assets/... aufgeloest (Stylesheet, Script, Bilder, Videos, Schrift-Preload, Favicon)
         h = re.sub(r'((?:src|href|poster|data-src)=")(assets/|favicon\.)', r'\1/\2', h)
-    if h != orig:
-        open(f, "w", encoding="utf-8").write(h)
-        return True
-    return False
+    return h
+
+
+_REG = []
+ZAEHLER = {"n": 0}
+
+
+def seite(f, h):
+    """Regel "seo" des Nachlaufs (_nachlauf.py): SEO-Kopf, H1-Regel, Alt-Texte, Footer-Stand, im Live-Modus Pfade."""
+    if not _REG:
+        og_default()
+        _REG.append(registry())
+    reg = _REG[0]
+    if f not in reg:
+        print("  ? keine SEO-Daten fuer", f)
+        return h
+    out = apply(f, h, reg[f], LIVE)
+    if out != h:
+        ZAEHLER["n"] += 1
+    return out
 
 
 # ---------------------------------------------------------------- Dateien: sitemap, robots, llms.txt
@@ -371,19 +394,17 @@ def write_files(reg, live):
     return len(pages)
 
 
-def main():
-    og_default()
-    reg = registry()
-    n = 0
-    for f in sorted(glob.glob("*.html")):
-        if f not in reg:
-            print("  ? keine SEO-Daten fuer", f)
-            continue
-        if apply(f, reg[f], LIVE):
-            n += 1
-    pages = write_files(reg, LIVE)
-    print("SEO: %d Seiten bearbeitet, %d im Sitemap, Modus %s" % (n, pages, "LIVE" if LIVE else "Vorschau (noindex)"))
+def dateien():
+    """sitemap.xml, robots.txt, llms.txt aus allen Seiten (am Ende des Nachlaufs). Gibt die Zahl der Sitemap-Seiten zurueck."""
+    return write_files(registry(), LIVE)
+
+
+def bericht(pages):
+    return "SEO: %d Seiten bearbeitet, %d im Sitemap, Modus %s" % (ZAEHLER["n"], pages, "LIVE" if LIVE else "Vorschau (noindex)")
 
 
 if __name__ == "__main__":
-    main()
+    # Einzeln aufgerufen bearbeitet _seo.py wie bisher alle Seiten (auch die generierten), z. B. fuer den Live-Schalter
+    import _nachlauf
+    _nachlauf.einzeln(seite)
+    print(bericht(dateien()))

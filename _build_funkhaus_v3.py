@@ -2,20 +2,31 @@
 """Funkhaus-Case nach den Apple-Prinzipien (iphone-duo) als eigene Vorschau-Seite (v3).
 Kopf, Menue und Fuss kommen aus der bestehenden Seite, der Inhalt ist neu erzaehlt:
 Eyebrow, These, ein Absatz, Stat-Group, ein Medium je Kapitel, Fett-Lead-Captions,
-Highlights-Stapel vorne, Viewer statt Erklaerung, Learnings als Fragen, Kapitel-Leiste."""
+Highlights-Stapel vorne, Viewer statt Erklaerung, Learnings als Fragen, Kapitel-Leiste.
+Abgeleitet wird im Nachlauf (_nachlauf.py, Tabelle ABLEITUNGEN): nach der Regel "brand" entsteht aus der handgebauten
+Seite mit ableiten() diese Seite, danach laeuft sie durch die restlichen Regeln. Anker sind Marker-Kommentare und
+Tags (<main>, <footer>); fehlt einer, bricht der Build mit einer Meldung aus _anker.py ab."""
 import re
+from _anker import AnkerFehlt, einmal, finde
 from _kpi import board as kpi_board, HAND_KPI
 from _brand_inplace import layout
 
 SRC = "case-premium-neubau.html"
 OUT = "case-premium-neubau-v3.html"
 
-src = open(SRC, encoding="utf-8").read()
-head = re.split(r"<main\b[^>]*>", src, 1)[0]   # <main> kann Attribute tragen (Sprunglink-Ziel, _perf.py)
-head = re.sub(r"<title>.*?</title>", "<title>Premium-Neubau, Wien, Vorschau v3 | ad.boutique</title>", head, count=1, flags=re.S)
-foot = "  <footer" + src.split("  <footer", 1)[1]
 
-main = '''<main class="apl">
+def ableiten(src):
+    """HTML der handgebauten Seite (Stand nach der Regel "brand") -> HTML der Vorschau-Seite."""
+    m = re.search(r"<main\b[^>]*>", src)   # <main> kann Attribute tragen (Sprunglink-Ziel, _perf.py)
+    if not m:
+        raise AnkerFehlt("Kopf: <main> fehlt")
+    head = src[:m.start()]
+    head = re.sub(r"<title>.*?</title>", "<title>Premium-Neubau, Wien, Vorschau v3 | ad.boutique</title>", head, count=1, flags=re.S)
+    foot = src[finde(src, "  <footer", "Footer"):]
+    # das Material aus dem Mandat bleibt unveraendert: zwischen den Marker-Kommentaren der Galerie und des Next-Case
+    a = finde(src, "  <!-- CONTENT AUS DEM MANDAT -->", "Galerie (Marker-Kommentar)") + len("  <!-- CONTENT AUS DEM MANDAT -->")
+    material = src[a:finde(src, "  <!-- NEXT CASE -->", "Next-Case (Marker-Kommentar)", a)]
+    main = '''<main class="apl">
 
 
   <!-- HERO: Vollbild in der Case-Farbwelt, darunter die Stat-Group statt Kennzahl-Ecke -->
@@ -283,7 +294,7 @@ __KPI__
   </section>
 
   <!-- AUS DEM MANDAT: das Material, unveraendert -->
-''' + src.split("  <!-- CONTENT AUS DEM MANDAT -->", 1)[1].split("  <!-- NEXT CASE -->", 1)[0] + '''  <!-- NEXT CASE -->
+''' + material + '''  <!-- NEXT CASE -->
   <section class="sec npro-sec fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding-bottom:0">
     <div class="wrap">
       <div class="npbar2"><span>Nächster Case</span><a href="work.html">Alle ansehen</a></div>
@@ -300,8 +311,15 @@ __KPI__
 
 '''
 
-main = main.replace("__KPI__\n", kpi_board(HAND_KPI["case-premium-neubau"]))
-# Sektionsabstaende und Seitenrand wie auf allen Seiten (Layout-Abteilung)
-main = layout(main, OUT)
-open(OUT, "w", encoding="utf-8").write(head + main + foot)
-print("geschrieben:", OUT, len(head + main + foot), "Zeichen, Sektionen:", (head + main + foot).count("<section"))
+    main = einmal(main, "__KPI__\n", kpi_board(HAND_KPI["case-premium-neubau"]), "Platzhalter Kennzahlen")
+    # Sektionsabstaende und Seitenrand wie auf allen Seiten (Layout-Abteilung)
+    main = layout(main, OUT)
+    return head + main + foot
+
+
+if __name__ == "__main__":
+    # Einzeln: aus der fertigen Seite ableiten und die restlichen Regeln anwenden. Verbindlich ist der Build.
+    import _nachlauf
+    h = _nachlauf.bearbeite({OUT: ableiten(open(SRC, encoding="utf-8").read())}, ab="footer")[OUT]
+    open(OUT, "w", encoding="utf-8").write(h)
+    print("geschrieben:", OUT, len(h), "Zeichen, Sektionen:", h.count("<section"))

@@ -1,0 +1,591 @@
+{
+  "slug": "service-content-creation",
+  "reihenfolge": 30,
+  "nav": "Content Creation",
+  "label": "Leistung, Content Creation",
+  "flow": "v2",
+  "v2_content": true,
+  "v2_graphic": true,
+  "seo": {
+    "label": "Content Creation Agentur Wien",
+    "title": "Content Creation und UGC Agentur Wien | ad.boutique",
+    "desc": "Content Creation Agentur Wien: UGC, Foto und Film für Ads, gemessen am Preis je Kauf. Creator-Video 82 Euro je Kauf statt 215 Euro mit Produktvideo.",
+    "answer": "ad.boutique produziert in Wien Content für Performance-Kampagnen: UGC mit Creatorn, Foto und Film im Hochformat, Social Content und Ads-Varianten, die gegeneinander getestet werden. Gemessen wird am Preis je Anfrage oder Kauf, nicht am Applaus. Beispiel: Ein Creator-Video kostete 82 Euro je Kauf, das Studio-Produktvideo 215 Euro; im Wohnbau trug ein Interior-Motiv 262 von 489 Anfragen.",
+    "faq_first": {
+      "frage": "Was ist UGC?",
+      "antwort": "UGC steht für User Generated Content: Videos und Bilder, die Creator oder Kundinnen und Kunden im eigenen Stil drehen, nicht im Studio. Im Feed sieht das nicht nach Werbung aus und wird deshalb oft günstiger geklickt und gekauft. Bei einer Health-Marke schlug das Creator-Video das Produktvideo beim Preis je Kauf um mehr als die Hälfte."
+    },
+    "faq_last": [
+      {
+        "frage": "Was kostet Content Creation bei ad.boutique?",
+        "antwort": "Der Preis hängt an Drehtagen, Formaten und Varianten, nicht an einer Pauschale. Der Einstieg ist ein Creative-Audit und ein Erstdreh ohne Vertrag. Material und Nutzungsrechte bleiben unbefristet bei Ihnen. Wir produzieren laufend statt einmal, weil Kampagnen wöchentlich neue Varianten brauchen."
+      },
+      {
+        "frage": "Wie viele Varianten braucht eine Kampagne?",
+        "antwort": "Aus einem Drehtag entstehen bei uns vier Varianten je Idee, die gegeneinander laufen. Nach zwei Wochen steht meist der Sieger fest, danach fließt das Budget dorthin. Im Wohnbau trug am Ende ein Motiv 54 Prozent aller Anfragen, bei zwei Bauträger-Projekten sogar über 90 Prozent."
+      }
+    ]
+  },
+  "dhero": {
+    "word": "Content",
+    "kicker": "Content Creation",
+    "text": "das Handwerk, aus Foto, Film und UGC <em>Motive</em> zu machen, die im Feed <em>bestehen</em> und am <em>CPA</em> gemessen werden, nicht am <em>Applaus</em>",
+    "img": "assets/img/hero/content-creation.jpg",
+    "alt": "Videodreh der ad.boutique mit Gimbal auf einer Baustelle in Wien"
+  },
+  "tags": [
+    "UGC & Studio",
+    "Foto & Film",
+    "Social-Formate",
+    "Creative-System"
+  ],
+  "sub": "Foto, Film und UGC, produziert für Performance: gemessen am CPA, nicht am Applaus.",
+  "pmap": {
+    "label": "So läuft es",
+    "h": [
+      "Vom Briefing",
+      "zum Motiv, das trägt."
+    ],
+    "t": "Sie geben Produkt, Marke und Freigabe, wir produzieren gegen die Zahlen von gestern. Was trägt, bekommt Nachschub, bevor es müde wird.",
+    "inputs": [
+      {
+        "text": "Ihr Produkt und Ihre Marke",
+        "kurz": "Ihr Produkt, Ihre Marke",
+        "von": "sie"
+      },
+      {
+        "text": "Ihre Freigaben",
+        "kurz": "Ihre Freigaben",
+        "von": "sie"
+      },
+      {
+        "text": "Zahlen aus der Kampagne",
+        "kurz": "Zahlen von gestern",
+        "von": "wir"
+      },
+      {
+        "text": "Creator, Studio, Location",
+        "kurz": "Creator und Studio",
+        "von": "wir"
+      },
+      {
+        "text": "Skript und Hook je Format",
+        "kurz": "Skript und Hook",
+        "von": "wir"
+      },
+      {
+        "text": "Schnitt und Varianten",
+        "kurz": "Schnitt, Varianten",
+        "von": "wir"
+      }
+    ],
+    "engine": {
+      "title": "Produzieren, testen, lernen",
+      "loop": [
+        "Produzieren",
+        "Testen",
+        "Lernen",
+        "Nachproduzieren"
+      ]
+    },
+    "touch": "Freigabe durch Sie",
+    "output": {
+      "titel": "Motive, die den CPA senken",
+      "text": "Gemessen im Konto,|nicht am Applaus",
+      "tag": "Sie sehen, was trägt"
+    }
+  },
+  "problem_label": "Die Ausgangslage",
+  "problem_h": [
+    "Schöner Content.",
+    "Wirkung unbekannt."
+  ],
+  "problem": [
+    "Feeds voller Hochglanz, aber die CPMs steigen und niemand misst, welches Motiv wirklich trägt. Schöner Content, der nichts verkauft, ist Dekoration.",
+    "<b>Die Konsequenz: teure Produktionen ohne Wirkung.</b> Jedes Shooting ohne Testing-Plan produziert Material fürs Archiv, während die Kampagne mit dem falschen Motiv weiterläuft."
+  ],
+  "bene_label": "Was für Ihre Kampagne dabei herauskommt",
+  "bene_h": [
+    "Was Content",
+    "leisten muss."
+  ],
+  "intro": "<b>Content und Performance</b> sitzen bei uns an einem Tisch. Jedes Motiv läuft gegen echte <b>Zahlen</b>, nicht gegen Geschmack. Was trägt, wird skaliert, egal wie <b>schön</b> der Rest war.",
+  "bene": [
+    {
+      "titel": "Motive, die messbar tragen",
+      "text": "Bei einem Neubauprojekt trug ein Interior-Motiv 54 Prozent aller Anfragen."
+    },
+    {
+      "titel": "UGC als Hebel, nicht als Sparlösung",
+      "text": "In einem Health-Mandat lag der CPA rund 58 Prozent unter der Studio-Produktion."
+    },
+    {
+      "titel": "Produktion und Kampagne, ein Team",
+      "text": "Wer dreht, kennt die Zahlen von gestern und produziert nach, bevor das Motiv müde wird."
+    },
+    {
+      "titel": "Nachschub statt Kampagnenfeuerwerk",
+      "text": "Ein Loop aus produzieren, testen, lernen, nachproduzieren."
+    },
+    {
+      "titel": "Formate, die die Plattform belohnt",
+      "text": "Hook in den ersten Sekunden, nativ gedacht, nicht nachträglich umgeschnitten."
+    },
+    {
+      "titel": "Kein Material fürs Archiv",
+      "text": "Jedes Shooting hat vorher einen Testing-Plan und danach eine Zahl."
+    }
+  ],
+  "band": {
+    "label": "Aus der Produktion",
+    "imgs": [
+      "assets/case/kommunalkredit/g0.jpg",
+      "assets/case/juwel/g0.jpg",
+      "assets/case/kommunalkredit/g2.jpg",
+      "assets/case/medcenter/g1.jpg",
+      "assets/case/case-health-brand/g0.jpg",
+      "assets/case/kommunalkredit/g3.jpg",
+      "assets/case/juwel/g3.jpg",
+      "assets/case/case-premium-neubau/g2.jpg",
+      "assets/case/kommunalkredit/g1.jpg"
+    ]
+  },
+  "zoom": {
+    "img": "assets/img/c_champ.jpg",
+    "side": "left",
+    "al": "Ein Fall",
+    "ah": [
+      "Produziert",
+      "für den Feed."
+    ],
+    "alink": {
+      "href": "case-premium-neubau.html",
+      "text": "Den Fall im Detail"
+    },
+    "aside": "Produziert für den Feed: Content, der gemessen wird, nicht nur gefällt.",
+    "zl": "Content-Produktion, Food",
+    "zt": "Jedes Motiv tritt gegen Benchmarks an."
+  },
+  "visual": {
+    "art": "phones",
+    "h": [
+      "Gebaut",
+      "für den Daumen."
+    ],
+    "t": "Sujets aus laufenden Mandaten: Gastro, Event, Immobilie, Produkt. Immer mit Hook, immer messbar.",
+    "phones": [
+      "assets/case/kommunalkredit/v0.mp4",
+      "assets/case/juwel/v0.mp4",
+      "assets/case/case-health-brand/v1.mp4",
+      "assets/case/kommunalkredit/v1.mp4",
+      "assets/case/juwel/v1.mp4",
+      "assets/case/case-health-brand/v2.mp4"
+    ]
+  },
+  "content_cols": [
+    [
+      "assets/case/juwel/g0.jpg",
+      "assets/case/medcenter/g1.jpg",
+      "assets/case/case-premium-neubau/g2.jpg",
+      "assets/case/kommunalkredit/g0.jpg",
+      "assets/case/kommunalkredit/g2.jpg"
+    ],
+    [
+      "assets/case/grandgarden/g0.jpg",
+      "assets/case/case-premium-neubau/g1.jpg",
+      "assets/case/juwel/g3.jpg",
+      "assets/case/case-health-brand/g0.jpg",
+      "assets/case/kommunalkredit/g3.jpg"
+    ],
+    [
+      "assets/case/medcenter/g0.jpg",
+      "assets/case/juwel/g2.jpg",
+      "assets/case/medcenter/g3.jpg",
+      "assets/case/kommunalkredit/g1.jpg",
+      "assets/case/case-health-brand/g3.jpg"
+    ],
+    [
+      "assets/case/herogroup/g0.jpg",
+      "assets/case/case-health-brand/g2.jpg",
+      "assets/case/case-premium-neubau/g3.jpg",
+      "assets/case/case-health-brand/g1.jpg",
+      "assets/case/grandgarden/g3.jpg"
+    ],
+    [
+      "assets/case/case-premium-neubau/g0.jpg",
+      "assets/case/grandgarden/g2.jpg",
+      "assets/case/juwel/g4.jpg",
+      "assets/case/grandgarden/g1.jpg",
+      "assets/case/kommunalkredit/g4.jpg"
+    ],
+    [
+      "assets/case/juwel/g1.jpg",
+      "assets/case/medcenter/g2.jpg",
+      "assets/case/herogroup/v0.mp4",
+      "assets/case/herogroup/v1.mp4",
+      "assets/case/herogroup/g1.jpg"
+    ]
+  ],
+  "proof_h": [
+    "Wie ein Motiv",
+    "entsteht."
+  ],
+  "proof_lead": "Content ist bei uns Handwerk mit Messpunkt: Wir zeigen den Weg von der Idee zum Sujet, das im Feed bestehen muss. Die Zahlen stehen am Ende, nicht am Anfang.",
+  "proof_nums": [],
+  "proof_quote": "Der größte Hebel war das Creative, nicht das Budget. Das gilt in Commerce, Real Estate und Health gleichermaßen.",
+  "tell": {
+    "nolabel": true,
+    "h": "Ein Motiv, vier Stationen.",
+    "t": "Vom Briefing bis zum Sujet, das gegen echte Benchmarks antritt statt gegen Geschmack.",
+    "steps": [
+      {
+        "wert": "1 Tag",
+        "label": "Dreh statt Studio-Woche",
+        "titel": "Der Dreh",
+        "text": "Wir drehen dort, wo das Produkt lebt: in der Wohnung, im Lokal, auf der Baustelle. Hochformat, Available Light, kein Set-Aufbau über Tage."
+      },
+      {
+        "wert": "4",
+        "label": "Varianten je Idee",
+        "titel": "Der Schnitt",
+        "text": "Aus einem Dreh entstehen mehrere Sujets mit unterschiedlichem Einstieg. Getestet wird der Hook, nicht das Motiv als Ganzes."
+      },
+      {
+        "wert": "−58 %",
+        "label": "CPA durch UGC statt Studio-Video",
+        "titel": "Der Test",
+        "text": "Bei einer Dental-Marke schlug das UGC-Sujet das Studio-Video deutlich. Nicht weil es schöner war, sondern weil es weniger nach Werbung aussah."
+      },
+      {
+        "wert": "54 %",
+        "label": "aller Leads aus einem einzigen Motiv",
+        "titel": "Die Erkenntnis",
+        "text": "Bei einem Wiener Neubauprojekt trug ein Interior-Motiv über die Hälfte aller Anfragen. Deshalb produzieren wir laufend, nicht einmalig."
+      }
+    ]
+  },
+  "kennzahlen": {
+    "headline": [
+      "Drei Mandate,",
+      "drei Belege."
+    ],
+    "karten": [
+      {
+        "ref": "health-creator",
+        "link": {
+          "href": "case-health-brand.html",
+          "text": "Case ansehen"
+        }
+      },
+      {
+        "ref": "funkhaus-motiv",
+        "link": {
+          "href": "case-premium-neubau.html",
+          "text": "Case ansehen"
+        }
+      },
+      {
+        "ref": "kk-clips",
+        "link": {
+          "href": "case-kommunalkredit.html",
+          "text": "Case ansehen"
+        }
+      }
+    ]
+  },
+  "oplist": [
+    {
+      "href": "case-health-brand.html",
+      "titel": "Dental-/Health-Marke",
+      "wert": "−58 %",
+      "label": "CPA durch Creator statt Produktvideo"
+    },
+    {
+      "href": "case-premium-neubau.html",
+      "titel": "Premium-Neubau, Wien",
+      "wert": "54 %",
+      "label": "aller Leads aus einem Motiv"
+    },
+    {
+      "href": "case-kommunalkredit.html",
+      "titel": "Kommunalkredit, Sommergespräche",
+      "wert": "19",
+      "label": "Social Clips, Recap und Doku aus drei Drehtagen"
+    },
+    {
+      "href": "case-d2c-lifestyle.html",
+      "titel": "D2C-Lifestyle-Marke",
+      "wert": "+57 %",
+      "label": "Jahresumsatz, UGC schlug Studio"
+    }
+  ],
+  "voice": {
+    "label": "Was Kunden sagen",
+    "lead": "Michael Rohrmeier, Gründer und CEO von IB-7, über die Zusammenarbeit mit ad.boutique: Marke, Website, Performance und Content aus einer Hand.",
+    "a": "Michael Rohrmeier, Gründer und CEO, IB-7",
+    "video": "assets/video/kundenstimme-ib7.mp4",
+    "note": "Wir liefern keine Mediathek zum Archivieren. Jedes Sujet läuft in einer Kampagne und wird daran gemessen, wie es dort abschneidet."
+  },
+  "crew": {
+    "label": "Wer daran arbeitet",
+    "h": [
+      "Vier Rollen,",
+      "die am Motiv arbeiten."
+    ],
+    "t": "Kamera, Schnitt und Kampagne sitzen im selben Team. Wer dreht, weiß, wogegen das Sujet antreten muss.",
+    "people": [
+      {
+        "name": "Leny",
+        "rolle": "Film und Foto",
+        "text": "Dreht im Hochformat, mit dem Licht, das da ist, statt mit dem, das gebaut wird.",
+        "bild": "assets/img/team/leny.jpg"
+      },
+      {
+        "name": "Constantin",
+        "rolle": "Design",
+        "text": "Setzt Typo und Hook, damit die erste Sekunde die Botschaft trägt.",
+        "bild": "assets/img/team/constantin.jpg"
+      },
+      {
+        "name": "Sarah",
+        "rolle": "Graphic Design",
+        "text": "Baut die Varianten, die gegeneinander antreten, und hält die Marke zusammen.",
+        "bild": "assets/img/team/sarah.jpg"
+      },
+      {
+        "name": "Suman",
+        "rolle": "Social Media",
+        "text": "Bringt die Reaktionen aus dem Feed zurück in die nächste Produktion.",
+        "bild": "assets/img/team/suman.jpg"
+      }
+    ]
+  },
+  "logos": [
+    "isi",
+    "looops",
+    "juwel",
+    "nordicspirit",
+    "jti",
+    "ilbosso",
+    "kaisers",
+    "funkhaus"
+  ],
+  "fit": {
+    "label": "Bevor wir starten",
+    "h": [
+      "Der Fit entscheidet.",
+      "Nicht das Briefing."
+    ],
+    "yes_h": "Wir passen zusammen, wenn",
+    "no_h": "Wir sind die Falschen, wenn",
+    "intro": "Wir arbeiten als verlängerte Marketingabteilung, nicht als Produktionsdienstleister. Wir müssen Ihre Marke verstehen, bevor wir die Kamera aufstellen, und Sie müssen uns zutrauen, dass wir Motive verwerfen. Deshalb prüfen wir den Fit vorher, in beide Richtungen.",
+    "yes": [
+      "Es gibt Kampagnen, in denen das Material laufen soll",
+      "Hochformat ist erlaubt, auch wenn es weniger nach Katalog aussieht",
+      "Laufende Produktion statt einmaliges Shooting",
+      "Freigaben in Tagen, nicht in Wochen"
+    ],
+    "no": [
+      "Das Material soll nur in die Mediathek",
+      "Jedes Motiv braucht eine Freigaberunde über mehrere Instanzen",
+      "Nur Studio-Look, kein Available Light",
+      "Ein Shooting soll ein Jahr tragen"
+    ]
+  },
+  "steps_next": {
+    "h": "Von der Anfrage zum ersten Sujet.",
+    "rows": [
+      {
+        "wann": "Heute",
+        "titel": "Anfrage in zwei Minuten",
+        "text": "Was beworben wird und wo das Material laufen soll."
+      },
+      {
+        "wann": "Unter 24 h",
+        "titel": "Ehrliche Ersteinschätzung",
+        "text": "Wir sagen, ob wir passen, und was für den Dreh nötig ist."
+      },
+      {
+        "wann": "Tag 3 bis 10",
+        "titel": "Dreh vor Ort",
+        "text": "Ein Tag, mehrere Sujets, Hochformat. Kein Set-Aufbau über eine Woche."
+      },
+      {
+        "wann": "Danach",
+        "titel": "Erste Testrunde",
+        "text": "Die Varianten laufen gegeneinander, der Sieger bekommt Budget."
+      }
+    ]
+  },
+  "acc": [
+    {
+      "titel": "UGC-Produktion",
+      "text": "Echte Menschen, echte Nutzung: In einem Health-Mandat schlug UGC die klassischen Produkt-Videos beim CPA um rund 58 Prozent.",
+      "punkte": [
+        "Creator-Casting & Briefing",
+        "Skripte nach Hook-Logik",
+        "Iterationen nach CPA",
+        "Rechte & Freigaben sauber"
+      ]
+    },
+    {
+      "titel": "Studio & On-Location",
+      "text": "Produktwelten, Interiors, Menschen: produziert mit Blick auf den Feed, nicht auf das Portfolio.",
+      "punkte": [
+        "Foto & Film",
+        "Produkt-Stills & Interiors",
+        "Kampagnen-Sujets",
+        "Cinematography"
+      ]
+    },
+    {
+      "titel": "Social-Formate",
+      "text": "Formate, die die Plattform belohnt: schnell, nativ, mit Hook in den ersten Sekunden.",
+      "punkte": [
+        "Reels & Stories",
+        "Statics & Collagen",
+        "Karussells & Grundriss-Formate",
+        "Saisonale Motive je Phase"
+      ]
+    },
+    {
+      "titel": "Creative-System",
+      "text": "Kein Kampagnenfeuerwerk, sondern ein Loop: produzieren, testen, lernen, nachproduzieren.",
+      "punkte": [
+        "Testing-Loop mit Performance",
+        "Winner-Selektion nach Zahlen",
+        "Motiv-Bibliothek je Marke",
+        "Monatliche Nachproduktion"
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "frage": "Wir haben schon einen Fotografen.",
+      "antwort": "Gut so, den ersetzen wir nicht zwingend. Wir ergänzen das System dahinter: Hooks, Testing, Winner-Selektion. Content ohne Messung bleibt Dekoration."
+    },
+    {
+      "frage": "Ist UGC nicht billig fürs Markenbild?",
+      "antwort": "Falsch produziert: ja. Richtig produziert wirkt UGC glaubwürdiger als Hochglanz und senkte den CPA in unserem Health-Mandat um rund 58 Prozent."
+    },
+    {
+      "frage": "Wie viel Content brauchen wir wirklich?",
+      "antwort": "Weniger, als Sie denken, aber öfter: Ein monatlicher Nachproduktions-Loop schlägt das eine große Shooting pro Jahr."
+    }
+  ],
+  "offer_h": "Der Einstieg ist ein Creative-Audit. Kein Vertrag.",
+  "offer": [
+    "Wir analysieren Ihre laufenden Motive gegen Benchmarks und zeigen Ihnen, welche Creatives Geld verdienen, welche Geld verbrennen und was als Nächstes produziert gehört.",
+    "<b>Risikoumkehr:</b> Läuft die Produktion mit Performance-Mandat, koppeln wir die Vergütung an messbare Ergebnisse. Wir gewinnen nur, wenn Sie gewinnen."
+  ],
+  "deliver": [
+    "Ein Drehtag vor Ort, Hochformat, mit dem Licht, das da ist",
+    "Mehrere Sujets je Idee, für den Test gegeneinander gebaut",
+    "Hook-Varianten statt einer finalen Fassung",
+    "Auswertung, welches Sujet im Feed bestanden hat"
+  ],
+  "chips": [
+    "Creative-Audit",
+    "UGC-Produktion",
+    "Studio-Shooting",
+    "Reels & Social",
+    "Kampagnen-Sujets",
+    "Testing-Loop",
+    "Zweitmeinung",
+    "Content-Partnerschaft"
+  ],
+  "trust": [
+    "Kein Vertrag für den Erstdreh",
+    "Material bleibt bei Ihnen",
+    "Nutzungsrechte unbefristet"
+  ],
+  "h1": [
+    "Content,",
+    "der verkauft."
+  ],
+  "ital": 1,
+  "diff": [
+    {
+      "kicker": "Anders als üblich",
+      "titel": "Gemessen statt gemeint",
+      "text": "Interior-Motive trugen bei einem Neubauprojekt 54 Prozent aller Leads. Solche Antworten liefert Testing, kein Bauchgefühl.",
+      "bild": "assets/img/ag_cam2.jpg"
+    },
+    {
+      "kicker": "Anders als üblich",
+      "titel": "Content + Performance, ein Team",
+      "text": "Die Produktion kennt die Zahlen von gestern, die Kampagne bekommt Nachschub, bevor das Motiv müde wird.",
+      "bild": "assets/img/ag_cam1.jpg"
+    },
+    {
+      "kicker": "Anders als üblich",
+      "titel": "UGC ernst genommen",
+      "text": "UGC ist bei uns keine Billig-Alternative, sondern der oft effizienteste Hebel: minus 58 Prozent CPA gegen Studio-Video.",
+      "bild": "assets/img/ag_shoot1.jpg"
+    }
+  ],
+  "proofsplit": {
+    "label": "Was zählt",
+    "h": [
+      "Nicht schön.",
+      "Wirksam."
+    ],
+    "t": "Ein Sujet muss zwei Prüfungen bestehen: den Daumen in der ersten Sekunde und den Report am Monatsende. Was nur die erste besteht, ist Deko."
+  },
+  "wall": {
+    "label": "Aus laufenden Mandaten",
+    "h": [
+      "Wir produzieren nicht",
+      "für die Mappe."
+    ],
+    "t": "Jede Woche entstehen neue Sujets für laufende Kampagnen: Gastro, Event, Immobilie, Produkt. Hochformat, weil dort geschaut wird.",
+    "link": {
+      "href": "work.html",
+      "text": "Alle Cases ansehen"
+    }
+  },
+  "wall_cols": [
+    [
+      "assets/case/juwel/g0.jpg",
+      "assets/case/herogroup/g0.jpg",
+      "assets/case/medcenter/g1.jpg",
+      "assets/case/grandgarden/g2.jpg"
+    ],
+    [
+      "assets/case/kommunalkredit/g0.jpg",
+      "assets/case/juwel/g1.jpg",
+      "assets/case/herogroup/v0.mp4",
+      "assets/case/medcenter/g2.jpg"
+    ],
+    [
+      "assets/case/case-health-brand/g0.jpg",
+      "assets/case/kommunalkredit/g1.jpg",
+      "assets/case/juwel/g2.jpg",
+      "assets/case/herogroup/v1.mp4"
+    ],
+    [
+      "assets/case/grandgarden/g0.jpg",
+      "assets/case/case-health-brand/g1.jpg",
+      "assets/case/kommunalkredit/g2.jpg",
+      "assets/case/juwel/g3.jpg"
+    ],
+    [
+      "assets/case/medcenter/g0.jpg",
+      "assets/case/grandgarden/g1.jpg",
+      "assets/case/case-health-brand/g2.jpg",
+      "assets/case/kommunalkredit/g3.jpg"
+    ]
+  ],
+  "stoer": {
+    "img": "assets/img/retreat-08.jpg",
+    "side": "left",
+    "al": "Die Risikoumkehr",
+    "ah": [
+      "Verkauft es nicht,",
+      "zählt es nicht."
+    ],
+    "aside": "Läuft die Produktion mit Performance-Mandat, koppeln wir die Vergütung an messbare Ergebnisse. Wir gewinnen nur, wenn Sie gewinnen.",
+    "zl": "Wie wir arbeiten",
+    "zt": "Wer dreht, liest auch die Zahlen zum Motiv."
+  }
+}

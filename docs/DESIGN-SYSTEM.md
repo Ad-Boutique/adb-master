@@ -84,8 +84,9 @@ Scripts, gebuendelt zu `site.js`, jede Datei in eigenem Block:
 
 - `assets/site.css` und `assets/site.js` schreibt `_css.py`. Jede Aenderung darin ist beim naechsten Build weg.
 - `_css.py` entfernt Kommentare und ueberfluessige Leerzeichen, laesst aber Reihenfolge, Strings und `url(...)` unangetastet. Die Kaskade bleibt gleich.
-- Der Build (`_build.sh`) ruft `_css.py` vor `_brand_inplace.py` auf. `_brand_inplace.py` stellt aeltere Seitenkoepfe auf die zwei Dateien um, `_bump.py` setzt die Cache-Version `?v=` als Inhalts-Hash (aendert sich nur, wenn sich CSS oder JS aendern).
+- Der Build (`_build.sh`) ruft `_css.py` vor den Generatoren auf, weil die Cache-Version `?v=` ein Inhalts-Hash von `site.css` und `site.js` ist und schon beim Erzeugen der Seiten feststehen muss. Die Regel "brand" (`_brand_inplace.py`) stellt aeltere Seitenkoepfe auf die zwei Dateien um, die Regel "version" (`_bump.py`) setzt die Cache-Version (aendert sich nur, wenn sich CSS oder JS aendern). Beide laufen fuer generierte Seiten beim Erzeugen und fuer handgebaute in `_nachlauf.py` (Reihenfolge der Regeln: README, Abschnitt Bauen).
 - Jede Seite laedt im Kopf genau: `assets/site.css?v=N`, das Adobe-Fonts-Kit (`use.typekit.net/udf8wjj.css`) und `assets/site.js?v=N` (defer), davor Preconnect zu Typekit und Preload fuer Satoshi. Neue Seiten bekommen das ueber `HEAD` in `_gen.py`.
+- Markup der Seiten: Cases in `_bausteine.py`, Leistungsseiten in `_tpl_services.py` (eine Funktion je Sektion), Inhalte in `_content/cases` und `_content/services`. Button-Varianten, Badges, Headline-Teilung und Abstands-Tokens setzen die Regeln "ui", "headlines" und "brand" einheitlich fuer alle Seiten, sie gehoeren nicht in die Vorlagen.
 
 ## Neue Werte und neue Bausteine
 

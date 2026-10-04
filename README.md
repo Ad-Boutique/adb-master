@@ -12,7 +12,8 @@ Betreut von Daniel (`danielphadb`) und Florian (`florian-hoermann`) mit gleichen
 |---|---|
 | `*.html` | gebaute Seiten: Startseite, Work, Agentur, Kontakt, 6 Leistungen, 24 Cases (2 davon handgebaut), Studie, 2 Vorschau-Varianten `*-v3.html` |
 | `_content/cases/*.json` | Inhalt je Case (Texte, Zahlen, Bilder). Anleitung: [docs/CMS-CASES.md](docs/CMS-CASES.md) |
-| `_*.py` | Build-Schritte (Generatoren und Nachbearbeitung), siehe unten |
+| `_content/services/*.json` | Inhalt je Leistungsseite (Texte, Zahlen, Bilder, SEO, Wörterbuch-Hero). Anleitung: [docs/CMS-LEISTUNGEN.md](docs/CMS-LEISTUNGEN.md) |
+| `_*.py` | Build-Schritte (Prüfung, Generatoren, Vorlagen, Regeln des Nachlaufs), siehe unten |
 | `assets/tokens.css` | alle Gestaltungswerte (Farben, Schrift, Abstände, Radien, Bewegung) |
 | `assets/master.css`, `brand*.css` | Stylesheets je Bereich; `_css.py` bündelt sie zu `assets/site.css` (nie direkt bearbeiten) |
 | `assets/brand.js`, `master.js` | Verhalten; gebündelt zu `assets/site.js` |
@@ -41,25 +42,32 @@ Die Reihenfolge ist verbindlich und steht in `_build.sh`:
 | # | Schritt | Aufgabe |
 |---|---|---|
 | 1 | `_cases.py` | prüft die Case-Dateien in `_content/cases` |
-| 2 | `_gen.py` | Performance-Cases aus `_content` |
-| 3 | `_gen_web.py` | Web-Cases |
-| 4 | `_gen_services.py` | sechs Leistungsseiten (inkl. Wörterbuch-Hero) |
-| 5 | `_gen_kontakt.py` | Kontaktseite mit Anfrage-Funnel |
-| 6 | `_apply_content.py` | Bildmaterial in die Cases |
-| 7 | `_imgdim.py` | Breite und Höhe an jedes Bild |
-| 8 | `_poster.py` | Posterbilder an Videos |
-| 9 | `_css.py` | bündelt CSS und JS |
-| 10 | `_brand_inplace.py` | Kopf, Brand-Bausteine in handgebaute Seiten |
-| 11 | `_build_funkhaus_v3.py` | Vorschau-Variante Funkhaus-Case |
-| 12 | `_build_performance_v3.py` | Vorschau-Variante Performance |
-| 13 | `_footer.py` | ein Footer für alle Seiten |
-| 14 | `_ui_markup.py` | Button-Varianten je Untergrund, alte Textlinks |
-| 15 | `_headlines.py` | Satoshi- und Amandine-Teil der Headlines |
-| 16 | `_webp.py` | WebP aus JPG, Pfade umschreiben |
-| 17 | `_perf.py` | Ladeleistung (Videos, Menübilder, Prioritäten) |
-| 18 | `_seo.py` | Title, Description, Canonical, Open Graph, JSON-LD, Sitemap, robots, llms.txt |
-| 19 | `_bump.py` | Cache-Version `?v=` als Inhalts-Hash |
-| 20 | `_check.py` | jede `assets/`-Referenz existiert und wird ausgeliefert |
+| 2 | `_leistungen.py` | prüft die Leistungsdateien in `_content/services` |
+| 3 | `_css.py` | bündelt CSS und JS (vor den Generatoren, weil die Cache-Version ein Hash von `site.css` und `site.js` ist) |
+| 4 | `_gen.py` | Performance-Cases aus `_content/cases` |
+| 5 | `_gen_web.py` | Web-Cases |
+| 6 | `_gen_services.py` | sechs Leistungsseiten aus `_content/services`, Markup in `_tpl_services.py`; dazu die Vorschau-Variante `service-performance-marketing-v3.html` |
+| 7 | `_gen_kontakt.py` | Kontaktseite mit Anfrage-Funnel |
+| 8 | `_nachlauf.py` | dieselben Regeln für die handgebauten Seiten, Vorschau-Variante `case-premium-neubau-v3.html`, `sitemap.xml`, `robots.txt`, `llms.txt` |
+| 9 | `_check.py` | jede `assets/`-Referenz existiert und wird ausgeliefert |
+
+Die Generatoren schreiben fertige Seiten: Sie geben ihr HTML an `_nachlauf.fertig()`, die Regeln laufen beim Erzeugen, kein späterer Schritt fasst die Seite noch an. Die handgebauten Seiten (Startseite, Work, Agentur, Studie, Premium-Neubau, Kommunalkredit, Weiterleitungen) durchlaufen dieselben Regeln in `_nachlauf.py`. Jede Regel steht genau einmal, als Funktion `seite(name, html)` in ihrem Modul; die Reihenfolge steht nur in `_nachlauf.py` (`SCHRITTE`):
+
+| Regel | Modul | Aufgabe |
+|---|---|---|
+| `inhalt` | `_apply_content.py` | Vorschau-Medien der Work-Kacheln, Galerie der handgebauten Cases |
+| `imgdim` | `_imgdim.py` | Breite und Höhe an jedes Bild (Cache `assets/imgdim.json`) |
+| `poster` | `_poster.py` | Posterbilder an Videos |
+| `brand` | `_brand_inplace.py` | Kopf, Brand-Bausteine der handgebauten Seiten, Abstände auf Tokens; danach entstehen die `*-v3.html` |
+| `footer` | `_footer.py` | ein Footer für alle Seiten |
+| `ui` | `_ui_markup.py` | Farben, Button-Varianten je Untergrund, Labels, alte Textlinks |
+| `headlines` | `_headlines.py` | Satoshi- und Amandine-Teil der Headlines, große Zahlen |
+| `webp` | `_webp.py` | WebP aus JPG (fehlende werden erzeugt), Pfade umschreiben |
+| `perf` | `_perf.py` | Ladeleistung (Videos, Menübilder, Prioritäten, Sprunglink) |
+| `seo` | `_seo.py` | Title, Description, Canonical, Open Graph, JSON-LD, H1-Regel, Footer-Stand |
+| `version` | `_bump.py` | Cache-Version `?v=` als Inhalts-Hash |
+
+Fehlt ein Anker für eine Einsetzung (Marker-Kommentar oder Struktur in einer handgebauten Seite oder einer `*-v3.html`), bricht der Build mit Regel, Seite und Anker ab (`_anker.py`). Jedes Regel-Modul lässt sich zur Fehlersuche einzeln aufrufen (`python3 _footer.py` bearbeitet alle Seiten), verbindlich ist der ganze Build.
 
 Der Build zeigt je Schritt eine Zeile und am Ende alle Warnungen. `STRICT=1 sh _build.sh` bricht bei Warnungen ab. Zweimal hintereinander gebaut ergibt keine Unterschiede.
 
@@ -80,7 +88,7 @@ Dazu je Seite die Darstellungsprüfung `_tools/qa2.js` (Overflow, Schriften, Ove
 ## Deployment
 
 - Vercel baut nichts, es liefert die Dateien aus dem Repo aus. Nur `main` geht live, jeder PR bekommt eine Vorschau.
-- **Live-Schalter:** `ADB_LIVE=1 python3 _seo.py` gibt die Seiten für Suchmaschinen frei (index/follow, robots offen), schaltet saubere Pfade (`/referenzen/...`, `/services/...`) und lädt Google Tag Manager und Meta-Pixel erst nach Einwilligung. Ohne Schalter bleibt alles `noindex`. Der Live-Modus schreibt Seiten dauerhaft um: nur auf dem Go-live-Branch ausführen.
+- **Live-Schalter:** `ADB_LIVE=1 sh _build.sh` gibt die Seiten für Suchmaschinen frei (index/follow, robots offen), schaltet saubere Pfade (`/referenzen/...`, `/services/...`) und lädt Google Tag Manager und Meta-Pixel erst nach Einwilligung. Generatoren und Nachlauf setzen die Live-Fassung dann direkt; `ADB_LIVE=1 python3 _seo.py` allein bearbeitet wie bisher alle Seiten nachträglich. Ohne Schalter bleibt alles `noindex`. Der Live-Modus schreibt Seiten dauerhaft um: nur auf dem Go-live-Branch ausführen.
 - Kontaktformular: in Vercel `RESEND_API_KEY` und `ANFRAGE_TO` setzen; ohne Endpunkt öffnet das Formular das Mailprogramm.
 
 ## Branches

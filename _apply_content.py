@@ -1,12 +1,15 @@
 # Baut den Kunden-Content in Work-Kacheln (Vorschau-Medien aus assets/content.json) und in die handgebauten
 # Case-Seiten (Galerie aus _content/cases/<slug>.json) ein.
+# Regel "inhalt" des Nachlaufs (_nachlauf.py): seite(name, html) wirkt nur auf work.html und die handgebauten Cases,
+# alle anderen Seiten kommen unveraendert zurueck. Einzeln aufrufbar: python3 _apply_content.py
 # -*- coding: utf-8 -*-
 import json, os, re
 
 M = json.load(open("assets/content.json", encoding="utf-8"))
 
 # ---------- 1) WORK: Preview-Medien in die Kacheln ----------
-# Anker (Text in der Kachel) -> Case-Slug im Manifest
+# Anker (Text in der Kachel) -> Case-Slug im Manifest. Mehrere Schreibweisen derselben Kachel sind erlaubt
+# (z. B. mit &amp; und mit &): gewarnt wird nur, wenn keine davon auf der Seite steht.
 TILE = {
     "Immobilien-Investment":     "case-immobilien-investment",
     "Crowdinvesting-Plattform":  "case-crowdinvesting",
@@ -27,7 +30,8 @@ TILE = {
     "Hero Group":                "herogroup",
 }
 
-w = open("work.html", encoding="utf-8").read()
+ZAEHLER = {"kacheln": 0, "galerien": 0}
+
 
 def media_html(entry, alt):
     p = entry.get("prev")
@@ -51,49 +55,57 @@ def tile_bounds(s, start):
             break
     return end
 
-changed = 0
-for anchor, slug in TILE.items():
-    entry = M.get(slug)
-    if not entry:
-        continue
-    new_media = media_html(entry, anchor)
-    if not new_media:
-        continue
-    idx = w.find('<b>%s</b>' % anchor)
-    if idx < 0:
-        # Farbkachel: Anker im wclr-Label
-        idx = w.find('>%s</b>' % anchor)
-    if idx < 0:
-        print("  ? kein Anker:", anchor)
-        continue
-    start = w.rfind('<a class="wt tile', 0, idx)
-    d = w.rfind('<div class="wt tile', 0, idx)
-    if d > start:
-        start = d
-    end = tile_bounds(w, start)
-    if not end:
-        continue
-    block = w[start:end]
-    # bestehendes Bild ersetzen, sonst Farbfläche durch Medium tauschen
-    if '<img' in block and 'wclr' not in block:
-        nb = re.sub(r'<img[^>]*>', new_media, block, count=1)
-    else:
-        nb = re.sub(r'<span class="wclr".*?</span>\s*(?=<span class="wpill"|<span class="wlab"|$)',
-                    new_media, block, count=1, flags=re.S)
-        if nb == block:
-            continue
-        if 'has-media' not in nb:
-            nb = nb.replace('class="wt tile', 'class="wt tile has-media', 1)
-        # Label ergänzen, falls die Farbkachel keins hatte
-        if '<span class="wlab">' not in nb:
-            label = anchor
-            nb = nb.replace('</a>' if nb.startswith('<a') else '</div>',
-                            '<span class="wlab"><b>%s</b></span>%s' % (label, '</a>' if nb.startswith('<a') else '</div>'))
-    w = w[:start] + nb + w[end:]
-    changed += 1
 
-open("work.html", "w", encoding="utf-8").write(w)
-print("Work-Kacheln mit Preview:", changed)
+def kacheln(w):
+    """Vorschau-Medien in die Kacheln von work.html."""
+    changed = 0
+    gefunden, fehlt = set(), []
+    for anchor, slug in TILE.items():
+        entry = M.get(slug)
+        if not entry:
+            continue
+        new_media = media_html(entry, anchor)
+        if not new_media:
+            continue
+        idx = w.find('<b>%s</b>' % anchor)
+        if idx < 0:
+            # Farbkachel: Anker im wclr-Label
+            idx = w.find('>%s</b>' % anchor)
+        if idx < 0:
+            fehlt.append((anchor, slug))
+            continue
+        gefunden.add(slug)
+        start = w.rfind('<a class="wt tile', 0, idx)
+        d = w.rfind('<div class="wt tile', 0, idx)
+        if d > start:
+            start = d
+        end = tile_bounds(w, start)
+        if not end:
+            print("  ! Work-Kachel ohne Ende:", anchor)
+            continue
+        block = w[start:end]
+        # bestehendes Bild ersetzen, sonst Farbfläche durch Medium tauschen
+        if '<img' in block and 'wclr' not in block:
+            nb = re.sub(r'<img[^>]*>', new_media, block, count=1)
+        else:
+            nb = re.sub(r'<span class="wclr".*?</span>\s*(?=<span class="wpill"|<span class="wlab"|$)',
+                        new_media, block, count=1, flags=re.S)
+            if nb == block:
+                continue
+            if 'has-media' not in nb:
+                nb = nb.replace('class="wt tile', 'class="wt tile has-media', 1)
+            # Label ergänzen, falls die Farbkachel keins hatte
+            if '<span class="wlab">' not in nb:
+                label = anchor
+                nb = nb.replace('</a>' if nb.startswith('<a') else '</div>',
+                                '<span class="wlab"><b>%s</b></span>%s' % (label, '</a>' if nb.startswith('<a') else '</div>'))
+        w = w[:start] + nb + w[end:]
+        changed += 1
+    for anchor, slug in fehlt:
+        if slug not in gefunden:
+            print("  ? kein Anker:", anchor)
+    ZAEHLER["kacheln"] += changed
+    return w
 
 
 # ---------- 2) HANDGEBAUTE CASE-SEITEN: Content-Galerie ----------
@@ -102,6 +114,9 @@ print("Work-Kacheln mit Preview:", changed)
 # Inhaltsdatei _content/cases/<slug>.json, eingesetzt vor dem Next-Case.
 from _cases import HAND, bausteine
 from _bausteine import galerie_html
+
+# Marker-Kommentare, vor denen die Galerie steht (der erste vorhandene gilt)
+MARKER = ("  <!-- KAPITEL: MEHR -->", "  <!-- NEXT CASE -->", "  <!-- NEXT -->")
 
 
 def film_html(entry, title, sub):
@@ -124,17 +139,16 @@ def film_html(entry, title, sub):
 
 ''' % (title, entry["recap"], entry.get("prev_img_poster", ""), sub)
 
-added = 0
-for case in HAND:
-    fname = case["seite"]
+
+def galerie(case, s):
+    """Galerie aus der Inhaltsdatei in die handgebaute Seite: alte Galerie heraus, neue vor den Next-Case."""
     gals = bausteine(case, "galerie")
-    if not gals or not os.path.exists(fname):
-        continue
-    s = open(fname, encoding="utf-8").read()
+    if not gals:
+        return s
     g = gals[0]
     gal = galerie_html(g["medien"], g.get("hintergrund", "#0E0E10"), g.get("label", "Aus dem Mandat"))
     if not gal:
-        continue
+        return s
     # bestehende Galerie herausschneiden, damit sie neu verteilt wird
     if 'collage--tight' in s:
         a = s.find('  <!-- CONTENT AUS DEM MANDAT -->')
@@ -144,12 +158,30 @@ for case in HAND:
         if a >= 0 and b > a:
             s = s[:a] + s[b + len('</section>'):].lstrip('\n')
     # vor "NEXT" einsetzen
-    for marker in ("  <!-- KAPITEL: MEHR -->", "  <!-- NEXT CASE -->", "  <!-- NEXT -->"):
+    for marker in MARKER:
         if marker in s:
-            s = s.replace(marker, gal + marker, 1)
-            break
-    else:
-        continue
-    open(fname, "w", encoding="utf-8").write(s)
-    added += 1
-print("Case-Seiten mit Content-Galerie:", added)
+            ZAEHLER["galerien"] += 1
+            return s.replace(marker, gal + marker, 1)
+    print("  ! %s: Galerie nicht eingesetzt, es fehlt ein Marker-Kommentar (%s)"
+          % (case["seite"], " oder ".join(m.strip() for m in MARKER)))
+    return s
+
+
+def seite(name, h):
+    """Regel "inhalt": Kacheln auf work.html, Galerie auf den handgebauten Case-Seiten."""
+    if name == "work.html":
+        return kacheln(h)
+    for case in HAND:
+        if case["seite"] == name:
+            return galerie(case, h)
+    return h
+
+
+def bericht():
+    return "Work-Kacheln mit Preview: %d, Case-Seiten mit Content-Galerie: %d" % (ZAEHLER["kacheln"], ZAEHLER["galerien"])
+
+
+if __name__ == "__main__":
+    import _nachlauf
+    _nachlauf.einzeln(seite, [f for f in ["work.html"] + [c["seite"] for c in HAND] if os.path.exists(f)])
+    print(bericht())

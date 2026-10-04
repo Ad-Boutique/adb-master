@@ -160,9 +160,9 @@ def case_page(c):
 
 
 if __name__ == "__main__":
-    for c in PERFORMANCE:
-        if c["vorlage"] != "dossier":
-            continue
-        open(c["slug"] + ".html", "w", encoding="utf-8").write(case_page(c))
-        print("case", c["slug"])
+    # fertig(): die Nachlauf-Regeln (_nachlauf.py) laufen gleich beim Erzeugen, geschrieben wird die fertige Seite
+    import _nachlauf
+    seiten = {c["slug"] + ".html": case_page(c) for c in PERFORMANCE if c["vorlage"] == "dossier"}
+    for name in _nachlauf.fertig(seiten):
+        print("case", name[:-5])
     print("cases done")

@@ -15,7 +15,8 @@ Stand 3.10.2026. Ein Case ist eine Datei `_content/cases/<slug>.json`. Die Vorla
 | `_gen_web.py` | Baut alle Cases der Vorlage `web` |
 | `_kpi.py` | Zeichnet das Kennzahlen-Board. Die Leistungsseiten holen geteilte Karten per id aus den Case-Dateien |
 | `_apply_content.py` | Vorschau-Medien der Work-Kacheln (`assets/content.json`) und die Galerie der handgebauten Seiten |
-| `_gen_services.py`, `_seo.py` | lesen Name, Leistungen, Hero-Zeile und Intro der Cases (Querverweise, Title, Description, llms.txt) |
+| `_gen_services.py`, `_leistungen.py`, `_seo.py` | lesen Name, Leistungen, Hero-Zeile und Intro der Cases (Querverweise, geteilte Karten, Title, Description, llms.txt). Leistungsseiten: [CMS-LEISTUNGEN.md](CMS-LEISTUNGEN.md) |
+| `_nachlauf.py` | Regeln, die jede Seite nach dem Erzeugen durchläuft (Bildmaße, WebP, Footer, Headlines, SEO, ...). Generierte Cases bekommen sie beim Erzeugen, die handgebauten im Nachlauf |
 
 Drei Vorlagen:
 
@@ -186,7 +187,7 @@ Grammatik: Label links oben, Badge rechts oben, große Zahl, eine Punkt-Grafik, 
 
 Eine Grafik je Karte (linie, reihen, waffel, stationen oder bilder).
 
-Geteilte Karten: Eine Karte mit `id` kann in einem anderen Case als `{"ref": "<id>"}` stehen, optional mit `link`, und auf den Leistungsseiten in `SERVICE_KPI` (`_kpi.py`) als `K("<id>")`. Wer eine geteilte Karte ändert, ändert sie überall.
+Geteilte Karten: Eine Karte mit `id` kann in einem anderen Case als `{"ref": "<id>"}` stehen, optional mit `link`, und auf den Leistungsseiten im Feld `kennzahlen` ihrer Datei `_content/services/<slug>.json` ebenso als `{"ref": "<id>", "link": {...}}` (siehe [CMS-LEISTUNGEN.md](CMS-LEISTUNGEN.md)). Wer eine geteilte Karte ändert, ändert sie überall.
 
 | id | steht in | wird außerdem gezeigt in |
 |---|---|---|
@@ -209,7 +210,7 @@ Geteilte Karten: Eine Karte mit `id` kann in einem anderen Case als `{"ref": "<i
 
 ## 6. Bilder: Pfade und Größen
 
-Pfade stehen in der Datei immer ab `assets/` (z. B. `assets/case/case-neuer-case/g0.jpg`). JPG ablegen; WebP (`_webp.py`), Breite und Höhe (`_imgdim.py`, Cache `assets/imgdim.json`) und Video-Poster (`_poster.py`) erzeugt der Build. Fotos ohne Filter, kein Lime auf oder an Fotos (BRAND-RULES 1 und 8).
+Pfade stehen in der Datei immer ab `assets/` (z. B. `assets/case/case-neuer-case/g0.jpg`). JPG ablegen; WebP (Regel `webp`, `_webp.py`), Breite und Höhe (Regel `imgdim`, `_imgdim.py`, Cache `assets/imgdim.json`) und Video-Poster (Regel `poster`, `_poster.py`) setzt der Build beim Erzeugen der Seite. Fotos ohne Filter, kein Lime auf oder an Fotos (BRAND-RULES 1 und 8).
 
 | Wo | Ordner, Name | Format, Größe der bestehenden Bilder |
 |---|---|---|
@@ -225,7 +226,7 @@ Pfade stehen in der Datei immer ab `assets/` (z. B. `assets/case/case-neuer-case
 
 Fehlende Dateien: Galerie und Bildstreifen der Karten lassen sie aus; Hero, Bühne, Mobil und Unterseiten zeigen dann ein leeres Bild. `python3 _cases.py` listet jeden Pfad, dessen Datei fehlt.
 
-`assets/content.json` bleibt das Medien-Manifest für die Vorschau-Medien der Work-Kacheln und die Bildausrichtung auf den Leistungsseiten. Die Galerien der Case-Seiten kommen seit dem Umbau aus den Case-Dateien (die Listen in `content.json` werden für die Case-Seiten nicht mehr gelesen).
+`assets/content.json` bleibt das Medien-Manifest für die Vorschau-Medien der Work-Kacheln (die Leistungsseiten lasen daraus früher eine Bildausrichtung, die nirgends verwendet wurde; seit dem Umbau der Leistungsseiten vom 4.10.2026 entfällt das). Die Galerien der Case-Seiten kommen seit dem Umbau aus den Case-Dateien (die Listen in `content.json` werden für die Case-Seiten nicht mehr gelesen).
 
 ## 7. Bauen und prüfen
 

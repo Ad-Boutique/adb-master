@@ -1,17 +1,20 @@
 #!/bin/sh
 # Ganze Build-Kette in der verbindlichen Reihenfolge. Aufruf: sh _build.sh [ziel-ordner-fuer-vorschau]
 # Ohne Argument: baut nur im aktuellen Ordner. Mit Argument: danach rsync in den Vorschauordner.
-# Erster Schritt _cases.py prueft die Inhaltsdateien _content/cases/*.json (Fehler nennen Datei und Feld).
+# Erst pruefen _cases.py und _leistungen.py die Inhaltsdateien _content/cases/*.json und _content/services/*.json
+# (Fehler nennen Datei und Feld). _css.py buendelt CSS und JS vor den Generatoren, weil die Cache-Version (Regel
+# "version") ein Hash dieser Dateien ist. Die Generatoren schreiben fertige Seiten: die Regeln des Nachlaufs laufen
+# beim Erzeugen (_nachlauf.fertig). _nachlauf.py wendet dieselben Regeln in derselben Reihenfolge auf die
+# handgebauten Seiten an und leitet die *-v3.html ab, dazu sitemap.xml, robots.txt, llms.txt.
 # Ausgabe: je Schritt eine Zeile; Warnungen der Schritte (Zeilen mit "!" oder "?" am Anfang, "Hinweis", "fehlt",
 # "ohne Posterbild") werden gesammelt und am Ende aufgelistet. STRICT=1 bricht bei Warnungen mit Fehler ab.
+# Live-Fassung: ADB_LIVE=1 sh _build.sh (siehe _seo.py).
 # Letzter Schritt _check.py: jede assets/-Referenz muss existieren und darf nicht von .vercelignore ausgeschlossen sein.
 set -e
 cd "$(dirname "$0")"
 LOG=$(mktemp "${TMPDIR:-/tmp}/adbbuild.XXXXXX"); WARN=$(mktemp "${TMPDIR:-/tmp}/adbwarn.XXXXXX")  # Form fuer macOS und Linux
 trap 'rm -f "$LOG" "$WARN"' EXIT
-for s in _cases.py _gen.py _gen_web.py _gen_services.py _gen_kontakt.py _apply_content.py _imgdim.py _poster.py \
-         _css.py _brand_inplace.py _build_funkhaus_v3.py _build_performance_v3.py _footer.py _ui_markup.py _headlines.py _webp.py _perf.py _seo.py \
-         _bump.py _check.py; do
+for s in _cases.py _leistungen.py _css.py _gen.py _gen_web.py _gen_services.py _gen_kontakt.py _nachlauf.py _check.py; do
   if ! python3 "$s" > "$LOG" 2>&1; then cat "$LOG"; echo "BUILD-FEHLER in $s"; exit 1; fi
   echo "  $s: $(tail -n 1 "$LOG" | cut -c1-140)"
   grep -E '^[[:space:]]*[!?]|Hinweis|fehlt|ohne Posterbild|fehlgeschlagen' "$LOG" | sed "s|^|$s: |" >> "$WARN" || true
