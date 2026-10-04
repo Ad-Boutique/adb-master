@@ -1,0 +1,576 @@
+{
+  "slug": "service-strategie",
+  "reihenfolge": 50,
+  "nav": "Strategie & Funnel",
+  "label": "Leistung, Strategie & Funnel",
+  "flow": "v2",
+  "v2_content": true,
+  "v2_graphic": true,
+  "seo": {
+    "label": "Strategie und Funnel Agentur Wien",
+    "title": "Strategie und Funnel Agentur Wien | ad.boutique",
+    "desc": "Funnel, KPI-Logik und Attribution aus Wien: aus 36.043 Euro Google-Budget wurden 4,65 Millionen Euro Kapital, Crowdinvesting von 16 auf 50 Investments.",
+    "answer": "ad.boutique entwickelt in Wien Strategien, die sich in Zahlen messen lassen: Funnel vom ersten Kontakt bis zur Zeichnung, KPI-Definition vorab, Attribution über alle Kanäle, und die Umsetzung mit derselben Hand. Beispiel: Ein Immobilien-Investment-Mandat brachte aus 36.043 Euro Google-Budget 4,65 Millionen Euro zurechenbares Kapital, das 129-Fache des Budgets.",
+    "faq_first": {
+      "frage": "Was ist ein Funnel im Performance Marketing?",
+      "antwort": "Ein Funnel ist die Strecke vom ersten Kontakt bis zum Abschluss, in Stufen mit je einer Kennzahl: Kontakt, Anfrage, Gespräch, Zeichnung oder Kauf. Erst wenn jede Stufe gemessen wird, lässt sich sagen, wo Budget verdampft. Im Finance-Mandat wurden aus 446 Leads 43 Zeichnungen, und genau diese Quote steuert die Kampagne."
+    },
+    "faq_last": [
+      {
+        "frage": "Was kostet eine Strategie-Session?",
+        "antwort": "Die Session selbst läuft ohne Vertrag, das Ergebnis bleibt bei Ihnen, die Umsetzung ist optional. Zwischen Tag 2 und 14 nach der Anfrage sitzen wir zusammen, danach steht der Fahrplan auf einer Seite: Ziel in Zahlen, Stufen, Kanäle, Kennzahlen, Reihenfolge."
+      },
+      {
+        "frage": "Für wen ist Strategie und Funnel gedacht?",
+        "antwort": "Für Unternehmen mit einem Ziel in Zahlen, Kapital, Einheiten oder Anfragen, mehreren Zielgruppen mit unterschiedlichen Botschaften und einem Vertrieb, der Anfragen zeitnah bearbeitet. Wer nur bessere Anzeigen braucht, ist beim Performance-Audit besser aufgehoben."
+      }
+    ]
+  },
+  "dhero": {
+    "word": "Strategie",
+    "kicker": "Strategie & Funnel",
+    "text": "die Ordnung hinter dem Wachstum: <em>Funnel</em>, KPI-Logik und <em>Attribution</em>, die Entscheidungen tragen, damit <em>Struktur</em> das <em>Bauchgefühl</em> schlägt",
+    "img": "assets/img/hero/strategie.jpg",
+    "alt": "Strategie-Session der ad.boutique am Vision Board"
+  },
+  "tags": [
+    "Funnel-Architektur",
+    "KPI-Logik",
+    "Attribution",
+    "Positionierung"
+  ],
+  "sub": "Vom Einzelprojekt zur Plattform: Funnel, KPI-Logik und Attribution, die Entscheidungen tragen.",
+  "pmap": {
+    "label": "So läuft es",
+    "h": [
+      "Von Ihren Zielen",
+      "zur Struktur."
+    ],
+    "t": "Sie bringen Ziele, Budget und Bestandsdaten, wir definieren die KPI vorab und bauen Funnel und Attribution. Ein Workshop mit Ihnen, danach Sprints.",
+    "inputs": [
+      {
+        "text": "Ihre Ziele und Ihr Budget",
+        "kurz": "Ihre Ziele, Ihr Budget",
+        "von": "sie"
+      },
+      {
+        "text": "Ihre Bestandsdaten",
+        "kurz": "Ihre Bestandsdaten",
+        "von": "sie"
+      },
+      {
+        "text": "Zielgruppen und Märkte",
+        "kurz": "Zielgruppen, Märkte",
+        "von": "wir"
+      },
+      {
+        "text": "KPI-Definition vorab",
+        "kurz": "KPI-Definition",
+        "von": "wir"
+      },
+      {
+        "text": "Funnel-Architektur",
+        "kurz": "Funnel-Architektur",
+        "von": "wir"
+      },
+      {
+        "text": "Attribution je Euro",
+        "kurz": "Attribution",
+        "von": "wir"
+      }
+    ],
+    "engine": {
+      "title": "Struktur vor Budget",
+      "loop": [
+        "Definieren",
+        "Bauen",
+        "Messen",
+        "Lernen"
+      ]
+    },
+    "touch": "Workshop mit Ihnen",
+    "output": {
+      "titel": "Eine Struktur, die trägt",
+      "text": "KPI vorab, jeder Euro|zurechenbar",
+      "tag": "Sie entscheiden mit Zahlen"
+    }
+  },
+  "problem_label": "Die Ausgangslage",
+  "problem_h": [
+    "Jede Kampagne",
+    "beginnt bei null."
+  ],
+  "problem": [
+    "Jede Kampagne beginnt bei null: eigene Zielgruppen, eigene Zahlen, keine gemeinsame Datenbasis. Was funktioniert hat, weiß hinterher niemand genau.",
+    "<b>Teuer erkaufte Learnings verpuffen.</b> Eine Plattform, die mit ROAS 2,14 lief, blieb genau so lange ineffizient, bis Struktur, KPI-Logik und projektübergreifendes Lernen kamen: Danach stand sie bei 8,75."
+  ],
+  "bene_label": "Was für Ihre Entscheidungen dabei herauskommt",
+  "bene_h": [
+    "Was Struktur",
+    "wirklich bringt."
+  ],
+  "intro": "Erst die <b>Struktur</b>, dann das Budget: <b>Funnel</b>, KPI-Definitionen, die vorab feststehen, und eine <b>Attribution</b>, die jeden Euro zurechenbar macht.",
+  "bene": [
+    {
+      "titel": "Aus 2,14 wurde 8,75",
+      "text": "Gleiches Budget, andere Struktur: aus 16 Investments wurden 50."
+    },
+    {
+      "titel": "Die KPI steht vor dem ersten Euro",
+      "text": "Woran Erfolg gemessen wird, ist vorher geklärt, nicht hinterher."
+    },
+    {
+      "titel": "€ 36k, die € 4,65 Mio. zurechenbar machten",
+      "text": "Ein Investoren-Funnel, dessen Wirkung bis zur Zeichnung nachvollziehbar blieb."
+    },
+    {
+      "titel": "Jedes weitere Projekt wird günstiger",
+      "text": "Projektübergreifendes Lernen statt eigener Insel je Kampagne."
+    },
+    {
+      "titel": "Vertrauen ist eine Funnel-Stufe",
+      "text": "Im Finance zählt der Preis je zugerechnetem Kapital, nicht der Preis je Klick."
+    },
+    {
+      "titel": "Auch Schließen gehört dazu",
+      "text": "Ein bestehender Kanal wurde messbar gemacht, geprüft und dann beendet."
+    }
+  ],
+  "band": {
+    "label": "Aus der Zusammenarbeit",
+    "imgs": [
+      "assets/case/case-crowdinvesting/g0.jpg",
+      "assets/case/herogroup/g0.jpg",
+      "assets/case/case-premium-neubau/g0.jpg",
+      "assets/case/kommunalkredit/g1.jpg",
+      "assets/case/case-crowdinvesting/g2.jpg",
+      "assets/case/grandgarden/g0.jpg",
+      "assets/case/case-immobilien-investment/g0.jpg",
+      "assets/case/case-crowdinvesting/g4.jpg",
+      "assets/case/kommunalkredit/g4.jpg"
+    ]
+  },
+  "zoom": {
+    "img": "assets/img/ag_meeting.jpg",
+    "side": "left",
+    "al": "Ein Fall",
+    "ah": [
+      "Erst die Struktur.",
+      "Dann das Budget."
+    ],
+    "alink": {
+      "href": "case-crowdinvesting.html",
+      "text": "Den Fall im Detail"
+    },
+    "aside": "Erst die Struktur, dann das Budget: Strategie-Session in Wien.",
+    "zl": "Strategie & Funnel",
+    "zt": "€ 36k Budget wurden € 4,65 Mio. Kapital."
+  },
+  "visual": {
+    "art": "stage",
+    "img": "assets/case/case-web-northpoint/d0.jpg",
+    "cap": "Aus dem Mandat, Auftritt mit Funnel-Logik"
+  },
+  "content_cols": [
+    [
+      "assets/case/grandgarden/g0.jpg",
+      "assets/case/case-premium-neubau/g2.jpg",
+      "assets/case/case-crowdinvesting/g0.jpg",
+      "assets/case/kommunalkredit/g1.jpg",
+      "assets/case/kommunalkredit/g4.jpg"
+    ],
+    [
+      "assets/case/herogroup/g0.jpg",
+      "assets/case/case-premium-neubau/g3.jpg",
+      "assets/case/kommunalkredit/g0.jpg",
+      "assets/case/case-crowdinvesting/g2.jpg",
+      "assets/case/case-premium-neubau/g4.jpg"
+    ],
+    [
+      "assets/case/case-premium-neubau/g0.jpg",
+      "assets/case/case-crowdinvesting/g4.jpg",
+      "assets/case/grandgarden/g1.jpg",
+      "assets/case/kommunalkredit/g2.jpg",
+      "assets/case/case-crowdinvesting/g5.jpg"
+    ],
+    [
+      "assets/case/case-crowdinvesting/g1.jpg",
+      "assets/case/case-immobilien-investment/v0.mp4",
+      "assets/case/herogroup/v1.mp4",
+      "assets/case/case-crowdinvesting/g3.jpg",
+      "assets/case/herogroup/g1.jpg"
+    ],
+    [
+      "assets/case/case-premium-neubau/g1.jpg",
+      "assets/case/herogroup/v0.mp4",
+      "assets/case/grandgarden/v0.mp4",
+      "assets/case/grandgarden/g3.jpg",
+      "assets/case/case-immobilien-investment/g1.jpg"
+    ],
+    [
+      "assets/case/grandgarden/g2.jpg",
+      "assets/case/case-immobilien-investment/v1.mp4",
+      "assets/case/herogroup/v2.mp4",
+      "assets/case/kommunalkredit/g3.jpg",
+      "assets/case/case-immobilien-investment/g0.jpg"
+    ]
+  ],
+  "proof_h": [
+    "Ein Mandat.",
+    "Von der Struktur zur Zahl."
+  ],
+  "proof_lead": "Ein Immobilien-Investment-Mandat, Stufe für Stufe: das eingesetzte Budget, die Struktur, die Zurechnung, das eingesammelte Kapital.",
+  "proof_nums": [],
+  "proof_quote": "Gleicher Spend, anderes Ergebnis: Der Beweis liegt im Vorher-Nachher. Struktur schlägt Einzelkampagne.",
+  "bars": {
+    "label": "Return on Ad Spend, Crowdinvesting-Plattform",
+    "link": {
+      "href": "case-crowdinvesting.html",
+      "text": "Dieselbe Plattform, andere Zahl"
+    },
+    "rows": [
+      {
+        "label": "Vorher",
+        "prozent": 24,
+        "wert": "2,14"
+      },
+      {
+        "label": "Mit uns",
+        "prozent": 100,
+        "wert": "8,75"
+      }
+    ],
+    "note": "Der Sprung kam nicht aus mehr Spend, sondern aus der Reihenfolge: erst die Struktur, dann das Budget."
+  },
+  "channels": {
+    "label": "Investments je Laufzeit, Crowdinvesting-Plattform",
+    "rows": [
+      {
+        "label": "Vorher",
+        "prozent": 32,
+        "wert": "16"
+      },
+      {
+        "label": "Mit uns",
+        "prozent": 100,
+        "wert": "50"
+      }
+    ],
+    "note": "Nahezu gleiches Budget, andere Struktur: Aus 16 Investments wurden 50, die Kosten je Investor fielen um 69 Prozent.",
+    "link": {
+      "href": "case-crowdinvesting.html",
+      "text": "Crowdinvesting-Plattform im Detail"
+    }
+  },
+  "tell": {
+    "nolabel": true,
+    "h": "Ein Mandat, vier Zahlen.",
+    "t": "Wie aus € 36k Mediabudget € 4,65 Mio. Kapital wurden, Stufe für Stufe nachgerechnet.",
+    "steps": [
+      {
+        "wert": "€ 36k",
+        "label": "Mediabudget über die Laufzeit",
+        "titel": "Das Budget",
+        "text": "Für ein Investment-Mandat ist das kein großer Hebel, sondern ein kleiner. Genau deshalb musste die Reihenfolge stimmen."
+      },
+      {
+        "wert": "3",
+        "label": "Stufen statt Einzelkampagnen",
+        "titel": "Die Struktur",
+        "text": "Nicht mehr Kampagnen, sondern eine Reihenfolge: Aufmerksamkeit, Vertrauen, Termin. Jede Stufe mit eigener Botschaft je Zielgruppe."
+      },
+      {
+        "wert": "2,3×",
+        "label": "Vorsprung des stärkeren Angles",
+        "titel": "Die Zurechnung",
+        "text": "Bei Anlegern schlug der Service-Angle die Nachhaltigkeits-Story um das 2,3-Fache. Gemessen, nicht vermutet."
+      },
+      {
+        "wert": "129×",
+        "label": "Return, sauber zugerechnet",
+        "titel": "Das Kapital",
+        "text": "€ 4,65 Mio. eingesammeltes Kapital, auf die Kampagne zugerechnet. Das ist ein Return von 129 zu 1."
+      }
+    ]
+  },
+  "kennzahlen": {
+    "headline": [
+      "Drei Mandate,",
+      "drei Sprünge."
+    ],
+    "karten": [
+      {
+        "ref": "invest-129",
+        "link": {
+          "href": "case-immobilien-investment.html",
+          "text": "Case ansehen"
+        }
+      },
+      {
+        "ref": "crowd-investor",
+        "link": {
+          "href": "case-crowdinvesting.html",
+          "text": "Case ansehen"
+        }
+      },
+      {
+        "ref": "consumer-cpm",
+        "link": {
+          "href": "case-consumer-brand.html",
+          "text": "Case ansehen"
+        }
+      }
+    ]
+  },
+  "oplist": [
+    {
+      "href": "case-immobilien-investment.html",
+      "titel": "Immobilien-Investment",
+      "wert": "129×",
+      "label": "€ 36k → € 4,65 Mio. Kapital"
+    },
+    {
+      "href": "case-crowdinvesting.html",
+      "titel": "Crowdinvesting-Plattform",
+      "wert": "18,7",
+      "label": "ROAS nach Umbau auf Plattform-Logik, vorher 2,14"
+    },
+    {
+      "href": "case-consumer-brand.html",
+      "titel": "Premium-Consumer-Brand",
+      "wert": "4,02",
+      "label": "Saison als Architektur"
+    },
+    {
+      "href": "case-health-brand.html",
+      "titel": "Dental-/Health-Marke",
+      "wert": "3",
+      "label": "Zielstufen aus einem Workshop: 1,4, 1,6, 1,8"
+    }
+  ],
+  "voice": {
+    "label": "Was Kunden sagen",
+    "lead": "Michael Rohrmeier, Gründer und CEO von IB-7, über die Zusammenarbeit mit ad.boutique: Marke, Website, Performance und Content aus einer Hand.",
+    "a": "Michael Rohrmeier, Gründer und CEO, IB-7",
+    "video": "assets/video/kundenstimme-ib7.mp4",
+    "note": "Wir liefern keine Strategie-Folien zum Abheften. Wir legen die Reihenfolge fest, setzen sie um und rechnen sie nach."
+  },
+  "crew": {
+    "label": "Wer daran arbeitet",
+    "h": [
+      "Vier Rollen,",
+      "die an der Struktur bauen."
+    ],
+    "t": "Strategie ohne Umsetzung ist eine Folie. Wer die Reihenfolge festlegt, verantwortet auch die Zahl am Ende.",
+    "people": [
+      {
+        "name": "Daniel",
+        "rolle": "Founder",
+        "text": "Legt die Reihenfolge fest und verantwortet die Zahl, die am Ende im Report steht.",
+        "bild": "assets/img/team/daniel.jpg"
+      },
+      {
+        "name": "Florian",
+        "rolle": "Founder",
+        "text": "Führt die Strategie-Session und übersetzt Geschäftsziele in messbare Stufen.",
+        "bild": "assets/img/team/florian.jpg"
+      },
+      {
+        "name": "Steve",
+        "rolle": "Performance Manager",
+        "text": "Baut die Struktur in die Konten und misst, ob die Reihenfolge trägt.",
+        "bild": "assets/img/team/steve.jpg"
+      },
+      {
+        "name": "Alexis",
+        "rolle": "Sales",
+        "text": "Bringt die Sicht des Vertriebs ein: Welche Anfrage ist wirklich eine Anfrage.",
+        "bild": "assets/img/team/alexis.jpg"
+      }
+    ]
+  },
+  "logos": [
+    "ifa",
+    "conda",
+    "raiffeisen",
+    "soravia",
+    "fabrik1230",
+    "hagent",
+    "winegg",
+    "buxbaum"
+  ],
+  "fit": {
+    "label": "Bevor wir starten",
+    "h": [
+      "Der Fit entscheidet.",
+      "Nicht die Vorlage."
+    ],
+    "yes_h": "Wir passen zusammen, wenn",
+    "no_h": "Wir sind die Falschen, wenn",
+    "intro": "Wir liefern keine Strategie zum Abheften. Wir setzen sie um und verantworten die Zahl am Ende, als verlängerte Marketingabteilung. Das geht nur mit Mandaten, bei denen die Zusammenarbeit trägt, deshalb prüfen wir den Fit vorher, in beide Richtungen.",
+    "yes": [
+      "Es gibt ein Ziel in Zahlen: Kapital, Einheiten, Anfragen",
+      "Sie wollen die Umsetzung mit derselben Hand, nicht nur das Konzept",
+      "Mehrere Zielgruppen mit unterschiedlichen Botschaften",
+      "Der Vertrieb ist bereit, Anfragen zeitnah zu bearbeiten"
+    ],
+    "no": [
+      "Es soll eine Präsentation für ein Gremium werden",
+      "Die Umsetzung übernimmt später jemand anderes",
+      "Das Ziel ist Bekanntheit ohne messbare Handlung",
+      "Entscheidungen brauchen mehrere Monate Vorlauf"
+    ]
+  },
+  "steps_next": {
+    "h": "Von der Anfrage zum Fahrplan.",
+    "rows": [
+      {
+        "wann": "Heute",
+        "titel": "Anfrage in zwei Minuten",
+        "text": "Was verkauft werden soll und in welchem Zeitraum."
+      },
+      {
+        "wann": "Unter 24 h",
+        "titel": "Ehrliche Ersteinschätzung",
+        "text": "Wir sagen, ob wir passen, und was wir für die Session brauchen."
+      },
+      {
+        "wann": "Tag 2 bis 14",
+        "titel": "Strategie-Session",
+        "text": "Ein halber Tag in Wien oder digital: Zielgruppen, Reihenfolge, Botschaften, Messpunkte."
+      },
+      {
+        "wann": "Danach",
+        "titel": "Fahrplan auf einer Seite",
+        "text": "Die Reihenfolge, die Zahlen, die wir erwarten, und der erste Schritt."
+      }
+    ]
+  },
+  "acc": [
+    {
+      "titel": "Funnel-Architektur",
+      "text": "Vom ersten Kontakt bis zur Zeichnung: Ein Investoren-Funnel übersetzte € 36k Google-Budget in € 4,65 Mio. zurechenbares Kapital.",
+      "punkte": [
+        "Journey vom Lead bis zum Abschluss",
+        "Vertrauensaufbau Schritt für Schritt",
+        "CRM-Nurture für lange Wege",
+        "Klare Übergaben an Vertrieb"
+      ]
+    },
+    {
+      "titel": "KPI-Logik & Attribution",
+      "text": "Die KPI-Definition vorab ist die halbe Miete: Kosten je Investor, Ø Investment, Volumen, ROAS, sauber zugerechnet.",
+      "punkte": [
+        "KPI-Set je Geschäftsmodell",
+        "Server-side Tracking",
+        "Zurechenbarkeit statt Zählweisen",
+        "Dashboards, die Entscheidungen tragen"
+      ]
+    },
+    {
+      "titel": "Zielgruppen & Positionierung",
+      "text": "Eigennutzer und Anleger sind zwei Märkte: Wer beide gleich anspricht, verliert bei beiden.",
+      "punkte": [
+        "Segment-Logik & Botschaften",
+        "Message-Testing je Zielgruppe",
+        "Preis- und Angebotslogik",
+        "Positionierung gegen den Markt"
+      ]
+    },
+    {
+      "titel": "Plattform statt Projekt-Silo",
+      "text": "Projektübergreifendes Lernen macht jedes weitere Projekt günstiger: gleiches Budget, viermal mehr Kapital.",
+      "punkte": [
+        "Gemeinsame Datenbasis",
+        "Wiederholbare Test-Mechanik",
+        "Portfolio-Sicht auf CPL und ROAS",
+        "Skalierung mit System"
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "frage": "Brauchen wir wirklich Strategie, oder einfach bessere Ads?",
+      "antwort": "Wenn die Struktur steht, reichen oft bessere Ads. Wenn nicht, verbrennt auch das beste Creative Budget: ROAS 2,14 wurde erst durch Struktur zu 8,75."
+    },
+    {
+      "frage": "Wie lange dauert so etwas?",
+      "antwort": "Die Strategie-Phase ist in zwei bis vier Wochen durch, danach wird umgesetzt. Strategie ohne Umsetzung verkaufen wir nicht."
+    },
+    {
+      "frage": "Was, wenn die Analyse zeigt, dass wenig zu holen ist?",
+      "antwort": "Dann sagen wir das. Eine ehrliche Absage ist billiger als zwölf Monate Mandat ohne Hebel."
+    }
+  ],
+  "offer_h": "Der Einstieg ist eine Strategie-Session. Kein Vertrag.",
+  "offer": [
+    "Status quo, Zielbild, KPI-Logik: In einer strukturierten Session zeigen wir, wo Ihr Funnel Kapital liegen lässt und was zuerst gebaut gehört. Danach entscheiden Sie.",
+    "<b>Risikoumkehr:</b> Geht die Strategie in ein Umsetzungs-Mandat über, koppeln wir die Vergütung an messbare Ergebnisse. Wir gewinnen nur, wenn Sie gewinnen."
+  ],
+  "deliver": [
+    "Strategie-Session mit Zielgruppen, Reihenfolge und Botschaften",
+    "Funnel-Architektur je Zielgruppe, inklusive Messpunkte",
+    "Fahrplan auf einer Seite: Reihenfolge, Erwartung, erster Schritt",
+    "Auf Wunsch die Umsetzung mit derselben Hand"
+  ],
+  "chips": [
+    "Strategie-Session",
+    "Funnel-Architektur",
+    "KPI-Logik",
+    "Attribution-Setup",
+    "Positionierung",
+    "Portfolio-Struktur",
+    "Zweitmeinung",
+    "Umsetzungs-Mandat"
+  ],
+  "trust": [
+    "Kein Vertrag für die Session",
+    "Ergebnis bleibt bei Ihnen",
+    "Umsetzung optional"
+  ],
+  "h1": [
+    "Struktur schlägt",
+    "Bauchgefühl."
+  ],
+  "ital": 1,
+  "diff": [
+    {
+      "kicker": "Anders als üblich",
+      "titel": "KPI-Definition vorab",
+      "text": "Bevor der erste Euro läuft, steht fest, woran der Erfolg gemessen wird. Das verhindert schöngerechnete Kampagnen.",
+      "bild": "assets/img/ag_strategy.jpg"
+    },
+    {
+      "kicker": "Anders als üblich",
+      "titel": "Vertrauen als Funnel-Stufe",
+      "text": "Im Finance zählt der Cost per zugerechnetem Kapital, nicht der CPL: Aufklärung, Vertrauen, Handlung.",
+      "bild": "assets/img/retreat-06.jpg"
+    },
+    {
+      "kicker": "Anders als üblich",
+      "titel": "Ehrliches Schließen",
+      "text": "Ein bestehender Paid-Kanal wurde erst messbar gemacht, dann an der Hypothese geprüft, dann geschlossen, während der zurechenbare Kanal parallel wuchs. Genau dafür ist Struktur da.",
+      "bild": "assets/img/ag_board1.jpg"
+    }
+  ],
+  "proofsplit": {
+    "label": "Zwei Rechnungen",
+    "h": [
+      "Was Struktur",
+      "wirklich bewegt."
+    ],
+    "t": "Beide Zahlen kommen aus demselben Mandat, links die Kosten je Investor, rechts der Return on Ad Spend. Das Budget blieb nahezu gleich, geändert hat sich die Reihenfolge."
+  },
+  "stoer": {
+    "img": "assets/img/retreat-05.jpg",
+    "side": "left",
+    "al": "Die Risikoumkehr",
+    "ah": [
+      "Strategie, gemessen",
+      "am Ergebnis."
+    ],
+    "aside": "Geht die Strategie in ein Umsetzungs-Mandat über, koppeln wir die Vergütung an messbare Ergebnisse. Wir gewinnen nur, wenn Sie gewinnen.",
+    "zl": "Wie wir arbeiten",
+    "zt": "Zielbild, KPI-Logik, Reihenfolge. Dann bauen."
+  }
+}

@@ -1,0 +1,597 @@
+{
+  "slug": "service-websites",
+  "reihenfolge": 40,
+  "nav": "Websites & Landingpages",
+  "label": "Leistung, Websites & Landingpages",
+  "flow": "v2",
+  "v2_content": true,
+  "v2_graphic": true,
+  "seo": {
+    "label": "Webflow und Landingpage Agentur Wien",
+    "title": "Webflow und Landingpage Agentur Wien | ad.boutique",
+    "desc": "Landingpages, Websites und Konfiguratoren aus Wien, gebaut auf Conversion: Noma Wien 13 von 26 Wohnungen verkauft, Photovoltaik plus 487 Prozent Besucher.",
+    "answer": "ad.boutique baut in Wien Websites und Landingpages, die Anfragen bringen: Projektwebsites mit Wohnungsfinder, Landingpages je Kampagne, Konfiguratoren als Lead-Magnet, umgesetzt in Webflow und gemessen am Abschluss. Beispiel: Für Noma Wien entstanden Name, Marke, Website und Kampagne aus einer Hand, ein halbes Jahr nach Go-live waren 13 von 26 Wohnungen verkauft.",
+    "faq_first": {
+      "frage": "Was unterscheidet eine Landingpage von einer Website?",
+      "antwort": "Eine Landingpage hat ein Versprechen, eine Zielgruppe und ein Formular, und sie ist der Ort, auf den eine Kampagne führt. Eine Website muss ein ganzes Unternehmen erklären. Bei einem Wiener Bauträger konvertierte die eigene Projekt-Landingpage deutlich besser als die Portfolio-Website, deshalb bekam das Projekt eine eigene Seite."
+    },
+    "faq_last": [
+      {
+        "frage": "Warum bauen wir in Webflow?",
+        "antwort": "Weil Code und Inhalte bei Ihnen bleiben, ohne Lizenzbindung an eine Agentur, mit einem CMS, das Ihr Team selbst bedienen kann, und schnell genug für Kampagnen-Traffic. Der Einstieg ist ein Seiten-Audit oder Struktur-Entwurf innerhalb einer Woche, ohne Vertrag."
+      },
+      {
+        "frage": "Wie lange dauert eine Website?",
+        "antwort": "Vier bis zwölf Wochen, je nach Umfang: Havenstone vom Briefing bis zur Go-live-Freigabe in vier Wochen, Pharmacom mit sechs Seiten in zwei Sprachen in fünf Wochen, DaPhi mit Sprint-Plan in zwölf Wochen. Landingpages je Kampagne gehen schneller."
+      }
+    ]
+  },
+  "dhero": {
+    "word": "Websites",
+    "kicker": "Websites & Landingpages",
+    "text": "die Kunst, aus einem <em>Besuch</em> eine <em>Anfrage</em> zu machen: Landingpages, Shops und Lead-Magnete, gebaut auf <em>Conversion</em> und gemessen am <em>Abschluss</em>",
+    "img": "assets/img/hero/websites.jpg",
+    "alt": "Team der ad.boutique prüft eine Landingpage am Laptop"
+  },
+  "tags": [
+    "Landingpages",
+    "Shops & Websites",
+    "Konfiguratoren",
+    "CRO & A/B-Tests"
+  ],
+  "sub": "Landingpages, Shops und interaktive Lead-Magnete: gebaut auf Conversion, gemessen am Abschluss.",
+  "pmap": {
+    "label": "So läuft es",
+    "h": [
+      "Von der Botschaft",
+      "zur Seite, die abschließt."
+    ],
+    "t": "Sie bringen Marke, Inhalte und Angebot, wir bauen vom Abschluss her: eine Botschaft, ein Ziel, Message-Match zur Kampagne. Zwei Abstimmungen, dann live.",
+    "inputs": [
+      {
+        "text": "Ihre Marke und Ihre Inhalte",
+        "kurz": "Ihre Marke, Inhalte",
+        "von": "sie"
+      },
+      {
+        "text": "Ihr Angebot, Ihre Grundrisse",
+        "kurz": "Ihr Angebot",
+        "von": "sie"
+      },
+      {
+        "text": "Botschaft der Kampagne",
+        "kurz": "Kampagnenbotschaft",
+        "von": "wir"
+      },
+      {
+        "text": "Struktur und Text",
+        "kurz": "Struktur und Text",
+        "von": "wir"
+      },
+      {
+        "text": "Design und Build",
+        "kurz": "Design und Build",
+        "von": "wir"
+      },
+      {
+        "text": "Messung bis zum Abschluss",
+        "kurz": "Messung",
+        "von": "wir"
+      }
+    ],
+    "engine": {
+      "title": "Vom Abschluss her gebaut",
+      "loop": [
+        "Konzept",
+        "Design",
+        "Build",
+        "Test"
+      ]
+    },
+    "touch": "Abstimmung mit Ihnen",
+    "output": {
+      "titel": "Eine Seite, die konvertiert",
+      "text": "Message-Match zur Anzeige,|gemessen am Abschluss",
+      "tag": "Ihr Preis je Anfrage"
+    }
+  },
+  "problem_label": "Die Ausgangslage",
+  "problem_h": [
+    "Teure Klicks.",
+    "Die Seite hält nicht."
+  ],
+  "problem": [
+    "Teure Klicks landen auf Seiten, die nicht konvertieren: langsam, überladen, ohne klares Nutzenversprechen über dem Falz und ohne Message-Match zur Anzeige.",
+    "<b>Jeder Euro Mediabudget wird dadurch entwertet.</b> Wer € 3 pro Klick zahlt und 1 Prozent konvertiert, zahlt € 300 pro Lead, und wundert sich über den Markt."
+  ],
+  "bene_label": "Was für Ihre Abschlüsse dabei herauskommt",
+  "bene_h": [
+    "Was die Seite",
+    "können muss."
+  ],
+  "intro": "Wir bauen Seiten vom <b>Abschluss</b> her: eine Botschaft, ein Ziel, <b>Message-Match</b> zur Kampagne. Und wir sagen Ihnen, wann ein <b>Instant Form</b> die bessere Wahl ist.",
+  "bene": [
+    {
+      "titel": "Eine Seite pro Botschaft",
+      "text": "Headline, Beweis und Ziel passen zur Anzeige, nicht zur Sitemap."
+    },
+    {
+      "titel": "Rechnen statt Formular",
+      "text": "Ein Konfigurator brachte einem PV-Anbieter 406 Anfragen und 487 Prozent mehr Besucher."
+    },
+    {
+      "titel": "Wir sagen, wenn die Seite nicht der Weg ist",
+      "text": "Bei einem Neubauprojekt lieferten Instant Forms zu € 6,97, die Website zu € 15,66."
+    },
+    {
+      "titel": "Schnell, weil Ladezeit Geld kostet",
+      "text": "Aufbau und Tempo entscheiden mit über den Preis jeder Anfrage."
+    },
+    {
+      "titel": "Conversion-Optimierung als Routine",
+      "text": "Hypothese, Test, Entscheidung, statt Relaunch alle drei Jahre."
+    },
+    {
+      "titel": "Marke und Abschluss im selben Zug",
+      "text": "Der Auftritt trägt die Kampagne, die darauf führt, nicht nur das Portfolio."
+    }
+  ],
+  "band": {
+    "label": "Aus der Umsetzung",
+    "imgs": [
+      "assets/img/web_noma_d.jpg",
+      "assets/img/web_ib7_d.jpg",
+      "assets/img/web_havenstone_d.jpg",
+      "assets/img/web_unio_d.jpg",
+      "assets/img/web_twistnsparkle_d.jpg",
+      "assets/img/web_daphi_d.jpg",
+      "assets/img/web_funkhausliving_d.jpg",
+      "assets/img/web_pharmacom_d.jpg",
+      "assets/img/web_trattner_d.jpg"
+    ]
+  },
+  "zoom": {
+    "img": "assets/case/case-web-noma/d0.jpg",
+    "side": "right",
+    "al": "Ein Fall",
+    "ah": [
+      "Tiefe statt",
+      "Teaser."
+    ],
+    "alink": {
+      "href": "case-web-noma.html",
+      "text": "Den Fall im Detail"
+    },
+    "aside": "Die Landingpage als Ort für Tiefe: Grundrisse, Vertrauen, Abschluss.",
+    "zl": "Projekt-Landingpage, Premium-Neubau",
+    "zt": "Landingpage und Instant Forms im Verbund."
+  },
+  "visual": {
+    "art": "phones",
+    "h": [
+      "Mobil zuerst",
+      "gebaut."
+    ],
+    "t": "Die Auftritte aus laufenden Mandaten, dort wo sie besucht werden: am Telefon.",
+    "phones": [
+      "assets/img/web_noma_m.jpg",
+      "assets/img/web_funkhausliving_m.jpg",
+      "assets/img/web_trattner_m.jpg",
+      "assets/img/web_unio_m.jpg",
+      "assets/case/case-web-ib7/m0.jpg",
+      "assets/img/web_pharmacom_m.jpg"
+    ]
+  },
+  "content_cols": [
+    [
+      "assets/case/case-web-noma/g0.jpg",
+      "assets/case/case-premium-neubau/g3.jpg",
+      "assets/case/grandgarden/g3.jpg",
+      "assets/case/case-web-ib7/g0.jpg",
+      "assets/case/case-web-noma/g2.jpg"
+    ],
+    [
+      "assets/case/case-premium-neubau/g0.jpg",
+      "assets/case/grandgarden/v0.mp4",
+      "assets/case/case-web-ib7/g2.jpg",
+      "assets/case/case-web-pharmacom/g0.jpg",
+      "assets/case/case-web-noma/g3.jpg"
+    ],
+    [
+      "assets/case/grandgarden/g0.jpg",
+      "assets/case/grandgarden/v1.mp4",
+      "assets/case/case-web-ib7/g3.jpg",
+      "assets/case/case-web-trattner/g0.jpg",
+      "assets/case/case-web-noma/g4.jpg"
+    ],
+    [
+      "assets/case/case-premium-neubau/g1.jpg",
+      "assets/case/case-premium-neubau/v0.mp4",
+      "assets/case/case-web-noma/g1.jpg",
+      "assets/case/case-web-ib7/g4.jpg",
+      "assets/case/case-web-noma/g5.jpg"
+    ],
+    [
+      "assets/case/case-premium-neubau/g2.jpg",
+      "assets/case/grandgarden/v2.mp4",
+      "assets/case/case-web-trattner/g1.jpg",
+      "assets/case/case-premium-neubau/g4.jpg",
+      "assets/case/case-web-ib7/g1.jpg"
+    ],
+    [
+      "assets/case/grandgarden/g2.jpg",
+      "assets/case/case-premium-neubau/v1.mp4",
+      "assets/case/grandgarden/g1.jpg",
+      "assets/case/case-premium-neubau/g5.jpg",
+      "assets/case/case-web-ib7/g5.jpg"
+    ]
+  ],
+  "proof_h": [
+    "Wie eine Seite",
+    "entsteht."
+  ],
+  "proof_lead": "Eine Seite ist kein Bildband und kein Formular. Wir zeigen den Weg von der Struktur zum Auftritt, der Mediabudget tragen kann.",
+  "proof_nums": [],
+  "proof_quote": "Sichtbarkeit und Conversion-Mechanik gehören zusammen: Search erntet Nachfrage, die schon da ist, die Seite macht sie zur Anfrage.",
+  "tell": {
+    "nolabel": true,
+    "h": "Eine Seite, vier Stationen.",
+    "t": "Von der Reihenfolge über die Bildsprache bis zur Strecke, die aus dem Besuch eine Anfrage macht.",
+    "steps": [
+      {
+        "wert": "1",
+        "label": "Frage je Bildschirm",
+        "titel": "Die Struktur",
+        "text": "Jeder Abschnitt beantwortet genau eine Frage. Was keine Frage beantwortet, fliegt raus, auch wenn es gut aussieht."
+      },
+      {
+        "wert": "9:16",
+        "label": "Format, in dem gebaut wird",
+        "titel": "Die Bildsprache",
+        "text": "Wir entwerfen mobil zuerst, weil dort besucht wird. Das Desktop-Layout entsteht danach, nicht umgekehrt."
+      },
+      {
+        "wert": "€ 6,97",
+        "label": "CPL über die Instant-Form-Strecke",
+        "titel": "Die Strecke",
+        "text": "Bei einem Wiener Neubauprojekt lag die Anfrage über die Instant Form bei € 6,97, über das Website-Formular bei € 15,66. Beides steht im Report."
+      },
+      {
+        "wert": "+487 %",
+        "label": "Website-Besucher",
+        "titel": "Der Auftritt",
+        "text": "Bei einem Photovoltaik-Anbieter kamen Sichtbarkeit und Konfigurator zusammen: fast das Sechsfache an Besuchern, 406 Anfragen."
+      }
+    ]
+  },
+  "kennzahlen": {
+    "headline": [
+      "Drei Seiten,",
+      "drei Belege."
+    ],
+    "karten": [
+      {
+        "ref": "noma-verkauft",
+        "link": {
+          "href": "case-web-noma.html",
+          "text": "Case ansehen"
+        }
+      },
+      {
+        "ref": "havenstone-wochen",
+        "link": {
+          "href": "case-web-havenstone.html",
+          "text": "Case ansehen"
+        }
+      },
+      {
+        "ref": "pv-besucher",
+        "link": {
+          "href": "case-photovoltaik.html",
+          "text": "Case ansehen"
+        }
+      }
+    ]
+  },
+  "oplist": [
+    {
+      "href": "case-premium-neubau.html",
+      "titel": "Premium-Neubau, Wien",
+      "wert": "€ 6,97",
+      "label": "CPL Instant Form vs. € 15,66 Website, dazu die Projekt-Website"
+    },
+    {
+      "href": "case-web-noma.html",
+      "titel": "Noma Wien",
+      "wert": "13 von 26",
+      "label": "Wohnungen verkauft, wenige Monate nach Go-live"
+    },
+    {
+      "href": "case-web-twistnsparkle.html",
+      "titel": "Twist'n Sparkle, isi",
+      "wert": "3",
+      "label": "Sprachen, vier Launch-Termine"
+    },
+    {
+      "href": "case-immobilien-investment.html",
+      "titel": "Immobilien-Investment",
+      "wert": "129×",
+      "label": "Funnel bis zur Zeichnung"
+    },
+    {
+      "href": "case-photovoltaik.html",
+      "titel": "Photovoltaik-Anbieter",
+      "wert": "+487 %",
+      "label": "Besucher, 406 Leads"
+    }
+  ],
+  "voice": {
+    "label": "Was Kunden sagen",
+    "lead": "Michael Rohrmeier, Gründer und CEO von IB-7, über die Zusammenarbeit mit ad.boutique: Marke, Website, Performance und Content aus einer Hand.",
+    "a": "Michael Rohrmeier, Gründer und CEO, IB-7",
+    "video": "assets/video/kundenstimme-ib7.mp4",
+    "note": "Wir bauen keine Seite, die danach niemand anfassen darf. Änderungen an Struktur und Strecken gehören zum laufenden Betrieb."
+  },
+  "crew": {
+    "label": "Wer daran arbeitet",
+    "h": [
+      "Vier Rollen,",
+      "die die Seite bauen."
+    ],
+    "t": "Struktur, Gestaltung und Kampagne entstehen im selben Zug. Wer die Seite baut, weiß, welche Anzeige darauf führt.",
+    "people": [
+      {
+        "name": "Constantin",
+        "rolle": "Design",
+        "text": "Entwirft mobil zuerst und hält jede Sektion auf eine Frage.",
+        "bild": "assets/img/team/constantin.jpg"
+      },
+      {
+        "name": "Valentina",
+        "rolle": "Graphic Design",
+        "text": "Bringt Bildsprache und Typo in eine Form, die die Marke trägt.",
+        "bild": "assets/img/team/valentina.jpg"
+      },
+      {
+        "name": "Philipp",
+        "rolle": "Sales",
+        "text": "Prüft jede Strecke aus Sicht der Anfrage: Was fehlt bis zum Termin.",
+        "bild": "assets/img/team/philipp.jpg"
+      },
+      {
+        "name": "Florian",
+        "rolle": "Founder",
+        "text": "Verantwortet, dass die Seite das Mediabudget trägt, das darauf führt.",
+        "bild": "assets/img/team/florian.jpg"
+      }
+    ]
+  },
+  "logos": [
+    "funkhaus",
+    "winegg",
+    "seeresidenz",
+    "vonpoll",
+    "rhomberg",
+    "soravia",
+    "isi",
+    "hagent"
+  ],
+  "fit": {
+    "label": "Bevor wir starten",
+    "h": [
+      "Der Fit entscheidet.",
+      "Nicht der Umfang."
+    ],
+    "yes_h": "Wir passen zusammen, wenn",
+    "no_h": "Wir sind die Falschen, wenn",
+    "intro": "Wir bauen keine Seite und verschwinden. Wir arbeiten als verlängerte Marketingabteilung weiter daran, wenn die Zahlen etwas anderes sagen als der Entwurf. Das setzt Vertrauen in beide Richtungen voraus, deshalb prüfen wir den Fit vorher.",
+    "yes": [
+      "Die Seite soll Anfragen bringen, nicht nur repräsentieren",
+      "Mobil zuerst ist in Ordnung, auch wenn Desktop später kommt",
+      "Struktur darf sich ändern, wenn die Zahlen es sagen",
+      "Es gibt Kampagnen, die auf die Seite führen"
+    ],
+    "no": [
+      "Die Seite ist ein Selbstzweck ohne Ziel",
+      "Jede Änderung braucht eine Gremiumsrunde",
+      "Der Inhalt kommt erst nach dem Livegang",
+      "Es darf nichts gemessen werden"
+    ]
+  },
+  "steps_next": {
+    "h": "Von der Anfrage zum Auftritt.",
+    "rows": [
+      {
+        "wann": "Heute",
+        "titel": "Anfrage in zwei Minuten",
+        "text": "Was verkauft werden soll und für wen die Seite arbeitet."
+      },
+      {
+        "wann": "Unter 24 h",
+        "titel": "Ehrliche Ersteinschätzung",
+        "text": "Wir sagen, ob wir passen, und was an Inhalt schon da ist."
+      },
+      {
+        "wann": "Tag 2 bis 7",
+        "titel": "Seiten-Audit oder Struktur-Entwurf",
+        "text": "Bestehende Seite im Test, oder die Reihenfolge für die neue auf einer Seite."
+      },
+      {
+        "wann": "Danach",
+        "titel": "Klare Empfehlung",
+        "text": "Was zuerst gebaut wird, was das kostet, was es bringen soll."
+      }
+    ]
+  },
+  "acc": [
+    {
+      "titel": "Landingpages je Kampagne",
+      "text": "Eine Seite pro Botschaft: Headline, Beweis und CTA passen zur Anzeige, nicht zur Sitemap.",
+      "punkte": [
+        "Message-Match zur Kampagne",
+        "Ein Ziel pro Seite",
+        "Proof an den Entscheidungspunkten",
+        "Noindex, schnell, mobil zuerst"
+      ]
+    },
+    {
+      "titel": "Shops & Websites",
+      "text": "Vom Produkt bis zum Checkout: Auftritte, die Markenwelt und Abschluss verbinden.",
+      "punkte": [
+        "Shop-Systeme & Checkout",
+        "Markenwelten & Kataloge",
+        "Performance & Core Web Vitals",
+        "Content-Pflege ohne Agentur-Zwang"
+      ]
+    },
+    {
+      "titel": "Interaktive Lead-Magnete",
+      "text": "Der Konfigurator ist das beste Creative: Ein PV-Anbieter bekam darüber 406 Leads und 487 Prozent mehr Besucher.",
+      "punkte": [
+        "Konfiguratoren & Rechner",
+        "Mehrstufige Lead-Strecken",
+        "Qualifizierung im Formular",
+        "Übergabe ans CRM"
+      ]
+    },
+    {
+      "titel": "CRO & Testing",
+      "text": "Hypothese, Test, Entscheidung: Conversion-Optimierung als Routine, nicht als Projekt.",
+      "punkte": [
+        "A/B-Tests mit klaren Hypothesen",
+        "Heatmaps & Session-Analysen",
+        "Checkout-Optimierung",
+        "Wöchentliche Iteration"
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "frage": "Wir haben schon eine Website.",
+      "antwort": "Und sie hat einen Job: abschließen. Wenn sie das nicht tut, braucht es selten einen Relaunch, sondern eine Landingpage pro Kampagne und einen sauberen Test-Plan."
+    },
+    {
+      "frage": "Warum nicht einfach ein Baukasten?",
+      "antwort": "Für den Start völlig okay. Sobald Mediabudget auf die Seite trifft, entscheiden Ladezeit, Message-Match und Testing, und da rechnet sich Handarbeit schnell."
+    },
+    {
+      "frage": "Landingpage oder Instant Form?",
+      "antwort": "Das entscheiden die Zahlen, nicht die Vorliebe: Wir testen beides und schichten dorthin um, wo der ehrliche CPL liegt."
+    }
+  ],
+  "offer_h": "Der Einstieg ist ein Seiten-Audit. Kein Vertrag.",
+  "offer": [
+    "Wir prüfen Ladezeit, Message-Match, Formulare und Checkout und zeigen Ihnen in zwei Wochen, wo Ihre Seite Anfragen verliert. Danach entscheiden Sie.",
+    "<b>Risikoumkehr:</b> Läuft die Seite im Performance-Mandat, hängt unsere Vergütung an messbaren Ergebnissen. Wir gewinnen nur, wenn Sie gewinnen."
+  ],
+  "deliver": [
+    "Struktur auf einer Seite: welche Frage in welcher Reihenfolge",
+    "Entwurf mobil zuerst, Desktop danach",
+    "Strecken bis zur Anfrage, inklusive Messpunkte",
+    "Übergabe, mit der Ihr Team weiterarbeiten kann"
+  ],
+  "chips": [
+    "Seiten-Audit",
+    "Landingpage",
+    "Shop-Projekt",
+    "Konfigurator",
+    "CRO & Testing",
+    "Relaunch-Begleitung",
+    "Zweitmeinung",
+    "Betreuung im Mandat"
+  ],
+  "trust": [
+    "Kein Vertrag für das Audit",
+    "Code und Inhalte bleiben bei Ihnen",
+    "Keine Lizenzbindung"
+  ],
+  "h1": [
+    "Seiten, die",
+    "abschließen."
+  ],
+  "ital": 1,
+  "diff": [
+    {
+      "kicker": "Anders als üblich",
+      "titel": "Message-Match statt Sitemap",
+      "text": "Die Landingpage gehört zur Kampagne, nicht zur IT: Headline und Beweis wechseln mit der Anzeigengruppe.",
+      "bild": "assets/img/ag_vision2.jpg"
+    },
+    {
+      "kicker": "Anders als üblich",
+      "titel": "Der Lead-Magnet als Creative",
+      "text": "Ein Konfigurator, der den Bedarf rechnet, schlägt jedes Standard-Formular: 406 Leads für einen PV-Anbieter.",
+      "bild": "assets/img/ag_vision1.jpg"
+    },
+    {
+      "kicker": "Anders als üblich",
+      "titel": "Ehrlicher Kanalvergleich",
+      "text": "Bei einem Neubauprojekt lieferten Instant Forms Leads zu € 6,97, die Website zu € 15,66. Wir sagen auch, wenn die Landingpage nicht der beste Ort ist.",
+      "bild": "assets/img/ag_review.jpg"
+    }
+  ],
+  "proofsplit": {
+    "label": "Zwei Prüffragen",
+    "h": [
+      "Schön genug.",
+      "Klar genug."
+    ],
+    "t": "Eine Seite muss zwei Prüfungen bestehen: Sie muss die Marke tragen und sie muss führen. Fällt eine davon durch, ist die andere umsonst."
+  },
+  "wall": {
+    "label": "Gebaute Auftritte",
+    "h": [
+      "Gebaut für den Ort,",
+      "an dem besucht wird."
+    ],
+    "t": "Die Auftritte aus laufenden Mandaten, so wie die meisten Besucher sie sehen: am Telefon, Seite für Seite.",
+    "link": {
+      "href": "work.html",
+      "text": "Alle Auftritte ansehen"
+    }
+  },
+  "wall_cols": [
+    [
+      "assets/img/web_daphi_m.jpg",
+      "assets/img/web_northpoint_m.jpg",
+      "assets/case/case-consumer-brand/m0.jpg",
+      "assets/case/case-web-ib7/m2.jpg"
+    ],
+    [
+      "assets/img/web_funkhausliving_m.jpg",
+      "assets/img/web_pharmacom_m.jpg",
+      "assets/case/case-premium-neubau/m0.jpg",
+      "assets/case/case-web-northpoint/m0.jpg"
+    ],
+    [
+      "assets/img/web_havenstone_m.jpg",
+      "assets/img/web_trattner_m.jpg",
+      "assets/case/case-premium-neubau/m1.jpg",
+      "assets/case/case-web-pharmacom/m0.jpg"
+    ],
+    [
+      "assets/img/web_ib7_m.jpg",
+      "assets/img/web_twistnsparkle_m.jpg",
+      "assets/case/case-web-ib7/m0.jpg",
+      "assets/case/case-web-trattner/m0.jpg"
+    ],
+    [
+      "assets/img/web_noma_m.jpg",
+      "assets/img/web_unio_m.jpg",
+      "assets/case/case-web-ib7/m1.jpg",
+      "assets/img/web_funkhausliving_m.jpg"
+    ]
+  ],
+  "stoer": {
+    "img": "assets/img/retreat-01.jpg",
+    "side": "left",
+    "al": "Die Risikoumkehr",
+    "ah": [
+      "Anfragen statt Lob.",
+      "Daran messen wir uns."
+    ],
+    "aside": "Läuft die Seite im Performance-Mandat, hängt unsere Vergütung an messbaren Ergebnissen. Wir gewinnen nur, wenn Sie gewinnen.",
+    "zl": "Wie wir arbeiten",
+    "zt": "Design, Text und Tracking sitzen im selben Raum."
+  }
+}

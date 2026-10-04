@@ -1,19 +1,19 @@
 # Traegt in alle <video>-Tags das passende Posterbild ein (<pfad>-poster.jpg), damit kein
-# Video als Loch erscheint, solange es nicht laeuft. Analog zu _imgdim.py als Nachlauf.
+# Video als Loch erscheint, solange es nicht laeuft. Regel "poster" des Nachlaufs (_nachlauf.py), nach "imgdim".
 # Poster erzeugen: ./_tools/poster <video> <video ohne .mp4>-poster.jpg 0.8
+# Einzeln aufrufbar (alle Seiten): python3 _poster.py
 # -*- coding: utf-8 -*-
-import glob, os, re
+import os, re
 
-changed_files = 0
-changed_tags = 0
+ZAEHLER = {"tags": 0, "dateien": 0}
 missing = set()
 
-for f in sorted(glob.glob("*.html")):
-    s = open(f, encoding="utf-8").read()
+
+def seite(f, s):
+    """Regel "poster": Posterbild an jedes Video mit vorhandener <pfad>-poster.jpg."""
     orig = s
 
     def fix(m):
-        global changed_tags
         tag = m.group(0)
         src = re.search(r'src="([^"]+\.mp4)"', tag)
         if not src:
@@ -29,14 +29,27 @@ for f in sorted(glob.glob("*.html")):
             tag = tag.replace(cur.group(0), ' poster="%s"' % poster)
         else:
             tag = tag[:-1].rstrip() + ' poster="%s">' % poster
-        changed_tags += 1
+        ZAEHLER["tags"] += 1
         return tag
 
     s = re.sub(r"<video\b[^>]*>", fix, s)
     if s != orig:
-        open(f, "w", encoding="utf-8").write(s)
-        changed_files += 1
+        ZAEHLER["dateien"] += 1
+    return s
 
-print("Video-Poster ergaenzt: %d Tags in %d Dateien" % (changed_tags, changed_files))
-if missing:
-    print("  ohne Posterbild:", ", ".join(sorted(missing)))
+
+def warnungen():
+    """Videos ohne Posterbild als eine Warnzeile. Leert die Liste."""
+    out = ["  ohne Posterbild: " + ", ".join(sorted(missing))] if missing else []
+    missing.clear()
+    return out
+
+
+def bericht():
+    return "\n".join(warnungen() + ["Video-Poster ergaenzt: %d Tags in %d Dateien" % (ZAEHLER["tags"], ZAEHLER["dateien"])])
+
+
+if __name__ == "__main__":
+    import _nachlauf
+    _nachlauf.einzeln(seite)
+    print(bericht())

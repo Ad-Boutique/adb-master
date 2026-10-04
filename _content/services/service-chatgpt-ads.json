@@ -1,0 +1,649 @@
+{
+  "slug": "service-chatgpt-ads",
+  "reihenfolge": 60,
+  "nav": "ChatGPT Ads",
+  "label": "Leistung, ChatGPT Ads, Frühzugang vor der Öffnung für Europa",
+  "flow": "v2",
+  "seo": {
+    "label": "ChatGPT Ads Agentur Wien",
+    "title": "ChatGPT Ads Agentur Wien: Werbung in ChatGPT | ad.boutique",
+    "desc": "ChatGPT Ads aus Wien: Kampagnen in ChatGPT, aufgesetzt vor der Öffnung des Self-Service für Europa. Eignungs-Check kostenlos, vier Wochen Test.",
+    "answer": "ad.boutique schaltet Werbung in ChatGPT für Unternehmen aus Österreich und Deutschland: Anzeigen dort, wo Menschen vor einer Entscheidung fragen. Wir haben Kampagnen aufgesetzt, bevor der Self-Service für Europa geöffnet wurde. Der Einstieg ist ein Eignungs-Check ohne Kosten, danach vier Wochen Test mit einer klaren Antwort, ob der Kanal für Sie trägt.",
+    "faq_first": {
+      "frage": "Was sind ChatGPT Ads?",
+      "antwort": "Anzeigen, die ChatGPT in passende Antworten einblendet, als gesponsert gekennzeichnet. Ausgespielt wird nach dem Inhalt der Frage, also dort, wo jemand gerade nach einem Angebot wie Ihrem sucht. Für Werbetreibende ist es ein neuer Kanal mit wenig Wettbewerb, für Nutzer eine Empfehlung im Moment der Entscheidung."
+    },
+    "faq_last": []
+  },
+  "dhero": {
+    "word": "ChatGPT Ads",
+    "kicker": "ChatGPT Ads",
+    "text": "die Werbung im <em>Moment</em> der <em>Entscheidung</em>: Anzeigen in ChatGPT, dort, wo Ihre Kunden <em>fragen</em>, bevor sie <em>kaufen</em>",
+    "img": "assets/img/hero/chatgpt-ads.jpg",
+    "alt": "Team der ad.boutique bespricht eine Kampagne am Laptop"
+  },
+  "tags": [
+    "Neu in Österreich seit 24. August",
+    "Im Moment der Entscheidung",
+    "Fühlt sich nicht wie Werbung an",
+    "Frühzugang vor dem Self-Service"
+  ],
+  "sub": "Ihre Kunden fragen ChatGPT, bevor sie entscheiden. Wir haben Kampagnen aufgesetzt, bevor der Self-Service für Europa geöffnet wurde. Der Kanal ist noch leer. Das ist Ihr Vorteil, wenn Sie jetzt starten.",
+  "pmap": {
+    "label": "So läuft es",
+    "h": [
+      "Von Ihrem Angebot",
+      "in die Antwort."
+    ],
+    "t": "Sie bringen Branche, Angebot und Website, wir prüfen die Freigabe, schreiben die Situationen und bauen Karte, Seite und Messung. Jede Woche lesen wir gemeinsam.",
+    "inputs": [
+      {
+        "text": "Ihre Branche und Ihr Angebot",
+        "kurz": "Ihre Branche, Ihr Angebot",
+        "von": "sie"
+      },
+      {
+        "text": "Ihre Website",
+        "kurz": "Ihre Website",
+        "von": "sie"
+      },
+      {
+        "text": "Freigabe-Check, vorab",
+        "kurz": "Freigabe-Check",
+        "von": "wir"
+      },
+      {
+        "text": "Die passenden Situationen",
+        "kurz": "Situationen",
+        "von": "wir"
+      },
+      {
+        "text": "Karten und die Seite dahinter",
+        "kurz": "Karten und Seite",
+        "von": "wir"
+      },
+      {
+        "text": "Messung je Karte",
+        "kurz": "Messung je Karte",
+        "von": "wir"
+      }
+    ],
+    "engine": {
+      "title": "Antworten statt Anzeigen",
+      "loop": [
+        "Prüfen",
+        "Schreiben",
+        "Bauen",
+        "Lesen"
+      ]
+    },
+    "touch": "Lesung mit Ihnen",
+    "output": {
+      "titel": "Ihr Angebot in der Antwort",
+      "text": "Vier Wochen Test,|jede Karte gemessen",
+      "tag": "Sie entscheiden, was läuft"
+    }
+  },
+  "problem_label": "Die Ausgangslage",
+  "problem_h": [
+    "Die Recherche",
+    "ist umgezogen."
+  ],
+  "problem": [
+    "Wer heute kauft, fragt zuerst. Nicht die Trefferliste, sondern das Gespräch. Die Antwort kommt als Text, nicht als zehn blaue Links.",
+    "<b>Dort gibt es kein SEO und keine Rangliste.</b> Wer nicht in der Antwort steht, kommt in dieser Recherche nicht vor. Und sie entscheidet, bevor Ihre Website aufgerufen wird."
+  ],
+  "bene_label": "Was für Sie dabei herauskommt",
+  "bene_h": [
+    "Sechs Gründe,",
+    "einer pro Satz."
+  ],
+  "intro": "Wer ChatGPT fragt, will entscheiden. Die Aufmerksamkeit ist hoch, und bis vor wenigen Wochen konnte dort <b>niemand werben</b>. Jetzt steht Ihr Angebot unter der Antwort, <b>als Empfehlung</b>, nicht als Banner.",
+  "bene": [
+    {
+      "titel": "Im Moment der Entscheidung",
+      "text": "Die Karte erscheint, während gefragt wird. Nicht Wochen später im Feed."
+    },
+    {
+      "titel": "Fühlt sich nicht wie Werbung an",
+      "text": "Kein Banner, keine Unterbrechung: Ihr Angebot steht als Empfehlung neben der Antwort."
+    },
+    {
+      "titel": "Noch fast kein Wettbewerb",
+      "text": "In Österreich ist der Kanal seit wenigen Wochen offen. Die meisten prüfen noch."
+    },
+    {
+      "titel": "Prüfung vor dem ersten Euro",
+      "text": "Nicht jede Branche darf werben. Wir klären die Freigabe, bevor Budget läuft."
+    },
+    {
+      "titel": "Antworten statt Anzeigen",
+      "text": "Wir schreiben die Karte aus der Frage heraus und bauen die Seite dahinter mit."
+    },
+    {
+      "titel": "Nach vier Wochen Klartext",
+      "text": "Ausbauen, anpassen oder stoppen. Mit Zahlen statt Meinung."
+    }
+  ],
+  "band": {
+    "label": "Aus dem Studio",
+    "imgs": [
+      "assets/img/ag_strategy.jpg",
+      "assets/img/retreat-04.jpg",
+      "assets/img/ag_talk.jpg",
+      "assets/img/ag_meeting.jpg",
+      "assets/img/ag_board1.jpg",
+      "assets/img/retreat-06.jpg",
+      "assets/img/ag_review.jpg",
+      "assets/img/retreat-01.jpg",
+      "assets/img/ag_cam1.jpg"
+    ]
+  },
+  "zoom": {
+    "img": "assets/img/gpt/card-hero.jpg",
+    "side": "right",
+    "al": "So sieht es aus",
+    "ah": [
+      "Ihr Angebot,",
+      "Teil der Antwort."
+    ],
+    "alink": {
+      "href": "kontakt.html?w=Eignungs-Check&from=service-chatgpt-ads",
+      "text": "Eignung prüfen lassen"
+    },
+    "aside": "Gekennzeichnet, aber ohne Werbedruck: Ihr Bild, Ihr Satz, Ihr Link, direkt unter dem, was der Mensch gerade wissen wollte. Das Beispiel zeigt eine Projektplattform.",
+    "zl": "Beispielkarte",
+    "zt": "Sie stört nicht. Sie antwortet."
+  },
+  "visual": {
+    "art": "panels",
+    "label": "Drei Situationen, drei Karten",
+    "h": "Ein Shop, ein Finanzteam, eine Eventlocation. Jede Karte fühlt sich an wie der nächste logische Schritt.",
+    "t": "Die Beispiele sind gebaut, nicht geschaltet. Sie zeigen, worum es geht: nicht laut sein, sondern passend zur Frage, die gerade gestellt wurde.",
+    "d1": {
+      "titel": "Was wir schreiben",
+      "text": "Antworten auf die Frage, die gerade gestellt wird, im Ton des Gesprächs"
+    },
+    "d2": {
+      "titel": "Was wir bauen",
+      "text": "Konto, Karten, die Seite dahinter und die Messung, alles aus einer Hand"
+    },
+    "imgs": [
+      "assets/img/gpt/card-shop.jpg",
+      "assets/img/gpt/card-b2b.jpg",
+      "assets/img/gpt/card-event.jpg",
+      "assets/img/gpt/card-hero.jpg"
+    ]
+  },
+  "content_label": "Aus dem Studio",
+  "content_cols": [
+    [
+      "assets/img/ag_strategy.jpg",
+      "assets/img/ag_cam1.jpg",
+      "assets/img/retreat-06.jpg"
+    ],
+    [
+      "assets/img/ag_board1.jpg",
+      "assets/img/ag_shoot1.jpg",
+      "assets/img/retreat-08.jpg"
+    ],
+    [
+      "assets/img/ag_talk.jpg",
+      "assets/img/ag_vision1.jpg",
+      "assets/img/ag_cam2.jpg"
+    ],
+    [
+      "assets/img/ag_meeting.jpg",
+      "assets/img/ag_poster.jpg",
+      "assets/img/ag_vision2.jpg"
+    ],
+    [
+      "assets/img/ag_review.jpg",
+      "assets/img/retreat-02.jpg",
+      "assets/img/retreat-01.jpg"
+    ],
+    [
+      "assets/img/ag_laugh.jpg",
+      "assets/img/retreat-04.jpg",
+      "assets/img/retreat-10.jpg"
+    ]
+  ],
+  "proof_label": "Woher wir das wissen",
+  "proof_h": [
+    "Der Ort ist neu.",
+    "Das Handwerk nicht."
+  ],
+  "proof_lead": "Werben kann dort jeder mit Zugang. Was zählt, ist die richtige Botschaft im richtigen Moment. Vier Ergebnisse aus vier Branchen, so wie sie im Reporting stehen.",
+  "proof_nums": [],
+  "proof_quote": "",
+  "bars": {
+    "label": "Return on Ad Spend am Black Friday, Premium-Consumer-Brand",
+    "link": {
+      "href": "case-consumer-brand.html",
+      "text": "Consumer-Brand im Detail"
+    },
+    "rows": [
+      {
+        "label": "Branchen-Benchmark",
+        "prozent": 57,
+        "wert": "2,3"
+      },
+      {
+        "label": "Mit uns",
+        "prozent": 100,
+        "wert": "4,02"
+      }
+    ],
+    "note": "75 Prozent über der Benchmark in der lautesten Woche des Jahres. Wer dort gewinnt, gewinnt über Relevanz. In der Antwort zählt nichts anderes."
+  },
+  "channels": {
+    "label": "Jahresumsatz, D2C-Lifestyle-Marke",
+    "rows": [
+      {
+        "label": "Vorher",
+        "prozent": 64,
+        "wert": "€ 520k"
+      },
+      {
+        "label": "Mit uns",
+        "prozent": 100,
+        "wert": "€ 817k"
+      }
+    ],
+    "note": "Plus 57 Prozent im besten Jahr der Firma, Blended ROAS 5,57. Das Wachstum kam aus Botschaft, Strecke und Struktur, nicht aus mehr Budget.",
+    "link": {
+      "href": "case-d2c-lifestyle.html",
+      "text": "D2C-Marke im Detail"
+    }
+  },
+  "tell": {
+    "label": "Vier Branchen, vier Zahlen",
+    "nolabel": true,
+    "steps": [
+      {
+        "wert": "+57 %",
+        "label": "Jahresumsatz, D2C-Lifestyle-Marke",
+        "titel": "Wachstum aus der Botschaft",
+        "text": "Von € 520k auf € 817k im besten Jahr der Firma. Das kam aus der richtigen Ansprache im richtigen Moment, nicht aus mehr Budget."
+      },
+      {
+        "wert": "4,02",
+        "label": "Return on Ad Spend am Black Friday, Consumer-Brand",
+        "titel": "Gewinnen, wenn alle schreien",
+        "text": "75 Prozent über der Benchmark, in der lautesten Woche des Jahres. Dort gewinnt nur Relevanz, und in der Antwort ist Relevanz alles."
+      },
+      {
+        "wert": "489",
+        "label": "Anfragen für ein Neubauprojekt in Wien",
+        "titel": "Der Satz entscheidet",
+        "text": "Vier Botschaften im Test, eine trug mehr als die Hälfte. Welche Formulierung Menschen bewegt, zeigt der Test, nicht die Meinung."
+      },
+      {
+        "wert": "8,75",
+        "label": "Return on Ad Spend, Crowdinvesting, vorher 2,14",
+        "titel": "Struktur statt mehr Geld",
+        "text": "Gleiches Budget, aus 16 Investments wurden 50. Wer den Aufbau versteht, holt aus demselben Geld das Vierfache."
+      }
+    ]
+  },
+  "kennzahlen": {
+    "headline": [
+      "Drei Mandate,",
+      "drei Sprünge."
+    ],
+    "karten": [
+      {
+        "ref": "nordic-orders",
+        "link": {
+          "href": "case-nordic-spirit.html",
+          "text": "Case ansehen"
+        }
+      },
+      {
+        "ref": "crowd-roas",
+        "link": {
+          "href": "case-crowdinvesting.html",
+          "text": "Case ansehen"
+        }
+      },
+      {
+        "ref": "consumer-cpm",
+        "link": {
+          "href": "case-consumer-brand.html",
+          "text": "Case ansehen"
+        }
+      }
+    ]
+  },
+  "dotline": [
+    "prüfen",
+    "schreiben",
+    "bauen",
+    "lesen"
+  ],
+  "dotfield": {
+    "total": 489,
+    "lime": 262,
+    "form": "262",
+    "cap": "<b>489 Anfragen</b> für ein Neubauprojekt in Wien, <b>262 davon aus einem einzigen Satz</b>. Der Satz entscheidet, im Feed wie in der Antwort. Jeder Punkt eine Anfrage."
+  },
+  "dotsec": {
+    "h": [
+      "Relevanz,",
+      "<i>in Punkten gezählt.</i>"
+    ],
+    "t": "Zwei Marken, zwei Zahlen aus dem Reporting. Was in der Antwort zählt, hat dort schon gezählt: die richtige Botschaft im richtigen Moment, nicht mehr Budget.",
+    "blocks": [
+      {
+        "rows": [
+          {
+            "label": "Jahresumsatz vorher",
+            "punkte": 42,
+            "an": 26,
+            "wert": "€ 520k",
+            "hervorgehoben": false
+          },
+          {
+            "label": "Jahresumsatz mit uns",
+            "punkte": 42,
+            "an": 41,
+            "wert": "€ 817k",
+            "hervorgehoben": true
+          }
+        ],
+        "note": "D2C-Lifestyle-Marke, ein Punkt sind € 20.000. Plus 57 Prozent im besten Jahr der Firma, Blended ROAS 5,57."
+      },
+      {
+        "rows": [
+          {
+            "label": "Benchmark Black Friday",
+            "punkte": 42,
+            "an": 23,
+            "wert": "2,3",
+            "hervorgehoben": false
+          },
+          {
+            "label": "Mit uns",
+            "punkte": 42,
+            "an": 40,
+            "wert": "4,02",
+            "hervorgehoben": true
+          }
+        ],
+        "note": "Premium-Consumer-Brand, ein Punkt sind 0,1 ROAS. 75 Prozent über der Benchmark in der lautesten Woche des Jahres."
+      },
+      {
+        "rows": [
+          {
+            "label": "Investments vorher",
+            "punkte": 50,
+            "an": 16,
+            "wert": "16",
+            "hervorgehoben": false
+          },
+          {
+            "label": "Investments mit uns",
+            "punkte": 50,
+            "an": 50,
+            "wert": "50",
+            "hervorgehoben": true
+          }
+        ],
+        "note": "Crowdinvesting-Plattform, gleiches Budget, ein Punkt ein Investment. ROAS 8,75 statt 2,14: Struktur statt mehr Geld."
+      }
+    ]
+  },
+  "oplist": [
+    {
+      "href": "case-d2c-lifestyle.html",
+      "titel": "D2C-Lifestyle-Marke",
+      "wert": "+57 %",
+      "label": "Jahresumsatz, Blended ROAS 5,57"
+    },
+    {
+      "href": "case-consumer-brand.html",
+      "titel": "Premium-Consumer-Brand",
+      "wert": "4,02",
+      "label": "ROAS am Black Friday, Benchmark 2,3"
+    },
+    {
+      "href": "case-premium-neubau.html",
+      "titel": "Premium-Neubau, Wien",
+      "wert": "489",
+      "label": "Anfragen, eine Botschaft trug 54 %"
+    }
+  ],
+  "voice": {
+    "label": "Was Kunden sagen",
+    "lead": "Michael Rohrmeier, Gründer und CEO von IB-7, über die Zusammenarbeit mit ad.boutique: Marke, Website, Performance und Content aus einer Hand.",
+    "a": "Michael Rohrmeier, Gründer und CEO, IB-7",
+    "video": "assets/video/kundenstimme-ib7.mp4",
+    "note": "Wir liefern kein Dashboard, das niemand liest. Einmal in der Woche gehen wir die Zahlen gemeinsam durch, auch die, die nicht funktioniert haben."
+  },
+  "crew": {
+    "label": "Wer daran arbeitet",
+    "h": [
+      "Vier Rollen,",
+      "ein Team für Ihr Konto."
+    ],
+    "t": "Wer die Situationen schreibt, in denen Ihr Angebot die Antwort ist, liest auch die Zahlen dazu und sitzt mit Ihnen im Call.",
+    "people": [
+      {
+        "name": "Steve",
+        "rolle": "Performance Manager",
+        "text": "Baut das Konto und liest, in welchen Gesprächen Ihre Karte geklickt wird.",
+        "bild": "assets/img/team/steve.jpg"
+      },
+      {
+        "name": "Constantin",
+        "rolle": "Design",
+        "text": "Baut Karte und Seite dahinter: klar, ruhig, ohne Umweg.",
+        "bild": "assets/img/team/constantin.jpg"
+      },
+      {
+        "name": "Philipp",
+        "rolle": "Sales",
+        "text": "Klärt vor dem Start, ob Ihre Branche werben darf, und holt die Freigabe ein.",
+        "bild": "assets/img/team/philipp.jpg"
+      },
+      {
+        "name": "Daniel",
+        "rolle": "Founder",
+        "text": "Schreibt die Situationen mit Ihnen und verantwortet die Empfehlung am Ende.",
+        "bild": "assets/img/team/daniel.jpg"
+      }
+    ]
+  },
+  "logos": [],
+  "fit": {
+    "label": "Bevor wir starten",
+    "h": [
+      "Passt es?",
+      "In beide Richtungen."
+    ],
+    "yes_h": "Wir passen zusammen, wenn",
+    "no_h": "Wir sind die Falschen, wenn",
+    "intro": "Der Kanal ist seit wenigen Wochen offen, die meisten Wettbewerber prüfen noch. Gleichzeitig gilt: Nicht jede Branche ist freigegeben. Wir prüfen das im ersten Gespräch, offen und in beide Richtungen.",
+    "yes": [
+      "Shop mit klarem Produktversprechen, das man empfehlen kann",
+      "B2B und Software, wo Menschen erst fragen und dann kaufen",
+      "Gastro, Event, Reise, Bildung ohne Gesundheitsbezug",
+      "Plattformen und Marktplätze, auch für Immobilien"
+    ],
+    "no": [
+      "Einzelne Wohnungen oder Objekte als Anzeigenziel",
+      "Finanzdienstleistungen ohne Freigabe von OpenAI",
+      "Gesundheit, Recht, Glücksspiel, Dating",
+      "Der Kanal soll in vier Wochen Google ersetzen"
+    ]
+  },
+  "steps_next": {
+    "h": "Von der Anfrage zur ersten Karte.",
+    "rows": [
+      {
+        "wann": "Heute",
+        "titel": "Anfrage und erste Einschätzung",
+        "text": "Branche, Angebot, Erwartung: zwei Minuten. Innerhalb eines Tages sagen wir Ihnen, ob Sie dort werben dürfen und ob sich ein Test lohnt."
+      },
+      {
+        "wann": "Tag 2 bis 10",
+        "titel": "Wir bauen Ihre Präsenz in der Antwort",
+        "text": "Das Konto bleibt in Ihrem Besitz. Wir schreiben die Situationen, in denen Ihr Angebot die Antwort ist, und bauen Karten, Seite und Messung."
+      },
+      {
+        "wann": "Woche 3 bis 6",
+        "titel": "Vier Wochen Test, eine klare Antwort",
+        "text": "Mehrere Karten laufen gegeneinander, wöchentlich lesen wir die Zahlen mit Ihnen. Am Ende wissen Sie, ob der Kanal für Sie trägt."
+      }
+    ]
+  },
+  "tline": {
+    "seg": "h1 b9 g4 t28",
+    "aria": "42 Tage als Punkte",
+    "legend": [
+      {
+        "code": "h",
+        "text": "Heute: Anfrage und Einschätzung"
+      },
+      {
+        "code": "b",
+        "text": "Tag 2 bis 10: Konto, Karten, Seite"
+      },
+      {
+        "code": "t",
+        "text": "Woche 3 bis 6: der Test, jede Woche gelesen"
+      }
+    ]
+  },
+  "acc": [
+    {
+      "titel": "Wo der Fokus heute liegt",
+      "text": "Die Frage nach dem richtigen Produkt, dem richtigen Anbieter, dem richtigen nächsten Schritt wird immer öfter ChatGPT gestellt. Wer dort antwortet, erreicht Menschen in dem Moment, in dem sie wirklich zuhören.",
+      "punkte": [
+        "Entscheidungen werden im Gespräch vorbereitet",
+        "Volle Aufmerksamkeit, kein Scrollen, kein Lärm",
+        "Eine Antwort statt einer Trefferliste",
+        "Ihr Angebot als Teil dieser Antwort"
+      ]
+    },
+    {
+      "titel": "Warum es sich nicht wie Werbung anfühlt",
+      "text": "Die Karte erscheint nur, wenn das Gespräch zu Ihrem Angebot passt. Keine Unterbrechung, kein Störgefühl: Der Mensch bekommt genau das, wonach er gerade gefragt hat, und Ihre Marke steht als Empfehlung daneben.",
+      "punkte": [
+        "Ausspielung passend zum Gespräch",
+        "Gekennzeichnet, aber ohne Werbedruck",
+        "Kein Retargeting, kein Verfolgen",
+        "Die Marke bleibt mit der Antwort im Kopf"
+      ]
+    },
+    {
+      "titel": "Warum jetzt",
+      "text": "Jeder neue Kanal hat eine kurze Phase, in der wenige um viel Aufmerksamkeit konkurrieren. Wer sie nutzt, sammelt Erfahrung, die später niemand mehr nachkaufen kann, und ist präsent, bevor es voll wird.",
+      "punkte": [
+        "Der Kanal ist in Österreich noch fast leer",
+        "Erfahrung entsteht nur durch Schalten",
+        "Freigaben brauchen Vorlauf",
+        "Wer wartet, konkurriert später, statt jetzt zu lernen"
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "frage": "Warum jetzt und nicht in einem Jahr?",
+      "antwort": "Weil der Platz in der Antwort begrenzt ist und der Kanal in Österreich gerade erst aufgeht. Wer heute startet, ist dort präsent, wo Entscheidungen fallen, bevor Wettbewerber es sind, und kennt in sechs Monaten seine Botschaften und Kosten, während andere anfangen."
+    },
+    {
+      "frage": "Fühlt sich das für meine Kunden nicht wie Werbung an?",
+      "antwort": "Die Karte erscheint nur, wenn das Gespräch zu Ihrem Angebot passt, und sie unterbricht nichts. Sie ist als gesponsert gekennzeichnet, wirkt aber wie eine Empfehlung im richtigen Moment. Das ist der Unterschied zu jedem Banner."
+    },
+    {
+      "frage": "Können wir das nicht selbst machen?",
+      "antwort": "Das Konto anlegen: ja. Der Unterschied liegt in der Prüfung vorab, in Karten, die aus der Frage heraus geschrieben sind, in der Seite dahinter und in einer Messung, die die Grenzen des Kanals kennt. Genau das bringen wir aus dem Frühzugang mit."
+    },
+    {
+      "frage": "Dürfen wir überhaupt werben?",
+      "antwort": "Nicht jede Branche ist freigegeben: Finanz und Gesundheit brauchen im europäischen Raum eine Zustimmung, einzelne Immobilienobjekte sind ausgeschlossen, Plattformen erlaubt. Wir klären das im ersten Gespräch, und ohne Freigabe gibt es keine Kampagne und keine Rechnung."
+    },
+    {
+      "frage": "Was kostet der Test?",
+      "antwort": "Das Mediabudget legen Sie fest. Unsere Leistung für den Vier-Wochen-Test ist pauschal, ohne Vertrag darüber hinaus. Der Eignungs-Check davor ist kostenlos."
+    },
+    {
+      "frage": "Und wenn der Kanal nichts bringt?",
+      "antwort": "Dann steht das nach vier Wochen so im Report, mit der Empfehlung zu stoppen. Sie haben dann für überschaubares Geld eine Antwort, die Ihre Wettbewerber noch nicht haben."
+    }
+  ],
+  "offer_h": "Der Einstieg ist ein Eignungs-Check. Kostenlos, ohne Vertrag.",
+  "offer": [
+    "Wir prüfen, ob Ihre Branche werben darf, und schreiben drei Situationen samt einer Karte als Vorschlag. Innerhalb eines Tages wissen Sie, ob sich ein Test lohnt.",
+    "<b>Risikoumkehr inklusive:</b> Kommt keine Freigabe, gibt es keine Kampagne und keine Rechnung. Und nach vier Wochen sagen wir ehrlich, ob es weitergeht."
+  ],
+  "deliver": [
+    "Klare Aussage, ob Ihre Branche werben darf, innerhalb eines Tages",
+    "Karten, die sich wie Antworten anfühlen, und die Seite dahinter",
+    "Messung bis auf die einzelne Karte, ohne Schönrechnen",
+    "Wöchentliche Lesung und nach vier Wochen eine klare Empfehlung"
+  ],
+  "chips": [
+    "Eignungs-Check",
+    "Vier-Wochen-Test",
+    "Konto-Setup",
+    "Gesprächssituationen",
+    "Kartenvarianten",
+    "Landingpage",
+    "Pixel & CAPI",
+    "Zweitmeinung"
+  ],
+  "trust": [
+    "Eignungs-Check kostenlos",
+    "Kein Vertrag für den Test",
+    "Konto bleibt bei Ihnen",
+    "Keine Freigabe, keine Rechnung"
+  ],
+  "h1": [
+    "Werben, wo andere",
+    "nicht werben."
+  ],
+  "ital": 1,
+  "sol_label": "Die Ausgangslage",
+  "diff": [
+    {
+      "kicker": "Was wir beitragen",
+      "titel": "Erfahrung aus dem Frühzugang",
+      "text": "Wir haben Kampagnen aufgesetzt, bevor der Ads Manager in Europa geöffnet wurde. Sie starten mit dem, was wir dort gelernt haben, nicht mit Vermutungen.",
+      "bild": "assets/img/ag_strategy.jpg"
+    },
+    {
+      "kicker": "Was wir beitragen",
+      "titel": "Wir prüfen zuerst, ob Sie überhaupt dürfen",
+      "text": "Nicht jede Branche ist freigegeben, manche brauchen eine Zustimmung von OpenAI. Wir klären das, bevor ein Euro läuft. Kommt keine Freigabe, gibt es keine Kampagne und keine Rechnung.",
+      "bild": "assets/img/ag_board1.jpg"
+    },
+    {
+      "kicker": "Was wir beitragen",
+      "titel": "Wir schreiben Antworten, keine Anzeigen",
+      "text": "Die Karte wirkt, wenn sie sich wie der natürliche nächste Schritt anfühlt. Wir schreiben sie aus der Frage heraus, die gerade gestellt wird, und bauen die Seite dahinter so, dass sie das Versprechen einlöst.",
+      "bild": "assets/img/ag_talk.jpg"
+    }
+  ],
+  "proofsplit": {
+    "label": "Zwei davon als Grafik",
+    "h": [
+      "Zwei Marken,",
+      "ein Muster."
+    ],
+    "t": "Links eine D2C-Marke, die im besten Jahr der Firma um 57 Prozent wuchs. Rechts eine Consumer-Brand, die am Black Friday 75 Prozent über der Benchmark lag. Beides kam aus Relevanz im Moment der Entscheidung, und genau dafür ist die Karte in ChatGPT gebaut."
+  },
+  "stoer": {
+    "img": "assets/img/retreat-06.jpg",
+    "side": "left",
+    "al": "Die Risikoumkehr",
+    "ah": [
+      "Keine Freigabe,",
+      "keine Rechnung."
+    ],
+    "aside": "Braucht Ihre Branche eine Freigabe, holen wir sie ein, bevor ein Euro läuft. Kommt sie nicht, gibt es keine Kampagne. Und nach vier Wochen sagen wir ehrlich, ob es weitergeht.",
+    "zl": "Wie wir arbeiten",
+    "zt": "Präsent, wo entschieden wird. Vor allen anderen."
+  }
+}
