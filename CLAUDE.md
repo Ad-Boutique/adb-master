@@ -25,8 +25,8 @@ Gilt für jede Sitzung an diesem Repo, lokal und in der Cloud, für Daniel (`dan
 
 ## Vor jedem Pull Request
 
-1. Voller Build: `sh _build.sh` (siehe README, Reihenfolge ist verbindlich).
-2. Prüfung aller Seiten bei 1440 und 390 px (`_tools/qa2.js`, lokal mit `_tools/probe`, in der Cloud mit Playwright).
+1. Voller Build: `sh _build.sh` (baut nach `public/`, das Repo bleibt unverändert; siehe README).
+2. `python3 _tools/linkcheck.py public` und Prüfung aller Seiten bei 1440 und 390 px (`_tools/qa2.js`, lokal mit `_tools/probe`, in der Cloud mit Playwright).
 3. Unabhängiger Review durch einen separaten Review-Agenten, der den Code nicht geschrieben hat (`/code-review`, `/security-review`): Funktion, Darstellung Desktop und Handy, Sicherheit. Befunde beheben oder im PR begründen.
 4. Die GitHub-Checks (Build, Links, Secret-Scan) müssen grün sein.
 

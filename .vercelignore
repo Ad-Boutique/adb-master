@@ -1,29 +1,10 @@
+# Was Vercel gar nicht erst hochlaedt. Vercel baut die Seite selbst (vercel.json: buildCommand),
+# braucht also Generatoren, Inhalte und Assets; ausgeliefert wird nur public/ (siehe .distignore).
 _intern
-_content
+.claude
+docs
 _tools
 _deploy
-_qa_template.html
 _qa_run.html
-*.py
-_build.sh
-# Systemdateien und Notizen (README, Briefings)
 .DS_Store
-*.md
-# Vorschau-Varianten und interne Studie (nirgends verlinkt)
-*-v3.html
-studie-performance.html
-# Reckless: Trial-Lizenz, wird nicht mehr genutzt
-assets/fonts/Reckless-*
-# Satoshi kursiv: wird nirgends gesetzt, @font-face entfernt (Technik B2)
-assets/fonts/Satoshi-VariableItalic.woff2
-# JPG-Originale: ausgeliefert werden die WebP-Fassungen. Ausnahme: Open-Graph-Bilder (_seo.py)
-assets/**/*.jpg
-!assets/img/og/*.jpg
-!assets/img/og-default.jpg
-# kaputter Container ohne Index, nirgends verlinkt
-assets/**/voice.mp4
-# api/ (Vercel Functions) darf hier nie stehen
-# Doku und Arbeitsregeln des Repos, GitHub- und Claude-Einstellungen (nicht Teil der Website)
-docs
-.github
-.claude
+public

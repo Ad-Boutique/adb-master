@@ -3,8 +3,8 @@
 1. Jeder interne Link und jede eingebundene Datei (href, src, poster, srcset, data-src) muss existieren.
 2. Strukturelemente (html, head, body, main, section, div, nav, header, footer, a, ul, ol, figure) muessen
    sauber geschlossen sein.
-Externe Links (http, mailto, tel) werden nicht abgerufen. Aufruf: python3 _tools/linkcheck.py
-Rueckgabe 1 bei Fehlern."""
+Externe Links (http, mailto, tel) werden nicht abgerufen. Aufruf: python3 _tools/linkcheck.py [ordner]
+Ohne Ordner: public/ (Ausgabe von sh _build.sh). Rueckgabe 1 bei Fehlern."""
 import glob
 import os
 import re
@@ -12,7 +12,8 @@ import sys
 from html.parser import HTMLParser
 from urllib.parse import unquote, urlparse
 
-ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+ROOT = os.path.abspath(sys.argv[1]) if len(sys.argv) > 1 else os.path.join(REPO, "public")
 CHECK = {"html", "head", "body", "main", "section", "div", "nav", "header", "footer", "a", "ul", "ol", "figure"}
 ATTRS = ("href", "src", "poster", "data-src")
 
@@ -60,6 +61,9 @@ def local_target(page, ref):
 
 
 def main():
+    if not os.path.isdir(ROOT):
+        print("Ordner fehlt: %s (zuerst sh _build.sh)" % ROOT)
+        return 1
     pages = sorted(p for p in glob.glob(os.path.join(ROOT, "*.html")) if not os.path.basename(p).startswith("_"))
     broken, struct = [], []
     for p in pages:

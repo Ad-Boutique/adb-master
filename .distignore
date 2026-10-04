@@ -1,0 +1,41 @@
+# Was NICHT in den Ausgabeordner public/ kommt (_dist.py, _check.py). Muster wie .gitignore.
+# Vercel und GitHub Pages liefern nur public/ aus.
+_intern
+_content
+_tools
+_deploy
+_qa_template.html
+_qa_run.html
+*.py
+_build.sh
+# Systemdateien und Notizen (README, Briefings)
+.DS_Store
+*.md
+# Vorschau-Varianten und interne Studie (nirgends verlinkt)
+*-v3.html
+studie-performance.html
+# Reckless: Trial-Lizenz, wird nicht mehr genutzt
+assets/fonts/Reckless-*
+# Satoshi kursiv: wird nirgends gesetzt, @font-face entfernt (Technik B2)
+assets/fonts/Satoshi-VariableItalic.woff2
+# JPG-Originale: ausgeliefert werden die WebP-Fassungen. Ausnahme: Open-Graph-Bilder (_seo.py)
+assets/**/*.jpg
+!assets/img/og/*.jpg
+!assets/img/og-default.jpg
+# kaputter Container ohne Index, nirgends verlinkt
+assets/**/voice.mp4
+# Doku und Arbeitsregeln des Repos, GitHub- und Claude-Einstellungen (nicht Teil der Website)
+docs
+.github
+.claude
+# Repo-Dateien, die nicht zur Website gehoeren
+.git
+.gitignore
+.distignore
+.vercelignore
+vercel.json
+public
+# Vercel Functions werden aus api/ im Projekt gebaut, nicht aus public/
+api
+# Bildmasse-Zwischenspeicher des Builds
+assets/imgdim.json

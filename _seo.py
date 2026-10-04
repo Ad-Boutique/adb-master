@@ -261,7 +261,9 @@ def og_image_for(h):
 def git_date(f):
     """Tag des letzten Commits der Datei (lastmod, dateModified). Ohne Git oder ohne Commit: heute."""
     try:
-        out = subprocess.run(["git", "log", "-1", "--format=%cs", "--", f], capture_output=True, text=True, timeout=10).stdout.strip()
+        # Gebaut wird in einer Kopie ohne .git (_build.sh): Git des Repos ueber ADB_SRC fragen
+        out = subprocess.run(["git", "-C", os.environ.get("ADB_SRC", "."), "log", "-1", "--format=%cs", "--", f],
+                             capture_output=True, text=True, timeout=10).stdout.strip()
         return out or TODAY.isoformat()
     except Exception:
         return TODAY.isoformat()

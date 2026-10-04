@@ -1,4 +1,8 @@
 {
+  "framework": null,
+  "installCommand": "python3 -m pip install --quiet --user pillow",
+  "buildCommand": "sh _build.sh public",
+  "outputDirectory": "public",
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [

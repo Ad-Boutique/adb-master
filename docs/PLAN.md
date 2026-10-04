@@ -84,12 +84,12 @@ Priorität: **A** muss vor Go-live, **B** bald danach, **C** später. Verantwort
 | Antwortabsatz für Google und KI-Suchen auf den Leistungsseiten wieder sichtbar platzieren (mit dem Wörterbuch-Hero entfallen, steht noch im JSON-LD und in der ersten FAQ) | B | offen | offen |
 | Content-Programm (zwölf Artikel, Benchmark-Report) laut SEO-Masterplan | B | offen | offen |
 | Einträge in Agenturverzeichnissen | B | offen | offen |
-| Generatoren entflechten (Vorlagen statt Nachbearbeitung) | C | offen | offen |
+| Generatoren entflechten (Inhalte in `_content/services`, Markup in `_tpl_services.py`, jede Regel an einer Stelle in `_nachlauf.py`) | C | Daniel (Claude) | umgesetzt 04.10.2026, Ausgabe Byte für Byte gleich |
 | Entscheidung CMS | C | Daniel und Florian | offen |
 
 ## 3. Offene Entscheidungen für Florian und Daniel
 
-1. **Vercel baut die Seite, erzeugtes HTML liegt nicht mehr in Git.** Beseitigt die 40-Dateien-Konflikte und die Mac-Abhängigkeit beim Bauen. Voraussetzung: Build läuft unter Linux (Posterbilder per Python statt Swift). Empfehlung: ja, nach dem Go-live als eigenes Projekt.
+1. **Vercel baut die Seite, erzeugtes HTML liegt nicht mehr in Git.** Entschieden und umgesetzt am 04.10.2026: `sh _build.sh` baut in einer Kopie nach `public/`, Vercel und die Pages-Action bauen selbst. Beim Merge muss die Pages-Quelle auf "GitHub Actions" gestellt werden.
 2. **Archiv-Branches oder Archiv-Ordner.** Heute: Branches plus Tags (`archiv/*`), geschützt per Ruleset. Ordner würden den Stand von `main` aufblähen. Empfehlung: Branches beibehalten.
 3. **Git LFS für Medien.** Spart Klon-Zeit, kostet ab 1 GB Speicher Geld und macht Vercel-Deploys etwas komplizierter. Alternative: Medien auf einem Speicher (z. B. Vercel Blob, Cloudflare R2) und nur Verweise im Repo. Empfehlung: erst entscheiden, wenn Videos neu verpackt werden.
 4. **CMS mittelfristig.** Cases haben schon Inhaltsdateien; Decap CMS ist vorbereitet (im Repo `adb-intern`). Für Leistungsseiten und Startseite wäre zuerst Punkt 1 nötig. Empfehlung: Decap für Cases testen, sobald Vercel baut.

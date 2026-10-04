@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """Pruefschritt am Ende des Builds (Technik B7): jede Referenz auf assets/ in HTML, CSS und JS muss als Datei
-existieren und darf nicht von .vercelignore ausgeschlossen sein. Fehler stehen als "  !"-Zeilen in der Ausgabe
+existieren und darf nicht von .distignore ausgeschlossen sein. Fehler stehen als "  !"-Zeilen in der Ausgabe
 (_build.sh sammelt sie am Ende). Dazu eine Zaehlung der Dateien unter assets/, die nirgends referenziert sind
 (nur Info, die Liste mit python3 _check.py --liste). Schreibt nichts."""
 import fnmatch
@@ -42,13 +42,17 @@ def refs():
 
 
 def ignore_rules():
+    """Regeln aus .distignore (was nicht ausgeliefert wird; _dist.py nutzt dieselben)."""
     rules = []
-    if os.path.exists(".vercelignore"):
-        for ln in open(".vercelignore", encoding="utf-8"):
+    if os.path.exists(".distignore"):
+        for ln in open(".distignore", encoding="utf-8"):
             ln = ln.strip()
             if ln and not ln.startswith("#"):
                 rules.append((ln.startswith("!"), ln.lstrip("!")))
     return rules
+
+
+load_rules = ignore_rules
 
 
 def _match(path, pat):
@@ -76,7 +80,7 @@ def main():
     for p in missing:
         print("  ! Referenz ohne Datei: %s (in %s)" % (p, ", ".join(sorted(r[p])[:3])))
     for p in hidden:
-        print("  ! Referenz von .vercelignore ausgeschlossen: %s (in %s)" % (p, ", ".join(sorted(r[p])[:3])))
+        print("  ! Referenz von .distignore ausgeschlossen: %s (in %s)" % (p, ", ".join(sorted(r[p])[:3])))
     files = [p for p in glob.glob("assets/**/*", recursive=True) if os.path.isfile(p)]
     unref = sorted(p for p in files if p not in r and not p.endswith((".css", ".js", ".json")))
     shipped = [p for p in unref if not ignored(p, rules)]
