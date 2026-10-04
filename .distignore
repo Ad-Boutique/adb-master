@@ -39,3 +39,5 @@ public
 api
 # Bildmasse-Zwischenspeicher des Builds
 assets/imgdim.json
+# Python-Abhaengigkeiten des Builds
+requirements.txt

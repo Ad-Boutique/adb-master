@@ -258,11 +258,21 @@ def og_image_for(h):
     return BASE + "/" + p
 
 
+def _quellen(f):
+    """Erzeugte Seiten liegen nicht in Git: ihr Datum kommt aus den Dateien, aus denen sie entstehen."""
+    if f.startswith("case-") and os.path.exists("_content/cases/%s.json" % f[:-5]):
+        return ["_content/cases/%s.json" % f[:-5]]
+    if f.startswith("service-") and os.path.exists("_content/services/%s.json" % f[:-5]):
+        return ["_content/services/%s.json" % f[:-5], "_tpl_services.py"]
+    return {"kontakt.html": ["_gen_kontakt.py"], "impressum.html": ["_gen_legal.py"],
+            "datenschutz.html": ["_gen_legal.py"]}.get(f, [f])
+
+
 def git_date(f):
-    """Tag des letzten Commits der Datei (lastmod, dateModified). Ohne Git oder ohne Commit: heute."""
+    """Tag des letzten Commits der Seite bzw. ihrer Quellen (lastmod, dateModified). Ohne Git: heute."""
     try:
         # Gebaut wird in einer Kopie ohne .git (_build.sh): Git des Repos ueber ADB_SRC fragen
-        out = subprocess.run(["git", "-C", os.environ.get("ADB_SRC", "."), "log", "-1", "--format=%cs", "--", f],
+        out = subprocess.run(["git", "-C", os.environ.get("ADB_SRC", "."), "log", "-1", "--format=%cs", "--"] + _quellen(f),
                              capture_output=True, text=True, timeout=10).stdout.strip()
         return out or TODAY.isoformat()
     except Exception:

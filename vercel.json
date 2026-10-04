@@ -1,6 +1,6 @@
 {
   "framework": null,
-  "installCommand": "python3 -m pip install --quiet --user pillow",
+  "installCommand": "python3 -m pip install --quiet --user -r requirements.txt",
   "buildCommand": "sh _build.sh public",
   "outputDirectory": "public",
   "cleanUrls": true,

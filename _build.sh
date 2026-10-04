@@ -18,16 +18,27 @@ SRC=$(pwd)
 OUT="${1:-public}"
 case "$OUT" in /*) ;; *) OUT="$SRC/$OUT" ;; esac
 # Das Ziel wird vor dem Kopieren geleert: nur public/ im Repo oder temporaere Ordner zulassen
-case "$OUT" in
-  "$SRC/public"|/tmp/*|/private/tmp/*|"${TMPDIR%/}"/*) ;;
-  *) echo "Ziel muss public/ im Repo oder ein Ordner unter /tmp bzw. \$TMPDIR sein: $OUT"; exit 1 ;;
-esac
+# (TMPDIR nur, wenn gesetzt; leer wuerde das Muster sonst zu "/*" und jedes Ziel erlauben)
+ok=""
+case "$OUT" in "$SRC/public"|/tmp/?*|/private/tmp/?*) ok=1 ;; esac
+if [ -z "$ok" ] && [ -n "${TMPDIR:-}" ]; then
+  case "$OUT" in "${TMPDIR%/}"/?*) ok=1 ;; esac
+fi
+if [ -z "$ok" ]; then echo "Ziel muss public/ im Repo oder ein Ordner unter /tmp bzw. \$TMPDIR sein: $OUT"; exit 1; fi
 TMP="${TMPDIR:-/tmp}"; TMP="${TMP%/}"
 STAGE=$(mktemp -d "$TMP/adbstage.XXXXXX")
 LOG=$(mktemp "$TMP/adbbuild.XXXXXX"); WARN=$(mktemp "$TMP/adbwarn.XXXXXX")  # Form fuer macOS und Linux
 trap 'rm -rf "$STAGE" "$LOG" "$WARN"' EXIT
-# Kopie ohne Git-Daten, Arbeitskopien und alte Ausgabe (tar statt rsync: gibt es auch im Vercel-Build)
-tar --exclude=./.git --exclude=./.claude --exclude=./_intern --exclude=./public -cf - . | (cd "$STAGE" && tar -xf -)
+# Kopie nur der Quellen: mit Git alle eingecheckten und neuen, nicht ignorierten Dateien (keine alten erzeugten
+# Seiten, keine lokalen Notizen); ohne Git (z. B. Vercel ohne .git) alles ausser Git-Daten und alter Ausgabe.
+# tar statt rsync: gibt es auch im Vercel-Build.
+if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  git ls-files -z --cached --others --exclude-standard \
+    | python3 -c "import os,sys; sys.stdout.write(''.join(p+'\\0' for p in sys.stdin.read().split('\\0') if p and os.path.isfile(p)))" \
+    | tar --null -T - -cf - | (cd "$STAGE" && tar -xf -)
+else
+  tar --exclude=./.git --exclude=./.claude --exclude=./_intern --exclude=./public -cf - . | (cd "$STAGE" && tar -xf -)
+fi
 cd "$STAGE"
 export ADB_SRC="$SRC"   # _seo.py liest Aenderungsdaten aus dem Git des Repos
 for s in _cases.py _leistungen.py _css.py _gen.py _gen_web.py _gen_services.py _gen_kontakt.py _gen_legal.py _nachlauf.py _check.py; do

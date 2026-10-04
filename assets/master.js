@@ -1255,7 +1255,7 @@
     box.setAttribute("aria-labelledby", "consent-t");
     var p = document.createElement("p");
     p.className = "consent-t"; p.id = "consent-t";
-    p.appendChild(document.createTextNode("Darf ad.boutique messen? Mit Ihrer Zustimmung laden wir Google Tag Manager und das Meta-Pixel, um zu sehen, welche Kampagnen wirken. Ohne Zustimmung speichern wir nur Ihre Auswahl. "));
+    p.appendChild(document.createTextNode("Darf ad.boutique messen? Mit Ihrer Zustimmung laden wir Google Tag Manager (mit Google Analytics und Google Ads) und das Meta-Pixel, um zu sehen, welche Kampagnen wirken. Ohne Zustimmung speichern wir nur Ihre Auswahl. "));
     var a = document.createElement("a");
     /* Ziel wie der Footer-Link (live schreibt _seo.py ihn auf /datenschutz um) */
     var dsl = document.querySelector('.ftr a[href*="datenschutz"]');
@@ -1289,7 +1289,22 @@
   function decide(v) {
     try { localStorage.setItem(KEY, v); localStorage.setItem(KEY + "_t", new Date().toISOString().slice(0, 10)); } catch (e) {}
     if (v === "all" && window.ADB_TRACK) window.ADB_TRACK();
-    if (v !== "all" && stored === "all" && window.ADB_UNTRACK) window.ADB_UNTRACK();
+    if (v !== "all" && stored === "all") {
+      /* Widerruf: Tracking stoppen, gesetzte Statistik- und Werbe-Cookies loeschen, neu laden (GTM ist dann weg) */
+      if (window.ADB_UNTRACK) window.ADB_UNTRACK();
+      var host = location.hostname, doms = ["", host, "." + host.split(".").slice(-2).join(".")];
+      document.cookie.split(";").forEach(function (c) {
+        var n = c.split("=")[0].trim();
+        if (!/^(_ga|_gid|_gat|_gcl|_fbp|_fbc)/.test(n)) return;
+        doms.forEach(function (d) {
+          document.cookie = n + "=; Max-Age=0; path=/" + (d ? "; domain=" + d : "");
+        });
+      });
+      stored = v;
+      close();
+      setTimeout(function () { location.reload(); }, 150);
+      return;
+    }
     stored = v;
     close();
   }

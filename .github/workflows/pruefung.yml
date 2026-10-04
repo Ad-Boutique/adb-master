@@ -15,40 +15,46 @@ concurrency:
 
 jobs:
   build:
-    # Linux: der Build braucht nur Python und Pillow. Er baut in einer Kopie und schreibt nach public/.
+    # Linux: der Build braucht nur Python und Pillow (requirements.txt). Er baut in einer Kopie und schreibt nach public/.
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
         with:
           fetch-depth: 0   # _seo.py liest Aenderungsdaten aus git log
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065  # v5
         with:
           python-version: "3.12"
       - name: Pakete
-        run: pip install pillow
-      - name: Ganze Build-Kette in der verbindlichen Reihenfolge
+        run: pip install -r requirements.txt
+      - name: Ganze Build-Kette in der verbindlichen Reihenfolge (enthaelt _check.py)
         run: sh _build.sh public
       - name: Der Build darf das Repo nicht veraendern
         run: |
           if [ -n "$(git status --porcelain)" ]; then
             echo "::error::Der Build hat Dateien im Repo geaendert:"; git status --porcelain | head -40; exit 1
           fi
+      - name: Ausgabe fuer die Linkpruefung weitergeben
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4
+        with:
+          name: public
+          path: public
+          include-hidden-files: true
+          retention-days: 1
 
   links:
+    needs: build
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065  # v5
         with:
           python-version: "3.12"
-      - name: Pakete
-        run: pip install pillow
-      - name: Bauen (enthaelt _check.py, assets-Referenzen gegen .distignore)
-        run: sh _build.sh public
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093  # v4
+        with:
+          name: public
+          path: public
       - name: Interne Links, eingebundene Dateien, HTML-Struktur der ausgelieferten Seiten
         run: python3 _tools/linkcheck.py public
 
@@ -56,7 +62,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
         with:
           fetch-depth: 0
       - name: Secret-Scan (TruffleHog)

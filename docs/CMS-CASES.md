@@ -269,7 +269,7 @@ Was zum Aktivieren fehlt:
 
 1. Login-Anbieter. Das GitHub-Backend braucht einen OAuth-Dienst, der den GitHub-Login für Decap abwickelt. Netlify Identity und Git Gateway gibt es nur auf Netlify; die Seite läuft auf GitHub Pages bzw. Vercel. Optionen: eine GitHub-OAuth-App plus ein kleiner OAuth-Proxy (z. B. als Vercel-Function oder Cloudflare Worker, fertige Vorlagen gibt es für Decap), oder ein gehosteter Dienst. Danach in `config.yml` `base_url` (heute Platzhalter `https://OAUTH-DIENST.example`) und gegebenenfalls `auth_endpoint` eintragen. Zugang bekommt, wer Schreibrechte auf `Ad-Boutique/adb-master` hat.
 2. Ablage: `index.html` und `config.yml` nach `admin/` im Repo kopieren (ausgeliefert unter `/admin`), dort mit `noindex`.
-3. Build nach dem Speichern: Decap schreibt nur die JSON-Dateien und Bilder. Die HTML-Seiten entstehen durch `_build.sh` (nur Python und Pillow, läuft auch in GitHub Actions). Entweder nach jeder Freigabe bauen und die Seiten committen, oder eine GitHub Action einrichten, die baut und committet.
+3. Build nach dem Speichern: Decap schreibt nur die JSON-Dateien und Bilder. Die HTML-Seiten entstehen durch `_build.sh` (nur Python und Pillow, läuft auch in GitHub Actions). Erzeugte Seiten liegen nicht in Git: Vercel und die Pages-Action bauen bei jedem Push selbst, es genügt also, die JSON-Datei zu committen.
 4. Bild-Ordner je Case: Decap legt Uploads in `assets/case/` ab. Wer je Case einen Unterordner will, stellt `media_folder` der Sammlungen auf einen Pfad mit dem Slug um.
 5. Decap schreibt die JSON-Dateien mit eigener Formatierung (alles ausgeklappt). Das ist für den Build gleichgültig.
 
@@ -284,4 +284,4 @@ Was zum Aktivieren fehlt:
 
 ## Hinweis Ordnername (3.10.2026)
 
-Der Ordner heißt `_content` mit Unterstrich. GitHub Pages veröffentlicht Ordner mit Unterstrich nicht, und `.vercelignore` schließt ihn für Vercel aus. So sind die Inhaltsdateien auf der Website nicht abrufbar. Achtung: Das GitHub-Repo selbst ist öffentlich, dort sind sie lesbar. Decap CMS muss beim Aktivieren auf `_content/cases` zeigen (steht so in `decap/config.yml` im privaten Repo `adb-intern`).
+Der Ordner heißt `_content` mit Unterstrich. `.distignore` hält ihn aus der Ausgabe `public/` heraus, die Vercel und die Pages-Vorschau ausliefern. So sind die Inhaltsdateien auf der Website nicht abrufbar. Achtung: Das GitHub-Repo selbst ist öffentlich, dort sind sie lesbar. Decap CMS muss beim Aktivieren auf `_content/cases` zeigen (steht so in `decap/config.yml` im privaten Repo `adb-intern`).

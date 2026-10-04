@@ -1,6 +1,6 @@
 # adb-master: Website von ad.boutique
 
-Statische Website der Digitalagentur ad.boutique (Wien). Das HTML wird von Python-Generatoren erzeugt und liegt fertig gebaut im Repo. Ausgeliefert wird über Vercel (Livegang vorbereitet) und als Vorschau über GitHub Pages, beides heute mit `noindex`.
+Statische Website der Digitalagentur ad.boutique (Wien). Das HTML wird von Python-Generatoren erzeugt; `sh _build.sh` baut die Seite nach `public/` (nicht in Git). Ausgeliefert wird über Vercel (Livegang vorbereitet) und als Vorschau über GitHub Pages, beides heute mit `noindex`.
 
 Betreut von Daniel (`danielphadb`) und Florian (`florian-hoermann`) mit gleichen Rechten. **Arbeitsregeln für Menschen und Claude: [CLAUDE.md](CLAUDE.md).** Wer gerade woran arbeitet: [docs/STATUS.md](docs/STATUS.md). Plan bis zum Go-live: [docs/PLAN.md](docs/PLAN.md).
 
@@ -10,7 +10,7 @@ Betreut von Daniel (`danielphadb`) und Florian (`florian-hoermann`) mit gleichen
 
 | Pfad | Was |
 |---|---|
-| `*.html` | gebaute Seiten: Startseite, Work, Agentur, Kontakt, 6 Leistungen, 24 Cases (2 davon handgebaut), Studie, 2 Vorschau-Varianten `*-v3.html` |
+| `*.html` | nur die handgebauten Seiten (Startseite, Work, Agentur, Premium-Neubau, Kommunalkredit, Studie, Weiterleitung). Alle anderen Seiten entstehen beim Build in `public/` |
 | `_content/cases/*.json` | Inhalt je Case (Texte, Zahlen, Bilder). Anleitung: [docs/CMS-CASES.md](docs/CMS-CASES.md) |
 | `_content/services/*.json` | Inhalt je Leistungsseite (Texte, Zahlen, Bilder, SEO, Wörterbuch-Hero). Anleitung: [docs/CMS-LEISTUNGEN.md](docs/CMS-LEISTUNGEN.md) |
 | `_*.py` | Build-Schritte (Prüfung, Generatoren, Vorlagen, Regeln des Nachlaufs), siehe unten |
@@ -18,14 +18,15 @@ Betreut von Daniel (`danielphadb`) und Florian (`florian-hoermann`) mit gleichen
 | `assets/master.css`, `brand*.css` | Stylesheets je Bereich; `_css.py` bündelt sie zu `assets/site.css` (nie direkt bearbeiten) |
 | `assets/brand.js`, `master.js` | Verhalten; gebündelt zu `assets/site.js` |
 | `api/anfrage.js` | Vercel Function für das Kontaktformular (Versand über Resend) |
-| `vercel.json`, `.vercelignore` | Routing, 301-Weiterleitungen, Header; was Vercel nicht ausliefert |
+| `vercel.json`, `.distignore`, `.vercelignore` | Build, Routing, 301-Weiterleitungen, Header; `.distignore`: was nicht nach `public/` kommt; `.vercelignore`: was Vercel nicht hochlädt |
+| `requirements.txt` | Python-Pakete des Builds (Pillow, feste Version) |
 | `_tools/` | Prüfwerkzeuge: `linkcheck.py`, `qa2.js`, `stylefp.js`, `fp.sh`; Swift-Programme (nur Mac) für Screenshots und Posterbilder |
 | `docs/` | Doku: Status, Plan, Versionen, Brand-Regeln, Design-System, Cases, GitHub-Einstellungen, Cloud-Anleitung |
 | `.github/workflows/` | Prüfungen bei jedem PR (Build, Links, Secret-Scan), IndexNow nach Go-live |
 
 ## Bauen
 
-Voraussetzung: Python 3 mit Pillow (`pip install pillow`).
+Voraussetzung: Python 3 mit Pillow (`pip install -r requirements.txt`).
 
 ```bash
 sh _build.sh

@@ -15,10 +15,14 @@ const hits = new Map();
 function tooMany(ip) {
   const now = Date.now();
   const list = (hits.get(ip) || []).filter((t) => now - t < LIMIT.ms);
+  if (list.length >= LIMIT.max) { hits.set(ip, list); return true; }  // gesperrte Versuche zaehlen nicht mit
   list.push(now);
   hits.set(ip, list);
-  if (hits.size > 5000) hits.clear();
-  return list.length > LIMIT.max;
+  if (hits.size > 5000) {
+    // Speicher begrenzen: nur abgelaufene Eintraege entfernen, aktive Sperren bleiben
+    for (const [k, v] of hits) if (!v.length || now - v[v.length - 1] >= LIMIT.ms) hits.delete(k);
+  }
+  return false;
 }
 
 function clean(v, n) {
@@ -51,6 +55,7 @@ module.exports = async function handler(req, res) {
     return send(403, { ok: false, error: "herkunft" });
   }
 
+  // x-forwarded-for setzt auf Vercel die Plattform selbst (vom Besucher nicht faelschbar); erster Eintrag = Besucher-IP
   const ip = String(req.headers["x-forwarded-for"] || (req.socket && req.socket.remoteAddress) || "").split(",")[0].trim();
   if (ip && tooMany(ip)) return send(429, { ok: false, error: "zu-viele" });
 

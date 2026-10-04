@@ -18,8 +18,12 @@ Wichtigste Datei für die Zusammenarbeit. Zu Beginn jeder Sitzung lesen, vor Arb
 - Ausgeblendete alte Ergebnisblöcke aus 11 Case-Dateien entfernt (Seiten unverändert). Health-Case bleibt sichtbar.
 - Formular-Endpunkt: Bremse je IP (5 Anfragen in 10 Minuten je Instanz).
 
+- Zweiter unabhängiger Review: keine kritischen Befunde. Behoben: Zielprüfung des Builds auch ohne `TMPDIR`, Ausgabe-Ordner wird nur geleert, wenn er nachweislich eine frühere Ausgabe ist, Build kopiert nur eingecheckte und neue Quellen, IndexNow baut die Sitemap selbst, `lastmod` aus den Quellen der erzeugten Seiten, Pillow fest (`requirements.txt`), Actions per SHA gepinnt, Linkprüfung nutzt die Build-Ausgabe, Widerruf der Einwilligung löscht Google- und Meta-Cookies, Datenschutz und Banner an die Technik angeglichen.
+
 **Offen**
 - Datenschutz-Text rechtlich prüfen lassen, Widerspruch OÜ (alte Seite) und GmbH (Impressum) klären.
+- AGB: Die Live-Seite zeigt die AGB einer anderen Firma ("Digitalwerk GmbH"); nicht übernommen, Entscheidung Daniel.
+- Impressum nennt die UID als "Steuernummer" (1:1 von der Live-Seite).
 - Antwortabsatz: drei Varianten gezeigt, alle verworfen (Text passt nicht an diese Stellen).
 - Generator-Umbau (Inhalte der Leistungen in `_content/services`, jede Regel an einer Stelle, Ausgabe Byte für Byte gleich), Vercel baut selbst (Build in Kopie nach `public/`, erzeugte Seiten aus Git, Pages per Action), totes CSS entfernt (391 Regeln, ohne sichtbare Änderung).
 
