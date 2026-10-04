@@ -29,11 +29,11 @@
 
   /* ---------- 200 ms: Hover und Rueckmeldung ---------- */
   body.brand .btn, body.brand .alink::after, body.brand .zalink, body.brand .fchip,
-  body.brand .mitem .mt::before, body.brand .mfoot .soc a, body.brand .chapnav a, body.brand .hlxnav .hn, body.brand .vchips .vc,
-  body.brand .faq .ahead, body.brand .acc .ahead, body.brand .needbar .ngo, body.brand .needgrid .nopt, body.brand .morecases a,
-  body.brand .ointro .opill, body.brand .kprog .kp, body.brand .kchip, body.brand .kchip .kx, body.brand .kinput, body.brand .kopt,
+  body.brand .mitem .mt::before, body.brand .mfoot .soc a, body.brand .hlxnav .hn, body.brand .vchips .vc,
+  body.brand .faq .ahead, body.brand .needbar .ngo, body.brand .needgrid .nopt, body.brand .morecases a,
+  body.brand .kprog .kp, body.brand .kchip, body.brand .kchip .kx, body.brand .kinput, body.brand .kopt,
   body.brand .kbtn, body.brand .kbtn i, body.brand .kback, body.brand .kback i, body.brand .photowall .pwlinks a,
-  body.brand .photowall .ivsound, body.brand .ivid .ivsound, body.brand .ivid .ivsound .ivbars i, body.brand .vsplit .vmedia--video .ivsound,
+  body.brand .photowall .ivsound, body.brand .vsplit .vmedia--video .ivsound,
   body.brand .bkbtn, body.brand .fbtn, body.brand .bbtn, body.brand .fbtn::before, body.brand .bbtn::before, body.brand .fbtn::after, body.brand .bbtn::after,
   body.brand .svcard, body.brand .ctarows .cr, body.brand .oplist .otitle, body.brand .npro .nptit, body.brand .filmwrap .fplay span,
   body.brand .chrome .hmenu i, body.brand .oplist:not(.oplist--steps) .op .onum::before, body.brand .nopt .plus,
@@ -79,11 +79,11 @@
   body.brand .benegrid .bcell > .bd { transition-delay: var(--stagger) !important; }
   /* weitere Zustandswechsel beim Scrollen */
   body.brand [data-scrub] .w, body.brand .hlxmedia img, body.brand .hlxmedia video, body.brand .hlxsteps .hs, body.brand .vstage .phframe img,
-  body.brand .pmap .pn, body.brand .pmap .pp, body.brand .zoomsec .zcap, body.brand .zoomsec .zaside, body.brand .pnode,
-  body.brand .oplist--steps .owhen::before, body.brand .hproc .hnode, body.brand .tell .ts, body.brand .filmwrap .fplay,
+  body.brand .pmap .pn, body.brand .pmap .pp, body.brand .zoomsec .zcap, body.brand .zoomsec .zaside,
+  body.brand .oplist--steps .owhen::before, body.brand .tell .ts, body.brand .filmwrap .fplay,
   body.brand .kpi .kpill, body.brand .kpi .kline .kd, body.brand .benegrid .bcell::after, body.brand .kprog .kbar i,
-  body.brand .dotgraph i, body.brand .dotbars .dots i, body.brand .kpi .kdots .dots i, body.brand .ratedots i, body.brand .tldots i,
-  body.brand .dotline span::before, body.brand .sprog, body.brand .chapnav, body.brand .cdot span, body.brand .mwrite,
+  body.brand .dotgraph i, body.brand .dotbars .dots i, body.brand .kpi .kdots .dots i, body.brand .tldots i,
+  body.brand .dotline span::before, body.brand .sprog, body.brand .cdot span, body.brand .mwrite,
   body.brand .flipx--lid, body.brand .pt.enter, body.brand .iris {
     transition-duration: var(--d-base) !important;
   }
@@ -93,17 +93,17 @@
 
   /* ---------- 700 ms: Uebergaenge ---------- */
   body.brand, body.brand .msheet, body.brand .mdim, body.brand .pt, body.brand .pt.gone, body.brand .flipx, body.brand .flipbg,
-  body.brand .hslide, body.brand .faq .abody, body.brand .acc .abody, body.brand .faq .ahead .plus, body.brand .acc .ahead .plus,
+  body.brand .hslide, body.brand .faq .abody, body.brand .faq .ahead .plus,
   body.brand .svcband img, body.brand .acollage img, body.brand .team-int .ti img,
   body.brand .tile .tmed img, body.brand .wt img, body.brand .wt video, body.brand .tile video, body.brand .npro .npim2 img,
-  body.brand .diffsec .dimg img, body.brand .logocycle .lslot img, body.brand .logogrid .lslot img, body.brand .cdot {
+  body.brand .logocycle .lslot img, body.brand .logogrid .lslot img, body.brand .cdot {
     transition-duration: var(--d-slow) !important;
   }
   body.brand .flipx--lid { transition-duration: var(--d-base) !important; }
   body.brand .pt.enter { transition-duration: var(--d-base) !important; }
 
   /* ---------- 1200 ms: Choreografie ---------- */
-  body.brand [data-scale] img, body.brand .hslide .him, body.brand .chero img, body.brand .chrow .cf, body.brand .bacmp .bfill {
+  body.brand [data-scale] img, body.brand .hslide .him, body.brand .chero img {
     transition-duration: var(--d-chor) !important;
   }
   /* Studie: Balken, Kurve, Bogen, Sparkline zeichnen sich in Choreografie-Dauer, Stationen blenden wie ueberall */
@@ -139,11 +139,11 @@
   body.brand .iris .iword.in { animation: iword var(--d-base) var(--e-out) forwards; }
   body.brand.mblink .mbtn::before { animation: mblink var(--d-base) var(--e-out) 2; }
   /* Ton-Anzeige: ein Puls in Choreografie-Dauer */
-  body.brand .photowall .pwiv.sound .ivbars i, body.brand .ivid .ivframe.sound .ivsound .ivbars i, body.brand .vsplit .vmedia--video .pwiv.sound .ivbars i {
+  body.brand .photowall .pwiv.sound .ivbars i, body.brand .vsplit .vmedia--video .pwiv.sound .ivbars i {
     animation-duration: var(--d-chor) !important; animation-timing-function: var(--e-out) !important;
   }
-  body.brand .photowall .pwiv.sound .ivbars i:nth-child(2), body.brand .ivid .ivframe.sound .ivsound .ivbars i:nth-child(2), body.brand .vsplit .vmedia--video .pwiv.sound .ivbars i:nth-child(2) { animation-delay: calc(2 * var(--stagger)) !important; }
-  body.brand .photowall .pwiv.sound .ivbars i:nth-child(3), body.brand .ivid .ivframe.sound .ivsound .ivbars i:nth-child(3), body.brand .vsplit .vmedia--video .pwiv.sound .ivbars i:nth-child(3) { animation-delay: calc(4 * var(--stagger)) !important; }
+  body.brand .photowall .pwiv.sound .ivbars i:nth-child(2), body.brand .vsplit .vmedia--video .pwiv.sound .ivbars i:nth-child(2) { animation-delay: calc(2 * var(--stagger)) !important; }
+  body.brand .photowall .pwiv.sound .ivbars i:nth-child(3), body.brand .vsplit .vmedia--video .pwiv.sound .ivbars i:nth-child(3) { animation-delay: calc(4 * var(--stagger)) !important; }
 
   /* ---------- Punkt im Hero: ein Eintritt mit Fokus-Ring statt Dauerpuls ---------- */
   body.brand .bdot { animation: adb-dotin var(--d-chor) var(--e-out) both; }
@@ -182,7 +182,6 @@ body.brand .nopt.sel .plus, body.brand .fcard--yes li.hit .fdot { box-shadow: no
 body.brand .oplist--steps .owhen::before { border-color: currentColor; }
 body.brand .oplist--steps .op.on .owhen::before { background-color: currentColor; box-shadow: none; }
 body.brand .oplist:not(.oplist--steps) .op:hover .onum::before { transform: scale(1.5); }
-body.brand .rateslider::-webkit-slider-thumb { box-shadow: none; }
 /* Akt-Marke auf Schwarz: kein Lime-Ring */
 body.brand .fg-dark .actring { border-color: var(--cream-a60); }
 
@@ -192,14 +191,14 @@ body.brand .fg-dark .actring { border-color: var(--cream-a60); }
    .is-best bester oder aktueller Wert (Cream: Lime mit 1 px Schwarz, sonst wie .is-on)
    ohne Klasse: Umriss 1 px
    ============================================================ */
-body.brand .dotgraph i, body.brand .dotbars .dots i, body.brand .kpi .kdots .dots i, body.brand .ratedots i {
+body.brand .dotgraph i, body.brand .dotbars .dots i, body.brand .kpi .kdots .dots i {
   background: transparent; box-shadow: inset 0 0 0 1px var(--g-line); opacity: 1; transform: none;
   transition-property: background-color, box-shadow, opacity, transform;
 }
-body.brand .dotgraph i.is-on, body.brand .dotbars .dots i.is-on, body.brand .kpi .kdots .dots i.is-on, body.brand .ratedots i.is-on {
+body.brand .dotgraph i.is-on, body.brand .dotbars .dots i.is-on, body.brand .kpi .kdots .dots i.is-on {
   background: var(--g-on); box-shadow: inset 0 0 0 1px var(--g-on);
 }
-body.brand .dotgraph i.is-best, body.brand .dotbars .dots i.is-best, body.brand .kpi .kdots .dots i.is-best, body.brand .ratedots i.is-best {
+body.brand .dotgraph i.is-best, body.brand .dotbars .dots i.is-best, body.brand .kpi .kdots .dots i.is-best {
   background: var(--g-best); box-shadow: inset 0 0 0 1px var(--g-line);
 }
 /* Hervorgehobene Reihe (.row.hi): nur der letzte gefuellte Punkt ist Lime (.is-best), die anderen gefuellten Schwarz.

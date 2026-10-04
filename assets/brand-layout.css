@@ -82,23 +82,12 @@ body.brand:not(.pg-agentur) .svcband img:hover, body.brand:not(.pg-agentur) .tea
 .brand .cintro.sec { padding-top: var(--sec); padding-bottom: var(--sec); }
 /* Text-Heros (Leistung, Agentur, Kontakt): Inhalt beginnt ueberall auf derselben Hoehe.
    Sektion oben --sec (Skala), dazu --hero-in im Rahmen: zusammen 192 Desktop, 160 Mobile (Zurueck-Knopf 80 bis 132 steht darueber frei). */
-.brand .svc-hero { padding-top: var(--sec); padding-bottom: var(--sec); }
 .brand .ahero.sec { padding-top: var(--sec) !important; padding-bottom: var(--sec) !important; }
 .brand :is(.svc-hero, .ahero) > .wrap { padding-top: var(--hero-in); }
 .brand .kmain { padding-top: var(--hero-top); }
 /* Agentur: die Bildwand driftet beim Scrollen nach unten, der Puffer dafuer sitzt unter der Bildwand statt im Sektionsabstand */
 .brand .ahero .acollage { margin-bottom: var(--sec); }
-/* Leistungs-Hero: der Knopf "Direkt anfragen" steht direkt unter dem Untertitel, damit er bei 1440 x 900
-   ueber dem schwebenden Menue-Knopf bleibt (mindestens --mbtn-bottom + --mbtn-size + 16 frei).
-   Antwort-Absatz, Punktzeile und Punktfeld folgen darunter. Reihenfolge nur optisch, Inhalte bleiben. */
-.brand .svc-hero > .wrap { display: flex; flex-direction: column; }
-.brand .svc-hero > .wrap > h1 { margin-top: 0; } /* erste Zeile wie bei Kontakt und Agentur: Zeilenmaske beginnt 0,2em ueber 192 */
-.brand .svc-hero > .wrap > .statg { margin-top: var(--sp-4); }
-.brand .svc-hero > .wrap > .statg + .ssub { margin-top: var(--sp-4); }
-.brand .svc-hero > .wrap > .ssub ~ * { order: 2; }
 .brand .svc-hero > .wrap > .ssub ~ div:has(> .alink) { order: 1; margin-top: var(--b2btn) !important; }
-.brand .svc-hero > .wrap > .sanswer { margin-top: var(--sp-6); }
-.brand .svc-hero > .wrap > .sanswer + .dotline { margin-top: var(--sp-3); }
 /* Bildband, Fotowand: Abstaende aus der Skala */
 .brand .svcband { padding-top: var(--sec-s); padding-bottom: var(--sec-s); }
 .brand .svcband .wrap { margin-bottom: var(--sp-4); }
@@ -134,8 +123,6 @@ body.brand:not(.pg-agentur) .svcband img:hover, body.brand:not(.pg-agentur) .tea
 .brand main :is(h1, h2, h3, .disp, .dispn, .lh, .zah, .phh, .pwh):not(.sr-only):has(+ :is(p, .sub, .ssub, .lt3, .zasub, .klead, .body)) { margin-bottom: 0 !important; }
 .brand main :is(h1, h2, h3, .disp, .dispn, .lh, .zah, .phh, .pwh):not(.sr-only) + :is(p, .sub, .ssub, .lt3, .zasub, .klead, .body) { margin-top: var(--h2b) !important; }
 /* Chips unter der Hero-Headline: eine Stufe Luft, die Unterlaengen der Amandine-Zeile brauchen Platz */
-.brand .svc-hero h1 + .tags { margin-top: var(--sp-3); }
-.brand .svc-hero .tags + .ssub { margin-top: var(--sp-3); }
 .brand main :is(p, .sub, .ssub, .lt3, .body, .dotline, .tags) + :is(.hbtns, div:has(> .btn:first-child)) { margin-top: var(--b2btn) !important; }
 /* Einzelner Knopf direkt nach dem Text (Zoom-Beweis "Den Fall im Detail", Agentur) */
 .brand main :is(p, .sub, .ssub, .lt3, .body, .zasub, .dotline) + a.btn { margin-top: var(--b2btn) !important; }

@@ -80,9 +80,8 @@ body.brand [data-hd] {
   font-size: clamp(min(36px, var(--hd-max)), var(--hd-fit), var(--hd-max)) !important;
 }
 body.brand :is(.hpitch, .khead, .help, footer) [data-hd] { --hd-max: var(--fs-h1); }
-body.brand .svc-hero h1[data-hd] { --hd-max: var(--fs-h1-xl); }
 /* die Amandine-Zeile: eigene Zeile, genau eine Zeile auf Desktop, 0,88 der Satoshi-Zeile, eingepasst */
-body.brand [data-hd][data-hd] :is(i, em), body.brand .am.am.am {
+body.brand [data-hd][data-hd] :is(i, em) {
   display: block;
   font-family: var(--f-amandine) !important;
   font-style: italic !important;
@@ -224,7 +223,7 @@ body.brand :is(.kpi .kfrom, .okpi .v, .row .rv, .row .val, .r .v2, .cmprow .cmpv
 /* ---------- 9 Mobile ---------- */
 @media (max-width: 720px) {
   /* die Amandine-Zeile darf umbrechen, bevor sie kleiner als 0,72 der Satoshi-Zeile wuerde */
-  body.brand [data-hd][data-hd] :is(i, em), body.brand .am.am.am {
+  body.brand [data-hd][data-hd] :is(i, em) {
     white-space: normal;
     font-size: max(calc(0.72 * 1em), min(calc(var(--am-scale) * 1em), calc(100cqi / (var(--hn, 12) * var(--am-cw))))) !important;
   }

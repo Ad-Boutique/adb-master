@@ -65,7 +65,7 @@ Alle liegen in `assets/` und werden in genau dieser Reihenfolge zu `site.css` ge
 | Datei | Zustaendig fuer |
 |---|---|
 | `tokens.css` | alle Werte (siehe oben), sonst nichts |
-| `master.css` | Altbestand: Aufbau und Bausteine der Seite (Raster, Hero, Kacheln, Menue, Zoom, Fotowand). Nur :root, Pill-/Kreis-Radien und z-Index sind auf Token umgestellt; darin stehen weiter feste Altwerte (z. B. #fff, #101012, alte Radien), die von den brand-Dateien ueberschrieben werden. Aufraeumen ist ein eigener Schritt (siehe Technik-Empfehlungen). |
+| `master.css` | Altbestand: Aufbau und Bausteine der Seite (Raster, Hero, Kacheln, Menue, Zoom, Fotowand). Nur :root, Pill-/Kreis-Radien und z-Index sind auf Token umgestellt. Am 4.10.2026 aufgeraeumt: Regeln ohne Treffer auf irgendeiner Seite und von den brand-Dateien vollstaendig ueberschriebene Altwerte sind entfernt (391 Regeln, site.css 17 % kleiner, Stil-Fingerabdruck ohne Abweichung). Stehen geblieben ist, was JavaScript setzt, was Inhalte jederzeit liefern koennen (z. B. blockquote, table) und die Button-Varianten des Design-Systems. |
 | `brand.css` | Brand 2026, Grundschicht: der Punkt als Element (Cursor, Ladeblende, Punkt-Zoom, Punktzeilen, Coach, KPI-Karten) |
 | `brand-type.css` | Typografie: welche Rolle welche Schrift, Groesse und Zeilenhoehe bekommt, Display-Headlines, grosse Zahlen |
 | `brand-ui.css` | Design: Farben je Flaeche, Buttons, Textlinks, Badges, Chips, Menue-Knopf, Karten, Graphen |

@@ -20,8 +20,8 @@ Wichtigste Datei für die Zusammenarbeit. Zu Beginn jeder Sitzung lesen, vor Arb
 
 **Offen**
 - Datenschutz-Text rechtlich prüfen lassen, Widerspruch OÜ (alte Seite) und GmbH (Impressum) klären.
-- Antwortabsatz auf den Leistungsseiten: drei Varianten als Vorschau, Entscheidung Daniel.
-- Generator-Umbau und Aufräumen des CSS laufen parallel in eigenen Arbeitskopien.
+- Antwortabsatz: drei Varianten gezeigt, alle verworfen (Text passt nicht an diese Stellen).
+- Generator-Umbau (Inhalte der Leistungen in `_content/services`, jede Regel an einer Stelle, Ausgabe Byte für Byte gleich), Vercel baut selbst (Build in Kopie nach `public/`, erzeugte Seiten aus Git, Pages per Action), totes CSS entfernt (391 Regeln, ohne sichtbare Änderung).
 
 ### 03.10.2026, Daniel (Claude), `daniel/sicherung-aktueller-stand` und `daniel/setup-workflow`
 

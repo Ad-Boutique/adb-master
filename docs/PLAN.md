@@ -81,7 +81,7 @@ Priorität: **A** muss vor Go-live, **B** bald danach, **C** später. Verantwort
 
 | Aufgabe | Prio | Wer | Status |
 |---|---|---|---|
-| Antwortabsatz für Google und KI-Suchen auf den Leistungsseiten wieder sichtbar platzieren (mit dem Wörterbuch-Hero entfallen, steht noch im JSON-LD und in der ersten FAQ) | B | offen | offen |
+| Antwortabsatz für Google und KI-Suchen: drei sichtbare Platzierungen geprüft (unter dem Foto, im Header, erste FAQ oben), alle verworfen (Entscheidung Daniel 04.10.2026: Text passt dort nicht). Bleibt im JSON-LD und in der ersten FAQ. Eventuell später mit anderem Text oder an anderer Stelle | C | Daniel | offen |
 | Content-Programm (zwölf Artikel, Benchmark-Report) laut SEO-Masterplan | B | offen | offen |
 | Einträge in Agenturverzeichnissen | B | offen | offen |
 | Generatoren entflechten (Inhalte in `_content/services`, Markup in `_tpl_services.py`, jede Regel an einer Stelle in `_nachlauf.py`) | C | Daniel (Claude) | umgesetzt 04.10.2026, Ausgabe Byte für Byte gleich |
