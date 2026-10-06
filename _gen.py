@@ -17,9 +17,9 @@ HEAD = '''<!doctype html>
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="preconnect" href="https://p.typekit.net" crossorigin>
 <link rel="preload" href="assets/fonts/Satoshi-Variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/site.css?v=64467214">
+<link rel="stylesheet" href="assets/site.css?v=09627981">
 <link rel="stylesheet" href="https://use.typekit.net/udf8wjj.css">
-<script src="assets/site.js?v=64467214" defer></script>
+<script src="assets/site.js?v=09627981" defer></script>
 </head>
 <body style="background-color:{bodybg}" class="on-light brand">
 
@@ -160,9 +160,9 @@ def case_page(c):
 
 
 if __name__ == "__main__":
-    for c in PERFORMANCE:
-        if c["vorlage"] != "dossier":
-            continue
-        open(c["slug"] + ".html", "w", encoding="utf-8").write(case_page(c))
-        print("case", c["slug"])
+    # fertig(): die Nachlauf-Regeln (_nachlauf.py) laufen gleich beim Erzeugen, geschrieben wird die fertige Seite
+    import _nachlauf
+    seiten = {c["slug"] + ".html": case_page(c) for c in PERFORMANCE if c["vorlage"] == "dossier"}
+    for name in _nachlauf.fertig(seiten):
+        print("case", name[:-5])
     print("cases done")

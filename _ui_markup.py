@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Markup-Vereinheitlichung fuer Farben und Komponenten (Regelwerk docs/BRAND-RULES.md, Abschnitte 1, 5, 6).
-Gehoert der Design-Abteilung. Reihenfolge: nach _footer.py, vor _headlines.py. Laeuft ueber alle Seiten.
+Gehoert der Design-Abteilung. Regel "ui" des Nachlaufs (_nachlauf.py): nach "footer", vor "headlines".
+Laeuft ueber alle Seiten (generierte beim Erzeugen, handgebaute im Nachlauf). Einzeln aufrufbar: python3 _ui_markup.py
 
 Was dieser Schritt tut:
   1. Flaechen: jedes data-bg wird genau eine von Cream #F4F3EB, Black #101010, Lime #CDFF00
@@ -19,7 +20,6 @@ Was dieser Schritt tut:
      zwei Badges (small.bdg); brand-ui.css stellt sie als Meta-Zeile unter die H1.
 Mehrfach ausfuehrbar: eigene Klassen werden vor jeder Entscheidung entfernt und neu gesetzt, Farben sind nach dem
 ersten Lauf bereits Tokens und bleiben es."""
-import glob
 import re
 from html.parser import HTMLParser
 
@@ -297,18 +297,24 @@ def apply(h):
     return h
 
 
-def main():
-    n = 0
-    for f in sorted(glob.glob("*.html")):
-        if f in SKIP:
-            continue
-        src = open(f, encoding="utf-8").read()
-        out = apply(src)
-        if out != src:
-            open(f, "w", encoding="utf-8").write(out)
-            n += 1
-    print("ui_markup: %d Dateien angepasst" % n)
+ZAEHLER = {"n": 0}
+
+
+def seite(f, h):
+    """Regel "ui" des Nachlaufs (_nachlauf.py)."""
+    if f in SKIP:
+        return h
+    out = apply(h)
+    if out != h:
+        ZAEHLER["n"] += 1
+    return out
+
+
+def bericht():
+    return "ui_markup: %d Dateien angepasst" % ZAEHLER["n"]
 
 
 if __name__ == "__main__":
-    main()
+    import _nachlauf
+    _nachlauf.einzeln(seite)
+    print(bericht())

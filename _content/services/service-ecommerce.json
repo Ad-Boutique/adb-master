@@ -1,0 +1,576 @@
+{
+  "slug": "service-ecommerce",
+  "reihenfolge": 10,
+  "nav": "E-Commerce Growth",
+  "label": "Leistung, E-Commerce Growth",
+  "flow": "v2",
+  "v2_content": true,
+  "v2_graphic": true,
+  "seo": {
+    "label": "E-Commerce Growth Agentur Wien",
+    "title": "E-Commerce Growth Agentur Wien | ad.boutique",
+    "desc": "E-Commerce Agentur Wien für Ads, Creatives, Shop und Tracking: Jahresumsatz einer D2C-Marke von 520.000 auf 817.000 Euro, Blended ROAS 5,57.",
+    "answer": "ad.boutique ist eine E-Commerce-Growth-Agentur in Wien. Wir führen Meta, Google, Pinterest und TikTok, testen Creatives, optimieren Produktseiten und Checkout und messen serverseitig, damit jede Bestellung einmal zählt. Beispiel: Eine D2C-Lifestyle-Marke wuchs in zwölf Monaten von 520.000 auf 817.000 Euro Jahresumsatz, aus 56.000 Euro Mediabudget wurden 312.000 Euro Umsatz.",
+    "faq_first": {
+      "frage": "Was ist E-Commerce Growth?",
+      "antwort": "E-Commerce Growth heißt: mehr Umsatz aus demselben Traffic, nicht nur mehr Klicks. Dazu gehören Kampagnen auf Meta, Google, Pinterest und TikTok, Creatives im Test, Produktseite und Checkout, saubere Produkt-Feeds und ein Tracking, das jede Bestellung einmal zählt. Gemessen wird am Blended ROAS inklusive Agentur-Fee."
+    },
+    "faq_last": [
+      {
+        "frage": "Was kostet E-Commerce Growth bei ad.boutique?",
+        "antwort": "Basis-Fixum plus Beteiligung am messbaren Umsatz. Sinnvoll ist das ab einem Mediabudget von etwa 5.000 Euro im Monat und wenn der Shop angefasst werden darf: Produktseite, Checkout, Angebotslogik. Der Einstieg ist ein Shop- und Account-Audit in zwei Wochen, ohne Vertrag."
+      },
+      {
+        "frage": "Welche Kanäle bringen im E-Commerce den besten Return?",
+        "antwort": "Das hängt vom Produkt ab, deshalb testen wir statt zu raten. Bei einer D2C-Lifestyle-Marke führte Pinterest mit einem ROAS von 6,99, Google folgte mit 5,98, inklusive Agentur-Fee blieb der Blend bei 4,17. Kanäle, die nicht tragen, werden gestoppt und stehen so im Report."
+      }
+    ]
+  },
+  "dhero": {
+    "word": "E-Commerce",
+    "kicker": "E-Commerce Growth",
+    "text": "die Disziplin, aus <em>Ads</em>, <em>Creatives</em>, Shop und Tracking ein System zu machen, das <em>planbar</em> wächst, vergütet am <em>Ergebnis</em>",
+    "img": "assets/img/hero/ecommerce.jpg",
+    "alt": "Team der ad.boutique im Besprechungsraum in Wien"
+  },
+  "tags": [
+    "Meta, Google, TikTok, Pinterest",
+    "Shop & Conversion",
+    "Server-side Tracking",
+    "UGC & Creatives"
+  ],
+  "sub": "Ads, Creatives, Shop und Tracking aus einer Hand, vergütet am Ergebnis.",
+  "pmap": {
+    "label": "So läuft es",
+    "h": [
+      "Von Ihrem Shop",
+      "zum Blended ROAS."
+    ],
+    "t": "Sie bringen Shop, Feed und Marge, wir bringen Creatives, Checkout und Messung zusammen. Ein Dashboard, eine ehrliche Zahl, wöchentlich mit Ihnen gelesen.",
+    "inputs": [
+      {
+        "text": "Ihr Shop und Ihre Marge",
+        "kurz": "Ihr Shop, Ihre Marge",
+        "von": "sie"
+      },
+      {
+        "text": "Produktfeed und Sortiment",
+        "kurz": "Produktfeed",
+        "von": "sie"
+      },
+      {
+        "text": "Creatives und UGC im Test",
+        "kurz": "Creatives, UGC",
+        "von": "wir"
+      },
+      {
+        "text": "Produktseiten und Checkout",
+        "kurz": "Produktseite, Checkout",
+        "von": "wir"
+      },
+      {
+        "text": "Server-side Tracking",
+        "kurz": "Server-side Tracking",
+        "von": "wir"
+      },
+      {
+        "text": "Angebots- und Bundle-Logik",
+        "kurz": "Angebotslogik",
+        "von": "wir"
+      }
+    ],
+    "engine": {
+      "title": "Creative, Shop, Messung",
+      "loop": [
+        "Testen",
+        "Umschichten",
+        "Optimieren",
+        "Rechnen"
+      ]
+    },
+    "touch": "Wöchentlich mit Ihnen",
+    "output": {
+      "titel": "Umsatz, der zurechenbar ist",
+      "text": "Blended ROAS inklusive Fee,|ein Dashboard für alle Kanäle",
+      "tag": "Ihre Zahl, Ihre Entscheidung"
+    }
+  },
+  "problem_label": "Die Ausgangslage",
+  "problem_h": [
+    "Traffic kostet.",
+    "Kaufen tun wenige."
+  ],
+  "problem": [
+    "Sie kaufen Besucher, aber zu wenige kaufen: Steigende Klickpreise drücken die Marge, der Checkout verliert Käufer, und das Reporting verschleiert mehr, als es zeigt.",
+    "<b>Mehr Budget skaliert dann nur das Problem.</b> Jeder Monat mit undichtem Funnel wird teurer, während Wettbewerber mit sauberem Setup denselben Klick in mehr Umsatz übersetzen."
+  ],
+  "bene_label": "Was für Ihren Umsatz dabei herauskommt",
+  "bene_h": [
+    "Was sich ändert,",
+    "wenn es sitzt."
+  ],
+  "intro": "Mehr <b>Spend</b> löst selten das Problem. Der Hebel liegt im Zusammenspiel aus <b>Creative</b>, <b>Shop</b> und <b>Messung</b>. Wir bauen das System, nicht die Einzelmaßnahme.",
+  "bene": [
+    {
+      "titel": "Mehr Umsatz aus demselben Traffic",
+      "text": "Bei einer D2C-Marke wurden aus € 56k Mediabudget € 312k Umsatz, plus 57 Prozent im Jahr."
+    },
+    {
+      "titel": "Der Checkout wird mitgedacht",
+      "text": "Wir arbeiten dort, wo der Klick zu Geld wird, nicht nur im Werbekonto."
+    },
+    {
+      "titel": "Eine Zahl, der Sie trauen können",
+      "text": "Blended-Sicht über alle Kanäle, inklusive unserer Fee, in einem Dashboard."
+    },
+    {
+      "titel": "Creatives, die getestet sind",
+      "text": "Varianten laufen gegeneinander, Budget geht wöchentlich auf den Gewinner."
+    },
+    {
+      "titel": "Kein Kanal-Ego",
+      "text": "Was nicht trägt, wird gestoppt und steht so im Report, nicht im Kleingedruckten."
+    },
+    {
+      "titel": "Wir verdienen mit Ihrem Umsatz",
+      "text": "Basis-Fixum plus Beteiligung: Wächst Ihr Umsatz nicht, verdienen wir weniger."
+    }
+  ],
+  "band": {
+    "label": "Material, das läuft",
+    "imgs": [
+      "assets/case/case-consumer-brand/g0.jpg",
+      "assets/case/juwel/g0.jpg",
+      "assets/case/medcenter/g0.jpg",
+      "assets/case/case-health-brand/g0.jpg",
+      "assets/case/case-web-ib7/g1.jpg",
+      "assets/case/juwel/g2.jpg",
+      "assets/case/grandgarden/g3.jpg",
+      "assets/case/case-health-brand/g3.jpg",
+      "assets/case/medcenter/g4.jpg"
+    ]
+  },
+  "zoom": {
+    "img": "assets/img/c_candle.jpg",
+    "side": "right",
+    "al": "Ein Fall",
+    "ah": [
+      "Erst messen.",
+      "Dann skalieren."
+    ],
+    "alink": {
+      "href": "case-d2c-lifestyle.html",
+      "text": "Den Fall im Detail"
+    },
+    "aside": "Erst messen, dann skalieren: Der Hebel lag im Checkout und im Creative, nicht im Budget.",
+    "zl": "D2C-Lifestyle-Marke, Meta, Google, Pinterest",
+    "zt": "+57 % Jahresumsatz. Blended ROAS 5,57."
+  },
+  "visual": {
+    "art": "panels",
+    "label": "Gebaute Auftritte",
+    "h": "Ein Shop verkauft nicht, weil er schön ist. Sondern weil jeder Schritt sitzt.",
+    "t": "Markenwelt, Produktseite und Checkout entstehen bei uns im selben Zug wie die Kampagne, die darauf führt. Was Sie hier sehen, läuft live und trägt Mediabudget.",
+    "d1": {
+      "titel": "Commerce",
+      "text": "Shop-Systeme, Produktseiten, Checkout-Optimierung, Bundle- und Angebotslogik"
+    },
+    "d2": {
+      "titel": "Performance",
+      "text": "Meta, Google, Pinterest, Creative-Testing, Server-side Tracking"
+    },
+    "imgs": [
+      "assets/case/case-consumer-brand/d0.jpg",
+      "assets/case/case-web-ib7/d0.jpg",
+      "assets/img/web_twistnsparkle_d.jpg",
+      "assets/case/case-web-ib7/d1.jpg"
+    ]
+  },
+  "content_cols": [
+    [
+      "assets/case/juwel/g0.jpg",
+      "assets/case/juwel/g2.jpg",
+      "assets/case/medcenter/g4.jpg",
+      "assets/case/case-health-brand/g3.jpg",
+      "assets/case/case-web-ib7/g1.jpg"
+    ],
+    [
+      "assets/case/medcenter/g0.jpg",
+      "assets/case/medcenter/g2.jpg",
+      "assets/case/case-consumer-brand/v0.mp4",
+      "assets/case/case-consumer-brand/g0.jpg",
+      "assets/case/grandgarden/g3.jpg"
+    ],
+    [
+      "assets/case/grandgarden/g0.jpg",
+      "assets/case/grandgarden/g2.jpg",
+      "assets/case/case-health-brand/v0.mp4",
+      "assets/case/case-health-brand/g0.jpg",
+      "assets/case/case-web-ib7/g4.jpg"
+    ],
+    [
+      "assets/case/juwel/g1.jpg",
+      "assets/case/juwel/g3.jpg",
+      "assets/case/grandgarden/v0.mp4",
+      "assets/case/case-health-brand/g1.jpg",
+      "assets/case/case-web-ib7/g0.jpg"
+    ],
+    [
+      "assets/case/medcenter/g1.jpg",
+      "assets/case/medcenter/g3.jpg",
+      "assets/case/case-health-brand/v1.mp4",
+      "assets/case/grandgarden/g1.jpg",
+      "assets/case/juwel/g5.jpg"
+    ],
+    [
+      "assets/case/case-health-brand/g2.jpg",
+      "assets/case/juwel/g4.jpg",
+      "assets/case/case-web-ib7/g2.jpg",
+      "assets/case/case-web-ib7/g3.jpg",
+      "assets/case/case-web-ib7/g5.jpg"
+    ]
+  ],
+  "proof_h": [
+    "Ein Shop.",
+    "Jede Stufe nachgerechnet."
+  ],
+  "proof_lead": "Statt Bestwerte aus mehreren Marken nebeneinanderzustellen, nehmen wir eine D2C-Lifestyle-Marke und zeigen die Kette: Mediabudget, Kanal-Mix, Blended-Sicht, Jahresumsatz.",
+  "proof_nums": [],
+  "proof_quote": "„Pinterest führte mit ROAS 6,99, Google folgte mit 5,98. Inklusive Agentur-Fee blieb der Blend bei 4,17.“ Solche Sätze stehen bei uns im Reporting, nicht im Kleingedruckten.",
+  "channels": {
+    "label": "Return on Ad Spend je Kanal, D2C-Lifestyle-Marke",
+    "rows": [
+      {
+        "label": "Pinterest",
+        "prozent": 100,
+        "wert": "6,99"
+      },
+      {
+        "label": "Google",
+        "prozent": 86,
+        "wert": "5,98"
+      },
+      {
+        "label": "Blended, inkl. Fee",
+        "prozent": 60,
+        "wert": "4,17"
+      }
+    ],
+    "note": "Kein Kanal-Ego: Wir reporten den Blend inklusive unserer Fee, weil nur das die Marge des Shops beschreibt.",
+    "link": {
+      "href": "case-d2c-lifestyle.html",
+      "text": "D2C-Lifestyle-Marke im Detail"
+    }
+  },
+  "tell": {
+    "nolabel": true,
+    "h": "Ein Jahr, vier Zahlen.",
+    "t": "Wie aus € 56k Mediabudget € 312k Umsatz wurden, Station für Station statt als Bestwert.",
+    "steps": [
+      {
+        "wert": "€ 56k",
+        "label": "Mediabudget im Jahr",
+        "titel": "Das Budget",
+        "text": "Verteilt auf Meta, Google und Pinterest. Die Frage war nie, ob mehr Budget hilft, sondern welcher Kanal welchen Euro verdient."
+      },
+      {
+        "wert": "6,99",
+        "label": "ROAS im stärksten Kanal",
+        "titel": "Der Kanal-Mix",
+        "text": "Pinterest lief auf 6,99, Google folgte mit 5,98. Statt den Sieger zu feiern, haben wir Budget wöchentlich umgeschichtet."
+      },
+      {
+        "wert": "4,17",
+        "label": "Blended ROAS inklusive Fee",
+        "titel": "Die ehrliche Zahl",
+        "text": "Inklusive Agentur-Fee blieb der Blend bei 4,17. Diese Zahl steht bei uns im Report, nicht die schönste Kanalzahl."
+      },
+      {
+        "wert": "€ 312k",
+        "label": "Umsatz aus dem Mediabudget",
+        "titel": "Das Jahr",
+        "text": "Plus 57 Prozent gegenüber dem Vorjahr, bei 56 Prozent mehr Bestellungen. Aus demselben Traffic, anders geführt."
+      }
+    ]
+  },
+  "kennzahlen": {
+    "headline": [
+      "Drei Marken,",
+      "drei Sprünge."
+    ],
+    "karten": [
+      {
+        "ref": "d2c-umsatz",
+        "link": {
+          "href": "case-d2c-lifestyle.html",
+          "text": "Case ansehen"
+        }
+      },
+      {
+        "ref": "consumer-roas",
+        "link": {
+          "href": "case-consumer-brand.html",
+          "text": "Case ansehen"
+        }
+      },
+      {
+        "ref": "nordic-orders",
+        "link": {
+          "href": "case-nordic-spirit.html",
+          "text": "Case ansehen"
+        }
+      }
+    ]
+  },
+  "oplist": [
+    {
+      "href": "case-consumer-brand.html",
+      "titel": "Premium-Consumer-Brand",
+      "wert": "4,02",
+      "label": "BFCM-ROAS, +75 %"
+    },
+    {
+      "href": "case-d2c-lifestyle.html",
+      "titel": "D2C-Lifestyle-Marke",
+      "wert": "+57 %",
+      "label": "Jahresumsatz, ROAS 5,57"
+    },
+    {
+      "href": "case-health-brand.html",
+      "titel": "Dental-/Health-Marke",
+      "wert": "1.385",
+      "label": "Verkäufe, ehrlich reportet"
+    },
+    {
+      "href": "case-nordic-spirit.html",
+      "titel": "Nordic Spirit, JTI",
+      "wert": "7.800",
+      "label": "Bestellungen im Monat am Peak, vorher 800"
+    }
+  ],
+  "voice": {
+    "label": "Was Kunden sagen",
+    "lead": "Michael Rohrmeier, Gründer und CEO von IB-7, über die Zusammenarbeit mit ad.boutique: Marke, Website, Performance und Content aus einer Hand.",
+    "a": "Michael Rohrmeier, Gründer und CEO, IB-7",
+    "video": "assets/video/kundenstimme-ib7.mp4",
+    "note": "Solche Sätze stehen bei uns im Reporting, nicht im Kleingedruckten. Einmal im Monat gehen wir sie gemeinsam durch, inklusive der Kanäle, die wir gestoppt haben."
+  },
+  "crew": {
+    "label": "Wer daran arbeitet",
+    "h": [
+      "Vier Rollen,",
+      "die am Umsatz hängen."
+    ],
+    "t": "Shop, Creative und Kampagne entstehen im selben Team. Wer den Checkout ändert, sitzt auch im Call über den ROAS.",
+    "people": [
+      {
+        "name": "Fabi",
+        "rolle": "Performance Manager",
+        "text": "Steuert die Kanäle und schichtet Budget wöchentlich auf die Gewinner um.",
+        "bild": "assets/img/ag_strategy.jpg"
+      },
+      {
+        "name": "Suman",
+        "rolle": "Social Media",
+        "text": "Baut die Sujets, die im Feed gegeneinander antreten, und liest die Kommentare mit.",
+        "bild": "assets/img/team/suman.jpg"
+      },
+      {
+        "name": "Evgenia",
+        "rolle": "Design",
+        "text": "Gestaltet Produktseiten und Angebotslogik dort, wo der Klick zu Geld wird.",
+        "bild": "assets/img/team/evgenia.jpg"
+      },
+      {
+        "name": "Martin",
+        "rolle": "Founder",
+        "text": "Verantwortet die Blended-Sicht und sagt, wenn ein Kanal gestoppt wird.",
+        "bild": "assets/img/team/martin.jpg"
+      }
+    ]
+  },
+  "logos": [
+    "looops",
+    "isi",
+    "nordicspirit",
+    "ilbosso",
+    "kaisers",
+    "jti",
+    "juwel",
+    "bojito"
+  ],
+  "fit": {
+    "label": "Bevor wir starten",
+    "h": [
+      "Der Fit entscheidet.",
+      "Nicht die Shopgröße."
+    ],
+    "yes_h": "Wir passen zusammen, wenn",
+    "no_h": "Wir sind die Falschen, wenn",
+    "intro": "Wir sind keine Agentur, die Accounts sammelt. Wir sitzen in Ihren Meetings, kennen Ihre Marge und streiten mit Ihnen über Motive. Das funktioniert nur, wenn die Zusammenarbeit auf beiden Seiten passt, deshalb prüfen wir das vorher, offen und in beide Richtungen.",
+    "yes": [
+      "Sie haben Produkt-Markt-Fit und wollen skalieren, nicht testen",
+      "Mediabudget ab etwa € 5k im Monat",
+      "Der Shop darf angefasst werden: Produktseite, Checkout, Angebotslogik",
+      "Sie wollen die Blended-Sicht sehen, nicht die schönste Kanalzahl"
+    ],
+    "no": [
+      "Der Shop soll unangetastet bleiben und nur Traffic bekommen",
+      "Die Marge trägt keine bezahlten Klicks",
+      "Es braucht Ergebnisse in zwei Wochen",
+      "Reporting soll gut aussehen statt stimmen"
+    ]
+  },
+  "steps_next": {
+    "h": "Von der Anfrage zum Klartext.",
+    "rows": [
+      {
+        "wann": "Heute",
+        "titel": "Anfrage in zwei Minuten",
+        "text": "Was Sie verkaufen und wo es hängt. Zwei Sätze reichen."
+      },
+      {
+        "wann": "Unter 24 h",
+        "titel": "Ehrliche Ersteinschätzung",
+        "text": "Wir sagen, ob wir passen, und was wir vorab an Zugängen brauchen."
+      },
+      {
+        "wann": "Tag 2 bis 10",
+        "titel": "Shop- und Account-Audit",
+        "text": "Kampagnen, Creatives, Produktseiten, Checkout und Tracking, im Konto statt auf Screenshots."
+      },
+      {
+        "wann": "Danach",
+        "titel": "Klare Empfehlung",
+        "text": "Ein Termin, eine Seite: Wo Budget verdampft, wo die Marge liegt, was zuerst passiert."
+      }
+    ]
+  },
+  "acc": [
+    {
+      "titel": "Ads & Creatives",
+      "text": "Iteratives Creative-Testing statt Bauchgefühl: Wir lassen Varianten gegeneinander laufen und schichten Budget wöchentlich auf die Gewinner um.",
+      "punkte": [
+        "Meta, Google, TikTok, Pinterest",
+        "UGC- und Studio-Produktion",
+        "Systematisches Creative-Testing",
+        "Budget-Steuerung, wöchentlich"
+      ]
+    },
+    {
+      "titel": "Shop & Conversion",
+      "text": "Mehr Umsatz beginnt fast immer im Checkout, nicht im Ad-Account. Wir optimieren dort, wo der Klick zu Geld wird.",
+      "punkte": [
+        "Landingpages je Kampagne",
+        "Checkout- und Produktseiten",
+        "A/B-Tests mit klaren Hypothesen",
+        "Angebots- und Bundle-Logik"
+      ]
+    },
+    {
+      "titel": "Tracking & Daten",
+      "text": "Ehrliche Attribution verhindert, dass dieselbe Conversion zweimal gefeiert wird. Ein Dashboard, alle Kanäle, Blended-Sicht.",
+      "punkte": [
+        "Server-side Tracking, consent-konform",
+        "Ein Dashboard, alle Kanäle",
+        "Blended-ROAS statt Kanal-Ego",
+        "Saubere Produkt-Feeds"
+      ]
+    },
+    {
+      "titel": "Reporting & Modell",
+      "text": "Wöchentliches Reporting, auch wenn es unbequem ist: Ziel-Gaps stehen bei uns im Report, nicht im Kleingedruckten.",
+      "punkte": [
+        "Wöchentliches Reporting",
+        "Ehrliche Ziel-Gaps",
+        "Basis-Fixum plus Umsatzbeteiligung",
+        "Kein Ticketsystem, direkter Draht"
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "frage": "Wir haben schon eine Agentur. Warum wechseln?",
+      "antwort": "Nicht wechseln, vergleichen: Der Audit zeigt in zwei Wochen, wo Ihr Setup Geld liegen lässt. Danach entscheiden Sie mit Zahlen, nicht mit Bauchgefühl."
+    },
+    {
+      "frage": "Was, wenn der ROAS nicht kommt?",
+      "antwort": "Dann verdienen wir weniger: Unsere Vergütung ist an den messbaren Umsatz gekoppelt. Skin in the Game heißt, dass Ihr Risiko auch unseres ist."
+    },
+    {
+      "frage": "Wie schnell sehen wir Ergebnisse?",
+      "antwort": "Erste Signale nach dem Audit, belastbare Trends nach sechs bis acht Wochen Testing. Wir versprechen keine Wunder in Woche eins, dafür eine Kurve, die hält."
+    }
+  ],
+  "offer_h": "Der Einstieg ist ein Audit. Kein Vertrag.",
+  "offer": [
+    "Wir prüfen Ads, Shop, Tracking und Checkout und zeigen Ihnen in zwei Wochen konkret, wo Umsatz liegen bleibt. Danach entscheiden Sie: umsetzen mit uns, umsetzen ohne uns, oder gar nicht.",
+    "<b>Und wenn wir zusammenarbeiten, gilt die Risikoumkehr:</b> Basis-Fixum plus Beteiligung am messbaren Umsatz. Wächst Ihr Umsatz nicht, verdienen wir weniger. Wo sich Umsatz nicht sauber messen lässt, sagen wir das vorher, nicht nachher."
+  ],
+  "deliver": [
+    "Audit über Kampagnenstruktur, Creatives, Tracking und Checkout",
+    "Blended-Sicht über alle Kanäle in einem Dashboard",
+    "Priorisierte Liste: was zuerst, was später, was gar nicht",
+    "Ein Termin, in dem wir die Zahlen erklären statt sie zu senden"
+  ],
+  "chips": [
+    "Shop-Audit",
+    "Ads-Setup",
+    "UGC & Creatives",
+    "Landingpage",
+    "Tracking-Setup",
+    "Conversion-Optimierung",
+    "Zweitmeinung",
+    "Growth-Partnerschaft"
+  ],
+  "trust": [
+    "Kein Vertrag für das Audit",
+    "Zugänge bleiben bei Ihnen",
+    "Vergütung am Ergebnis möglich"
+  ],
+  "h1": [
+    "Ihr Shop wächst.",
+    "Planbar."
+  ],
+  "ital": 1,
+  "diff": [
+    {
+      "kicker": "Anders als üblich",
+      "titel": "System statt Einzelmaßnahme",
+      "text": "Creatives, Landingpages, Angebot und Tracking greifen ineinander, mit klaren Zielwerten je Kanal. Eine schöne Kampagne auf einem undichten Shop ist verbranntes Budget.",
+      "bild": "assets/img/ag_strategy.jpg"
+    },
+    {
+      "kicker": "Anders als üblich",
+      "titel": "Ehrlichkeit im Reporting",
+      "text": "Blended-Sicht statt Kanal-Ego: Was nicht funktioniert, steht im Report und wird gestoppt, bevor es teuer wird.",
+      "bild": "assets/img/retreat-04.jpg"
+    },
+    {
+      "kicker": "Anders als üblich",
+      "titel": "Skin in the Game",
+      "text": "Unsere Vergütung ist an den messbaren Umsatz gekoppelt. Wir gewinnen nur, wenn Sie gewinnen.",
+      "bild": "assets/img/ag_meeting.jpg"
+    }
+  ],
+  "proofsplit": {
+    "label": "Zwei Blickwinkel",
+    "h": [
+      "Was die Kanalzahl",
+      "verschweigt."
+    ],
+    "t": "Links der Kanal-Vergleich einer D2C-Marke: Pinterest führt, Google folgt, der Blend liegt darunter. Rechts, was ein Kunde daraus mitnimmt. Beides gehört zusammen, sonst liest man nur die Hälfte."
+  },
+  "stoer": {
+    "img": "assets/img/retreat-11.jpg",
+    "side": "left",
+    "al": "Die Risikoumkehr",
+    "ah": [
+      "Beteiligt am Umsatz.",
+      "Nicht am Aufwand."
+    ],
+    "aside": "Basis-Fixum plus Beteiligung am messbaren Umsatz statt Retainer. Wo sich Umsatz nicht sauber messen lässt, sagen wir das vorher, nicht nachher.",
+    "zl": "Wie wir arbeiten",
+    "zt": "Ads, Shop und Tracking aus einer Hand."
+  }
+}

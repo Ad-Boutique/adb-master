@@ -164,5 +164,7 @@ body = '''<main class="kmain">
 
 page = (g.HEAD.format(title="Anfrage", bodybg="#F3EDE1")
         + g.menu("index.html#kontakt") + body + g.FOOTER)
-open("kontakt.html", "w", encoding="utf-8").write(page)
-print("kontakt.html geschrieben, %d Zeichen" % len(page))
+# fertig(): die Nachlauf-Regeln (_nachlauf.py) laufen gleich beim Erzeugen, geschrieben wird die fertige Seite
+import _nachlauf
+_nachlauf.fertig({"kontakt.html": page})
+print("kontakt.html geschrieben, %d Zeichen" % len(open("kontakt.html", encoding="utf-8").read()))

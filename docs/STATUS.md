@@ -10,6 +10,24 @@ Wichtigste Datei für die Zusammenarbeit. Zu Beginn jeder Sitzung lesen, vor Arb
 
 ## Log
 
+### 04.10.2026, Daniel (Claude), `claude/golive-rechtliches`
+
+**Gemacht**
+- Impressum (1:1 von www.ad.boutique) und Datenschutzerklärung (angepasst: Verantwortlicher Ad Boutique Agency GmbH, Vercel statt Webflow, Einwilligung vor Tracking, Adobe Fonts, Resend; veraltete Teile wie Privacy Shield, Google Fonts, YouTube, Newsletter und der Name "digitalwerk" aus einer fremden Vorlage entfernt) als eigene Seiten (`_gen_legal.py`). Footer und Cookie-Banner verlinken darauf.
+- Firmendaten aus dem Impressum ins Schema (Adresse, Firmenbuch, UID, Geschäftsführung).
+- Ausgeblendete alte Ergebnisblöcke aus 11 Case-Dateien entfernt (Seiten unverändert). Health-Case bleibt sichtbar.
+- Formular-Endpunkt: Bremse je IP (5 Anfragen in 10 Minuten je Instanz).
+
+- Zweiter unabhängiger Review: keine kritischen Befunde. Behoben: Zielprüfung des Builds auch ohne `TMPDIR`, Ausgabe-Ordner wird nur geleert, wenn er nachweislich eine frühere Ausgabe ist, Build kopiert nur eingecheckte und neue Quellen, IndexNow baut die Sitemap selbst, `lastmod` aus den Quellen der erzeugten Seiten, Pillow fest (`requirements.txt`), Actions per SHA gepinnt, Linkprüfung nutzt die Build-Ausgabe, Widerruf der Einwilligung löscht Google- und Meta-Cookies, Datenschutz und Banner an die Technik angeglichen.
+
+**Offen**
+- Datenschutz-Text rechtlich prüfen lassen. Verantwortlicher ist die österreichische Ad Boutique Agency GmbH (bestätigt Daniel 04.10.2026, die OÜ im alten Text war falsch).
+- AGB: entfallen. Die Live-Seite hat unter `/agb` die AGB einer anderen Firma, verlinkt sie aber nirgends (Entscheidung Daniel 04.10.2026).
+- Impressum: UID wie auf der Live-Seite (bestätigt Daniel 04.10.2026).
+- Nächster Schritt laut Daniel: Arbeit in Claude-Cloud-Containern einrichten (`docs/CLOUD-ANLEITUNG.md`).
+- Antwortabsatz: drei Varianten gezeigt, alle verworfen (Text passt nicht an diese Stellen).
+- Generator-Umbau (Inhalte der Leistungen in `_content/services`, jede Regel an einer Stelle, Ausgabe Byte für Byte gleich), Vercel baut selbst (Build in Kopie nach `public/`, erzeugte Seiten aus Git, Pages per Action), totes CSS entfernt (391 Regeln, ohne sichtbare Änderung).
+
 ### 03.10.2026, Daniel (Claude), `daniel/sicherung-aktueller-stand` und `daniel/setup-workflow`
 
 **Gemacht**

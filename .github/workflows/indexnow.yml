@@ -11,8 +11,18 @@ jobs:
     if: ${{ vars.ADB_LIVE == '1' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065  # v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      # sitemap.xml liegt nicht in Git, sie entsteht beim Build (Live-Fassung)
+      - name: Live-Fassung bauen
+        run: ADB_LIVE=1 sh _build.sh public
       - name: URLs melden
         env:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
-        run: python3 _indexnow.py
+        working-directory: public
+        run: python3 ../_indexnow.py

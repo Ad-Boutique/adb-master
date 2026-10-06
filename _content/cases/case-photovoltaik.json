@@ -74,17 +74,6 @@
       ]
     },
     {
-      "typ": "ergebnis",
-      "ausgeblendet": true,
-      "zahlen": [
-        {"label": "(Leads)", "wert": "406"},
-        {"label": "(Cost per Lead)", "wert": "€ 30,83"},
-        {"label": "(Website-Besucher)", "wert": "+487 %"},
-        {"label": "(Mechanik)", "wert": "Konfigurator"}
-      ],
-      "kurzfassung": ["<em>406</em> Leads", "<em>€ 30,83</em> pro Lead", "<em>+487 %</em> Website-Besucher"]
-    },
-    {
       "typ": "learnings",
       "saetze": [
         "Ein interaktiver Lead-Magnet schlägt das Standard-Formular.",

@@ -1,0 +1,692 @@
+{
+  "slug": "service-performance-marketing",
+  "reihenfolge": 20,
+  "nav": "Performance Marketing",
+  "label": "Leistung, Performance Marketing",
+  "flow": "v2",
+  "v2_content": true,
+  "v2_graphic": false,
+  "seo": {
+    "label": "Performance Marketing Agentur Wien",
+    "title": "Performance Marketing Agentur Wien | ad.boutique",
+    "desc": "Performance Marketing Agentur Wien: Meta und Google Ads mit ehrlicher Attribution. 489 Anfragen zu 11,77 Euro, ROAS von 2,14 auf 8,75. Vergütung am Ergebnis.",
+    "answer": "ad.boutique ist eine Performance-Marketing-Agentur in Wien. Wir planen und steuern Kampagnen auf Meta, Google, TikTok und Pinterest für Immobilien, Finance, E-Commerce und Health, produzieren die Creatives dazu und messen bis zur Anfrage oder zum Kauf. Beispiel: 489 Kaufinteressenten für ein Wiener Neubauprojekt zu 11,77 Euro je Anfrage, ein einziges Motiv trug 54 Prozent davon.",
+    "faq_first": {
+      "frage": "Was ist Performance Marketing?",
+      "antwort": "Performance Marketing bezeichnet bezahlte Kampagnen, die an einem messbaren Ergebnis gesteuert werden: Anfragen, Verkäufe, Kapital, nicht Reichweite oder Klicks. Jeder Euro Mediabudget ist einer Aktion zurechenbar, und das Budget wandert laufend dorthin, wo diese Aktion am günstigsten entsteht."
+    },
+    "faq_last": [
+      {
+        "frage": "Was kostet eine Performance Marketing Agentur in Wien?",
+        "antwort": "Bei uns gibt es zwei Teile: ein Basis-Fixum für die laufende Arbeit und eine Beteiligung am messbaren Ergebnis. Wächst das Ergebnis nicht, verdienen wir weniger. Der Einstieg ist ein Account- und Tracking-Audit ohne Vertrag, den ein Gründer innerhalb von fünf Tagen prüft. Das Mediabudget muss zur Marge passen, nicht zu einer Mindestsumme."
+      },
+      {
+        "frage": "Wie schnell kommen die ersten Anfragen?",
+        "antwort": "Oft in der ersten Woche: Bei einem fertiggestellten Wohnbauprojekt waren es 21 Anfragen in den ersten sieben Tagen. Belastbare Preise je Anfrage brauchen sechs bis acht Wochen Testing, weil erst dann mehrere Motive und Zielgruppen sauber verglichen sind."
+      }
+    ]
+  },
+  "dhero": {
+    "word": "Performance",
+    "kicker": "Performance Marketing",
+    "text": "die Fähigkeit, aus <em>Aufmerksamkeit</em> messbare <em>Anfragen</em>, <em>Verkäufe</em> und <em>Umsatz</em> zu machen, Euro für Euro <em>zurechenbar</em>",
+    "img": "assets/img/hero/performance-marketing.jpg",
+    "alt": "Team der ad.boutique bei der Arbeit an Kampagnen im Büro in Wien"
+  },
+  "tags": [
+    "Meta, Google, TikTok",
+    "Lead-Generierung",
+    "Creative-Testing",
+    "Ehrliche Attribution"
+  ],
+  "sub": "Kampagnen, die Leads und Verkäufe bringen, nicht Reichweite. Mit Attribution, der Sie trauen können.",
+  "pmap": {
+    "label": "So läuft es",
+    "h": [
+      "Von Ihrem Briefing",
+      "zur Zahl."
+    ],
+    "t": "Sie bringen Ziel und Zugänge, wir bauen, testen und lesen. Einmal in der Woche sitzen wir gemeinsam vor den Zahlen, und Sie entscheiden, was weiterläuft.",
+    "inputs": [
+      {
+        "text": "Ihr Briefing und Ihr Ziel",
+        "kurz": "Ihr Briefing und Ziel",
+        "von": "sie"
+      },
+      {
+        "text": "Zugänge zu Ihren Konten",
+        "kurz": "Ihre Kontozugänge",
+        "von": "sie"
+      },
+      {
+        "text": "Zielgruppen und Strecken",
+        "kurz": "Zielgruppen, Strecken",
+        "von": "wir"
+      },
+      {
+        "text": "Motive und Texte im Test",
+        "kurz": "Motive im Test",
+        "von": "wir"
+      },
+      {
+        "text": "Landingpage oder Formular",
+        "kurz": "Seite oder Formular",
+        "von": "wir"
+      },
+      {
+        "text": "Tracking, einmal gezählt",
+        "kurz": "Tracking",
+        "von": "wir"
+      }
+    ],
+    "engine": {
+      "title": "Testen, messen, umschichten",
+      "loop": [
+        "Hypothese",
+        "Test",
+        "Lesen",
+        "Umschichten"
+      ]
+    },
+    "touch": "Jede Woche mit Ihnen",
+    "output": {
+      "titel": "Anfragen und Verkäufe",
+      "text": "Wöchentlicher Report,|jede Zahl mit Quelle",
+      "tag": "Sie entscheiden, was läuft"
+    }
+  },
+  "problem_label": "Die Ausgangslage",
+  "problem_h": [
+    "Budget läuft.",
+    "Zuordnen kann es niemand."
+  ],
+  "problem": [
+    "Budget läuft, Dashboards leuchten, aber niemand kann sagen, welcher Euro wirklich Umsatz gebracht hat. Doppelt gezählte Conversions feiern Erfolge, die es nie gab.",
+    "<b>Ohne saubere Zurechnung fließt Budget monatelang in Kanäle, die nur Klicks liefern.</b> Der CPL steigt, die Pipeline bleibt leer, und am Ende heißt es: Performance funktioniert bei uns nicht."
+  ],
+  "bene_label": "Was für Ihr Budget dabei herauskommt",
+  "bene_h": [
+    "Sechs Punkte,",
+    "die den Preis drücken."
+  ],
+  "intro": "<b>Meta, Google und TikTok</b> mit einer Regel: <b>Das Creative ist der Hebel</b>, nicht das Budget. Systematisch getestet, ehrlich gemessen, <b>wöchentlich</b> umgeschichtet.",
+  "bene": [
+    {
+      "titel": "Sie sehen, was eine Anfrage kostet",
+      "text": "Bei einem Wiener Neubauprojekt € 11,77 im Schnitt, inklusive der Tests, die nicht liefen."
+    },
+    {
+      "titel": "Das Motiv entscheidet, nicht das Budget",
+      "text": "Ein einziges Motiv trug 54 Prozent aller 489 Anfragen."
+    },
+    {
+      "titel": "Jede Conversion wird einmal gezählt",
+      "text": "Server-side Tracking und Blended-Sicht statt doppelt gefeierter Erfolge."
+    },
+    {
+      "titel": "Ein Kanal richtig statt fünf halb",
+      "text": "Wir reizen aus, was trägt, statt Budget über fünf Kanäle zu verteilen."
+    },
+    {
+      "titel": "Wöchentlich umgeschichtet",
+      "text": "Budget wandert auf die Gewinner, solange die Kampagne läuft."
+    },
+    {
+      "titel": "Auch die schlechte Nachricht kommt",
+      "text": "Ziel-Gaps und gestoppte Strecken stehen im Report, nicht im Nachgespräch."
+    }
+  ],
+  "band": {
+    "label": "Aus laufenden Kampagnen",
+    "imgs": [
+      "assets/case/case-premium-neubau/g0.jpg",
+      "assets/case/case-wohnbau-floridsdorf/g0.jpg",
+      "assets/case/herogroup/g0.jpg",
+      "assets/case/case-premium-neubau/g3.jpg",
+      "assets/case/grandgarden/g0.jpg",
+      "assets/case/case-immobilien-investment/g0.jpg",
+      "assets/case/medcenter/g1.jpg",
+      "assets/case/case-wohnbau-floridsdorf/g1.jpg",
+      "assets/case/case-premium-neubau/g4.jpg"
+    ]
+  },
+  "zoom": {
+    "img": "assets/img/funkhaus.jpg",
+    "side": "right",
+    "al": "Ein Fall",
+    "ah": [
+      "Das Creative",
+      "ist der Hebel."
+    ],
+    "alink": {
+      "href": "case-premium-neubau.html",
+      "text": "Den Fall im Detail"
+    },
+    "aside": "Das stärkste Creative ist der größte Hebel, nicht das größte Budget.",
+    "zl": "Premium-Neubau Wien, Instant Forms",
+    "zt": "489 Leads zu € 11,77. Ein Motiv trug 54 %."
+  },
+  "visual": {
+    "art": "phones",
+    "h": [
+      "Creatives,",
+      "die im Feed bestehen."
+    ],
+    "t": "Gebaut für den Daumen: Sujets aus laufenden Kampagnen, getestet gegen echte Benchmarks, nicht gegen Geschmack.",
+    "phones": [
+      "assets/case/case-premium-neubau/v0.mp4",
+      "assets/case/case-crowdinvesting/v0.mp4",
+      "assets/case/grandgarden/v0.mp4",
+      "assets/case/case-premium-neubau/v1.mp4",
+      "assets/case/herogroup/v0.mp4",
+      "assets/case/case-immobilien-investment/v0.mp4"
+    ]
+  },
+  "content_cols": [
+    [
+      "assets/case/case-premium-neubau/g0.jpg",
+      "assets/case/case-premium-neubau/g1.jpg",
+      "assets/case/medcenter/g2.jpg",
+      "assets/case/case-immobilien-investment/v0.mp4",
+      "assets/case/grandgarden/g3.jpg"
+    ],
+    [
+      "assets/case/grandgarden/g0.jpg",
+      "assets/case/case-wohnbau-floridsdorf/g1.jpg",
+      "assets/case/juwel/g2.jpg",
+      "assets/case/herogroup/v0.mp4",
+      "assets/case/case-premium-neubau/g4.jpg"
+    ],
+    [
+      "assets/case/case-wohnbau-floridsdorf/g0.jpg",
+      "assets/case/medcenter/g1.jpg",
+      "assets/case/case-premium-neubau/g3.jpg",
+      "assets/case/case-immobilien-investment/v1.mp4",
+      "assets/case/herogroup/g1.jpg"
+    ],
+    [
+      "assets/case/medcenter/g0.jpg",
+      "assets/case/juwel/g1.jpg",
+      "assets/case/case-wohnbau-floridsdorf/g3.jpg",
+      "assets/case/herogroup/v1.mp4",
+      "assets/case/case-immobilien-investment/g1.jpg"
+    ],
+    [
+      "assets/case/juwel/g0.jpg",
+      "assets/case/case-premium-neubau/g2.jpg",
+      "assets/case/medcenter/g3.jpg",
+      "assets/case/grandgarden/v0.mp4",
+      "assets/case/case-immobilien-investment/g0.jpg"
+    ],
+    [
+      "assets/case/herogroup/g0.jpg",
+      "assets/case/grandgarden/g2.jpg",
+      "assets/case/juwel/g3.jpg",
+      "assets/case/grandgarden/g1.jpg",
+      "assets/case/case-wohnbau-floridsdorf/g2.jpg"
+    ]
+  ],
+  "proof_h": [
+    "Ein Projekt.",
+    "Vollständig nachgerechnet."
+  ],
+  "proof_lead": "Statt Bestwerte aus fünf Mandaten nebeneinanderzustellen, nehmen wir ein Projekt und zeigen jede Stufe: das Budget, die Motive, den Preis pro Anfrage, die Erkenntnis.",
+  "proof_nums": [],
+  "proof_quote": "Konstanz über Regionen und Projekte zeigt: Das Motiv trägt, nicht der Zufall. Niedrige CPL kommt aus Disziplin, nicht aus Glück.",
+  "quote": {
+    "text": "Endlich jemand, der nicht Reichweite feiert, sondern zeigt, wo der Euro wirklich landet.",
+    "wer": "Head of Marketing, Commerce"
+  },
+  "bars": {
+    "label": "Return on Ad Spend, Crowdinvesting-Plattform",
+    "link": {
+      "href": "case-crowdinvesting.html",
+      "text": "Crowdinvesting-Plattform im Detail"
+    },
+    "rows": [
+      {
+        "label": "Vorher",
+        "prozent": 24,
+        "wert": "2,14"
+      },
+      {
+        "label": "Mit uns",
+        "prozent": 100,
+        "wert": "8,75"
+      }
+    ],
+    "note": "Nahezu gleiches Budget, andere Struktur: aus 16 Investments wurden 50, die Kosten je Investor fielen um 69 Prozent."
+  },
+  "channels": {
+    "label": "Cost per Lead je Strecke, Wohnbau-Projekt",
+    "rows": [
+      {
+        "label": "Instant Form, Eigennutzer",
+        "prozent": 100,
+        "wert": "€ 9,59"
+      },
+      {
+        "label": "Instant Form, Anleger",
+        "prozent": 88,
+        "wert": "€ 8,43"
+      },
+      {
+        "label": "Website-Formular",
+        "prozent": 22,
+        "wert": "€ 58,05"
+      }
+    ],
+    "note": "Dieselbe Zielgruppe, dieselbe Woche: Die Strecke entscheidet über den Preis der Anfrage."
+  },
+  "tell": {
+    "nolabel": true,
+    "h": "Ein Projekt, vier Zahlen.",
+    "t": "Wie aus einem überschaubaren Budget 489 qualifizierte Kaufinteressenten wurden, Station für Station.",
+    "steps": [
+      {
+        "wert": "€ 5.755",
+        "label": "Mediabudget, das eingesetzt wurde",
+        "titel": "Das Budget",
+        "text": "Ein überschaubarer Betrag für ein Premium-Neubauprojekt in Wien. Die Frage war nie, ob mehr Budget hilft."
+      },
+      {
+        "wert": "489",
+        "label": "qualifizierte Kaufinteressenten",
+        "titel": "Die Leads",
+        "text": "Vier Motive im Test, konsequente Umschichtung auf den Sieger, gemessen über Instant Forms statt Website-Formular."
+      },
+      {
+        "wert": "€ 11,77",
+        "label": "gewichteter Cost per Lead",
+        "titel": "Der Preis pro Anfrage",
+        "text": "Das stärkste Motiv lieferte zu € 6,93. Der Schnitt über alle Motive blieb bei € 11,77, inklusive der Tests, die nicht liefen."
+      },
+      {
+        "wert": "54 %",
+        "label": "aller Leads aus einem einzigen Motiv",
+        "titel": "Die Erkenntnis",
+        "text": "Das Creative ist der Hebel, nicht das Budget. Genau deshalb testen wir, statt zu argumentieren."
+      }
+    ]
+  },
+  "kennzahlen": {
+    "headline": [
+      "Drei Projekte,",
+      "drei Sprünge."
+    ],
+    "karten": [
+      {
+        "ref": "funkhaus-cpl",
+        "link": {
+          "href": "case-premium-neubau.html",
+          "text": "Case ansehen"
+        }
+      },
+      {
+        "ref": "floridsdorf-strecke",
+        "link": {
+          "href": "case-wohnbau-floridsdorf.html",
+          "text": "Case ansehen"
+        }
+      },
+      {
+        "ref": "crowd-roas",
+        "link": {
+          "href": "case-crowdinvesting.html",
+          "text": "Case ansehen"
+        }
+      }
+    ]
+  },
+  "dotline": [
+    "testen",
+    "messen",
+    "umschichten",
+    "berichten"
+  ],
+  "dotfield": {
+    "total": 489,
+    "lime": 262,
+    "form": "262",
+    "cap": "<b>489 Anfragen</b> für ein Neubauprojekt in Wien aus € 5.755 Mediabudget, <b>262 davon aus einem einzigen Motiv</b>. Jeder Punkt eine Anfrage."
+  },
+  "dotsec": {
+    "h": [
+      "Die Strecke",
+      "<i>entscheidet, in Punkten.</i>"
+    ],
+    "t": "Zwei Fälle aus dem Reporting. Dieselbe Zielgruppe, dieselbe Woche, drei Strecken: Der Preis je Anfrage hängt am Weg, nicht am Budget. Und eine Plattform, die mit gleichem Geld das Dreifache holte.",
+    "blocks": [
+      {
+        "rows": [
+          {
+            "label": "Instant Form, Eigennutzer",
+            "punkte": 30,
+            "an": 5,
+            "wert": "€ 9,59",
+            "hervorgehoben": false
+          },
+          {
+            "label": "Instant Form, Anleger",
+            "punkte": 30,
+            "an": 4,
+            "wert": "€ 8,43",
+            "hervorgehoben": true
+          },
+          {
+            "label": "Website-Formular",
+            "punkte": 30,
+            "an": 29,
+            "wert": "€ 58,05",
+            "hervorgehoben": false
+          }
+        ],
+        "note": "Wohnbau-Projekt, ein Punkt sind zwei Euro je Anfrage."
+      },
+      {
+        "rows": [
+          {
+            "label": "Investments vorher",
+            "punkte": 50,
+            "an": 16,
+            "wert": "16",
+            "hervorgehoben": false
+          },
+          {
+            "label": "Investments mit uns",
+            "punkte": 50,
+            "an": 50,
+            "wert": "50",
+            "hervorgehoben": true
+          }
+        ],
+        "note": "Crowdinvesting-Plattform, gleiches Budget, ein Punkt ein Investment. ROAS 8,75 statt 2,14."
+      }
+    ]
+  },
+  "oplist": [
+    {
+      "href": "case-premium-neubau.html",
+      "titel": "Premium-Neubau, Wien",
+      "wert": "489",
+      "label": "Leads, € 11,77 CPL, Wellen unter € 5"
+    },
+    {
+      "href": "case-bautraeger-portfolio.html",
+      "titel": "Bauträger-Portfolio, Wien",
+      "wert": "€ 5,93",
+      "label": "CPL im zweiten Quartal, 546 Anfragen aus zwei Projekten"
+    },
+    {
+      "href": "case-wohnbau-floridsdorf.html",
+      "titel": "Wohnbau, Floridsdorf",
+      "wert": "460",
+      "label": "Leads, € 12,77 CPL, dann Pivot auf Qualität"
+    },
+    {
+      "href": "case-crowdinvesting.html",
+      "titel": "Crowdinvesting-Plattform",
+      "wert": "18,7",
+      "label": "ROAS in der zweiten POC-Phase, vorher 2,14"
+    },
+    {
+      "href": "case-health-brand.html",
+      "titel": "Dental-/Health-Marke",
+      "wert": "1.385",
+      "label": "Verkäufe, Ziel-Gap offen reportet"
+    },
+    {
+      "href": "case-nordic-spirit.html",
+      "titel": "Nordic Spirit, JTI",
+      "wert": "23.579",
+      "label": "Abschlüsse in zwölf Monaten, € 11,70 je Abschluss"
+    }
+  ],
+  "voice": {
+    "label": "Was Kunden sagen",
+    "lead": "Michael Rohrmeier, Gründer und CEO von IB-7, über die Zusammenarbeit mit ad.boutique: Marke, Website, Performance und Content aus einer Hand.",
+    "a": "Michael Rohrmeier, Gründer und CEO, IB-7",
+    "video": "assets/video/kundenstimme-ib7.mp4",
+    "note": "Wir schicken kein Dashboard, das niemand liest. Wir gehen einmal im Monat gemeinsam durch die Zahlen und sagen auch, was nicht funktioniert hat."
+  },
+  "crew": {
+    "label": "Wer daran arbeitet",
+    "h": [
+      "Vier Rollen,",
+      "die am Ergebnis hängen."
+    ],
+    "t": "Kein Ticketsystem, kein Junior am Konto. Wer Ihre Kampagne baut, sitzt auch im Call, in dem sie erklärt wird.",
+    "people": [
+      {
+        "name": "Steve",
+        "rolle": "Performance Manager",
+        "text": "Baut die Kontostruktur und schichtet Budget um, sobald ein Motiv kippt.",
+        "bild": "assets/img/team/steve.jpg"
+      },
+      {
+        "name": "Constantin",
+        "rolle": "Design",
+        "text": "Entwirft die Sujets, die gegeneinander antreten, jede Woche neue Varianten.",
+        "bild": "assets/img/team/constantin.jpg"
+      },
+      {
+        "name": "Leny",
+        "rolle": "Film und Foto",
+        "text": "Produziert das Material im Hochformat, gedreht für den Feed statt für den Katalog.",
+        "bild": "assets/img/team/leny.jpg"
+      },
+      {
+        "name": "Daniel",
+        "rolle": "Founder",
+        "text": "Sitzt im Reporting-Call und verantwortet die Zahl, die dort steht.",
+        "bild": "assets/img/team/daniel.jpg"
+      }
+    ]
+  },
+  "logos": [
+    "winegg",
+    "funkhaus",
+    "ifa",
+    "conda",
+    "soravia",
+    "rhomberg",
+    "vonpoll",
+    "seeresidenz"
+  ],
+  "fit": {
+    "label": "Bevor wir starten",
+    "h": [
+      "Der Fit entscheidet.",
+      "Nicht das Budget."
+    ],
+    "yes_h": "Wir passen zusammen, wenn",
+    "no_h": "Wir sind die Falschen, wenn",
+    "intro": "Wir übernehmen wenige Accounts, die dafür ganz. Wir verstehen uns als verlängerte Marketingabteilung: Wir sitzen in Ihren Runden, kennen Ihre Zahlen und widersprechen, wenn es nötig ist. Das trägt nur, wenn es auf beiden Seiten passt, deshalb prüfen wir den Fit vorher, offen und in beide Richtungen.",
+    "yes": [
+      "Sie geben bereits Mediabudget aus und wollen wissen, was es wirklich bringt",
+      "Produkt oder Projekt trägt eine Marge, die Wachstum erlaubt",
+      "Creatives dürfen angefasst werden, nicht nur das Werbekonto",
+      "Entscheidungen fallen bei Ihnen schnell und direkt"
+    ],
+    "no": [
+      "Es geht um Reichweite, Awareness-Preise oder Followerzahlen",
+      "Das Budget soll monatlich neu verhandelt werden",
+      "Tracking und Datenzugriff bleiben verschlossen",
+      "Der erste Monat soll bereits die Bilanz retten"
+    ]
+  },
+  "steps_next": {
+    "h": "Von der Anfrage zum Klartext.",
+    "rows": [
+      {
+        "wann": "Heute",
+        "titel": "Anfrage in zwei Minuten",
+        "text": "Kanäle, Budget, Ziel. Mehr brauchen wir für den Start nicht."
+      },
+      {
+        "wann": "Unter 24 h",
+        "titel": "Ehrliche Ersteinschätzung",
+        "text": "Ein Gründer sieht sich das an und meldet sich, auch wenn es ein Nein wird."
+      },
+      {
+        "wann": "Tag 2 bis 5",
+        "titel": "Account- und Tracking-Audit",
+        "text": "Struktur, Gebote, Zurechnung, Creatives. Wir schauen in die Konten, nicht auf Screenshots."
+      },
+      {
+        "wann": "Danach",
+        "titel": "Klare Empfehlung",
+        "text": "Top-3-Hebel, geschätztes Potenzial, klare Ja/Nein-Empfehlung zur Zusammenarbeit."
+      }
+    ]
+  },
+  "tline": {
+    "seg": "h1 b1 t4 e1",
+    "aria": "Sieben Schritte als Punkte",
+    "legend": [
+      {
+        "code": "h",
+        "text": "Heute: Anfrage"
+      },
+      {
+        "code": "b",
+        "text": "Unter 24 h: Ersteinschätzung"
+      },
+      {
+        "code": "t",
+        "text": "Tag 2 bis 5: Audit im Konto"
+      },
+      {
+        "code": "e",
+        "text": "Danach: klare Empfehlung"
+      }
+    ]
+  },
+  "acc": [
+    {
+      "titel": "Kampagnen-Setup",
+      "text": "Strukturen, die skalieren können: nach Rolle getrennte Kampagnen, saubere Zielwerte, Budgets dort, wo der ehrliche CPL hinzeigt.",
+      "punkte": [
+        "Meta, Google, TikTok",
+        "Instant Forms & Lead-Strecken",
+        "Kaufnahe Search-Intents",
+        "Budget-Steuerung, wöchentlich"
+      ]
+    },
+    {
+      "titel": "Creative-Testing",
+      "text": "Viele Varianten, klare Sieger: Bei einem Wiener Neubauprojekt trug ein einziges Interior-Motiv 54 Prozent aller Leads.",
+      "punkte": [
+        "Systematische Testing-Loops",
+        "Winner-Selektion nach CPL und CPA",
+        "UGC gegen Studio getestet",
+        "Botschaften je Zielgruppe"
+      ]
+    },
+    {
+      "titel": "Tracking & Attribution",
+      "text": "Server-side Tracking und Blended-Sicht: Jede Conversion wird einmal gezählt, nicht zweimal gefeiert.",
+      "punkte": [
+        "Server-side Tracking",
+        "Blended-Sicht statt Kanal-Ego",
+        "CRM-Anbindung",
+        "Consent-konform"
+      ]
+    },
+    {
+      "titel": "Reporting",
+      "text": "Wöchentlich, transparent, auch unbequem: Ziel-Gaps und gestoppte Tests stehen im Report.",
+      "punkte": [
+        "Wöchentliches Reporting",
+        "Ehrliche Ziel-Gaps",
+        "Klare Handlungsempfehlungen",
+        "Direkter Draht, kein Ticketsystem"
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "frage": "Unsere Zielgruppe ist zu speziell für Performance.",
+      "antwort": "Das hören wir oft, auch von Investoren-Funnels und Premium-Neubau. Genau dort entscheidet die Botschaft je Zielgruppe: Bei Anlegern schlug der Service-Angle die Nachhaltigkeits-Story um das 2,3-Fache."
+    },
+    {
+      "frage": "Woher wissen wir, dass die Zahlen stimmen?",
+      "antwort": "Server-side Tracking, Blended-Sicht und auf Wunsch der Blick in den Ad-Manager: Wir reporten die Realität, nicht die schönste Zählweise."
+    },
+    {
+      "frage": "Was passiert, wenn ein Kanal nicht liefert?",
+      "antwort": "Dann wird er geschlossen, nicht schöngeredet. Bei einem Finance-Kunden lief ein Kanal schon vor uns. Wir haben ihn messbar gemacht, die Hypothese bestätigt, dass er keine zurechenbaren Zeichnungen bringt, und ihn geschlossen, während der zweite Kanal lieferte."
+    }
+  ],
+  "offer_h": "Der Einstieg ist ein Account-Audit. Kein Vertrag.",
+  "offer": [
+    "Wir prüfen Kampagnenstruktur, Creatives, Tracking und Zurechnung und zeigen Ihnen in zwei Wochen, wo Budget verdampft und wo der ehrliche CPL liegt. Danach entscheiden Sie.",
+    "<b>Risikoumkehr inklusive:</b> Wo sich Umsatz messen lässt, koppeln wir unsere Vergütung daran. Basis-Fixum plus Erfolgsbeteiligung, wir gewinnen nur, wenn Sie gewinnen."
+  ],
+  "deliver": [
+    "Top-3-Hebel, priorisiert nach Umsatz-Wirkung",
+    "Wo Budget verdampft, in Euro pro Monat geschätzt",
+    "Ehrliche Ja/Nein-Empfehlung zur Zusammenarbeit"
+  ],
+  "chips": [
+    "Account-Audit",
+    "Meta-Setup",
+    "Google-Setup",
+    "Lead-Kampagne",
+    "Creative-Testing",
+    "Tracking-Setup",
+    "Zweitmeinung",
+    "Skalierung"
+  ],
+  "trust": [
+    "Kostenlos",
+    "Unverbindlich",
+    "Ein Gründer prüft",
+    "Antwort unter 24 h"
+  ],
+  "h1": [
+    "Jeder Euro.",
+    "Zurechenbar."
+  ],
+  "ital": 1,
+  "diff": [
+    {
+      "kicker": "Anders als üblich",
+      "titel": "Das Creative ist der Hebel",
+      "text": "Nicht das größte Budget gewinnt, sondern das stärkste Motiv. Wir verschieben Budget konsequent auf die Gewinner.",
+      "bild": "assets/img/ag_strategy.jpg"
+    },
+    {
+      "kicker": "Anders als üblich",
+      "titel": "Ehrlich, auch wenn es wehtut",
+      "text": "Ein Finance-Kunde hatte einen Paid-Kanal schon laufen, als wir kamen. Wir haben ihn messbar gemacht, parallel den zweiten Kanal aufgebaut, und als die Zahlen bestätigten, dass der erste keine zurechenbaren Zeichnungen bringt, haben wir ihn geschlossen.",
+      "bild": "assets/img/ag_board1.jpg"
+    },
+    {
+      "kicker": "Anders als üblich",
+      "titel": "Ein Kanal sauber statt fünf halb",
+      "text": "Lieber einen Kanal ausreizen und beweisen, als Budget über fünf Kanäle verdampfen lassen.",
+      "bild": "assets/img/ag_talk.jpg"
+    }
+  ],
+  "proofsplit": {
+    "label": "Zwei Rechnungen",
+    "h": [
+      "Wo der Unterschied",
+      "wirklich entsteht."
+    ],
+    "t": "Links ein Wohnbau-Projekt: dieselbe Zielgruppe, dieselbe Woche, drei Strecken, sechsfacher Preisunterschied. Rechts eine Crowdinvesting-Plattform: nahezu gleiches Budget, andere Struktur. Beide Zahlen stehen so im Reporting, inklusive der Strecke, die wir gestoppt haben."
+  },
+  "stoer": {
+    "img": "assets/img/retreat-04.jpg",
+    "side": "left",
+    "al": "Die Risikoumkehr",
+    "ah": [
+      "Wir gewinnen nur,",
+      "wenn Sie gewinnen."
+    ],
+    "aside": "Basis-Fixum plus Erfolgsbeteiligung: Unsere Vergütung hängt an dem, was sich messen lässt. Das ist kein Marketing-Satz, sondern unser Vertrag.",
+    "zl": "Wie wir arbeiten",
+    "zt": "Dieselben Leute im Call, die auch die Kampagne bauen."
+  }
+}

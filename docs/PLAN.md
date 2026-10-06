@@ -61,13 +61,13 @@ Priorität: **A** muss vor Go-live, **B** bald danach, **C** später. Verantwort
 
 | Aufgabe | Prio | Wer | Status |
 |---|---|---|---|
-| Impressum und Datenschutz als eigene Seiten (Banner und Footer verlinken auf `www.ad.boutique/datenschutz` und `/impressum`, die nach der Domain-Umstellung 404 wären): **Blocker vor dem Live-Schalter** | A | Daniel | offen |
-| Organisationsdaten im Schema: Adresse, Telefon, Gründungsjahr, Gründer | A | Daniel | offen |
+| Impressum und Datenschutz als eigene Seiten | A | Daniel (Claude) | umgesetzt (`_gen_legal.py`, PR); Datenschutz-Text vor dem Live-Schalter rechtlich prüfen lassen |
+| Organisationsdaten im Schema: Adresse, Firmenbuch, UID, Geschäftsführung (aus dem Impressum) | A | Daniel (Claude) | umgesetzt; Telefon und Gründungsjahr fehlen noch |
 | Freigaben Logowand (Soravia, Raiffeisen, Nordic Spirit) und Soravia-Kachel auf Work | A | Daniel | offen |
 | Ad-Spend-Zahl auf der Startseite (16,7 oder 8,7 Mio. €) bestätigen | A | Daniel | offen |
 | Blog-Artikel der Live-Seite (15 URLs) übernehmen oder weiterleiten | A | offen | offen |
 | Portrait Fabi | B | Daniel | offen |
-| Health-Case nur nach Freigabe | B | Daniel | offen |
+| Health-Case: bleibt sichtbar (Entscheidung Daniel 04.10.2026); ausgeblendete Altzahlen aus allen Case-Dateien entfernt | B | Daniel | erledigt |
 
 ### Phase D: Go-live
 
@@ -81,15 +81,15 @@ Priorität: **A** muss vor Go-live, **B** bald danach, **C** später. Verantwort
 
 | Aufgabe | Prio | Wer | Status |
 |---|---|---|---|
-| Antwortabsatz für Google und KI-Suchen auf den Leistungsseiten wieder sichtbar platzieren (mit dem Wörterbuch-Hero entfallen, steht noch im JSON-LD und in der ersten FAQ) | B | offen | offen |
+| Antwortabsatz für Google und KI-Suchen: drei sichtbare Platzierungen geprüft (unter dem Foto, im Header, erste FAQ oben), alle verworfen (Entscheidung Daniel 04.10.2026: Text passt dort nicht). Bleibt im JSON-LD und in der ersten FAQ. Eventuell später mit anderem Text oder an anderer Stelle | C | Daniel | offen |
 | Content-Programm (zwölf Artikel, Benchmark-Report) laut SEO-Masterplan | B | offen | offen |
 | Einträge in Agenturverzeichnissen | B | offen | offen |
-| Generatoren entflechten (Vorlagen statt Nachbearbeitung) | C | offen | offen |
+| Generatoren entflechten (Inhalte in `_content/services`, Markup in `_tpl_services.py`, jede Regel an einer Stelle in `_nachlauf.py`) | C | Daniel (Claude) | umgesetzt 04.10.2026, Ausgabe Byte für Byte gleich |
 | Entscheidung CMS | C | Daniel und Florian | offen |
 
 ## 3. Offene Entscheidungen für Florian und Daniel
 
-1. **Vercel baut die Seite, erzeugtes HTML liegt nicht mehr in Git.** Beseitigt die 40-Dateien-Konflikte und die Mac-Abhängigkeit beim Bauen. Voraussetzung: Build läuft unter Linux (Posterbilder per Python statt Swift). Empfehlung: ja, nach dem Go-live als eigenes Projekt.
+1. **Vercel baut die Seite, erzeugtes HTML liegt nicht mehr in Git.** Entschieden und umgesetzt am 04.10.2026: `sh _build.sh` baut in einer Kopie nach `public/`, Vercel und die Pages-Action bauen selbst. Beim Merge muss die Pages-Quelle auf "GitHub Actions" gestellt werden.
 2. **Archiv-Branches oder Archiv-Ordner.** Heute: Branches plus Tags (`archiv/*`), geschützt per Ruleset. Ordner würden den Stand von `main` aufblähen. Empfehlung: Branches beibehalten.
 3. **Git LFS für Medien.** Spart Klon-Zeit, kostet ab 1 GB Speicher Geld und macht Vercel-Deploys etwas komplizierter. Alternative: Medien auf einem Speicher (z. B. Vercel Blob, Cloudflare R2) und nur Verweise im Repo. Empfehlung: erst entscheiden, wenn Videos neu verpackt werden.
 4. **CMS mittelfristig.** Cases haben schon Inhaltsdateien; Decap CMS ist vorbereitet (im Repo `adb-intern`). Für Leistungsseiten und Startseite wäre zuerst Punkt 1 nötig. Empfehlung: Decap für Cases testen, sobald Vercel baut.

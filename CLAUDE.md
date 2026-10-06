@@ -13,7 +13,7 @@ Gilt für jede Sitzung an diesem Repo, lokal und in der Cloud, für Daniel (`dan
 1. **Niemals direkt auf `main` pushen, niemals `main` mergen.** Gearbeitet wird nur auf Branches, Änderungen kommen per Pull Request. Gemergt wird ausschließlich aktiv von Daniel oder Florian, nach Sichtprüfung der Vercel-Vorschau.
 2. **Nichts löschen, nichts überschreiben, kein Force-Push, kein Rebase auf geteilten Branches.** Archiv-Branches (`archiv/*`) werden nie gelöscht und nie gemergt.
 3. **Keine Geheimnisse ins Repo**: keine `.env`-Dateien, API-Keys, Tokens, Passwörter, privaten Kundendaten oder unanonymisierten Kundenzahlen. Vor jedem Commit einen Secret-Scan laufen lassen. Bei einem Fund sofort stoppen und fragen.
-4. **Das Repo ist öffentlich.** Alles, was hier liegt, kann jeder lesen. Interne Unterlagen (Log, SEO-Strategie, Recherchen, Case-Inventar mit Zahlen, Audits) gehören ins private Repo `Ad-Boutique/adb-intern`, nicht hierher. Vercel liefert jede Datei aus, die nicht in `.vercelignore` steht: neue interne Dateien (Generatoren, Tools, Doku) dort ausschließen.
+4. **Das Repo ist öffentlich.** Alles, was hier liegt, kann jeder lesen. Interne Unterlagen (Log, SEO-Strategie, Recherchen, Case-Inventar mit Zahlen, Audits) gehören ins private Repo `Ad-Boutique/adb-intern`, nicht hierher. Ausgeliefert wird nur `public/`, und dorthin kommt jede Datei des Repos, die nicht in `.distignore` steht: neue interne Dateien (Generatoren, Tools, Doku) dort ausschließen. `.vercelignore` regelt nur, was Vercel gar nicht erst hochlädt.
 5. Vor jedem Schritt, der etwas auf GitHub verändert (Push, PR, Branch, Tag, Einstellungen), kurz zeigen, was passiert, und auf ein OK warten.
 6. **Schreibstil**: In allen Texten, Dokumenten und Code-Kommentaren keine Geviertstriche oder Halbgeviertstriche, sondern Bindestrich, Komma, Doppelpunkt oder Klammer.
 7. Echte Zahlen nur aus Reportings, Kunden anonymisiert, wo nicht freigegeben. Keine Preise und keine Vergütungsprozente auf der Website.
@@ -25,8 +25,8 @@ Gilt für jede Sitzung an diesem Repo, lokal und in der Cloud, für Daniel (`dan
 
 ## Vor jedem Pull Request
 
-1. Voller Build: `sh _build.sh` (siehe README, Reihenfolge ist verbindlich).
-2. Prüfung aller Seiten bei 1440 und 390 px (`_tools/qa2.js`, lokal mit `_tools/probe`, in der Cloud mit Playwright).
+1. Voller Build: `sh _build.sh` (baut nach `public/`, das Repo bleibt unverändert; siehe README).
+2. `python3 _tools/linkcheck.py public` und Prüfung aller Seiten bei 1440 und 390 px (`_tools/qa2.js`, lokal mit `_tools/probe`, in der Cloud mit Playwright).
 3. Unabhängiger Review durch einen separaten Review-Agenten, der den Code nicht geschrieben hat (`/code-review`, `/security-review`): Funktion, Darstellung Desktop und Handy, Sicherheit. Befunde beheben oder im PR begründen.
 4. Die GitHub-Checks (Build, Links, Secret-Scan) müssen grün sein.
 

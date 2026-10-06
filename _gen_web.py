@@ -15,7 +15,8 @@ def page(c):
 
 
 if __name__ == "__main__":
-    for c in WEB:
-        open(c["slug"] + ".html", "w", encoding="utf-8").write(page(c))
-        print("webcase", c["slug"])
+    # fertig(): die Nachlauf-Regeln (_nachlauf.py) laufen gleich beim Erzeugen, geschrieben wird die fertige Seite
+    import _nachlauf
+    for name in _nachlauf.fertig({c["slug"] + ".html": page(c) for c in WEB}):
+        print("webcase", name[:-5])
     print("webcases done")

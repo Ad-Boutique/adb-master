@@ -119,33 +119,12 @@ def dotrows(rows, per=25):
     return "\n".join(out)
 
 
-def L(c, href, text="Case ansehen"):
-    d = dict(c)
-    d["link"] = (href, text)
-    return d
-
-
 # ---------------------------------------------------------------- Daten
 # Die Karten der Cases stehen in den Inhaltsdateien _content/cases/<slug>.json (Feld "kennzahlen"), siehe _cases.py
 # und docs/CMS-CASES.md. Karten, die mehrfach gebraucht werden (Leistungsseiten, Web-Case Twist'n Sparkle),
-# tragen dort eine id und werden hier mit K("id") geholt.
-from _cases import HAND as _HAND, board as _case_board, karte as K
+# tragen dort eine id. Die Leistungsseiten holen sie in ihren Inhaltsdateien _content/services/<slug>.json
+# (Feld kennzahlen, Karten als {"ref": "<id>", "link": ...}), siehe docs/CMS-LEISTUNGEN.md.
+from _cases import HAND as _HAND, board as _case_board
 
 # Handgebaute Seiten (_brand_inplace.py, _build_funkhaus_v3.py): Board aus der jeweiligen Inhaltsdatei
 HAND_KPI = {c["slug"]: _case_board(c) for c in _HAND if c.get("kennzahlen")}
-
-# ---------------------------------------------------------------- Leistungen (_gen_services.py): drei Mandate, drei Spruenge, je mit Link
-SERVICE_KPI = {
- "service-ecommerce": dict(h=("Drei Marken,", "drei Sprünge."), cards=[
-    L(K("d2c-umsatz"), "case-d2c-lifestyle.html"), L(K("consumer-roas"), "case-consumer-brand.html"), L(K("nordic-orders"), "case-nordic-spirit.html")]),
- "service-performance-marketing": dict(h=("Drei Projekte,", "drei Sprünge."), cards=[
-    L(K("funkhaus-cpl"), "case-premium-neubau.html"), L(K("floridsdorf-strecke"), "case-wohnbau-floridsdorf.html"), L(K("crowd-roas"), "case-crowdinvesting.html")]),
- "service-content-creation": dict(h=("Drei Mandate,", "drei Belege."), cards=[
-    L(K("health-creator"), "case-health-brand.html"), L(K("funkhaus-motiv"), "case-premium-neubau.html"), L(K("kk-clips"), "case-kommunalkredit.html")]),
- "service-websites": dict(h=("Drei Seiten,", "drei Belege."), cards=[
-    L(K("noma-verkauft"), "case-web-noma.html"), L(K("havenstone-wochen"), "case-web-havenstone.html"), L(K("pv-besucher"), "case-photovoltaik.html")]),
- "service-strategie": dict(h=("Drei Mandate,", "drei Sprünge."), cards=[
-    L(K("invest-129"), "case-immobilien-investment.html"), L(K("crowd-investor"), "case-crowdinvesting.html"), L(K("consumer-cpm"), "case-consumer-brand.html")]),
- "service-chatgpt-ads": dict(h=("Drei Mandate,", "drei Sprünge."), cards=[
-    L(K("nordic-orders"), "case-nordic-spirit.html"), L(K("crowd-roas"), "case-crowdinvesting.html"), L(K("consumer-cpm"), "case-consumer-brand.html")]),
-}

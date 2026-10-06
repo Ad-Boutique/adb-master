@@ -4,8 +4,8 @@ Ersetzt auf jeder Seite den kompletten <footer>...</footer> durch dasselbe Marku
 der Footer wird bei jedem Lauf neu gesetzt, das Ergebnis ist immer gleich.
 Die rechtliche Zeile traegt "© 2026 ad.boutique", _seo.py setzt danach Firmierung und Stand ein.
 Styling: assets/brand-layout.css (Abschnitt Footer).
-Reihenfolge: nach _build_performance_v3.py, vor _headlines.py und _seo.py."""
-import glob
+Regel "footer" des Nachlaufs (_nachlauf.py): nach "brand", vor "ui", "headlines" und "seo".
+Einzeln aufrufbar (alle Seiten): python3 _footer.py"""
 import re
 
 SKIP = ("_qa_template.html", "case-web-funkhausliving.html")
@@ -23,8 +23,8 @@ FOOTER = '''  <footer class="ftr" data-bg="#101010" data-fg="light">
       <div class="ftr-bot">
         <a class="ftr-mark" href="index.html">ad.boutique</a>
         <nav class="ftr-links" aria-label="Rechtliches und Social Media">
-          <a href="https://www.ad.boutique/impressum" target="_blank" rel="noopener">Impressum</a>
-          <a href="https://www.ad.boutique/datenschutz" target="_blank" rel="noopener">Datenschutz</a>
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
           <a href="#cookie-einstellungen" data-consent-open>Cookie-Einstellungen</a>
           <a href="https://www.instagram.com/ad.boutique.vienna/" target="_blank" rel="noopener">Instagram</a>
           <a href="https://www.linkedin.com/company/ad-boutique/" target="_blank" rel="noopener">LinkedIn</a>
@@ -48,20 +48,28 @@ def apply(h):
     return h
 
 
-def main():
-    n = 0
-    for f in sorted(glob.glob("*.html")):
-        if f in SKIP or (f.endswith("-brand.html") and not f.startswith("case-")):
-            continue
-        h = open(f, encoding="utf-8").read()
-        if 'http-equiv="refresh"' in h:
-            continue
-        out = apply(h)
-        if out != h:
-            open(f, "w", encoding="utf-8").write(out)
-            n += 1
-    print("Footer in %d Seiten gesetzt" % n)
+ZAEHLER = {"n": 0}
+
+
+def seite(f, h):
+    """Regel "footer" des Nachlaufs (_nachlauf.py): der eine Footer, ausser auf SKIP-Seiten und Weiterleitungen."""
+    if f in SKIP or (f.endswith("-brand.html") and not f.startswith("case-")):
+        return h
+    if 'http-equiv="refresh"' in h:
+        return h
+    out = apply(h)
+    if out != h:
+        ZAEHLER["n"] += 1
+    elif not RX.search(out):
+        print("  ! %s: Footer nicht gesetzt, weder <footer> noch </main> oder </body> gefunden" % f)
+    return out
+
+
+def bericht():
+    return "Footer in %d Seiten gesetzt" % ZAEHLER["n"]
 
 
 if __name__ == "__main__":
-    main()
+    import _nachlauf
+    _nachlauf.einzeln(seite)
+    print(bericht())

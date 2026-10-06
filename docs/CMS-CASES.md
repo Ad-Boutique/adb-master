@@ -15,7 +15,8 @@ Stand 3.10.2026. Ein Case ist eine Datei `_content/cases/<slug>.json`. Die Vorla
 | `_gen_web.py` | Baut alle Cases der Vorlage `web` |
 | `_kpi.py` | Zeichnet das Kennzahlen-Board. Die Leistungsseiten holen geteilte Karten per id aus den Case-Dateien |
 | `_apply_content.py` | Vorschau-Medien der Work-Kacheln (`assets/content.json`) und die Galerie der handgebauten Seiten |
-| `_gen_services.py`, `_seo.py` | lesen Name, Leistungen, Hero-Zeile und Intro der Cases (Querverweise, Title, Description, llms.txt) |
+| `_gen_services.py`, `_leistungen.py`, `_seo.py` | lesen Name, Leistungen, Hero-Zeile und Intro der Cases (Querverweise, geteilte Karten, Title, Description, llms.txt). Leistungsseiten: [CMS-LEISTUNGEN.md](CMS-LEISTUNGEN.md) |
+| `_nachlauf.py` | Regeln, die jede Seite nach dem Erzeugen durchläuft (Bildmaße, WebP, Footer, Headlines, SEO, ...). Generierte Cases bekommen sie beim Erzeugen, die handgebauten im Nachlauf |
 
 Drei Vorlagen:
 
@@ -186,7 +187,7 @@ Grammatik: Label links oben, Badge rechts oben, große Zahl, eine Punkt-Grafik, 
 
 Eine Grafik je Karte (linie, reihen, waffel, stationen oder bilder).
 
-Geteilte Karten: Eine Karte mit `id` kann in einem anderen Case als `{"ref": "<id>"}` stehen, optional mit `link`, und auf den Leistungsseiten in `SERVICE_KPI` (`_kpi.py`) als `K("<id>")`. Wer eine geteilte Karte ändert, ändert sie überall.
+Geteilte Karten: Eine Karte mit `id` kann in einem anderen Case als `{"ref": "<id>"}` stehen, optional mit `link`, und auf den Leistungsseiten im Feld `kennzahlen` ihrer Datei `_content/services/<slug>.json` ebenso als `{"ref": "<id>", "link": {...}}` (siehe [CMS-LEISTUNGEN.md](CMS-LEISTUNGEN.md)). Wer eine geteilte Karte ändert, ändert sie überall.
 
 | id | steht in | wird außerdem gezeigt in |
 |---|---|---|
@@ -209,7 +210,7 @@ Geteilte Karten: Eine Karte mit `id` kann in einem anderen Case als `{"ref": "<i
 
 ## 6. Bilder: Pfade und Größen
 
-Pfade stehen in der Datei immer ab `assets/` (z. B. `assets/case/case-neuer-case/g0.jpg`). JPG ablegen; WebP (`_webp.py`), Breite und Höhe (`_imgdim.py`, Cache `assets/imgdim.json`) und Video-Poster (`_poster.py`) erzeugt der Build. Fotos ohne Filter, kein Lime auf oder an Fotos (BRAND-RULES 1 und 8).
+Pfade stehen in der Datei immer ab `assets/` (z. B. `assets/case/case-neuer-case/g0.jpg`). JPG ablegen; WebP (Regel `webp`, `_webp.py`), Breite und Höhe (Regel `imgdim`, `_imgdim.py`, Cache `assets/imgdim.json`) und Video-Poster (Regel `poster`, `_poster.py`) setzt der Build beim Erzeugen der Seite. Fotos ohne Filter, kein Lime auf oder an Fotos (BRAND-RULES 1 und 8).
 
 | Wo | Ordner, Name | Format, Größe der bestehenden Bilder |
 |---|---|---|
@@ -225,7 +226,7 @@ Pfade stehen in der Datei immer ab `assets/` (z. B. `assets/case/case-neuer-case
 
 Fehlende Dateien: Galerie und Bildstreifen der Karten lassen sie aus; Hero, Bühne, Mobil und Unterseiten zeigen dann ein leeres Bild. `python3 _cases.py` listet jeden Pfad, dessen Datei fehlt.
 
-`assets/content.json` bleibt das Medien-Manifest für die Vorschau-Medien der Work-Kacheln und die Bildausrichtung auf den Leistungsseiten. Die Galerien der Case-Seiten kommen seit dem Umbau aus den Case-Dateien (die Listen in `content.json` werden für die Case-Seiten nicht mehr gelesen).
+`assets/content.json` bleibt das Medien-Manifest für die Vorschau-Medien der Work-Kacheln (die Leistungsseiten lasen daraus früher eine Bildausrichtung, die nirgends verwendet wurde; seit dem Umbau der Leistungsseiten vom 4.10.2026 entfällt das). Die Galerien der Case-Seiten kommen seit dem Umbau aus den Case-Dateien (die Listen in `content.json` werden für die Case-Seiten nicht mehr gelesen).
 
 ## 7. Bauen und prüfen
 
@@ -268,7 +269,7 @@ Was zum Aktivieren fehlt:
 
 1. Login-Anbieter. Das GitHub-Backend braucht einen OAuth-Dienst, der den GitHub-Login für Decap abwickelt. Netlify Identity und Git Gateway gibt es nur auf Netlify; die Seite läuft auf GitHub Pages bzw. Vercel. Optionen: eine GitHub-OAuth-App plus ein kleiner OAuth-Proxy (z. B. als Vercel-Function oder Cloudflare Worker, fertige Vorlagen gibt es für Decap), oder ein gehosteter Dienst. Danach in `config.yml` `base_url` (heute Platzhalter `https://OAUTH-DIENST.example`) und gegebenenfalls `auth_endpoint` eintragen. Zugang bekommt, wer Schreibrechte auf `Ad-Boutique/adb-master` hat.
 2. Ablage: `index.html` und `config.yml` nach `admin/` im Repo kopieren (ausgeliefert unter `/admin`), dort mit `noindex`.
-3. Build nach dem Speichern: Decap schreibt nur die JSON-Dateien und Bilder. Die HTML-Seiten entstehen durch `_build.sh` (nur Python und Pillow, läuft auch in GitHub Actions). Entweder nach jeder Freigabe bauen und die Seiten committen, oder eine GitHub Action einrichten, die baut und committet.
+3. Build nach dem Speichern: Decap schreibt nur die JSON-Dateien und Bilder. Die HTML-Seiten entstehen durch `_build.sh` (nur Python und Pillow, läuft auch in GitHub Actions). Erzeugte Seiten liegen nicht in Git: Vercel und die Pages-Action bauen bei jedem Push selbst, es genügt also, die JSON-Datei zu committen.
 4. Bild-Ordner je Case: Decap legt Uploads in `assets/case/` ab. Wer je Case einen Unterordner will, stellt `media_folder` der Sammlungen auf einen Pfad mit dem Slug um.
 5. Decap schreibt die JSON-Dateien mit eigener Formatierung (alles ausgeklappt). Das ist für den Build gleichgültig.
 
@@ -283,4 +284,4 @@ Was zum Aktivieren fehlt:
 
 ## Hinweis Ordnername (3.10.2026)
 
-Der Ordner heißt `_content` mit Unterstrich. GitHub Pages veröffentlicht Ordner mit Unterstrich nicht, und `.vercelignore` schließt ihn für Vercel aus. So sind die Inhaltsdateien auf der Website nicht abrufbar. Achtung: Das GitHub-Repo selbst ist öffentlich, dort sind sie lesbar. Decap CMS muss beim Aktivieren auf `_content/cases` zeigen (steht so in `decap/config.yml` im privaten Repo `adb-intern`).
+Der Ordner heißt `_content` mit Unterstrich. `.distignore` hält ihn aus der Ausgabe `public/` heraus, die Vercel und die Pages-Vorschau ausliefern. So sind die Inhaltsdateien auf der Website nicht abrufbar. Achtung: Das GitHub-Repo selbst ist öffentlich, dort sind sie lesbar. Decap CMS muss beim Aktivieren auf `_content/cases` zeigen (steht so in `decap/config.yml` im privaten Repo `adb-intern`).

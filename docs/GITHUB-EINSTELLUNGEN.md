@@ -41,7 +41,8 @@ Settings, General, Pull Requests:
 - [ ] Settings, Actions, General: Actions erlaubt, Workflow permissions "Read repository contents".
 - [ ] Claude-GitHub-App für die Organisation installieren (https://github.com/apps/claude), Zugriff auf `adb-master` und `adb-intern`. Muss ein Owner der Organisation machen.
 - [ ] Optional: automatischer Code-Review mit Claude auf jedem PR (in Claude Code mit `/install-github-app` einrichten).
-- [ ] Vercel-Integration prüfen: Jeder PR bekommt einen Vorschau-Link, nur `main` geht live. Die bestehende Verbindung bleibt unverändert.
+- [ ] **Beim Merge des PR "Vercel baut selbst": Settings, Pages, Source auf "GitHub Actions" stellen** (sonst zeigt die Pages-Vorschau keine erzeugten Seiten mehr).
+- [ ] Vercel-Integration prüfen: Jeder PR bekommt einen Vorschau-Link, nur `main` geht live. Die bestehende Verbindung bleibt unverändert. In den Vercel-Projekteinstellungen dürfen Build Command und Output Directory nicht überschrieben sein ("Override" aus), dann gilt `vercel.json`.
 
 ## 6. Später, beim Go-live
 

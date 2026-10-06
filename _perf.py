@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-"""Ladeleistung als Nachlauf ueber alle Seiten (Technik-Empfehlungen J1, J2, B1, B5). Mehrfach ausfuehrbar,
-schreibt nur bei Aenderung. Reihenfolge im Build (_build.sh): nach _webp.py, vor _seo.py.
+"""Ladeleistung fuer alle Seiten (Technik-Empfehlungen J1, J2, B1, B5). Mehrfach ausfuehrbar, schreibt nur bei
+Aenderung. Regel "perf" des Nachlaufs (_nachlauf.py): nach "webp", vor "seo". Einzeln aufrufbar: python3 _perf.py
 
 1. Videos (J1): jedes Video mit data-auto ausserhalb des Heros bekommt preload="none" und seine Quelle als data-src.
    master.js setzt src erst, wenn das Video sichtbar wird (vor play()). Im Hero (erste Sektion in <main> mit Klasse
@@ -14,7 +14,6 @@ schreibt nur bei Aenderung. Reihenfolge im Build (_build.sh): nach _webp.py, vor
    loading="lazy" (steht erst ab etwa 4.500 px Tiefe).
 4. Kundenlogos der Startseite (B5): die Slots tragen die Bildmasse als data-wh, master.js setzt width/height.
 Warnungen beginnen mit "  !" (sammelt _build.sh am Ende)."""
-import glob
 import os
 import re
 
@@ -196,22 +195,36 @@ def skiplink(h):
     return h
 
 
-def main():
-    n = 0
-    for f in sorted(glob.glob("*.html")):
-        if f in SKIP:
-            continue
-        h = open(f, encoding="utf-8").read()
-        if 'http-equiv="refresh"' in h:
-            continue
-        out = skiplink(logos(first_screen(f, menu(videos(h)))))
-        if out != h:
-            open(f, "w", encoding="utf-8").write(out)
-            n += 1
+ZAEHLER = {"n": 0}
+
+
+def seite(f, h):
+    """Regel "perf" des Nachlaufs (_nachlauf.py): Videos, Menuebilder, erster Bildschirm, Logos, Sprunglink."""
+    if f in SKIP:
+        return h
+    if 'http-equiv="refresh"' in h:
+        return h
+    out = skiplink(logos(first_screen(f, menu(videos(h)))))
+    if out != h:
+        ZAEHLER["n"] += 1
+    return out
+
+
+def warnungen():
+    """Gesammelte Warnungen, jede einmal. Leert die Liste."""
+    zeilen = []
     for w in warn:
-        print(w)
-    print("Ladeleistung: %d Seiten angepasst" % n)
+        if w not in zeilen:
+            zeilen.append(w)
+    del warn[:]
+    return zeilen
+
+
+def bericht():
+    return "\n".join(warnungen() + ["Ladeleistung: %d Seiten angepasst" % ZAEHLER["n"]])
 
 
 if __name__ == "__main__":
-    main()
+    import _nachlauf
+    _nachlauf.einzeln(seite)
+    print(bericht())

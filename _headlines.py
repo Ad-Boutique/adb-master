@@ -6,7 +6,8 @@ Display-Headlines (eroeffnen eine Sektion, bei 1440 px mindestens 48 px) bekomme
 Alle kleineren Ueberschriften (H2-Ebene, H3, Kartentitel, Akkordeon, FAQ, .kh, .lh, Next-Project-Titel) sind reines
 Satoshi Bold. Vorhandene <i>/<em> darin setzt brand-type.css auf Satoshi, nicht kursiv.
 
-Was dieser Schritt tut (laeuft nach den Generatoren und Buildern, vor _webp.py und _seo.py, ueber alle Seiten):
+Was dieser Schritt tut (Regel "headlines" des Nachlaufs _nachlauf.py, nach "ui", vor "webp" und "seo", ueber alle Seiten;
+einzeln aufrufbar: python3 _headlines.py):
   1. entfernt die eigenen Marken des letzten Laufs: <i class="hs">, data-hd und die Variablen --hn/--h1n
   2. entscheidet je Headline, ob sie Display ist (Tabelle unten, gemessen am 30.09.2026 bei 1440 x 900)
   3. Display: setzt data-hd auf die Headline und markiert den Schlussteil als Amandine-Zeile.
@@ -23,7 +24,6 @@ Was dieser Schritt tut (laeuft nach den Generatoren und Buildern, vor _webp.py u
      sie gleich gross bleiben. Zaehl-Animationen: auch der Startwert (data-from) und Stationswerte (data-v) zaehlen.
   6. Platzhalter im Next-Project-Bild (.npim2) mit einem Namen statt einer Zahl bekommen data-npn (Satoshi Bold).
 Mehrfach ausfuehrbar: alle eigenen Einsetzungen werden vor jedem Lauf entfernt."""
-import glob
 import html
 import re
 from html.parser import HTMLParser
@@ -445,23 +445,27 @@ def process(h):
     return h, n
 
 
-def main():
-    tot = {"display": 0, "satoshi": 0}
-    nn = 0
-    for f in sorted(glob.glob("*.html")):
-        if f in SKIP:
-            continue
-        h0 = open(f, encoding="utf-8").read()
-        h, n = process(unmark(h0))
-        h, c = mark_numbers(h)
-        nn += c
-        for k in tot:
-            tot[k] += n[k]
-        if h != h0:
-            open(f, "w", encoding="utf-8").write(h)
-    print("Headlines: %d Display (Satoshi + Amandine-Zeile), %d reines Satoshi, %d grosse Zahlen eingepasst"
-          % (tot["display"], tot["satoshi"], nn))
+ZAEHLER = {"display": 0, "satoshi": 0, "zahlen": 0}
+
+
+def seite(f, h0):
+    """Regel "headlines" des Nachlaufs (_nachlauf.py): Marken des letzten Laufs entfernen, neu setzen."""
+    if f in SKIP:
+        return h0
+    h, n = process(unmark(h0))
+    h, c = mark_numbers(h)
+    ZAEHLER["zahlen"] += c
+    for k in ("display", "satoshi"):
+        ZAEHLER[k] += n[k]
+    return h
+
+
+def bericht():
+    return ("Headlines: %d Display (Satoshi + Amandine-Zeile), %d reines Satoshi, %d grosse Zahlen eingepasst"
+            % (ZAEHLER["display"], ZAEHLER["satoshi"], ZAEHLER["zahlen"]))
 
 
 if __name__ == "__main__":
-    main()
+    import _nachlauf
+    _nachlauf.einzeln(seite)
+    print(bericht())

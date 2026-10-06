@@ -64,16 +64,6 @@
       ]
     },
     {
-      "typ": "ergebnis",
-      "ausgeblendet": true,
-      "zahlen": [
-        {"label": "(Anfragen, erste Woche)", "wert": "21"},
-        {"label": "(Anfragen bis Mitte Juli)", "wert": "57"},
-        {"label": "(Zeithorizont der Interessenten)", "wert": "6 bis 12 Monate"},
-        {"label": "(Maklerhäuser im Vertrieb)", "wert": "2"}
-      ]
-    },
-    {
       "typ": "kapitel",
       "label": "Zweites Kapitel, nach dem Lead",
       "headline": ["Zwei Makler,", "eine Rückmeldeschleife."],

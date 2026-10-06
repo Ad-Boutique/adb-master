@@ -2,10 +2,10 @@
 """Brand 2026 fuer handgebaute Seiten: Adobe-Fonts-Kit, site.css und site.js in den Kopf,
 Seitenklasse, dazu auf Startseite und Agentur die Bausteine (Kapitel-Leiste, Punkt, Punktzeile,
 Akt-Ringe, Punkt-Zoom). Mehrfach ausfuehrbar: was da ist, wird nicht doppelt eingesetzt.
-Reihenfolge: nach den Generatoren, vor _bump.py."""
-import glob
+Regel "brand" des Nachlaufs (_nachlauf.py), nach "poster", vor "footer". Einzeln aufrufbar: python3 _brand_inplace.py"""
 import re
 
+from _anker import einmal, sektion
 from _kpi import board as kpi_board, mini as kpi_mini, HAND_KPI
 
 SKIP = ("_qa_template.html",)
@@ -13,16 +13,7 @@ SKIP = ("_qa_template.html",)
 
 def cut_section(h, needle, what):
     """Schneidet die Sektion heraus, die den Anker enthaelt (vom oeffnenden <section bis </section>)."""
-    i = h.find(needle)
-    assert i >= 0, "%s: Anker fehlt" % what
-    a = h.rfind("  <section", 0, i)
-    b = h.find("</section>", i) + len("</section>")
-    while b < len(h) and h[b] == "\n":
-        b += 1
-    # Kommentarzeile davor mitnehmen
-    c = h.rfind("  <!--", 0, a)
-    if c >= 0 and "\n" not in h[c:a].strip("\n"):
-        a = c
+    a, b = sektion(h, needle, what)
     return h[:a] + h[b:]
 
 
@@ -128,8 +119,8 @@ def head(h):
 
 
 def rep(h, old, new, what):
-    assert h.count(old) == 1, "%s: %d Treffer fuer %r" % (what, h.count(old), old[:60])
-    return h.replace(old, new)
+    """Genau ein Treffer, sonst bricht der Build mit Zweck und Anker ab (_anker.AnkerFehlt)."""
+    return einmal(h, old, new, what)
 
 
 def strip_chapnav(h):
@@ -274,30 +265,36 @@ def layout(h, page=""):
     return h
 
 
-def main():
-    n = 0
-    for f in sorted(glob.glob("*.html")):
-        # alte Testseiten hiessen *-brand.html; echte Cases wie case-consumer-brand.html gehoeren dazu
-        if f in SKIP or (f.endswith("-brand.html") and not f.startswith("case-")):
-            continue
-        h = open(f, encoding="utf-8").read()
-        out = strip_chapnav(head(h))
-        if f == "index.html":
-            out = index(out)
-            # das Wort im Menue-Punkt gilt seit 24.9.2026 ueberall (brand.css body.brand), die alte Klasse faellt weg
-            out = out.replace('class="mword brand', 'class="brand', 1)
-        elif f == "agentur.html":
-            out = agentur(out)
-        elif f == "case-premium-neubau.html":
-            out = funkhaus(out)
-        elif f == "case-kommunalkredit.html":
-            out = kommunalkredit(out)
-        out = layout(out, f)
-        if out != h:
-            open(f, "w", encoding="utf-8").write(out)
-            n += 1
-    print("Brand in %d Seiten eingesetzt" % n)
+ZAEHLER = {"n": 0}
+
+
+def seite(f, h):
+    """Regel "brand": Kopf, Kapitel-Leiste raus, Bausteine je handgebauter Seite, Abstaende auf die Tokens."""
+    # alte Testseiten hiessen *-brand.html; echte Cases wie case-consumer-brand.html gehoeren dazu
+    if f in SKIP or (f.endswith("-brand.html") and not f.startswith("case-")):
+        return h
+    out = strip_chapnav(head(h))
+    if f == "index.html":
+        out = index(out)
+        # das Wort im Menue-Punkt gilt seit 24.9.2026 ueberall (brand.css body.brand), die alte Klasse faellt weg
+        out = out.replace('class="mword brand', 'class="brand', 1)
+    elif f == "agentur.html":
+        out = agentur(out)
+    elif f == "case-premium-neubau.html":
+        out = funkhaus(out)
+    elif f == "case-kommunalkredit.html":
+        out = kommunalkredit(out)
+    out = layout(out, f)
+    if out != h:
+        ZAEHLER["n"] += 1
+    return out
+
+
+def bericht():
+    return "Brand in %d Seiten eingesetzt" % ZAEHLER["n"]
 
 
 if __name__ == "__main__":
-    main()
+    import _nachlauf
+    _nachlauf.einzeln(seite)
+    print(bericht())

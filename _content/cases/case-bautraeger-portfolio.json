@@ -79,17 +79,6 @@
       ]
     },
     {
-      "typ": "ergebnis",
-      "ausgeblendet": true,
-      "zahlen": [
-        {"label": "(Leads, 7. Bezirk)", "wert": "109"},
-        {"label": "(Cost per Lead)", "wert": "€ 4,72"},
-        {"label": "(Winner-Creative)", "wert": "€ 4,56"},
-        {"label": "(Effizienz-Variante)", "wert": "€ 3,01"}
-      ],
-      "kurzfassung": ["<em>109</em> Leads aus € 515 Spend", "<em>€ 4,72</em> Cost per Lead", "<em>2,24 %</em> CTR"]
-    },
-    {
       "typ": "kapitel",
       "label": "Zweites Kapitel, zwei Projekte im zweiten Quartal",
       "headline": ["Zwei Projekte,", "ein System, ein Quartal."],

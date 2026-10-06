@@ -10,3 +10,45 @@ _intern/
 
 # lokale Claude-Arbeitskopien und Einstellungen
 .claude/
+
+# Ausgabe des Builds (sh _build.sh): wird von Vercel und der Pages-Action erzeugt, nicht eingecheckt
+public/
+# rein erzeugte Seiten und Dateien (Generatoren, Nachlauf); Quellen sind _content/ und die _gen*.py
+assets/site.css
+assets/site.js
+case-bautraeger-portfolio.html
+case-bella-vita.html
+case-consumer-brand.html
+case-crowdinvesting.html
+case-d2c-lifestyle.html
+case-health-brand.html
+case-immobilien-investment.html
+case-juwel.html
+case-medcenter.html
+case-nordic-spirit.html
+case-photovoltaik.html
+case-premium-neubau-v3.html
+case-seeresidenz.html
+case-web-daphi.html
+case-web-havenstone.html
+case-web-ib7.html
+case-web-noma.html
+case-web-northpoint.html
+case-web-pharmacom.html
+case-web-trattner.html
+case-web-twistnsparkle.html
+case-web-unio.html
+case-wohnbau-floridsdorf.html
+datenschutz.html
+impressum.html
+kontakt.html
+llms.txt
+robots.txt
+service-chatgpt-ads.html
+service-content-creation.html
+service-ecommerce.html
+service-performance-marketing-v3.html
+service-performance-marketing.html
+service-strategie.html
+service-websites.html
+sitemap.xml

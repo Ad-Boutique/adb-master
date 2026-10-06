@@ -82,23 +82,12 @@ body.brand:not(.pg-agentur) .svcband img:hover, body.brand:not(.pg-agentur) .tea
 .brand .cintro.sec { padding-top: var(--sec); padding-bottom: var(--sec); }
 /* Text-Heros (Leistung, Agentur, Kontakt): Inhalt beginnt ueberall auf derselben Hoehe.
    Sektion oben --sec (Skala), dazu --hero-in im Rahmen: zusammen 192 Desktop, 160 Mobile (Zurueck-Knopf 80 bis 132 steht darueber frei). */
-.brand .svc-hero { padding-top: var(--sec); padding-bottom: var(--sec); }
 .brand .ahero.sec { padding-top: var(--sec) !important; padding-bottom: var(--sec) !important; }
 .brand :is(.svc-hero, .ahero) > .wrap { padding-top: var(--hero-in); }
 .brand .kmain { padding-top: var(--hero-top); }
 /* Agentur: die Bildwand driftet beim Scrollen nach unten, der Puffer dafuer sitzt unter der Bildwand statt im Sektionsabstand */
 .brand .ahero .acollage { margin-bottom: var(--sec); }
-/* Leistungs-Hero: der Knopf "Direkt anfragen" steht direkt unter dem Untertitel, damit er bei 1440 x 900
-   ueber dem schwebenden Menue-Knopf bleibt (mindestens --mbtn-bottom + --mbtn-size + 16 frei).
-   Antwort-Absatz, Punktzeile und Punktfeld folgen darunter. Reihenfolge nur optisch, Inhalte bleiben. */
-.brand .svc-hero > .wrap { display: flex; flex-direction: column; }
-.brand .svc-hero > .wrap > h1 { margin-top: 0; } /* erste Zeile wie bei Kontakt und Agentur: Zeilenmaske beginnt 0,2em ueber 192 */
-.brand .svc-hero > .wrap > .statg { margin-top: var(--sp-4); }
-.brand .svc-hero > .wrap > .statg + .ssub { margin-top: var(--sp-4); }
-.brand .svc-hero > .wrap > .ssub ~ * { order: 2; }
 .brand .svc-hero > .wrap > .ssub ~ div:has(> .alink) { order: 1; margin-top: var(--b2btn) !important; }
-.brand .svc-hero > .wrap > .sanswer { margin-top: var(--sp-6); }
-.brand .svc-hero > .wrap > .sanswer + .dotline { margin-top: var(--sp-3); }
 /* Bildband, Fotowand: Abstaende aus der Skala */
 .brand .svcband { padding-top: var(--sec-s); padding-bottom: var(--sec-s); }
 .brand .svcband .wrap { margin-bottom: var(--sp-4); }
@@ -134,8 +123,6 @@ body.brand:not(.pg-agentur) .svcband img:hover, body.brand:not(.pg-agentur) .tea
 .brand main :is(h1, h2, h3, .disp, .dispn, .lh, .zah, .phh, .pwh):not(.sr-only):has(+ :is(p, .sub, .ssub, .lt3, .zasub, .klead, .body)) { margin-bottom: 0 !important; }
 .brand main :is(h1, h2, h3, .disp, .dispn, .lh, .zah, .phh, .pwh):not(.sr-only) + :is(p, .sub, .ssub, .lt3, .zasub, .klead, .body) { margin-top: var(--h2b) !important; }
 /* Chips unter der Hero-Headline: eine Stufe Luft, die Unterlaengen der Amandine-Zeile brauchen Platz */
-.brand .svc-hero h1 + .tags { margin-top: var(--sp-3); }
-.brand .svc-hero .tags + .ssub { margin-top: var(--sp-3); }
 .brand main :is(p, .sub, .ssub, .lt3, .body, .dotline, .tags) + :is(.hbtns, div:has(> .btn:first-child)) { margin-top: var(--b2btn) !important; }
 /* Einzelner Knopf direkt nach dem Text (Zoom-Beweis "Den Fall im Detail", Agentur) */
 .brand main :is(p, .sub, .ssub, .lt3, .body, .zasub, .dotline) + a.btn { margin-top: var(--b2btn) !important; }
@@ -240,3 +227,17 @@ html body.brand .dhero .dh-photo img { width: 100%; height: 100%; object-fit: co
   body.brand .dhero .dh-def { padding: 72px 0 48px; }
   body.brand .dhero .dh-photo { height: 62vh; }
 }
+
+/* ============================================================
+   Impressum und Datenschutz (_gen_legal.py, 4.10.2026): ruhige Lesespalte, Abschnitte mit Satoshi-H2
+   ============================================================ */
+body.brand .lgsec { position: relative; }
+body.brand .lgsec > .wrap { padding-top: var(--hero-in); }
+body.brand .lghead { margin-bottom: var(--sp-8); }
+body.brand .lgbody { max-width: 760px; display: flex; flex-direction: column; gap: var(--sp-6); }
+body.brand .lgblock p { margin: 0 0 var(--sp-2); font-size: 17px; line-height: var(--lh-body); color: var(--grey-dark); }
+body.brand .lgblock p b { color: var(--ink); }
+body.brand .lgblock a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; word-break: break-word; }
+/* dreifache Klasse: die allgemeine H2-Regel in brand-type.css kommt per :is(.lchap .lh, ...) auf Spezifitaet 0,4,1 */
+html body.brand main .lgblock h2.lgh.lgh.lgh { margin: 0 0 var(--sp-2); font-size: 24px !important; line-height: 1.25 !important; }
+@media (max-width: 767px) { body.brand .lgblock p { font-size: 16px; } html body.brand main .lgblock h2.lgh.lgh.lgh { font-size: 20px !important; } }

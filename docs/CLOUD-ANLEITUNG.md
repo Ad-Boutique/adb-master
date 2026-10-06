@@ -38,7 +38,7 @@ Jede Sitzung läuft in einer frischen, abgeschotteten Umgebung in der Cloud. Zu 
 
 Der Build selbst (`sh _build.sh`) braucht nur Python und Pillow und läuft in der Cloud wie auf dem Mac. Er läuft auch bei jedem PR in GitHub Actions auf Linux.
 
-Vorschau in der Cloud: `sh _build.sh /tmp/vorschau`, dann `python3 -m http.server 8743 --directory /tmp/vorschau`. Für die Abnahme zählt der Vercel-Link im PR.
+Vorschau in der Cloud: `sh _build.sh`, dann `python3 -m http.server 8743 --directory public`. Für die Abnahme zählt der Vercel-Link im PR.
 
 ## 4. Arbeiten in der Cloud
 
@@ -52,7 +52,7 @@ Vorschau in der Cloud: `sh _build.sh /tmp/vorschau`, dann `python3 -m http.serve
 
 - Keine Kopien und Varianten mehr in lokalen Ordnern. Jede Variante wird ein Branch; verworfene Varianten werden `archiv/...`-Branches mit Tag und eine Zeile in `docs/VERSIONEN.md`.
 - Vor Arbeitsbeginn in `docs/STATUS.md` unter "Gerade in Arbeit" eintragen.
-- Kleine PRs, schnell mergen. Wegen der vielen erzeugten HTML-Dateien kollidieren parallele PRs leicht: wer zuerst mergt, gewinnt; der andere holt `main` und baut neu (`sh _build.sh`), statt Konflikte in HTML-Dateien von Hand zu lösen.
+- Kleine PRs, schnell mergen. Erzeugte Seiten liegen nicht mehr in Git, Konflikte entstehen nur noch in echten Quellen (Inhaltsdateien, Generatoren, CSS, handgebaute Seiten).
 - Interne Unterlagen ins private Repo `adb-intern`, nie ins öffentliche `adb-master`.
 
 ## 6. Lokal bleibt möglich

@@ -65,7 +65,7 @@ Alle liegen in `assets/` und werden in genau dieser Reihenfolge zu `site.css` ge
 | Datei | Zustaendig fuer |
 |---|---|
 | `tokens.css` | alle Werte (siehe oben), sonst nichts |
-| `master.css` | Altbestand: Aufbau und Bausteine der Seite (Raster, Hero, Kacheln, Menue, Zoom, Fotowand). Nur :root, Pill-/Kreis-Radien und z-Index sind auf Token umgestellt; darin stehen weiter feste Altwerte (z. B. #fff, #101012, alte Radien), die von den brand-Dateien ueberschrieben werden. Aufraeumen ist ein eigener Schritt (siehe Technik-Empfehlungen). |
+| `master.css` | Altbestand: Aufbau und Bausteine der Seite (Raster, Hero, Kacheln, Menue, Zoom, Fotowand). Nur :root, Pill-/Kreis-Radien und z-Index sind auf Token umgestellt. Am 4.10.2026 aufgeraeumt: Regeln ohne Treffer auf irgendeiner Seite und von den brand-Dateien vollstaendig ueberschriebene Altwerte sind entfernt (391 Regeln, site.css 17 % kleiner, Stil-Fingerabdruck ohne Abweichung). Stehen geblieben ist, was JavaScript setzt, was Inhalte jederzeit liefern koennen (z. B. blockquote, table) und die Button-Varianten des Design-Systems. |
 | `brand.css` | Brand 2026, Grundschicht: der Punkt als Element (Cursor, Ladeblende, Punkt-Zoom, Punktzeilen, Coach, KPI-Karten) |
 | `brand-type.css` | Typografie: welche Rolle welche Schrift, Groesse und Zeilenhoehe bekommt, Display-Headlines, grosse Zahlen |
 | `brand-ui.css` | Design: Farben je Flaeche, Buttons, Textlinks, Badges, Chips, Menue-Knopf, Karten, Graphen |
@@ -84,8 +84,9 @@ Scripts, gebuendelt zu `site.js`, jede Datei in eigenem Block:
 
 - `assets/site.css` und `assets/site.js` schreibt `_css.py`. Jede Aenderung darin ist beim naechsten Build weg.
 - `_css.py` entfernt Kommentare und ueberfluessige Leerzeichen, laesst aber Reihenfolge, Strings und `url(...)` unangetastet. Die Kaskade bleibt gleich.
-- Der Build (`_build.sh`) ruft `_css.py` vor `_brand_inplace.py` auf. `_brand_inplace.py` stellt aeltere Seitenkoepfe auf die zwei Dateien um, `_bump.py` setzt die Cache-Version `?v=` als Inhalts-Hash (aendert sich nur, wenn sich CSS oder JS aendern).
+- Der Build (`_build.sh`) ruft `_css.py` vor den Generatoren auf, weil die Cache-Version `?v=` ein Inhalts-Hash von `site.css` und `site.js` ist und schon beim Erzeugen der Seiten feststehen muss. Die Regel "brand" (`_brand_inplace.py`) stellt aeltere Seitenkoepfe auf die zwei Dateien um, die Regel "version" (`_bump.py`) setzt die Cache-Version (aendert sich nur, wenn sich CSS oder JS aendern). Beide laufen fuer generierte Seiten beim Erzeugen und fuer handgebaute in `_nachlauf.py` (Reihenfolge der Regeln: README, Abschnitt Bauen).
 - Jede Seite laedt im Kopf genau: `assets/site.css?v=N`, das Adobe-Fonts-Kit (`use.typekit.net/udf8wjj.css`) und `assets/site.js?v=N` (defer), davor Preconnect zu Typekit und Preload fuer Satoshi. Neue Seiten bekommen das ueber `HEAD` in `_gen.py`.
+- Markup der Seiten: Cases in `_bausteine.py`, Leistungsseiten in `_tpl_services.py` (eine Funktion je Sektion), Inhalte in `_content/cases` und `_content/services`. Button-Varianten, Badges, Headline-Teilung und Abstands-Tokens setzen die Regeln "ui", "headlines" und "brand" einheitlich fuer alle Seiten, sie gehoeren nicht in die Vorlagen.
 
 ## Neue Werte und neue Bausteine
 
