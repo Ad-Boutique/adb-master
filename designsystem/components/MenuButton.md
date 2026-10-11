@@ -2,11 +2,11 @@
 
 Gruppe: Navigation
 
-MenuButton: der Menue-Kreis, 64px Lime mit dem Wort "Menü" im Punkt, fix unten mittig.
+MenuButton: der schwebende Kreis unten Mitte, 88 px (mobil 76), Wort "Menü" im Kreis, Satoshi Medium.
 
-- `adb-menu`, fix positioniert mit `adb-menu--fixed`. Offen (`aria-expanded="true"`) kehrt er sich um: Ink mit Lime-Schrift "Schließen".
-- Lime gehoert dem Menue: andere schwebende Kreise (Filter) sind Paper mit Ink-Rand.
+- `adb-menu`, fix mit `adb-menu--fixed`. Auf Cream Lime mit 1 px Schwarz, auf Schwarz und Fotos Cream (`adb-menu--on-dark` oder in `adb-ink`). Offen (`aria-expanded="true"`): Cream mit "Schließen".
+- Satelliten `adb-sat` (Filter, Branche, Übersicht): 64 px, Cream, 1 px Schwarz; offen Schwarz, aktiver Filter mit zweitem Ring (`has`).
 
 ```html
-<div style="display:flex;gap:26px;align-items:center;padding:18px"><button class="adb-menu" type="button" aria-expanded="false">Menü</button><button class="adb-menu" type="button" aria-expanded="true">Schließen</button></div>
+<div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap"><button class="adb-sat" type="button">Filter</button><button class="adb-menu" type="button" aria-expanded="false">Menü</button><button class="adb-sat has" type="button">Branche</button><span class="adb-ink" style="display:inline-flex;padding:12px;border-radius:999px"><button class="adb-menu" type="button" aria-expanded="true">Schließen</button></span></div>
 ```

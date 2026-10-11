@@ -2,17 +2,17 @@
 
 Gruppe: Aktionen
 
-Button: fast eckig (2px), fett, ruhig. Beim Hover wird Ink zu Lime.
+Button (Figma 84:13): Pill, Satoshi Medium 17 px, Padding 16/24. Beim Ueberfahren waechst ein Kreis von der Eintrittsstelle der Maus und fuellt den Knopf (700 ms).
 
-- `adb-btn adb-btn--ink` auf Paper, `adb-btn--paper` auf Ink, `adb-btn--outline` als zweite Aktion.
-- `adb-btn--go`: der Punkt wird zum Knopf, Lime-Pille mit Ink-Ring. Nur fuer den einen Weiter- oder Absenden-Schritt eines Formulars.
-- Beschriftung als Handlung: "Erstgespräch buchen", "Weiter".
-- Pro Sichtfeld hoechstens ein gefuellter Knopf.
+- Auf Cream: `adb-btn--primary` (Hauptaktion), `adb-btn--soft-cream` (zweite Aktion), selten `--secondary`, `--accent` (Lime, nur auf hellem Grund).
+- Auf Schwarz und Fotos: `adb-btn--inverse` (Hauptaktion), `adb-btn--outline-inverse` oder `--soft-black` (zweite Aktion).
+- Auf Lime: `adb-btn--primary` und `--soft-lime`.
+- Paare nebeneinander mit 8 px (`adb-btns`). `adb.js` laesst den Kreis der Maus folgen.
+- Der Kreis ist nie Lime auf Schwarz.
 
 ```html
-<div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
-<a class="adb-btn adb-btn--ink" href="#">Erstgespräch buchen</a>
-<a class="adb-btn adb-btn--outline" href="#">Alle Cases</a>
-<button class="adb-btn adb-btn--go" type="button">Weiter</button>
+<div style="display:grid;gap:16px">
+<div class="adb-btns"><a class="adb-btn adb-btn--primary" href="#">Projekt starten</a><a class="adb-btn adb-btn--soft-cream" href="#">Direkt anfragen ↓</a><a class="adb-btn adb-btn--secondary" href="#">Unsere Arbeit</a><a class="adb-btn adb-btn--accent" href="#">Weiter <i>→</i></a></div>
+<div class="adb-ink adb-btns" style="padding:16px;border-radius:16px"><a class="adb-btn adb-btn--inverse" href="#">Projekt starten</a><a class="adb-btn adb-btn--outline-inverse" href="#">Unsere Arbeit</a><a class="adb-btn adb-btn--soft-black" href="#">Alle Cases</a></div>
 </div>
 ```

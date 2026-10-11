@@ -2,10 +2,9 @@
 
 Gruppe: Inhalt
 
-Accordion (FAQ): Frage fett, Plus dreht sich zum Kreuz, Antwort in `adb-fg-muted`. Trennlinien gepunktet: der Punkt als Linie.
+Accordion (FAQ): Frage Satoshi Bold, Plus dreht sich zum Kreuz, Antwort 15 px in `adb-fg-muted`. Linien 1 px durchgezogen (keine gepunkteten Linien mehr).
 
-- `adb-faq__item` (offen: `open`), `button.adb-faq__q` mit `.plus`, `adb-faq__a` > `p`.
-- Das Umschalten der Klasse `open` und `aria-expanded` liefert der Konsument.
+- `adb-faq__item` (offen: `open`), `button.adb-faq__q` mit `.plus`, `adb-faq__a` > `p`. `adb.js` schaltet um.
 
 ```html
 <div>

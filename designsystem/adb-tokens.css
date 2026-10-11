@@ -1,84 +1,114 @@
 /* ============================================================
    ad.boutique Brand 2026 · Tokens
-   Stand: brand.css ueber master.css (alle Seiten mit body.brand), 30.9.2026
-   Zwei Farbwelten: Paper (hell, Standard) und Ink (dunkel).
+   Stand: assets/tokens.css der Website (Brand-Vereinheitlichung nach Figma, 3.10.2026)
+   Zwei Untergruende: Paper/Cream (hell, Standard) und Ink/Schwarz (dunkel).
    Umschalten je Bereich mit class="adb-ink" oder data-theme="dark".
    ============================================================ */
 :root, .adb-paper, [data-theme="light"] {
-  /* Palette: fest, in beiden Welten gleich */
-  --adb-lime: #d7ff45;
-  --adb-ink: #0f0f0f;
-  --adb-ink-soft: #161616;
-  --adb-night: #070708;
-  --adb-paper: #f4f3ec;
-  --adb-cream: #e9e8df;
-  --adb-card: #fbfaf5;
-  --adb-stone: #b7b7b3;
-  --adb-graphite: #66665f;
+  /* ---------- Farben: nur diese drei Markenfarben plus Transparenzen davon ---------- */
+  --adb-ink: #101010;          /* Black (Charcoal): Text auf Cream, tragende Flaeche */
+  --adb-paper: #F4F3EB;        /* Cream: Hauptflaeche, Text und Buttons auf Schwarz */
+  --adb-lime: #CDFF00;         /* Akzent: Aktionen, Highlights, Grafiken. Nie Text auf Schwarz, nie an Fotos */
+  --adb-stone: #B7B7B3;        /* nur Hintergrund hinter Mockups, nie Markenflaeche */
+  --adb-placeholder: #DEDDD4;  /* nur leere Bildcontainer */
 
-  /* Rollen: wechseln mit der Farbwelt */
+  /* ---------- Rollen: wechseln mit dem Untergrund ---------- */
   --adb-bg: var(--adb-paper);
-  --adb-bg-alt: var(--adb-cream);
-  --adb-surface: rgba(255, 255, 255, 0.45);
   --adb-fg: var(--adb-ink);
-  --adb-fg-muted: var(--adb-graphite);
-  --adb-line: rgba(15, 15, 15, 0.16);
-  --adb-line-dotted: rgba(15, 15, 15, 0.28);
-  --adb-accent: var(--adb-lime);
+  --adb-fg-muted: rgba(16, 16, 16, 0.64);   /* grey-dark: Captions, Listen in Karten */
+  --adb-fg-subtle: rgba(16, 16, 16, 0.5);   /* grey: Vorher-Werte, Nebeninfo */
+  --adb-line: rgba(16, 16, 16, 0.16);       /* Linie, immer 1 px */
+  --adb-line-badge: rgba(16, 16, 16, 0.25); /* Badge- und Feldrand */
+  --adb-veil: rgba(16, 16, 16, 0.06);       /* Hover-Schleier auf hellen Flaechen */
   --adb-on-accent: var(--adb-ink);
-  --adb-accent-text: var(--adb-ink);   /* Lime ist auf hellem Grund nie Text */
-  --adb-halo: rgba(215, 255, 69, 0.3);
-  --adb-dot-off: rgba(15, 15, 15, 0.1);
-  --adb-ring-color: var(--adb-ink);
+  --adb-g-on: var(--adb-ink);               /* gefuellter Punkt in Graphen */
+  --adb-g-off: rgba(16, 16, 16, 0.1);       /* leerer Punkt */
+  --adb-g-best: var(--adb-lime);            /* der eine hervorgehobene Wert */
 
-  /* Schrift */
-  --adb-font-sans: "Satoshi", "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
-  --adb-font-serif: "amandine", "Reckless", Georgia, "Times New Roman", serif;
+  /* ---------- Schrift ---------- */
+  --adb-font-sans: "Satoshi", "Helvetica Neue", Arial, sans-serif;
+  --adb-font-amandine: "amandine", Georgia, "Times New Roman", serif;
+  --adb-fs-h1: clamp(39px, 5.56vw, 80px);
+  --adb-fs-h1-xl: clamp(44px, 7.6vw, 110px);
+  --adb-fs-display: clamp(34px, 4.3vw, 62px);
+  --adb-fs-h2: clamp(28px, 2.92vw, 42px);
+  --adb-fs-h3: calc(var(--adb-fs-h2) / 1.55);
+  --adb-fs-footer: clamp(44px, 5.834vw, 84px);
+  --adb-fs-body: 17px;
+  --adb-fs-ui: 15px;
+  --adb-fs-cap: 13px;
+  --adb-fs-num: clamp(40px, 3.6vw, 56px);
+  --adb-fs-logo: 25px;
+  --adb-am-scale: 0.88;   /* Amandine-Zeile = 0,88 der Satoshi-Zeile */
+  --adb-lh-head: 1.1;
+  --adb-lh-h3: 1.2;
+  --adb-lh-body: 1.4;
+  --adb-lh-ui: 1.2;
+  --adb-lh-num: 1.1;
 
-  /* Abstaende (feste Stufen, wie im Code verwendet) */
-  --adb-space-6: 6px;
-  --adb-space-8: 8px;
-  --adb-space-14: 14px;
-  --adb-space-18: 18px;
-  --adb-space-22: 22px;
-  --adb-space-26: 26px;
-  --adb-space-44: 44px;
-  --adb-space-70: 70px;
-  /* fluide Masse der Website */
-  --adb-gutter: clamp(26px, 6.4vw, 130px);
-  --adb-section: clamp(78px, 14vw, 210px);
-  --adb-card-pad: clamp(22px, 2.4vw, 34px);
-  --adb-grid-gap: clamp(14px, 1.8vw, 28px);
-  --adb-wrap-max: 1560px;
+  /* ---------- Abstaende: 8er-Skala und Rhythmus ---------- */
+  --adb-sp-1: 8px;  --adb-sp-2: 16px; --adb-sp-3: 24px; --adb-sp-4: 32px;
+  --adb-sp-6: 48px; --adb-sp-8: 64px; --adb-sp-12: 96px; --adb-sp-16: 128px;
+  --adb-gut: 64px;      /* Seitenrand */
+  --adb-sec: 128px;     /* Sektion oben und unten */
+  --adb-sec-s: 64px;    /* kurze Sektion: Kennzahlen, Logo-Wand */
+  --adb-sec-xs: 48px;   /* knapper Anschluss */
+  --adb-h2b: 16px;      /* Headline zu Text */
+  --adb-b2btn: 48px;    /* Text zu Buttons */
 
-  /* Radien: fast eckig, der Kreis ist die Ausnahme */
-  --adb-radius-xs: 2px;
-  --adb-radius-s: 3px;
-  --adb-radius-m: 4px;
-  --adb-radius-pill: 999px;
+  /* ---------- Radien ---------- */
+  --adb-r-img: 16px;    /* Bilder, Karten, Felder */
+  --adb-r-col: 10px;    /* Bilder in der schraegen Collage */
+  --adb-r-pill: 999px;  /* Buttons, Chips, Badges */
+  --adb-r-round: 50%;   /* Punkte und Kreise */
 
-  /* Schatten und Ringe */
-  --adb-shadow-float: 0 8px 30px rgba(15, 15, 15, 0.22);
-  --adb-shadow-filter: 0 8px 26px rgba(15, 15, 15, 0.22);
-  --adb-ring: 0 0 0 1px var(--adb-ring-color);
-  --adb-halo-ring: 0 0 0 4px var(--adb-halo);
+  /* ---------- Schatten ---------- */
+  --adb-sh-soft: 0 4px 11px rgba(0, 0, 0, 0.25);
+  --adb-sh-soft-hover: 0 6px 16px rgba(0, 0, 0, 0.3);
+  --adb-sh-soft-black: 0 4px 11px rgba(244, 243, 235, 0.14);
+  --adb-sh-soft-black-hover: 0 6px 16px rgba(244, 243, 235, 0.2);
+  --adb-sh-text-photo: 0 1px 12px rgba(16, 16, 16, 0.35);
 
-  /* Bewegung */
-  --adb-e-out: cubic-bezier(0.19, 1, 0.22, 1);
-  --adb-e-snap: cubic-bezier(0.76, 0, 0.24, 1);
-  --adb-t-fast: 0.3s;
-  --adb-t-med: 0.5s;
+  /* ---------- Bewegung: eine Kurve, vier Dauern ---------- */
+  --adb-e-out: cubic-bezier(.16, 1, .3, 1);
+  --adb-e-btn: cubic-bezier(.33, 1, .68, 1);
+  --adb-d-fast: 200ms;   /* Hover, Rueckmeldung */
+  --adb-d-base: 400ms;   /* Einblenden */
+  --adb-d-slow: 700ms;   /* Uebergaenge */
+  --adb-d-btn: 700ms;    /* Kreis-Hover der Buttons */
+  --adb-d-chor: 1200ms;  /* Choreografie */
+  --adb-fade-y: 24px;
+  --adb-stagger: 80ms;
+
+  /* ---------- Bedienelemente ---------- */
+  --adb-btn-pad: 15px 23px;   /* 16/24 minus 1 px Rand */
+  --adb-chip-pad: 7px 23px;   /* 8/24 minus 1 px Rand */
+  --adb-bdg-pad: 7px 15px;    /* 8/16 minus 1 px Rand */
+  --adb-mbtn-size: 88px;
+  --adb-mbtn-bottom: 32px;
+  --adb-sat-size: 64px;
+  --adb-sat-gap: 24px;
+  --adb-dot: 10px;
+  --adb-dot-gap: 6px;
 }
 
 .adb-ink, [data-theme="dark"] {
   --adb-bg: var(--adb-ink);
-  --adb-bg-alt: var(--adb-ink-soft);
-  --adb-surface: var(--adb-ink-soft);
   --adb-fg: var(--adb-paper);
-  --adb-fg-muted: var(--adb-stone);
-  --adb-line: rgba(244, 243, 236, 0.16);
-  --adb-line-dotted: rgba(244, 243, 236, 0.3);
-  --adb-accent-text: var(--adb-lime);
-  --adb-dot-off: rgba(244, 243, 236, 0.14);
-  --adb-ring-color: var(--adb-ink);
+  --adb-fg-muted: rgba(244, 243, 235, 0.7);
+  --adb-fg-subtle: rgba(244, 243, 235, 0.6);
+  --adb-line: rgba(244, 243, 235, 0.25);
+  --adb-line-badge: rgba(244, 243, 235, 0.3);
+  --adb-veil: rgba(244, 243, 235, 0.06);
+  --adb-g-on: var(--adb-paper);
+  --adb-g-off: rgba(244, 243, 235, 0.14);
+  --adb-g-best: var(--adb-lime);
 }
+
+@media (max-width: 767px) {
+  :root {
+    --adb-gut: 24px; --adb-sec: 64px; --adb-sec-s: 48px; --adb-sec-xs: 32px; --adb-b2btn: 32px;
+    --adb-mbtn-size: 76px; --adb-mbtn-bottom: 24px; --adb-sat-size: 56px; --adb-sat-gap: 16px;
+  }
+}
+@media (max-width: 720px) { :root { --adb-fs-logo: 23px; } }

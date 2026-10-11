@@ -1,10 +1,7 @@
 /* ad.boutique Schriften
-   Satoshi (Fontshare) und Reckless liegen als Dateien in ./fonts.
-   Amandine kommt aus dem Adobe-Fonts-Kit der Website:
+   Satoshi (Fontshare) liegt als Datei in ./fonts: Bold 700, Medium 500, Regular 400.
+   Amandine kommt aus dem Adobe-Fonts-Kit der Website (liefert 400 und 700, je normal und kursiv):
    <link rel="stylesheet" href="https://use.typekit.net/udf8wjj.css">
-   Die Domain des Agency Hubs muss im Kit freigeschaltet sein, sonst greift Reckless. */
+   Die Domain des Agency Hubs muss im Kit freigeschaltet sein, sonst greift Georgia. */
 @font-face { font-family: "Satoshi"; src: url("fonts/Satoshi-Variable.woff2") format("woff2"); font-weight: 300 900; font-style: normal; font-display: swap; }
 @font-face { font-family: "Satoshi"; src: url("fonts/Satoshi-VariableItalic.woff2") format("woff2"); font-weight: 300 900; font-style: italic; font-display: swap; }
-@font-face { font-family: "Reckless"; src: url("fonts/Reckless-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; size-adjust: 87%; font-display: swap; }
-@font-face { font-family: "Reckless"; src: url("fonts/Reckless-Italic.woff2") format("woff2"); font-weight: 400; font-style: italic; size-adjust: 87%; font-display: swap; }
-@font-face { font-family: "Reckless"; src: url("fonts/Reckless-Medium.woff2") format("woff2"); font-weight: 500; font-style: normal; size-adjust: 87%; font-display: swap; }

@@ -2,11 +2,11 @@
 
 Gruppe: Aktionen
 
-TextLink: Versal-Link mit Unterstreichung, die beim Hover auf volle Breite waechst.
+TextLink: im Fliesstext und in Karten bleibt ein Link Text. Satoshi Medium, Textfarbe, 1 px Unterstrich, beim Hover 60 % Deckkraft.
 
-- `adb-link`: freie Links ("Mehr erfahren"), Linie startet bei 35 %.
-- `adb-link--line`: der Link zum Case, ueberall dieselbe Form, volle Linie. Auf Ink wird er beim Hover Lime.
+- `adb-link`. Alle anderen Links sind Buttons.
+- `adb-keeplink` und `adb-keeplink--line`: die alten Versal-Links mit wachsender Linie, nur an den freigegebenen Stellen (Agentur-CTAs, einzelne Leistungs-Links im Case). `adb-back` fuer "← Alle Leistungen".
 
 ```html
-<div style="display:flex;gap:44px;flex-wrap:wrap"><a class="adb-link" href="#">Mehr erfahren <span aria-hidden="true">→</span></a><a class="adb-link adb-link--line" href="#">Case ansehen</a></div>
+<div style="display:flex;gap:40px;flex-wrap:wrap;align-items:baseline"><a class="adb-link" href="#">Mehr dazu →</a><a class="adb-keeplink" href="#">Zum Team stoßen <span aria-hidden="true">→</span></a><a class="adb-keeplink adb-keeplink--line" href="#">Leistung: Landingpages</a><a class="adb-back" href="#">← Alle Leistungen</a></div>
 ```

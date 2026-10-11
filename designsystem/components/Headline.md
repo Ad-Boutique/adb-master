@@ -2,19 +2,17 @@
 
 Gruppe: Typografie
 
-Headline in zwei Stimmen: Satoshi stellt fest, Amandine kursiv antwortet.
+Headlines sind reines Satoshi Bold. Ab Display-Groesse (48 px) hat die Headline zwei Zeilen: Zeile 1 Satoshi Bold, Zeile 2 Amandine Italic in eigener Zeile, 0,88 so gross.
 
-**Regel (seit 28.9.2026):** Jede Headline hat einen Satoshi-Teil und einen Amandine-Teil. Den antwortenden Teil in `<i>` setzen, meist der letzte Satz oder die letzten Woerter.
-
-- Klassen: `adb-h` plus Groesse `adb-h--hero`, `--xl`, `--section`, `--m`, `--s`.
-- Farbe `adb-fg`. Kein Versalsatz, keine Farbe auf dem kursiven Teil.
-- Darueber optional ein `adb-label` als Eyebrow (SEO-Suchbegriff der Seite).
-- Nicht: zwei kursive Teile in einer Headline, Serife fuer ganze Absaetze.
+- `adb-h1` (Hero), `adb-h1--xl` (zentrierter Hero), `adb-display` (Sektionen, Splits): die zweite Zeile in `<i>`.
+- `adb-h2` und `adb-h3` bleiben unter 48 px und haben keine Amandine-Zeile.
+- Zeilenhoehe 1,1, normale Schreibung, keine Sperrung, nie Versal.
+- Kein Eyebrow direkt ueber einer Headline. Ein Suchbegriff fuer SEO bleibt unsichtbar im H1.
 
 ```html
-<div style="display:grid;gap:18px">
-<span class="adb-label">Digitale Marketing Agentur Wien</span>
-<h1 class="adb-h adb-h--hero">Mehr Umsatz. <i>Kein Zufall.</i></h1>
-<h2 class="adb-h adb-h--m">Drei Projekte, <i>drei Sprünge.</i></h2>
+<div style="display:grid;gap:24px">
+<h1 class="adb-h1">Mehr Umsatz. <i>Kein Zufall.</i></h1>
+<h2 class="adb-h2">Die Beweise.</h2>
+<h3 class="adb-h3">Strategie &amp; Funnel</h3>
 </div>
 ```

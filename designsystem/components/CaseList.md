@@ -2,10 +2,9 @@
 
 Gruppe: Inhalt
 
-CaseList: nummerierte Liste von Cases oder Leistungen. Die Nummer traegt einen Punkt, der beim Hover Lime wird, der Titel unterstreicht sich.
+CaseList: nummerierte Liste, die Nummer mit Punkt, der Titel als H3 unterstreicht sich beim Hover (1 px).
 
-- `adb-list` > `a.adb-list__row` mit `__num`, `__title`, `__kpi` (`.v` Zahl, `.l` Label).
-- Die Nummer zaehlt echt (01, 02, 03), weil die Liste eine Reihenfolge hat.
+- `adb-list` > `a.adb-list__row` mit `__num`, `__title`, `__kpi` (`.v` Satoshi Medium, `.l` 13 px). Linien 1 px.
 
 ```html
 <div class="adb-list">
