@@ -654,3 +654,9 @@ body.brand .kinput:focus-visible { outline: 2px solid var(--ink); outline-offset
     background: linear-gradient(to bottom, rgba(16, 16, 16, 0.6), rgba(16, 16, 16, 0)); opacity: 0; transition: opacity 0.5s ease; }
   .brand .zoomsec.zdone .zmedia::before { opacity: 1; }
 }
+/* Seit sticky am Telefon greift (body overflow-x: clip): das Zahlen-Etikett auf der Agentur-Seite bleibt oben in der Sektion,
+   ueber dem klebenden Zahlen-Band der Stationen deckt eine Papierflaeche den Streifen bis zur Fensterkante */
+@media (max-width: 860px) { body.brand .stats .sticky-l { position: relative; top: auto; } }
+@media (max-width: 900px) {
+  body.brand .tell .tfix::before { content: ""; position: absolute; left: 0; right: 0; bottom: 100%; height: 64px; background: inherit; pointer-events: none; }
+}
