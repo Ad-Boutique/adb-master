@@ -53,7 +53,12 @@ rep('''    <div class="wrap">
       </div>
       <div class="tell">''')
 
-# 4. Cases: Vergleich statt Liste
+# 4. Cases: Vergleich statt Liste (seit dem LP-Aufbau vom 15.10.2026 hat die Quelle keine Ergebnis-Liste mehr: dann entfaellt der Vergleich)
+if "  <!-- 07, CASES -->" not in h:
+    h = layout(h, OUT)
+    open(OUT, "w", encoding="utf-8").write(h)
+    print("geschrieben:", OUT, "Sektionen:", h.count("<section"), "(ohne Vergleich)")
+    raise SystemExit(0)
 start = h.index("  <!-- 07, CASES -->")
 end = h.index("  <!-- WAS KUNDEN SAGEN -->")
 more = re.search(r'<p class="morecases".*?</p>', h[start:end], re.S).group(0)

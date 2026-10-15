@@ -1047,11 +1047,11 @@ def _dhero(s):
       <div class="dh-def" data-fade>
         <p class="dh-kicker">%s [Leistung]</p>
         <p class="dh-text">%s</p>
-        <a class="alink" href="#anfrage">Direkt anfragen ↓</a>
+        <a class="btn btn--primary" href="kontakt.html?from=%s-hero">Kontaktieren Sie uns</a>
       </div>
     </div>
     <figure class="dh-photo"><img src="%s" alt="%s" width="2400" height="1371" fetchpriority="high"></figure>
-  </section>''') % (d["word"].upper(), seo, tags, d["kicker"], text, d["img"], d["alt"])
+  </section>''') % (d["word"].upper(), seo, tags, d["kicker"], text, s["slug"], d["img"], d["alt"])
 
 
 def _heronum(s):
@@ -1262,7 +1262,7 @@ def _bene(s):
         return ""
     head = "".join('<span class="rl"><span>%s</span></span>' % x for x in s.get("bene_h", ["Was Sie davon haben"]))
     cells = "\n        ".join(
-        '<div class="bcell" data-fade><div class="bt">%s</div><p class="bd">%s</p></div>' % (t, d) for t, d in b)
+        '<div class="bcell" data-fade><span class="bnum">%02d</span><div class="bt">%s</div><p class="bd">%s</p></div>' % (i + 1, t, d) for i, (t, d) in enumerate(b))
     return ('  <!-- AKT 1: THESE UND NUTZEN -->\n'
             '  <section id="nutzen" class="sec fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark">\n'
             '    <div class="wrap">\n'
@@ -1271,11 +1271,11 @@ def _bene(s):
             '          <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:16px">%s</span>\n'
             '          <h2 class="dispn" data-lines style="font-size:clamp(30px,3.6vw,58px)">%s</h2>\n'
             '        </div>\n'
-            '        <p class="serif benelead" data-scrub>%s</p>\n'
+            '        <p class="serif benelead" data-fade>%s</p>\n'
             '      </div>\n'
             '      <div class="benegrid" data-stagger>\n        %s\n      </div>\n'
             '      <p data-fade style="margin-top:clamp(36px,4vw,60px)"><a class="btn btn--primary" href="kontakt.html?from=%s-nutzen">Kontaktieren Sie uns</a></p>\n'
-            '    </div>\n  </section>\n\n') % (s.get("bene_label", "Was dabei herauskommt"), head, s["intro"], cells, s["slug"])
+            '    </div>\n  </section>\n\n') % ("6 Gründe, warum ad.boutique" if s.get("flow") == "v2" else s.get("bene_label", "Was dabei herauskommt"), head, s["intro"], cells, s["slug"])
 
 
 def _detail(s, acc):
@@ -1292,10 +1292,10 @@ def _detail(s, acc):
             '  <section class="sec fg-light bg-cream detsec" data-bg="#EFE7D6" data-fg="dark">\n'
             '    <div class="wrap">\n'
             '      <div class="dethead">\n'
-            '        <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:16px">Im Detail</span>\n'
+            '        <span class="label" style="color:var(--champ-deep);display:block;margin-bottom:16px">Die Leistung</span>\n'
             '        <h2 class="dispn" data-lines style="font-size:clamp(28px,2.8vw,44px)">'
-            '<span class="rl"><span>Was dazugehört,</span></span>'
-            '<span class="rl"><span>wenn Sie es genau wissen wollen.</span></span></h2>\n'
+            '<span class="rl"><span>Was wir konkret</span></span>'
+            '<span class="rl"><span>für Sie übernehmen.</span></span></h2>\n'
             '      </div>\n'
             '      <div class="detgrid" data-stagger>\n          ' + "\n          ".join(cells) + '\n      </div>\n'
             '    </div>\n  </section>\n\n')
@@ -1690,6 +1690,22 @@ def _more_cases(s):
     return ('      <p class="morecases" data-fade><span>Auch mit dieser Leistung</span>'
             + "".join('<a href="%s">%s</a>' % (h, t) for h, t in rest) + '</p>\n')
 
+# Feedback 15.10.2026: Platzhalter fuer den Zoom-Fall im v3-Koerper, CTA im Angebot, Weg vom Beweis-Case zu allen Projekten
+ZOOM_SLOT = "<!--ZOOM-SLOT-->"
+OFFER_CTA = '        <p data-fade style="margin-top:clamp(26px,3vw,40px)"><a class="btn btn--primary" href="kontakt.html?from=%s-angebot">Kontaktieren Sie uns</a></p>\n'
+
+
+def _moreproj(s):
+    """Nach dem einen Beweis-Case: in den Fall und zu allen Projekten (statt einer gemischten Ergebnis-Liste)."""
+    al = s["zoom"].get("alink")
+    case = ('<a class="btn btn--primary" href="%s">%s</a>' % al) if (al and al[0].startswith("case-")) else ""
+    return ('  <!-- WEITER ZUM FALL UND ZU ALLEN PROJEKTEN -->\n'
+            '  <section class="fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding:0 0 var(--sec-s)">\n'
+            '    <div class="wrap moreproj" data-fade>\n'
+            '      %s<a class="btn btn--soft-cream" href="work.html">Alle Projekte ansehen →</a>\n'
+            '    </div>\n  </section>\n\n') % case
+
+
 def render_service(s):
     aside_pos = "left:clamp(24px,6vw,110px)" if s["zoom"]["side"] == "right" else "right:clamp(24px,6vw,110px)"
     tags = "\n        ".join("<span>%s</span>" % t for t in s["tags"])
@@ -1930,12 +1946,15 @@ def render_service(s):
         after_mid = next_sec + (_detail(s, acc) if s.get("v2_content") else "") + faq_sec
     else:
         after_mid = faq_sec + next_sec
-    page = HEAD.format(title=s["nav"], bodybg="#F3EDE1") + menu("index.html#leistungen") + '''<main class="apl">
-''' + _chapnav(s) + '''
-
-  <!-- 01, HERO (Woerterbuch-Stil, Kundenfreigabe 3.10.2026) -->
-''' + _dhero(s) + (("\n" + logos_sec) if v2 else "") + '''
-''' + sol_sec + '''  <!-- 05, PROOF 1: ZOOM -->
+    v3_body = ""
+    if v2:
+        # Loesung: Prozessgrafik, Sujets (nur Telefone, keine Mandatsbilder ohne Kontext), Leistung im Detail;
+        # die Content-Wand nur auf der Content-Seite (dort sind Beispiele der Beweis, C1)
+        vis = visual if vkind == "phones" else ""
+        wall_v3 = content_sec if s["slug"] == "service-content-creation" else ""
+        v3_body = (_problem(s) + _pmap(s) + vis + (_detail(s, acc) if s.get("v2_content") else "") + wall_v3 + _bene(s)
+                   + ZOOM_SLOT + proof_head + tell_sec + _moreproj(s) + voice_sec + next_sec)
+    zoom_sec = '''  <!-- 05, PROOF 1: ZOOM -->
   <section class="zoomsec" data-side="''' + z["side"] + '''" data-bg="#F3EDE1" data-fg="dark">
     <div class="zsticky">
       <div class="zaside fg-light" style="''' + aside_pos + '''">
@@ -1952,7 +1971,8 @@ def render_service(s):
     </div>
   </section>
 
-''' + mid_sec + after_mid + '''  <!-- 09, NO-BRAINER + RISIKOUMKEHR -->
+'''
+    offer_sec = '''  <!-- 09, NO-BRAINER + RISIKOUMKEHR -->
   <section class="sec fg-light bg-cream" data-bg="#EFE7D6" data-fg="dark">
     <div class="wrap lchap">
       <div>
@@ -1967,7 +1987,8 @@ def render_service(s):
     </div>
   </section>
 
-  <!-- 10, CTA: ANFRAGE-MECHANIK -->
+'''
+    anfrage_sec = '''  <!-- 10, CTA: ANFRAGE-MECHANIK -->
   <section id="anfrage" class="sec fg-light bg-cream help" data-bg="#EFE7D6" data-fg="dark" style="padding-top:0">
     <div class="wrap">
       <h2 data-lines>
@@ -1987,7 +2008,19 @@ def render_service(s):
     </div>
   </section>
 
-''' + FOOTER
+'''
+    head = HEAD.format(title=s["nav"], bodybg="#F3EDE1") + menu("index.html#leistungen") + '''<main class="apl">
+''' + _chapnav(s) + '''
+
+  <!-- 01, HERO (Woerterbuch-Stil, Kundenfreigabe 3.10.2026) -->
+''' + _dhero(s) + "\n"
+    if v2:
+        # Klassischer LP-Aufbau (Feedback 15.10.2026): Hero, Social Proof, Problem, Loesung, 6 Gruende,
+        # Beweis an EINEM Case plus Kundenstimme, Ablauf, Angebot, Team, FAQ, finaler CTA.
+        page = (head + logos_sec + v3_body.replace(ZOOM_SLOT, zoom_sec) + offer_sec.replace("      </div>\n    </div>\n  </section>\n", OFFER_CTA % s["slug"] + "      </div>\n    </div>\n  </section>\n", 1)
+                + crew_sec + faq_sec + anfrage_sec + FOOTER)
+    else:
+        page = head + sol_sec + zoom_sec + mid_sec + after_mid + offer_sec + anfrage_sec + FOOTER
     return page
 
 if __name__ == "__main__":

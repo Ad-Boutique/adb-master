@@ -634,3 +634,7 @@ body.brand a:focus-visible, body.brand button:not(.btn):focus-visible, body.bran
 body.brand .kinput:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 /* Kontakt: Schrittnamen, Hinweis und Platzhalter in Schwarz 64 % statt 50 % (Kontrast etwa 5,4 : 1 statt 3,5 : 1 auf Cream) */
 .brand .kprog .kp:not(.on):not(.done), .brand .knav .khint, .brand .ksumbody .kempty { color: var(--ink-a64); }
+
+/* Service-Seiten im LP-Aufbau (Feedback 15.10.2026): Nummer je Grund, Buttons nach dem Beweis-Case */
+.brand .benegrid .bcell .bnum { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; color: var(--champ-deep); margin-bottom: 12px; font-variant-numeric: tabular-nums; }
+.brand .moreproj { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
