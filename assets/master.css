@@ -27,7 +27,8 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.9s ease;
-  overflow-x: hidden;
+  /* clip statt hidden: macht body nicht zum Scroll-Container, sonst greift sticky am Telefon nicht (html hat dort overflow-x: clip) */
+  overflow-x: hidden; overflow-x: clip;
 }
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; text-decoration: none; }

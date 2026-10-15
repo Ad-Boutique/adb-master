@@ -638,3 +638,19 @@ body.brand .kinput:focus-visible { outline: 2px solid var(--ink); outline-offset
 /* Service-Seiten im LP-Aufbau (Feedback 15.10.2026): Nummer je Grund, Buttons nach dem Beweis-Case */
 .brand .benegrid .bcell .bnum { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; color: var(--champ-deep); margin-bottom: 12px; font-variant-numeric: tabular-nums; }
 .brand .moreproj { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+/* Zoom-Unterschrift auch auf hellen Screenshots lesbar: Verlauf unter der Zeile, am Telefon eine dunkle Plakette */
+.brand .zoomsec .zmedia::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 45%; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(16, 16, 16, 0), rgba(16, 16, 16, 0.6)); opacity: 0; transition: opacity 0.5s ease; }
+.brand .zoomsec.zdone .zmedia::after { opacity: 1; }
+@media (max-width: 860px) {
+  .brand .zoomsec .zcap { right: clamp(20px, 5vw, 34px); bottom: calc(var(--mbtn-bottom) + var(--mbtn-size) + 14px); background: rgba(16, 16, 16, 0.78); color: var(--paper); text-shadow: none; padding: 14px 16px; border-radius: 12px; }
+  .brand .zoomsec .zcap .zt { font-size: clamp(20px, 5.6vw, 26px); }
+}
+/* Kundenstimme und Ablauf sind beide dunkel: eine feine Linie trennt sie */
+.brand section[data-bg="#0E0E10"] + section.nextsec { border-top: 1px solid rgba(244, 243, 235, 0.14); }
+/* Vollbild-Zoom am Desktop: dunkler Schleier oben, damit die Kopfzeile auf hellen Screenshots lesbar bleibt */
+@media (min-width: 861px) {
+  .brand .zoomsec .zmedia::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 150px; z-index: 1; pointer-events: none;
+    background: linear-gradient(to bottom, rgba(16, 16, 16, 0.6), rgba(16, 16, 16, 0)); opacity: 0; transition: opacity 0.5s ease; }
+  .brand .zoomsec.zdone .zmedia::before { opacity: 1; }
+}

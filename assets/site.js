@@ -1264,7 +1264,7 @@
     var h = el ? +(el.getAttribute("height") || el.naturalHeight || el.videoHeight || 0) : 0;
     var vid = m ? m.querySelector("video[data-scrub]") : null;
     if (vid) { vid.pause(); vid.muted = true; }
-    return { sec: sec, media: m, side: sec.getAttribute("data-side") || "right",
+    return { sec: sec, media: m, aside: sec.querySelector(".zaside"), side: sec.getAttribute("data-side") || "right",
              ar: (w && h) ? h / w : 0.63, vid: vid };
   });
   function easeZ(t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
@@ -1286,10 +1286,16 @@
         var wp = (76 + 24 * e) / 100 * window.innerWidth;
         var hp = Math.min(wp * z.ar, vh * 0.6);
         wp = Math.min(wp, hp / z.ar);
+        /* die Karte beginnt erst unter dem Text samt Link (langer Text darf den Button nicht verdecken) */
+        var top = vh * 0.68 - hp / 2, minTop = z.aside ? z.aside.offsetTop + z.aside.offsetHeight + 20 : 0;
+        if (top < minTop) {
+          top = minTop;
+          if (top + hp > vh - 16) { hp = Math.max(vh * 0.22, vh - 16 - top); wp = Math.min(wp, hp / z.ar); }
+        }
         z.media.style.width = wp + "px";
         z.media.style.height = hp + "px";
         z.media.style.left = ((window.innerWidth - wp) / 2) + "px";
-        z.media.style.top = (vh * 0.68 - hp / 2) + "px";
+        z.media.style.top = top + "px";
         z.media.style.borderRadius = (3 * (1 - e)) + "px";
         z.sec.classList.toggle("zdone", p > 0.82);
         return;
