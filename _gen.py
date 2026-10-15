@@ -17,9 +17,9 @@ HEAD = '''<!doctype html>
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="preconnect" href="https://p.typekit.net" crossorigin>
 <link rel="preload" href="assets/fonts/Satoshi-Variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/site.css?v=63786759">
+<link rel="stylesheet" href="assets/site.css?v=16328176">
 <link rel="stylesheet" href="https://use.typekit.net/udf8wjj.css">
-<script src="assets/site.js?v=63786759" defer></script>
+<script src="assets/site.js?v=16328176" defer></script>
 </head>
 <body style="background-color:{bodybg}" class="on-light brand">
 

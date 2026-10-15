@@ -643,7 +643,7 @@ body.brand .kinput:focus-visible { outline: 2px solid var(--ink); outline-offset
   background: linear-gradient(to bottom, rgba(16, 16, 16, 0), rgba(16, 16, 16, 0.6)); opacity: 0; transition: opacity 0.5s ease; }
 .brand .zoomsec.zdone .zmedia::after { opacity: 1; }
 @media (max-width: 860px) {
-  .brand .zoomsec .zcap { right: clamp(20px, 5vw, 34px); bottom: calc(var(--mbtn-bottom) + var(--mbtn-size) + 14px); background: rgba(16, 16, 16, 0.78); color: var(--paper); text-shadow: none; padding: 14px 16px; border-radius: 12px; }
+  body.brand .zoomsec .zcap { right: clamp(20px, 5vw, 34px); bottom: calc(var(--mbtn-bottom) + var(--mbtn-size) + 14px); background: rgba(16, 16, 16, 0.78); color: var(--paper); text-shadow: none; padding: 14px 16px; border-radius: 12px; }
   .brand .zoomsec .zcap .zt { font-size: clamp(20px, 5.6vw, 26px); }
 }
 /* Kundenstimme und Ablauf sind beide dunkel: eine feine Linie trennt sie */
