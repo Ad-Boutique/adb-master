@@ -186,6 +186,8 @@
     var mv = q.match(/[?&]cv=(\d)/), variant = mv ? parseInt(mv[1], 10) : COACH_DEFAULT;
     var mb = document.querySelector(".mbtn"), sheet = document.querySelector(".msheet");
     if (!mb || !sheet || body.classList.contains("menuopen")) return;
+    /* der Kreis ist ein Kontakt-Link (kein Menue-Knopf mehr): nichts zu erklaeren */
+    if (mb.tagName !== "BUTTON") return;
     /* offenes Einwilligungs-Banner (master.js): der Coach wartet, bis entschieden ist */
     if (window.ADB_CONSENT_OPEN) { document.addEventListener("adbconsent", function () { setTimeout(coach, M.slow); }, { once: true }); return; }
     /* Sperre je Browser, versioniert: wer eine aeltere Choreografie gesehen hat, sieht die aktuelle einmal */
@@ -379,15 +381,20 @@
     if (document.querySelector(".fbtn, .bbtn")) { document.addEventListener("click", function () { setTimeout(mark, 0); }); mark(); }
   })();
 
-  /* ---------- Kopfzeile: gelernter Menue-Knopf rechts neben Kontakt, klickt den Punkt ---------- */
+  /* ---------- Kopfzeile: Menue-Knopf rechts neben der Navigation (mobil sichtbar, brand-ui.css), oeffnet das Sheet.
+     Der Kreis unten ist seit 15.10.2026 der Kontakt-Link, das Menue haengt nicht mehr an ihm. ---------- */
   (function () {
-    var chrome = document.querySelector(".chrome"), ctc = chrome && chrome.querySelector(".ctc"), mb = document.querySelector(".mbtn");
-    if (!chrome || !ctc || !mb) return;
+    var chrome = document.querySelector(".chrome"), nav = chrome && (chrome.querySelector(".hnav") || chrome.querySelector(".ctc"));
+    if (!chrome || !nav || !document.querySelector(".msheet")) return;
     var wrap = document.createElement("div"); wrap.className = "chr";
     var btn = document.createElement("button"); btn.className = "hmenu"; btn.type = "button"; btn.setAttribute("aria-label", "Menü öffnen");
     btn.innerHTML = '<i aria-hidden="true"></i><span class="hm-open">Menü</span><span class="hm-close">Schließen</span>';
-    btn.addEventListener("click", function () { mb.click(); });
-    ctc.parentNode.insertBefore(wrap, ctc); wrap.appendChild(ctc); wrap.appendChild(btn);
+    btn.addEventListener("click", function () {
+      if (window.ADB_MENUIMG) window.ADB_MENUIMG();
+      body.classList.remove("filteropen"); body.classList.remove("branchopen");
+      body.classList.toggle("menuopen");
+    });
+    nav.parentNode.insertBefore(wrap, nav); wrap.appendChild(nav); wrap.appendChild(btn);
   })();
 
   window.ADB_LEAVE = function (pt, href) {
@@ -908,7 +915,7 @@
       var r = el.getBoundingClientRect(); if (!r.width) return;
       var my = r.top + r.height / 2, seen = { light: 0, dark: 0, photo: 0 };
       [r.left + 2, r.left + r.width / 2, r.right - 2].forEach(function (x) { seen[under(Math.max(1, x), Math.max(1, my))]++; });
-      var st = seen.photo ? "photo" : (seen.dark >= 2 ? "dark" : (seen.light >= 2 ? "light" : "dark"));
+      var st = seen.photo >= 2 ? "photo" : (seen.dark >= 2 ? "dark" : (seen.light >= 2 ? "light" : "dark"));
       if (el.getAttribute("data-ug") !== st) el.setAttribute("data-ug", st);
     });
   }
@@ -1064,6 +1071,8 @@
      Browser-Cache stellt die Seite mit geschlossener Blende wieder her; und wenn nach dem
      Klick kein Seitenwechsel passiert ist, geht die Blende wieder auf. */
   window.addEventListener("pageshow", function (e) {
+    /* auch das Vollbild der Kachel-Expansion (.flipx/.flipbg) wuerde sonst ueber der Seite liegen bleiben */
+    if (e.persisted) document.querySelectorAll(".flipx, .flipbg").forEach(function (n) { n.remove(); });
     if (e.persisted && pt) {
       pt.style.transition = "none";
       pt.classList.remove("enter", "cover");
@@ -1111,7 +1120,8 @@
   window.ADB_MENUIMG = loadMenuImgs;
   function toggleMenu() { loadMenuImgs(); document.body.classList.toggle("menuopen"); }
   function closeMenu() { document.body.classList.remove("menuopen"); }
-  if (mbtn) mbtn.addEventListener("click", function () {
+  /* nur der alte Kreis als Knopf oeffnet das Menue; als Link (Kontakt) navigiert er */
+  if (mbtn && mbtn.tagName === "BUTTON") mbtn.addEventListener("click", function () {
     document.body.classList.remove("filteropen");
     toggleMenu();
   });
@@ -1130,7 +1140,7 @@
     var syncMenuA11y = function () {
       var open = document.body.classList.contains("menuopen");
       if (open) msheet.removeAttribute("inert"); else msheet.setAttribute("inert", "");
-      document.querySelectorAll(".mbtn, .chrome .hmenu").forEach(function (b) {
+      document.querySelectorAll("button.mbtn, .chrome .hmenu").forEach(function (b) {
         b.setAttribute("aria-controls", msheet.id);
         b.setAttribute("aria-expanded", open ? "true" : "false");
         b.setAttribute("aria-label", open ? "Menü schließen" : "Menü öffnen");
@@ -1388,7 +1398,7 @@
       if (!picked.length) return;
       var slug = (location.pathname.split("/").pop() || "index.html").replace(/\.html$/, "");
       /* Ziel aus dem Kontakt-Link der Kopfzeile: live schreibt _seo.py ihn auf /kontakt um (saubere Pfade) */
-      var ctcEl = document.querySelector(".chrome .ctc"), kurl = (ctcEl && ctcEl.getAttribute("href")) || "kontakt.html";
+      var ctcEl = document.querySelector('.chrome .ctc[href*="kontakt"]'), kurl = (ctcEl && ctcEl.getAttribute("href")) || "kontakt.html";
       location.href = kurl + "?w=" + encodeURIComponent(picked.join(",")) +
                       "&from=" + encodeURIComponent(slug);
     });
@@ -1471,6 +1481,20 @@
     });
     window.addEventListener("pointerup", function () { down = false; });
     row.addEventListener("click", function (e) { if (mv > 6) { e.preventDefault(); e.stopPropagation(); } }, true);
+    /* Pfeile im Kopf der Sektion: eine Kartenbreite weiter, am Rand ausgegraut */
+    var sec = row.closest("section"), arrs = sec ? sec.querySelectorAll(".svarr") : [];
+    if (!arrs.length) return;
+    function step() { var c = row.querySelector(".svcard"); return c ? c.getBoundingClientRect().width + parseFloat(getComputedStyle(row).columnGap || 0) : row.clientWidth * 0.8; }
+    function edge() {
+      var max = row.scrollWidth - row.clientWidth - 2;
+      arrs.forEach(function (b) { b.disabled = (+b.getAttribute("data-dir") < 0) ? row.scrollLeft <= 2 : row.scrollLeft >= max; });
+    }
+    arrs.forEach(function (b) {
+      b.addEventListener("click", function () { row.scrollBy({ left: +b.getAttribute("data-dir") * step(), behavior: reduced ? "auto" : "smooth" }); });
+    });
+    row.addEventListener("scroll", edge, { passive: true });
+    window.addEventListener("resize", edge);
+    edge();
   });
 
 

@@ -361,7 +361,7 @@ body.brand .mbtn {
   background: var(--lime); border: 1px solid var(--ink); box-shadow: var(--sh-soft);
 }
 body.brand .mbtn::before {
-  content: "Menü"; font-size: calc(var(--mbtn-size) * 0.17); font-weight: 500;
+  content: "Kontakt"; font-size: calc(var(--mbtn-size) * 0.17); font-weight: 500;
  line-height: 1; color: var(--ink);
   display: flex; align-items: center; justify-content: center; text-align: center; padding: 0;
 }
@@ -416,6 +416,24 @@ body.brand:has(.bpop .fchip.on:not([data-branche="alle"])) .bbtn { box-shadow: v
  font-size: var(--fs-ui); font-weight: 500; line-height: var(--lh-ui); opacity: 1;
 }
 @media (max-width: 520px) { .brand .chrome .ctc, .brand .chrome .hmenu { font-size: var(--fs-ui); } }
+/* Navigation oben (Feedback 15.10.2026): Desktop Leistungen, Projekte, Ueber uns und Kontakt als Pille,
+   mobil nur Kontakt und Menue (das Sheet). Farbe folgt den .ctc-Regeln (Untergrund-Messung brand.js). */
+.brand .chrome .hnav { display: flex; align-items: center; gap: clamp(18px, 2.2vw, 34px); pointer-events: auto; }
+.brand .chrome .hnav .ctc:not(.hnl) { border: 1px solid currentColor; border-radius: var(--r-round); padding: 7px 16px; margin: -8px 0; }
+.brand .chrome .hnl { position: relative; }
+.brand .chrome .hnl::after { content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform var(--d-fast) var(--e-out); }
+.brand .chrome .hnl:hover::after, .brand .chrome .hnl:focus-visible::after, .brand .chrome .hnl[aria-current]::after { transform: scaleX(1); }
+@media (min-width: 901px) { .brand .chrome .hmenu { display: none; } }
+@media (max-width: 900px) { .brand .chrome .hnl { display: none; } }
+/* Kontakt-Kreis: Wort statt "Menü"; bei offenem Menue und auf der Kontaktseite selbst ausgeblendet (Masse bleiben fuer brand.js) */
+body.brand.menuopen .mbtn { opacity: 0; pointer-events: none; }
+body.brand:has(#kname) .mbtn { opacity: 0; pointer-events: none; }
+/* offenes Menue: die Kopfzeile mit "Schliessen" liegt ueber Abdunklung und Sheet (der Kreis schliesst nicht mehr) */
+body.brand.menuopen .chrome { z-index: calc(var(--z-msheet) + 1); }
+/* Hero-Buttons mit laengeren Labels: auf dem Telefon untereinander statt aus dem Bild */
+@media (max-width: 520px) { .brand .hpitch .hbtns { flex-wrap: wrap; justify-content: center; } }
+/* Text der Content-Sektion bleibt ueber den treibenden Telefonen */
+.brand .phonesec .phtxt { z-index: 2; }
 
 /* ============================================================
    7  Karten. Service Card (84:45): 1 px Rand Schwarz, Radius 16 (Token --r-img), Padding 32, Gap 16.

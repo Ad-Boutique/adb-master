@@ -282,7 +282,7 @@ SERVICES = [
   proof_nums=[],
   proof_quote="Konstanz über Regionen und Projekte zeigt: Das Motiv trägt, nicht der Zufall. Niedrige CPL kommt aus Disziplin, nicht aus Glück.",
   visual=("phones", dict(h=["Creatives,", "die im Feed bestehen."], t="Gebaut für den Daumen: Sujets aus laufenden Kampagnen, getestet gegen echte Benchmarks, nicht gegen Geschmack.",
-                          phones=["assets/case/case-premium-neubau/v0.mp4", "assets/case/case-crowdinvesting/v0.mp4", "assets/case/grandgarden/v0.mp4", "assets/case/case-premium-neubau/v1.mp4", "assets/case/herogroup/v0.mp4", "assets/case/case-immobilien-investment/v0.mp4"])),
+                          phones=["assets/case/case-premium-neubau/v0.mp4", "assets/case/case-crowdinvesting/v0.mp4", "assets/case/case-premium-neubau/v1.mp4", "assets/case/herogroup/v0.mp4"])),
   crew=dict(label="Wer daran arbeitet",
             h=["Vier Rollen,", "die am Ergebnis hängen."],
             t="Kein Ticketsystem, kein Junior am Konto. Wer Ihre Kampagne baut, sitzt auch im Call, in dem sie erklärt wird.",
@@ -299,7 +299,7 @@ SERVICES = [
   oplist=[("case-premium-neubau.html", "Premium-Neubau, Wien", "489", "Leads, € 11,77 CPL, Wellen unter € 5"),
           ("case-bautraeger-portfolio.html", "Bauträger-Portfolio, Wien", "€ 5,93", "CPL im zweiten Quartal, 546 Anfragen aus zwei Projekten"),
           ("case-wohnbau-floridsdorf.html", "Wohnbau, Floridsdorf", "460", "Leads, € 12,77 CPL, dann Pivot auf Qualität"),
-          ("case-crowdinvesting.html", "Crowdinvesting-Plattform", "18,7", "ROAS in der zweiten POC-Phase, vorher 2,14"),
+          ("case-crowdinvesting.html", "Crowdinvesting-Plattform", "8,75", "ROAS bei nahezu gleichem Budget, vorher 2,14"),
           ("case-health-brand.html", "Dental-/Health-Marke", "1.385", "Verkäufe, Ziel-Gap offen reportet"),
           ("case-nordic-spirit.html", "Nordic Spirit, JTI", "23.579", "Abschlüsse in zwölf Monaten, € 11,70 je Abschluss")],
   faq=[("Unsere Zielgruppe ist zu speziell für Performance.", "Das hören wir oft, auch von Investoren-Funnels und Premium-Neubau. Genau dort entscheidet die Botschaft je Zielgruppe: Bei Anlegern schlug der Service-Angle die Nachhaltigkeits-Story um das 2,3-Fache."),
@@ -426,7 +426,7 @@ SERVICES = [
   trust=["Kein Vertrag für den Erstdreh", "Material bleibt bei Ihnen", "Nutzungsrechte unbefristet"],
   proof_quote="Der größte Hebel war das Creative, nicht das Budget. Das gilt in Commerce, Real Estate und Health gleichermaßen.",
   visual=("phones", dict(h=["Gebaut", "für den Daumen."], t="Sujets aus laufenden Mandaten: Gastro, Event, Immobilie, Produkt. Immer mit Hook, immer messbar.",
-                          phones=["assets/case/kommunalkredit/v0.mp4", "assets/case/juwel/v0.mp4", "assets/case/case-health-brand/v1.mp4", "assets/case/kommunalkredit/v1.mp4", "assets/case/juwel/v1.mp4", "assets/case/case-health-brand/v2.mp4"])),
+                          phones=["assets/case/juwel/v0.mp4", "assets/case/case-health-brand/v1.mp4", "assets/case/grandgarden/v0.mp4", "assets/case/juwel/v1.mp4", "assets/case/case-health-brand/v2.mp4", "assets/case/kommunalkredit/v1.mp4"])),
   logos=["isi", "looops", "juwel", "nordicspirit", "jti", "ilbosso", "kaisers", "funkhaus"],
   oplist=[("case-health-brand.html", "Dental-/Health-Marke", "−58 %", "CPA durch Creator statt Produktvideo"),
           ("case-premium-neubau.html", "Premium-Neubau, Wien", "54 %", "aller Leads aus einem Motiv"),
@@ -622,9 +622,9 @@ SERVICES = [
         ("Anders als üblich", "Vertrauen als Funnel-Stufe", "Im Finance zählt der Cost per zugerechnetem Kapital, nicht der CPL: Aufklärung, Vertrauen, Handlung.", "assets/img/retreat-06.jpg"),
         ("Anders als üblich", "Ehrliches Schließen", "Ein bestehender Paid-Kanal wurde erst messbar gemacht, dann an der Hypothese geprüft, dann geschlossen, während der zurechenbare Kanal parallel wuchs. Genau dafür ist Struktur da.", "assets/img/ag_board1.jpg")],
   zoom=dict(img="assets/img/ag_meeting.jpg", side="left", al="Ein Fall",
-            ah=["Erst die Struktur.", "Dann das Budget."],
-            alink=("case-crowdinvesting.html", "Den Fall im Detail"), aside="Erst die Struktur, dann das Budget: Strategie-Session in Wien.",
-            zl="Strategie & Funnel", zt="€ 36k Budget wurden € 4,65 Mio. Kapital."),
+            ah=["Ein Kunde.", "Eine gemeinsame Strategie."],
+            alink=("case-crowdinvesting.html", "Den Fall im Detail"), aside="Sehen Sie hier, wie wir mit einem Kunden die Strategie festgelegt haben und zusammen Erfolg hatten.",
+            zl="Crowdinvesting-Plattform", zt="ROAS 2,14 → 8,75 bei nahezu gleichem Budget."),
   proof_h=["Ein Mandat.", "Von der Struktur zur Zahl."],
   proof_lead="Ein Immobilien-Investment-Mandat, Stufe für Stufe: das eingesetzte Budget, die Struktur, die Zurechnung, das eingesammelte Kapital.",
   proof_nums=[],
@@ -635,10 +635,10 @@ SERVICES = [
     steps=[
       ("€ 36k", "Mediabudget über die Laufzeit", "Das Budget",
        "Für ein Investment-Mandat ist das kein großer Hebel, sondern ein kleiner. Genau deshalb musste die Reihenfolge stimmen."),
-      ("3", "Stufen statt Einzelkampagnen", "Die Struktur",
-       "Nicht mehr Kampagnen, sondern eine Reihenfolge: Aufmerksamkeit, Vertrauen, Termin. Jede Stufe mit eigener Botschaft je Zielgruppe."),
-      ("2,3×", "Vorsprung des stärkeren Angles", "Die Zurechnung",
-       "Bei Anlegern schlug der Service-Angle die Nachhaltigkeits-Story um das 2,3-Fache. Gemessen, nicht vermutet."),
+      ("80 %", "Online-Anteil der Anfragen 2024", "Die Struktur",
+       "Ein Funnel, der Vertrauen Schritt für Schritt aufbaut, von der Aufklärung bis zur Zeichnung. Vier von fünf Anfragen kamen 2024 online, je Anfrage um 19 Prozent günstiger als 2023."),
+      ("€ 3.004", "Kosten je Investor im Google-Kanal", "Die Zurechnung",
+       "€ 36k Google-Budget, 12 Zeichnungen, jede sauber auf die Kampagne zugerechnet. Über den gesamten Funnel: 446 Leads, 43 Zeichnungen."),
       ("129×", "Return, sauber zugerechnet", "Das Kapital",
        "€ 4,65 Mio. eingesammeltes Kapital, auf die Kampagne zugerechnet. Das ist ein Return von 129 zu 1."),
     ]),
@@ -692,10 +692,10 @@ SERVICES = [
            "Auf Wunsch die Umsetzung mit derselben Hand"],
   trust=["Kein Vertrag für die Session", "Ergebnis bleibt bei Ihnen", "Umsetzung optional"],
   proof_quote="Gleicher Spend, anderes Ergebnis: Der Beweis liegt im Vorher-Nachher. Struktur schlägt Einzelkampagne.",
-  visual=("stage", dict(img="assets/case/case-web-northpoint/d0.jpg", cap="Aus dem Mandat, Auftritt mit Funnel-Logik")),
+  visual=("none", {}),
   logos=["ifa", "conda", "raiffeisen", "soravia", "fabrik1230", "hagent", "winegg", "buxbaum"],
   oplist=[("case-immobilien-investment.html", "Immobilien-Investment", "129×", "€ 36k → € 4,65 Mio. Kapital"),
-          ("case-crowdinvesting.html", "Crowdinvesting-Plattform", "18,7", "ROAS nach Umbau auf Plattform-Logik, vorher 2,14"),
+          ("case-crowdinvesting.html", "Crowdinvesting-Plattform", "8,75", "ROAS bei nahezu gleichem Budget, vorher 2,14"),
           ("case-consumer-brand.html", "Premium-Consumer-Brand", "4,02", "Saison als Architektur"),
           ("case-health-brand.html", "Dental-/Health-Marke", "3", "Zielstufen aus einem Workshop: 1,4, 1,6, 1,8")],
   faq=[("Brauchen wir wirklich Strategie, oder einfach bessere Ads?", "Wenn die Struktur steht, reichen oft bessere Ads. Wenn nicht, verbrennt auch das beste Creative Budget: ROAS 2,14 wurde erst durch Struktur zu 8,75."),
@@ -1274,7 +1274,8 @@ def _bene(s):
             '        <p class="serif benelead" data-scrub>%s</p>\n'
             '      </div>\n'
             '      <div class="benegrid" data-stagger>\n        %s\n      </div>\n'
-            '    </div>\n  </section>\n\n') % (s.get("bene_label", "Was dabei herauskommt"), head, s["intro"], cells)
+            '      <p data-fade style="margin-top:clamp(36px,4vw,60px)"><a class="btn btn--primary" href="kontakt.html?from=%s-nutzen">Kontaktieren Sie uns</a></p>\n'
+            '    </div>\n  </section>\n\n') % (s.get("bene_label", "Was dabei herauskommt"), head, s["intro"], cells, s["slug"])
 
 
 def _detail(s, acc):
@@ -1624,6 +1625,7 @@ def _crew(s):
             '      <div class="pgrid pgrid--role" data-stagger>\n'
             '        %s\n'
             '      </div>\n'
+            '      <p data-fade style="margin-top:clamp(30px,3.4vw,50px)"><a class="btn btn--soft-cream" href="agentur.html">Mehr über uns →</a></p>\n'
             '    </div>\n'
             '  </section>\n\n') % (c["label"], head, c["t"], cells)
 
@@ -1789,6 +1791,8 @@ def render_service(s):
   </section>
 
 ''' % (phh_lines, vd["t"], _pc(colA, "0.14"), _pc(colB, "0.24"))
+    elif vkind == "none":
+        visual = ""
     else:
         visual = '''  <!-- PROOF, STAGE -->
   <section class="fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding: 0 0 clamp(110px,14vw,200px)">
@@ -1825,7 +1829,7 @@ def render_service(s):
     logos_sec = ("""  <!-- LOGOS: zentriert, 2x4, flaechig -->
   <section class="fg-light bg-paper" data-bg="#F3EDE1" data-fg="dark" style="padding: clamp(70px,9vw,130px) 0">
     <div class="wrap">
-      <span class="label" style="color:var(--grey-dark);display:block;text-align:center;margin-bottom:clamp(30px,4vw,50px)">Marken, mit denen wir in diesem Feld arbeiten</span>
+      <div class="whead whead--c"><h2 class="disp" data-lines><span class="rl"><span>Kunden,</span></span><span class="rl"><span><i class="hs">die uns vertrauen.</i></span></span></h2></div>
       <div class="logocycle logogrid" data-fade>
         """ + logos + """
       </div>
@@ -1905,7 +1909,7 @@ def render_service(s):
         # zeigt das Laufband schon dieselben Studiobilder, dort waere es eine Wiederholung.
         content_v2 = content_sec if s.get("v2_content") else ""
         mid_sec = (visual + content_v2 + proof_head + tell_sec + kpi_sec + _dotsec(s) + cases_sec
-                   + voice_sec + crew_sec + logos_sec + fit_sec)
+                   + voice_sec + crew_sec + fit_sec)
     else:
         mid_sec = (proof_head + tell_sec + kpi_sec + content_before + proofsplit_sec + visual + wall_sec
                    + crew_sec + voice_sec + cases_sec + logos_sec + content_after + fit_sec)
@@ -1930,7 +1934,7 @@ def render_service(s):
 ''' + _chapnav(s) + '''
 
   <!-- 01, HERO (Woerterbuch-Stil, Kundenfreigabe 3.10.2026) -->
-''' + _dhero(s) + '''
+''' + _dhero(s) + (("\n" + logos_sec) if v2 else "") + '''
 ''' + sol_sec + '''  <!-- 05, PROOF 1: ZOOM -->
   <section class="zoomsec" data-side="''' + z["side"] + '''" data-bg="#F3EDE1" data-fg="dark">
     <div class="zsticky">

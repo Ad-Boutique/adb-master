@@ -24,9 +24,9 @@
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="preconnect" href="https://p.typekit.net" crossorigin>
 <link rel="preload" href="assets/fonts/Satoshi-Variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/site.css?v=41326722">
+<link rel="stylesheet" href="assets/site.css?v=13968933">
 <link rel="stylesheet" href="https://use.typekit.net/udf8wjj.css">
-<script src="assets/site.js?v=41326722" defer></script>
+<script src="assets/site.js?v=13968933" defer></script>
 </head>
 <body style="background-color:#101010" class="on-light brand">
 <a class="skip" href="#inhalt">Zum Inhalt</a>
@@ -35,7 +35,12 @@
 
 <header class="chrome">
   <a href="index.html" class="logo">ad<i>.</i>boutique</a>
-  <a href="kontakt.html" class="ctc">Kontakt</a>
+  <nav class="hnav" aria-label="Hauptnavigation">
+    <a class="ctc hnl" href="index.html#leistungen">Leistungen</a>
+    <a class="ctc hnl" href="work.html" aria-current="page">Projekte</a>
+    <a class="ctc hnl" href="agentur.html">Über uns</a>
+    <a class="ctc" href="kontakt.html">Kontakt</a>
+  </nav>
 </header>
 
 <a class="bkbtn" href="work.html" aria-label="Zurück zur Übersicht"><span class="bkar">&#8592;</span></a>
@@ -43,25 +48,19 @@
   <defs><path id="bkpath" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs>
   <text><textPath href="#bkpath" startOffset="2%">Übersicht</textPath></text>
 </svg>
-<button class="mbtn" aria-label="Menü öffnen"></button>
-<svg class="morbit" viewBox="0 0 124 124" aria-hidden="true">
-  <defs><path id="mpath" d="M62,62 m-48,0 a48,48 0 1,1 96,0 a48,48 0 1,1 -96,0"/></defs>
-  <text class="t-open"><textPath href="#mpath" startOffset="2%">Menü</textPath></text>
-  <text class="t-close"><textPath href="#mpath" startOffset="2%">Schließen</textPath></text>
-</svg>
+<a class="mbtn" href="kontakt.html" aria-label="Kontakt aufnehmen"></a>
 <div class="mdim"></div>
 <nav class="msheet" aria-label="Hauptmenü">
   <div class="mrow">
-    <a class="mitem" href="index.html">
-      <span class="mt">Start</span>
-      <span class="mthumb"><span class="mv">
-        <span class="half-d"><img loading="lazy" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="assets/img/menu/funkhaus.webp" alt="" width="300" height="375"></span>
-        <span class="half-p"></span>
-        <span class="bars" style="left:56%;top:26%;width:34%"><i style="width:92%"></i><i style="width:76%"></i><i style="width:84%"></i><i style="width:30%;height:8px;margin-top:5px"></i></span>
+    <a class="mitem" href="index.html#leistungen">
+      <span class="mt">Leistungen</span>
+      <span class="mthumb"><span class="mv" style="background:#F4F3EB">
+        <span class="bars" style="left:8%;top:22%;width:40%"><i style="width:95%;height:9px"></i><i style="width:70%;height:9px"></i><i style="width:50%;margin-top:6px"></i><i style="width:26%;height:10px;margin-top:8px"></i></span>
+        <img loading="lazy" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="assets/img/menu/isi.webp" alt="" style="position:absolute;right:6%;top:18%;width:36%;height:64%;border-radius:2px" width="300" height="169">
       </span></span>
     </a>
     <a class="mitem act" href="work.html">
-      <span class="mt">Work</span>
+      <span class="mt">Projekte</span>
       <span class="mthumb"><span class="mv">
         <span class="grid4">
           <span><img loading="lazy" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="assets/img/menu/isi.webp" alt="" width="300" height="169"></span>
@@ -71,15 +70,8 @@
         </span>
       </span></span>
     </a>
-    <a class="mitem" href="index.html#leistungen">
-      <span class="mt">Leistungen</span>
-      <span class="mthumb"><span class="mv" style="background:#F4F3EB">
-        <span class="bars" style="left:8%;top:22%;width:40%"><i style="width:95%;height:9px"></i><i style="width:70%;height:9px"></i><i style="width:50%;margin-top:6px"></i><i style="width:26%;height:10px;margin-top:8px"></i></span>
-        <img loading="lazy" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="assets/img/menu/isi.webp" alt="" style="position:absolute;right:6%;top:18%;width:36%;height:64%;border-radius:2px" width="300" height="169">
-      </span></span>
-    </a>
     <a class="mitem" href="agentur.html">
-      <span class="mt">Agentur</span>
+      <span class="mt">Über uns</span>
       <span class="mthumb"><span class="mv">
         <span class="grid4" style="grid-template-columns:1fr 1fr">
           <span><img loading="lazy" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="assets/img/menu/retreat-08.webp" alt="" width="300" height="200"></span>
@@ -265,7 +257,7 @@
         <div class="ftr-h"><span>We make</span> <i>attention perform.</i></div>
         <div class="ftr-btns">
           <a class="btn btn--inverse" href="kontakt.html">Projekt starten</a>
-          <a class="btn btn--outline-inverse" href="work.html">Unsere Arbeit</a>
+          <a class="btn btn--outline-inverse" href="work.html">Projekte ansehen</a>
         </div>
       </div>
       <div class="ftr-rule" aria-hidden="true"></div>
@@ -280,7 +272,7 @@
         </nav>
         <span class="ftr-loc">Digitale Marketing Agentur Wien</span>
       </div>
-      <p class="ftr-legal">© 2026 Ad Boutique Agency GmbH, Wien. Stand: 3. Oktober 2026</p>
+      <p class="ftr-legal">© 2026 Ad Boutique Agency GmbH, Wien. Stand: 15. Oktober 2026</p>
     </div>
   </footer>
 </main>

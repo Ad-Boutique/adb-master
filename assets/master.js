@@ -83,6 +83,8 @@
      Browser-Cache stellt die Seite mit geschlossener Blende wieder her; und wenn nach dem
      Klick kein Seitenwechsel passiert ist, geht die Blende wieder auf. */
   window.addEventListener("pageshow", function (e) {
+    /* auch das Vollbild der Kachel-Expansion (.flipx/.flipbg) wuerde sonst ueber der Seite liegen bleiben */
+    if (e.persisted) document.querySelectorAll(".flipx, .flipbg").forEach(function (n) { n.remove(); });
     if (e.persisted && pt) {
       pt.style.transition = "none";
       pt.classList.remove("enter", "cover");
@@ -130,7 +132,8 @@
   window.ADB_MENUIMG = loadMenuImgs;
   function toggleMenu() { loadMenuImgs(); document.body.classList.toggle("menuopen"); }
   function closeMenu() { document.body.classList.remove("menuopen"); }
-  if (mbtn) mbtn.addEventListener("click", function () {
+  /* nur der alte Kreis als Knopf oeffnet das Menue; als Link (Kontakt) navigiert er */
+  if (mbtn && mbtn.tagName === "BUTTON") mbtn.addEventListener("click", function () {
     document.body.classList.remove("filteropen");
     toggleMenu();
   });
@@ -149,7 +152,7 @@
     var syncMenuA11y = function () {
       var open = document.body.classList.contains("menuopen");
       if (open) msheet.removeAttribute("inert"); else msheet.setAttribute("inert", "");
-      document.querySelectorAll(".mbtn, .chrome .hmenu").forEach(function (b) {
+      document.querySelectorAll("button.mbtn, .chrome .hmenu").forEach(function (b) {
         b.setAttribute("aria-controls", msheet.id);
         b.setAttribute("aria-expanded", open ? "true" : "false");
         b.setAttribute("aria-label", open ? "Menü schließen" : "Menü öffnen");
@@ -407,7 +410,7 @@
       if (!picked.length) return;
       var slug = (location.pathname.split("/").pop() || "index.html").replace(/\.html$/, "");
       /* Ziel aus dem Kontakt-Link der Kopfzeile: live schreibt _seo.py ihn auf /kontakt um (saubere Pfade) */
-      var ctcEl = document.querySelector(".chrome .ctc"), kurl = (ctcEl && ctcEl.getAttribute("href")) || "kontakt.html";
+      var ctcEl = document.querySelector('.chrome .ctc[href*="kontakt"]'), kurl = (ctcEl && ctcEl.getAttribute("href")) || "kontakt.html";
       location.href = kurl + "?w=" + encodeURIComponent(picked.join(",")) +
                       "&from=" + encodeURIComponent(slug);
     });
@@ -490,6 +493,20 @@
     });
     window.addEventListener("pointerup", function () { down = false; });
     row.addEventListener("click", function (e) { if (mv > 6) { e.preventDefault(); e.stopPropagation(); } }, true);
+    /* Pfeile im Kopf der Sektion: eine Kartenbreite weiter, am Rand ausgegraut */
+    var sec = row.closest("section"), arrs = sec ? sec.querySelectorAll(".svarr") : [];
+    if (!arrs.length) return;
+    function step() { var c = row.querySelector(".svcard"); return c ? c.getBoundingClientRect().width + parseFloat(getComputedStyle(row).columnGap || 0) : row.clientWidth * 0.8; }
+    function edge() {
+      var max = row.scrollWidth - row.clientWidth - 2;
+      arrs.forEach(function (b) { b.disabled = (+b.getAttribute("data-dir") < 0) ? row.scrollLeft <= 2 : row.scrollLeft >= max; });
+    }
+    arrs.forEach(function (b) {
+      b.addEventListener("click", function () { row.scrollBy({ left: +b.getAttribute("data-dir") * step(), behavior: reduced ? "auto" : "smooth" }); });
+    });
+    row.addEventListener("scroll", edge, { passive: true });
+    window.addEventListener("resize", edge);
+    edge();
   });
 
 

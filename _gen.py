@@ -17,31 +17,40 @@ HEAD = '''<!doctype html>
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="preconnect" href="https://p.typekit.net" crossorigin>
 <link rel="preload" href="assets/fonts/Satoshi-Variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/site.css?v=41326722">
+<link rel="stylesheet" href="assets/site.css?v=13968933">
 <link rel="stylesheet" href="https://use.typekit.net/udf8wjj.css">
-<script src="assets/site.js?v=41326722" defer></script>
+<script src="assets/site.js?v=13968933" defer></script>
 </head>
 <body style="background-color:{bodybg}" class="on-light brand">
 
 <div class="pt"><div class="ptw">ad<i>.</i>boutique</div></div>
 
-<header class="chrome">
-  <a href="index.html" class="logo">ad<i>.</i>boutique</a>
-  <a href="kontakt.html" class="ctc">Kontakt</a>
-</header>
-
+{header}
 '''
+
+# Kopfzeile (Feedback 15.10.2026): Navigation oben, auf Desktop vier Punkte, mobil Kontakt plus Menue (brand.js haengt .hmenu an).
+# Gleiches Markup auf allen Seiten, auch den handgepflegten: _nav.py setzt es im Build.
+HEADER = '''<header class="chrome">
+  <a href="index.html" class="logo">ad<i>.</i>boutique</a>
+  <nav class="hnav" aria-label="Hauptnavigation">
+    <a class="ctc hnl" href="index.html#leistungen">Leistungen</a>
+    <a class="ctc hnl" href="work.html">Projekte</a>
+    <a class="ctc hnl" href="agentur.html">Über uns</a>
+    <a class="ctc" href="kontakt.html">Kontakt</a>
+  </nav>
+</header>
+'''
+HEAD = HEAD.replace("{header}", HEADER)
 
 # Vorschaubilder im Menue: kleine Fassungen (300 px) aus assets/img/menu/, erst beim Oeffnen geladen (data-src, _perf.py, master.js)
 from _perf import menu_tag as _mimg
 
 MENU_ITEMS = [
-    ("index.html", "Start", '''<span class="mv">
-        <span class="half-d">''' + _mimg("funkhaus") + '''</span>
-        <span class="half-p"></span>
-        <span class="bars" style="left:56%;top:26%;width:34%"><i style="width:92%"></i><i style="width:76%"></i><i style="width:84%"></i><i style="width:30%;height:8px;margin-top:5px"></i></span>
+    ("index.html#leistungen", "Leistungen", '''<span class="mv" style="background:#F3EDE1">
+        <span class="bars" style="left:8%;top:22%;width:40%"><i style="width:95%;height:9px"></i><i style="width:70%;height:9px"></i><i style="width:50%;margin-top:6px"></i><i style="width:26%;height:10px;margin-top:8px"></i></span>
+        ''' + _mimg("isi", ' style="position:absolute;right:6%;top:18%;width:36%;height:64%;border-radius:2px"') + '''
       </span>'''),
-    ("work.html", "Work", '''<span class="mv">
+    ("work.html", "Projekte", '''<span class="mv">
         <span class="grid4">
           <span>''' + _mimg("isi") + '''</span>
           <span>''' + _mimg("a_funk2") + '''</span>
@@ -49,11 +58,7 @@ MENU_ITEMS = [
           <span>''' + _mimg("a_otta1") + '''</span>
         </span>
       </span>'''),
-    ("index.html#leistungen", "Leistungen", '''<span class="mv" style="background:#F3EDE1">
-        <span class="bars" style="left:8%;top:22%;width:40%"><i style="width:95%;height:9px"></i><i style="width:70%;height:9px"></i><i style="width:50%;margin-top:6px"></i><i style="width:26%;height:10px;margin-top:8px"></i></span>
-        ''' + _mimg("isi", ' style="position:absolute;right:6%;top:18%;width:36%;height:64%;border-radius:2px"') + '''
-      </span>'''),
-    ("agentur.html", "Agentur", '''<span class="mv">
+    ("agentur.html", "Über uns", '''<span class="mv">
         <span class="grid4" style="grid-template-columns:1fr 1fr">
           <span>''' + _mimg("retreat-08") + '''</span>
           <span>''' + _mimg("retreat-01") + '''</span>
@@ -72,17 +77,16 @@ BACKCIRCLE = """<a class="bkbtn" href="work.html" aria-label="Zurück zur Übers
 """
 
 
+# Der Kreis unten Mitte ist der Kontakt-Knopf (Feedback 15.10.2026), das Menue oeffnet die Kopfzeile
+MBTN = '<a class="mbtn" href="kontakt.html" aria-label="Kontakt aufnehmen"></a>'
+
+
 def menu(active, back=False):
     rows = []
     for href, label, mv in MENU_ITEMS:
         act = " act" if href == active else ""
         rows.append('    <a class="mitem%s" href="%s">\n      <span class="mt">%s</span>\n      <span class="mthumb">%s</span>\n    </a>' % (act, href, label, mv))
-    return (BACKCIRCLE if back else "") + '''<button class="mbtn" aria-label="Menü öffnen"></button>
-<svg class="morbit" viewBox="0 0 124 124" aria-hidden="true">
-  <defs><path id="mpath" d="M62,62 m-48,0 a48,48 0 1,1 96,0 a48,48 0 1,1 -96,0"/></defs>
-  <text class="t-open"><textPath href="#mpath" startOffset="2%">Menü</textPath></text>
-  <text class="t-close"><textPath href="#mpath" startOffset="2%">Schließen</textPath></text>
-</svg>
+    return (BACKCIRCLE if back else "") + MBTN + '''
 <div class="mdim"></div>
 <nav class="msheet" aria-label="Hauptmenü">
   <div class="mrow">

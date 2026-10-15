@@ -61,7 +61,7 @@ body.brand.menuopen .mbtn::after { background: var(--lime); }
 body.brand .morbit { display: none; }
 body.brand .mbtn::after { display: none; }
 body.brand .mbtn::before {
-  content: "Menü"; position: absolute; inset: 0; width: auto; height: auto; margin: 0; display: flex; align-items: center; justify-content: center;
+  content: "Kontakt"; position: absolute; inset: 0; width: auto; height: auto; margin: 0; display: flex; align-items: center; justify-content: center;
   font-family: var(--f-ui); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--ink); background: none; box-shadow: none; border-radius: 0; opacity: 1; animation: none; transform: none; transition: color var(--d-base) ease, opacity 0.25s ease;
 }

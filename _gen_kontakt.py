@@ -163,6 +163,6 @@ body = '''<main class="kmain">
 '''
 
 page = (g.HEAD.format(title="Anfrage", bodybg="#F3EDE1")
-        + g.menu("index.html#kontakt") + body + g.FOOTER)
+        + g.menu("kontakt.html") + body + g.FOOTER)
 open("kontakt.html", "w", encoding="utf-8").write(page)
 print("kontakt.html geschrieben, %d Zeichen" % len(page))

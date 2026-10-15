@@ -183,6 +183,8 @@
     var mv = q.match(/[?&]cv=(\d)/), variant = mv ? parseInt(mv[1], 10) : COACH_DEFAULT;
     var mb = document.querySelector(".mbtn"), sheet = document.querySelector(".msheet");
     if (!mb || !sheet || body.classList.contains("menuopen")) return;
+    /* der Kreis ist ein Kontakt-Link (kein Menue-Knopf mehr): nichts zu erklaeren */
+    if (mb.tagName !== "BUTTON") return;
     /* offenes Einwilligungs-Banner (master.js): der Coach wartet, bis entschieden ist */
     if (window.ADB_CONSENT_OPEN) { document.addEventListener("adbconsent", function () { setTimeout(coach, M.slow); }, { once: true }); return; }
     /* Sperre je Browser, versioniert: wer eine aeltere Choreografie gesehen hat, sieht die aktuelle einmal */
@@ -376,15 +378,20 @@
     if (document.querySelector(".fbtn, .bbtn")) { document.addEventListener("click", function () { setTimeout(mark, 0); }); mark(); }
   })();
 
-  /* ---------- Kopfzeile: gelernter Menue-Knopf rechts neben Kontakt, klickt den Punkt ---------- */
+  /* ---------- Kopfzeile: Menue-Knopf rechts neben der Navigation (mobil sichtbar, brand-ui.css), oeffnet das Sheet.
+     Der Kreis unten ist seit 15.10.2026 der Kontakt-Link, das Menue haengt nicht mehr an ihm. ---------- */
   (function () {
-    var chrome = document.querySelector(".chrome"), ctc = chrome && chrome.querySelector(".ctc"), mb = document.querySelector(".mbtn");
-    if (!chrome || !ctc || !mb) return;
+    var chrome = document.querySelector(".chrome"), nav = chrome && (chrome.querySelector(".hnav") || chrome.querySelector(".ctc"));
+    if (!chrome || !nav || !document.querySelector(".msheet")) return;
     var wrap = document.createElement("div"); wrap.className = "chr";
     var btn = document.createElement("button"); btn.className = "hmenu"; btn.type = "button"; btn.setAttribute("aria-label", "Menü öffnen");
     btn.innerHTML = '<i aria-hidden="true"></i><span class="hm-open">Menü</span><span class="hm-close">Schließen</span>';
-    btn.addEventListener("click", function () { mb.click(); });
-    ctc.parentNode.insertBefore(wrap, ctc); wrap.appendChild(ctc); wrap.appendChild(btn);
+    btn.addEventListener("click", function () {
+      if (window.ADB_MENUIMG) window.ADB_MENUIMG();
+      body.classList.remove("filteropen"); body.classList.remove("branchopen");
+      body.classList.toggle("menuopen");
+    });
+    nav.parentNode.insertBefore(wrap, nav); wrap.appendChild(nav); wrap.appendChild(btn);
   })();
 
   window.ADB_LEAVE = function (pt, href) {
@@ -905,7 +912,7 @@
       var r = el.getBoundingClientRect(); if (!r.width) return;
       var my = r.top + r.height / 2, seen = { light: 0, dark: 0, photo: 0 };
       [r.left + 2, r.left + r.width / 2, r.right - 2].forEach(function (x) { seen[under(Math.max(1, x), Math.max(1, my))]++; });
-      var st = seen.photo ? "photo" : (seen.dark >= 2 ? "dark" : (seen.light >= 2 ? "light" : "dark"));
+      var st = seen.photo >= 2 ? "photo" : (seen.dark >= 2 ? "dark" : (seen.light >= 2 ? "light" : "dark"));
       if (el.getAttribute("data-ug") !== st) el.setAttribute("data-ug", st);
     });
   }

@@ -16,7 +16,7 @@ FOOTER = '''  <footer class="ftr" data-bg="#101010" data-fg="light">
         <div class="ftr-h"><span>We make</span> <i>attention perform.</i></div>
         <div class="ftr-btns">
           <a class="btn btn--inverse" href="kontakt.html">Projekt starten</a>
-          <a class="btn btn--outline-inverse" href="work.html">Unsere Arbeit</a>
+          <a class="btn btn--outline-inverse" href="work.html">Projekte ansehen</a>
         </div>
       </div>
       <div class="ftr-rule" aria-hidden="true"></div>

@@ -7,3 +7,4 @@ _intern/
 
 # lokale Claude-Arbeitskopien und Einstellungen
 .claude/
+__pycache__/
